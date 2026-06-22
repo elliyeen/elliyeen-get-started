@@ -1,4 +1,5 @@
 import React from "react";
+import CyclingWord from "./CyclingWord";
 import { ArrowRight, BarChart3, Bot, CalendarDays, CheckCircle2, ChevronDown, Globe2, LineChart, LockKeyhole, Search, Sparkles, Users } from "lucide-react";
 
 const prompts = [
@@ -82,17 +83,22 @@ export default function GetStartedPage() {
 
       <section className="relative mx-auto grid max-w-7xl items-center gap-12 px-6 pb-16 pt-10 md:grid-cols-2 md:pt-20">
         <div>
-          <h1 className="max-w-xl font-serif text-6xl leading-[0.92] tracking-[-0.05em] md:text-8xl">
-            Engineer Higher <span className="text-[#6d4aff]">Revenue.</span>
+          <h1 className="font-serif text-6xl leading-[1] tracking-[-0.05em] md:text-8xl">
+            Engineer Higher
+            <br />
+            <CyclingWord />
           </h1>
 
           <p className="mt-7 max-w-xl text-lg leading-8 text-zinc-700">
-            We help organizations understand customers, remove friction, and build experiences that turn more visitors into customers and more customers into loyal advocates.
+            Free your organization to focus on what matters most, today.
+          </p>
+          <p className="mt-3 max-w-xl text-lg leading-8 text-zinc-700">
+            Engineer your business to deliver exceptional experiences, increase profitability, and accelerate sustainable growth.
           </p>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <a href="#assessment" className="inline-flex items-center justify-center rounded-xl bg-black px-6 py-4 text-sm font-bold text-white shadow-xl shadow-black/10 hover:bg-zinc-800">
-              Start Revenue Assessment
+              Try Elliyeen
             </a>
             <a href="#advisor" className="inline-flex items-center justify-center gap-2 rounded-xl px-6 py-4 text-sm font-bold hover:bg-white">
               Talk to Elliyeen AI <ArrowRight size={16} />
@@ -117,8 +123,7 @@ export default function GetStartedPage() {
           <div className="relative rotate-[-2deg] rounded-[2rem] border border-zinc-200 bg-white p-5 shadow-2xl shadow-zinc-900/10">
             <div className="rounded-[1.4rem] border border-zinc-100 bg-gradient-to-br from-white to-[#f4efff] p-8">
               <div className="mb-8 flex items-center justify-between">
-                <div className="flex items-center gap-2 text-xs font-bold tracking-[0.18em] text-zinc-500">
-                  <div className="h-6 w-6 rounded-md bg-[#6d4aff] text-center text-white">E</div>
+                <div className="text-xs font-bold tracking-[0.18em] text-zinc-500">
                   ELLIYEEN RESEARCH
                 </div>
                 <LockKeyhole size={18} className="text-zinc-400" />
@@ -126,10 +131,10 @@ export default function GetStartedPage() {
               <p className="text-sm font-semibold text-zinc-500">Your Revenue Opportunity</p>
               <h2 className="mt-3 text-5xl font-semibold tracking-[-0.04em]">$2.4M+</h2>
               <p className="mt-2 text-sm font-semibold text-emerald-600">High opportunity</p>
-              <div className="mt-8 h-48 rounded-2xl bg-[linear-gradient(180deg,rgba(109,74,255,0.22),rgba(109,74,255,0.04))] p-4">
+              <div className="mt-8 h-48 rounded-2xl bg-[linear-gradient(180deg,rgba(27,94,168,0.22),rgba(27,94,168,0.04))] p-4">
                 <svg viewBox="0 0 500 180" className="h-full w-full overflow-visible">
-                  <path d="M10 150 C70 130 95 150 130 110 S190 40 230 90 S280 130 315 70 S370 80 410 35 S450 45 490 12" fill="none" stroke="#6d4aff" strokeWidth="7" strokeLinecap="round" />
-                  <circle cx="230" cy="90" r="9" fill="white" stroke="#6d4aff" strokeWidth="5" />
+                  <path d="M10 150 C70 130 95 150 130 110 S190 40 230 90 S280 130 315 70 S370 80 410 35 S450 45 490 12" fill="none" stroke="#1B5EA8" strokeWidth="7" strokeLinecap="round" />
+                  <circle cx="230" cy="90" r="9" fill="white" stroke="#1B5EA8" strokeWidth="5" />
                 </svg>
               </div>
               <div className="mt-8 grid gap-3 text-sm">
