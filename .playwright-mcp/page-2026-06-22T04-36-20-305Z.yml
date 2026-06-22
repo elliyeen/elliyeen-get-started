@@ -1,0 +1,275 @@
+- generic [active] [ref=e1]:
+  - main [ref=e2]:
+    - navigation [ref=e3]:
+      - generic [ref=e4]:
+        - generic [ref=e5]: ELLIYEEN
+        - generic [ref=e6]:
+          - link "Product" [ref=e7] [cursor=pointer]:
+            - /url: "#solutions"
+          - link "Enterprise" [ref=e8] [cursor=pointer]:
+            - /url: "#cases"
+          - link "Pricing" [ref=e9] [cursor=pointer]:
+            - /url: "#assessment"
+          - link "Resources" [ref=e10] [cursor=pointer]:
+            - /url: "#advisor"
+        - generic [ref=e11]:
+          - link "Contact sales" [ref=e12] [cursor=pointer]:
+            - /url: "#contact"
+          - link "Try Elliyeen" [ref=e13] [cursor=pointer]:
+            - /url: "#assessment"
+    - generic [ref=e14]:
+      - generic [ref=e15]:
+        - heading "Engineer Higher Revenue." [level=1] [ref=e16]:
+          - text: Engineer Higher
+          - generic [ref=e17]: Revenue.
+        - paragraph [ref=e18]: Free your organization to focus on what matters most, today.
+        - paragraph [ref=e19]: Engineer your business to deliver exceptional experiences, increase profitability, and accelerate sustainable growth.
+        - generic [ref=e20]:
+          - link "Try Elliyeen" [ref=e21] [cursor=pointer]:
+            - /url: "#assessment"
+          - link "Talk to Elliyeen AI" [ref=e22] [cursor=pointer]:
+            - /url: "#advisor"
+            - text: Talk to Elliyeen AI
+            - img [ref=e23]
+        - generic [ref=e25]:
+          - generic [ref=e26]:
+            - img "Client avatar" [ref=e27]
+            - img "Client avatar" [ref=e28]
+            - img "Client avatar" [ref=e29]
+            - img "Client avatar" [ref=e30]
+          - generic [ref=e31]:
+            - generic [ref=e32]: ★★★★★
+            - generic [ref=e33]: Trusted by growth-focused organizations
+      - generic [ref=e37]:
+        - generic [ref=e38]:
+          - generic [ref=e39]: ELLIYEEN RESEARCH
+          - img [ref=e40]
+        - paragraph [ref=e44]: Your Revenue Opportunity
+        - heading "$2.4M+" [level=2] [ref=e45]
+        - paragraph [ref=e46]: High opportunity
+        - img [ref=e48]
+        - generic [ref=e51]:
+          - generic [ref=e52]:
+            - img [ref=e53]
+            - text: Customer Clarity
+          - generic [ref=e56]:
+            - img [ref=e57]
+            - text: Conversion Experience
+          - generic [ref=e60]:
+            - img [ref=e61]
+            - text: Trust & Credibility
+          - generic [ref=e64]:
+            - img [ref=e65]
+            - text: Organic Visibility
+          - generic [ref=e68]:
+            - img [ref=e69]
+            - text: Operational Efficiency
+    - generic [ref=e73]:
+      - generic [ref=e74]:
+        - heading "Get answers. Get clarity. Get growing." [level=2] [ref=e75]
+        - paragraph [ref=e76]: Ask Elliyeen AI anything about your business, your website, or your growth.
+      - generic [ref=e77]:
+        - complementary [ref=e78]:
+          - heading "Start a conversation" [level=3] [ref=e79]
+          - generic [ref=e80]:
+            - button "Why aren't we growing?" [ref=e81]:
+              - generic [ref=e82]: Why aren't we growing?
+              - img [ref=e83]
+            - button "How much revenue are we losing?" [ref=e85]:
+              - generic [ref=e86]: How much revenue are we losing?
+            - button "Can you audit our website?" [ref=e87]:
+              - generic [ref=e88]: Can you audit our website?
+            - button "Why are competitors winning?" [ref=e89]:
+              - generic [ref=e90]: Why are competitors winning?
+            - button "How do we improve customer experience?" [ref=e91]:
+              - generic [ref=e92]: How do we improve customer experience?
+            - button "What should we do first?" [ref=e93]:
+              - generic [ref=e94]: What should we do first?
+        - generic [ref=e95]:
+          - generic [ref=e96]: Why aren't we growing?
+          - generic [ref=e97]:
+            - generic [ref=e98]: E
+            - generic [ref=e99]:
+              - paragraph [ref=e100]: Based on the way most organizations present themselves, growth is often limited by friction points that prevent visitors from becoming customers.
+              - list [ref=e101]:
+                - listitem [ref=e102]: Visitors cannot quickly understand who you help and how.
+                - listitem [ref=e103]: Your value is not clearly communicated above the fold.
+                - listitem [ref=e104]: There is no clear next step guiding visitors to take action.
+                - listitem [ref=e105]: Trust signals are limited, creating hesitation.
+                - listitem [ref=e106]: SEO opportunities are missed that competitors capture.
+              - paragraph [ref=e107]: Would you like me to show the specific opportunities and recommendations?
+          - generic [ref=e108]:
+            - textbox "Ask a follow-up question..." [ref=e109]
+            - button [ref=e110]:
+              - img [ref=e111]
+    - generic [ref=e113]:
+      - generic [ref=e114]:
+        - paragraph [ref=e115]: Our process
+        - heading "From insight to impact." [level=2] [ref=e116]
+      - generic [ref=e117]:
+        - generic [ref=e118]:
+          - img [ref=e120]
+          - generic [ref=e125]: "1"
+          - heading "Understand Customers" [level=3] [ref=e126]
+          - paragraph [ref=e127]: We uncover what your customers need, want, fear, and struggle with.
+        - generic [ref=e128]:
+          - img [ref=e130]
+          - generic [ref=e133]: "2"
+          - heading "Identify Friction" [level=3] [ref=e134]
+          - paragraph [ref=e135]: We find gaps, bottlenecks, and missed opportunities holding growth back.
+        - generic [ref=e136]:
+          - img [ref=e138]
+          - generic [ref=e141]: "3"
+          - heading "Design Experiences" [level=3] [ref=e142]
+          - paragraph [ref=e143]: We create clearer journeys that build trust and drive action.
+        - generic [ref=e144]:
+          - img [ref=e146]
+          - generic [ref=e149]: "4"
+          - heading "Engineer Growth" [level=3] [ref=e150]
+          - paragraph [ref=e151]: We implement, optimize, and improve the system over time.
+    - generic [ref=e153]:
+      - generic [ref=e154]:
+        - heading "Real results. Real impact." [level=2] [ref=e155]
+        - link "View all case studies" [ref=e156] [cursor=pointer]:
+          - /url: "#"
+          - text: View all case studies
+          - img [ref=e157]
+      - generic [ref=e159]:
+        - article [ref=e160]:
+          - img "Savannah Personal Care" [ref=e161]
+          - generic [ref=e162]:
+            - paragraph [ref=e163]: Home Care
+            - heading "Savannah Personal Care" [level=3] [ref=e164]
+            - paragraph [ref=e165]: Reworked the customer journey around trust, clarity, accessibility, and local search intent.
+            - generic [ref=e166]:
+              - generic [ref=e167]: More clarity
+              - generic [ref=e168]: Better trust
+              - generic [ref=e169]: Cleaner path
+            - link "View Case Study" [ref=e170] [cursor=pointer]:
+              - /url: "#"
+              - text: View Case Study
+              - img [ref=e171]
+        - article [ref=e173]:
+          - img "Wealth Management Firm" [ref=e174]
+          - generic [ref=e175]:
+            - paragraph [ref=e176]: Financial Services
+            - heading "Wealth Management Firm" [level=3] [ref=e177]
+            - paragraph [ref=e178]: Designed an AI-assisted onboarding workflow to help prospects understand services faster.
+            - generic [ref=e179]:
+              - generic [ref=e180]: Less friction
+              - generic [ref=e181]: Better fit
+              - generic [ref=e182]: Faster follow-up
+            - link "View Case Study" [ref=e183] [cursor=pointer]:
+              - /url: "#"
+              - text: View Case Study
+              - img [ref=e184]
+        - article [ref=e186]:
+          - img "College Golf Program" [ref=e187]
+          - generic [ref=e188]:
+            - paragraph [ref=e189]: Education / Sports
+            - heading "College Golf Program" [level=3] [ref=e190]
+            - paragraph [ref=e191]: Built a recruiting path that turns performance data into clearer scholarship positioning.
+            - generic [ref=e192]:
+              - generic [ref=e193]: Clear story
+              - generic [ref=e194]: Better proof
+              - generic [ref=e195]: More action
+            - link "View Case Study" [ref=e196] [cursor=pointer]:
+              - /url: "#"
+              - text: View Case Study
+              - img [ref=e197]
+    - generic [ref=e201]:
+      - generic [ref=e202]:
+        - heading "Ready to engineer higher revenue?" [level=2] [ref=e203]
+        - paragraph [ref=e204]: Let's build a plan tailored to your customers, your market, and your growth goals.
+        - generic [ref=e205]:
+          - link "Start Your Assessment" [ref=e206] [cursor=pointer]:
+            - /url: "#assessment"
+          - link "Talk to Elliyeen AI" [ref=e207] [cursor=pointer]:
+            - /url: "#advisor"
+            - text: Talk to Elliyeen AI
+            - img [ref=e208]
+      - generic [ref=e210]:
+        - generic [ref=e211]:
+          - img [ref=e213]
+          - generic [ref=e216]:
+            - heading "AI-Powered Insights" [level=3] [ref=e217]
+            - paragraph [ref=e218]: Data and AI uncover opportunities humans miss.
+        - generic [ref=e219]:
+          - img [ref=e221]
+          - generic [ref=e226]:
+            - heading "Human Expertise" [level=3] [ref=e227]
+            - paragraph [ref=e228]: Strategists, designers, and engineers who care about your results.
+        - generic [ref=e229]:
+          - img [ref=e231]
+          - generic [ref=e233]:
+            - heading "Measurable Outcomes" [level=3] [ref=e234]
+            - paragraph [ref=e235]: "We focus on what moves the needle: revenue, customers, and ROI."
+    - generic [ref=e237]:
+      - generic [ref=e238]:
+        - generic [ref=e239]:
+          - generic [ref=e240]: ELLIYEEN
+          - paragraph [ref=e241]: AI-powered revenue engineering for growth-focused organizations.
+        - generic [ref=e242]:
+          - generic [ref=e243]:
+            - paragraph [ref=e244]: Product
+            - list [ref=e245]:
+              - listitem [ref=e246]:
+                - link "Overview" [ref=e247] [cursor=pointer]:
+                  - /url: "#solutions"
+              - listitem [ref=e248]:
+                - link "AI Advisor" [ref=e249] [cursor=pointer]:
+                  - /url: "#advisor"
+              - listitem [ref=e250]:
+                - link "Pricing" [ref=e251] [cursor=pointer]:
+                  - /url: "#assessment"
+          - generic [ref=e252]:
+            - paragraph [ref=e253]: Services
+            - list [ref=e254]:
+              - listitem [ref=e255]:
+                - link "Revenue Audit" [ref=e256] [cursor=pointer]:
+                  - /url: "#solutions"
+              - listitem [ref=e257]:
+                - link "CX Design" [ref=e258] [cursor=pointer]:
+                  - /url: "#solutions"
+              - listitem [ref=e259]:
+                - link "Growth Strategy" [ref=e260] [cursor=pointer]:
+                  - /url: "#solutions"
+          - generic [ref=e261]:
+            - paragraph [ref=e262]: Company
+            - list [ref=e263]:
+              - listitem [ref=e264]:
+                - link "About" [ref=e265] [cursor=pointer]:
+                  - /url: "#about"
+              - listitem [ref=e266]:
+                - link "Case Studies" [ref=e267] [cursor=pointer]:
+                  - /url: "#cases"
+              - listitem [ref=e268]:
+                - link "Contact" [ref=e269] [cursor=pointer]:
+                  - /url: "#contact"
+          - generic [ref=e270]:
+            - paragraph [ref=e271]: Resources
+            - list [ref=e272]:
+              - listitem [ref=e273]:
+                - link "Research" [ref=e274] [cursor=pointer]:
+                  - /url: "#research"
+              - listitem [ref=e275]:
+                - link "Blog" [ref=e276] [cursor=pointer]:
+                  - /url: "#advisor"
+              - listitem [ref=e277]:
+                - link "FAQ" [ref=e278] [cursor=pointer]:
+                  - /url: "#contact"
+      - generic [ref=e279]:
+        - paragraph [ref=e280]: © 2026 Elliyeen Research. All rights reserved.
+        - generic [ref=e281]:
+          - link "Privacy Policy" [ref=e282] [cursor=pointer]:
+            - /url: /privacy
+          - link "Terms" [ref=e283] [cursor=pointer]:
+            - /url: /terms
+          - link "Accessibility" [ref=e284] [cursor=pointer]:
+            - /url: /accessibility
+        - link "LinkedIn" [ref=e285] [cursor=pointer]:
+          - /url: https://www.linkedin.com/in/abbasabdullah/
+          - img [ref=e286]
+  - button "Open Next.js Dev Tools" [ref=e295] [cursor=pointer]:
+    - img [ref=e296]
+  - alert [ref=e299]
