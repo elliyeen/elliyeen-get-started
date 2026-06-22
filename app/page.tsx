@@ -313,6 +313,11 @@ export default function GetStartedPage() {
 
           <div className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-zinc-100 pt-8 sm:flex-row">
             <p className="text-sm text-zinc-400">© {new Date().getFullYear()} Elliyeen Research. All rights reserved.</p>
+            <div className="flex items-center gap-6">
+              <a href="/privacy" className="text-sm text-zinc-400 hover:text-black">Privacy Policy</a>
+              <a href="/terms" className="text-sm text-zinc-400 hover:text-black">Terms</a>
+              <a href="/accessibility" className="text-sm text-zinc-400 hover:text-black">Accessibility</a>
+            </div>
             <a
               href="https://www.linkedin.com/in/abbasabdullah/"
               target="_blank"
