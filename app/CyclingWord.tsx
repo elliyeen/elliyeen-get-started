@@ -13,6 +13,7 @@ export default function CyclingWord() {
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const interval = setInterval(() => {
       setVisible(false);
       setTimeout(() => {
