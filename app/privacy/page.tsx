@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy — Elliyeen Research",
-  description: "How Elliyeen Research collects, uses, and protects your information.",
+  title: "Privacy Policy",
+  description: "How Elliyeen Research collects, uses, and protects your information. Read our full privacy policy.",
+  alternates: { canonical: "https://elliyeen-get-started.pages.dev/privacy" },
 };
 
 export default function PrivacyPage() {

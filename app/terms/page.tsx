@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Terms & Conditions — Elliyeen Research",
-  description: "Terms governing the use of Elliyeen Research's website and services.",
+  title: "Terms & Conditions",
+  description: "Terms and conditions governing the use of Elliyeen Research's website and services.",
+  alternates: { canonical: "https://elliyeen-get-started.pages.dev/terms" },
 };
 
 export default function TermsPage() {

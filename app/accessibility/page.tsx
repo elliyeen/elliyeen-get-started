@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Accessibility — Elliyeen Research",
-  description: "Elliyeen Research's commitment to building an inclusive and accessible web experience.",
+  title: "Accessibility",
+  description: "Elliyeen Research's commitment to WCAG 2.1 AA accessibility standards and building an inclusive web experience for all users.",
+  alternates: { canonical: "https://elliyeen-get-started.pages.dev/accessibility" },
 };
 
 export default function AccessibilityPage() {

@@ -1,5 +1,13 @@
+import type { Metadata } from "next";
 import React from "react";
 import CyclingWord from "./CyclingWord";
+
+export const metadata: Metadata = {
+  title: "Elliyeen Research — Engineer Higher Revenue",
+  description:
+    "Elliyeen Research helps organizations understand customers, remove friction, and engineer exceptional experiences that increase revenue, profitability, and sustainable growth. Talk to Elliyeen AI free.",
+  alternates: { canonical: "https://elliyeen-get-started.pages.dev" },
+};
 import { ArrowRight, BarChart3, Bot, CheckCircle2, LineChart, LockKeyhole, Search, Sparkles, Users } from "lucide-react";
 
 const prompts = [
