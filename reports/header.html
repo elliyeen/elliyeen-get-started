@@ -1,0 +1,693 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Milano Family Pizza — Revenue Audit · Elliyeen Research · 22-Agent Website Analysis">
+<meta property="og:title" content="Milano Family Pizza — Revenue Audit">
+<meta property="og:description" content="22-Agent website analysis: Positioning 19/100 · 30-day uplift $6,960/mo · 12-month uplift $36,600/mo">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap');
+
+/* ── Hide rmarkdown's default TOC ────────────────────────────────────── */
+.tocify-wrapper, #TOC { display: none !important; }
+
+/* ── Layout: make room for custom drawer ─────────────────────────────── */
+body { overflow-x: hidden; }
+.main-container {
+  margin-left: 270px !important;
+  transition: margin-left 0.38s cubic-bezier(.4,0,.2,1);
+  max-width: 900px;
+}
+body.ez-drawer-closed .main-container {
+  margin-left: 0 !important;
+  max-width: 960px;
+}
+
+/* ── Custom Drawer ────────────────────────────────────────────────────── */
+#ez-drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 256px;
+  height: 100vh;
+  background: #0e2323;
+  display: flex;
+  flex-direction: column;
+  z-index: 6000;
+  transform: translateX(0);
+  transition: transform 0.38s cubic-bezier(.4,0,.2,1);
+  overflow: hidden;
+  box-shadow: 2px 0 24px rgba(0,0,0,0.22);
+}
+body.ez-drawer-closed #ez-drawer {
+  transform: translateX(-256px);
+}
+
+.ez-drawer-head {
+  flex-shrink: 0;
+  padding: 1.4rem 1.2rem 1rem;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+.ez-drawer-brand {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 0.35rem;
+}
+.ez-drawer-title {
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.88);
+  line-height: 1.25;
+  font-weight: 500;
+}
+.ez-drawer-score {
+  display: inline-block;
+  margin-top: 0.55rem;
+  background: #a05c3c;
+  color: white;
+  font-size: 0.62rem;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 0.06em;
+  padding: 0.18rem 0.5rem;
+  border-radius: 3px;
+}
+
+.ez-drawer-nav {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0.75rem 0 1.5rem;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.12) transparent;
+}
+.ez-drawer-nav::-webkit-scrollbar { width: 4px; }
+.ez-drawer-nav::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.12); border-radius: 2px; }
+
+/* Group headers */
+.ez-nav-group { margin-bottom: 0.25rem; }
+.ez-nav-group-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1.2rem 0.4rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+  text-align: left;
+  transition: color 0.15s;
+}
+.ez-nav-group-btn:hover { color: rgba(255,255,255,0.75); }
+.ez-nav-group-btn svg {
+  width: 10px;
+  height: 10px;
+  flex-shrink: 0;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.25s;
+}
+.ez-nav-group-btn.collapsed svg { transform: rotate(-90deg); }
+
+.ez-nav-items {
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+.ez-nav-items.collapsed { max-height: 0 !important; }
+
+.ez-nav-link {
+  display: block;
+  padding: 0.38rem 1.2rem 0.38rem 1.4rem;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 0.82rem;
+  font-weight: 300;
+  color: rgba(255,255,255,0.55);
+  text-decoration: none;
+  border-left: 2px solid transparent;
+  margin-left: 0.4rem;
+  line-height: 1.4;
+  transition: color 0.15s, border-color 0.15s, background 0.15s;
+  cursor: pointer;
+}
+.ez-nav-link:hover {
+  color: rgba(255,255,255,0.9);
+  background: rgba(255,255,255,0.04);
+  border-left-color: rgba(255,255,255,0.2);
+}
+.ez-nav-link.ez-active {
+  color: #ffffff;
+  border-left-color: #4eada0;
+  background: rgba(78,173,160,0.12);
+  font-weight: 400;
+}
+
+/* Drawer toggle tab */
+#ez-drawer-toggle {
+  position: fixed;
+  top: 50%;
+  left: 256px;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 52px;
+  background: #1f3a3a;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  z-index: 6100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: left 0.38s cubic-bezier(.4,0,.2,1), background 0.15s;
+  box-shadow: 2px 0 8px rgba(0,0,0,0.18);
+}
+#ez-drawer-toggle:hover { background: #2d5555; }
+body.ez-drawer-closed #ez-drawer-toggle { left: 0; }
+#ez-drawer-toggle svg {
+  width: 10px;
+  height: 10px;
+  fill: none;
+  stroke: rgba(255,255,255,0.8);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.35s;
+}
+body.ez-drawer-closed #ez-drawer-toggle svg { transform: rotate(180deg); }
+
+/* ── Progressive Disclosure ──────────────────────────────────────────── */
+.ez-disclosure-rest {
+  overflow: hidden;
+  transition: max-height 0.45s cubic-bezier(.4,0,.2,1), opacity 0.4s;
+  opacity: 0;
+  max-height: 0;
+}
+.ez-disclosure-rest.ez-open {
+  opacity: 1;
+}
+.ez-disclosure-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin: 1rem 0 0.5rem;
+  padding: 0.5rem 1rem;
+  background: none;
+  border: 1px solid #c8d8d8;
+  border-radius: 4px;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 0.82rem;
+  color: #1f3a3a;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+.ez-disclosure-toggle:hover {
+  background: #e4eeee;
+  border-color: #1f3a3a;
+}
+.ez-disclosure-toggle svg {
+  width: 12px;
+  height: 12px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.3s;
+  flex-shrink: 0;
+}
+.ez-disclosure-toggle.ez-open svg { transform: rotate(180deg); }
+.ez-disclosure-count {
+  background: #1f3a3a;
+  color: white;
+  font-size: 0.68rem;
+  padding: 0.1rem 0.45rem;
+  border-radius: 20px;
+  font-weight: 500;
+}
+
+/* ── Back to Top ─────────────────────────────────────────────────────── */
+#ez-back-top {
+  position: fixed;
+  bottom: 1.6rem;
+  right: 1.6rem;
+  width: 44px;
+  height: 44px;
+  background: #1f3a3a;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.35rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.22);
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.25s, transform 0.25s, background 0.15s;
+  z-index: 8000;
+}
+#ez-back-top.ez-visible { opacity: 1; transform: translateY(0); }
+#ez-back-top:hover { background: #2d5555; }
+
+/* ── Wizard ──────────────────────────────────────────────────────────── */
+#ez-wizard-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(8, 18, 18, 0.82);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  transition: opacity 0.35s ease;
+}
+#ez-wizard-overlay.ez-hidden { opacity: 0; pointer-events: none; }
+#ez-wizard-card {
+  background: #fff;
+  border-radius: 8px;
+  max-width: 560px;
+  width: 100%;
+  overflow: hidden;
+  box-shadow: 0 28px 90px rgba(0,0,0,0.38);
+  font-family: 'DM Sans', system-ui, sans-serif;
+}
+.wz-head {
+  background: #0e2323;
+  color: white;
+  padding: 1.5rem 1.8rem 1.1rem;
+}
+.wz-step-lbl {
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.5;
+  margin-bottom: 0.4rem;
+  font-family: 'DM Sans', system-ui, sans-serif;
+}
+.wz-ttl {
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 1.55rem;
+  line-height: 1.22;
+  margin: 0;
+  font-weight: 500;
+}
+.wz-bdy {
+  padding: 1.4rem 1.8rem 0.9rem;
+  min-height: 140px;
+}
+.wz-bdy p {
+  font-size: 0.92rem;
+  line-height: 1.68;
+  color: #2a2a2a;
+  margin: 0 0 0.7rem;
+}
+.wz-stat-row { display: flex; gap: 1.6rem; margin: 0.5rem 0 0.9rem; flex-wrap: wrap; }
+.wz-stat-n { font-family: 'EB Garamond', Georgia, serif; font-size: 2.4rem; font-weight: 500; color: #1f3a3a; line-height: 1; }
+.wz-stat-n.r { color: #a05c3c; }
+.wz-stat-n.g { color: #2d6a4f; }
+.wz-stat-n.o { color: #9e6b00; }
+.wz-stat-s { font-size: 0.7rem; color: #999; text-transform: uppercase; letter-spacing: 0.08em; margin-top: 0.1rem; }
+.wz-vtag { display: inline-block; background: #a05c3c; color: white; font-size: 0.68rem; padding: 0.18rem 0.5rem; border-radius: 3px; font-family: 'Courier New', monospace; margin-bottom: 0.85rem; }
+.wz-hl { background: #e4eeee; border-left: 3px solid #1f3a3a; padding: 0.65rem 1rem; border-radius: 0 4px 4px 0; font-size: 0.88rem; color: #1a1a1a; margin: 0.4rem 0 0.8rem; font-style: italic; line-height: 1.5; font-family: 'EB Garamond', Georgia, serif; }
+.wz-rm { margin: 0.3rem 0 0.75rem; }
+.wz-rm-item { display: flex; gap: 0.7rem; align-items: flex-start; margin-bottom: 0.5rem; font-size: 0.88rem; line-height: 1.5; color: #2a2a2a; }
+.wz-rm-badge { flex-shrink: 0; background: #1f3a3a; color: white; font-size: 0.62rem; padding: 0.15rem 0.4rem; border-radius: 3px; margin-top: 0.15rem; letter-spacing: 0.04em; font-family: 'DM Sans', system-ui, sans-serif; font-weight: 500; }
+.wz-cta-blk { background: #0e2323; color: white; padding: 1rem 1.2rem; border-radius: 4px; margin-top: 0.6rem; }
+.wz-cta-blk p { color: rgba(255,255,255,0.75) !important; font-size: 0.86rem !important; margin-bottom: 0.45rem !important; }
+.wz-cta-email { font-family: 'EB Garamond', Georgia, serif; font-size: 1.12rem; color: white; font-weight: 500; }
+.wz-note { font-size: 0.76rem !important; color: #aaa !important; margin-top: 0.75rem !important; }
+.wz-foot {
+  padding: 0.9rem 1.8rem 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #efefed;
+  gap: 0.6rem;
+}
+.wz-dots { display: flex; gap: 6px; flex-shrink: 0; }
+.wz-dot { width: 7px; height: 7px; border-radius: 50%; background: #e0e0e0; transition: background 0.2s, transform 0.2s; }
+.wz-dot.active { background: #1f3a3a; transform: scale(1.25); }
+.wz-skip { font-size: 0.74rem; color: #bbb; cursor: pointer; border: none; background: none; font-family: 'DM Sans', system-ui, sans-serif; padding: 0; text-decoration: underline; white-space: nowrap; }
+.wz-skip:hover { color: #666; }
+.wz-btns { display: flex; gap: 0.5rem; flex-shrink: 0; }
+.wz-btn { padding: 0.46rem 1rem; border-radius: 4px; font-size: 0.83rem; cursor: pointer; border: none; font-family: 'DM Sans', system-ui, sans-serif; transition: background 0.15s; white-space: nowrap; }
+.wz-back-btn { background: #f0f0ee; color: #555; }
+.wz-back-btn:hover { background: #e4e4e0; }
+.wz-next-btn { background: #1f3a3a; color: white; }
+.wz-next-btn:hover { background: #2d5555; }
+
+/* ── Mobile ──────────────────────────────────────────────────────────── */
+@media (max-width: 767px) {
+  #ez-drawer, #ez-drawer-toggle { display: none !important; }
+  .main-container { margin-left: 0 !important; padding: 0 1rem 3rem !important; }
+  #ez-back-top { bottom: 1rem; right: 1rem; width: 40px; height: 40px; font-size: 1.1rem; }
+  .wz-head { padding: 1.1rem 1.2rem 0.85rem; }
+  .wz-bdy { padding: 1.1rem 1.2rem 0.85rem; min-height: 120px; }
+  .wz-foot { padding: 0.75rem 1.2rem 1.1rem; }
+  .wz-ttl { font-size: 1.25rem; }
+  .wz-skip { display: none; }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+  /* ── 1. Custom Drawer ─────────────────────────────────────────────── */
+  var navGroups = [
+    {
+      label: 'Overview', open: true,
+      items: [
+        { label: 'Executive Summary', id: 'executive-summary' }
+      ]
+    },
+    {
+      label: 'Diagnosis', open: true,
+      items: [
+        { label: '1 — Dual-Website Crisis', id: 'dual-website-crisis' },
+        { label: '4 — Audit Scores', id: 'overall-audit-scores' },
+        { label: '5 — Behavioral Forces', id: 'behavioral-force-analysis' }
+      ]
+    },
+    {
+      label: 'Revenue', open: true,
+      items: [
+        { label: '2 — Financial Analysis', id: 'financial-analysis' },
+        { label: '3 — Menu Pricing', id: 'menu-price-analysis' },
+        { label: '9 — Specials & Anchoring', id: 'specials-price-anchor-analysis' }
+      ]
+    },
+    {
+      label: 'Strategy', open: true,
+      items: [
+        { label: '6 — Competitive Position', id: 'competitive-positioning' },
+        { label: '7 — Priority Matrix', id: 'priority-matrix' },
+        { label: '10 — 30-Day Roadmap', id: 'day-roadmap' },
+        { label: '11 — Score Projection', id: 'score-projection' }
+      ]
+    },
+    {
+      label: 'Findings & Copy', open: false,
+      items: [
+        { label: '8 — Social Proof Gap', id: 'social-proof-gap' },
+        { label: '12 — Section Findings', id: 'section-findings' },
+        { label: '13 — Copy Rewrites', id: 'copy-rewrites' },
+        { label: '14 — Homepage Wireframe', id: 'recommended-homepage-wireframe' },
+        { label: '15 — Proof Gaps', id: 'proof-gaps' },
+        { label: '16 — The Big Idea', id: 'the-big-idea' }
+      ]
+    }
+  ];
+
+  var chevronSVG = '<svg viewBox="0 0 12 12"><polyline points="2,4 6,8 10,4"/></svg>';
+  var chevronLSVG = '<svg viewBox="0 0 12 12"><polyline points="8,2 4,6 8,10"/></svg>';
+
+  var drawer = document.createElement('div');
+  drawer.id = 'ez-drawer';
+  drawer.innerHTML =
+    '<div class="ez-drawer-head">'
+    + '<div class="ez-drawer-brand">Elliyeen Research</div>'
+    + '<div class="ez-drawer-title">Milano Family Pizza<br>Revenue Audit</div>'
+    + '<span class="ez-drawer-score">moves_away · 19/100</span>'
+    + '</div>'
+    + '<nav class="ez-drawer-nav" id="ez-nav"></nav>';
+  document.body.insertBefore(drawer, document.body.firstChild);
+
+  var nav = document.getElementById('ez-nav');
+  var allLinks = [];
+
+  navGroups.forEach(function (group) {
+    var groupEl = document.createElement('div');
+    groupEl.className = 'ez-nav-group';
+
+    var groupBtn = document.createElement('button');
+    groupBtn.className = 'ez-nav-group-btn' + (group.open ? '' : ' collapsed');
+    groupBtn.innerHTML = group.label + chevronSVG;
+
+    var itemsEl = document.createElement('div');
+    itemsEl.className = 'ez-nav-items' + (group.open ? '' : ' collapsed');
+
+    // Measure height after append for smooth animation
+    group.items.forEach(function (item) {
+      var a = document.createElement('a');
+      a.className = 'ez-nav-link';
+      a.textContent = item.label;
+      a.setAttribute('data-target', item.id);
+      a.href = '#' + item.id;
+      a.addEventListener('click', function (e) {
+        e.preventDefault();
+        var target = document.getElementById(item.id);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+      itemsEl.appendChild(a);
+      allLinks.push(a);
+    });
+
+    groupBtn.addEventListener('click', function () {
+      var isCollapsed = groupBtn.classList.contains('collapsed');
+      if (isCollapsed) {
+        itemsEl.style.maxHeight = itemsEl.scrollHeight + 'px';
+        groupBtn.classList.remove('collapsed');
+        itemsEl.classList.remove('collapsed');
+        // After transition, set to none so it can flex
+        setTimeout(function () { itemsEl.style.maxHeight = 'none'; }, 320);
+      } else {
+        itemsEl.style.maxHeight = itemsEl.scrollHeight + 'px';
+        requestAnimationFrame(function () {
+          itemsEl.style.maxHeight = '0';
+        });
+        groupBtn.classList.add('collapsed');
+        itemsEl.classList.add('collapsed');
+      }
+    });
+
+    // Set initial max-height for open groups
+    if (group.open) {
+      itemsEl.style.maxHeight = 'none';
+    } else {
+      itemsEl.style.maxHeight = '0';
+    }
+
+    groupEl.appendChild(groupBtn);
+    groupEl.appendChild(itemsEl);
+    nav.appendChild(groupEl);
+  });
+
+  /* Drawer toggle tab */
+  var drawerToggle = document.createElement('button');
+  drawerToggle.id = 'ez-drawer-toggle';
+  drawerToggle.title = 'Toggle navigation';
+  drawerToggle.setAttribute('aria-label', 'Toggle navigation');
+  drawerToggle.innerHTML = chevronLSVG;
+  document.body.appendChild(drawerToggle);
+
+  var drawerOpen = true;
+  drawerToggle.addEventListener('click', function () {
+    drawerOpen = !drawerOpen;
+    document.body.classList.toggle('ez-drawer-closed', !drawerOpen);
+  });
+
+  /* Active section tracking */
+  var sectionIds = [];
+  navGroups.forEach(function (g) { g.items.forEach(function (i) { sectionIds.push(i.id); }); });
+
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        var id = entry.target.id;
+        allLinks.forEach(function (a) {
+          a.classList.toggle('ez-active', a.getAttribute('data-target') === id);
+        });
+      }
+    });
+  }, { rootMargin: '-10% 0px -60% 0px', threshold: 0 });
+
+  sectionIds.forEach(function (id) {
+    var el = document.getElementById(id);
+    if (el) observer.observe(el);
+  });
+
+  /* ── 2. Progressive Disclosure ──────────────────────────────────────── */
+  // For each level1 section that has multiple level2 sub-sections,
+  // keep first sub-section visible, hide the rest behind a toggle.
+  var level1Sections = document.querySelectorAll('div.section.level1');
+
+  level1Sections.forEach(function (sec) {
+    var subsections = sec.querySelectorAll(':scope > div.section.level2');
+    if (subsections.length < 2) return; // nothing to disclose
+
+    var hidden = Array.prototype.slice.call(subsections, 1); // all but first
+    var count = hidden.length;
+
+    // Wrap hidden subsections in disclosure container
+    var rest = document.createElement('div');
+    rest.className = 'ez-disclosure-rest';
+    var placeholder = hidden[0];
+    sec.insertBefore(rest, placeholder);
+    hidden.forEach(function (sub) { rest.appendChild(sub); });
+
+    // Create toggle button
+    var toggleBtn = document.createElement('button');
+    toggleBtn.className = 'ez-disclosure-toggle';
+    toggleBtn.innerHTML =
+      '<svg viewBox="0 0 12 12"><polyline points="2,4 6,8 10,4"/></svg>'
+      + 'Show <span class="ez-disclosure-count">' + count + '</span> more sub-sections';
+    sec.insertBefore(toggleBtn, rest);
+
+    // Animate open
+    toggleBtn.addEventListener('click', function () {
+      var isOpen = rest.classList.contains('ez-open');
+      if (isOpen) {
+        rest.style.maxHeight = rest.scrollHeight + 'px';
+        requestAnimationFrame(function () {
+          rest.style.maxHeight = '0';
+          rest.style.opacity = '0';
+        });
+        rest.classList.remove('ez-open');
+        toggleBtn.classList.remove('ez-open');
+        toggleBtn.innerHTML =
+          '<svg viewBox="0 0 12 12"><polyline points="2,4 6,8 10,4"/></svg>'
+          + 'Show <span class="ez-disclosure-count">' + count + '</span> more sub-sections';
+      } else {
+        rest.style.maxHeight = rest.scrollHeight + 'px';
+        rest.style.opacity = '1';
+        rest.classList.add('ez-open');
+        toggleBtn.classList.add('ez-open');
+        toggleBtn.innerHTML =
+          '<svg viewBox="0 0 12 12"><polyline points="2,4 6,8 10,4"/></svg>'
+          + 'Collapse sub-sections';
+        // After transition, remove fixed height so content can grow
+        setTimeout(function () { rest.style.maxHeight = 'none'; }, 480);
+      }
+    });
+  });
+
+  /* ── 3. Back to Top ─────────────────────────────────────────────────── */
+  var btt = document.createElement('button');
+  btt.id = 'ez-back-top';
+  btt.title = 'Back to top';
+  btt.setAttribute('aria-label', 'Back to top');
+  btt.innerHTML = '&#8679;';
+  document.body.appendChild(btt);
+
+  window.addEventListener('scroll', function () {
+    btt.classList.toggle('ez-visible', window.pageYOffset > 400);
+  }, { passive: true });
+
+  btt.addEventListener('click', function () {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  /* ── 4. Wizard ──────────────────────────────────────────────────────── */
+  var steps = [
+    {
+      label: 'Step 1 of 5 — The Problem',
+      title: 'Two websites. Zero conversion strategy.',
+      body: '<span class="wz-vtag">CONDUCTOR VERDICT: moves_away · 19/100</span>'
+        + '<p>Milano Family Pizza operates two live websites — <strong>milanofamilypizza.com</strong> and <strong>milanopizzarichardson.site</strong> — with different phone numbers, conflicting hours, and split SEO authority.</p>'
+        + '<div class="wz-hl">A customer searches "pizza Richardson TX" and finds two sites that look unrelated. Neither tells them to order. Neither earns their trust.</div>'
+    },
+    {
+      label: 'Step 2 of 5 — The Diagnosis',
+      title: 'What 22 agents found across both sites.',
+      body: '<div class="wz-stat-row">'
+        + '<div><div class="wz-stat-n r">19</div><div class="wz-stat-s">/ 100 overall</div></div>'
+        + '<div><div class="wz-stat-n r">20</div><div class="wz-stat-s">/ 100 conversion</div></div>'
+        + '<div><div class="wz-stat-n r">22</div><div class="wz-stat-s">/ 100 positioning</div></div>'
+        + '</div>'
+        + '<p>Positioning, copy, trust signals, pricing architecture, and conversion paths — scored by 22 specialist agents across both sites.</p>'
+        + '<div class="wz-hl">The site is not broken. It is invisible. Visitors arrive and leave without a reason to stay, trust, or order.</div>'
+    },
+    {
+      label: 'Step 3 of 5 — The Revenue Gap',
+      title: '$34,800/month earned. More sitting uncaptured.',
+      body: '<div class="wz-stat-row">'
+        + '<div><div class="wz-stat-n g">+$6,960</div><div class="wz-stat-s">30-day / month</div></div>'
+        + '<div><div class="wz-stat-n o">+$36,600</div><div class="wz-stat-s">12-month / month</div></div>'
+        + '</div>'
+        + '<p>Built on 40 orders/day at $29 AOV — conservative, verifiable. Three fixable levers unlock this without new ad spend.</p>'
+        + '<p style="font-size:0.8rem;color:#aaa;margin-top:0.2rem">Full model with scenarios in Section 2 — Financial Analysis.</p>'
+    },
+    {
+      label: 'Step 4 of 5 — What Good Looks Like',
+      title: 'A sequenced 90-day path, not a big-bang rebuild.',
+      body: '<div class="wz-rm">'
+        + '<div class="wz-rm-item"><span class="wz-rm-badge">MONTH 1</span><span>Consolidate to one canonical domain. One clear hero CTA. Immediate SEO authority recovery.</span></div>'
+        + '<div class="wz-rm-item"><span class="wz-rm-badge">MONTH 2</span><span>Install trust layer — Halal certification, 17-year story, social proof above the fold.</span></div>'
+        + '<div class="wz-rm-item"><span class="wz-rm-badge">MONTH 3</span><span>Activate specials engine and catering signal. Repeat order rate lifts. LTV compounds.</span></div>'
+        + '</div>'
+        + '<p style="font-size:0.8rem;color:#aaa">Full priority matrix in Section 7 — each fix scored by impact × effort.</p>'
+    },
+    {
+      label: 'Step 5 of 5 — Work With Us',
+      title: 'Elliyeen turns this audit into execution.',
+      body: '<p>This report is the diagnosis. Elliyeen handles the work — copy rewrites, conversion architecture, domain strategy, and implementation.</p>'
+        + '<div class="wz-cta-blk"><p>Ready to start? Reach out directly.</p><div class="wz-cta-email">hello@elliyeen.com</div></div>'
+        + '<p class="wz-note">Use the navigation panel on the left to jump to any section. The Priority Matrix in Section 7 is the right place to start.</p>'
+    }
+  ];
+
+  var current = 0;
+
+  var overlay = document.createElement('div');
+  overlay.id = 'ez-wizard-overlay';
+  overlay.innerHTML =
+    '<div id="ez-wizard-card">'
+    + '<div class="wz-head"><div class="wz-step-lbl" id="wz-lbl"></div><div class="wz-ttl" id="wz-ttl"></div></div>'
+    + '<div class="wz-bdy" id="wz-bdy"></div>'
+    + '<div class="wz-foot">'
+    +   '<div class="wz-dots" id="wz-dots"></div>'
+    +   '<button class="wz-skip" id="wz-skip">Skip guide</button>'
+    +   '<div class="wz-btns"><button class="wz-btn wz-back-btn" id="wz-back">Back</button><button class="wz-btn wz-next-btn" id="wz-next">Next →</button></div>'
+    + '</div>'
+    + '</div>';
+  document.body.appendChild(overlay);
+
+  function renderWizard() {
+    var s = steps[current];
+    document.getElementById('wz-lbl').textContent = s.label;
+    document.getElementById('wz-ttl').textContent = s.title;
+    document.getElementById('wz-bdy').innerHTML = s.body;
+    var dots = document.getElementById('wz-dots');
+    dots.innerHTML = '';
+    steps.forEach(function (_, i) {
+      var d = document.createElement('div');
+      d.className = 'wz-dot' + (i === current ? ' active' : '');
+      dots.appendChild(d);
+    });
+    document.getElementById('wz-back').style.visibility = current === 0 ? 'hidden' : 'visible';
+    document.getElementById('wz-next').textContent = current === steps.length - 1 ? 'Read the report →' : 'Next →';
+  }
+
+  function closeWizard() {
+    overlay.classList.add('ez-hidden');
+    setTimeout(function () { if (overlay.parentNode) overlay.parentNode.removeChild(overlay); }, 400);
+  }
+
+  document.getElementById('wz-next').addEventListener('click', function () {
+    if (current < steps.length - 1) { current++; renderWizard(); } else { closeWizard(); }
+  });
+  document.getElementById('wz-back').addEventListener('click', function () {
+    if (current > 0) { current--; renderWizard(); }
+  });
+  document.getElementById('wz-skip').addEventListener('click', closeWizard);
+  overlay.addEventListener('click', function (e) { if (e.target === overlay) closeWizard(); });
+
+  renderWizard();
+});
+</script>
