@@ -1,6 +1,6 @@
 ---
 title: "Milano Family Pizza"
-subtitle: "Dual-Site Revenue Audit + Financial Projection — 22-Agent Analysis"
+subtitle: "Dual-Site Revenue Audit + Financial Projection"
 date: "June 23, 2026"
 author: "Elliyeen Research"
 output:
