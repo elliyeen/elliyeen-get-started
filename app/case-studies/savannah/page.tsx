@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import SPCSFlipbook from "@/components/SPCSFlipbook";
 
 export const metadata: Metadata = {
-  title: "Savannah Personal Care Services — Revenue Opportunity Report | Elliyeen Research",
+  title: "Savannah Personal Care Services — Revenue Opportunity Report",
   description:
     "How Elliyeen Research rebuilt a home care agency's digital presence — 74 competitors audited, 15 failures documented, 12 pages rebuilt. Read the full Revenue Opportunity Report.",
   openGraph: {
