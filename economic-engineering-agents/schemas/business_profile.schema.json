@@ -1,0 +1,149 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Business Profile",
+  "description": "Input schema for the Economic Engineering Agent system. Complete as many fields as possible. Mark unknown fields null and list them in available_data_sources.",
+  "type": "object",
+  "required": ["business_name", "industry", "business_model", "primary_offer", "current_goal"],
+  "properties": {
+    "business_name": {
+      "type": "string",
+      "description": "Legal or trading name of the business"
+    },
+    "industry": {
+      "type": "string",
+      "description": "e.g. Food & Beverage, Financial Advisory, Home Services"
+    },
+    "business_model": {
+      "type": "string",
+      "enum": ["B2C", "B2B", "B2B2C", "Marketplace", "Subscription", "Project-based", "Retainer", "Other"],
+      "description": "How the business generates revenue"
+    },
+    "years_in_operation": {
+      "type": ["number", "null"],
+      "description": "How long the business has been operating"
+    },
+    "target_customer": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string",
+          "description": "Who is the primary customer in plain language"
+        },
+        "demographics": {
+          "type": ["string", "null"]
+        },
+        "psychographics": {
+          "type": ["string", "null"]
+        },
+        "primary_pain": {
+          "type": ["string", "null"],
+          "description": "The main problem the customer is trying to solve"
+        }
+      },
+      "required": ["description"]
+    },
+    "primary_offer": {
+      "type": "string",
+      "description": "The main product or service sold"
+    },
+    "revenue_streams": {
+      "type": "array",
+      "description": "All revenue streams, each with name and estimated % of total revenue",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "revenue_share_percent": { "type": ["number", "null"] },
+          "estimated_margin_percent": { "type": ["number", "null"] }
+        },
+        "required": ["name"]
+      }
+    },
+    "cost_drivers": {
+      "type": "array",
+      "description": "Primary cost categories",
+      "items": {
+        "type": "object",
+        "properties": {
+          "category": { "type": "string" },
+          "estimated_percent_of_revenue": { "type": ["number", "null"] }
+        },
+        "required": ["category"]
+      }
+    },
+    "financials": {
+      "type": "object",
+      "description": "Key financial metrics. Leave null if unavailable.",
+      "properties": {
+        "monthly_revenue": { "type": ["number", "null"] },
+        "annual_revenue": { "type": ["number", "null"] },
+        "gross_margin_percent": { "type": ["number", "null"] },
+        "net_margin_percent": { "type": ["number", "null"] },
+        "average_order_value": { "type": ["number", "null"] },
+        "average_client_value_annual": { "type": ["number", "null"] },
+        "customer_lifetime_value": { "type": ["number", "null"] },
+        "customer_acquisition_cost": { "type": ["number", "null"] },
+        "monthly_transactions_or_clients": { "type": ["number", "null"] }
+      }
+    },
+    "operations": {
+      "type": "object",
+      "description": "Operational metrics",
+      "properties": {
+        "team_size": { "type": ["number", "null"] },
+        "locations": { "type": ["number", "null"] },
+        "hours_of_operation": { "type": ["string", "null"] },
+        "peak_hours_or_seasons": { "type": ["string", "null"] },
+        "primary_delivery_method": { "type": ["string", "null"] }
+      }
+    },
+    "current_goal": {
+      "type": "string",
+      "description": "The single most important business objective right now"
+    },
+    "current_challenges": {
+      "type": "array",
+      "description": "Top 3-5 problems the business is experiencing",
+      "items": { "type": "string" }
+    },
+    "constraints_known": {
+      "type": "array",
+      "description": "Known bottlenecks or limiting factors",
+      "items": { "type": "string" }
+    },
+    "competitors": {
+      "type": "array",
+      "description": "Primary competitors",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "positioning": { "type": ["string", "null"] },
+          "estimated_market_share": { "type": ["string", "null"] }
+        },
+        "required": ["name"]
+      }
+    },
+    "available_data_sources": {
+      "type": "array",
+      "description": "What data is actually available for analysis",
+      "items": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "type": "string",
+            "description": "e.g. POS system, Google Analytics, CRM, QuickBooks, Google Reviews"
+          },
+          "data_available": { "type": "string" },
+          "date_range": { "type": ["string", "null"] }
+        },
+        "required": ["source", "data_available"]
+      }
+    },
+    "missing_critical_data": {
+      "type": "array",
+      "description": "Data that would significantly improve analysis quality but is not available",
+      "items": { "type": "string" }
+    }
+  }
+}

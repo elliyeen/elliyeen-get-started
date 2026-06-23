@@ -1,0 +1,100 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Agent Recommendation",
+  "description": "Standard output schema for every recommendation produced by any Economic Engineering Agent. All recommendations must conform to this schema.",
+  "type": "object",
+  "required": [
+    "agent_name",
+    "recommendation",
+    "business_impact",
+    "confidence_score",
+    "experiment_required",
+    "next_action"
+  ],
+  "properties": {
+    "agent_name": {
+      "type": "string",
+      "description": "Which agent produced this recommendation"
+    },
+    "recommendation": {
+      "type": "string",
+      "description": "Clear, specific, actionable recommendation in one or two sentences"
+    },
+    "business_impact": {
+      "type": "object",
+      "description": "Expected business impact. At least one impact category must be non-null.",
+      "properties": {
+        "revenue_impact": { "type": ["string", "null"] },
+        "gross_margin_impact": { "type": ["string", "null"] },
+        "net_margin_impact": { "type": ["string", "null"] },
+        "cost_reduction": { "type": ["string", "null"] },
+        "waste_reduction": { "type": ["string", "null"] },
+        "quality_improvement": { "type": ["string", "null"] },
+        "retention_impact": { "type": ["string", "null"] },
+        "referral_impact": { "type": ["string", "null"] }
+      }
+    },
+    "opportunity_score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "Score from 0-100 using: Profit Impact (30) + Customer Value (20) + Speed (15) + Confidence (15) + Strategic Value (10) - Risk (5) - Complexity (5)"
+    },
+    "score_components": {
+      "type": "object",
+      "properties": {
+        "profit_impact": { "type": "number", "minimum": 0, "maximum": 30 },
+        "customer_value": { "type": "number", "minimum": 0, "maximum": 20 },
+        "speed_to_implement": { "type": "number", "minimum": 0, "maximum": 15 },
+        "confidence": { "type": "number", "minimum": 0, "maximum": 15 },
+        "strategic_value": { "type": "number", "minimum": 0, "maximum": 10 },
+        "risk_penalty": { "type": "number", "minimum": -5, "maximum": 0 },
+        "complexity_penalty": { "type": "number", "minimum": -5, "maximum": 0 }
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "description": "All evidence supporting this recommendation. If empty, confidence must be ≤0.3.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "claim": { "type": "string" },
+          "source": { "type": "string" },
+          "data_type": {
+            "type": "string",
+            "enum": ["verified_data", "industry_benchmark", "customer_research", "competitive_analysis", "structured_assumption"]
+          }
+        },
+        "required": ["claim", "source", "data_type"]
+      }
+    },
+    "confidence_score": {
+      "type": "number",
+      "minimum": 0.0,
+      "maximum": 1.0,
+      "description": "0.0–0.3 = assumption/speculation. 0.4–0.6 = informed estimate. 0.7–0.9 = supported by data. 1.0 = verified and tested."
+    },
+    "assumptions": {
+      "type": "array",
+      "description": "Every assumption baked into this recommendation, stated explicitly",
+      "items": { "type": "string" }
+    },
+    "missing_data": {
+      "type": "array",
+      "description": "Data that would change or improve this recommendation",
+      "items": { "type": "string" }
+    },
+    "risk": {
+      "type": "string",
+      "description": "Primary risk if this recommendation is implemented and fails"
+    },
+    "experiment_required": {
+      "type": "boolean",
+      "description": "true for any recommendation that would change the customer experience, pricing, or operations. false only for internal process changes with no customer-facing impact."
+    },
+    "next_action": {
+      "type": "string",
+      "description": "The single most important next step to move this recommendation forward"
+    }
+  }
+}

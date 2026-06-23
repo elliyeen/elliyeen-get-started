@@ -1,0 +1,128 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Experiment Design",
+  "description": "Schema for every controlled experiment produced by the Experiment Engineering Agent. No major recommendation is final until tested.",
+  "type": "object",
+  "required": [
+    "experiment_name",
+    "hypothesis",
+    "control",
+    "variant",
+    "primary_metric",
+    "test_duration",
+    "decision_rule"
+  ],
+  "properties": {
+    "experiment_name": {
+      "type": "string",
+      "description": "Short, descriptive name for the experiment"
+    },
+    "recommendation_source": {
+      "type": "string",
+      "description": "Which agent and recommendation triggered this experiment"
+    },
+    "hypothesis": {
+      "type": "string",
+      "description": "If we [specific action], then [primary metric] will [direction] by [amount] within [timeframe], because [mechanism]."
+    },
+    "hypothesis_components": {
+      "type": "object",
+      "properties": {
+        "action": { "type": "string" },
+        "expected_direction": { "type": "string", "enum": ["increase", "decrease"] },
+        "expected_magnitude": { "type": "string" },
+        "mechanism": { "type": "string", "description": "Why this action should cause this outcome" }
+      }
+    },
+    "control": {
+      "type": "object",
+      "description": "The unchanged baseline condition",
+      "properties": {
+        "description": { "type": "string" },
+        "current_baseline_metric": { "type": ["string", "null"] }
+      },
+      "required": ["description"]
+    },
+    "variant": {
+      "type": "object",
+      "description": "The single change being tested. Only one variable may differ from control.",
+      "properties": {
+        "description": { "type": "string" },
+        "what_changes": { "type": "string" },
+        "what_stays_same": { "type": "string" }
+      },
+      "required": ["description", "what_changes"]
+    },
+    "primary_metric": {
+      "type": "string",
+      "description": "The one number that determines success or failure. Must be measurable before the test starts."
+    },
+    "secondary_metrics": {
+      "type": "array",
+      "description": "Supporting metrics that provide context but do not determine the outcome",
+      "items": { "type": "string" }
+    },
+    "success_threshold": {
+      "type": "string",
+      "description": "The minimum result that constitutes success. e.g. 'AOV increases by ≥12%'"
+    },
+    "minimum_sample_size_needed": {
+      "type": "string",
+      "description": "Minimum number of observations needed per variant before result is trustworthy"
+    },
+    "test_duration": {
+      "type": "string",
+      "description": "How long the test must run. Must capture normal variance (e.g., full week cycles, seasonal patterns)."
+    },
+    "start_date": {
+      "type": ["string", "null"],
+      "format": "date"
+    },
+    "end_date": {
+      "type": ["string", "null"],
+      "format": "date"
+    },
+    "decision_rule": {
+      "type": "object",
+      "description": "Pre-defined decisions for each outcome. Must be written before the test begins.",
+      "properties": {
+        "if_success": {
+          "type": "string",
+          "description": "Exact action taken if primary metric meets or exceeds success threshold"
+        },
+        "if_failure": {
+          "type": "string",
+          "description": "Exact action taken if primary metric does not meet success threshold"
+        },
+        "if_inconclusive": {
+          "type": ["string", "null"],
+          "description": "Action taken if sample size was insufficient or results are ambiguous"
+        }
+      },
+      "required": ["if_success", "if_failure"]
+    },
+    "risk_controls": {
+      "type": "array",
+      "description": "Safeguards to prevent the experiment from damaging customer trust or business operations",
+      "items": {
+        "type": "object",
+        "properties": {
+          "risk": { "type": "string" },
+          "control": { "type": "string" }
+        }
+      }
+    },
+    "estimated_cost_to_run": {
+      "type": ["string", "null"],
+      "description": "Time + money + attention required to run this experiment"
+    },
+    "priority_rank": {
+      "type": "integer",
+      "description": "Order in which this experiment should run relative to other experiments. 1 = highest priority."
+    },
+    "assumptions": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}
