@@ -52,6 +52,7 @@ const cases = [
     imageAlt: "Home caregiver assisting an elderly patient indoors",
     quote: "", // Replace with real client quote — e.g. "We didn't know how many families weren't finding us."
     quoteAttribution: "", // e.g. "Shannon S., Founder — Savannah, GA"
+    href: "/case-studies/savannah",
   },
   {
     tag: "Financial Services",
@@ -306,6 +307,16 @@ export default function GetStartedPage() {
                           <footer className="mt-2 text-xs font-semibold text-zinc-400">— {item.quoteAttribution}</footer>
                         )}
                       </blockquote>
+                    )}
+                    {"href" in item && item.href && (
+                      <div className="mt-5 border-t border-zinc-100 pt-4">
+                        <a
+                          href={item.href}
+                          className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#1B5EA8] hover:underline"
+                        >
+                          Read the full report <ArrowRight size={14} />
+                        </a>
+                      </div>
                     )}
                   </div>
                 </article>
