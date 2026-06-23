@@ -51,7 +51,7 @@ export default function MobileNav() {
               Contact sales
             </a>
             <a
-              href="#lead-magnet"
+              href="#book"
               onClick={() => setOpen(false)}
               className="rounded-xl bg-black px-6 py-4 text-center text-sm font-bold text-white"
             >

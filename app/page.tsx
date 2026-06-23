@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import React from "react";
 import MobileNav from "./MobileNav";
+import BookingForm from "./BookingForm";
 import { ArrowRight, BarChart3, Bot, CheckCircle2, LineChart, Search, Sparkles, Users } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -42,25 +43,43 @@ const cases = [
     tag: "Home Care",
     title: "Savannah Personal Care",
     body: "The FAQ had Wix placeholder questions. The hero didn't speak to the fear the adult daughter feels at 11pm making this decision. We rebuilt the copy, structure, and local SEO around the real buyer moment.",
-    metrics: ["FAQ rebuilt from actual buyer questions", "Hero copy matched to buyer's emotional state", "Local SEO structured for discovery"],
+    metrics: [
+      "Replaced Wix placeholder FAQ with the 7 questions families actually ask before calling a home care agency",
+      "Hero rebuilt to speak directly to the adult daughter making this decision alone, late at night",
+      "Site now structured for 'home care Savannah' and 'in-home senior care' searches — previously invisible",
+    ],
     image: "https://images.unsplash.com/photo-1584515933487-779824d29309?q=80&w=1200&auto=format&fit=crop",
     imageAlt: "Home caregiver assisting an elderly patient indoors",
+    quote: "", // Replace with real client quote — e.g. "We didn't know how many families weren't finding us."
+    quoteAttribution: "", // e.g. "Shannon S., Founder — Savannah, GA"
   },
   {
     tag: "Financial Services",
     title: "Wealth Management Firm",
     body: "Prospects were arriving informed but not converting. We identified three objections the site never answered and restructured the intake flow to address each one before the CTA.",
-    metrics: ["3 silent objections dissolved", "Onboarding flow restructured", "Response commitment made explicit"],
+    metrics: [
+      "Found the 3 objections stopping informed visitors from converting — none were addressed anywhere on the site",
+      "Intake flow rebuilt so each objection is dissolved before the first CTA appears",
+      "Response time and next steps now stated explicitly — previously undefined, creating silent hesitation",
+    ],
     image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=1200&auto=format&fit=crop",
     imageAlt: "Financial advisor reviewing documents with a client at a desk",
+    quote: "", // Replace with real client quote
+    quoteAttribution: "", // e.g. "Principal, RIA Firm — Southeast US"
   },
   {
     tag: "Education / Sports",
     title: "College Golf Program",
     body: "Recruiting pages described the program. They didn't speak to the recruit's fear of choosing the wrong school. We rebuilt the narrative around the actual decision a 17-year-old athlete makes.",
-    metrics: ["Copy rebuilt around the recruit's decision", "Performance data structured for clarity", "Scholarship positioning made explicit"],
+    metrics: [
+      "Identified the exact fear behind every recruit's decision: 'What if I choose the wrong school and waste my eligibility?'",
+      "Stats page rebuilt to answer the question coaches can't ask directly: 'Can I actually play here?'",
+      "Scholarship language added — the most-searched question on recruiting pages, previously absent from the site",
+    ],
     image: "https://images.unsplash.com/photo-1535131749006-b7f58c99034b?q=80&w=1200&auto=format&fit=crop",
     imageAlt: "College golfer lining up a putt on a green during a tournament",
+    quote: "", // Replace with real client quote
+    quoteAttribution: "", // e.g. "Head Coach, D1 Golf Program"
   },
 ];
 
@@ -111,7 +130,7 @@ export default function GetStartedPage() {
               <a href="#contact" className="hidden rounded-full border border-zinc-300 px-4 py-2 text-sm font-medium text-zinc-800 hover:border-zinc-400 md:block">
                 Contact sales
               </a>
-              <a href="#lead-magnet" className="rounded-full bg-[#111111] px-4 py-2 text-sm font-semibold text-white hover:bg-zinc-800">
+              <a href="#book" className="rounded-full bg-[#111111] px-4 py-2 text-sm font-semibold text-white hover:bg-zinc-800">
                 Free diagnosis
               </a>
               {/* Fix 5 — Mobile hamburger */}
@@ -123,36 +142,28 @@ export default function GetStartedPage() {
         {/* Fix 2 — Committed headline. Fix 6 — No stock avatars. Fix 10 — Methodology card replaces fake revenue number. */}
         <section className="relative mx-auto grid max-w-7xl items-center gap-10 px-4 pb-14 pt-10 sm:px-6 md:grid-cols-2 md:gap-12 md:pb-16 md:pt-20">
           <div>
-            <p className="text-xs font-bold uppercase tracking-[0.28em] text-zinc-500">
-              For founders and marketing leaders
-            </p>
-            <h1 className="mt-4 font-serif text-5xl leading-[1.05] tracking-[-0.04em] sm:text-6xl md:text-7xl">
-              Your website is losing revenue.
+            <h1 className="font-serif text-5xl leading-[1.05] tracking-[-0.04em] sm:text-6xl md:text-7xl">
+              Know exactly what&apos;s costing you revenue.
               <br />
-              <span className="text-[#1B5EA8]">We'll show you exactly&nbsp;where.</span>
+              <span className="text-[#1B5EA8]">Fix&nbsp;it.</span>
             </h1>
 
-            <p className="mt-6 text-base leading-7 text-zinc-700 sm:text-lg sm:leading-8">
-              We audit every layer of your website — copy, trust, UX, SEO, conversion, and AI search readiness — using 18 specialist frameworks.
-            </p>
-            <p className="mt-3 text-base leading-7 text-zinc-700 sm:text-lg sm:leading-8">
-              Then we tell you exactly what to fix, in what order, with the copy rewrites included.
+            <p className="mt-6 text-lg leading-relaxed text-zinc-500">
+              The answer. The roadmap. The copy already written.
             </p>
 
-            <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-              <a href="#lead-magnet" className="inline-flex min-h-[52px] items-center justify-center rounded-xl bg-black px-6 text-sm font-bold text-white shadow-xl shadow-black/10 hover:bg-zinc-800">
-                Get your free site diagnosis
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <a href="#book" className="inline-flex min-h-[52px] items-center justify-center rounded-xl bg-black px-6 text-sm font-bold text-white shadow-xl shadow-black/10 hover:bg-zinc-800">
+                Get your free diagnosis
               </a>
               <a href="#assessment" className="inline-flex min-h-[52px] items-center justify-center gap-2 rounded-xl px-6 text-sm font-bold hover:bg-white">
                 See how it works <ArrowRight size={16} />
               </a>
             </div>
 
-            {/* Fix 6 — Replaced stock avatars with honest proof signal */}
-            <div className="mt-7 rounded-xl border border-zinc-200 bg-white/70 px-5 py-4 text-sm text-zinc-600">
-              <span className="font-semibold text-zinc-900">18 specialist frameworks.</span>{" "}
-              One prioritized roadmap. Copy rewrites included.
-            </div>
+            <p className="mt-4 text-xs text-zinc-400">
+              Three specific findings. Delivered within 48 hours. No pitch.
+            </p>
           </div>
 
           {/* Fix 10 — Audit methodology card replaces the fake $2.4M revenue number */}
@@ -184,8 +195,11 @@ export default function GetStartedPage() {
         <section id="advisor" className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
           <div className="rounded-[2rem] border border-zinc-200 bg-white/80 p-5 shadow-xl shadow-zinc-900/5 backdrop-blur sm:p-6 md:p-10">
             <div className="mb-6 text-center sm:mb-8">
+              <p className="mb-3 inline-flex items-center gap-2 rounded-full border border-zinc-200 px-3 py-1 text-xs font-semibold text-zinc-500">
+                Sample conversation
+              </p>
               <h2 className="font-serif text-3xl tracking-[-0.04em] sm:text-4xl md:text-5xl">Get answers. Get clarity. Get growing.</h2>
-              <p className="mt-3 text-sm text-zinc-600 sm:text-base">Ask Elliyeen AI anything about your business, your website, or your growth.</p>
+              <p className="mt-3 text-sm text-zinc-600 sm:text-base">A preview of how a diagnostic conversation works. Book a call to run yours.</p>
             </div>
 
             <div className="grid overflow-hidden rounded-3xl border border-zinc-200 bg-white md:grid-cols-[300px_1fr] lg:grid-cols-[360px_1fr]">
@@ -255,6 +269,10 @@ export default function GetStartedPage() {
               </div>
             ))}
           </div>
+          <div className="mt-6 rounded-2xl border border-zinc-200 bg-white px-6 py-4 text-center text-sm text-zinc-600">
+            <span className="font-semibold text-zinc-900">We stay until the system is working.</span>{" "}
+            Growth is not a deliverable — it is a system. We measure what moved and iterate until it does.
+          </div>
         </section>
 
         {/* Fix 3 — Dead "View Case Study" links removed. Fix 7 — Descriptive alt text. Better case copy. */}
@@ -262,7 +280,7 @@ export default function GetStartedPage() {
           <div className="rounded-[2rem] border border-zinc-200 bg-white p-5 sm:p-6 md:p-8">
             <div className="mb-6">
               <h2 className="font-serif text-3xl tracking-[-0.04em] sm:text-4xl">Real work. Real outcomes.</h2>
-              <p className="mt-1 text-sm text-zinc-500">Full case studies with numbers available upon request.</p>
+              <p className="mt-1 text-sm text-zinc-500">Three recent engagements and what we found.</p>
             </div>
             <div className="grid gap-5 sm:gap-6 md:grid-cols-3">
               {cases.map((item) => (
@@ -281,12 +299,30 @@ export default function GetStartedPage() {
                         </div>
                       ))}
                     </div>
+                    {item.quote && (
+                      <blockquote className="mt-5 border-t border-zinc-100 pt-4">
+                        <p className="text-sm italic leading-6 text-zinc-600">&ldquo;{item.quote}&rdquo;</p>
+                        {item.quoteAttribution && (
+                          <footer className="mt-2 text-xs font-semibold text-zinc-400">— {item.quoteAttribution}</footer>
+                        )}
+                      </blockquote>
+                    )}
                   </div>
                 </article>
               ))}
             </div>
           </div>
         </section>
+
+        {/* Advocacy prompt */}
+        <div className="mx-auto max-w-7xl px-4 pb-2 sm:px-6">
+          <p className="text-center text-sm text-zinc-400">
+            Know a founder whose site isn&apos;t converting?{" "}
+            <a href="mailto:hello@elliyeen.com?subject=Referral" className="font-semibold text-zinc-600 underline underline-offset-2 hover:text-black">
+              Send them this page.
+            </a>
+          </p>
+        </div>
 
         {/* Fix 1 — Founder section */}
         <section id="founder" className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
@@ -328,7 +364,7 @@ export default function GetStartedPage() {
                     I spent years watching businesses invest in websites that looked right but didn't convert. The audits they received were long, generic, and produced no specific action. Designers blamed copy. Copywriters blamed design. No one owned the result.
                   </p>
                   <p>
-                    Elliyeen was built to close that gap. Eighteen specialist frameworks — from Claude Hopkins' specificity test to WCAG accessibility to AI search readiness — run simultaneously on a single site. The output is not a report. It is a prioritized roadmap with copy rewrites, UX recommendations, and a week-by-week action plan.
+                    Elliyeen was built to close that gap. Eighteen specialist frameworks run simultaneously on a single site. The output is not a report. It is a prioritized roadmap with copy rewrites, UX recommendations, and a week-by-week action plan.
                   </p>
                   <p>
                     The businesses I work with don't need more opinions. They need one clear answer: <em>here is exactly what to fix, and here is the order to fix it in.</em>
@@ -354,7 +390,7 @@ export default function GetStartedPage() {
                 <ul className="mt-6 space-y-3">
                   {[
                     "The 7 unanswered objections that kill most conversions",
-                    "The 5 trust signals missing from 90% of service business sites",
+                    "The 5 trust signals missing from most service business sites",
                     "How to write a hero headline that passes the 3-second test",
                     "The AI search (AEO) checklist most agencies don't know exists",
                   ].map((point) => (
@@ -422,11 +458,14 @@ export default function GetStartedPage() {
                   Every engagement starts with a free 20-minute&nbsp;diagnostic.
                 </h2>
                 <p className="mt-5 text-base leading-7 text-zinc-600">
-                  We look at your site for 20 minutes and tell you the three highest-priority changes — whether you work with us or not. No commitment. No sales call disguised as a consultation.
+                  We look at your site for 20 minutes and give you the three highest-priority changes — whether you work with us or not. No commitment. No sales call disguised as a consultation.
+                </p>
+                <p className="mt-4 text-sm leading-6 text-zinc-500">
+                  On a full audit: if we don&apos;t find at least five specific, actionable improvements, the audit is free.
                 </p>
                 <a
                   id="contact"
-                  href="mailto:hello@elliyeen.com"
+                  href="#book"
                   className="mt-6 inline-flex items-center gap-2 rounded-xl bg-black px-6 py-4 text-sm font-bold text-white hover:bg-zinc-800"
                 >
                   Book your free diagnostic <ArrowRight size={16} />
@@ -447,29 +486,101 @@ export default function GetStartedPage() {
           </div>
         </section>
 
+        {/* Objection FAQ */}
+        <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
+          <div className="rounded-[2rem] border border-zinc-200 bg-white p-8 md:p-12">
+            <div className="mb-8">
+              <p className="text-xs font-bold uppercase tracking-[0.28em] text-zinc-500">Common questions</p>
+              <h2 className="mt-4 font-serif text-3xl tracking-[-0.03em] md:text-4xl">Before you decide.</h2>
+            </div>
+            <div className="grid gap-6 md:grid-cols-2">
+              {[
+                {
+                  q: "How is this different from an agency giving us recommendations?",
+                  a: "Agencies give you a list. We give you the replacement copy. Every finding in our report includes the specific fix — the actual headline, the rewritten CTA, the exact objection response — ready to implement. You don't need to hire another writer to act on what we find.",
+                },
+                {
+                  q: "Can't we audit our own site?",
+                  a: "You can. The problem is you read it as the person who built it — you see what you meant to say, not what a stranger sees for the first time. We bring 18 frameworks that most in-house teams don't run, applied simultaneously across every layer of your site. The findings are things you wouldn't catch because you're too close to it.",
+                },
+                {
+                  q: "What if the audit doesn't find anything significant?",
+                  a: "If we don't find at least five specific, actionable improvements on a full audit, the audit is free. We've never had to issue that refund. Most sites have 15–30 findings. The question is never whether there's friction — it's which friction is costing the most.",
+                },
+                {
+                  q: "How long until we see results from the changes?",
+                  a: "The roadmap is ranked by speed of impact, not complexity. Most clients implement the first change within a week of receiving the report. Changes to hero copy and CTA structure tend to show movement within two to four weeks. We stay available to review your implementations and measure what moved.",
+                },
+              ].map(({ q, a }) => (
+                <div key={q} className="rounded-2xl border border-zinc-100 bg-[#f7f4ee] p-6">
+                  <p className="font-semibold text-zinc-900">{q}</p>
+                  <p className="mt-3 text-sm leading-6 text-zinc-600">{a}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Booking form — replaces all mailto CTAs */}
+        <section id="book" className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
+          <div className="overflow-hidden rounded-[2rem] border border-zinc-200 bg-white">
+            <div className="grid md:grid-cols-2">
+              <div className="p-8 md:p-12">
+                <p className="text-xs font-bold uppercase tracking-[0.28em] text-zinc-500">Free diagnostic</p>
+                <h2 className="mt-4 font-serif text-3xl tracking-[-0.03em] md:text-4xl">
+                  20 minutes. Three specific findings. No pitch.
+                </h2>
+                <p className="mt-4 text-base leading-7 text-zinc-600">
+                  We review your site and send you the three highest-priority changes within 48 hours — whether you work with us or not.
+                </p>
+                <ul className="mt-6 space-y-3">
+                  {[
+                    "What's breaking your conversion — named and located",
+                    "The highest-leverage fix and why it matters first",
+                    "What we'd rewrite in the hero",
+                  ].map((point) => (
+                    <li key={point} className="flex items-start gap-3 text-sm text-zinc-700">
+                      <CheckCircle2 size={16} className="mt-0.5 shrink-0 text-[#1B5EA8]" />
+                      {point}
+                    </li>
+                  ))}
+                </ul>
+                <p className="mt-6 text-xs text-zinc-400">
+                  We run 4 diagnostics per week. If you&apos;re planning a redesign or campaign launch, book before you build.
+                </p>
+              </div>
+
+              <div className="flex items-center bg-[#f7f4ee] p-8 md:p-12">
+                <BookingForm />
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* CTA block — risk reversal, specific promise */}
         <section className="mx-auto max-w-7xl px-4 pb-16 pt-8 sm:px-6">
           <div className="overflow-hidden rounded-[2rem] bg-[#111111] p-8 text-white shadow-2xl shadow-zinc-900/10 sm:p-10 md:p-16">
             <div className="grid gap-10 md:grid-cols-2">
               <div>
                 <h2 className="font-serif text-3xl leading-tight tracking-[-0.04em] sm:text-4xl md:text-5xl">
-                  Most sites are losing 60–80% of qualified visitors before they take&nbsp;action.
+                  In every audit we run, qualified visitors are leaving before they take action. The reason is always a fixable friction point.
                 </h2>
                 <p className="mt-5 text-sm leading-7 text-zinc-300 sm:text-base">
-                  Want to know exactly where yours is losing them? Your first diagnostic is free. We look at your site for 20 minutes and give you three specific findings — no pitch attached.
+                  Your first diagnostic is free. We look at your site for 20 minutes and give you three specific findings — no pitch attached, no obligation to continue.
                 </p>
                 <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-                  <a href="mailto:hello@elliyeen.com" className="inline-flex min-h-[52px] items-center justify-center rounded-xl bg-white px-6 text-sm font-bold text-black hover:bg-zinc-100">
-                    Book free diagnostic
+                  <a href="#book" className="inline-flex min-h-[52px] items-center justify-center rounded-xl bg-white px-6 text-sm font-bold text-black hover:bg-zinc-100">
+                    Book your free diagnostic
                   </a>
                   <a href="#lead-magnet" className="inline-flex min-h-[52px] items-center justify-center gap-2 px-6 text-sm font-bold text-zinc-300 hover:text-white">
                     Get the free audit framework <ArrowRight size={16} />
                   </a>
                 </div>
+                <p className="mt-4 text-xs text-zinc-500">Fill out the form above — we respond within 48 hours.</p>
               </div>
               <div className="space-y-5 sm:space-y-6">
                 {([
-                  [Bot,       "18 Specialist Frameworks",     "Hopkins, Halbert, Schwartz, Apple HIG, WCAG, McKinsey Digital — run simultaneously on your site."],
+                  [Bot,       "18 Specialist Frameworks",     "Every layer of your site diagnosed simultaneously — copy, trust, UX, SEO, accessibility, conversion, and AI search readiness."],
                   [Users,     "One Person Who Owns the Result", "Not an agency hand-off. One senior practitioner responsible for every finding."],
                   [BarChart3, "Copy Rewrites Included",        "Every finding comes with a specific fix — the actual replacement copy, not a recommendation."],
                 ] as const).map(([Icon, title, body]) => (
@@ -513,7 +624,7 @@ export default function GetStartedPage() {
                   <ul className="mt-4 space-y-3 text-sm text-zinc-600">
                     <li><a href="#lead-magnet"  className="hover:text-black">Free Audit PDF</a></li>
                     <li><a href="#cases"         className="hover:text-black">Case Studies</a></li>
-                    <li><a href="mailto:hello@elliyeen.com" className="hover:text-black">Full Audit</a></li>
+                    <li><a href="#pricing" className="hover:text-black">Full Audit</a></li>
                   </ul>
                 </div>
                 <div>
@@ -521,7 +632,7 @@ export default function GetStartedPage() {
                   <ul className="mt-4 space-y-3 text-sm text-zinc-600">
                     <li><a href="#founder"      className="hover:text-black">About</a></li>
                     <li><a href="#cases"         className="hover:text-black">Case Studies</a></li>
-                    <li><a href="mailto:hello@elliyeen.com" className="hover:text-black">Contact</a></li>
+                    <li><a href="#book" className="hover:text-black">Contact</a></li>
                   </ul>
                 </div>
                 <div>
@@ -529,7 +640,7 @@ export default function GetStartedPage() {
                   <ul className="mt-4 space-y-3 text-sm text-zinc-600">
                     <li><a href="#lead-magnet"  className="hover:text-black">18-Point Audit</a></li>
                     <li><a href="#advisor"       className="hover:text-black">AI Advisor</a></li>
-                    <li><a href="mailto:hello@elliyeen.com" className="hover:text-black">Get in touch</a></li>
+                    <li><a href="#book" className="hover:text-black">Get in touch</a></li>
                   </ul>
                 </div>
               </div>
