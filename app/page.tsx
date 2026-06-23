@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import React from "react";
 import MobileNav from "./MobileNav";
 import BookingForm from "./BookingForm";
+import CasesCarousel from "@/components/CasesCarousel";
 import { ArrowRight, BarChart3, Bot, CheckCircle2, LineChart, Search, Sparkles, Users } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -38,96 +39,6 @@ const process = [
   },
 ];
 
-const caseGroups = [
-  {
-    industry: "Hospitality",
-    cases: [
-      {
-        tag: "Hospitality",
-        title: "Milano Family Pizza",
-        location: "Richardson, TX",
-        body: "Two live websites — different phone numbers, conflicting hours, split SEO authority, no conversion path on either. A 22-agent audit scored both properties and modeled the revenue sitting uncaptured.",
-        metrics: [
-          "Overall conductor score: 19/100 — site is not broken, it is invisible to buyers",
-          "30-day fix unlocks +$6,960/month without new ad spend",
-          "12-month roadmap adds +$36,600/month — domain consolidation, trust layer, specials engine",
-        ],
-        image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=1200&auto=format&fit=crop",
-        imageAlt: "Fresh pizza with toppings coming out of a wood-fired oven",
-        quote: "",
-        quoteAttribution: "",
-        href: "/reports/milano-audit.html",
-        reportLabel: "Read the full audit report",
-      },
-    ],
-  },
-  {
-    industry: "Home Care",
-    cases: [
-      {
-        tag: "Home Care",
-        title: "Savannah Personal Care",
-        location: "Savannah, GA",
-        body: "The FAQ had Wix placeholder questions. The hero didn't speak to the fear the adult daughter feels at 11pm making this decision. We rebuilt the copy, structure, and local SEO around the real buyer moment.",
-        metrics: [
-          "Replaced Wix placeholder FAQ with the 7 questions families actually ask before calling a home care agency",
-          "Hero rebuilt to speak directly to the adult daughter making this decision alone, late at night",
-          "Site now structured for 'home care Savannah' and 'in-home senior care' searches — previously invisible",
-        ],
-        image: "https://images.unsplash.com/photo-1584515933487-779824d29309?q=80&w=1200&auto=format&fit=crop",
-        imageAlt: "Home caregiver assisting an elderly patient indoors",
-        quote: "",
-        quoteAttribution: "",
-        href: "/case-studies/savannah",
-        reportLabel: "Read the full report",
-      },
-    ],
-  },
-  {
-    industry: "Financial Services",
-    cases: [
-      {
-        tag: "Financial Services",
-        title: "Wealth Management Firm",
-        location: "Southeast US",
-        body: "Prospects were arriving informed but not converting. We identified three objections the site never answered and restructured the intake flow to address each one before the CTA.",
-        metrics: [
-          "Found the 3 objections stopping informed visitors from converting — none were addressed anywhere on the site",
-          "Intake flow rebuilt so each objection is dissolved before the first CTA appears",
-          "Response time and next steps now stated explicitly — previously undefined, creating silent hesitation",
-        ],
-        image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=1200&auto=format&fit=crop",
-        imageAlt: "Financial advisor reviewing documents with a client at a desk",
-        quote: "",
-        quoteAttribution: "",
-        href: "",
-        reportLabel: "",
-      },
-    ],
-  },
-  {
-    industry: "Education / Sports",
-    cases: [
-      {
-        tag: "Education / Sports",
-        title: "College Golf Program",
-        location: "Division I",
-        body: "Recruiting pages described the program. They didn't speak to the recruit's fear of choosing the wrong school. We rebuilt the narrative around the actual decision a 17-year-old athlete makes.",
-        metrics: [
-          "Identified the exact fear behind every recruit's decision: 'What if I choose the wrong school and waste my eligibility?'",
-          "Stats page rebuilt to answer the question coaches can't ask directly: 'Can I actually play here?'",
-          "Scholarship language added — the most-searched question on recruiting pages, previously absent from the site",
-        ],
-        image: "https://images.unsplash.com/photo-1535131749006-b7f58c99034b?q=80&w=1200&auto=format&fit=crop",
-        imageAlt: "College golfer lining up a putt on a green during a tournament",
-        quote: "",
-        quoteAttribution: "",
-        href: "",
-        reportLabel: "",
-      },
-    ],
-  },
-];
 
 const auditDimensions = [
   "Positioning & Differentiation",
@@ -323,65 +234,16 @@ export default function GetStartedPage() {
 
         <section id="cases" className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
           <div className="rounded-[2rem] border border-zinc-200 bg-white p-5 sm:p-6 md:p-8">
-            <div className="mb-8">
-              <h2 className="font-serif text-3xl tracking-[-0.04em] sm:text-4xl">Real work. Real outcomes.</h2>
-              <p className="mt-1 text-sm text-zinc-500">Recent engagements across industries and what we found.</p>
+            <div className="mb-7">
+              <p className="text-xs font-bold uppercase tracking-[0.28em] text-zinc-400">Case studies</p>
+              <h2 className="mt-3 font-serif text-3xl tracking-[-0.04em] sm:text-4xl">
+                The sites were live.<br className="hidden sm:block" /> The revenue wasn&apos;t.
+              </h2>
+              <p className="mt-2 max-w-lg text-sm leading-6 text-zinc-500">
+                Four audits. Four gaps no owner had named. Here&apos;s what we found — and what each one was costing.
+              </p>
             </div>
-            <div className="space-y-10">
-              {caseGroups.map((group) => (
-                <div key={group.industry}>
-                  {/* Industry section header */}
-                  <div className="mb-4 flex items-center gap-3">
-                    <p className="text-xs font-bold uppercase tracking-[0.22em] text-zinc-400">{group.industry}</p>
-                    <div className="h-px flex-1 bg-zinc-100" />
-                  </div>
-                  <div className="grid gap-5 sm:gap-6 md:grid-cols-3">
-                    {group.cases.map((item) => (
-                      <article key={item.title} className="overflow-hidden rounded-2xl border border-zinc-200 bg-white">
-                        <img src={item.image} alt={item.imageAlt} className="h-44 w-full object-cover" />
-                        <div className="p-5 sm:p-6">
-                          <div className="flex items-baseline justify-between gap-2">
-                            <h3 className="text-lg font-bold">{item.title}</h3>
-                            {item.location && (
-                              <span className="shrink-0 text-xs text-zinc-400">{item.location}</span>
-                            )}
-                          </div>
-                          <p className="mt-3 text-sm leading-6 text-zinc-600">{item.body}</p>
-                          <div className="mt-5 grid gap-2">
-                            {item.metrics.map((metric) => (
-                              <div key={metric} className="flex items-start gap-2 text-sm text-zinc-600">
-                                <CheckCircle2 size={14} className="mt-0.5 shrink-0 text-[#1B5EA8]" />
-                                {metric}
-                              </div>
-                            ))}
-                          </div>
-                          {item.quote && (
-                            <blockquote className="mt-5 border-t border-zinc-100 pt-4">
-                              <p className="text-sm italic leading-6 text-zinc-600">&ldquo;{item.quote}&rdquo;</p>
-                              {item.quoteAttribution && (
-                                <footer className="mt-2 text-xs font-semibold text-zinc-400">— {item.quoteAttribution}</footer>
-                              )}
-                            </blockquote>
-                          )}
-                          {item.href && item.reportLabel && (
-                            <div className="mt-5 border-t border-zinc-100 pt-4">
-                              <a
-                                href={item.href}
-                                target={item.href.startsWith("/reports/") ? "_blank" : undefined}
-                                rel={item.href.startsWith("/reports/") ? "noopener noreferrer" : undefined}
-                                className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#1B5EA8] hover:underline"
-                              >
-                                {item.reportLabel} <ArrowRight size={14} />
-                              </a>
-                            </div>
-                          )}
-                        </div>
-                      </article>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
+            <CasesCarousel />
           </div>
         </section>
 
