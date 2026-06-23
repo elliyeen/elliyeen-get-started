@@ -1,0 +1,115 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Human Consent Growth Agent — Inputs",
+  "description": "Input data required to run the Human Consent Growth Agent for an organization.",
+  "type": "object",
+  "required": ["industry", "offer", "market", "audience", "desired_behavior"],
+  "properties": {
+    "industry": {
+      "type": "string",
+      "description": "The industry or sector the organization operates in.",
+      "examples": ["home care services", "SaaS", "professional services", "retail"]
+    },
+    "offer": {
+      "type": "string",
+      "description": "A plain-language description of what is being offered.",
+      "examples": ["In-home care assessment and caregiver placement for seniors in Savannah, GA"]
+    },
+    "market": {
+      "type": "string",
+      "description": "Geographic or demographic market being targeted.",
+      "examples": ["Savannah, GA metro area", "US enterprise software buyers", "UK D2C consumers aged 35-55"]
+    },
+    "audience": {
+      "type": "object",
+      "description": "Primary buyer persona for this growth effort.",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Persona label (internal use only)",
+          "examples": ["The Adult Daughter", "The IT Procurement Manager"]
+        },
+        "age_range": {
+          "type": "string",
+          "examples": ["45-62", "30-50"]
+        },
+        "situation": {
+          "type": "string",
+          "description": "What is happening in their life right now that makes them a buyer?",
+          "examples": ["Parent recently fell. Managing care from 2 hours away. Exhausted and scared."]
+        },
+        "primary_desire": {
+          "type": "string",
+          "description": "The single deepest desire driving their search.",
+          "examples": ["Permission to stop carrying this alone"]
+        },
+        "primary_fear": {
+          "type": "string",
+          "description": "The single greatest fear holding them back.",
+          "examples": ["Choosing the wrong agency and something going wrong — making it my fault"]
+        },
+        "language": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Words and phrases the audience uses to describe their situation.",
+          "examples": [["my mom needs help", "I can't do this alone", "I need someone I can trust"]]
+        }
+      }
+    },
+    "desired_behavior": {
+      "type": "string",
+      "description": "The specific action you want the audience to take voluntarily.",
+      "examples": ["Book a free care assessment", "Start a trial", "Subscribe to the guide"]
+    },
+    "current_assets": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Existing assets the organization has (website, reviews, credentials, content, partnerships).",
+      "examples": [["Wix website", "CNA certification", "4.8 Google rating (12 reviews)", "3 years in operation"]]
+    },
+    "competitors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "strengths": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "vulnerabilities": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        }
+      },
+      "description": "Key competitors, their strengths, and where they are vulnerable."
+    },
+    "channels": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Distribution channels currently active or under consideration.",
+      "examples": [["Google My Business", "Facebook", "hospital discharge referrals", "word of mouth"]]
+    },
+    "constraints": {
+      "type": "object",
+      "description": "Known limitations on what can be claimed or deployed.",
+      "properties": {
+        "verified_claims_only": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Claims that need verification before use — mark with [VERIFY]."
+        },
+        "prohibited_channels": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "budget_tier": {
+          "type": "string",
+          "enum": ["bootstrap", "growth", "scale"],
+          "description": "Relative budget level to calibrate recommendations."
+        }
+      }
+    }
+  }
+}
