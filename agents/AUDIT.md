@@ -58,6 +58,9 @@ The gap between these two is where revenue is lost.
 | [16-growth](./16-growth.md) | Reforge Growth Team | Lead gen, automation, referrals |
 | [17-journey](./17-journey.md) | IDEO, Bain CX | Customer journey mapping |
 | [18-competitive](./18-competitive.md) | McKinsey, Ogilvy | Competitive moat analysis |
+| [19-cialdini](./19-cialdini.md) | Robert Cialdini — *Influence* + *Pre-Suasion* | Compliance triggers, pre-suasion, influence architecture |
+| [20-fogg](./20-fogg.md) | BJ Fogg — Fogg Behavior Model · *Tiny Habits* | Motivation, ability, prompt — friction mapping and behavior design |
+| [21-kahneman](./21-kahneman.md) | Kahneman — *Thinking, Fast and Slow* · Tversky Prospect Theory · Thaler *Nudge* | System 1/2, loss aversion, anchoring, framing, peak-end rule |
 
 ---
 
