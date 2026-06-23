@@ -1,8 +1,6 @@
 ---
-title: "Milano Family Pizza"
-subtitle: "Dual-Site Revenue Audit + Financial Projection"
+title: "Milano Family Pizza · Richardson, TX"
 date: "June 23, 2026"
-author: "Elliyeen Research"
 output:
   html_document:
     self_contained: true
