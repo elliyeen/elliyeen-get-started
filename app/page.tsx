@@ -163,7 +163,7 @@ export default function GetStartedPage() {
             </div>
 
             <p className="mt-4 text-xs text-zinc-400">
-              Three specific findings. Delivered within 48 hours. No pitch.
+              Three specific findings. Delivered within 48 hours. We run 4 per week. No pitch.
             </p>
           </div>
 
