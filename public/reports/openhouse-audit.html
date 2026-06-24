@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="OPEN HOUSE Creative Fest — Website, Customer Experience & Financial Model Audit · Elliyeen Research">
+<title>OPEN HOUSE Creative Fest — Full Audit · Elliyeen Research</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --neon:      #d4e833;
+  --neon-dk:   #a8ba1a;
+  --pink:      #e8339a;
+  --pink-lt:   #fce8f4;
+  --mint:      #33d4b0;
+  --mint-lt:   #e4f9f5;
+  --ink:       #111111;
+  --soft:      #555555;
+  --cream:     #fafaf8;
+  --drawer-bg: #f2f2ee;
+  --rule:      rgba(0,0,0,0.08);
+  --rust:      #c0392b;
+  --rust-lt:   #faeae6;
+  --amber:     #9e6b00;
+  --amber-lt:  #fef3dc;
+  --good:      #2d6a4f;
+  --good-lt:   #e2f0e8;
+}
+
+html { font-size: 16px; scroll-behavior: smooth; }
+body { font-family: 'DM Sans', system-ui, sans-serif; color: var(--ink); background: var(--cream); overflow-x: hidden; line-height: 1.65; }
+
+.main-container { margin-left: 260px; margin-top: 52px; max-width: 880px; padding: 2.5rem 2.8rem 6rem; transition: margin-left 0.38s cubic-bezier(.4,0,.2,1); }
+body.ez-drawer-closed .main-container { margin-left: 0; max-width: 940px; }
+
+#ez-topnav { position: fixed; top: 0; left: 0; right: 0; height: 52px; background: #fff; border-bottom: 1px solid var(--rule); display: flex; align-items: center; justify-content: space-between; padding: 0 1.4rem; z-index: 5900; box-shadow: 0 1px 8px rgba(0,0,0,0.05); }
+#ez-topnav-brand { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #111; text-decoration: none; }
+#ez-topnav-title { position: absolute; left: 50%; transform: translateX(-50%); font-size: 0.82rem; font-weight: 500; color: #555; white-space: nowrap; }
+#ez-topnav-actions { display: flex; align-items: center; gap: 0.6rem; }
+.ez-topnav-btn { display: flex; align-items: center; gap: 0.45rem; padding: 0.4rem 0.9rem; border-radius: 6px; font-size: 0.76rem; font-weight: 500; cursor: pointer; border: 1px solid rgba(0,0,0,0.12); background: #fff; color: #333; font-family: 'DM Sans', system-ui, sans-serif; text-decoration: none; transition: background 0.15s; }
+.ez-topnav-btn:hover { background: #f5f5f5; }
+.ez-topnav-btn svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+#ez-drawer { position: fixed; top: 0; left: 0; width: 256px; height: 100vh; background: var(--drawer-bg); display: flex; flex-direction: column; z-index: 6000; transform: translateX(0); transition: transform 0.38s cubic-bezier(.4,0,.2,1); overflow: hidden; border-right: 1px solid var(--rule); box-shadow: 2px 0 20px rgba(0,0,0,0.06); }
+body.ez-drawer-closed #ez-drawer { transform: translateX(-256px); }
+.ez-drawer-brand { height: 52px; display: flex; align-items: center; padding: 0 1.2rem; border-bottom: 1px solid rgba(0,0,0,0.08); flex-shrink: 0; }
+.ez-drawer-brand span { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #aaa; }
+.ez-drawer-nav { flex: 1; overflow-y: auto; padding: 1.2rem 0 2rem; scrollbar-width: thin; }
+.ez-nav-group { margin-bottom: 0.4rem; }
+.ez-nav-group-label { display: block; padding: 0.5rem 1.2rem 0.4rem; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #888; }
+.ez-nav-link { display: block; padding: 0.36rem 1.2rem 0.36rem 1.4rem; font-size: 0.81rem; font-weight: 400; color: #555; text-decoration: none; border-left: 2px solid transparent; margin-left: 0.4rem; line-height: 1.4; transition: color 0.15s, border-color 0.15s, background 0.15s; }
+.ez-nav-link:hover { color: #111; background: rgba(0,0,0,0.04); border-left-color: rgba(0,0,0,0.18); }
+.ez-nav-link.ez-active { color: #111; border-left-color: var(--pink); background: rgba(232,51,154,0.06); font-weight: 500; }
+
+#ez-drawer-toggle { position: fixed; top: 50%; left: 256px; transform: translateY(-50%); width: 18px; height: 52px; background: #e8e8e4; border: 1px solid rgba(0,0,0,0.1); border-left: none; border-radius: 0 4px 4px 0; cursor: pointer; z-index: 6100; display: flex; align-items: center; justify-content: center; padding: 0; transition: left 0.38s cubic-bezier(.4,0,.2,1), background 0.15s; box-shadow: 2px 0 6px rgba(0,0,0,0.08); }
+#ez-drawer-toggle:hover { background: #d8d8d4; }
+body.ez-drawer-closed #ez-drawer-toggle { left: 0; }
+#ez-drawer-toggle svg { width: 10px; height: 10px; fill: none; stroke: rgba(0,0,0,0.5); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: transform 0.35s; }
+body.ez-drawer-closed #ez-drawer-toggle svg { transform: rotate(180deg); }
+
+#ez-back-top { position: fixed; bottom: 1.6rem; right: 1.6rem; width: 44px; height: 44px; background: #fff; border: 1px solid rgba(0,0,0,0.10); border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 12px rgba(0,0,0,0.10); opacity: 0; transform: translateY(14px); transition: opacity 0.25s, transform 0.25s; z-index: 8000; }
+#ez-back-top svg { width: 18px; height: 18px; fill: none; stroke: #333; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+#ez-back-top.ez-visible { opacity: 1; transform: translateY(0); }
+
+h1, h2, h3 { font-family: 'EB Garamond', Georgia, serif; font-weight: 500; }
+h1 { font-size: 2.6rem; line-height: 1.18; letter-spacing: -0.02em; margin-bottom: 1.2rem; }
+h2 { font-size: 1.72rem; line-height: 1.24; margin-bottom: 0.9rem; }
+h3 { font-size: 1.22rem; line-height: 1.3; margin-bottom: 0.5rem; }
+p { margin-bottom: 1rem; font-size: 0.95rem; color: #2a2a2a; }
+p:last-child { margin-bottom: 0; }
+
+.report-meta { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #999; margin-bottom: 1.8rem; display: flex; flex-wrap: wrap; gap: 1rem; }
+.section { margin-bottom: 3.2rem; }
+hr.section-rule { border: none; border-top: 1px solid var(--rule); margin: 2.8rem 0; }
+
+.stat-row { display: flex; gap: 2rem; flex-wrap: wrap; margin: 1.5rem 0; }
+.stat-block { flex: 1; min-width: 130px; }
+.stat-n { font-family: 'EB Garamond', Georgia, serif; font-size: 2.6rem; font-weight: 500; line-height: 1; }
+.stat-n.r { color: var(--rust); }
+.stat-n.a { color: var(--amber); }
+.stat-n.g { color: var(--good); }
+.stat-n.pk { color: var(--pink); }
+.stat-s { font-size: 0.72rem; color: #888; text-transform: uppercase; letter-spacing: 0.08em; margin-top: 0.2rem; }
+
+.finding-card { background: #fff; border-radius: 8px; border: 1px solid var(--rule); padding: 1.4rem 1.6rem; margin-bottom: 1.2rem; box-shadow: 0 1px 6px rgba(0,0,0,0.04); }
+.finding-card .fc-label { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #999; margin-bottom: 0.45rem; }
+.finding-card .fc-title { font-family: 'EB Garamond', Georgia, serif; font-size: 1.16rem; font-weight: 500; line-height: 1.28; margin-bottom: 0.5rem; }
+.finding-card .fc-body { font-size: 0.88rem; color: #444; line-height: 1.6; }
+.finding-card.issue { border-left: 3px solid var(--rust); }
+.finding-card.fix   { border-left: 3px solid var(--good); }
+.finding-card.opp   { border-left: 3px solid var(--amber); }
+.finding-card.vision { border-left: 3px solid var(--pink); }
+.finding-card.key-hl { background: #fef5fb; border-left: 3px solid var(--pink); box-shadow: 0 0 0 2px rgba(232,51,154,0.07), 0 3px 14px rgba(0,0,0,0.07); }
+.finding-card.key-hl::before { content: '★  KEY FINDING'; display: block; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--pink); margin-bottom: 0.55rem; }
+.finding-card.key-hl.issue::before { color: var(--rust); content: '★  KEY FINDING'; }
+
+.callout { background: var(--amber-lt); border-left: 3px solid var(--amber); border-radius: 0 6px 6px 0; padding: 1rem 1.2rem; margin: 1.4rem 0; font-size: 0.9rem; color: #3a2a00; }
+.callout.mint { background: var(--mint-lt); border-left-color: var(--mint); color: #003a30; }
+.callout strong { font-weight: 600; }
+
+.journey-table { width: 100%; border-collapse: collapse; margin: 1.4rem 0; font-size: 0.88rem; }
+.journey-table th { text-align: left; padding: 0.5rem 0.8rem; background: #1a1a1a; color: #fff; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600; }
+.journey-table th:first-child { border-radius: 6px 0 0 0; }
+.journey-table th:last-child  { border-radius: 0 6px 0 0; }
+.journey-table td { padding: 0.65rem 0.8rem; border-bottom: 1px solid var(--rule); vertical-align: top; }
+.journey-table tr:last-child td { border-bottom: none; }
+.journey-table tr:nth-child(even) td { background: rgba(0,0,0,0.018); }
+.tag-bad  { display: inline-block; padding: 0.15rem 0.5rem; border-radius: 3px; font-size: 0.7rem; font-weight: 600; background: var(--rust-lt); color: var(--rust); }
+.tag-good { display: inline-block; padding: 0.15rem 0.5rem; border-radius: 3px; font-size: 0.7rem; font-weight: 600; background: var(--good-lt); color: var(--good); }
+.tag-warn { display: inline-block; padding: 0.15rem 0.5rem; border-radius: 3px; font-size: 0.7rem; font-weight: 600; background: var(--amber-lt); color: var(--amber); }
+
+.revenue-row { display: flex; gap: 1.2rem; flex-wrap: wrap; margin: 1.2rem 0; }
+.revenue-block { flex: 1; min-width: 150px; background: #fff; border-radius: 8px; border: 1px solid var(--rule); padding: 1.1rem 1.2rem; }
+.revenue-block .rb-label { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #aaa; margin-bottom: 0.3rem; }
+.revenue-block .rb-val { font-family: 'EB Garamond', Georgia, serif; font-size: 1.8rem; font-weight: 500; line-height: 1; color: var(--pink); }
+.revenue-block .rb-sub { font-size: 0.76rem; color: #888; margin-top: 0.2rem; }
+
+.vision-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.4rem 0; }
+@media (max-width: 620px) { .vision-row { grid-template-columns: 1fr; } }
+.vision-card { background: #fff; border-radius: 8px; border: 1px solid var(--rule); padding: 1.2rem 1.3rem; }
+.vision-card .vc-label { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.5rem; }
+.vision-card .vc-label.current { color: var(--rust); }
+.vision-card .vc-label.desired { color: var(--good); }
+.vision-card ul { padding-left: 1.1rem; }
+.vision-card ul li { font-size: 0.88rem; color: #444; line-height: 1.6; margin-bottom: 0.3rem; }
+
+.phase-row { display: flex; gap: 0.8rem; align-items: flex-start; margin-bottom: 1.2rem; }
+.phase-num { flex-shrink: 0; width: 32px; height: 32px; background: var(--pink); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 700; margin-top: 0.1rem; }
+.phase-body { flex: 1; }
+.phase-body strong { display: block; font-size: 0.9rem; font-weight: 600; color: #111; margin-bottom: 0.2rem; }
+.phase-body span { font-size: 0.84rem; color: #555; }
+
+/* Score card */
+.score-card { background: #1a1a1a; color: #fff; border-radius: 8px; padding: 1.4rem 1.6rem; margin: 1.4rem 0; }
+.score-card .sc-label { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.4; margin-bottom: 0.5rem; }
+.score-card .sc-row { display: flex; align-items: baseline; gap: 0.8rem; }
+.score-card .sc-n { font-family: 'EB Garamond', Georgia, serif; font-size: 3rem; font-weight: 500; line-height: 1; }
+.score-card .sc-n.pk { color: var(--neon); }
+.score-card .sc-desc { font-size: 0.88rem; color: rgba(255,255,255,0.6); max-width: 380px; }
+
+.confidential-banner { background: #1a1a1a; color: rgba(255,255,255,0.35); font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase; text-align: center; padding: 0.4rem 1rem; position: fixed; bottom: 0; left: 0; right: 0; z-index: 4000; }
+
+@media (max-width: 768px) {
+  #ez-drawer { transform: translateX(-256px); }
+  body:not(.ez-drawer-closed) #ez-drawer { transform: translateX(0); }
+  body.ez-drawer-closed #ez-drawer { transform: translateX(-256px); }
+  #ez-drawer-toggle { left: 0 !important; }
+  body:not(.ez-drawer-closed) #ez-drawer-toggle { left: 256px !important; }
+  .main-container { margin-left: 0 !important; padding: 1.5rem 1.2rem 5rem; }
+  #ez-topnav-title { display: none; }
+  h1 { font-size: 1.9rem; }
+  h2 { font-size: 1.38rem; }
+}
+
+#ez-share-toast { position: fixed; bottom: 1.6rem; left: 50%; transform: translateX(-50%) translateY(12px); background: #111; color: #fff; font-size: 0.8rem; padding: 0.55rem 1.1rem; border-radius: 6px; opacity: 0; pointer-events: none; transition: opacity 0.25s, transform 0.25s; z-index: 9000; white-space: nowrap; }
+#ez-share-toast.ez-visible { opacity: 1; transform: translateX(-50%) translateY(0); }
+.ez-topnav-btn.ez-copied { background: #f0faf5; border-color: #2d9e6b; color: #2d9e6b; }
+
+/* Wizard */
+#ez-wizard-overlay { position: fixed; inset: 0; background: rgba(10,10,10,0.90); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); z-index: 9999; display: flex; align-items: center; justify-content: center; padding: 1rem; transition: opacity 0.35s ease; }
+#ez-wizard-overlay.ez-hidden { opacity: 0; pointer-events: none; }
+#ez-wizard-card { background: #fff; border-radius: 8px; max-width: 560px; width: 100%; overflow: hidden; box-shadow: 0 28px 90px rgba(0,0,0,0.40); font-family: 'DM Sans', system-ui, sans-serif; }
+.wz-head { background: #1a1a1a; color: white; padding: 1.5rem 1.8rem 1.1rem; }
+.wz-step-lbl { font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.4; margin-bottom: 0.4rem; }
+.wz-ttl { font-family: 'EB Garamond', Georgia, serif; font-size: 1.52rem; line-height: 1.22; margin: 0; font-weight: 500; }
+.wz-bdy { padding: 1.4rem 1.8rem 0.9rem; min-height: 155px; }
+.wz-bdy p { font-size: 0.92rem; line-height: 1.68; color: #2a2a2a; margin: 0 0 0.7rem; }
+.wz-stat-row { display: flex; gap: 1.6rem; margin: 0.5rem 0 0.9rem; flex-wrap: wrap; }
+.wz-stat-n { font-family: 'EB Garamond', Georgia, serif; font-size: 2.4rem; font-weight: 500; line-height: 1; }
+.wz-stat-n.r { color: var(--rust); }
+.wz-stat-n.pk { color: var(--pink); }
+.wz-stat-n.a { color: var(--amber); }
+.wz-stat-s { font-size: 0.7rem; color: #999; text-transform: uppercase; letter-spacing: 0.08em; margin-top: 0.1rem; }
+.wz-hl { background: #fef5fb; border-left: 3px solid var(--pink); padding: 0.65rem 1rem; border-radius: 0 4px 4px 0; font-size: 0.88rem; color: #3a002a; margin: 0.4rem 0 0.8rem; font-style: italic; line-height: 1.5; font-family: 'EB Garamond', Georgia, serif; }
+.wz-rm { margin: 0.3rem 0 0.75rem; }
+.wz-rm-item { display: flex; gap: 0.7rem; align-items: flex-start; margin-bottom: 0.5rem; font-size: 0.87rem; line-height: 1.5; color: #2a2a2a; }
+.wz-rm-badge { flex-shrink: 0; background: var(--rust); color: white; font-size: 0.62rem; padding: 0.15rem 0.4rem; border-radius: 3px; margin-top: 0.15rem; letter-spacing: 0.04em; font-weight: 500; }
+.wz-cta-blk { background: #1a1a1a; color: white; padding: 1rem 1.2rem; border-radius: 4px; margin-top: 0.6rem; }
+.wz-cta-blk p { color: rgba(255,255,255,0.65) !important; font-size: 0.86rem !important; margin-bottom: 0.45rem !important; }
+.wz-cta-email { font-family: 'EB Garamond', Georgia, serif; font-size: 1.12rem; color: white; font-weight: 500; }
+.wz-note { font-size: 0.76rem !important; color: #aaa !important; margin-top: 0.75rem !important; }
+.wz-foot { padding: 0.9rem 1.8rem 1.3rem; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid #efefed; gap: 0.6rem; }
+.wz-dots { display: flex; gap: 6px; flex-shrink: 0; }
+.wz-dot { width: 7px; height: 7px; border-radius: 50%; background: #e0e0e0; transition: background 0.2s, transform 0.2s; }
+.wz-dot.active { background: var(--pink); transform: scale(1.25); }
+.wz-skip { font-size: 0.74rem; color: #bbb; cursor: pointer; border: none; background: none; padding: 0; text-decoration: underline; white-space: nowrap; font-family: 'DM Sans', system-ui, sans-serif; }
+.wz-skip:hover { color: #666; }
+.wz-btns { display: flex; gap: 0.5rem; flex-shrink: 0; }
+.wz-btn { padding: 0.46rem 1rem; border-radius: 4px; font-size: 0.83rem; cursor: pointer; border: none; font-family: 'DM Sans', system-ui, sans-serif; transition: background 0.15s; white-space: nowrap; }
+.wz-back-btn { background: #f0f0ee; color: #555; }
+.wz-back-btn:hover { background: #e4e4e0; }
+.wz-next-btn { background: var(--pink); color: white; }
+.wz-next-btn:hover { background: #c2267e; }
+@media (max-width: 767px) {
+  .wz-head { padding: 1.1rem 1.2rem 0.85rem; }
+  .wz-bdy { padding: 1.1rem 1.2rem 0.85rem; min-height: 130px; }
+  .wz-foot { padding: 0.75rem 1.2rem 1.1rem; }
+  .wz-ttl { font-size: 1.25rem; }
+  .wz-skip { display: none; }
+}
+</style>
+</head>
+<body class="">
+
+<nav id="ez-topnav">
+  <a id="ez-topnav-brand" href="/">ELLIYEEN</a>
+  <span id="ez-topnav-title">OPEN HOUSE Creative Fest — Full Audit</span>
+  <div id="ez-topnav-actions">
+    <button class="ez-topnav-btn" id="ez-share-btn">
+      <svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+      <span id="ez-share-label">Share</span>
+    </button>
+    <a class="ez-topnav-btn" href="/#book" style="background:var(--pink);color:#fff;border-color:var(--pink);border-radius:20px;font-weight:600;">Work with us</a>
+  </div>
+</nav>
+
+<aside id="ez-drawer">
+  <div class="ez-drawer-brand"><span>Elliyeen Research</span></div>
+  <nav class="ez-drawer-nav">
+    <div class="ez-nav-group">
+      <span class="ez-nav-group-label">Overview</span>
+      <a class="ez-nav-link" href="#situation">The Situation</a>
+      <a class="ez-nav-link" href="#organizer-vision">Organizer's Vision</a>
+    </div>
+    <div class="ez-nav-group">
+      <span class="ez-nav-group-label">Website Audit</span>
+      <a class="ez-nav-link" href="#web-1">1 — Inconsistent Vendor Count</a>
+      <a class="ez-nav-link" href="#web-2">2 — No Activity Directory</a>
+      <a class="ez-nav-link" href="#web-3">3 — First-Come Risk Undermines Purchase</a>
+      <a class="ez-nav-link" href="#web-4">4 — CTA Hierarchy Failure</a>
+    </div>
+    <div class="ez-nav-group">
+      <span class="ez-nav-group-label">Customer Experience</span>
+      <a class="ez-nav-link" href="#cx-buyers">The Three Attendees</a>
+      <a class="ez-nav-link" href="#cx-journey">Discovery to Purchase Journey</a>
+      <a class="ez-nav-link" href="#cx-passport">Passport Value Problem</a>
+      <a class="ez-nav-link" href="#cx-fixes">Experience Fixes</a>
+    </div>
+    <div class="ez-nav-group">
+      <span class="ez-nav-group-label">Financial Model</span>
+      <a class="ez-nav-link" href="#fin-streams">Revenue Streams</a>
+      <a class="ez-nav-link" href="#fin-passport">Passport Economics</a>
+      <a class="ez-nav-link" href="#fin-growth">Growth Pathway</a>
+    </div>
+    <div class="ez-nav-group">
+      <span class="ez-nav-group-label">Roadmap</span>
+      <a class="ez-nav-link" href="#roadmap">Before Next Event</a>
+    </div>
+  </nav>
+</aside>
+
+<button id="ez-drawer-toggle" aria-label="Toggle navigation">
+  <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+</button>
+
+<main class="main-container">
+
+  <!-- ── SITUATION ─────────────────────────────────────────────── -->
+  <div class="section" id="situation">
+    <div class="report-meta">
+      <span>Elliyeen Research</span>
+      <span>·</span>
+      <span>Creative Events · Torrance, CA</span>
+      <span>·</span>
+      <span>Website · CX · Financial Model Audit</span>
+    </div>
+
+    <h1>The concept was compelling.<br>The $50 ask was asking for faith.</h1>
+
+    <div class="stat-row">
+      <div class="stat-block">
+        <div class="stat-n r">2</div>
+        <div class="stat-s">Conflicting vendor counts (30 vs. 50+)</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-n r">0</div>
+        <div class="stat-s">Activity-specific listings published pre-event</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-n pk">$50</div>
+        <div class="stat-s">Creative Passport — purchased on faith</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-n a">236</div>
+        <div class="stat-s">RSVPs on Partiful (real attendance likely 50–60% of this)</div>
+      </div>
+    </div>
+
+    <p>OPEN HOUSE Creative Fest — June 27–28, 2026, Del Amo Fashion Center, Torrance — has something most events don't: a differentiated concept. "Don't just shop. Create." The guided activity model turns passive retail browsing into hands-on learning. Attendees don't just buy from makers — they make something with them.</p>
+
+    <p>The Creative Passport ($40 early bird / $50 door) unlocks those guided activities. It is the event's primary revenue driver and its most powerful differentiator. And it is being sold on faith: before a buyer can see which activities are available, which makers are participating, or what they will actually create, they are asked to spend $50.</p>
+
+    <p>This audit covers what the website is failing to communicate, what the attendee's purchase journey looks like, and what the financial model reveals about the event's growth ceiling.</p>
+  </div>
+
+  <hr class="section-rule">
+
+  <!-- ── ORGANIZER'S VISION ─────────────────────────────────────── -->
+  <div class="section" id="organizer-vision">
+    <h2>Organizer's Vision — What OPEN HOUSE Is Building Toward</h2>
+    <p>Before diagnosing what the site gets wrong, it helps to name what the organizer is building and what success looks like at the scale they're imagining.</p>
+
+    <div class="vision-row">
+      <div class="vision-card">
+        <div class="vc-label current">Current State</div>
+        <ul>
+          <li>One annual (or occasional) event</li>
+          <li>50+ makers in a vacant retail space</li>
+          <li>Passport sold on faith — no activity preview</li>
+          <li>Partiful as primary RSVP/discovery tool</li>
+          <li>Social media is the marketing engine</li>
+          <li>Revenue primarily from passport sales</li>
+        </ul>
+      </div>
+      <div class="vision-card">
+        <div class="vc-label desired">Desired State</div>
+        <ul>
+          <li>The premier recurring creative market in LA County</li>
+          <li>Makers apply to participate (demand exceeds supply)</li>
+          <li>Passport sells out in advance — no door sales needed</li>
+          <li>Attendees plan their visit using a published activity guide</li>
+          <li>Community of past attendees who return every edition</li>
+          <li>Booth revenue + passport revenue + sponsor revenue</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="finding-card vision">
+      <div class="fc-label">The Bridge</div>
+      <div class="fc-title">From "an event people attend" to "a community people belong to"</div>
+      <div class="fc-body">The most successful creative markets — Renegade Craft Fair, Unique LA, the Portland Saturday Market — are not just events. They are community anchors. Makers return because the audience is right. Attendees return because the experience improves. The passport is not just an activity unlock — it is a membership signal. When a buyer purchases a OPEN HOUSE Creative Passport, they are saying something about who they are. The brand must be worthy of that signal.</div>
+    </div>
+  </div>
+
+  <hr class="section-rule">
+
+  <!-- ── WEBSITE AUDIT ──────────────────────────────────────────── -->
+  <div class="section" id="web-1">
+    <h2>Website Audit — Finding 1</h2>
+    <h3>The Vendor Count Contradicts Itself</h3>
+    <p>The OPEN HOUSE website states "50+ local makers." The Partiful event listing says "30 artists, designers, and small businesses." A buyer doing due diligence on a $50 purchase sees both numbers. One of them is wrong.</p>
+
+    <div class="finding-card issue key-hl">
+      <div class="fc-label">The Credibility Gap</div>
+      <div class="fc-title">Inconsistent numbers signal an event still figuring itself out</div>
+      <div class="fc-body">A buyer considering a $50 Creative Passport is doing a value assessment: how many activities can I access? If the website says 50+ and the Partiful says 30, the buyer rounds down — and adjusts their perception of value accordingly. More critically, the inconsistency signals operational immaturity. An event that knows what it has doesn't say 50 on one platform and 30 on another. The fix is not just updating the number — it is publishing the actual maker list.</div>
+    </div>
+
+    <div class="finding-card fix">
+      <div class="fc-label">The Fix</div>
+      <div class="fc-title">Publish the maker directory before the event opens</div>
+      <div class="fc-body">Every maker participating in OPEN HOUSE should be listed on the website at least two weeks before the event: name, specialty, what activity they're offering. This does three things simultaneously: (1) eliminates the count discrepancy, (2) gives passport buyers a reason to purchase early because they can see the specific value, (3) gives each maker a reason to promote the event to their own followers — because their name is published. The directory is marketing infrastructure, not just transparency.</div>
+    </div>
+  </div>
+
+  <hr class="section-rule">
+
+  <div class="section" id="web-2">
+    <h2>Website Audit — Finding 2</h2>
+    <h3>No Activity Directory — The $50 Ask Has No Answer</h3>
+    <p>A buyer considering the Creative Passport asks one question before spending $50: "What will I actually make?" The website does not answer it.</p>
+
+    <div class="finding-card issue key-hl">
+      <div class="fc-label">The Purchase Barrier</div>
+      <div class="fc-title">Spending $50 without knowing what it unlocks</div>
+      <div class="fc-body">The website describes the passport as unlocking "all activities at booths" with 1 activity per booth per passport. But which booths? Which activities? Paint what? Weave what? Make what? The copy says "paint, shape, weave, or assemble" — which is a category description, not an activity description. A buyer who does not know what they are buying hesitates. A buyer who has read "paint a ceramic planter with Lily from Studio Sage" has already decided. The activity directory is the conversion mechanism for the passport.</div>
+    </div>
+
+    <div class="finding-card fix">
+      <div class="fc-label">The Fix</div>
+      <div class="fc-title">Activity preview page: "Here's what you'll make"</div>
+      <div class="fc-body">A simple page or section: each participating maker listed with a photo of their activity and a one-sentence description. "Weave a mini wall hanging with raw cotton and natural dye — no experience needed." That sentence is worth $50 to the right buyer. Without it, the passport is an abstract offer. With it, the passport is a specific set of experiences the buyer is already imagining themselves having. The activity preview converts browsers into buyers.</div>
+    </div>
+  </div>
+
+  <hr class="section-rule">
+
+  <div class="section" id="web-3">
+    <h2>Website Audit — Finding 3</h2>
+    <h3>First-Come-First-Served Undercuts Passport Value</h3>
+    <p>The passport sells access to activities. But "capacity may vary throughout the day" means a buyer who arrives at 2pm on Day 2 may find every booth at capacity — having spent $50 for access to nothing available.</p>
+
+    <div class="finding-card issue">
+      <div class="fc-label">The Risk</div>
+      <div class="fc-title">The $50 passport has an undisclosed expiration time</div>
+      <div class="fc-body">No event organizer wants to publish "get here early or your passport becomes worthless," but that is the implicit experience for late arrivals if capacity management is not addressed. A buyer who shows up at 2pm, passport in hand, only to find every activity at capacity, will never buy again — and will tell three people. The first-come-first-served model works for free admission. It creates resentment when applied to a paid experience.</div>
+    </div>
+
+    <div class="finding-card fix">
+      <div class="fc-label">The Fix — Two Options</div>
+      <div class="fc-title">Timed entry OR activity reservation slots</div>
+      <div class="fc-body"><strong>Option A (minimal):</strong> Add recommended arrival times to the passport purchase confirmation — "For best activity access, we recommend arriving within the first two hours of each day." Honest, helpful, sets expectations without overpromising.<br><br><strong>Option B (preferred for Year 2):</strong> Time-slot reservations for specific activities at booth sign-up. Passport holder books 2–3 activities in advance via a simple form. Eliminates capacity anxiety entirely. Turns the event into a planned experience, not a scramble. Increases perceived value of the passport significantly.</div>
+    </div>
+  </div>
+
+  <hr class="section-rule">
+
+  <div class="section" id="web-4">
+    <h2>Website Audit — Finding 4</h2>
+    <h3>CTA Hierarchy Is Flat — Three Equal Buttons, No Priority</h3>
+    <p>The website presents three CTAs with identical visual weight: "Join the Partiful," "Get the $50 Creative Passport," and "Follow Along on IG." The most valuable action — the $50 passport purchase — is not visually dominant.</p>
+
+    <div class="finding-card issue">
+      <div class="fc-label">The Problem</div>
+      <div class="fc-title">When everything is a priority, nothing is</div>
+      <div class="fc-body">Hopkins' principle: one ask per visible screen. Three equal CTAs force the buyer to choose what to do instead of simply doing the most important thing. The Partiful RSVP and the Instagram follow are supporting actions — they capture interested visitors who aren't ready to purchase. They should exist, but they should not compete with the passport purchase for visual priority. The passport CTA should dominate.</div>
+    </div>
+
+    <div class="finding-card fix">
+      <div class="fc-label">The Fix</div>
+      <div class="fc-title">One primary CTA. Two supporting actions.</div>
+      <div class="fc-body">Primary (large, bold, color): "Get Your Creative Passport — $40 Early Bird" — the passport buy button is the one action that funds the event.<br><br>Secondary (text link, smaller): "RSVP free on Partiful" — for visitors who want to attend without purchasing a passport.<br><br>Tertiary (footer/social area): "Follow us on Instagram" — keeps non-buyers engaged for the next edition.<br><br>The visual hierarchy should make the answer to "what should I do on this page?" obvious before the visitor finishes their first scroll.</div>
+    </div>
+  </div>
+
+  <hr class="section-rule">
+
+  <!-- ── CX AUDIT ───────────────────────────────────────────────── -->
+  <div class="section" id="cx-buyers">
+    <h2>Customer Experience Audit — The Three Attendees</h2>
+    <p>OPEN HOUSE attracts three distinct attendee types. Each has different needs from the website, a different purchase decision, and a different post-event behavior that affects the next edition's success.</p>
+
+    <div class="finding-card vision">
+      <div class="fc-label">Attendee Type 1 — Highest Value</div>
+      <div class="fc-title">The Maker Community Member</div>
+      <div class="fc-body"><strong>Who:</strong> Craft-curious, creative professional, small business owner, maker herself. Follows local artisan brands on Instagram. Goes to Renegade, Unique LA, farmers markets.<br><strong>Purchase decision:</strong> She will buy the passport if she can see which makers are participating and what she'll make. She is your best buyer and your best promoter — she will post her experience and drive 3–5 friends to the next edition if her experience is specific and photographable.<br><strong>What she needs:</strong> The maker directory and activity preview. She is buying an experience, not just access. Name the experience before asking for $50.</div>
+    </div>
+
+    <div class="finding-card">
+      <div class="fc-label">Attendee Type 2</div>
+      <div class="fc-title">The Gift Shopper / Browser</div>
+      <div class="fc-body"><strong>Who:</strong> Comes to browse, support local makers, buy handmade goods. Not necessarily planning to do activities. Likely to attend free.<br><strong>Purchase decision:</strong> Might buy a passport on-site if she sees something she wants to try and the booth is still available. Impulse buyer at the event, not in advance.<br><strong>What she needs:</strong> Easy, visible on-site passport purchase with no friction — and a compelling "here's what you can make" display at the entrance that converts browsers into passport buyers the moment they arrive.</div>
+    </div>
+
+    <div class="finding-card">
+      <div class="fc-label">Attendee Type 3</div>
+      <div class="fc-title">The Date / Group Outing</div>
+      <div class="fc-body"><strong>Who:</strong> Couple or friend group looking for a creative, social Saturday activity. Not plugged into the maker community. Found OPEN HOUSE through Instagram or word of mouth.<br><strong>Purchase decision:</strong> Will buy passports for the group if the event looks fun and specific. Vague "explore and create" copy doesn't convert this buyer. "Make a personalized leather keychain together — no experience needed" does.<br><strong>What she needs:</strong> Two or three very specific, very visual, very social activity examples in the marketing — the ones that make her text her friends "we should do this."</div>
+    </div>
+  </div>
+
+  <hr class="section-rule">
+
+  <div class="section" id="cx-journey">
+    <h2>Customer Experience Audit — Discovery to Purchase Journey</h2>
+    <p>The journey of the Maker Community Member — the ideal passport buyer. Every gap is a moment where the purchase decision stalls.</p>
+
+    <table class="journey-table">
+      <thead>
+        <tr>
+          <th>Stage</th>
+          <th>What She Does</th>
+          <th>What She Finds</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Discovery</strong></td>
+          <td>Sees OPEN HOUSE post on Instagram or from a maker she follows</td>
+          <td>Visually compelling content — the neon palette works, the concept is clear.</td>
+          <td><span class="tag-good">Strong</span></td>
+        </tr>
+        <tr>
+          <td><strong>Website visit</strong></td>
+          <td>Goes to openhousecreativefest.com</td>
+          <td>Event info clear: dates, location, free admission. Three equal CTAs.</td>
+          <td><span class="tag-warn">Flat</span></td>
+        </tr>
+        <tr>
+          <td><strong>Value check</strong></td>
+          <td>"What will I make? Who will be there?"</td>
+          <td>No activity directory. No maker list. "Paint, shape, weave, or assemble." Not specific enough.</td>
+          <td><span class="tag-bad">Stalled</span></td>
+        </tr>
+        <tr>
+          <td><strong>Vendor count check</strong></td>
+          <td>Clicks to Partiful or Google</td>
+          <td>Website says 50+. Partiful says 30. Which is right?</td>
+          <td><span class="tag-bad">Trust erosion</span></td>
+        </tr>
+        <tr>
+          <td><strong>Capacity risk check</strong></td>
+          <td>"Will activities still be available if I go Saturday afternoon?"</td>
+          <td>"First-come, first-served. Capacity may vary." Unanswered.</td>
+          <td><span class="tag-bad">Purchase risk</span></td>
+        </tr>
+        <tr>
+          <td><strong>Purchase decision</strong></td>
+          <td>"Should I buy the passport now or decide on-site?"</td>
+          <td>Early bird discount ($40 vs. $50) creates urgency, but no activity list means no specific reason to commit early.</td>
+          <td><span class="tag-warn">Hesitation</span></td>
+        </tr>
+        <tr>
+          <td><strong>Outcome A</strong></td>
+          <td>Buys passport — high intent buyer</td>
+          <td>Faith purchase. Will evaluate on arrival. May feel let down if activities are at capacity.</td>
+          <td><span class="tag-warn">Fragile</span></td>
+        </tr>
+        <tr>
+          <td><strong>Outcome B</strong></td>
+          <td>RSVPs free, decides on-site</td>
+          <td>May buy door passport, may not. Revenue is deferred and uncertain.</td>
+          <td><span class="tag-warn">Lost early revenue</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout">
+      <strong>The core conversion failure:</strong> The early bird incentive (save $10) creates price urgency but not value urgency. A buyer saves $10 by buying now — but she doesn't know what she's buying yet. Value urgency — "only 8 spots left for the leather workshop with [Maker Name]" — converts advance purchases far more reliably than price discounting.
+    </div>
+  </div>
+
+  <hr class="section-rule">
+
+  <div class="section" id="cx-passport">
+    <h2>Customer Experience Audit — The Passport Value Problem</h2>
+    <p>The Creative Passport is a good product. The website has not yet made it feel like one.</p>
+
+    <div class="finding-card issue key-hl">
+      <div class="fc-label">The Value Gap</div>
+      <div class="fc-title">$50 for "all activities" is an abstraction. $50 for 8 named, specific experiences is a bargain.</div>
+      <div class="fc-body">If there are 8 activity booths and the passport covers all of them, the per-activity cost is $6.25. At $6.25 per guided hands-on creative experience with a local maker and founder, the Creative Passport is remarkably underpriced. But the buyer cannot feel that value without knowing what the 8 activities are. The website says "unlock all activities." The buyer hears "something unspecified, quantity unknown, subject to availability." The passport value is real. The communication of that value is missing.</div>
+    </div>
+
+    <div class="finding-card fix">
+      <div class="fc-label">The Value Reframe</div>
+      <div class="fc-title">Sell the math before the $50 ask</div>
+      <div class="fc-body">Below the passport CTA, add one sentence that does the math for the buyer: "8 guided creative experiences with LA's best makers — each one normally $12–$20 standalone — for $50 with your Creative Passport." That sentence converts the $50 from an event fee into a bargain. The buyer's mental math flips from "is this worth $50?" to "this is worth $160 and I'm getting it for $50." One sentence. No new pages required.</div>
+    </div>
+  </div>
+
+  <hr class="section-rule">
+
+  <div class="section" id="cx-fixes">
+    <h2>Customer Experience Audit — Five Experience Fixes</h2>
+
+    <div class="phase-row">
+      <div class="phase-num">1</div>
+      <div class="phase-body">
+        <strong>Publish the maker directory + activity preview 2 weeks before the event</strong>
+        <span>Each maker: name, Instagram, specialty, and one-sentence description of their activity. "Paint a glazed ceramic bud vase with [name] from [studio] — beginners welcome." This page becomes the primary conversion mechanism for advance passport sales and each maker's promotional content for their own audience.</span>
+      </div>
+    </div>
+
+    <div class="phase-row">
+      <div class="phase-num">2</div>
+      <div class="phase-body">
+        <strong>Fix the CTA hierarchy — passport purchase dominant</strong>
+        <span>One primary CTA (bright, large, bold): "Get Your Creative Passport — $40 Early Bird." One secondary CTA (text link): "RSVP free." One tertiary (footer): Instagram follow. The order and visual weight should make the decision sequence obvious without the buyer having to think about it.</span>
+      </div>
+    </div>
+
+    <div class="phase-row">
+      <div class="phase-num">3</div>
+      <div class="phase-body">
+        <strong>Add the per-activity math beneath the passport price</strong>
+        <span>"8 guided experiences · $6.25 each · makers normally charge $12–20/session." One sentence that reframes the $50 as a savings, not a cost. Place this directly below the passport CTA — not in a FAQ, not buried in copy. At the moment of decision.</span>
+      </div>
+    </div>
+
+    <div class="phase-row">
+      <div class="phase-num">4</div>
+      <div class="phase-body">
+        <strong>Set arrival expectations explicitly in purchase confirmation</strong>
+        <span>"For best activity availability, we recommend arriving within the first 90 minutes of each day. Activities are first-come, first-served and may reach capacity by midday." This sentence prevents the resentment of a late-arriving passport holder who finds nothing available. It is honest, helpful, and far better than the alternative: a disappointed buyer who never returns.</span>
+      </div>
+    </div>
+
+    <div class="phase-row">
+      <div class="phase-num">5</div>
+      <div class="phase-body">
+        <strong>Build the post-event email for re-engagement</strong>
+        <span>Every passport buyer should receive an email within 48 hours of the event: "What did you make? Tag us @openhousecreativefest — and be the first to know about our next edition." This email captures social proof, builds the waitlist for the next event, and converts single-event attendees into community members. The next edition's advance sales come from this list.</span>
+      </div>
+    </div>
+  </div>
+
+  <hr class="section-rule">
+
+  <!-- ── FINANCIAL MODEL ─────────────────────────────────────────── -->
+  <div class="section" id="fin-streams">
+    <h2>Financial Model — Revenue Streams</h2>
+    <p>OPEN HOUSE has three revenue sources. Currently, only one is being optimized. The others represent untapped ceiling.</p>
+
+    <div class="revenue-row">
+      <div class="revenue-block">
+        <div class="rb-label">Creative Passport Sales</div>
+        <div class="rb-val">Primary</div>
+        <div class="rb-sub">$40 early bird / $50 door · all passport revenue is gross (no COGS)</div>
+      </div>
+      <div class="revenue-block">
+        <div class="rb-label">Maker Booth Fees</div>
+        <div class="rb-val">Secondary</div>
+        <div class="rb-sub">50+ makers × [VERIFY booth fee] · recurring across editions</div>
+      </div>
+      <div class="revenue-block">
+        <div class="rb-label">Sponsorships</div>
+        <div class="rb-val">Untapped</div>
+        <div class="rb-sub">Brand alignment with creative community · activation space · product placement</div>
+      </div>
+    </div>
+
+    <div class="finding-card vision">
+      <div class="fc-label">Sponsorship Opportunity</div>
+      <div class="fc-title">Creative brands pay to reach exactly this audience</div>
+      <div class="fc-body">The OPEN HOUSE audience — craft-curious, maker-adjacent, spending Saturday making things — is a premium target for brands like Blick Art Materials, Michaels, Cricut, Etsy, local print studios, and art supply companies. A 2-day event with 300+ attendees who are actively creating is a live product demonstration opportunity. Sponsorship tiers starting at $500 (logo placement + social mention) to $5,000 (activation booth + exclusive activity sponsor) could add $5,000–$25,000 per event edition without changing the attendee experience. This revenue stream does not exist yet. It should.</div>
+    </div>
+  </div>
+
+  <hr class="section-rule">
+
+  <div class="section" id="fin-passport">
+    <h2>Financial Model — Passport Economics</h2>
+    <p>The Creative Passport is a pure-margin revenue line. No cost of goods. The $50 is essentially $50.</p>
+
+    <table class="journey-table">
+      <thead>
+        <tr>
+          <th>Scenario</th>
+          <th>Attendance (2 days)</th>
+          <th>Passport Conversion Rate</th>
+          <th>Passports Sold</th>
+          <th>Blended Price</th>
+          <th>Passport Revenue</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Conservative</td>
+          <td>300</td>
+          <td>15%</td>
+          <td>45</td>
+          <td>$44</td>
+          <td>$1,980</td>
+        </tr>
+        <tr>
+          <td>Current estimate</td>
+          <td>400</td>
+          <td>20%</td>
+          <td>80</td>
+          <td>$46</td>
+          <td>$3,680</td>
+        </tr>
+        <tr>
+          <td>With activity directory</td>
+          <td>400</td>
+          <td>35%</td>
+          <td>140</td>
+          <td>$45</td>
+          <td>$6,300</td>
+        </tr>
+        <tr>
+          <td>With timed slots + directory</td>
+          <td>450</td>
+          <td>50%</td>
+          <td>225</td>
+          <td>$47</td>
+          <td><strong>$10,575</strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout">
+      The conversion rate difference between "passport with no activity preview" (~20%) and "passport with specific activity directory + slot reservation" (~50%) is the single variable that most affects event profitability. The fix is operational, not promotional. No ad spend required.
+    </div>
+
+    <div class="finding-card vision key-hl">
+      <div class="fc-label">Key Insight</div>
+      <div class="fc-title">The activity directory is not a nice-to-have. It is a revenue mechanism.</div>
+      <div class="fc-body">At 20% conversion: 80 passports × $46 = $3,680 in passport revenue. At 50% conversion: 225 passports × $47 = $10,575 in passport revenue. The difference — $6,895 — comes entirely from publishing the maker directory and activity list before the event. That is the financial return on one afternoon of content work.</div>
+    </div>
+  </div>
+
+  <hr class="section-rule">
+
+  <div class="section" id="fin-growth">
+    <h2>Financial Model — Growth Pathway</h2>
+    <p>OPEN HOUSE has the foundation of something that can grow beyond a one-time pop-up. The question is whether it builds the infrastructure now — email list, maker directory, community — or starts over with each edition.</p>
+
+    <div class="revenue-row">
+      <div class="revenue-block">
+        <div class="rb-label">Edition 1 (current)</div>
+        <div class="rb-val">~$5K</div>
+        <div class="rb-sub">Passports + booth fees · no sponsor revenue</div>
+      </div>
+      <div class="revenue-block">
+        <div class="rb-label">Edition 2 (improved)</div>
+        <div class="rb-val">~$15K</div>
+        <div class="rb-sub">Higher passport conversion + first sponsor tier + email-driven advance sales</div>
+      </div>
+      <div class="revenue-block">
+        <div class="rb-label">Year 2 (recurring)</div>
+        <div class="rb-val">~$35K</div>
+        <div class="rb-sub">Two annual editions + waitlist community + full sponsor program</div>
+      </div>
+    </div>
+
+    <p>The growth path requires one thing above all others: a community list. Every passport buyer who provides an email becomes the advance-sale audience for the next edition. That list — 100 people after Edition 1, 300 after Edition 2 — is the event's most valuable asset. It reduces dependence on social media algorithms for every subsequent event and enables advance passport sales before any marketing spend.</p>
+
+    <div class="finding-card opp">
+      <div class="fc-label">The Community Asset</div>
+      <div class="fc-title">Build the list now. Every edition launches to a warm audience.</div>
+      <div class="fc-body">When OPEN HOUSE Edition 2 is announced, it should not start from zero. The 200+ people who attended Edition 1 and opted into email communication are the advance-sale audience — people who have already had the experience and want to come back. Advance passport sales from this list (at 40% conversion, 200 people = 80 passports = $3,600 before a single social post is published) fund the event's operational confidence before public marketing begins.</div>
+    </div>
+  </div>
+
+  <hr class="section-rule">
+
+  <!-- ── ROADMAP ──────────────────────────────────────────────────── -->
+  <div class="section" id="roadmap">
+    <h2>Before the Next Event — Prioritized Roadmap</h2>
+    <p>Seven changes. Most are copy and operational. None require a site rebuild or new technology.</p>
+
+    <div class="phase-row">
+      <div class="phase-num">1</div>
+      <div class="phase-body">
+        <strong>Publish the maker directory + activity preview</strong>
+        <span>The single highest-leverage action. Each maker: name, photo, activity description, one sentence. This is the conversion mechanism for advance passport sales and the primary marketing asset for maker promotion.</span>
+      </div>
+    </div>
+
+    <div class="phase-row">
+      <div class="phase-num">2</div>
+      <div class="phase-body">
+        <strong>Fix the vendor count discrepancy across all platforms</strong>
+        <span>One number, confirmed, consistent across the website, Partiful, Instagram bio, and any press. If the actual number is 32 makers, say 32 makers. Specificity beats ambition in credibility.</span>
+      </div>
+    </div>
+
+    <div class="phase-row">
+      <div class="phase-num">3</div>
+      <div class="phase-body">
+        <strong>Redesign CTA hierarchy — passport dominant</strong>
+        <span>One primary button, one secondary link, one tertiary social. The passport purchase CTA should have the most visual weight on the page. No other action competes with it.</span>
+      </div>
+    </div>
+
+    <div class="phase-row">
+      <div class="phase-num">4</div>
+      <div class="phase-body">
+        <strong>Add the per-activity value math below the passport price</strong>
+        <span>"8 guided creative experiences · $6.25 each · makers charge $12–20 standalone." This sentence converts the $50 ask from a cost into a bargain. It belongs directly beneath the passport CTA, not buried in copy.</span>
+      </div>
+    </div>
+
+    <div class="phase-row">
+      <div class="phase-num">5</div>
+      <div class="phase-body">
+        <strong>Set capacity expectations in purchase confirmation</strong>
+        <span>One sentence telling passport buyers to arrive early. Prevents the resentment of a late-arriving buyer who finds activities closed. Sets expectations before they can be violated.</span>
+      </div>
+    </div>
+
+    <div class="phase-row">
+      <div class="phase-num">6</div>
+      <div class="phase-body">
+        <strong>Capture email at passport purchase and on-site</strong>
+        <span>Build the community list. Every passport buyer who opts in becomes advance-sale audience for Edition 2. Clipboard at entrance for free attendees who want to "be first to know about the next event."</span>
+      </div>
+    </div>
+
+    <div class="phase-row">
+      <div class="phase-num">7</div>
+      <div class="phase-body">
+        <strong>Send the post-event email within 48 hours</strong>
+        <span>"What did you make? Tag us. And be the first to know about our next edition." This email transforms an event into a community. The next edition's advance sales come from this list — not from starting over on social media.</span>
+      </div>
+    </div>
+
+    <div class="score-card">
+      <div class="sc-label">Bottom Line</div>
+      <div class="sc-row">
+        <div class="sc-n pk">$6.9K</div>
+        <div class="sc-desc">Additional passport revenue available from publishing the maker directory alone — with no ad spend, no new technology, and no change to the event experience.</div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<button id="ez-back-top" aria-label="Back to top">
+  <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<div class="confidential-banner">Prepared by Elliyeen Research · OPEN HOUSE Creative Fest</div>
+<div id="ez-share-toast">Link copied to clipboard</div>
+
+<div id="ez-wizard-overlay">
+  <div id="ez-wizard-card">
+    <div class="wz-head">
+      <div class="wz-step-lbl" id="wz-lbl"></div>
+      <div class="wz-ttl" id="wz-ttl"></div>
+    </div>
+    <div class="wz-bdy" id="wz-bdy"></div>
+    <div class="wz-foot">
+      <div class="wz-dots" id="wz-dots"></div>
+      <button class="wz-skip" id="wz-skip">Skip guide</button>
+      <div class="wz-btns">
+        <button class="wz-btn wz-back-btn" id="wz-back">Back</button>
+        <button class="wz-btn wz-next-btn" id="wz-next">Next →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const body = document.body;
+if (window.innerWidth < 769) body.classList.add('ez-drawer-closed');
+document.getElementById('ez-drawer-toggle').addEventListener('click', () => body.classList.toggle('ez-drawer-closed'));
+
+const backTop = document.getElementById('ez-back-top');
+window.addEventListener('scroll', () => { backTop.classList.toggle('ez-visible', window.scrollY > 400); }, { passive: true });
+backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+const sections = document.querySelectorAll('.section[id]');
+const navLinks = document.querySelectorAll('.ez-nav-link');
+sections.forEach(s => {
+  new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { navLinks.forEach(l => l.classList.remove('ez-active')); const a = document.querySelector(`.ez-nav-link[href="#${e.target.id}"]`); if (a) a.classList.add('ez-active'); }}); }, { rootMargin: '-20% 0px -60% 0px' }).observe(s);
+});
+
+const shareBtn = document.getElementById('ez-share-btn');
+const shareLabel = document.getElementById('ez-share-label');
+const shareToast = document.getElementById('ez-share-toast');
+shareBtn.addEventListener('click', function () {
+  if (navigator.share) { navigator.share({ title: 'OPEN HOUSE Creative Fest \u2014 Full Audit', url: location.href }).catch(function(){}); }
+  else { navigator.clipboard.writeText(location.href).then(function () { shareBtn.classList.add('ez-copied'); shareLabel.textContent = 'Copied!'; shareToast.classList.add('ez-visible'); setTimeout(function () { shareBtn.classList.remove('ez-copied'); shareLabel.textContent = 'Share'; shareToast.classList.remove('ez-visible'); }, 2500); }); }
+});
+
+var wzSteps = [
+  {
+    label: 'Step 1 of 4 \u2014 The Concept',
+    title: 'The concept was compelling. The $50 ask was asking for faith.',
+    body: '<div class="wz-stat-row"><div><div class="wz-stat-n r">2</div><div class="wz-stat-s">conflicting vendor counts</div></div><div><div class="wz-stat-n r">0</div><div class="wz-stat-s">activities listed pre-event</div></div><div><div class="wz-stat-n pk">$6.9K</div><div class="wz-stat-s">additional passport revenue available</div></div></div><p>OPEN HOUSE has a genuinely differentiated concept. \u201cDon\u2019t just shop. Create.\u201d The guided activity model is compelling. The Creative Passport is the right product. The problem is that the $50 passport is being sold before the buyer knows what it unlocks.</p>'
+  },
+  {
+    label: 'Step 2 of 4 \u2014 Website Audit',
+    title: 'Four failures. All fixable before the doors open.',
+    body: '<div class="wz-rm"><div class="wz-rm-item"><span class="wz-rm-badge">FAILURE 1</span><span>Vendor count inconsistency (50+ website vs. 30 Partiful) \u2014 signals operational immaturity to buyers doing due diligence.</span></div><div class="wz-rm-item"><span class="wz-rm-badge">FAILURE 2</span><span>No activity directory \u2014 the buyer cannot see what their $50 unlocks. \u201cPaint, shape, weave, or assemble\u201d is a category, not an offer.</span></div><div class="wz-rm-item"><span class="wz-rm-badge">FAILURE 3</span><span>First-come-first-served with no arrival guidance \u2014 late passport buyers may arrive to find nothing available.</span></div><div class="wz-rm-item"><span class="wz-rm-badge">FAILURE 4</span><span>Three equal CTAs \u2014 the passport purchase does not dominate the page visually.</span></div></div>'
+  },
+  {
+    label: 'Step 3 of 4 \u2014 Customer Experience',
+    title: 'She would buy. She just needed to know what she was buying.',
+    body: '<div class="wz-hl">\u201cValue urgency \u2014 \u2018only 8 spots left for the leather workshop\u2019 \u2014 converts advance purchases far more reliably than price urgency. The early bird discount creates price urgency. But the buyer doesn\u2019t know what she\u2019s buying yet.\u201d</div><p>The Maker Community Member \u2014 the ideal passport buyer \u2014 hesitates at $50 not because the price is wrong but because the value is abstract. Name the experiences. Show her the makers. Tell her what she\u2019ll make. She buys.</p>'
+  },
+  {
+    label: 'Step 4 of 4 \u2014 Financial Model',
+    title: '$6.9K in additional passport revenue. One afternoon of content work.',
+    body: '<div class="wz-rm"><div class="wz-rm-item"><span class="wz-rm-badge" style="background:var(--good)">NOW</span><span>~20% passport conversion (abstract offer) = ~80 passports = ~$3,680 passport revenue.</span></div><div class="wz-rm-item"><span class="wz-rm-badge" style="background:var(--good)">WITH DIRECTORY</span><span>~50% passport conversion (specific activity list) = ~225 passports = ~$10,575 passport revenue.</span></div><div class="wz-rm-item"><span class="wz-rm-badge" style="background:var(--good)">YEAR 2</span><span>Email list from Edition 1 + sponsor program + two annual editions = ~$35K annual revenue run rate.</span></div></div><div class="wz-cta-blk"><p>Ready to build the activity directory?</p><div class="wz-cta-email">hello@elliyeen.com</div></div><p class="wz-note">Use the navigation on the left to read each section in full.</p>'
+  }
+];
+
+var wzCur = 0;
+var wzOverlay = document.getElementById('ez-wizard-overlay');
+function wzRender() {
+  var s = wzSteps[wzCur];
+  document.getElementById('wz-lbl').textContent = s.label;
+  document.getElementById('wz-ttl').textContent = s.title;
+  document.getElementById('wz-bdy').innerHTML = s.body;
+  var dots = document.getElementById('wz-dots'); dots.innerHTML = '';
+  wzSteps.forEach(function(_, i) { var d = document.createElement('div'); d.className = 'wz-dot' + (i === wzCur ? ' active' : ''); dots.appendChild(d); });
+  document.getElementById('wz-back').style.visibility = wzCur === 0 ? 'hidden' : 'visible';
+  document.getElementById('wz-next').textContent = wzCur === wzSteps.length - 1 ? 'Read the report \u2192' : 'Next \u2192';
+}
+function wzClose() { wzOverlay.classList.add('ez-hidden'); setTimeout(function() { if (wzOverlay.parentNode) wzOverlay.parentNode.removeChild(wzOverlay); }, 400); }
+document.getElementById('wz-next').addEventListener('click', function() { if (wzCur < wzSteps.length - 1) { wzCur++; wzRender(); } else { wzClose(); } });
+document.getElementById('wz-back').addEventListener('click', function() { if (wzCur > 0) { wzCur--; wzRender(); } });
+document.getElementById('wz-skip').addEventListener('click', wzClose);
+wzOverlay.addEventListener('click', function(e) { if (e.target === wzOverlay) wzClose(); });
+wzRender();
+</script>
+</body>
+</html>

@@ -10,6 +10,54 @@ export const metadata: Metadata = {
 
 const reports = [
   {
+    client: "OPEN HOUSE Creative Fest",
+    location: "Torrance, CA",
+    type: "Full Business Audit — Website · CX · Financial Model",
+    summary:
+      "Creative market passport selling on faith. No activity directory, conflicting vendor counts, flat CTA hierarchy. $6.9K in additional passport revenue available from one afternoon of content work.",
+    score: null,
+    verdict: null,
+    href: "/reports/openhouse-audit.html",
+    date: "June 2026",
+    badge: "New",
+  },
+  {
+    client: "Savannah Personal Care Services",
+    location: "Savannah, GA",
+    type: "Full Business Audit — Website · CX · Financial Model",
+    summary:
+      "CNA-founded home care agency with 4 critical website failures and a $2M+ revenue opportunity. Website audit, customer experience journey, and financial model with path-to-scale.",
+    score: null,
+    verdict: null,
+    href: "/reports/spcs-audit.html",
+    date: "June 2026",
+    badge: "New",
+  },
+  {
+    client: "Milano Family Pizza",
+    location: "Richardson, TX",
+    type: "CX & Financial Model Audit",
+    summary:
+      "Platform dependence eroding margin, no loyalty mechanism, and an ordering journey that resets every customer. Revenue pathway and experience fixes documented.",
+    score: null,
+    verdict: null,
+    href: "/reports/milano-cx-audit.html",
+    date: "June 2026",
+    badge: "New",
+  },
+  {
+    client: "Wealth Management Firm",
+    location: "Confidential",
+    type: "Conversion · CX · Financial Model Audit",
+    summary:
+      "Three objections stopping conversion. Zero pages that answered them. CX journey rebuilt, founder vision documented, and AUM growth pathway modeled.",
+    score: null,
+    verdict: null,
+    href: "/reports/wealth-management-audit.html",
+    date: "June 2026",
+    badge: "Updated",
+  },
+  {
     client: "Milano Family Pizza",
     location: "Richardson, TX",
     type: "Dual-Site Revenue Audit",
@@ -19,6 +67,7 @@ const reports = [
     verdict: "moves_away",
     href: "/reports/milano-audit.html",
     date: "June 2026",
+    badge: null,
   },
   {
     client: "SAX Wealth Advisors",
@@ -30,28 +79,19 @@ const reports = [
     verdict: null,
     href: "/reports/sax-audit.html",
     date: "June 2026",
-  },
-  {
-    client: "Wealth Management Firm",
-    location: "Confidential",
-    type: "Conversion Audit",
-    summary:
-      "High-AUM advisory practice with positioning mismatch, weak differentiation from wirehouses, and missed AEO opportunities.",
-    score: null,
-    verdict: null,
-    href: "/reports/sax-audit",
-    date: "June 2026",
+    badge: null,
   },
   {
     client: "Savannah Personal Care Services",
     location: "Savannah, GA",
-    type: "Revenue Opportunity Report",
+    type: "Case Study — 22-Agent Audit + Site Rebuild",
     summary:
-      "Home care agency with strong founder credentials underrepresented online. CNA-founded positioning and $2M+ revenue opportunity documented.",
+      "Home care agency with strong founder credentials underrepresented online. Full site rebuild documented with before/after and live site.",
     score: null,
     verdict: null,
     href: "/spcs-report",
     date: "June 2026",
+    badge: null,
   },
 ];
 
@@ -110,6 +150,11 @@ export default function ReportsPage() {
                     <p className="text-xs font-bold uppercase tracking-[0.2em] text-zinc-400">
                       {r.type}
                     </p>
+                    {r.badge && (
+                      <span className={`rounded-full px-2 py-0.5 text-xs font-semibold ${r.badge === "New" ? "bg-[#1B5EA8]/10 text-[#1B5EA8]" : "bg-amber-100 text-amber-700"}`}>
+                        {r.badge}
+                      </span>
+                    )}
                     {r.score && (
                       <span className="rounded-full bg-zinc-100 px-2 py-0.5 text-xs font-semibold text-zinc-500">
                         Score {r.score}

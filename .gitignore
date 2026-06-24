@@ -5,3 +5,6 @@ out/
 .DS_Store
 *.pem
 .claude/
+.playwright-mcp/
+tsconfig.tsbuildinfo
+Rplots.pdf

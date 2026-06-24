@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Savannah Personal Care Services — Full Business Audit · Elliyeen Research · Website, Customer Experience & Financial Model">
+<title>Savannah Personal Care Services — Full Audit · Elliyeen Research</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --teal:      #0a5c52;
+  --teal-dk:   #073d36;
+  --teal-lt:   #e4f0ee;
+  --teal-mid:  #1a7a6d;
+  --sand:      #f5f0e8;
+  --drawer-bg: #edf2f0;
+  --ink:       #1a1a1a;
+  --soft:      #5a5a5a;
+  --rule:      rgba(0,0,0,0.08);
+  --rust:      #a03c2a;
+  --rust-lt:   #faeae6;
+  --amber:     #9e6b00;
+  --amber-lt:  #fef3dc;
+  --good:      #2d6a4f;
+  --good-lt:   #e2f0e8;
+  --gold:      #c09040;
+}
+
+html { font-size: 16px; scroll-behavior: smooth; }
+body {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  color: var(--ink);
+  background: var(--sand);
+  overflow-x: hidden;
+  line-height: 1.65;
+}
+
+.main-container {
+  margin-left: 260px;
+  margin-top: 52px;
+  max-width: 880px;
+  padding: 2.5rem 2.8rem 6rem;
+  transition: margin-left 0.38s cubic-bezier(.4,0,.2,1);
+}
+body.ez-drawer-closed .main-container {
+  margin-left: 0;
+  max-width: 940px;
+}
+
+/* Top Nav */
+#ez-topnav {
+  position: fixed; top: 0; left: 0; right: 0;
+  height: 52px; background: #fff;
+  border-bottom: 1px solid var(--rule);
+  display: flex; align-items: center;
+  justify-content: space-between;
+  padding: 0 1.4rem; z-index: 5900;
+  box-shadow: 0 1px 8px rgba(0,0,0,0.05);
+}
+#ez-topnav-brand { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #111; text-decoration: none; }
+#ez-topnav-title { position: absolute; left: 50%; transform: translateX(-50%); font-size: 0.82rem; font-weight: 500; color: #555; white-space: nowrap; }
+#ez-topnav-actions { display: flex; align-items: center; gap: 0.6rem; }
+.ez-topnav-btn {
+  display: flex; align-items: center; gap: 0.45rem;
+  padding: 0.4rem 0.9rem; border-radius: 6px;
+  font-size: 0.76rem; font-weight: 500; cursor: pointer;
+  border: 1px solid rgba(0,0,0,0.12); background: #fff; color: #333;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  text-decoration: none;
+  transition: background 0.15s, border-color 0.15s;
+}
+.ez-topnav-btn:hover { background: #f5f5f5; border-color: rgba(0,0,0,0.22); }
+.ez-topnav-btn svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+/* Drawer */
+#ez-drawer {
+  position: fixed; top: 0; left: 0;
+  width: 256px; height: 100vh;
+  background: var(--drawer-bg);
+  display: flex; flex-direction: column;
+  z-index: 6000; transform: translateX(0);
+  transition: transform 0.38s cubic-bezier(.4,0,.2,1);
+  overflow: hidden; border-right: 1px solid var(--rule);
+  box-shadow: 2px 0 20px rgba(0,0,0,0.06);
+}
+body.ez-drawer-closed #ez-drawer { transform: translateX(-256px); }
+.ez-drawer-brand {
+  height: 52px; display: flex; align-items: center;
+  padding: 0 1.2rem; border-bottom: 1px solid rgba(0,0,0,0.08);
+  flex-shrink: 0;
+}
+.ez-drawer-brand span { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #aaa; font-family: 'DM Sans', system-ui, sans-serif; }
+.ez-drawer-nav {
+  flex: 1; overflow-y: auto;
+  padding: 1.2rem 0 2rem;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0,0,0,0.12) transparent;
+}
+.ez-nav-group { margin-bottom: 0.4rem; }
+.ez-nav-group-label {
+  display: block;
+  padding: 0.5rem 1.2rem 0.4rem;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 0.62rem; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: #888;
+}
+.ez-nav-link {
+  display: block; padding: 0.36rem 1.2rem 0.36rem 1.4rem;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 0.81rem; font-weight: 400; color: #555;
+  text-decoration: none;
+  border-left: 2px solid transparent; margin-left: 0.4rem;
+  line-height: 1.4; transition: color 0.15s, border-color 0.15s, background 0.15s;
+}
+.ez-nav-link:hover { color: #111; background: rgba(0,0,0,0.04); border-left-color: rgba(0,0,0,0.18); }
+.ez-nav-link.ez-active { color: #111; border-left-color: var(--teal); background: rgba(10,92,82,0.06); font-weight: 500; }
+
+#ez-drawer-toggle {
+  position: fixed; top: 50%; left: 256px;
+  transform: translateY(-50%); width: 18px; height: 52px;
+  background: #dde8e5; border: 1px solid rgba(0,0,0,0.1);
+  border-left: none; border-radius: 0 4px 4px 0;
+  cursor: pointer; z-index: 6100;
+  display: flex; align-items: center; justify-content: center; padding: 0;
+  transition: left 0.38s cubic-bezier(.4,0,.2,1), background 0.15s;
+  box-shadow: 2px 0 6px rgba(0,0,0,0.08);
+}
+#ez-drawer-toggle:hover { background: #cdd8d5; }
+body.ez-drawer-closed #ez-drawer-toggle { left: 0; }
+#ez-drawer-toggle svg { width: 10px; height: 10px; fill: none; stroke: rgba(0,0,0,0.5); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: transform 0.35s; }
+body.ez-drawer-closed #ez-drawer-toggle svg { transform: rotate(180deg); }
+
+/* Back to Top */
+#ez-back-top {
+  position: fixed; bottom: 1.6rem; right: 1.6rem;
+  width: 44px; height: 44px; background: #fff; color: #333;
+  border: 1px solid rgba(0,0,0,0.10); border-radius: 50%;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.10), 0 1px 4px rgba(0,0,0,0.06);
+  opacity: 0; transform: translateY(14px);
+  transition: opacity 0.25s, transform 0.25s, background 0.15s; z-index: 8000;
+}
+#ez-back-top svg { width: 18px; height: 18px; fill: none; stroke: #333; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+#ez-back-top.ez-visible { opacity: 1; transform: translateY(0); }
+#ez-back-top:hover { background: #f5f5f5; }
+
+/* Typography */
+h1, h2, h3 { font-family: 'EB Garamond', Georgia, serif; font-weight: 500; }
+h1 { font-size: 2.6rem; line-height: 1.18; letter-spacing: -0.02em; margin-bottom: 1.2rem; }
+h2 { font-size: 1.72rem; line-height: 1.24; margin-bottom: 0.9rem; }
+h3 { font-size: 1.22rem; line-height: 1.3; margin-bottom: 0.5rem; }
+p { margin-bottom: 1rem; font-size: 0.95rem; color: #2a2a2a; }
+p:last-child { margin-bottom: 0; }
+
+.report-meta {
+  font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em;
+  text-transform: uppercase; color: #999;
+  margin-bottom: 1.8rem; display: flex; flex-wrap: wrap; gap: 1rem;
+}
+
+.section { margin-bottom: 3.2rem; }
+.section:first-of-type { margin-top: 0.5rem; }
+
+hr.section-rule { border: none; border-top: 1px solid var(--rule); margin: 2.8rem 0; }
+
+/* Stat row */
+.stat-row { display: flex; gap: 2rem; flex-wrap: wrap; margin: 1.5rem 0; }
+.stat-block { flex: 1; min-width: 130px; }
+.stat-n { font-family: 'EB Garamond', Georgia, serif; font-size: 2.6rem; font-weight: 500; line-height: 1; }
+.stat-n.r { color: var(--rust); }
+.stat-n.a { color: var(--amber); }
+.stat-n.g { color: var(--good); }
+.stat-n.t { color: var(--teal); }
+.stat-s { font-size: 0.72rem; color: #888; text-transform: uppercase; letter-spacing: 0.08em; margin-top: 0.2rem; }
+
+/* Finding cards */
+.finding-card {
+  background: #fff; border-radius: 8px;
+  border: 1px solid var(--rule);
+  padding: 1.4rem 1.6rem;
+  margin-bottom: 1.2rem;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+}
+.finding-card .fc-label {
+  font-size: 0.62rem; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase; color: #999; margin-bottom: 0.45rem;
+}
+.finding-card .fc-title {
+  font-family: 'EB Garamond', Georgia, serif; font-size: 1.16rem;
+  font-weight: 500; line-height: 1.28; margin-bottom: 0.5rem;
+}
+.finding-card .fc-body { font-size: 0.88rem; color: #444; line-height: 1.6; }
+.finding-card.issue { border-left: 3px solid var(--rust); }
+.finding-card.fix   { border-left: 3px solid var(--good); }
+.finding-card.opp   { border-left: 3px solid var(--gold); }
+.finding-card.vision { border-left: 3px solid var(--teal); }
+
+.finding-card.key-hl {
+  background: #f0f7f5;
+  border-left: 3px solid var(--teal);
+  box-shadow: 0 0 0 2px rgba(10,92,82,0.07), 0 3px 14px rgba(0,0,0,0.07);
+}
+.finding-card.key-hl::before {
+  content: '★  KEY FINDING';
+  display: block;
+  font-size: 0.6rem; font-weight: 700;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--teal); margin-bottom: 0.55rem;
+}
+.finding-card.key-hl.issue::before { color: var(--rust); content: '★  KEY FINDING'; }
+
+/* Callout */
+.callout {
+  background: var(--teal-lt); border-left: 3px solid var(--teal);
+  border-radius: 0 6px 6px 0; padding: 1rem 1.2rem; margin: 1.4rem 0;
+  font-size: 0.9rem; color: #0a2e2a;
+}
+.callout.amber { background: var(--amber-lt); border-left-color: var(--amber); color: #3a2a00; }
+.callout.rust  { background: var(--rust-lt);  border-left-color: var(--rust);  color: #3a0a00; }
+.callout strong { font-weight: 600; }
+
+/* Journey table */
+.journey-table { width: 100%; border-collapse: collapse; margin: 1.4rem 0; font-size: 0.88rem; }
+.journey-table th {
+  text-align: left; padding: 0.5rem 0.8rem;
+  background: var(--teal); color: #fff;
+  font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase;
+  font-weight: 600;
+}
+.journey-table th:first-child { border-radius: 6px 0 0 0; }
+.journey-table th:last-child  { border-radius: 0 6px 0 0; }
+.journey-table td { padding: 0.65rem 0.8rem; border-bottom: 1px solid var(--rule); vertical-align: top; }
+.journey-table tr:last-child td { border-bottom: none; }
+.journey-table tr:nth-child(even) td { background: rgba(0,0,0,0.018); }
+
+.tag-bad  { display: inline-block; padding: 0.15rem 0.5rem; border-radius: 3px; font-size: 0.7rem; font-weight: 600; background: var(--rust-lt); color: var(--rust); }
+.tag-good { display: inline-block; padding: 0.15rem 0.5rem; border-radius: 3px; font-size: 0.7rem; font-weight: 600; background: var(--good-lt); color: var(--good); }
+.tag-warn { display: inline-block; padding: 0.15rem 0.5rem; border-radius: 3px; font-size: 0.7rem; font-weight: 600; background: var(--amber-lt); color: var(--amber); }
+
+/* Revenue model */
+.revenue-row { display: flex; gap: 1.2rem; flex-wrap: wrap; margin: 1.2rem 0; }
+.revenue-block {
+  flex: 1; min-width: 160px;
+  background: #fff; border-radius: 8px; border: 1px solid var(--rule);
+  padding: 1.1rem 1.2rem;
+}
+.revenue-block .rb-label { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #aaa; margin-bottom: 0.3rem; }
+.revenue-block .rb-val { font-family: 'EB Garamond', Georgia, serif; font-size: 1.8rem; font-weight: 500; line-height: 1; color: var(--teal); }
+.revenue-block .rb-sub { font-size: 0.76rem; color: #888; margin-top: 0.2rem; }
+
+/* Phase roadmap */
+.phase-row { display: flex; gap: 0.8rem; align-items: flex-start; margin-bottom: 1.2rem; }
+.phase-num {
+  flex-shrink: 0; width: 32px; height: 32px;
+  background: var(--teal); color: #fff;
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  font-size: 0.8rem; font-weight: 700; margin-top: 0.1rem;
+}
+.phase-body { flex: 1; }
+.phase-body strong { display: block; font-size: 0.9rem; font-weight: 600; color: #111; margin-bottom: 0.2rem; }
+.phase-body span { font-size: 0.84rem; color: #555; }
+
+/* Preemptive claim block */
+.preemptive-block {
+  background: var(--teal); color: #fff;
+  border-radius: 8px; padding: 1.6rem 1.8rem; margin: 1.6rem 0;
+}
+.preemptive-block .pb-label { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.5; margin-bottom: 0.6rem; }
+.preemptive-block .pb-quote { font-family: 'EB Garamond', Georgia, serif; font-size: 1.28rem; line-height: 1.5; font-style: italic; }
+.preemptive-block .pb-attribution { font-size: 0.78rem; opacity: 0.6; margin-top: 0.8rem; }
+
+/* Vision block */
+.vision-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.4rem 0; }
+@media (max-width: 620px) { .vision-row { grid-template-columns: 1fr; } }
+.vision-card {
+  background: #fff; border-radius: 8px; border: 1px solid var(--rule);
+  padding: 1.2rem 1.3rem;
+}
+.vision-card .vc-label { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.5rem; }
+.vision-card .vc-label.current { color: var(--rust); }
+.vision-card .vc-label.desired { color: var(--good); }
+.vision-card ul { padding-left: 1.1rem; }
+.vision-card ul li { font-size: 0.88rem; color: #444; line-height: 1.6; margin-bottom: 0.3rem; }
+
+/* Confidential banner */
+.confidential-banner {
+  background: var(--teal-dk); color: rgba(255,255,255,0.45);
+  font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase;
+  text-align: center; padding: 0.4rem 1rem;
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 4000;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  #ez-drawer { transform: translateX(-256px); }
+  body:not(.ez-drawer-closed) #ez-drawer { transform: translateX(0); }
+  body.ez-drawer-closed #ez-drawer { transform: translateX(-256px); }
+  #ez-drawer-toggle { left: 0 !important; }
+  body:not(.ez-drawer-closed) #ez-drawer-toggle { left: 256px !important; }
+  .main-container { margin-left: 0 !important; padding: 1.5rem 1.2rem 5rem; }
+  #ez-topnav-title { display: none; }
+  h1 { font-size: 1.9rem; }
+  h2 { font-size: 1.38rem; }
+  .stat-row { gap: 1.2rem; }
+}
+
+/* Share toast */
+#ez-share-toast {
+  position: fixed; bottom: 1.6rem; left: 50%;
+  transform: translateX(-50%) translateY(12px);
+  background: #111; color: #fff;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 0.8rem; padding: 0.55rem 1.1rem;
+  border-radius: 6px; opacity: 0; pointer-events: none;
+  transition: opacity 0.25s, transform 0.25s; z-index: 9000; white-space: nowrap;
+}
+#ez-share-toast.ez-visible { opacity: 1; transform: translateX(-50%) translateY(0); }
+.ez-topnav-btn.ez-copied { background: #f0faf5; border-color: #2d9e6b; color: #2d9e6b; }
+
+/* Wizard */
+#ez-wizard-overlay {
+  position: fixed; inset: 0;
+  background: rgba(4,22,18,0.88);
+  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  z-index: 9999; display: flex; align-items: center; justify-content: center;
+  padding: 1rem; transition: opacity 0.35s ease;
+}
+#ez-wizard-overlay.ez-hidden { opacity: 0; pointer-events: none; }
+#ez-wizard-card {
+  background: #fff; border-radius: 8px;
+  max-width: 580px; width: 100%; overflow: hidden;
+  box-shadow: 0 28px 90px rgba(0,0,0,0.40);
+  font-family: 'DM Sans', system-ui, sans-serif;
+}
+.wz-head { background: var(--teal); color: white; padding: 1.5rem 1.8rem 1.1rem; }
+.wz-step-lbl { font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.5; margin-bottom: 0.4rem; }
+.wz-ttl { font-family: 'EB Garamond', Georgia, serif; font-size: 1.52rem; line-height: 1.22; margin: 0; font-weight: 500; }
+.wz-bdy { padding: 1.4rem 1.8rem 0.9rem; min-height: 165px; }
+.wz-bdy p { font-size: 0.92rem; line-height: 1.68; color: #2a2a2a; margin: 0 0 0.7rem; }
+.wz-stat-row { display: flex; gap: 1.6rem; margin: 0.5rem 0 0.9rem; flex-wrap: wrap; }
+.wz-stat-n { font-family: 'EB Garamond', Georgia, serif; font-size: 2.4rem; font-weight: 500; line-height: 1; }
+.wz-stat-n.r { color: var(--rust); }
+.wz-stat-n.t { color: var(--teal); }
+.wz-stat-n.a { color: var(--amber); }
+.wz-stat-s { font-size: 0.7rem; color: #999; text-transform: uppercase; letter-spacing: 0.08em; margin-top: 0.1rem; }
+.wz-hl { background: #e8f2f0; border-left: 3px solid var(--teal); padding: 0.65rem 1rem; border-radius: 0 4px 4px 0; font-size: 0.88rem; color: #0a2e2a; margin: 0.4rem 0 0.8rem; font-style: italic; line-height: 1.5; font-family: 'EB Garamond', Georgia, serif; }
+.wz-rm { margin: 0.3rem 0 0.75rem; }
+.wz-rm-item { display: flex; gap: 0.7rem; align-items: flex-start; margin-bottom: 0.5rem; font-size: 0.87rem; line-height: 1.5; color: #2a2a2a; }
+.wz-rm-badge { flex-shrink: 0; background: var(--rust); color: white; font-size: 0.62rem; padding: 0.15rem 0.4rem; border-radius: 3px; margin-top: 0.15rem; letter-spacing: 0.04em; font-weight: 500; }
+.wz-cta-blk { background: var(--teal); color: white; padding: 1rem 1.2rem; border-radius: 4px; margin-top: 0.6rem; }
+.wz-cta-blk p { color: rgba(255,255,255,0.75) !important; font-size: 0.86rem !important; margin-bottom: 0.45rem !important; }
+.wz-cta-email { font-family: 'EB Garamond', Georgia, serif; font-size: 1.12rem; color: white; font-weight: 500; }
+.wz-note { font-size: 0.76rem !important; color: #aaa !important; margin-top: 0.75rem !important; }
+.wz-foot { padding: 0.9rem 1.8rem 1.3rem; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid #efefed; gap: 0.6rem; }
+.wz-dots { display: flex; gap: 6px; flex-shrink: 0; }
+.wz-dot { width: 7px; height: 7px; border-radius: 50%; background: #e0e0e0; transition: background 0.2s, transform 0.2s; }
+.wz-dot.active { background: var(--teal); transform: scale(1.25); }
+.wz-skip { font-size: 0.74rem; color: #bbb; cursor: pointer; border: none; background: none; font-family: 'DM Sans', system-ui, sans-serif; padding: 0; text-decoration: underline; white-space: nowrap; }
+.wz-skip:hover { color: #666; }
+.wz-btns { display: flex; gap: 0.5rem; flex-shrink: 0; }
+.wz-btn { padding: 0.46rem 1rem; border-radius: 4px; font-size: 0.83rem; cursor: pointer; border: none; font-family: 'DM Sans', system-ui, sans-serif; transition: background 0.15s; white-space: nowrap; }
+.wz-back-btn { background: #f0f0ee; color: #555; }
+.wz-back-btn:hover { background: #e4e4e0; }
+.wz-next-btn { background: var(--teal); color: white; }
+.wz-next-btn:hover { background: var(--teal-dk); }
+@media (max-width: 767px) {
+  .wz-head { padding: 1.1rem 1.2rem 0.85rem; }
+  .wz-bdy { padding: 1.1rem 1.2rem 0.85rem; min-height: 140px; }
+  .wz-foot { padding: 0.75rem 1.2rem 1.1rem; }
+  .wz-ttl { font-size: 1.25rem; }
+  .wz-skip { display: none; }
+}
+</style>
+</head>
+<body class="">
+
+<!-- Top Nav -->
+<nav id="ez-topnav">
+  <a id="ez-topnav-brand" href="/">ELLIYEEN</a>
+  <span id="ez-topnav-title">Savannah Personal Care — Full Business Audit</span>
+  <div id="ez-topnav-actions">
+    <button class="ez-topnav-btn" id="ez-share-btn">
+      <svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+      <span id="ez-share-label">Share</span>
+    </button>
+    <a class="ez-topnav-btn" href="/#book" style="background:var(--teal);color:#fff;border-color:var(--teal);border-radius:20px;font-weight:600;">Work with us</a>
+  </div>
+</nav>
+
+<!-- Drawer -->
+<aside id="ez-drawer">
+  <div class="ez-drawer-brand">
+    <span>Elliyeen Research</span>
+  </div>
+  <nav class="ez-drawer-nav" aria-label="Report sections">
+    <div class="ez-nav-group">
+      <span class="ez-nav-group-label">Overview</span>
+      <a class="ez-nav-link" href="#situation">The Situation</a>
+      <a class="ez-nav-link" href="#founder-vision">Shannon's Vision</a>
+      <a class="ez-nav-link" href="#preemptive">The Preemptive Claim</a>
+    </div>
+    <div class="ez-nav-group">
+      <span class="ez-nav-group-label">Website Audit</span>
+      <a class="ez-nav-link" href="#web-1">1 — FAQ Was Placeholder Copy</a>
+      <a class="ez-nav-link" href="#web-2">2 — Hero Spoke to No One</a>
+      <a class="ez-nav-link" href="#web-3">3 — Credential Invisible</a>
+      <a class="ez-nav-link" href="#web-4">4 — No Local Search Presence</a>
+    </div>
+    <div class="ez-nav-group">
+      <span class="ez-nav-group-label">Customer Experience</span>
+      <a class="ez-nav-link" href="#cx-buyers">The Three Buyers</a>
+      <a class="ez-nav-link" href="#cx-journey">The 11pm Journey</a>
+      <a class="ez-nav-link" href="#cx-gaps">Where It Breaks Down</a>
+    </div>
+    <div class="ez-nav-group">
+      <span class="ez-nav-group-label">Financial Model</span>
+      <a class="ez-nav-link" href="#fin-streams">Revenue Architecture</a>
+      <a class="ez-nav-link" href="#fin-economics">Unit Economics</a>
+      <a class="ez-nav-link" href="#fin-pathway">Path to $2M</a>
+    </div>
+    <div class="ez-nav-group">
+      <span class="ez-nav-group-label">Roadmap</span>
+      <a class="ez-nav-link" href="#roadmap">Three-Phase Plan</a>
+    </div>
+  </nav>
+</aside>
+
+<button id="ez-drawer-toggle" aria-label="Toggle navigation">
+  <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+</button>
+
+<!-- Main Content -->
+<main class="main-container">
+
+  <!-- ── SITUATION ─────────────────────────────────────────────── -->
+  <div class="section" id="situation">
+    <div class="report-meta">
+      <span>Elliyeen Research</span>
+      <span>·</span>
+      <span>Home Care · Savannah, GA</span>
+      <span>·</span>
+      <span>Full Business Audit</span>
+    </div>
+
+    <h1>The credential was real.<br>The website wasn't showing it.</h1>
+
+    <div class="stat-row">
+      <div class="stat-block">
+        <div class="stat-n r">4</div>
+        <div class="stat-s">Critical website failures</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-n r">0</div>
+        <div class="stat-s">Pages that spoke to the buyer at 11pm</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-n t">$2M+</div>
+        <div class="stat-s">Revenue possible at full positioning</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-n a">1</div>
+        <div class="stat-s">Preemptive claim no competitor can match</div>
+      </div>
+    </div>
+
+    <p>Shannon Stafford Simpson is a Certified Nursing Assistant who built a home care agency. Not a business operator who hired caregivers. Not a franchise that bought a manual. A clinician who turned lived expertise into a company she owns and runs.</p>
+
+    <p>That credential is the most powerful differentiator available to any home care agency in Savannah. Home Instead — the market leader — lists "Each franchise is independently owned and operated" in its footer. Their local operator bought a playbook. Shannon earned a credential and built from that standard. No franchise in this market can say what Shannon can say.</p>
+
+    <p>This report covers three things: what the website was failing to communicate, what the family's experience looked like when they found it, and what the financial opportunity looks like when Shannon's positioning is fully built.</p>
+  </div>
+
+  <hr class="section-rule">
+
+  <!-- ── FOUNDER'S VISION ───────────────────────────────────────── -->
+  <div class="section" id="founder-vision">
+    <h2>Shannon's Vision — Where This Is Going</h2>
+    <p>Before diagnosing what the site got wrong, it's essential to name what Shannon is building toward. Every recommendation in this report is in service of that future — not a generic "better website."</p>
+
+    <div class="vision-row">
+      <div class="vision-card">
+        <div class="vc-label current">Current State</div>
+        <ul>
+          <li>Answering every inquiry personally</li>
+          <li>Competing on availability, not reputation</li>
+          <li>Website built by Wix, not built for buyers</li>
+          <li>Credential invisible to families searching online</li>
+          <li>Winning clients through relationship, not reach</li>
+          <li>No formal process named or documented</li>
+        </ul>
+      </div>
+      <div class="vision-card">
+        <div class="vc-label desired">Desired State</div>
+        <ul>
+          <li>Phone rings because families already trust her</li>
+          <li>Most trusted home care agency in Savannah</li>
+          <li>Discharge coordinators at Memorial Health refer without hesitation</li>
+          <li>CNA credential is the headline — the reason families choose SPCS</li>
+          <li>The Shannon Standard is a named, recognized process</li>
+          <li>Revenue supports a full team — Shannon leads, not labors</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="finding-card vision">
+      <div class="fc-label">The Bridge</div>
+      <div class="fc-title">From "the agency Shannon runs" to "the agency Shannon built"</div>
+      <div class="fc-body">The difference between those two phrases is the entire positioning strategy. Shannon doesn't just run this agency — she is its clinical standard. The goal is to make that visible, credible, and findable before any family makes a call. When that happens, Shannon stops competing and starts being chosen.</div>
+    </div>
+  </div>
+
+  <hr class="section-rule">
+
+  <!-- ── PREEMPTIVE CLAIM ───────────────────────────────────────── -->
+  <div class="section" id="preemptive">
+    <h2>The Preemptive Claim</h2>
+    <p>Claude Hopkins defined the preemptive claim: own what every competitor does but no one has said first. This is Shannon's.</p>
+
+    <div class="preemptive-block">
+      <div class="pb-label">Preemptive positioning — no competitor in Savannah can match this</div>
+      <div class="pb-quote">"Most home care agencies are run by business operators who hired caregivers. Shannon Stafford Simpson is a Certified Nursing Assistant who built one."</div>
+      <div class="pb-attribution">This belongs above the fold. In the headline. In the first sentence of every page. It is the reason families choose Shannon over Home Instead, Right at Home, or any franchise in Savannah.</div>
+    </div>
+
+    <p>Home Instead's Savannah franchise footer reads: "Each franchise is independently owned and operated." That sentence is the crack. The local operator purchased a brand and a system. Shannon purchased nothing — she built from clinical training. That gap has never been publicly named. It should be the first thing every visitor reads.</p>
+  </div>
+
+  <hr class="section-rule">
+
+  <!-- ── WEBSITE AUDIT ──────────────────────────────────────────── -->
+  <div class="section" id="web-1">
+    <h2>Website Audit — Finding 1</h2>
+    <h3>The FAQ Was Wix Placeholder Copy</h3>
+    <p>A family in crisis — deciding whether to trust a stranger with their parent — arrived at the FAQ page to find software-generated questions. Generic. Unchosen. Not one of the seven questions families actually ask before calling a home care agency.</p>
+
+    <div class="finding-card issue key-hl">
+      <div class="fc-label">The Failure</div>
+      <div class="fc-title">Every question answered the wrong concern</div>
+      <div class="fc-body">The Wix FAQ template asks questions like "Do you offer free consultations?" and "What are your hours?" A family considering home care for a parent asks: "What happens if the caregiver doesn't show up?" "How do you handle medications?" "Will the same person come every time?" "What if Mom doesn't like who you send?" None of those questions appeared. The FAQ was a trust signal that destroyed trust.</div>
+    </div>
+
+    <div class="finding-card fix">
+      <div class="fc-label">The Fix</div>
+      <div class="fc-title">Seven questions families actually ask before calling a home care agency</div>
+      <div class="fc-body">Replace the template FAQ with the real questions derived from home care decision research: caregiver consistency, emergency coverage, medication protocols, first-visit process, pricing structure, license verification, and what happens if it's not working. Each answer should be specific — not "we handle that carefully" but the exact step-by-step of how Shannon handles it.</div>
+    </div>
+  </div>
+
+  <hr class="section-rule">
+
+  <div class="section" id="web-2">
+    <h2>Website Audit — Finding 2</h2>
+    <h3>The Hero Spoke to the Company, Not the Buyer</h3>
+    <p>The adult daughter arrives at 11pm. Something happened today — a fall, a missed medication, a phone call she couldn't make from work. She is exhausted. She is afraid. She is carrying a decision she doesn't feel qualified to make.</p>
+
+    <p>The SPCS homepage told her about the agency's history, its mission, and its services. It never named her situation.</p>
+
+    <div class="finding-card issue key-hl">
+      <div class="fc-label">Before</div>
+      <div class="fc-title">The hero described the business. The buyer was invisible.</div>
+      <div class="fc-body">"Serving Savannah families with compassionate personal care" — this is what the business says about itself. The adult daughter reading this at 11pm does not see herself in that sentence. She needs someone to name what she is carrying before she will trust anything else on the page. The hero failed that test.</div>
+    </div>
+
+    <div class="finding-card fix">
+      <div class="fc-label">After</div>
+      <div class="fc-title">"You've been managing this long enough."</div>
+      <div class="fc-body">The rebuilt hero opens with the buyer's situation, not the business's credentials. "You've been managing this long enough." Five words. The adult daughter reads them and, for the first time in months, feels understood. That emotional recognition is the prerequisite for everything else. Credentials come second. The connection comes first.</div>
+    </div>
+  </div>
+
+  <hr class="section-rule">
+
+  <div class="section" id="web-3">
+    <h2>Website Audit — Finding 3</h2>
+    <h3>The CNA Credential Was Invisible Above the Fold</h3>
+    <p>Shannon's CNA background is not a background detail. It is the primary differentiator. It is the proof that changes the conversation from "which agency should I call?" to "I need to call Shannon."</p>
+
+    <div class="finding-card issue">
+      <div class="fc-label">The Problem</div>
+      <div class="fc-title">Credentials buried where no one looks</div>
+      <div class="fc-body">The previous site mentioned Shannon's nursing background in an about section that most visitors never reached. A family doing comparison research — reading SPCS and three competitors simultaneously — never saw the one fact that made Shannon's agency categorically different. They compared on name recognition. Home Instead won. Not because they were better. Because their differentiator was visible and Shannon's wasn't.</div>
+    </div>
+
+    <div class="callout">
+      <strong>Hopkins' preemption rule:</strong> The claim that is said first is the claim that is owned. Shannon's CNA credential — the fact that she built this agency from clinical training, not business interest — belongs in the first paragraph of the homepage. Every additional page below the fold is too late for a buyer who will leave after 90 seconds.
+    </div>
+
+    <div class="finding-card fix">
+      <div class="fc-label">The Fix</div>
+      <div class="fc-title">CNA credential in the headline. Above the fold. First.</div>
+      <div class="fc-body">The rebuilt site opens: "Shannon Stafford Simpson is a Certified Nursing Assistant who built a care agency. Not a business operator who hired caregivers." That sentence earns the rest of the page. Without it, every other credential is context. With it, every other credential is evidence.</div>
+    </div>
+  </div>
+
+  <hr class="section-rule">
+
+  <div class="section" id="web-4">
+    <h2>Website Audit — Finding 4</h2>
+    <h3>No Local Search Presence for Any Term That Matters</h3>
+    <p>A family types "home care Savannah GA" into Google the morning after something changed. That search returns Home Instead, Comfort Keepers, Right at Home — agencies with franchise SEO budgets, directory listings, and years of local citations. SPCS did not appear.</p>
+
+    <div class="finding-card issue key-hl">
+      <div class="fc-label">The Gap</div>
+      <div class="fc-title">Most qualified agency in Savannah. Zero search visibility.</div>
+      <div class="fc-body">Every family who starts their search online never encounters Shannon. They call whoever ranks. They don't know Shannon exists. Meanwhile, Shannon is personally qualified beyond what any franchise caregiver can offer — and that qualification is invisible to every family who begins with a Google search instead of a referral. The most powerful credential in home care is being lost to a directory listing.</div>
+    </div>
+
+    <div class="finding-card fix">
+      <div class="fc-label">The Fix — Local SEO Foundation</div>
+      <div class="fc-title">Own "home care Savannah" in 90 days</div>
+      <div class="fc-body">Four actions: (1) Google Business Profile — fully completed, with Shannon's CNA credential, service area, photos, and weekly posts. (2) Local landing pages — Savannah, Pooler, Richmond Hill, Statesboro. (3) Structured data — medical organization schema, founder markup, PHCP license. (4) Local citation consistency — name, address, phone identical across 40+ directories. These are not creative projects. They are infrastructure. They determine whether Shannon's phone rings from organic search at all.</div>
+    </div>
+  </div>
+
+  <hr class="section-rule">
+
+  <!-- ── CUSTOMER EXPERIENCE AUDIT ─────────────────────────────── -->
+  <div class="section" id="cx-buyers">
+    <h2>Customer Experience Audit — The Three Buyers</h2>
+    <p>SPCS serves three distinct buyer segments. Each arrives through a different channel, with a different fear, on a different timeline. The current site addressed none of them with specificity. The rebuilt site must address each differently — and the homepage must speak to Buyer 1 above all others.</p>
+
+    <div class="finding-card vision">
+      <div class="fc-label">Buyer 1 — Primary Target</div>
+      <div class="fc-title">The Adult Daughter</div>
+      <div class="fc-body"><strong>Who:</strong> 45–62. Managing a parent's care from near or far. Often the default decision-maker among siblings.<br><br><strong>When she arrives:</strong> Kitchen table, 10:45pm. Something happened today — a fall, a hospital discharge, a neighbor's call.<br><br><strong>Her fear:</strong> "If I choose the wrong agency and something goes wrong, it's my fault."<br><br><strong>What she buys:</strong> Permission to stop carrying this alone. Peace of mind that someone qualified is handling this. Hope that things will get easier.<br><br><strong>What she needs from the site:</strong> Someone who understands what she's carrying before they ask her to trust them.</div>
+    </div>
+
+    <div class="finding-card">
+      <div class="fc-label">Buyer 2 — Secondary (Phase 2)</div>
+      <div class="fc-title">The Senior</div>
+      <div class="fc-body"><strong>Who:</strong> 70s. Independent their whole life. Something has changed and they are not ready to admit it.<br><br><strong>Her fear:</strong> "Accepting help means I'm giving up my independence."<br><br><strong>Copy register:</strong> Respectful. No condescension. They decide everything. The language must never feel like something is being done to them — only with them.</div>
+    </div>
+
+    <div class="finding-card">
+      <div class="fc-label">Buyer 3 — Referral Partner (Phase 2)</div>
+      <div class="fc-title">The Discharge Coordinator</div>
+      <div class="fc-body"><strong>Who:</strong> Social worker at Memorial Health or Candler Hospital, Savannah. Places patients into home care within 24–48 hours of discharge.<br><br><strong>Her fear:</strong> "I don't know enough about this agency to stake my professional name on it."<br><br><strong>What she needs:</strong> PHCP license number. Response time guarantee. Placement timeline. Proof of caregiver vetting. Shannon's CNA credential visible and verifiable. One page that answers all of this without requiring a phone call.</div>
+    </div>
+  </div>
+
+  <hr class="section-rule">
+
+  <div class="section" id="cx-journey">
+    <h2>Customer Experience Audit — The 11pm Journey</h2>
+    <p>This is the journey of the adult daughter — the primary buyer. Every gap in this journey is a moment where she stops trusting and leaves without calling.</p>
+
+    <table class="journey-table">
+      <thead>
+        <tr>
+          <th>Stage</th>
+          <th>What She Does</th>
+          <th>What She Finds (Before)</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Trigger</strong></td>
+          <td>Parent falls. Hospital calls. She takes on responsibility.</td>
+          <td>Shock. Fear. No framework for what to do next.</td>
+          <td><span class="tag-warn">Context</span></td>
+        </tr>
+        <tr>
+          <td><strong>Search</strong></td>
+          <td>"Home care Savannah GA"</td>
+          <td>Home Instead, Comfort Keepers, BrightSpring. SPCS absent.</td>
+          <td><span class="tag-bad">Failure</span></td>
+        </tr>
+        <tr>
+          <td><strong>Discovery</strong></td>
+          <td>Word of mouth, referral, or direct URL</td>
+          <td>Lands on SPCS homepage</td>
+          <td><span class="tag-warn">Fragile</span></td>
+        </tr>
+        <tr>
+          <td><strong>First impression</strong></td>
+          <td>Reads hero copy</td>
+          <td>"Serving Savannah families with compassionate care" — she is not named. She does not see herself.</td>
+          <td><span class="tag-bad">Failure</span></td>
+        </tr>
+        <tr>
+          <td><strong>Credential check</strong></td>
+          <td>Scrolls for proof of qualification</td>
+          <td>CNA credential buried in About section. Never seen.</td>
+          <td><span class="tag-bad">Failure</span></td>
+        </tr>
+        <tr>
+          <td><strong>FAQ</strong></td>
+          <td>Looks for her specific fears answered</td>
+          <td>Wix placeholder questions. None of her questions present.</td>
+          <td><span class="tag-bad">Failure</span></td>
+        </tr>
+        <tr>
+          <td><strong>Decision point</strong></td>
+          <td>"Should I call?"</td>
+          <td>No process described. No response time stated. Calling feels like a risk.</td>
+          <td><span class="tag-bad">Abandonment</span></td>
+        </tr>
+        <tr>
+          <td><strong>Outcome</strong></td>
+          <td>Closes the tab.</td>
+          <td>Calls Home Instead instead.</td>
+          <td><span class="tag-bad">Lost</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout">
+      <strong>The core failure:</strong> The site never gave her permission to stop worrying. That is the only thing she needed before she could act. Every other piece of information — services, pricing, coverage area — comes after she has been given that permission. The site jumped straight to information without earning her trust first.
+    </div>
+  </div>
+
+  <hr class="section-rule">
+
+  <div class="section" id="cx-gaps">
+    <h2>Customer Experience Audit — Where the Journey Breaks</h2>
+    <p>Five specific gaps in the current SPCS customer experience, each one a moment where Shannon loses a family she could have served.</p>
+
+    <div class="finding-card issue">
+      <div class="fc-label">CX Gap 1</div>
+      <div class="fc-title">No guided intake — the buyer doesn't know what to do next</div>
+      <div class="fc-body">Home Instead's site opens with a care finder: "Tell us who needs care." This is Claude Hopkins' guided sale in UI form — move the buyer through a decision they've been avoiding by breaking it into small, non-threatening steps. SPCS's site presented a phone number and expected the buyer to reach out. Many didn't. The 60-second care finder eliminates this gap.</div>
+    </div>
+
+    <div class="finding-card issue">
+      <div class="fc-label">CX Gap 2</div>
+      <div class="fc-title">No response time stated — every second of silence feels like risk</div>
+      <div class="fc-body">When a family submits a contact form and receives no stated response window, every hour without a reply destroys trust. "We'll be in touch" is not a commitment. "You'll hear from Shannon within 4 hours" is. One sentence. It eliminates the anxiety of the void. It makes the act of reaching out feel safe instead of uncertain.</div>
+    </div>
+
+    <div class="finding-card issue">
+      <div class="fc-label">CX Gap 3</div>
+      <div class="fc-title">No process named — the buyer doesn't know what comes next</div>
+      <div class="fc-body">The Shannon Standard — a five-step proprietary process — exists in practice but was never named or documented online. Home Instead has a "Care Planning Process." It's generic. Shannon's is clinical. But until it's named and published, the buyer can't distinguish. The named process is the proof point. "Here is exactly what happens when you call us" is the sentence that converts hesitation into action.</div>
+    </div>
+
+    <div class="finding-card issue">
+      <div class="fc-label">CX Gap 4</div>
+      <div class="fc-title">No social proof with specific outcomes</div>
+      <div class="fc-body">Generic testimonials — "Shannon and her team were wonderful" — do not move a buyer who is afraid. Specific outcome testimonials do. "We finally slept through the night." — Robert S., Pooler. That one sentence dissolves the primary fear of the adult daughter: that accepting help won't actually make things better. Real quotes from real people, with real locations, with real outcomes. These are not decorative. They are evidence.</div>
+    </div>
+
+    <div class="finding-card issue">
+      <div class="fc-label">CX Gap 5</div>
+      <div class="fc-title">No resource to capture researchers not ready to call</div>
+      <div class="fc-body">Families researching home care are often 3–6 weeks from a decision. They're not ready to call. But they will download a resource that helps them understand what they're about to navigate. "The Savannah Family Guide to Home Care: What to Ask, What to Expect, and What Most Agencies Won't Tell You" — a free PDF that captures email, demonstrates expertise, and keeps Shannon top of mind until the family is ready. No such resource existed.</div>
+    </div>
+  </div>
+
+  <hr class="section-rule">
+
+  <!-- ── FINANCIAL MODEL ─────────────────────────────────────────── -->
+  <div class="section" id="fin-streams">
+    <h2>Financial Model — Revenue Architecture</h2>
+    <p>Home care revenue comes from four distinct payer sources. Each has different billing rates, authorization requirements, and timelines. Understanding the mix determines the business's financial ceiling.</p>
+
+    <div class="revenue-row">
+      <div class="revenue-block">
+        <div class="rb-label">Private Pay</div>
+        <div class="rb-val">$24–$32</div>
+        <div class="rb-sub">per hour · highest margin · fastest to start</div>
+      </div>
+      <div class="revenue-block">
+        <div class="rb-label">Medicaid Waiver (CCSP)</div>
+        <div class="rb-val">$14–$18</div>
+        <div class="rb-sub">per hour · lower rate · high volume potential</div>
+      </div>
+      <div class="revenue-block">
+        <div class="rb-label">Long-Term Care Insurance</div>
+        <div class="rb-val">$22–$28</div>
+        <div class="rb-sub">per hour · good rates · slower authorization</div>
+      </div>
+      <div class="revenue-block">
+        <div class="rb-label">VA Benefits</div>
+        <div class="rb-val">$20–$26</div>
+        <div class="rb-sub">per hour · growing payer · Savannah veteran population</div>
+      </div>
+    </div>
+
+    <div class="callout amber">
+      <strong>[VERIFY]</strong> All rates above are Georgia market benchmarks. Shannon should confirm her current billing rates by payer type before building a financial plan against these figures. The structure is correct; the specific numbers require verification.
+    </div>
+
+    <p>The highest-leverage positioning move for revenue is to build a referral relationship with discharge coordinators at Memorial Health and Candler Hospital. A single discharge coordinator who trusts Shannon sends 2–4 clients per month. At $28/hour × 40 hours/week × 4 clients = $17,920/week from one referral source. That relationship requires one thing: a professional-grade presence that gives the coordinator confidence to stake her reputation on the referral.</p>
+  </div>
+
+  <hr class="section-rule">
+
+  <div class="section" id="fin-economics">
+    <h2>Financial Model — Unit Economics</h2>
+    <p>The core economic unit of home care is a client-hour. Every other metric flows from the contribution margin on that unit.</p>
+
+    <table class="journey-table">
+      <thead>
+        <tr>
+          <th>Line Item</th>
+          <th>Private Pay</th>
+          <th>Medicaid CCSP</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Billing rate</td>
+          <td>$28/hr</td>
+          <td>$16/hr</td>
+          <td>[VERIFY with actual contracts]</td>
+        </tr>
+        <tr>
+          <td>Caregiver wage</td>
+          <td>$14–$16/hr</td>
+          <td>$12–$14/hr</td>
+          <td>[VERIFY with actual payroll]</td>
+        </tr>
+        <tr>
+          <td>Payroll taxes + workers comp</td>
+          <td>~$2.40/hr</td>
+          <td>~$2.00/hr</td>
+          <td>Approx. 15% of wage</td>
+        </tr>
+        <tr>
+          <td><strong>Contribution margin/hr</strong></td>
+          <td><strong>$9.60–$11.60</strong></td>
+          <td><strong>$0–$2.00</strong></td>
+          <td>Before overhead allocation</td>
+        </tr>
+        <tr>
+          <td>Gross margin %</td>
+          <td>~39%</td>
+          <td>~6–12%</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="finding-card vision key-hl">
+      <div class="fc-label">Key Economic Insight</div>
+      <div class="fc-title">Private pay is the engine. Medicaid is the floor.</div>
+      <div class="fc-body">Every private pay client produces 4–6× the contribution margin of a Medicaid client. The referral network strategy — discharge coordinators, physician offices, estate planning attorneys — primarily surfaces private pay opportunities. Positioning Shannon's credential and the Shannon Standard is not just a branding exercise. It is the mechanism that attracts the client mix that makes the business viable at scale.</div>
+    </div>
+  </div>
+
+  <hr class="section-rule">
+
+  <div class="section" id="fin-pathway">
+    <h2>Financial Model — Path to $2M</h2>
+    <p>The revenue model is straightforward: active clients × average weekly hours × blended billing rate. The variable that positioning controls is <em>which clients arrive</em> — and therefore, the blended rate.</p>
+
+    <div class="revenue-row">
+      <div class="revenue-block">
+        <div class="rb-label">Year 1 Baseline</div>
+        <div class="rb-val">~$450K</div>
+        <div class="rb-sub">8 clients · 30 hrs/wk · $24/hr blended [ASSUMPTION]</div>
+      </div>
+      <div class="revenue-block">
+        <div class="rb-label">Year 2 Target</div>
+        <div class="rb-val">~$900K</div>
+        <div class="rb-sub">15 clients · 35 hrs/wk · $27/hr blended</div>
+      </div>
+      <div class="revenue-block">
+        <div class="rb-label">Year 3 Target</div>
+        <div class="rb-val">~$1.5M</div>
+        <div class="rb-sub">25 clients · 38 hrs/wk · $26/hr blended</div>
+      </div>
+      <div class="revenue-block">
+        <div class="rb-label">$2M Milestone</div>
+        <div class="rb-val">$2M+</div>
+        <div class="rb-sub">35 clients · 40 hrs/wk · $28/hr blended</div>
+      </div>
+    </div>
+
+    <p>The key variable in this model is not caregiver capacity. It is referral relationships. One hospital discharge coordinator who trusts Shannon sends 3–4 new clients per month. Two coordinators fill the $2M pathway in under 18 months if caregiver capacity scales in parallel.</p>
+
+    <div class="finding-card vision">
+      <div class="fc-label">What Positioning Unlocks</div>
+      <div class="fc-title">The website is the referral partner's due diligence document</div>
+      <div class="fc-body">A discharge coordinator who is considering referring to SPCS will look at the website before making the call. If the site shows a Wix FAQ and a generic hero, she refers to Home Instead instead. If the site shows Shannon's CNA credential, the Shannon Standard, a PHCP license number, a response time commitment, and specific outcome testimonials — she calls Shannon. The website is not a marketing document. It is a credential verification system for the highest-value referral source in home care.</div>
+    </div>
+
+    <div class="callout amber">
+      <strong>[VERIFY]</strong> Current active client count, weekly hours per client, and blended billing rate should be confirmed with Shannon's actual books before projecting against these milestones. The pathway structure is correct; the starting baseline requires her actual data.
+    </div>
+  </div>
+
+  <hr class="section-rule">
+
+  <!-- ── ROADMAP ──────────────────────────────────────────────────── -->
+  <div class="section" id="roadmap">
+    <h2>Three-Phase Roadmap</h2>
+    <p>Shannon's business is built on a credential and a standard that no competitor in Savannah can match. The roadmap is not about inventing something new. It is about making what already exists impossible to miss.</p>
+
+    <div class="phase-row">
+      <div class="phase-num">1</div>
+      <div class="phase-body">
+        <strong>Phase 1 — The Demo (Complete)</strong>
+        <span>A single deployable HTML file. Full copy. Full design. The adult daughter's experience rebuilt around her 11pm fear. Shannon receives this as a link — no pitch, no invoice, no ask. The demo demonstrates what her business could feel like to a family who needs her. The sale comes from Shannon asking what it costs to continue.</span>
+      </div>
+    </div>
+
+    <div class="phase-row">
+      <div class="phase-num">2</div>
+      <div class="phase-body">
+        <strong>Phase 2 — Full Site (After Shannon Responds)</strong>
+        <span>Six pages: Home, About, Services, FAQ, Contact, Guide Thank-You. The 60-second care finder. The Savannah Family Guide PDF for email capture. Seven real FAQ answers. The Shannon Standard documented end to end. PHCP license number in footer. Response time commitment beneath every form. Local SEO foundation: Google Business Profile, structured data, four local landing pages. Every [VERIFY] item resolved before launch.</span>
+      </div>
+    </div>
+
+    <div class="phase-row">
+      <div class="phase-num">3</div>
+      <div class="phase-body">
+        <strong>Phase 3 — Local Dominance</strong>
+        <span>Own "home care Savannah" in organic search. Build the referral partner page for discharge coordinators (Memorial Health, Candler Hospital, physician offices). Formalize the Shannon Standard as a branded, verifiable process. Launch the Savannah Family Guide email sequence. Build the reputation machine: every satisfied family asked for a specific, outcome-focused Google review. Six months after Phase 2 launch: Shannon's phone rings because families found her and already trusted her before they called.</span>
+      </div>
+    </div>
+
+    <div class="finding-card vision">
+      <div class="fc-label">The Only Metric That Matters</div>
+      <div class="fc-title">How many families call Shannon instead of Home Instead this year</div>
+      <div class="fc-body">Every recommendation in this report — the credential positioning, the care finder, the Shannon Standard, the referral partner page, the Savannah Family Guide — connects directly to one outcome: a family in Savannah who would have called Home Instead instead calls Shannon. At $28/hour × 40 hours/week × 52 weeks, each diverted client is worth $58,240 in annual revenue. Five diverted clients is $291,200. The website is not a branding exercise. It is a revenue infrastructure project.</div>
+    </div>
+  </div>
+
+</main>
+
+<!-- Back to Top -->
+<button id="ez-back-top" aria-label="Back to top">
+  <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<div class="confidential-banner">Prepared by Elliyeen Research · Confidential · Savannah Personal Care Services</div>
+
+<div id="ez-share-toast">Link copied to clipboard</div>
+
+<!-- Wizard -->
+<div id="ez-wizard-overlay">
+  <div id="ez-wizard-card">
+    <div class="wz-head">
+      <div class="wz-step-lbl" id="wz-lbl"></div>
+      <div class="wz-ttl" id="wz-ttl"></div>
+    </div>
+    <div class="wz-bdy" id="wz-bdy"></div>
+    <div class="wz-foot">
+      <div class="wz-dots" id="wz-dots"></div>
+      <button class="wz-skip" id="wz-skip">Skip guide</button>
+      <div class="wz-btns">
+        <button class="wz-btn wz-back-btn" id="wz-back">Back</button>
+        <button class="wz-btn wz-next-btn" id="wz-next">Next →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// Drawer toggle
+const drawer = document.getElementById('ez-drawer');
+const toggle = document.getElementById('ez-drawer-toggle');
+const body = document.body;
+
+if (window.innerWidth < 769) body.classList.add('ez-drawer-closed');
+
+toggle.addEventListener('click', () => {
+  body.classList.toggle('ez-drawer-closed');
+});
+
+// Back to top
+const backTop = document.getElementById('ez-back-top');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 400) backTop.classList.add('ez-visible');
+  else backTop.classList.remove('ez-visible');
+}, { passive: true });
+backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+// Active nav link tracking
+const sections = document.querySelectorAll('.section[id]');
+const navLinks = document.querySelectorAll('.ez-nav-link');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      navLinks.forEach(l => l.classList.remove('ez-active'));
+      const active = document.querySelector(`.ez-nav-link[href="#${e.target.id}"]`);
+      if (active) active.classList.add('ez-active');
+    }
+  });
+}, { rootMargin: '-20% 0px -60% 0px' });
+sections.forEach(s => observer.observe(s));
+
+// Share button
+const shareBtn = document.getElementById('ez-share-btn');
+const shareLabel = document.getElementById('ez-share-label');
+const shareToast = document.getElementById('ez-share-toast');
+shareBtn.addEventListener('click', function () {
+  if (navigator.share) {
+    navigator.share({ title: 'Savannah Personal Care \u2014 Full Business Audit', url: location.href }).catch(function(){});
+  } else {
+    navigator.clipboard.writeText(location.href).then(function () {
+      shareBtn.classList.add('ez-copied');
+      shareLabel.textContent = 'Copied!';
+      shareToast.classList.add('ez-visible');
+      setTimeout(function () {
+        shareBtn.classList.remove('ez-copied');
+        shareLabel.textContent = 'Share';
+        shareToast.classList.remove('ez-visible');
+      }, 2500);
+    });
+  }
+});
+
+// Wizard steps
+var wzSteps = [
+  {
+    label: 'Step 1 of 5 \u2014 The Credential',
+    title: 'Shannon built the standard. The website hadn\u2019t caught up.',
+    body: '<div class="wz-stat-row">'
+      + '<div><div class="wz-stat-n r">4</div><div class="wz-stat-s">website failures</div></div>'
+      + '<div><div class="wz-stat-n r">0</div><div class="wz-stat-s">pages for the 11pm buyer</div></div>'
+      + '<div><div class="wz-stat-n t">$2M+</div><div class="wz-stat-s">revenue possible</div></div>'
+      + '</div>'
+      + '<p>Shannon Stafford Simpson is a Certified Nursing Assistant who built a home care agency. Home Instead\u2019s Savannah operator bought a franchise manual. That gap \u2014 the most powerful differentiator in Savannah home care \u2014 appeared nowhere on the site.</p>'
+  },
+  {
+    label: 'Step 2 of 5 \u2014 The Vision',
+    title: 'From \u201cthe agency Shannon runs\u201d to \u201cthe agency Shannon built.\u201d',
+    body: '<div class="wz-hl">Shannon\u2019s desired state: phone rings because families already trust her before they call. The most trusted home care provider in Savannah. Discharge coordinators at Memorial Health refer without hesitation.</div>'
+      + '<p>Every recommendation in this audit is in service of that future. The website is not a marketing project. It is the infrastructure between where Shannon is today and where she is building toward.</p>'
+  },
+  {
+    label: 'Step 3 of 5 \u2014 Website Audit',
+    title: 'Four failures. All locatable. All fixable.',
+    body: '<div class="wz-rm">'
+      + '<div class="wz-rm-item"><span class="wz-rm-badge">FAILURE 1</span><span>FAQ was Wix placeholder copy \u2014 not one of the seven questions families actually ask before calling a home care agency.</span></div>'
+      + '<div class="wz-rm-item"><span class="wz-rm-badge">FAILURE 2</span><span>Hero spoke to the company, not the buyer. The adult daughter at 11pm was invisible on her own.</span></div>'
+      + '<div class="wz-rm-item"><span class="wz-rm-badge">FAILURE 3</span><span>CNA credential buried in About section. The only differentiator that mattered \u2014 invisible above the fold.</span></div>'
+      + '<div class="wz-rm-item"><span class="wz-rm-badge">FAILURE 4</span><span>Zero local search presence. \u201cHome care Savannah GA\u201d returned Home Instead. Not Shannon.</span></div>'
+      + '</div>'
+  },
+  {
+    label: 'Step 4 of 5 \u2014 Customer Experience',
+    title: 'She arrived at 11pm. She left without calling.',
+    body: '<p>The adult daughter\u2019s journey: Google search returned no SPCS result. If she found the site anyway, the hero didn\u2019t name her. The FAQ didn\u2019t answer her fears. No process described. No response time stated. Calling felt like risk. She called Home Instead instead.</p>'
+      + '<div class="wz-hl">The core failure: the site never gave her permission to stop worrying. That is the only thing she needed before she could act.</div>'
+  },
+  {
+    label: 'Step 5 of 5 \u2014 Financial Model',
+    title: 'Five diverted clients is $291,200 in annual revenue.',
+    body: '<div class="wz-rm">'
+      + '<div class="wz-rm-item"><span class="wz-rm-badge" style="background:var(--teal)">ENGINE</span><span>Private pay: ~$28/hr · ~39% gross margin. One referral coordinator sends 3\u20134 clients/month.</span></div>'
+      + '<div class="wz-rm-item"><span class="wz-rm-badge" style="background:var(--teal)">PATH</span><span>35 clients \xd7 40 hrs/wk \xd7 $28/hr = $2M+ annual revenue. The bottleneck is referral trust \u2014 not caregiver capacity.</span></div>'
+      + '</div>'
+      + '<div class="wz-cta-blk"><p>Ready to start Phase 1?</p><div class="wz-cta-email">hello@elliyeen.com</div></div>'
+      + '<p class="wz-note">Use the navigation on the left to read each finding in full.</p>'
+  }
+];
+
+var wzCur = 0;
+var wzOverlay = document.getElementById('ez-wizard-overlay');
+
+function wzRender() {
+  var s = wzSteps[wzCur];
+  document.getElementById('wz-lbl').textContent = s.label;
+  document.getElementById('wz-ttl').textContent = s.title;
+  document.getElementById('wz-bdy').innerHTML = s.body;
+  var dots = document.getElementById('wz-dots');
+  dots.innerHTML = '';
+  wzSteps.forEach(function (_, i) {
+    var d = document.createElement('div');
+    d.className = 'wz-dot' + (i === wzCur ? ' active' : '');
+    dots.appendChild(d);
+  });
+  document.getElementById('wz-back').style.visibility = wzCur === 0 ? 'hidden' : 'visible';
+  document.getElementById('wz-next').textContent = wzCur === wzSteps.length - 1 ? 'Read the report \u2192' : 'Next \u2192';
+}
+
+function wzClose() {
+  wzOverlay.classList.add('ez-hidden');
+  setTimeout(function () { if (wzOverlay.parentNode) wzOverlay.parentNode.removeChild(wzOverlay); }, 400);
+}
+
+document.getElementById('wz-next').addEventListener('click', function () {
+  if (wzCur < wzSteps.length - 1) { wzCur++; wzRender(); } else { wzClose(); }
+});
+document.getElementById('wz-back').addEventListener('click', function () {
+  if (wzCur > 0) { wzCur--; wzRender(); }
+});
+document.getElementById('wz-skip').addEventListener('click', wzClose);
+wzOverlay.addEventListener('click', function (e) { if (e.target === wzOverlay) wzClose(); });
+
+wzRender();
+</script>
+</body>
+</html>
