@@ -163,8 +163,8 @@ hr.section-rule { border: none; border-top: 1px solid var(--rule); margin: 2.8re
 /* Wizard */
 #ez-wizard-overlay { position: fixed; inset: 0; background: rgba(10,10,10,0.90); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); z-index: 9999; display: flex; align-items: center; justify-content: center; padding: 1rem; transition: opacity 0.35s ease; }
 #ez-wizard-overlay.ez-hidden { opacity: 0; pointer-events: none; }
-#ez-wizard-card { background: #fff; border-radius: 8px; max-width: 560px; width: 100%; overflow: hidden; box-shadow: 0 28px 90px rgba(0,0,0,0.40); font-family: 'DM Sans', system-ui, sans-serif; }
-.wz-head { background: #1a1a1a; color: white; padding: 1.5rem 1.8rem 1.1rem; }
+#ez-wizard-card { background: #fff; border-radius: 8px; max-width: 720px; width: 100%; overflow: hidden; box-shadow: 0 28px 90px rgba(0,0,0,0.40); font-family: 'DM Sans', system-ui, sans-serif; }
+.wz-head { background: #ffffff; color: #1a1a1a; padding: 1.5rem 1.8rem 1.1rem; }
 .wz-step-lbl { font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.4; margin-bottom: 0.4rem; }
 .wz-ttl { font-family: 'EB Garamond', Georgia, serif; font-size: 1.52rem; line-height: 1.22; margin: 0; font-weight: 500; }
 .wz-bdy { padding: 1.4rem 1.8rem 0.9rem; min-height: 155px; }
@@ -179,9 +179,9 @@ hr.section-rule { border: none; border-top: 1px solid var(--rule); margin: 2.8re
 .wz-rm { margin: 0.3rem 0 0.75rem; }
 .wz-rm-item { display: flex; gap: 0.7rem; align-items: flex-start; margin-bottom: 0.5rem; font-size: 0.87rem; line-height: 1.5; color: #2a2a2a; }
 .wz-rm-badge { flex-shrink: 0; background: var(--rust); color: white; font-size: 0.62rem; padding: 0.15rem 0.4rem; border-radius: 3px; margin-top: 0.15rem; letter-spacing: 0.04em; font-weight: 500; }
-.wz-cta-blk { background: #1a1a1a; color: white; padding: 1rem 1.2rem; border-radius: 4px; margin-top: 0.6rem; }
+.wz-cta-blk { background: #ffffff; color: #1a1a1a; padding: 1rem 1.2rem; border-radius: 4px; margin-top: 0.6rem; }
 .wz-cta-blk p { color: rgba(255,255,255,0.65) !important; font-size: 0.86rem !important; margin-bottom: 0.45rem !important; }
-.wz-cta-email { font-family: 'EB Garamond', Georgia, serif; font-size: 1.12rem; color: white; font-weight: 500; }
+.wz-cta-email { font-family: 'EB Garamond', Georgia, serif; font-size: 1.12rem; color: #1a1a1a; font-weight: 500; }
 .wz-note { font-size: 0.76rem !important; color: #aaa !important; margin-top: 0.75rem !important; }
 .wz-foot { padding: 0.9rem 1.8rem 1.3rem; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid #efefed; gap: 0.6rem; }
 .wz-dots { display: flex; gap: 6px; flex-shrink: 0; }
@@ -850,7 +850,7 @@ var wzSteps = [
   {
     label: 'Step 4 of 4 \u2014 Financial Model',
     title: '$6.9K in additional passport revenue. One afternoon of content work.',
-    body: '<div class="wz-rm"><div class="wz-rm-item"><span class="wz-rm-badge" style="background:var(--good)">NOW</span><span>~20% passport conversion (abstract offer) = ~80 passports = ~$3,680 passport revenue.</span></div><div class="wz-rm-item"><span class="wz-rm-badge" style="background:var(--good)">WITH DIRECTORY</span><span>~50% passport conversion (specific activity list) = ~225 passports = ~$10,575 passport revenue.</span></div><div class="wz-rm-item"><span class="wz-rm-badge" style="background:var(--good)">YEAR 2</span><span>Email list from Edition 1 + sponsor program + two annual editions = ~$35K annual revenue run rate.</span></div></div><div class="wz-cta-blk"><p>Ready to build the activity directory?</p><div class="wz-cta-email">hello@elliyeen.com</div></div><p class="wz-note">Use the navigation on the left to read each section in full.</p>'
+    body: '<div class="wz-rm"><div class="wz-rm-item"><span class="wz-rm-badge" style="background:var(--good)">NOW</span><span>~20% passport conversion (abstract offer) = ~80 passports = ~$3,680 passport revenue.</span></div><div class="wz-rm-item"><span class="wz-rm-badge" style="background:var(--good)">WITH DIRECTORY</span><span>~50% passport conversion (specific activity list) = ~225 passports = ~$10,575 passport revenue.</span></div><div class="wz-rm-item"><span class="wz-rm-badge" style="background:var(--good)">YEAR 2</span><span>Email list from Edition 1 + sponsor program + two annual editions = ~$35K annual revenue run rate.</span></div></div><div class="wz-cta-blk"><p>Ready to build the activity directory?</p><div class="wz-cta-email">abdullah@elliyeen.com</div></div><p class="wz-note">Use the navigation on the left to read each section in full.</p>'
   }
 ];
 

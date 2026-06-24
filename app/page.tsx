@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import MobileNav from "./MobileNav";
+import SiteNav from "./SiteNav";
 import BookingForm from "./BookingForm";
 import ScrollReveal from "./ScrollReveal";
 import CasesCarousel from "@/components/CasesCarousel";
@@ -138,34 +138,7 @@ export default function GetStartedPage() {
 
       <main id="main-content" className="min-h-screen bg-[#f7f4ee] text-[#111111]">
 
-        {/* Fix 4 — Nav labels match destinations. Fix 5 — MobileNav handles hamburger. */}
-        <nav aria-label="Main navigation" className="sticky top-0 z-50">
-          {/* Frosted glass layer — must be a child, not on nav itself, because
-              backdrop-filter creates a containing block that breaks fixed children */}
-          <div className="absolute inset-0 bg-[#f7f4ee]/85" style={{ backdropFilter: "saturate(180%) blur(12px)", WebkitBackdropFilter: "saturate(180%) blur(12px)" }} aria-hidden="true" />
-          <div className="relative mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 sm:py-5">
-            <div className="text-sm font-bold tracking-[0.22em]">ELLIYEEN</div>
-
-            <div className="hidden items-center gap-9 text-sm font-medium text-zinc-600 md:flex">
-              <a href="#assessment" className="hover:text-black">How It Works</a>
-              <a href="#cases"      className="hover:text-black">Case Studies</a>
-              <a href="/reports"    className="hover:text-black">Reports</a>
-              <a href="#pricing"    className="hover:text-black">Pricing</a>
-              <a href="#advisor"    className="hover:text-black">AI Advisor</a>
-            </div>
-
-            <div className="flex items-center gap-2">
-              <a href="#contact" className="hidden rounded-full border border-zinc-300 px-4 py-2 text-sm font-medium text-zinc-800 hover:border-zinc-400 md:block">
-                Contact sales
-              </a>
-              <a href="#book" className="rounded-full bg-[#1B5EA8] px-4 py-2 text-sm font-semibold text-white hover:bg-[#164d8e]">
-                Fix it
-              </a>
-              {/* Fix 5 — Mobile hamburger */}
-              <MobileNav />
-            </div>
-          </div>
-        </nav>
+        <SiteNav />
 
         {/* Fix 2 — Committed headline. Fix 6 — No stock avatars. Fix 10 — Methodology card replaces fake revenue number. */}
         <section className="relative mx-auto grid max-w-7xl items-center gap-10 px-4 pb-14 pt-10 sm:px-6 md:grid-cols-2 md:gap-12 md:pb-16 md:pt-20">
@@ -397,7 +370,7 @@ export default function GetStartedPage() {
         <div className="mx-auto max-w-7xl px-4 pb-2 sm:px-6">
           <p className="text-center text-sm text-zinc-400">
             Know a founder whose site isn&apos;t converting?{" "}
-            <a href="mailto:hello@elliyeen.com?subject=Referral" className="font-semibold text-zinc-600 underline underline-offset-2 hover:text-black">
+            <a href="mailto:abdullah@elliyeen.com?subject=Referral" className="font-semibold text-zinc-600 underline underline-offset-2 hover:text-black">
               Send them this page.
             </a>
           </p>

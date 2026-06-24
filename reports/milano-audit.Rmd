@@ -188,7 +188,7 @@ assumptions <- tibble(
                          "Industry benchmark with functional CTA")
 )
 kable(assumptions, format = "html", caption = "Financial Model Assumptions") |>
-  kable_styling(bootstrap_options = c("striped","hover"), full_width = TRUE, font_size = 12) |>
+  kable_styling(bootstrap_options = c("bordered"), full_width = TRUE, font_size = 12) |>
   column_spec(1, bold = TRUE, width = "32%")
 ```
 
@@ -213,16 +213,12 @@ rev <- tibble(
 )
 
 kable(rev, format = "html", caption = "Revenue Projections by Scenario") |>
-  kable_styling(bootstrap_options = c("striped","hover"), full_width = TRUE, font_size = 12) |>
+  kable_styling(bootstrap_options = c("bordered"), full_width = TRUE, font_size = 12) |>
   column_spec(1, bold = TRUE) |>
   column_spec(9, bold = TRUE,
     color      = c("gray","white","white","white"),
-    background = c("transparent", CLR_GOOD, CLR_GOLD, CLR_MAIN)
-  ) |>
-  row_spec(1, background = "#f8f7f4") |>
-  row_spec(2, background = "#f0f7f4") |>
-  row_spec(3, background = "#e8f4ee") |>
-  row_spec(4, background = "#e0f0e8")
+    background = c("transparent", CLR_MAIN, CLR_GOLD, CLR_WEAK)
+  )
 ```
 
 ## 12-Month Revenue Build-Up
@@ -311,14 +307,11 @@ ggplot(levers, aes(x = monthly_revenue, y = fix)) +
   geom_col(aes(fill = tl_color), width = 0.62, alpha = 0.88) +
   geom_text(aes(label = paste0("+$", comma(monthly_revenue), "/mo")),
             hjust = -0.15, size = 3.3, fontface = "bold", color = CLR_TEXT) +
-  # timeline label inside bar
-  geom_text(aes(x = monthly_revenue * 0.08, label = timeline),
-            hjust = 0, size = 2.8, color = "white", alpha = 0.9) +
   scale_fill_identity() +
   scale_x_continuous(limits = c(0, 5200), labels = dollar_format()) +
   labs(
     title    = "Estimated Monthly Revenue by Recommendation",
-    subtitle = "teal = achievable in 30 days  ·  gold = 90-day roadmap",
+    subtitle = "Dark teal = achievable in 30 days  ·  gold = 90-day roadmap",
     caption  = "Revenue estimates based on industry conversion benchmarks.\nSite consolidation revenue is recovered SEO authority — currently being lost to fragmentation."
   ) +
   theme_audit()
@@ -346,15 +339,11 @@ clv_long <- clv_data |>
   )
 
 ggplot(clv_data, aes(x = clv, y = scenario)) +
-  geom_col(fill = CLR_MAIN, width = 0.5, alpha = 0.85) +
+  geom_col(aes(fill = scenario), width = 0.5, alpha = 0.85) +
   geom_text(aes(label = dollar(clv, accuracy = 1)),
             hjust = -0.15, size = 4.5, fontface = "bold", color = CLR_TEXT) +
-  geom_text(
-    aes(x = clv * 0.05,
-        label = paste0(visits_month, "x/mo · $", avg_order, " avg · ",
-                       retention_yr, "yr retention")),
-    hjust = 0, size = 3, color = "white"
-  ) +
+  scale_fill_manual(values = c("Current (no loyalty)" = CLR_MID,
+                               "With Milano Family\nLoyalty Program" = CLR_MAIN)) +
   scale_x_continuous(limits = c(0, 3200), labels = dollar_format()) +
   labs(
     title    = "Customer Lifetime Value — Impact of Loyalty Program",
@@ -381,7 +370,7 @@ roi <- tibble(
 )
 
 kable(roi, format = "html", caption = "Return on Investment by Scenario") |>
-  kable_styling(bootstrap_options = c("striped","hover"), full_width = TRUE, font_size = 13) |>
+  kable_styling(bootstrap_options = c("bordered"), full_width = TRUE, font_size = 13) |>
   column_spec(1, bold = TRUE) |>
   column_spec(6, bold = TRUE, color = "white", background = CLR_MAIN)
 ```
@@ -462,23 +451,18 @@ scores <- tibble(
 avg_score <- mean(scores$score)
 
 ann_thr <- data.frame(x = THRESHOLD + 1, y = levels(scores$dimension)[1],
-                      label = "← 50 threshold")
-ann_avg <- data.frame(x = avg_score + 1.5, y = levels(scores$dimension)[nrow(scores)],
-                      label = paste0("avg ", round(avg_score)))
+                      label = "← passing (50)")
 
 ggplot(scores, aes(x = score, y = dimension)) +
   geom_vline(xintercept = THRESHOLD, color = "#cccccc", linewidth = 0.5, linetype = "dashed") +
-  geom_vline(xintercept = avg_score, color = CLR_MID, linewidth = 0.5, linetype = "dotted") +
   geom_col(aes(fill = fill_col), width = 0.65, alpha = 0.88) +
   geom_text(aes(label = score), hjust = -0.4, size = 3.4, fontface = "bold", color = CLR_TEXT) +
   geom_text(data = ann_thr, aes(x = x, y = y, label = label),
             hjust = 0, vjust = 2.2, size = 2.8, color = "#aaaaaa", inherit.aes = FALSE) +
-  geom_text(data = ann_avg, aes(x = x, y = y, label = label),
-            hjust = 0, vjust = -1.2, size = 2.8, color = CLR_MID, inherit.aes = FALSE) +
   scale_fill_identity() +
   scale_x_continuous(limits = c(0, 115), breaks = c(0, 25, 50, 75, 100)) +
   labs(title = "Audit Dimension Scores  (1–100 scale)",
-       subtitle = "All 9 dimensions below the 50-point threshold  ·  rust = liability  ·  green = functional",
+       subtitle = paste0("All 9 dimensions below the 50-point threshold  ·  rust = critical  ·  teal = functional  ·  mean: ", round(avg_score, 0)),
        caption = "Source: 22-Agent Universal Website Audit System · Site A (milanofamilypizza.com)") +
   theme_audit()
 ```
@@ -500,20 +484,15 @@ forces <- tibble(
            force == "Understanding" ~ CLR_GOOD,
            TRUE                     ~ CLR_MAIN))
 
-ann_bottle <- data.frame(x = 7, y = "Action",
-  label = "Critical Bottleneck — no CTA exists\nfor this force to resolve into action")
-
 ggplot(forces, aes(x = score, y = force)) +
-  geom_vline(xintercept = 5, color = "#dddddd", linewidth = 0.4, linetype = "dashed") +
   geom_col(aes(fill = fill_col), width = 0.62, alpha = 0.9) +
   geom_text(aes(label = paste0(score, "/10")), hjust = -0.2, size = 3.2, color = CLR_TEXT) +
-  geom_text(data = ann_bottle, aes(x = x, y = y, label = label),
-            hjust = 0, size = 2.8, color = CLR_WEAK, lineheight = 1.3, inherit.aes = FALSE) +
   scale_fill_identity() +
-  scale_x_continuous(limits = c(0, 14), breaks = 0:10) +
+  scale_x_continuous(limits = c(0, 12), breaks = c(0, 2, 4, 6, 8, 10),
+                     labels = c("0","2","4","6","8","10 (max)")) +
   labs(title = "Behavioral Force Scores — Copy Engineering Conductor",
-       subtitle = "Desired behavior: visitor places an order or calls 469-899-7171",
-       caption = "Understanding (6/10) is the only force above 4. Action (1/10) is the critical bottleneck.") +
+       subtitle = "Desired behavior: visitor places an order or calls 469-899-7171  ·  rust = critical gap  ·  teal = relative strength",
+       caption = "Action (1/10) is the critical bottleneck — no CTA exists for any force to resolve into a conversion.\nUnderstanding (6/10) is the only force performing above 4. All others below midpoint.") +
   theme_audit()
 ```
 
@@ -530,28 +509,24 @@ competitors <- tibble(
   years_local = c(17, 5, 8, 6, 4),
   is_milano   = c(TRUE, FALSE, FALSE, FALSE, FALSE)
 )
-ggplot(competitors, aes(x = halal, y = quality, size = years_local, color = is_milano)) +
-  annotate("rect", xmin = 5, xmax = 10.8, ymin = 5, ymax = 10.8,
-           fill = CLR_MAIN, alpha = 0.06) +
-  annotate("text", x = 10.6, y = 10.6, label = "Winning\nQuadrant",
-           hjust = 1, vjust = 1, color = CLR_MAIN, size = 3, fontface = "italic") +
-  geom_point(alpha = 0.85) +
-  geom_label_repel(aes(label = name), size = 3, fontface = "bold",
-                   box.padding = 0.5, point.padding = 0.4,
-                   segment.color = "#cccccc", fill = "white",
-                   color = CLR_TEXT, label.size = 0, max.overlaps = 20) +
-  annotate("text", x = 0.2, y = 0.4, label = "Bubble = years\nlocal",
-           hjust = 0, color = "#999999", size = 2.8, lineheight = 1.3) +
+ggplot(competitors, aes(x = halal, y = quality, color = is_milano)) +
+  geom_point(size = 5, alpha = 0.85) +
+  geom_label_repel(
+    aes(label = paste0(name, "\n", years_local, " yr local")),
+    size = 2.9, fontface = "bold",
+    box.padding = 0.6, point.padding = 0.4,
+    segment.color = "#cccccc", segment.size = 0.3,
+    fill = "white", color = CLR_TEXT, label.size = 0, max.overlaps = 20
+  ) +
   scale_color_manual(values = c(`TRUE` = CLR_MAIN, `FALSE` = CLR_MID)) +
-  scale_size_area(max_size = 20) +
-  scale_x_continuous(limits = c(-0.5, 11.5), breaks = c(0,5,10),
-                     labels = c("Not Halal","Partial","Fully Halal")) +
-  scale_y_continuous(limits = c(-0.5, 11.5), breaks = c(0,5,10),
-                     labels = c("Pre-made","Mixed","Scratch-made")) +
-  labs(title = "Competitive Positioning Matrix",
-       subtitle = "No competitor occupies the winning quadrant",
+  scale_x_continuous(limits = c(-0.5, 11.5), breaks = c(0, 5, 10),
+                     labels = c("Not Halal", "Partial", "Fully Halal")) +
+  scale_y_continuous(limits = c(-0.5, 11.5), breaks = c(0, 5, 10),
+                     labels = c("Pre-made", "Mixed", "Scratch-made")) +
+  labs(title = "Competitive Positioning Matrix — Richardson, TX Pizza Market",
+       subtitle = "Milano is the only operator with fully Halal certification and scratch-made dough",
        x = "Halal Availability →", y = "From-Scratch Quality →",
-       caption = "Competitor estimates based on menu analysis for Richardson, TX locations.") +
+       caption = "Competitor estimates based on menu analysis for Richardson, TX locations.\nYears local shown directly on each label.") +
   theme_audit() +
   theme(panel.grid.major.x = element_line(color = "#e8e8e4", linewidth = 0.3),
         panel.grid.major.y = element_line(color = "#e8e8e4", linewidth = 0.3))
@@ -607,34 +582,37 @@ ggplot(priorities, aes(x = effort, y = impact, color = week)) +
        caption = "Site consolidation requires medium effort but unlocks all downstream SEO and conversion improvements.") +
   theme_audit() +
   theme(legend.position = "top", legend.text = element_text(size = 9),
-        panel.grid.major.x = element_line(color="#f0f0ee", linewidth=0.3),
-        panel.grid.major.y = element_line(color="#f0f0ee", linewidth=0.3))
+        panel.grid.major.x = element_blank(),
+        panel.grid.major.y = element_blank())
 ```
 
 ---
 
 # 8. Social Proof Gap {.section-heading}
 
-```{r social-proof, fig.height=2.6, fig.width=8.5}
+```{r social-proof, fig.height=2.4, fig.width=8.5}
 proof <- tibble(
-  source = c("Yelp Reviews Available","On-Site Testimonials"),
-  count  = c(72, 2),
-  type   = c("available","deployed")
-) |> mutate(source = factor(source, levels = c("On-Site Testimonials","Yelp Reviews Available")))
+  label = c("On-site testimonials\n(currently deployed)", "Yelp reviews\n(available, unused)"),
+  count = c(2, 72),
+  type  = c("deployed", "available")
+) |> mutate(label = factor(label, levels = label))
 
-ann_gap <- data.frame(x = 42, y = "Yelp Reviews Available", label = "70 reviews unused")
-
-ggplot(proof, aes(x = count, y = source)) +
-  geom_col(aes(fill = type), width = 0.5, alpha = 0.88) +
-  geom_text(aes(label = count), hjust = -0.4, size = 5.5, fontface = "bold", color = CLR_TEXT) +
-  geom_text(data = ann_gap, aes(x = x, y = y, label = label),
-            hjust = 0, color = CLR_WEAK, size = 3.8, fontface = "bold", inherit.aes = FALSE) +
-  scale_fill_manual(values = c(available = CLR_MAIN, deployed = CLR_WEAK)) +
-  scale_x_continuous(limits = c(0, 100), breaks = c(0, 25, 50, 72)) +
-  labs(title = "Social Proof: Available vs. Deployed",
-       subtitle = "72 Yelp reviews · 2 on-site testimonials · 70 trust signals abandoned",
-       caption = "Fix: pull 7 specific Yelp quotes with first name + last initial and dish mentioned.") +
-  theme_audit()
+ggplot(proof, aes(x = count, y = label)) +
+  geom_segment(aes(x = 2, xend = 72, y = "Yelp reviews\n(available, unused)",
+                   yend = "Yelp reviews\n(available, unused)"),
+               color = "#dddddd", linewidth = 6, inherit.aes = FALSE) +
+  geom_point(aes(color = type), size = 9, alpha = 0.9) +
+  geom_text(aes(label = count), color = "white", size = 3.8, fontface = "bold") +
+  annotate("text", x = 37, y = 2.35, label = "70 unused", color = CLR_WEAK,
+           size = 3.1, fontface = "bold") +
+  scale_color_manual(values = c(available = CLR_MAIN, deployed = CLR_WEAK)) +
+  scale_x_continuous(limits = c(-5, 90), breaks = c(0, 25, 50, 72),
+                     labels = c("0", "25", "50", "72")) +
+  labs(title = "Social Proof Gap: Available vs. Deployed",
+       subtitle = "72 Yelp reviews exist  ·  2 appear on-site  ·  97% of trust signals go unused",
+       caption = "Fix: embed 7 specific Yelp quotes with first name, last initial, and dish mentioned.\nSource: yelp.com/biz/milano-family-pizza-richardson") +
+  theme_audit() +
+  theme(axis.title.y = element_blank())
 ```
 
 ---
@@ -659,16 +637,12 @@ ggplot(specials_long, aes(x=price_type, y=price, group=item)) +
   geom_line(color=CLR_MID, linewidth=0.9) +
   geom_point(aes(color=price_type), size=4.5) +
   geom_text(aes(label=dollar(price, accuracy=0.01)), vjust=-1, size=3.3, color=CLR_TEXT) +
-  geom_text(data=specials,
-            aes(x=1.5, y=(was+now)/2+0.2,
-                label=paste0("−$", savings, "\n(", pct, "%)")),
-            inherit.aes=FALSE, size=2.9, color=CLR_WEAK, fontface="bold", lineheight=1.2) +
   facet_wrap(~item, nrow=1) +
   scale_color_manual(values=c(Regular=CLR_MID, Special=CLR_MAIN)) +
   scale_y_continuous(labels=dollar_format(), limits=c(10,38)) +
   labs(title="Seasonal Specials — Anchor Pricing Analysis",
-       subtitle="The Family Special (−$4.00 / 14.3%) should be the featured hero offer",
-       caption="Good mechanic, wrong position. Move Family Special above the fold.") +
+       subtitle="Family Special: −$4.00 (14.3% off)  ·  3-Large: −$3.00 (9.1%)  ·  XL 2-Topping: −$1.00 (6.3%)",
+       caption="Good mechanic, wrong position. Move Family Special above the fold as the primary hero offer.") +
   theme_audit() + theme(axis.title.x=element_blank(), strip.text=element_text(size=9))
 ```
 
@@ -695,14 +669,12 @@ wk_fills <- c("Week 1"=CLR_MAIN,"Week 2"=CLR_GOOD,"Week 3"="#b8a88a")
 ggplot(roadmap) +
   geom_rect(aes(xmin=start, xmax=end, ymin=task_id-0.35, ymax=task_id+0.35, fill=week),
             alpha=0.85, color="white", linewidth=0.3) +
-  geom_text(aes(x=(start+end)/2, y=task_id, label=paste0("Impact: ",impact,"/10")),
-            size=2.7, color="white") +
   scale_y_continuous(breaks=seq_along(levels(roadmap$task)), labels=levels(roadmap$task)) +
   scale_x_continuous(breaks=c(1,8,15,22,30),
                      labels=c("Day 1","Week 2","Week 3","Week 4","Day 30")) +
   scale_fill_manual(values=wk_fills, name=NULL) +
   labs(title="30-Day Implementation Roadmap",
-       subtitle="Site consolidation added as Week 1 priority — unlocks all downstream improvements",
+       subtitle="Site consolidation (Week 1) unlocks all downstream improvements",
        x=NULL, y=NULL,
        caption="Week 1 requires no design work. Site consolidation = one 301 redirect + unified phone number.") +
   theme_audit() +

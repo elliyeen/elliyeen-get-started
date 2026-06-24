@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import SiteNav from "@/app/SiteNav";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
@@ -11,12 +12,7 @@ export default function PrivacyPage() {
 
   return (
     <div className="min-h-screen bg-white text-[#111111]">
-      <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur-md">
-        <div className="mx-auto flex max-w-4xl items-center justify-between px-6 py-5">
-          <a href="/" className="text-sm font-bold tracking-[0.22em] text-zinc-900">ELLIYEEN</a>
-          <a href="/" className="text-sm text-zinc-500 hover:text-black">← Back to home</a>
-        </div>
-      </nav>
+      <SiteNav />
 
       <main className="mx-auto max-w-4xl px-6 py-16">
         <p className="text-xs font-semibold uppercase tracking-widest text-zinc-400">Legal</p>

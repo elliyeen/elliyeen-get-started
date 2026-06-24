@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ArrowUpRight } from "lucide-react";
+import SiteNav from "@/app/SiteNav";
 
 export const metadata: Metadata = {
   title: "Audit Reports — Elliyeen Research",
@@ -149,28 +150,7 @@ const sections: Section[] = [
 export default function ReportsPage() {
   return (
     <main className="min-h-screen bg-[#f7f4ee] text-[#111111]">
-      {/* Nav */}
-      <nav className="sticky top-0 z-50">
-        <div
-          className="absolute inset-0 bg-[#f7f4ee]/85"
-          style={{
-            backdropFilter: "saturate(180%) blur(12px)",
-            WebkitBackdropFilter: "saturate(180%) blur(12px)",
-          }}
-          aria-hidden="true"
-        />
-        <div className="relative mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 sm:py-5">
-          <a href="/" className="font-serif text-lg font-semibold tracking-[-0.02em]">
-            Elliyeen Research
-          </a>
-          <a
-            href="/#book"
-            className="rounded-full bg-[#1B5EA8] px-4 py-2 text-sm font-semibold text-white hover:bg-[#164d8e]"
-          >
-            Free diagnosis
-          </a>
-        </div>
-      </nav>
+      <SiteNav />
 
       <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6">
         {/* Header */}

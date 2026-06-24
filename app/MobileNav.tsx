@@ -4,11 +4,11 @@ import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 
 const links = [
-  { label: "How It Works", href: "#assessment" },
-  { label: "Case Studies", href: "#cases" },
+  { label: "How It Works", href: "/#assessment" },
+  { label: "Case Studies", href: "/#cases" },
   { label: "Reports", href: "/reports" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "AI Advisor", href: "#advisor" },
+  { label: "Pricing", href: "/#pricing" },
+  { label: "AI Advisor", href: "/#advisor" },
 ];
 
 export default function MobileNav() {
@@ -71,14 +71,14 @@ export default function MobileNav() {
 
           <div className="mt-auto flex flex-col gap-3">
             <a
-              href="#contact"
+              href="/#contact"
               onClick={() => setOpen(false)}
               className="rounded-xl border border-zinc-300 px-6 py-4 text-center text-sm font-medium text-zinc-800"
             >
               Contact sales
             </a>
             <a
-              href="#book"
+              href="/#book"
               onClick={() => setOpen(false)}
               className="rounded-xl bg-[#1B5EA8] px-6 py-4 text-center text-sm font-bold text-white hover:bg-[#164d8e]"
             >
