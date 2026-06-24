@@ -16,26 +16,26 @@ const process = [
   {
     icon: Users,
     title: "Customer Intelligence",
-    timeline: "Hour 1",
+    type: "Buyer Research",
     body: "We map your buyer's trigger moment, dominant emotion, and the exact language they use when they feel the problem you solve. Delivered as a written customer brief.",
   },
   {
     icon: Search,
     title: "Friction Diagnosis",
-    timeline: "Hours 2–3",
+    type: "Website Audit",
     body: "We run 18 specialist frameworks across your copy, UX, trust signals, SEO, accessibility, and conversion architecture. Every gap documented with evidence.",
   },
   {
     icon: Sparkles,
     title: "Prioritized Roadmap",
-    timeline: "Hour 4",
+    type: "Revenue Model",
     body: "We rank every finding by revenue impact. You receive copy rewrites, UX recommendations, and a week-by-week action plan — not a PDF that sits in a folder.",
   },
   {
     icon: LineChart,
     title: "Implementation Support",
-    timeline: "Ongoing",
-    body: "We review your changes, run a second-pass audit, and measure what moved. Growth is a system — we stay until the system is working.",
+    type: "Growth System",
+    body: "We review your changes, run a second-pass audit, and measure what moved. Every implementation tracked against a baseline.",
   },
 ];
 
@@ -189,9 +189,6 @@ export default function GetStartedPage() {
               </a>
             </div>
 
-            <p className="mt-4 text-xs text-zinc-400">
-              Three specific findings. Delivered within 48 hours. We run 4 per week. No pitch.
-            </p>
           </div>
 
           {/* Fix 10 — Audit methodology card replaces the fake $2.4M revenue number */}
@@ -370,16 +367,12 @@ export default function GetStartedPage() {
                   <item.icon size={20} />
                 </div>
                 <div className="mx-auto mt-3 flex h-6 w-6 items-center justify-center rounded-full bg-[#1B5EA8] text-xs font-bold text-white">{index + 1}</div>
-                <p className="mt-2 text-[10px] font-bold uppercase tracking-widest text-zinc-400 sm:text-[11px]">{item.timeline}</p>
+                <p className="mt-2 text-[10px] font-bold uppercase tracking-widest text-zinc-400 sm:text-[11px]">{item.type}</p>
                 <h3 className="mt-2 text-sm font-bold sm:text-base">{item.title}</h3>
                 <p className="mt-2 text-sm leading-6 text-zinc-600">{item.body}</p>
               </div>
               </ScrollReveal>
             ))}
-          </div>
-          <div className="mt-6 rounded-2xl border border-zinc-200 bg-white px-6 py-4 text-center text-sm text-zinc-600">
-            <span className="font-semibold text-zinc-900">We stay until the system is working.</span>{" "}
-            Growth is not a deliverable — it is a system. We measure what moved and iterate until it does.
           </div>
         </section>
 
