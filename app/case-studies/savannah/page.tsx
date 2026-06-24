@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import SPCSFlipbook from "@/components/SPCSFlipbook";
+import SiteNav from "@/app/SiteNav";
 
 export const metadata: Metadata = {
   title: "Savannah Personal Care Services — Revenue Opportunity Report",
@@ -21,5 +22,10 @@ export const metadata: Metadata = {
 };
 
 export default function SPCSCaseStudyPage() {
-  return <SPCSFlipbook />;
+  return (
+    <>
+      <SiteNav />
+      <SPCSFlipbook />
+    </>
+  );
 }

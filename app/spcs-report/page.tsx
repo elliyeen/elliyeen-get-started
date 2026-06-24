@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import SPCSFlipbook from "@/components/SPCSFlipbook";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
+import SiteNav from "@/app/SiteNav";
 
 export const metadata: Metadata = {
   title: "Case Study: Savannah Personal Care Services — Elliyeen Research",
@@ -44,35 +45,7 @@ const afterWins = [
 export default function SPCSReportPage() {
   return (
     <div className="min-h-screen bg-[#f7f4ee] text-[#111111]">
-      {/* Nav */}
-      <nav aria-label="Main navigation" className="sticky top-0 z-50">
-        <div
-          className="absolute inset-0 bg-[#f7f4ee]/85"
-          style={{
-            backdropFilter: "saturate(180%) blur(12px)",
-            WebkitBackdropFilter: "saturate(180%) blur(12px)",
-          }}
-          aria-hidden="true"
-        />
-        <div className="relative mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 sm:py-5">
-          <a href="/" className="text-sm font-bold tracking-[0.22em] hover:opacity-70 transition-opacity">
-            ELLIYEEN
-          </a>
-          <div className="hidden items-center gap-9 text-sm font-medium text-zinc-600 md:flex">
-            <a href="/#assessment" className="hover:text-black">How It Works</a>
-            <a href="/#cases"      className="hover:text-black">Case Studies</a>
-            <a href="/#pricing"    className="hover:text-black">Pricing</a>
-          </div>
-          <div className="flex items-center gap-2">
-            <a href="/#contact" className="hidden rounded-full border border-zinc-300 px-4 py-2 text-sm font-medium text-zinc-800 hover:border-zinc-400 md:block">
-              Contact sales
-            </a>
-            <a href="/#book" className="rounded-full bg-[#1B5EA8] px-4 py-2 text-sm font-semibold text-white hover:bg-[#164d8e]">
-              Fix it
-            </a>
-          </div>
-        </div>
-      </nav>
+      <SiteNav />
 
       {/* ─── BEFORE: Case Study Hero ─────────────────────────────────────────── */}
       <section className="mx-auto max-w-7xl px-4 pb-10 pt-12 sm:px-6 md:pt-16">
