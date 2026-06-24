@@ -39,7 +39,7 @@ const reports = [
       "High-AUM advisory practice with positioning mismatch, weak differentiation from wirehouses, and missed AEO opportunities.",
     score: null,
     verdict: null,
-    href: "/reports/wealth-management-audit.html",
+    href: "/reports/sax-audit",
     date: "June 2026",
   },
   {

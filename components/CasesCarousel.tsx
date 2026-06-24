@@ -53,7 +53,7 @@ const ALL_CASES = [
     ],
     image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=1200&auto=format&fit=crop",
     imageAlt: "Financial advisor reviewing documents with a client at a desk",
-    href: "/reports/wealth-management-audit.html",
+    href: "/reports/sax-audit",
     reportLabel: "Read the full audit report",
     secondaryHref: "",
     secondaryLabel: "",
