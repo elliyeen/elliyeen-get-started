@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { createPortal } from "react-dom";
 import { Menu, X } from "lucide-react";
 
 const links = [
@@ -13,60 +12,11 @@ const links = [
 
 export default function MobileNav() {
   const [open, setOpen] = useState(false);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
   }, [open]);
-
-  const overlay = open ? (
-    <div
-      role="dialog"
-      aria-label="Navigation menu"
-      className="fixed inset-0 z-[200] flex flex-col bg-[#f7f4ee] px-6 pt-24 pb-10"
-    >
-      <button
-        onClick={() => setOpen(false)}
-        aria-label="Close menu"
-        className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full border border-zinc-300 text-zinc-700"
-      >
-        <X size={18} />
-      </button>
-      <nav className="flex flex-col divide-y divide-zinc-100">
-        {links.map((link) => (
-          <a
-            key={link.href}
-            href={link.href}
-            onClick={() => setOpen(false)}
-            className="py-5 text-xl font-semibold text-zinc-800 hover:text-black"
-          >
-            {link.label}
-          </a>
-        ))}
-      </nav>
-      <div className="mt-auto flex flex-col gap-3">
-        <a
-          href="#contact"
-          onClick={() => setOpen(false)}
-          className="rounded-xl border border-zinc-300 px-6 py-4 text-center text-sm font-medium text-zinc-800"
-        >
-          Contact sales
-        </a>
-        <a
-          href="#book"
-          onClick={() => setOpen(false)}
-          className="rounded-xl bg-black px-6 py-4 text-center text-sm font-bold text-white"
-        >
-          Get your free site diagnosis
-        </a>
-      </div>
-    </div>
-  ) : null;
 
   return (
     <div className="md:hidden">
@@ -79,7 +29,63 @@ export default function MobileNav() {
         {open ? <X size={18} /> : <Menu size={18} />}
       </button>
 
-      {mounted && createPortal(overlay, document.body)}
+      {open && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label="Navigation menu"
+          className="flex flex-col px-6 pb-10"
+          style={{
+            position: "fixed",
+            inset: 0,
+            zIndex: 9999,
+            paddingTop: "96px",
+            backgroundColor: "#f7f4ee",
+            // Force own compositing layer so backdrop-filter on nav
+            // cannot bleed above this overlay on Android Chrome
+            transform: "translateZ(0)",
+            WebkitTransform: "translateZ(0)",
+          }}
+        >
+          <button
+            onClick={() => setOpen(false)}
+            aria-label="Close menu"
+            className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full border border-zinc-300 text-zinc-700"
+          >
+            <X size={18} />
+          </button>
+
+          <nav className="flex flex-col divide-y divide-zinc-100">
+            {links.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={() => setOpen(false)}
+                className="py-5 text-xl font-semibold text-zinc-800 hover:text-black"
+              >
+                {link.label}
+              </a>
+            ))}
+          </nav>
+
+          <div className="mt-auto flex flex-col gap-3">
+            <a
+              href="#contact"
+              onClick={() => setOpen(false)}
+              className="rounded-xl border border-zinc-300 px-6 py-4 text-center text-sm font-medium text-zinc-800"
+            >
+              Contact sales
+            </a>
+            <a
+              href="#book"
+              onClick={() => setOpen(false)}
+              className="rounded-xl bg-black px-6 py-4 text-center text-sm font-bold text-white"
+            >
+              Get your free site diagnosis
+            </a>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
