@@ -51,8 +51,8 @@ body.ez-drawer-closed #ez-drawer { transform: translateX(-256px); }
 .ez-drawer-brand span { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #aaa; }
 .ez-drawer-nav { flex: 1; overflow-y: auto; padding: 1.2rem 0 2rem; scrollbar-width: thin; }
 .ez-nav-group { margin-bottom: 0.4rem; }
-.ez-nav-group-label { display: block; padding: 0.5rem 1.2rem 0.4rem; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #888; }
-.ez-nav-link { display: block; padding: 0.36rem 1.2rem 0.36rem 1.4rem; font-size: 0.81rem; font-weight: 400; color: #555; text-decoration: none; border-left: 2px solid transparent; margin-left: 0.4rem; line-height: 1.4; transition: color 0.15s, border-color 0.15s, background 0.15s; }
+.ez-nav-group-label { display: block; padding: 0.5rem 1.2rem 0.4rem; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #111; }
+.ez-nav-link { display: block; padding: 0.36rem 1.2rem 0.36rem 1.4rem; font-size: 0.88rem; font-weight: 400; color: #555; text-decoration: none; border-left: 2px solid transparent; margin-left: 0.4rem; line-height: 1.4; transition: color 0.15s, border-color 0.15s, background 0.15s; }
 .ez-nav-link:hover { color: #111; background: rgba(0,0,0,0.04); border-left-color: rgba(0,0,0,0.18); }
 .ez-nav-link.ez-active { color: #111; border-left-color: var(--pink); background: rgba(232,51,154,0.06); font-weight: 500; }
 
@@ -90,17 +90,68 @@ hr.section-rule { border: none; border-top: 1px solid var(--rule); margin: 2.8re
 .finding-card .fc-label { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #999; margin-bottom: 0.45rem; }
 .finding-card .fc-title { font-family: 'EB Garamond', Georgia, serif; font-size: 1.16rem; font-weight: 500; line-height: 1.28; margin-bottom: 0.5rem; }
 .finding-card .fc-body { font-size: 0.88rem; color: #444; line-height: 1.6; }
-.finding-card.issue { border-left: 3px solid var(--rust); }
-.finding-card.fix   { border-left: 3px solid var(--good); }
-.finding-card.opp   { border-left: 3px solid var(--amber); }
-.finding-card.vision { border-left: 3px solid var(--pink); }
-.finding-card.key-hl { background: #fef5fb; border-left: 3px solid var(--pink); box-shadow: 0 0 0 2px rgba(232,51,154,0.07), 0 3px 14px rgba(0,0,0,0.07); }
+.finding-card.key-hl { background: #fef5fb; box-shadow: 0 0 0 2px rgba(232,51,154,0.07), 0 3px 14px rgba(0,0,0,0.07); }
 .finding-card.key-hl::before { content: '★  KEY FINDING'; display: block; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--pink); margin-bottom: 0.55rem; }
 .finding-card.key-hl.issue::before { color: var(--rust); content: '★  KEY FINDING'; }
 
+/* ── Markdown-style content improvements ───────────────────── */
+.fc-body ul, .fc-body ol {
+  padding-left: 1.3rem;
+  margin: 0.55rem 0 0.2rem;
+}
+.fc-body li {
+  font-size: 0.88rem;
+  color: #444;
+  line-height: 1.65;
+  margin-bottom: 0.35rem;
+}
+.fc-body ul li::marker { color: #ccc; }
+.fc-body ol li::marker { font-weight: 600; color: #bbb; font-size: 0.82em; }
+.fc-body strong { color: #111; font-weight: 600; }
+.fc-body em { font-style: italic; color: #555; }
+.fc-body p { font-size: 0.88rem; color: #444; margin-bottom: 0.6rem; }
+.fc-body p:last-child { margin-bottom: 0; }
+
+/* Option blocks (replaces <br><br> between Option A/B) */
+.option-block { padding-top: 0.1rem; padding-bottom: 0.4rem; }
+.option-block + .option-block { border-top: 1px solid var(--rule); margin-top: 0.55rem; padding-top: 0.65rem; }
+.option-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: #999; margin-bottom: 0.3rem; }
+
+/* Attendee cards */
+.attendee-dl { margin: 0.3rem 0 0; }
+.attendee-dl dt { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: #999; margin-top: 0.65rem; margin-bottom: 0.15rem; }
+.attendee-dl dt:first-child { margin-top: 0; }
+.attendee-dl dd { font-size: 0.88rem; color: #444; line-height: 1.6; margin-left: 0; }
+
+/* Phase body list */
+.phase-body ul {
+  padding-left: 1.15rem;
+  margin-top: 0.4rem;
+  margin-bottom: 0;
+}
+.phase-body ul li {
+  font-size: 0.84rem;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 0.25rem;
+}
+.phase-body ul li::marker { color: #ccc; }
+
+/* Inline brand tag list */
+.brand-list { list-style: none; padding: 0; margin: 0.6rem 0 0.2rem; display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.brand-list li { font-size: 0.76rem; background: rgba(0,0,0,0.04); color: #555; padding: 0.2rem 0.6rem; border-radius: 3px; border: 1px solid var(--rule); }
+
+/* Sponsorship tier list */
+.tier-list { list-style: none; padding: 0; margin: 0.7rem 0 0.3rem; }
+.tier-list li { font-size: 0.84rem; color: #444; line-height: 1.55; margin-bottom: 0.4rem; padding-left: 0.1rem; display: flex; gap: 0.7rem; align-items: baseline; }
+.tier-badge { flex-shrink: 0; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; background: var(--good-lt); color: var(--good); padding: 0.15rem 0.45rem; border-radius: 3px; }
+
+/* Callout improvements */
 .callout { background: var(--amber-lt); border-left: 3px solid var(--amber); border-radius: 0 6px 6px 0; padding: 1rem 1.2rem; margin: 1.4rem 0; font-size: 0.9rem; color: #3a2a00; }
 .callout.mint { background: var(--mint-lt); border-left-color: var(--mint); color: #003a30; }
 .callout strong { font-weight: 600; }
+.callout ul { padding-left: 1.2rem; margin-top: 0.5rem; }
+.callout li { font-size: 0.88rem; line-height: 1.6; margin-bottom: 0.3rem; color: inherit; }
 
 .journey-table { width: 100%; border-collapse: collapse; margin: 1.4rem 0; font-size: 0.88rem; }
 .journey-table th { text-align: left; padding: 0.5rem 0.8rem; background: #1a1a1a; color: #fff; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600; }
@@ -202,6 +253,122 @@ hr.section-rule { border: none; border-top: 1px solid var(--rule); margin: 2.8re
   .wz-ttl { font-size: 1.25rem; }
   .wz-skip { display: none; }
 }
+
+/* ── ggplot-style data visualizations ──────────────────────── */
+.viz-wrap {
+  background: #f5f5f5;
+  border-radius: 8px;
+  padding: 1.4rem 1.6rem 1.1rem;
+  margin: 1.6rem 0;
+  border: 1px solid rgba(0,0,0,0.06);
+}
+.viz-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 1.1rem;
+  gap: 1rem;
+}
+.viz-title {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #777;
+}
+.viz-note { font-size: 0.68rem; color: #bbb; }
+
+/* Horizontal bar chart */
+.viz-hbar-row {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin-bottom: 0.6rem;
+}
+.viz-hbar-row:last-child { margin-bottom: 0; }
+.viz-hbar-label {
+  font-size: 0.77rem;
+  color: #555;
+  min-width: 195px;
+  flex-shrink: 0;
+  line-height: 1.3;
+}
+.viz-hbar-track {
+  flex: 1;
+  height: 19px;
+  background: rgba(0,0,0,0.07);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.viz-hbar-fill {
+  height: 100%;
+  border-radius: 2px;
+  background: rgba(0,0,0,0.15);
+}
+.viz-hbar-fill.active { background: var(--pink); }
+.viz-hbar-val {
+  min-width: 58px;
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: #333;
+}
+.viz-hbar-val.active { color: var(--pink); }
+.viz-axis-row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.55rem;
+  padding-left: 203px;
+  padding-right: 66px;
+}
+.viz-axis-tick { font-size: 0.64rem; color: #bbb; }
+
+/* Vertical bar chart */
+.viz-vbar-outer {
+  display: flex;
+  gap: 1.2rem;
+  align-items: flex-end;
+  height: 130px;
+  padding-bottom: 0;
+  border-bottom: 1px solid rgba(0,0,0,0.10);
+  margin-bottom: 0;
+}
+.viz-vbar-col { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; gap: 0; }
+.viz-vbar-bar { width: 100%; border-radius: 3px 3px 0 0; background: rgba(0,0,0,0.13); }
+.viz-vbar-bar.active { background: var(--pink); }
+.viz-vbar-labels {
+  display: flex;
+  gap: 1.2rem;
+  margin-top: 0.45rem;
+}
+.viz-vbar-lbl-col { flex: 1; text-align: center; }
+.viz-vbar-val { font-family: 'EB Garamond', Georgia, serif; font-size: 0.88rem; font-weight: 500; color: #555; }
+.viz-vbar-val.active { color: var(--pink); }
+.viz-vbar-lbl { font-size: 0.72rem; color: #888; line-height: 1.3; margin-top: 0.1rem; }
+
+/* Funnel chart */
+.viz-funnel { margin: 0.3rem 0 0.2rem; }
+.viz-funnel-row { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.5rem; }
+.viz-funnel-row:last-child { margin-bottom: 0; }
+.viz-funnel-label { font-size: 0.77rem; color: #555; min-width: 130px; flex-shrink: 0; }
+.viz-funnel-bar { height: 18px; border-radius: 2px; background: rgba(232,51,154,0.2); }
+.viz-funnel-bar.drop { background: rgba(192,57,43,0.18); }
+.viz-funnel-bar.go { background: rgba(45,106,79,0.2); }
+.viz-funnel-pct { font-size: 0.78rem; color: #888; min-width: 36px; }
+
+@media (max-width: 600px) {
+  .viz-hbar-label { min-width: 120px; font-size: 0.72rem; }
+  .viz-axis-row { padding-left: 128px; }
+  .viz-hbar-val { min-width: 48px; font-size: 0.82rem; }
+}
+
+/* ── Collapsible sections ───────────────────────────────── */
+.section-body { overflow: hidden; transition: none; }
+.section-body.collapsed { display: none; }
+.section > h2 { cursor: pointer; display: flex; align-items: baseline; justify-content: space-between; gap: 0.6rem; user-select: none; }
+.section > h2:hover { opacity: 0.8; }
+.h2-chevron { flex-shrink: 0; font-size: 0.75em; opacity: 0.35; margin-left: auto; transition: transform 0.2s; }
+.section.collapsed > h2 .h2-chevron { transform: rotate(-90deg); }
 </style>
 </head>
 <body class="">
@@ -228,10 +395,10 @@ hr.section-rule { border: none; border-top: 1px solid var(--rule); margin: 2.8re
     </div>
     <div class="ez-nav-group">
       <span class="ez-nav-group-label">Website Audit</span>
-      <a class="ez-nav-link" href="#web-1">1 — Inconsistent Vendor Count</a>
-      <a class="ez-nav-link" href="#web-2">2 — No Activity Directory</a>
-      <a class="ez-nav-link" href="#web-3">3 — First-Come Risk Undermines Purchase</a>
-      <a class="ez-nav-link" href="#web-4">4 — CTA Hierarchy Failure</a>
+      <a class="ez-nav-link" href="#web-1">1. Inconsistent Vendor Count</a>
+      <a class="ez-nav-link" href="#web-2">2. No Activity Directory</a>
+      <a class="ez-nav-link" href="#web-3">3. First-Come Risk Undermines Purchase</a>
+      <a class="ez-nav-link" href="#web-4">4. CTA Hierarchy Failure</a>
     </div>
     <div class="ez-nav-group">
       <span class="ez-nav-group-label">Customer Experience</span>
@@ -290,11 +457,16 @@ hr.section-rule { border: none; border-top: 1px solid var(--rule); margin: 2.8re
       </div>
     </div>
 
-    <p>OPEN HOUSE Creative Fest — June 27–28, 2026, Del Amo Fashion Center, Torrance — has something most events don't: a differentiated concept. "Don't just shop. Create." The guided activity model turns passive retail browsing into hands-on learning. Attendees don't just buy from makers — they make something with them.</p>
+    <p>OPEN HOUSE Creative Fest — June 27–28, 2026, Del Amo Fashion Center, Torrance — has something most events don't: a differentiated concept. <strong>"Don't just shop. Create."</strong> The guided activity model turns passive retail browsing into hands-on learning. Attendees don't just buy from makers — they make something with them.</p>
 
     <p>The Creative Passport ($40 early bird / $50 door) unlocks those guided activities. It is the event's primary revenue driver and its most powerful differentiator. And it is being sold on faith: before a buyer can see which activities are available, which makers are participating, or what they will actually create, they are asked to spend $50.</p>
 
-    <p>This audit covers what the website is failing to communicate, what the attendee's purchase journey looks like, and what the financial model reveals about the event's growth ceiling.</p>
+    <p>This audit covers three areas:</p>
+    <ul style="padding-left:1.3rem;margin:0 0 1rem;">
+      <li style="font-size:0.95rem;color:#2a2a2a;line-height:1.65;margin-bottom:0.35rem;">What the website is failing to communicate</li>
+      <li style="font-size:0.95rem;color:#2a2a2a;line-height:1.65;margin-bottom:0.35rem;">What the attendee's purchase journey looks like</li>
+      <li style="font-size:0.95rem;color:#2a2a2a;line-height:1.65;">What the financial model reveals about the event's growth ceiling</li>
+    </ul>
   </div>
 
   <hr class="section-rule">
@@ -332,7 +504,10 @@ hr.section-rule { border: none; border-top: 1px solid var(--rule); margin: 2.8re
     <div class="finding-card vision">
       <div class="fc-label">The Bridge</div>
       <div class="fc-title">From "an event people attend" to "a community people belong to"</div>
-      <div class="fc-body">The most successful creative markets — Renegade Craft Fair, Unique LA, the Portland Saturday Market — are not just events. They are community anchors. Makers return because the audience is right. Attendees return because the experience improves. The passport is not just an activity unlock — it is a membership signal. When a buyer purchases a OPEN HOUSE Creative Passport, they are saying something about who they are. The brand must be worthy of that signal.</div>
+      <div class="fc-body">
+        <p>The most successful creative markets — Renegade Craft Fair, Unique LA, the Portland Saturday Market — are not just events. They are community anchors. Makers return because the audience is right. Attendees return because the experience improves.</p>
+        <p>The passport is not just an activity unlock — it is a membership signal. When a buyer purchases a OPEN HOUSE Creative Passport, they are saying something about who they are. The brand must be worthy of that signal.</p>
+      </div>
     </div>
   </div>
 
@@ -342,18 +517,29 @@ hr.section-rule { border: none; border-top: 1px solid var(--rule); margin: 2.8re
   <div class="section" id="web-1">
     <h2>Website Audit — Finding 1</h2>
     <h3>The Vendor Count Contradicts Itself</h3>
-    <p>The OPEN HOUSE website states "50+ local makers." The Partiful event listing says "30 artists, designers, and small businesses." A buyer doing due diligence on a $50 purchase sees both numbers. One of them is wrong.</p>
+    <p>The OPEN HOUSE website states <strong>"50+ local makers."</strong> The Partiful event listing says <strong>"30 artists, designers, and small businesses."</strong> A buyer doing due diligence on a $50 purchase sees both numbers. One of them is wrong.</p>
 
     <div class="finding-card issue key-hl">
       <div class="fc-label">The Credibility Gap</div>
       <div class="fc-title">Inconsistent numbers signal an event still figuring itself out</div>
-      <div class="fc-body">A buyer considering a $50 Creative Passport is doing a value assessment: how many activities can I access? If the website says 50+ and the Partiful says 30, the buyer rounds down — and adjusts their perception of value accordingly. More critically, the inconsistency signals operational immaturity. An event that knows what it has doesn't say 50 on one platform and 30 on another. The fix is not just updating the number — it is publishing the actual maker list.</div>
+      <div class="fc-body">
+        <p>A buyer considering a $50 Creative Passport is doing a value assessment: how many activities can I access? If the website says 50+ and the Partiful says 30, the buyer rounds down — and adjusts their perception of value accordingly.</p>
+        <p>More critically, the inconsistency signals operational immaturity. An event that knows what it has doesn't say 50 on one platform and 30 on another. The fix is not just updating the number — it is publishing the actual maker list.</p>
+      </div>
     </div>
 
     <div class="finding-card fix">
       <div class="fc-label">The Fix</div>
       <div class="fc-title">Publish the maker directory before the event opens</div>
-      <div class="fc-body">Every maker participating in OPEN HOUSE should be listed on the website at least two weeks before the event: name, specialty, what activity they're offering. This does three things simultaneously: (1) eliminates the count discrepancy, (2) gives passport buyers a reason to purchase early because they can see the specific value, (3) gives each maker a reason to promote the event to their own followers — because their name is published. The directory is marketing infrastructure, not just transparency.</div>
+      <div class="fc-body">
+        <p>Every maker participating in OPEN HOUSE should be listed on the website at least two weeks before the event: name, specialty, what activity they're offering. This does three things simultaneously:</p>
+        <ol>
+          <li>Eliminates the count discrepancy between the website (50+) and Partiful (30)</li>
+          <li>Gives passport buyers a reason to purchase early — they can see the specific value they're committing to</li>
+          <li>Gives each maker a reason to promote the event to their own followers, because their name is published and linked</li>
+        </ol>
+        <p>The directory is marketing infrastructure, not just transparency.</p>
+      </div>
     </div>
   </div>
 
@@ -362,18 +548,25 @@ hr.section-rule { border: none; border-top: 1px solid var(--rule); margin: 2.8re
   <div class="section" id="web-2">
     <h2>Website Audit — Finding 2</h2>
     <h3>No Activity Directory — The $50 Ask Has No Answer</h3>
-    <p>A buyer considering the Creative Passport asks one question before spending $50: "What will I actually make?" The website does not answer it.</p>
+    <p>A buyer considering the Creative Passport asks one question before spending $50: <em>"What will I actually make?"</em> The website does not answer it.</p>
 
     <div class="finding-card issue key-hl">
       <div class="fc-label">The Purchase Barrier</div>
       <div class="fc-title">Spending $50 without knowing what it unlocks</div>
-      <div class="fc-body">The website describes the passport as unlocking "all activities at booths" with 1 activity per booth per passport. But which booths? Which activities? Paint what? Weave what? Make what? The copy says "paint, shape, weave, or assemble" — which is a category description, not an activity description. A buyer who does not know what they are buying hesitates. A buyer who has read "paint a ceramic planter with Lily from Studio Sage" has already decided. The activity directory is the conversion mechanism for the passport.</div>
+      <div class="fc-body">
+        <p>The website describes the passport as unlocking "all activities at booths" with 1 activity per booth per passport. But which booths? Which activities? Paint what? Weave what? Make what?</p>
+        <p>The copy says <em>"paint, shape, weave, or assemble"</em> — which is a category description, not an activity description. A buyer who does not know what they are buying hesitates. A buyer who has read <strong>"paint a ceramic planter with Lily from Studio Sage"</strong> has already decided. The activity directory is the conversion mechanism for the passport.</p>
+      </div>
     </div>
 
     <div class="finding-card fix">
       <div class="fc-label">The Fix</div>
       <div class="fc-title">Activity preview page: "Here's what you'll make"</div>
-      <div class="fc-body">A simple page or section: each participating maker listed with a photo of their activity and a one-sentence description. "Weave a mini wall hanging with raw cotton and natural dye — no experience needed." That sentence is worth $50 to the right buyer. Without it, the passport is an abstract offer. With it, the passport is a specific set of experiences the buyer is already imagining themselves having. The activity preview converts browsers into buyers.</div>
+      <div class="fc-body">
+        <p>A simple page or section: each participating maker listed with a photo of their activity and a one-sentence description.</p>
+        <p><em>"Weave a mini wall hanging with raw cotton and natural dye — no experience needed."</em></p>
+        <p>That sentence is worth $50 to the right buyer. Without it, the passport is an abstract offer. With it, the passport is a specific set of experiences the buyer is already imagining themselves having. The activity preview converts browsers into buyers.</p>
+      </div>
     </div>
   </div>
 
@@ -382,18 +575,35 @@ hr.section-rule { border: none; border-top: 1px solid var(--rule); margin: 2.8re
   <div class="section" id="web-3">
     <h2>Website Audit — Finding 3</h2>
     <h3>First-Come-First-Served Undercuts Passport Value</h3>
-    <p>The passport sells access to activities. But "capacity may vary throughout the day" means a buyer who arrives at 2pm on Day 2 may find every booth at capacity — having spent $50 for access to nothing available.</p>
+    <p>The passport sells access to activities. But <em>"capacity may vary throughout the day"</em> means a buyer who arrives at 2pm on Day 2 may find every booth at capacity — having spent $50 for access to nothing available.</p>
 
     <div class="finding-card issue">
       <div class="fc-label">The Risk</div>
       <div class="fc-title">The $50 passport has an undisclosed expiration time</div>
-      <div class="fc-body">No event organizer wants to publish "get here early or your passport becomes worthless," but that is the implicit experience for late arrivals if capacity management is not addressed. A buyer who shows up at 2pm, passport in hand, only to find every activity at capacity, will never buy again — and will tell three people. The first-come-first-served model works for free admission. It creates resentment when applied to a paid experience.</div>
+      <div class="fc-body">
+        <p>No event organizer wants to publish "get here early or your passport becomes worthless," but that is the implicit experience for late arrivals if capacity management is not addressed.</p>
+        <p>A buyer who shows up at 2pm, passport in hand, only to find every activity at capacity, will never buy again — and will tell three people. The first-come-first-served model works for free admission. It creates resentment when applied to a paid experience.</p>
+      </div>
     </div>
 
     <div class="finding-card fix">
       <div class="fc-label">The Fix — Two Options</div>
       <div class="fc-title">Timed entry OR activity reservation slots</div>
-      <div class="fc-body"><strong>Option A (minimal):</strong> Add recommended arrival times to the passport purchase confirmation — "For best activity access, we recommend arriving within the first two hours of each day." Honest, helpful, sets expectations without overpromising.<br><br><strong>Option B (preferred for Year 2):</strong> Time-slot reservations for specific activities at booth sign-up. Passport holder books 2–3 activities in advance via a simple form. Eliminates capacity anxiety entirely. Turns the event into a planned experience, not a scramble. Increases perceived value of the passport significantly.</div>
+      <div class="fc-body">
+        <div class="option-block">
+          <div class="option-label">Option A — Minimal lift</div>
+          <p>Add recommended arrival times to the passport purchase confirmation — <em>"For best activity access, we recommend arriving within the first two hours of each day."</em> Honest, helpful, sets expectations without overpromising.</p>
+        </div>
+        <div class="option-block">
+          <div class="option-label">Option B — Preferred for Year 2</div>
+          <p>Time-slot reservations for specific activities at booth sign-up. Passport holder books 2–3 activities in advance via a simple form. This:</p>
+          <ul>
+            <li>Eliminates capacity anxiety entirely</li>
+            <li>Turns the event into a planned experience, not a scramble</li>
+            <li>Increases perceived value of the passport significantly</li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -407,13 +617,23 @@ hr.section-rule { border: none; border-top: 1px solid var(--rule); margin: 2.8re
     <div class="finding-card issue">
       <div class="fc-label">The Problem</div>
       <div class="fc-title">When everything is a priority, nothing is</div>
-      <div class="fc-body">Hopkins' principle: one ask per visible screen. Three equal CTAs force the buyer to choose what to do instead of simply doing the most important thing. The Partiful RSVP and the Instagram follow are supporting actions — they capture interested visitors who aren't ready to purchase. They should exist, but they should not compete with the passport purchase for visual priority. The passport CTA should dominate.</div>
+      <div class="fc-body">
+        <p>Hopkins' principle: <strong>one ask per visible screen.</strong> Three equal CTAs force the buyer to choose what to do instead of simply doing the most important thing.</p>
+        <p>The Partiful RSVP and the Instagram follow are supporting actions — they capture interested visitors who aren't ready to purchase. They should exist, but they should not compete with the passport purchase for visual priority.</p>
+      </div>
     </div>
 
     <div class="finding-card fix">
       <div class="fc-label">The Fix</div>
       <div class="fc-title">One primary CTA. Two supporting actions.</div>
-      <div class="fc-body">Primary (large, bold, color): "Get Your Creative Passport — $40 Early Bird" — the passport buy button is the one action that funds the event.<br><br>Secondary (text link, smaller): "RSVP free on Partiful" — for visitors who want to attend without purchasing a passport.<br><br>Tertiary (footer/social area): "Follow us on Instagram" — keeps non-buyers engaged for the next edition.<br><br>The visual hierarchy should make the answer to "what should I do on this page?" obvious before the visitor finishes their first scroll.</div>
+      <div class="fc-body">
+        <ul>
+          <li><strong>Primary</strong> (large, bold, color) — "Get Your Creative Passport — $40 Early Bird." This is the one action that funds the event. It gets the most visual weight.</li>
+          <li><strong>Secondary</strong> (text link, smaller) — "RSVP free on Partiful." For visitors who want to attend without purchasing a passport.</li>
+          <li><strong>Tertiary</strong> (footer/social area) — "Follow us on Instagram." Keeps non-buyers engaged for the next edition.</li>
+        </ul>
+        <p>The visual hierarchy should make the answer to <em>"what should I do on this page?"</em> obvious before the visitor finishes their first scroll.</p>
+      </div>
     </div>
   </div>
 
@@ -427,19 +647,46 @@ hr.section-rule { border: none; border-top: 1px solid var(--rule); margin: 2.8re
     <div class="finding-card vision">
       <div class="fc-label">Attendee Type 1 — Highest Value</div>
       <div class="fc-title">The Maker Community Member</div>
-      <div class="fc-body"><strong>Who:</strong> Craft-curious, creative professional, small business owner, maker herself. Follows local artisan brands on Instagram. Goes to Renegade, Unique LA, farmers markets.<br><strong>Purchase decision:</strong> She will buy the passport if she can see which makers are participating and what she'll make. She is your best buyer and your best promoter — she will post her experience and drive 3–5 friends to the next edition if her experience is specific and photographable.<br><strong>What she needs:</strong> The maker directory and activity preview. She is buying an experience, not just access. Name the experience before asking for $50.</div>
+      <div class="fc-body">
+        <dl class="attendee-dl">
+          <dt>Who</dt>
+          <dd>Craft-curious, creative professional, small business owner, maker herself. Follows local artisan brands on Instagram. Goes to Renegade, Unique LA, farmers markets.</dd>
+          <dt>Purchase decision</dt>
+          <dd>She will buy the passport if she can see which makers are participating and what she'll make. She is your best buyer and your best promoter — she will post her experience and drive 3–5 friends to the next edition if her experience is specific and photographable.</dd>
+          <dt>What she needs</dt>
+          <dd>The maker directory and activity preview. She is buying an experience, not just access. <strong>Name the experience before asking for $50.</strong></dd>
+        </dl>
+      </div>
     </div>
 
     <div class="finding-card">
       <div class="fc-label">Attendee Type 2</div>
       <div class="fc-title">The Gift Shopper / Browser</div>
-      <div class="fc-body"><strong>Who:</strong> Comes to browse, support local makers, buy handmade goods. Not necessarily planning to do activities. Likely to attend free.<br><strong>Purchase decision:</strong> Might buy a passport on-site if she sees something she wants to try and the booth is still available. Impulse buyer at the event, not in advance.<br><strong>What she needs:</strong> Easy, visible on-site passport purchase with no friction — and a compelling "here's what you can make" display at the entrance that converts browsers into passport buyers the moment they arrive.</div>
+      <div class="fc-body">
+        <dl class="attendee-dl">
+          <dt>Who</dt>
+          <dd>Comes to browse, support local makers, buy handmade goods. Not necessarily planning to do activities. Likely to attend free.</dd>
+          <dt>Purchase decision</dt>
+          <dd>Might buy a passport on-site if she sees something she wants to try and the booth is still available. Impulse buyer at the event, not in advance.</dd>
+          <dt>What she needs</dt>
+          <dd>Easy, visible on-site passport purchase with no friction — and a compelling <em>"here's what you can make"</em> display at the entrance that converts browsers into passport buyers the moment they arrive.</dd>
+        </dl>
+      </div>
     </div>
 
     <div class="finding-card">
       <div class="fc-label">Attendee Type 3</div>
       <div class="fc-title">The Date / Group Outing</div>
-      <div class="fc-body"><strong>Who:</strong> Couple or friend group looking for a creative, social Saturday activity. Not plugged into the maker community. Found OPEN HOUSE through Instagram or word of mouth.<br><strong>Purchase decision:</strong> Will buy passports for the group if the event looks fun and specific. Vague "explore and create" copy doesn't convert this buyer. "Make a personalized leather keychain together — no experience needed" does.<br><strong>What she needs:</strong> Two or three very specific, very visual, very social activity examples in the marketing — the ones that make her text her friends "we should do this."</div>
+      <div class="fc-body">
+        <dl class="attendee-dl">
+          <dt>Who</dt>
+          <dd>Couple or friend group looking for a creative, social Saturday activity. Not plugged into the maker community. Found OPEN HOUSE through Instagram or word of mouth.</dd>
+          <dt>Purchase decision</dt>
+          <dd>Will buy passports for the group if the event looks fun and specific. Vague <em>"explore and create"</em> copy doesn't convert this buyer. <strong>"Make a personalized leather keychain together — no experience needed"</strong> does.</dd>
+          <dt>What she needs</dt>
+          <dd>Two or three very specific, very visual, very social activity examples in the marketing — the ones that make her text her friends <em>"we should do this."</em></dd>
+        </dl>
+      </div>
     </div>
   </div>
 
@@ -510,8 +757,53 @@ hr.section-rule { border: none; border-top: 1px solid var(--rule); margin: 2.8re
       </tbody>
     </table>
 
+    <!-- Purchase journey funnel -->
+    <div class="viz-wrap">
+      <div class="viz-head">
+        <span class="viz-title">Estimated Purchase Funnel — Maker Community Member</span>
+        <span class="viz-note">% of visitors reaching each stage</span>
+      </div>
+      <div class="viz-funnel">
+        <div class="viz-funnel-row">
+          <div class="viz-funnel-label">Sees IG post</div>
+          <div class="viz-funnel-bar go" style="width:100%"></div>
+          <div class="viz-funnel-pct">100%</div>
+        </div>
+        <div class="viz-funnel-row">
+          <div class="viz-funnel-label">Visits website</div>
+          <div class="viz-funnel-bar go" style="width:72%"></div>
+          <div class="viz-funnel-pct">~72%</div>
+        </div>
+        <div class="viz-funnel-row">
+          <div class="viz-funnel-label">Looks for activity list</div>
+          <div class="viz-funnel-bar drop" style="width:55%"></div>
+          <div class="viz-funnel-pct">~55%</div>
+        </div>
+        <div class="viz-funnel-row">
+          <div class="viz-funnel-label">Checks Partiful / count</div>
+          <div class="viz-funnel-bar drop" style="width:42%"></div>
+          <div class="viz-funnel-pct">~42%</div>
+        </div>
+        <div class="viz-funnel-row">
+          <div class="viz-funnel-label">Reaches purchase intent</div>
+          <div class="viz-funnel-bar drop" style="width:28%"></div>
+          <div class="viz-funnel-pct">~28%</div>
+        </div>
+        <div class="viz-funnel-row">
+          <div class="viz-funnel-label">Buys advance passport</div>
+          <div class="viz-funnel-bar drop" style="width:20%"></div>
+          <div class="viz-funnel-pct" style="color:var(--rust);font-weight:600;">~20%</div>
+        </div>
+      </div>
+    </div>
+
     <div class="callout">
-      <strong>The core conversion failure:</strong> The early bird incentive (save $10) creates price urgency but not value urgency. A buyer saves $10 by buying now — but she doesn't know what she's buying yet. Value urgency — "only 8 spots left for the leather workshop with [Maker Name]" — converts advance purchases far more reliably than price discounting.
+      <strong>The core conversion failure:</strong> The early bird incentive (save $10) creates <em>price</em> urgency but not <em>value</em> urgency.
+      <ul>
+        <li>A buyer saves $10 by buying now — but she doesn't know what she's buying yet.</li>
+        <li><strong>Value urgency</strong> — <em>"only 8 spots left for the leather workshop with [Maker Name]"</em> — converts advance purchases far more reliably than price discounting.</li>
+        <li>Price urgency alone is not enough when the offer is still abstract.</li>
+      </ul>
     </div>
   </div>
 
@@ -524,13 +816,20 @@ hr.section-rule { border: none; border-top: 1px solid var(--rule); margin: 2.8re
     <div class="finding-card issue key-hl">
       <div class="fc-label">The Value Gap</div>
       <div class="fc-title">$50 for "all activities" is an abstraction. $50 for 8 named, specific experiences is a bargain.</div>
-      <div class="fc-body">If there are 8 activity booths and the passport covers all of them, the per-activity cost is $6.25. At $6.25 per guided hands-on creative experience with a local maker and founder, the Creative Passport is remarkably underpriced. But the buyer cannot feel that value without knowing what the 8 activities are. The website says "unlock all activities." The buyer hears "something unspecified, quantity unknown, subject to availability." The passport value is real. The communication of that value is missing.</div>
+      <div class="fc-body">
+        <p>If there are 8 activity booths and the passport covers all of them, the per-activity cost is <strong>$6.25</strong>. At $6.25 per guided hands-on creative experience with a local maker and founder, the Creative Passport is remarkably underpriced.</p>
+        <p>But the buyer cannot feel that value without knowing what the 8 activities are. The website says "unlock all activities." The buyer hears <em>"something unspecified, quantity unknown, subject to availability."</em> The passport value is real. The communication of that value is missing.</p>
+      </div>
     </div>
 
     <div class="finding-card fix">
       <div class="fc-label">The Value Reframe</div>
       <div class="fc-title">Sell the math before the $50 ask</div>
-      <div class="fc-body">Below the passport CTA, add one sentence that does the math for the buyer: "8 guided creative experiences with LA's best makers — each one normally $12–$20 standalone — for $50 with your Creative Passport." That sentence converts the $50 from an event fee into a bargain. The buyer's mental math flips from "is this worth $50?" to "this is worth $160 and I'm getting it for $50." One sentence. No new pages required.</div>
+      <div class="fc-body">
+        <p>Below the passport CTA, add one sentence that does the math for the buyer:</p>
+        <p><em>"8 guided creative experiences with LA's best makers — each one normally $12–$20 standalone — for $50 with your Creative Passport."</em></p>
+        <p>That sentence converts the $50 from an event fee into a bargain. The buyer's mental math flips from <em>"is this worth $50?"</em> to <em>"this is worth $160 and I'm getting it for $50."</em> One sentence. No new pages required.</p>
+      </div>
     </div>
   </div>
 
@@ -543,7 +842,12 @@ hr.section-rule { border: none; border-top: 1px solid var(--rule); margin: 2.8re
       <div class="phase-num">1</div>
       <div class="phase-body">
         <strong>Publish the maker directory + activity preview 2 weeks before the event</strong>
-        <span>Each maker: name, Instagram, specialty, and one-sentence description of their activity. "Paint a glazed ceramic bud vase with [name] from [studio] — beginners welcome." This page becomes the primary conversion mechanism for advance passport sales and each maker's promotional content for their own audience.</span>
+        <span>Each maker: name, Instagram, specialty, and one-sentence description of their activity. <em>"Paint a glazed ceramic bud vase with [name] from [studio] — beginners welcome."</em></span>
+        <ul>
+          <li>Becomes the primary conversion mechanism for advance passport sales</li>
+          <li>Gives each maker promotional content for their own audience</li>
+          <li>Resolves the vendor count discrepancy across all platforms</li>
+        </ul>
       </div>
     </div>
 
@@ -551,15 +855,24 @@ hr.section-rule { border: none; border-top: 1px solid var(--rule); margin: 2.8re
       <div class="phase-num">2</div>
       <div class="phase-body">
         <strong>Fix the CTA hierarchy — passport purchase dominant</strong>
-        <span>One primary CTA (bright, large, bold): "Get Your Creative Passport — $40 Early Bird." One secondary CTA (text link): "RSVP free." One tertiary (footer): Instagram follow. The order and visual weight should make the decision sequence obvious without the buyer having to think about it.</span>
+        <span>One primary CTA (bright, large, bold): "Get Your Creative Passport — $40 Early Bird." One secondary CTA (text link): "RSVP free." One tertiary (footer): Instagram follow.</span>
+        <ul>
+          <li>The passport purchase CTA should have the most visual weight on the page</li>
+          <li>No other action competes with it — the decision sequence should be obvious without thinking</li>
+        </ul>
       </div>
     </div>
 
     <div class="phase-row">
       <div class="phase-num">3</div>
       <div class="phase-body">
-        <strong>Add the per-activity math beneath the passport price</strong>
-        <span>"8 guided experiences · $6.25 each · makers normally charge $12–20/session." One sentence that reframes the $50 as a savings, not a cost. Place this directly below the passport CTA — not in a FAQ, not buried in copy. At the moment of decision.</span>
+        <strong>Add the per-activity value math below the passport price</strong>
+        <span><em>"8 guided experiences · $6.25 each · makers normally charge $12–20/session."</em></span>
+        <ul>
+          <li>Reframes the $50 as savings, not a cost</li>
+          <li>Place this directly below the passport CTA — not in a FAQ, not buried in copy</li>
+          <li>Must appear at the moment of decision, not after it</li>
+        </ul>
       </div>
     </div>
 
@@ -567,7 +880,11 @@ hr.section-rule { border: none; border-top: 1px solid var(--rule); margin: 2.8re
       <div class="phase-num">4</div>
       <div class="phase-body">
         <strong>Set arrival expectations explicitly in purchase confirmation</strong>
-        <span>"For best activity availability, we recommend arriving within the first 90 minutes of each day. Activities are first-come, first-served and may reach capacity by midday." This sentence prevents the resentment of a late-arriving passport holder who finds nothing available. It is honest, helpful, and far better than the alternative: a disappointed buyer who never returns.</span>
+        <span><em>"For best activity availability, we recommend arriving within the first 90 minutes of each day. Activities are first-come, first-served and may reach capacity by midday."</em></span>
+        <ul>
+          <li>Prevents the resentment of a late-arriving passport holder who finds nothing available</li>
+          <li>Honest, helpful, and far better than a disappointed buyer who never returns</li>
+        </ul>
       </div>
     </div>
 
@@ -575,7 +892,13 @@ hr.section-rule { border: none; border-top: 1px solid var(--rule); margin: 2.8re
       <div class="phase-num">5</div>
       <div class="phase-body">
         <strong>Build the post-event email for re-engagement</strong>
-        <span>Every passport buyer should receive an email within 48 hours of the event: "What did you make? Tag us @openhousecreativefest — and be the first to know about our next edition." This email captures social proof, builds the waitlist for the next event, and converts single-event attendees into community members. The next edition's advance sales come from this list.</span>
+        <span>Every passport buyer should receive an email within 48 hours of the event: <em>"What did you make? Tag us @openhousecreativefest — and be the first to know about our next edition."</em></span>
+        <ul>
+          <li>Captures social proof immediately while experience is fresh</li>
+          <li>Builds the waitlist for the next event without any ad spend</li>
+          <li>Converts single-event attendees into community members</li>
+          <li>The next edition's advance sales come from this list</li>
+        </ul>
       </div>
     </div>
   </div>
@@ -608,7 +931,24 @@ hr.section-rule { border: none; border-top: 1px solid var(--rule); margin: 2.8re
     <div class="finding-card vision">
       <div class="fc-label">Sponsorship Opportunity</div>
       <div class="fc-title">Creative brands pay to reach exactly this audience</div>
-      <div class="fc-body">The OPEN HOUSE audience — craft-curious, maker-adjacent, spending Saturday making things — is a premium target for brands like Blick Art Materials, Michaels, Cricut, Etsy, local print studios, and art supply companies. A 2-day event with 300+ attendees who are actively creating is a live product demonstration opportunity. Sponsorship tiers starting at $500 (logo placement + social mention) to $5,000 (activation booth + exclusive activity sponsor) could add $5,000–$25,000 per event edition without changing the attendee experience. This revenue stream does not exist yet. It should.</div>
+      <div class="fc-body">
+        <p>The OPEN HOUSE audience — craft-curious, maker-adjacent, spending Saturday making things — is a premium target for brands in the creative supply and lifestyle space:</p>
+        <ul class="brand-list">
+          <li>Blick Art Materials</li>
+          <li>Michaels</li>
+          <li>Cricut</li>
+          <li>Etsy</li>
+          <li>Local print studios</li>
+          <li>Art supply companies</li>
+        </ul>
+        <p>A 2-day event with 300+ attendees who are actively creating is a live product demonstration opportunity. Potential sponsorship tiers:</p>
+        <ul class="tier-list">
+          <li><span class="tier-badge">$500</span> Logo placement + social mention</li>
+          <li><span class="tier-badge">$2,000</span> Activation booth + dedicated post</li>
+          <li><span class="tier-badge">$5,000</span> Exclusive activity sponsor + full brand integration</li>
+        </ul>
+        <p>At full adoption, sponsor revenue could add <strong>$5,000–$25,000 per event edition</strong> without changing the attendee experience. This revenue stream does not exist yet. It should.</p>
+      </div>
     </div>
   </div>
 
@@ -665,14 +1005,61 @@ hr.section-rule { border: none; border-top: 1px solid var(--rule); margin: 2.8re
       </tbody>
     </table>
 
+    <!-- Passport revenue chart -->
+    <div class="viz-wrap">
+      <div class="viz-head">
+        <span class="viz-title">Passport Revenue by Scenario</span>
+        <span class="viz-note">max $10,575</span>
+      </div>
+      <div class="viz-hbar-row">
+        <div class="viz-hbar-label">Conservative (15% conv.)</div>
+        <div class="viz-hbar-track"><div class="viz-hbar-fill" style="width:18.7%"></div></div>
+        <div class="viz-hbar-val">$1,980</div>
+      </div>
+      <div class="viz-hbar-row">
+        <div class="viz-hbar-label">Current estimate (20%)</div>
+        <div class="viz-hbar-track"><div class="viz-hbar-fill" style="width:34.8%"></div></div>
+        <div class="viz-hbar-val">$3,680</div>
+      </div>
+      <div class="viz-hbar-row">
+        <div class="viz-hbar-label">With activity directory (35%)</div>
+        <div class="viz-hbar-track"><div class="viz-hbar-fill active" style="width:59.6%"></div></div>
+        <div class="viz-hbar-val active">$6,300</div>
+      </div>
+      <div class="viz-hbar-row">
+        <div class="viz-hbar-label">With timed slots + directory (50%)</div>
+        <div class="viz-hbar-track"><div class="viz-hbar-fill active" style="width:100%"></div></div>
+        <div class="viz-hbar-val active">$10,575</div>
+      </div>
+      <div class="viz-axis-row">
+        <span class="viz-axis-tick">$0</span>
+        <span class="viz-axis-tick">$2,500</span>
+        <span class="viz-axis-tick">$5,000</span>
+        <span class="viz-axis-tick">$7,500</span>
+        <span class="viz-axis-tick">$10,575</span>
+      </div>
+    </div>
+
     <div class="callout">
-      The conversion rate difference between "passport with no activity preview" (~20%) and "passport with specific activity directory + slot reservation" (~50%) is the single variable that most affects event profitability. The fix is operational, not promotional. No ad spend required.
+      The conversion rate difference between "passport with no activity preview" (~20%) and "passport with specific activity directory + slot reservation" (~50%) is the single variable that most affects event profitability.
+      <ul>
+        <li>The fix is <strong>operational, not promotional</strong> — no ad spend required</li>
+        <li>Publishing the maker directory is an afternoon of content work, not a technology project</li>
+        <li>Each percentage point of conversion rate improvement is worth ~$230 in passport revenue at current attendance levels</li>
+      </ul>
     </div>
 
     <div class="finding-card vision key-hl">
       <div class="fc-label">Key Insight</div>
       <div class="fc-title">The activity directory is not a nice-to-have. It is a revenue mechanism.</div>
-      <div class="fc-body">At 20% conversion: 80 passports × $46 = $3,680 in passport revenue. At 50% conversion: 225 passports × $47 = $10,575 in passport revenue. The difference — $6,895 — comes entirely from publishing the maker directory and activity list before the event. That is the financial return on one afternoon of content work.</div>
+      <div class="fc-body">
+        <ul>
+          <li><strong>At 20% conversion:</strong> 80 passports × $46 = <strong>$3,680</strong> in passport revenue</li>
+          <li><strong>At 50% conversion:</strong> 225 passports × $47 = <strong>$10,575</strong> in passport revenue</li>
+          <li><strong>The difference — $6,895 —</strong> comes entirely from publishing the maker directory and activity list before the event</li>
+        </ul>
+        <p>That is the financial return on one afternoon of content work.</p>
+      </div>
     </div>
   </div>
 
@@ -700,12 +1087,53 @@ hr.section-rule { border: none; border-top: 1px solid var(--rule); margin: 2.8re
       </div>
     </div>
 
-    <p>The growth path requires one thing above all others: a community list. Every passport buyer who provides an email becomes the advance-sale audience for the next edition. That list — 100 people after Edition 1, 300 after Edition 2 — is the event's most valuable asset. It reduces dependence on social media algorithms for every subsequent event and enables advance passport sales before any marketing spend.</p>
+    <!-- Growth pathway chart -->
+    <div class="viz-wrap">
+      <div class="viz-head">
+        <span class="viz-title">Revenue Growth Pathway</span>
+        <span class="viz-note">combined passport + booth + sponsor revenue</span>
+      </div>
+      <div class="viz-vbar-outer">
+        <div class="viz-vbar-col">
+          <div class="viz-vbar-bar" style="height:14.3%"></div>
+        </div>
+        <div class="viz-vbar-col">
+          <div class="viz-vbar-bar" style="height:42.9%"></div>
+        </div>
+        <div class="viz-vbar-col">
+          <div class="viz-vbar-bar active" style="height:100%"></div>
+        </div>
+      </div>
+      <div class="viz-vbar-labels">
+        <div class="viz-vbar-lbl-col">
+          <div class="viz-vbar-val">~$5K</div>
+          <div class="viz-vbar-lbl">Edition 1<br>current</div>
+        </div>
+        <div class="viz-vbar-lbl-col">
+          <div class="viz-vbar-val">~$15K</div>
+          <div class="viz-vbar-lbl">Edition 2<br>improved</div>
+        </div>
+        <div class="viz-vbar-lbl-col">
+          <div class="viz-vbar-val active">~$35K</div>
+          <div class="viz-vbar-lbl">Year 2<br>recurring</div>
+        </div>
+      </div>
+    </div>
+
+    <p>The growth path requires one thing above all others: <strong>a community list.</strong> Every passport buyer who provides an email becomes the advance-sale audience for the next edition.</p>
 
     <div class="finding-card opp">
       <div class="fc-label">The Community Asset</div>
       <div class="fc-title">Build the list now. Every edition launches to a warm audience.</div>
-      <div class="fc-body">When OPEN HOUSE Edition 2 is announced, it should not start from zero. The 200+ people who attended Edition 1 and opted into email communication are the advance-sale audience — people who have already had the experience and want to come back. Advance passport sales from this list (at 40% conversion, 200 people = 80 passports = $3,600 before a single social post is published) fund the event's operational confidence before public marketing begins.</div>
+      <div class="fc-body">
+        <p>When OPEN HOUSE Edition 2 is announced, it should not start from zero. The 200+ people who attended Edition 1 and opted into email communication are the advance-sale audience — people who have already had the experience and want to come back.</p>
+        <ul>
+          <li>At 40% conversion: 200 people on list = <strong>80 passports</strong></li>
+          <li>80 passports × $45 = <strong>$3,600 before a single social post is published</strong></li>
+          <li>This list funds the event's operational confidence before public marketing begins</li>
+          <li>Each edition compounds: the list grows, advance sales grow, the event gets easier to fund</li>
+        </ul>
+      </div>
     </div>
   </div>
 
@@ -720,7 +1148,12 @@ hr.section-rule { border: none; border-top: 1px solid var(--rule); margin: 2.8re
       <div class="phase-num">1</div>
       <div class="phase-body">
         <strong>Publish the maker directory + activity preview</strong>
-        <span>The single highest-leverage action. Each maker: name, photo, activity description, one sentence. This is the conversion mechanism for advance passport sales and the primary marketing asset for maker promotion.</span>
+        <span>The single highest-leverage action. Each maker: name, photo, activity description, one sentence.</span>
+        <ul>
+          <li>This is the conversion mechanism for advance passport sales</li>
+          <li>Each maker's listing is their own promotional asset for social media</li>
+          <li>Resolves the vendor count discrepancy as a side effect</li>
+        </ul>
       </div>
     </div>
 
@@ -728,7 +1161,11 @@ hr.section-rule { border: none; border-top: 1px solid var(--rule); margin: 2.8re
       <div class="phase-num">2</div>
       <div class="phase-body">
         <strong>Fix the vendor count discrepancy across all platforms</strong>
-        <span>One number, confirmed, consistent across the website, Partiful, Instagram bio, and any press. If the actual number is 32 makers, say 32 makers. Specificity beats ambition in credibility.</span>
+        <span>One number, confirmed, consistent across the website, Partiful, Instagram bio, and any press. If the actual number is 32 makers, say 32 makers.</span>
+        <ul>
+          <li>Specificity beats ambition in credibility — "32 makers" is stronger than "50+"</li>
+          <li>Buyers round down when numbers conflict; eliminate the ambiguity</li>
+        </ul>
       </div>
     </div>
 
@@ -736,7 +1173,11 @@ hr.section-rule { border: none; border-top: 1px solid var(--rule); margin: 2.8re
       <div class="phase-num">3</div>
       <div class="phase-body">
         <strong>Redesign CTA hierarchy — passport dominant</strong>
-        <span>One primary button, one secondary link, one tertiary social. The passport purchase CTA should have the most visual weight on the page. No other action competes with it.</span>
+        <span>One primary button, one secondary link, one tertiary social.</span>
+        <ul>
+          <li>The passport purchase CTA should have the most visual weight on the page</li>
+          <li>No other action should compete with it visually</li>
+        </ul>
       </div>
     </div>
 
@@ -744,7 +1185,11 @@ hr.section-rule { border: none; border-top: 1px solid var(--rule); margin: 2.8re
       <div class="phase-num">4</div>
       <div class="phase-body">
         <strong>Add the per-activity value math below the passport price</strong>
-        <span>"8 guided creative experiences · $6.25 each · makers charge $12–20 standalone." This sentence converts the $50 ask from a cost into a bargain. It belongs directly beneath the passport CTA, not buried in copy.</span>
+        <span><em>"8 guided creative experiences · $6.25 each · makers charge $12–20 standalone."</em></span>
+        <ul>
+          <li>Converts the $50 ask from a cost into a bargain</li>
+          <li>Belongs directly beneath the passport CTA — not buried in copy</li>
+        </ul>
       </div>
     </div>
 
@@ -752,7 +1197,11 @@ hr.section-rule { border: none; border-top: 1px solid var(--rule); margin: 2.8re
       <div class="phase-num">5</div>
       <div class="phase-body">
         <strong>Set capacity expectations in purchase confirmation</strong>
-        <span>One sentence telling passport buyers to arrive early. Prevents the resentment of a late-arriving buyer who finds activities closed. Sets expectations before they can be violated.</span>
+        <span>One sentence telling passport buyers to arrive early.</span>
+        <ul>
+          <li>Prevents resentment from late-arriving buyers who find activities closed</li>
+          <li>Sets expectations before they can be violated</li>
+        </ul>
       </div>
     </div>
 
@@ -760,7 +1209,11 @@ hr.section-rule { border: none; border-top: 1px solid var(--rule); margin: 2.8re
       <div class="phase-num">6</div>
       <div class="phase-body">
         <strong>Capture email at passport purchase and on-site</strong>
-        <span>Build the community list. Every passport buyer who opts in becomes advance-sale audience for Edition 2. Clipboard at entrance for free attendees who want to "be first to know about the next event."</span>
+        <span>Build the community list. Every passport buyer who opts in becomes advance-sale audience for Edition 2.</span>
+        <ul>
+          <li>Clipboard at entrance for free attendees: <em>"Be first to know about the next event"</em></li>
+          <li>Email opt-in built into the passport checkout flow</li>
+        </ul>
       </div>
     </div>
 
@@ -768,7 +1221,11 @@ hr.section-rule { border: none; border-top: 1px solid var(--rule); margin: 2.8re
       <div class="phase-num">7</div>
       <div class="phase-body">
         <strong>Send the post-event email within 48 hours</strong>
-        <span>"What did you make? Tag us. And be the first to know about our next edition." This email transforms an event into a community. The next edition's advance sales come from this list — not from starting over on social media.</span>
+        <span><em>"What did you make? Tag us. And be the first to know about our next edition."</em></span>
+        <ul>
+          <li>Transforms an event into a community</li>
+          <li>The next edition's advance sales come from this list — not from starting over on social media</li>
+        </ul>
       </div>
     </div>
 
@@ -872,6 +1329,34 @@ document.getElementById('wz-back').addEventListener('click', function() { if (wz
 document.getElementById('wz-skip').addEventListener('click', wzClose);
 wzOverlay.addEventListener('click', function(e) { if (e.target === wzOverlay) wzClose(); });
 wzRender();
+
+// Collapsible sections
+document.querySelectorAll('.section[id]').forEach(function(section) {
+  var h2 = section.querySelector('h2');
+  if (!h2) return;
+
+  // Wrap all content after h2 in a collapsible body
+  var body = document.createElement('div');
+  body.className = 'section-body';
+  var next = h2.nextSibling;
+  while (next) {
+    var toMove = next;
+    next = next.nextSibling;
+    body.appendChild(toMove);
+  }
+  section.appendChild(body);
+
+  // Add chevron indicator to h2
+  var chevron = document.createElement('span');
+  chevron.className = 'h2-chevron';
+  chevron.innerHTML = '&#9662;';
+  h2.appendChild(chevron);
+
+  h2.addEventListener('click', function() {
+    var collapsed = body.classList.toggle('collapsed');
+    section.classList.toggle('collapsed', collapsed);
+  });
+});
 </script>
 </body>
 </html>
