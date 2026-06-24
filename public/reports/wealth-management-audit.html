@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Wealth Management Firm — Conversion Audit · Elliyeen Research · Prospect Objection Analysis">
+<title>Wealth Management Firm — Conversion Audit · Elliyeen Research</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:      #0d2137;
+  --navy-lt:   #1a3a5c;
+  --gold:      #c09040;
+  --gold-lt:   #f5eedc;
+  --cream:     #f7f5f0;
+  --drawer-bg: #f0ede6;
+  --ink:       #1a1a1a;
+  --soft:      #666666;
+  --rule:      rgba(0,0,0,0.08);
+  --teal:      #1f4a3a;
+  --teal-lt:   #e2eeea;
+  --rust:      #a03c2a;
+  --rust-lt:   #faeae6;
+  --amber:     #9e6b00;
+  --amber-lt:  #fef3dc;
+  --good:      #2d6a4f;
+  --good-lt:   #e2f0e8;
+}
+
+html { font-size: 16px; scroll-behavior: smooth; }
+body {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  color: var(--ink);
+  background: var(--cream);
+  overflow-x: hidden;
+  line-height: 1.65;
+}
+
+.main-container {
+  margin-left: 260px;
+  margin-top: 52px;
+  max-width: 880px;
+  padding: 2.5rem 2.8rem 5rem;
+  transition: margin-left 0.38s cubic-bezier(.4,0,.2,1);
+}
+body.ez-drawer-closed .main-container {
+  margin-left: 0;
+  max-width: 940px;
+}
+
+/* Top Nav */
+#ez-topnav {
+  position: fixed; top: 0; left: 0; right: 0;
+  height: 52px; background: #fff;
+  border-bottom: 1px solid var(--rule);
+  display: flex; align-items: center;
+  justify-content: space-between;
+  padding: 0 1.4rem; z-index: 5900;
+  box-shadow: 0 1px 8px rgba(0,0,0,0.05);
+}
+#ez-topnav-brand { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #111; text-decoration: none; }
+#ez-topnav-title { position: absolute; left: 50%; transform: translateX(-50%); font-size: 0.82rem; font-weight: 500; color: #555; white-space: nowrap; }
+#ez-topnav-actions { display: flex; align-items: center; gap: 0.6rem; }
+.ez-topnav-btn {
+  display: flex; align-items: center; gap: 0.45rem;
+  padding: 0.4rem 0.9rem; border-radius: 6px;
+  font-size: 0.76rem; font-weight: 500; cursor: pointer;
+  border: 1px solid rgba(0,0,0,0.12); background: #fff; color: #333;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  text-decoration: none;
+  transition: background 0.15s, border-color 0.15s;
+}
+.ez-topnav-btn:hover { background: #f5f5f5; border-color: rgba(0,0,0,0.22); }
+.ez-topnav-btn svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+/* Drawer */
+#ez-drawer {
+  position: fixed; top: 0; left: 0;
+  width: 256px; height: 100vh;
+  background: var(--drawer-bg);
+  display: flex; flex-direction: column;
+  z-index: 6000; transform: translateX(0);
+  transition: transform 0.38s cubic-bezier(.4,0,.2,1);
+  overflow: hidden; border-right: 1px solid var(--rule);
+  box-shadow: 2px 0 20px rgba(0,0,0,0.06);
+}
+body.ez-drawer-closed #ez-drawer { transform: translateX(-256px); }
+.ez-drawer-brand {
+  height: 52px; display: flex; align-items: center;
+  padding: 0 1.2rem; border-bottom: 1px solid rgba(0,0,0,0.08);
+  flex-shrink: 0;
+}
+.ez-drawer-brand span { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #aaa; font-family: 'DM Sans', system-ui, sans-serif; }
+.ez-drawer-nav {
+  flex: 1; overflow-y: auto;
+  padding: 1.2rem 0 2rem;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0,0,0,0.12) transparent;
+}
+.ez-nav-group { margin-bottom: 0.4rem; }
+.ez-nav-group-label {
+  display: block;
+  padding: 0.5rem 1.2rem 0.4rem;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 0.62rem; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: #888;
+}
+.ez-nav-link {
+  display: block; padding: 0.36rem 1.2rem 0.36rem 1.4rem;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 0.81rem; font-weight: 400; color: #555;
+  text-decoration: none;
+  border-left: 2px solid transparent; margin-left: 0.4rem;
+  line-height: 1.4; transition: color 0.15s, border-color 0.15s, background 0.15s;
+}
+.ez-nav-link:hover { color: #111; background: rgba(0,0,0,0.04); border-left-color: rgba(0,0,0,0.18); }
+.ez-nav-link.ez-active { color: #111; border-left-color: var(--navy); background: rgba(13,33,55,0.06); font-weight: 500; }
+
+#ez-drawer-toggle {
+  position: fixed; top: 50%; left: 256px;
+  transform: translateY(-50%); width: 18px; height: 52px;
+  background: #ede8e0; border: 1px solid rgba(0,0,0,0.1);
+  border-left: none; border-radius: 0 4px 4px 0;
+  cursor: pointer; z-index: 6100;
+  display: flex; align-items: center; justify-content: center; padding: 0;
+  transition: left 0.38s cubic-bezier(.4,0,.2,1), background 0.15s;
+  box-shadow: 2px 0 6px rgba(0,0,0,0.08);
+}
+#ez-drawer-toggle:hover { background: #ddd8d0; }
+body.ez-drawer-closed #ez-drawer-toggle { left: 0; }
+#ez-drawer-toggle svg { width: 10px; height: 10px; fill: none; stroke: rgba(0,0,0,0.5); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: transform 0.35s; }
+body.ez-drawer-closed #ez-drawer-toggle svg { transform: rotate(180deg); }
+
+/* Back to Top */
+#ez-back-top {
+  position: fixed; bottom: 1.6rem; right: 1.6rem;
+  width: 44px; height: 44px; background: #fff; color: #333;
+  border: 1px solid rgba(0,0,0,0.10); border-radius: 50%;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.10), 0 1px 4px rgba(0,0,0,0.06);
+  opacity: 0; transform: translateY(14px);
+  transition: opacity 0.25s, transform 0.25s, background 0.15s; z-index: 8000;
+}
+#ez-back-top svg { width: 18px; height: 18px; fill: none; stroke: #333; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+#ez-back-top.ez-visible { opacity: 1; transform: translateY(0); }
+#ez-back-top:hover { background: #f5f5f5; }
+
+/* Typography */
+h1, h2, h3 { font-family: 'EB Garamond', Georgia, serif; font-weight: 500; }
+h1 { font-size: 2.6rem; line-height: 1.18; letter-spacing: -0.02em; margin-bottom: 1.2rem; }
+h2 { font-size: 1.72rem; line-height: 1.24; margin-bottom: 0.9rem; }
+h3 { font-size: 1.22rem; line-height: 1.3; margin-bottom: 0.5rem; }
+p { margin-bottom: 1rem; font-size: 0.95rem; color: #2a2a2a; }
+p:last-child { margin-bottom: 0; }
+
+/* Report-specific */
+.report-meta {
+  font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em;
+  text-transform: uppercase; color: #999;
+  margin-bottom: 1.8rem; display: flex; flex-wrap: wrap; gap: 1rem;
+}
+.report-meta span { display: flex; align-items: center; gap: 0.35rem; }
+
+.section { margin-bottom: 3.2rem; }
+.section:first-of-type { margin-top: 0.5rem; }
+
+hr.section-rule { border: none; border-top: 1px solid var(--rule); margin: 2.8rem 0; }
+
+/* Score badge */
+.score-badge {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: var(--navy); color: #fff;
+  padding: 0.55rem 1rem; border-radius: 6px;
+  font-size: 0.76rem; font-weight: 600; letter-spacing: 0.04em;
+  margin-bottom: 1.8rem;
+}
+.score-num { font-family: 'EB Garamond', Georgia, serif; font-size: 1.8rem; line-height: 1; font-weight: 500; color: #fff; margin-right: 0.2rem; }
+
+/* Stat row */
+.stat-row { display: flex; gap: 2rem; flex-wrap: wrap; margin: 1.5rem 0; }
+.stat-block { flex: 1; min-width: 140px; }
+.stat-n { font-family: 'EB Garamond', Georgia, serif; font-size: 2.6rem; font-weight: 500; line-height: 1; }
+.stat-n.r { color: var(--rust); }
+.stat-n.a { color: var(--amber); }
+.stat-n.g { color: var(--good); }
+.stat-s { font-size: 0.72rem; color: #888; text-transform: uppercase; letter-spacing: 0.08em; margin-top: 0.2rem; }
+
+/* Finding cards */
+.finding-card {
+  background: #fff; border-radius: 8px;
+  border: 1px solid var(--rule);
+  padding: 1.4rem 1.6rem;
+  margin-bottom: 1.2rem;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+}
+.finding-card .fc-label {
+  font-size: 0.62rem; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase; color: #999; margin-bottom: 0.45rem;
+}
+.finding-card .fc-title {
+  font-family: 'EB Garamond', Georgia, serif; font-size: 1.16rem;
+  font-weight: 500; line-height: 1.28; margin-bottom: 0.5rem;
+}
+.finding-card .fc-body { font-size: 0.88rem; color: #444; line-height: 1.6; }
+.finding-card.issue { border-left: 3px solid var(--rust); }
+.finding-card.fix   { border-left: 3px solid var(--good); }
+.finding-card.opp   { border-left: 3px solid var(--gold); }
+
+/* Callout */
+.callout {
+  background: var(--amber-lt); border-left: 3px solid var(--amber);
+  border-radius: 0 6px 6px 0; padding: 1rem 1.2rem; margin: 1.4rem 0;
+  font-size: 0.9rem; color: #3a2a00;
+}
+.callout strong { font-weight: 600; }
+
+/* Objection table */
+.objection-table { width: 100%; border-collapse: collapse; margin: 1.4rem 0; font-size: 0.88rem; }
+.objection-table th {
+  text-align: left; padding: 0.5rem 0.8rem;
+  background: var(--navy); color: #fff;
+  font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase;
+  font-weight: 600;
+}
+.objection-table th:first-child { border-radius: 6px 0 0 0; }
+.objection-table th:last-child  { border-radius: 0 6px 0 0; }
+.objection-table td { padding: 0.65rem 0.8rem; border-bottom: 1px solid var(--rule); vertical-align: top; }
+.objection-table tr:last-child td { border-bottom: none; }
+.objection-table tr:nth-child(even) td { background: rgba(0,0,0,0.018); }
+.tag-bad  { display: inline-block; padding: 0.15rem 0.5rem; border-radius: 3px; font-size: 0.7rem; font-weight: 600; background: var(--rust-lt); color: var(--rust); }
+.tag-good { display: inline-block; padding: 0.15rem 0.5rem; border-radius: 3px; font-size: 0.7rem; font-weight: 600; background: var(--good-lt); color: var(--good); }
+
+/* Flow diagram */
+.flow-steps { display: flex; flex-direction: column; gap: 0.8rem; margin: 1.4rem 0; }
+.flow-step { display: flex; align-items: flex-start; gap: 0.9rem; }
+.flow-step-num {
+  width: 28px; height: 28px; border-radius: 50%; background: var(--navy); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.76rem; font-weight: 700; flex-shrink: 0; margin-top: 0.1rem;
+}
+.flow-step-body { flex: 1; }
+.flow-step-body strong { display: block; font-size: 0.9rem; font-weight: 600; color: #111; margin-bottom: 0.2rem; }
+.flow-step-body span { font-size: 0.84rem; color: #555; }
+
+/* Confidential banner */
+.confidential-banner {
+  background: var(--navy); color: rgba(255,255,255,0.55);
+  font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase;
+  text-align: center; padding: 0.4rem 1rem;
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 4000;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  #ez-drawer { transform: translateX(-256px); }
+  body:not(.ez-drawer-closed) #ez-drawer { transform: translateX(0); }
+  body.ez-drawer-closed #ez-drawer { transform: translateX(-256px); }
+  #ez-drawer-toggle { left: 0 !important; }
+  body:not(.ez-drawer-closed) #ez-drawer-toggle { left: 256px !important; }
+  .main-container { margin-left: 0 !important; padding: 1.5rem 1.2rem 4rem; }
+  #ez-topnav-title { display: none; }
+  h1 { font-size: 1.9rem; }
+  h2 { font-size: 1.38rem; }
+  .stat-row { gap: 1.2rem; }
+}
+</style>
+</head>
+<body class="">
+
+<!-- Top Nav -->
+<nav id="ez-topnav">
+  <a id="ez-topnav-brand" href="/">ELLIYEEN</a>
+  <span id="ez-topnav-title">Wealth Management — Conversion Audit</span>
+  <div id="ez-topnav-actions">
+    <a href="/" class="ez-topnav-btn">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+      All cases
+    </a>
+  </div>
+</nav>
+
+<!-- Drawer -->
+<aside id="ez-drawer">
+  <div class="ez-drawer-brand">
+    <span>Elliyeen Research</span>
+  </div>
+  <nav class="ez-drawer-nav" aria-label="Report sections">
+    <div class="ez-nav-group">
+      <span class="ez-nav-group-label">Overview</span>
+      <a class="ez-nav-link" href="#situation">The Situation</a>
+      <a class="ez-nav-link" href="#diagnosis">Diagnosis</a>
+    </div>
+    <div class="ez-nav-group">
+      <span class="ez-nav-group-label">Three Key Findings</span>
+      <a class="ez-nav-link" href="#finding-1">1 — Objections Never Answered</a>
+      <a class="ez-nav-link" href="#finding-2">2 — Intake Flow Sequence</a>
+      <a class="ez-nav-link" href="#finding-3">3 — Response Time Undefined</a>
+    </div>
+    <div class="ez-nav-group">
+      <span class="ez-nav-group-label">Outcome</span>
+      <a class="ez-nav-link" href="#roadmap">Recommended Path</a>
+    </div>
+  </nav>
+</aside>
+
+<!-- Drawer Toggle -->
+<button id="ez-drawer-toggle" aria-label="Toggle navigation">
+  <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+</button>
+
+<!-- Main Content -->
+<main class="main-container">
+
+  <div class="section" id="situation">
+    <div class="report-meta">
+      <span>Elliyeen Research</span>
+      <span>·</span>
+      <span>Financial Services</span>
+      <span>·</span>
+      <span>Southeast US</span>
+      <span>·</span>
+      <span>Conversion Audit</span>
+    </div>
+
+    <h1>Prospects were arriving informed.<br>They weren't converting.</h1>
+
+    <div class="stat-row">
+      <div class="stat-block">
+        <div class="stat-n r">3</div>
+        <div class="stat-s">Objections stopping conversion</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-n r">0</div>
+        <div class="stat-s">Pages that addressed any of them</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-n a">Undefined</div>
+        <div class="stat-s">Response time — stated nowhere</div>
+      </div>
+    </div>
+
+    <p>Referral traffic. LinkedIn. Speaking engagements. This firm had the inputs working. Warm prospects were landing on the site with genuine intent to engage. They were reading the copy, scrolling the pages — then leaving without contacting.</p>
+
+    <p>The traffic quality wasn't the problem. The site was failing to resolve a narrow set of objections that stood between a qualified prospect and a submitted contact form.</p>
+  </div>
+
+  <hr class="section-rule">
+
+  <div class="section" id="diagnosis">
+    <h2>The Diagnosis</h2>
+    <p>When a prospect arrives via referral or professional network, they are not evaluating whether the firm exists or whether it is credible. That question is already answered. They are evaluating a different set of concerns — ones that fee structures, AUM minimums, team credentials, and investment philosophy copy do not address.</p>
+
+    <div class="callout">
+      <strong>The gap:</strong> The site was built for a buyer who needed to be convinced the firm was real. The actual buyer in 2024 already knew the firm was real. They needed their specific hesitations dissolved before they would commit to a call.
+    </div>
+
+    <p>Three objections were identified through copy analysis and comparison against competitor sites in the same AUM tier. None of the three appeared anywhere on the site — not on the homepage, not on the services page, not in the FAQ.</p>
+  </div>
+
+  <hr class="section-rule">
+
+  <div class="section" id="finding-1">
+    <h2>Finding 1 — Three Objections Stopping Conversion</h2>
+    <p>Qualified prospects with real intent to engage were stopping short of contact. The site never answered the questions that stood between reading and reaching out.</p>
+
+    <table class="objection-table">
+      <thead>
+        <tr>
+          <th>Objection</th>
+          <th>Where Prospects Feel It</th>
+          <th>Site Response</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>"Am I the right size client for this firm?"</td>
+          <td>Homepage, About page</td>
+          <td><span class="tag-bad">Unanswered</span></td>
+        </tr>
+        <tr>
+          <td>"What does the first meeting actually look like?"</td>
+          <td>Contact page, any CTA</td>
+          <td><span class="tag-bad">Unanswered</span></td>
+        </tr>
+        <tr>
+          <td>"How long before someone gets back to me?"</td>
+          <td>Contact form submit</td>
+          <td><span class="tag-bad">Unanswered</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="finding-card issue">
+      <div class="fc-label">The Pattern</div>
+      <div class="fc-title">The site answered credentials. Not concerns.</div>
+      <div class="fc-body">CFA designations, AUM range, investment philosophy, firm history — all present. The three questions a warm prospect asks before submitting a contact form — absent. Credentials establish trust in the abstract. Answering real objections converts trust into action.</div>
+    </div>
+  </div>
+
+  <hr class="section-rule">
+
+  <div class="section" id="finding-2">
+    <h2>Finding 2 — Intake Flow Sequence</h2>
+    <p>The contact CTA appeared before the prospect had enough information to commit. The sequence was reversed: ask first, answer objections never.</p>
+
+    <p>Hopkins' principle applied here: the guided sale moves the prospect through objections in sequence before requesting action. Asking for action before resolving hesitation produces abandonment — not conversion.</p>
+
+    <div class="finding-card issue">
+      <div class="fc-label">Before — Existing Sequence</div>
+      <div class="fc-title">CTA before objections addressed</div>
+      <div class="fc-body">Prospect reads credentials → sees CTA → still has unanswered hesitations → leaves. The site asked for a commitment it hadn't earned.</div>
+    </div>
+
+    <div class="finding-card fix">
+      <div class="fc-label">After — Rebuilt Sequence</div>
+      <div class="fc-title">Each objection dissolved before the CTA</div>
+      <div class="fc-body">Objection 1 answered (fit) → Objection 2 answered (first meeting) → Objection 3 answered (response time) → CTA. The prospect arrives at the contact form having had every hesitation resolved. Submission is the natural next step.</div>
+    </div>
+
+    <div class="flow-steps">
+      <div class="flow-step">
+        <div class="flow-step-num">1</div>
+        <div class="flow-step-body">
+          <strong>Who we work with</strong>
+          <span>Dissolves "Am I the right fit?" before the prospect has to wonder.</span>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-num">2</div>
+        <div class="flow-step-body">
+          <strong>What the first meeting looks like</strong>
+          <span>Removes the uncertainty of "what happens if I reach out." Makes the next step feel small.</span>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-num">3</div>
+        <div class="flow-step-body">
+          <strong>How long before we respond</strong>
+          <span>A stated response window converts a hesitant submitter. Without it, silence feels like risk.</span>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-num">4</div>
+        <div class="flow-step-body">
+          <strong>Contact form</strong>
+          <span>The CTA. Every objection dissolved. The decision to submit is already made by the time the form appears.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="section-rule">
+
+  <div class="section" id="finding-3">
+    <h2>Finding 3 — Response Time Stated Explicitly</h2>
+    <p>A warm prospect submitting a contact form to a wealth management firm is making a small act of vulnerability. They are sharing financial intent to a stranger. The perceived risk of that action rises when there is no stated expectation of what happens next.</p>
+
+    <div class="finding-card issue">
+      <div class="fc-label">Before</div>
+      <div class="fc-title">"We'll be in touch."</div>
+      <div class="fc-body">No timeframe. No definition of what "in touch" means. Does someone call? Email? In 2 hours or 2 weeks? Every unanswered question is a reason to wait before submitting — or not submit at all.</div>
+    </div>
+
+    <div class="finding-card fix">
+      <div class="fc-label">After</div>
+      <div class="fc-title">"You'll hear from us within one business day."</div>
+      <div class="fc-body">A specific commitment. One sentence. Eliminates the largest remaining hesitation at the point of conversion. The prospect knows exactly what they are agreeing to when they click Submit. The risk of reaching out collapses.</div>
+    </div>
+
+    <div class="callout">
+      <strong>Hopkins: specificity converts.</strong> "We respond quickly" is a vague reassurance. "You'll hear from us within one business day" is a commitment. One reads as marketing. The other reads as a promise. The prospect responds to the promise.
+    </div>
+  </div>
+
+  <hr class="section-rule">
+
+  <div class="section" id="roadmap">
+    <h2>Recommended Path</h2>
+    <p>Three changes. All within existing site structure. No new pages required.</p>
+
+    <div class="finding-card opp">
+      <div class="fc-label">Priority 1 — Homepage</div>
+      <div class="fc-title">Add "Who We Work With" section above the CTA</div>
+      <div class="fc-body">One short paragraph stating the type of client and approximate AUM range the firm serves. Dissolves the fit objection at first scroll. Unqualified prospects self-select out. Qualified prospects feel identified — and are more likely to continue.</div>
+    </div>
+
+    <div class="finding-card opp">
+      <div class="fc-label">Priority 2 — Services or About page</div>
+      <div class="fc-title">Describe the first meeting in two sentences</div>
+      <div class="fc-body">"Our first meeting is a 30-minute conversation. No pitch. We want to understand your situation before we say anything about ours." That is the entire objection dissolved. Two sentences that convert hesitation into action.</div>
+    </div>
+
+    <div class="finding-card opp">
+      <div class="fc-label">Priority 3 — Every contact form</div>
+      <div class="fc-title">State the response window beneath the submit button</div>
+      <div class="fc-body">Add one line below the submit button on every contact form: "You'll hear from us within one business day." Costs nothing to add. Eliminates the final objection at the exact moment the prospect is deciding whether to click.</div>
+    </div>
+  </div>
+
+</main>
+
+<!-- Back to Top -->
+<button id="ez-back-top" aria-label="Back to top">
+  <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<div class="confidential-banner">Prepared by Elliyeen Research · Confidential</div>
+
+<script>
+// Drawer toggle
+const drawer = document.getElementById('ez-drawer');
+const toggle = document.getElementById('ez-drawer-toggle');
+const body = document.body;
+
+// Start open on desktop, closed on mobile
+if (window.innerWidth < 769) body.classList.add('ez-drawer-closed');
+
+toggle.addEventListener('click', () => {
+  body.classList.toggle('ez-drawer-closed');
+});
+
+// Back to top
+const backTop = document.getElementById('ez-back-top');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 400) backTop.classList.add('ez-visible');
+  else backTop.classList.remove('ez-visible');
+}, { passive: true });
+backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+// Active nav link tracking
+const sections = document.querySelectorAll('.section[id]');
+const navLinks = document.querySelectorAll('.ez-nav-link');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      navLinks.forEach(l => l.classList.remove('ez-active'));
+      const active = document.querySelector(`.ez-nav-link[href="#${e.target.id}"]`);
+      if (active) active.classList.add('ez-active');
+    }
+  });
+}, { rootMargin: '-20% 0px -60% 0px' });
+sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>

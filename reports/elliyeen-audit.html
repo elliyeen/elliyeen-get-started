@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Elliyeen Research — Self-Audit · 22-Agent Website Analysis">
+<title>Elliyeen Research — Self-Audit Report</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap');
+
+.tocify-wrapper, #TOC { display: none !important; }
+
+body { overflow-x: hidden; margin: 0; padding: 0; background: #fafaf8; font-family: 'DM Sans', system-ui, sans-serif; color: #1d1d1f; }
+
+.main-container {
+  margin-left: 270px;
+  margin-top: 52px;
+  max-width: 900px;
+  padding: 2.5rem 2rem 4rem;
+  transition: margin-left 0.38s cubic-bezier(.4,0,.2,1);
+}
+body.ez-drawer-closed .main-container {
+  margin-left: 0;
+  max-width: 960px;
+}
+
+/* Top Nav */
+#ez-topnav {
+  position: fixed; top: 0; left: 0; right: 0; height: 52px;
+  background: #ffffff; border-bottom: 1px solid rgba(0,0,0,0.08);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 1.4rem; z-index: 5900;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  box-shadow: 0 1px 8px rgba(0,0,0,0.05);
+}
+#ez-topnav-brand { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #111; }
+#ez-topnav-title { position: absolute; left: 50%; transform: translateX(-50%); font-size: 0.82rem; font-weight: 500; color: #555; white-space: nowrap; }
+#ez-topnav-actions { display: flex; align-items: center; gap: 0.6rem; }
+.ez-topnav-btn {
+  display: flex; align-items: center; gap: 0.45rem;
+  padding: 0.4rem 0.9rem; border-radius: 6px; font-size: 0.76rem; font-weight: 500;
+  cursor: pointer; border: 1px solid rgba(0,0,0,0.12); background: #fff; color: #333;
+  font-family: 'DM Sans', system-ui, sans-serif; transition: background 0.15s; text-decoration: none;
+}
+.ez-topnav-btn:hover { background: #f5f5f5; }
+.ez-topnav-btn svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.ez-topnav-btn.ez-copied { background: #f0faf5; border-color: #2d9e6b; color: #2d9e6b; }
+#ez-share-toast {
+  position: fixed; bottom: 1.6rem; left: 50%; transform: translateX(-50%) translateY(12px);
+  background: #111; color: #fff; font-family: 'DM Sans', system-ui, sans-serif; font-size: 0.8rem;
+  padding: 0.55rem 1.1rem; border-radius: 6px; opacity: 0; pointer-events: none;
+  transition: opacity 0.25s, transform 0.25s; z-index: 9000; white-space: nowrap;
+}
+#ez-share-toast.ez-visible { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* Drawer */
+#ez-drawer {
+  position: fixed; top: 0; left: 0; width: 256px; height: 100vh;
+  background: #f7f3ed; display: flex; flex-direction: column; z-index: 6000;
+  transform: translateX(0); transition: transform 0.38s cubic-bezier(.4,0,.2,1);
+  overflow: hidden; border-right: 1px solid rgba(0,0,0,0.08);
+  box-shadow: 2px 0 20px rgba(0,0,0,0.06);
+}
+body.ez-drawer-closed #ez-drawer { transform: translateX(-256px); }
+.ez-drawer-nav { flex: 1; overflow-y: auto; padding: 1.5rem 0 2rem; scrollbar-width: thin; scrollbar-color: rgba(0,0,0,0.12) transparent; }
+.ez-drawer-nav::-webkit-scrollbar { width: 4px; }
+.ez-drawer-nav::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.12); border-radius: 2px; }
+.ez-nav-group { margin-bottom: 0.5rem; }
+.ez-nav-group-btn {
+  width: 100%; display: flex; align-items: center; justify-content: space-between;
+  padding: 0.55rem 1.2rem 0.45rem; background: none; border: none; cursor: pointer;
+  font-family: 'DM Sans', system-ui, sans-serif; font-size: 0.62rem; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase; color: #888; text-align: left; transition: color 0.15s;
+}
+.ez-nav-group-btn:hover { color: #111; }
+.ez-nav-group-btn svg { width: 10px; height: 10px; flex-shrink: 0; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: transform 0.25s; }
+.ez-nav-group-btn.collapsed svg { transform: rotate(-90deg); }
+.ez-nav-items { overflow: hidden; transition: max-height 0.3s ease; }
+.ez-nav-items.collapsed { max-height: 0 !important; }
+.ez-nav-link {
+  display: block; padding: 0.38rem 1.2rem 0.38rem 1.4rem;
+  font-family: 'DM Sans', system-ui, sans-serif; font-size: 0.82rem; font-weight: 400;
+  color: #555; text-decoration: none; border-left: 2px solid transparent; margin-left: 0.4rem;
+  line-height: 1.4; transition: color 0.15s, border-color 0.15s, background 0.15s; cursor: pointer;
+}
+.ez-nav-link:hover { color: #111; background: rgba(0,0,0,0.04); border-left-color: rgba(0,0,0,0.18); }
+.ez-nav-link.ez-active { color: #111; border-left-color: #0a5c52; background: rgba(10,92,82,0.07); font-weight: 500; }
+
+/* Drawer toggle */
+#ez-drawer-toggle {
+  position: fixed; top: 50%; left: 256px; transform: translateY(-50%);
+  width: 18px; height: 52px; background: #ede8e0; border: 1px solid rgba(0,0,0,0.1);
+  border-left: none; border-radius: 0 4px 4px 0; cursor: pointer; z-index: 6100;
+  display: flex; align-items: center; justify-content: center; padding: 0;
+  transition: left 0.38s cubic-bezier(.4,0,.2,1), background 0.15s;
+  box-shadow: 2px 0 6px rgba(0,0,0,0.08);
+}
+#ez-drawer-toggle:hover { background: #ddd8d0; }
+body.ez-drawer-closed #ez-drawer-toggle { left: 0; }
+#ez-drawer-toggle svg { width: 10px; height: 10px; fill: none; stroke: rgba(0,0,0,0.5); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: transform 0.35s; }
+body.ez-drawer-closed #ez-drawer-toggle svg { transform: rotate(180deg); }
+
+/* Back to top */
+#ez-back-top {
+  position: fixed; bottom: 1.6rem; right: 1.6rem; width: 44px; height: 44px;
+  background: #fff; color: #333; border: 1px solid rgba(0,0,0,0.10); border-radius: 50%;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.10), 0 1px 4px rgba(0,0,0,0.06);
+  opacity: 0; transform: translateY(14px);
+  transition: opacity 0.25s, transform 0.25s, box-shadow 0.15s, background 0.15s; z-index: 8000;
+}
+#ez-back-top svg { width: 18px; height: 18px; fill: none; stroke: #333; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+#ez-back-top.ez-visible { opacity: 1; transform: translateY(0); }
+#ez-back-top:hover { background: #f5f5f5; }
+
+/* Wizard */
+#ez-wizard-overlay {
+  position: fixed; inset: 0; background: rgba(8,18,18,0.82);
+  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  z-index: 9999; display: flex; align-items: center; justify-content: center;
+  padding: 1rem; transition: opacity 0.35s ease;
+}
+#ez-wizard-overlay.ez-hidden { opacity: 0; pointer-events: none; }
+#ez-wizard-card { background: #fff; border-radius: 8px; max-width: 560px; width: 100%; overflow: hidden; box-shadow: 0 28px 90px rgba(0,0,0,0.38); font-family: 'DM Sans', system-ui, sans-serif; }
+.wz-head { background: #051f1c; color: white; padding: 1.5rem 1.8rem 1.1rem; }
+.wz-step-lbl { font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.5; margin-bottom: 0.4rem; }
+.wz-ttl { font-family: 'EB Garamond', Georgia, serif; font-size: 1.55rem; line-height: 1.22; margin: 0; font-weight: 500; }
+.wz-bdy { padding: 1.4rem 1.8rem 0.9rem; min-height: 140px; }
+.wz-bdy p { font-size: 0.92rem; line-height: 1.68; color: #2a2a2a; margin: 0 0 0.7rem; }
+.wz-stat-row { display: flex; gap: 1.6rem; margin: 0.5rem 0 0.9rem; flex-wrap: wrap; }
+.wz-stat-n { font-family: 'EB Garamond', Georgia, serif; font-size: 2.4rem; font-weight: 500; color: #0a5c52; line-height: 1; }
+.wz-stat-n.r { color: #a05c3c; }
+.wz-stat-n.g { color: #0a5c52; }
+.wz-stat-n.o { color: #9e6b00; }
+.wz-stat-s { font-size: 0.7rem; color: #999; text-transform: uppercase; letter-spacing: 0.08em; margin-top: 0.1rem; }
+.wz-vtag { display: inline-block; background: #a05c3c; color: white; font-size: 0.68rem; padding: 0.18rem 0.5rem; border-radius: 3px; font-family: 'Courier New', monospace; margin-bottom: 0.85rem; }
+.wz-hl { background: #e4f0ee; border-left: 3px solid #0a5c52; padding: 0.65rem 1rem; border-radius: 0 4px 4px 0; font-size: 0.88rem; color: #1a1a1a; margin: 0.4rem 0 0.8rem; font-style: italic; line-height: 1.5; font-family: 'EB Garamond', Georgia, serif; }
+.wz-rm { margin: 0.3rem 0 0.75rem; }
+.wz-rm-item { display: flex; gap: 0.7rem; align-items: flex-start; margin-bottom: 0.5rem; font-size: 0.88rem; line-height: 1.5; color: #2a2a2a; }
+.wz-rm-badge { flex-shrink: 0; background: #0a5c52; color: white; font-size: 0.62rem; padding: 0.15rem 0.4rem; border-radius: 3px; margin-top: 0.15rem; letter-spacing: 0.04em; font-family: 'DM Sans', system-ui, sans-serif; font-weight: 500; }
+.wz-cta-blk { background: #051f1c; color: white; padding: 1rem 1.2rem; border-radius: 4px; margin-top: 0.6rem; }
+.wz-cta-blk p { color: rgba(255,255,255,0.75) !important; font-size: 0.86rem !important; margin-bottom: 0.45rem !important; }
+.wz-cta-email { font-family: 'EB Garamond', Georgia, serif; font-size: 1.12rem; color: white; font-weight: 500; }
+.wz-note { font-size: 0.76rem !important; color: #aaa !important; margin-top: 0.75rem !important; }
+.wz-foot { padding: 0.9rem 1.8rem 1.3rem; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid #efefed; gap: 0.6rem; }
+.wz-dots { display: flex; gap: 6px; flex-shrink: 0; }
+.wz-dot { width: 7px; height: 7px; border-radius: 50%; background: #e0e0e0; transition: background 0.2s, transform 0.2s; }
+.wz-dot.active { background: #0a5c52; transform: scale(1.25); }
+.wz-skip { font-size: 0.74rem; color: #bbb; cursor: pointer; border: none; background: none; font-family: 'DM Sans', system-ui, sans-serif; padding: 0; text-decoration: underline; white-space: nowrap; }
+.wz-skip:hover { color: #666; }
+.wz-btns { display: flex; gap: 0.5rem; flex-shrink: 0; }
+.wz-btn { padding: 0.46rem 1rem; border-radius: 4px; font-size: 0.83rem; cursor: pointer; border: none; font-family: 'DM Sans', system-ui, sans-serif; transition: background 0.15s; white-space: nowrap; }
+.wz-back-btn { background: #f0f0ee; color: #555; }
+.wz-back-btn:hover { background: #e4e4e0; }
+.wz-next-btn { background: #0a5c52; color: white; }
+.wz-next-btn:hover { background: #073d36; }
+
+/* ── Content styles ── */
+h1 { font-family: 'EB Garamond', Georgia, serif; font-size: 2.2rem; font-weight: 500; line-height: 1.2; margin: 0 0 0.5rem; color: #111; }
+h2 { font-family: 'EB Garamond', Georgia, serif; font-size: 1.6rem; font-weight: 500; line-height: 1.25; margin: 2.5rem 0 0.75rem; color: #111; border-bottom: 1px solid rgba(0,0,0,0.08); padding-bottom: 0.4rem; }
+h3 { font-family: 'DM Sans', system-ui, sans-serif; font-size: 1rem; font-weight: 600; margin: 1.8rem 0 0.5rem; color: #111; letter-spacing: -0.01em; }
+h4 { font-family: 'DM Sans', system-ui, sans-serif; font-size: 0.88rem; font-weight: 600; margin: 1.2rem 0 0.35rem; color: #0a5c52; text-transform: uppercase; letter-spacing: 0.06em; }
+p { font-size: 0.95rem; line-height: 1.7; color: #2a2a2a; margin: 0 0 0.9rem; }
+ul, ol { padding-left: 1.5rem; margin: 0 0 1rem; }
+li { font-size: 0.94rem; line-height: 1.65; color: #2a2a2a; margin-bottom: 0.3rem; }
+strong { font-weight: 600; color: #111; }
+em { font-style: italic; }
+code { font-family: 'Courier New', monospace; font-size: 0.84em; background: #f0f0ee; padding: 0.1em 0.35em; border-radius: 3px; color: #333; }
+
+table { width: 100%; border-collapse: collapse; margin: 1.2rem 0 1.8rem; font-size: 0.875rem; }
+th { background: #051f1c; color: white; padding: 0.6rem 0.9rem; text-align: left; font-weight: 500; font-size: 0.78rem; letter-spacing: 0.04em; }
+td { padding: 0.55rem 0.9rem; border-bottom: 1px solid rgba(0,0,0,0.07); vertical-align: top; line-height: 1.5; }
+tr:nth-child(even) td { background: rgba(0,0,0,0.02); }
+tr:hover td { background: rgba(10,92,82,0.04); }
+
+.score-badge { display: inline-block; font-family: 'EB Garamond', Georgia, serif; font-size: 1.6rem; font-weight: 500; padding: 0.1rem 0; }
+.score-high { color: #0a5c52; }
+.score-mid { color: #9e6b00; }
+.score-low { color: #a05c3c; }
+
+.callout { background: #e4f0ee; border-left: 3px solid #0a5c52; padding: 0.85rem 1.1rem; border-radius: 0 5px 5px 0; margin: 1rem 0 1.4rem; }
+.callout p { margin: 0; font-size: 0.91rem; color: #1a1a1a; }
+.callout strong { color: #0a5c52; }
+
+.callout-warn { background: #fef5ec; border-left: 3px solid #c07030; padding: 0.85rem 1.1rem; border-radius: 0 5px 5px 0; margin: 1rem 0 1.4rem; }
+.callout-warn p { margin: 0; font-size: 0.91rem; color: #1a1a1a; }
+
+.callout-critical { background: #fdf0ee; border-left: 3px solid #a03020; padding: 0.85rem 1.1rem; border-radius: 0 5px 5px 0; margin: 1rem 0 1.4rem; }
+.callout-critical p { margin: 0; font-size: 0.91rem; color: #1a1a1a; }
+
+.before-after { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0 1.5rem; }
+.ba-col { padding: 0.9rem 1rem; border-radius: 5px; font-size: 0.9rem; line-height: 1.6; }
+.ba-before { background: #fdf0ee; border: 1px solid rgba(160,80,60,0.2); }
+.ba-after { background: #e4f0ee; border: 1px solid rgba(10,92,82,0.2); }
+.ba-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.5rem; }
+.ba-before .ba-label { color: #a03020; }
+.ba-after .ba-label { color: #0a5c52; }
+
+.eyebrow { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #0a5c52; margin-bottom: 0.3rem; display: block; }
+.report-meta { font-size: 0.82rem; color: #888; margin-top: 0.3rem; margin-bottom: 2rem; }
+.section-divider { border: none; border-top: 1px solid rgba(0,0,0,0.08); margin: 2.5rem 0; }
+.tag { display: inline-block; font-size: 0.7rem; font-weight: 600; padding: 0.15rem 0.5rem; border-radius: 3px; margin-right: 0.3rem; letter-spacing: 0.04em; }
+.tag-high { background: #fde8e4; color: #a03020; }
+.tag-med { background: #fef5e4; color: #9e6b00; }
+.tag-low { background: #e4f0ee; color: #0a5c52; }
+
+.roadmap-item { display: flex; gap: 1rem; margin-bottom: 1.2rem; }
+.roadmap-num { flex-shrink: 0; width: 28px; height: 28px; background: #0a5c52; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.78rem; font-weight: 600; margin-top: 0.1rem; }
+.roadmap-body { flex: 1; }
+.roadmap-body strong { display: block; font-size: 0.95rem; color: #111; margin-bottom: 0.2rem; }
+.roadmap-body span { font-size: 0.875rem; color: #555; line-height: 1.55; }
+
+@media (max-width: 767px) {
+  #ez-drawer, #ez-drawer-toggle { display: none !important; }
+  .main-container { margin-left: 0 !important; margin-top: 52px !important; padding: 0 1rem 3rem !important; }
+  #ez-back-top { bottom: 1rem; right: 1rem; width: 40px; height: 40px; }
+  #ez-topnav-title { display: none; }
+  .before-after { grid-template-columns: 1fr; }
+  .wz-head { padding: 1.1rem 1.2rem 0.85rem; }
+  .wz-bdy { padding: 1.1rem 1.2rem 0.85rem; min-height: 120px; }
+  .wz-foot { padding: 0.75rem 1.2rem 1.1rem; }
+  .wz-ttl { font-size: 1.25rem; }
+  .wz-skip { display: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="main-container">
+
+<!-- ── COVER ──────────────────────────────────────────────────────── -->
+<div id="executive-summary">
+<span class="eyebrow">Self-Audit · Elliyeen Research</span>
+<h1>Elliyeen.com — 22-Agent Revenue Audit</h1>
+<p class="report-meta">Audit date: June 2026 &nbsp;·&nbsp; Frameworks: 22 specialist agents &nbsp;·&nbsp; Conducted by: Elliyeen Research system</p>
+
+<div class="callout-warn">
+<p><strong>Conductor verdict:</strong> The brand promise is specificity. The demo undermines it. A visitor who clicks "Why aren't we growing?" receives five generic bullet points — the exact output Elliyeen says it replaces. Fix this before anything else.</p>
+</div>
+
+<h2>Executive Summary — Top 10 Findings</h2>
+
+<div class="roadmap-item">
+  <div class="roadmap-num">1</div>
+  <div class="roadmap-body"><strong>The AI advisor demo contradicts the brand</strong><span>The response to "Why aren't we growing?" lists five generic bullets about friction, value communication, CTAs, trust, and SEO. This is precisely the kind of non-specific output Elliyeen sells against. A first-time visitor sees this and loses trust in the very expertise being sold.</span></div>
+</div>
+<div class="roadmap-item">
+  <div class="roadmap-num">2</div>
+  <div class="roadmap-body"><strong>Zero named client testimonials anywhere on the page</strong><span>Case studies are present but no individual has said "Elliyeen found $X in revenue opportunity for us." The highest-converting trust signal in professional services — a named person, a named outcome — is completely absent.</span></div>
+</div>
+<div class="roadmap-item">
+  <div class="roadmap-num">3</div>
+  <div class="roadmap-body"><strong>"4 per week" is mentioned once in small subtext and never leveraged</strong><span>This is a genuine scarcity signal — honest, verifiable, conversion-driving. It appears once in the hero footer in the same font weight as everything else. It should be a conversion mechanism. "We run 4 per week. [N] spots remain this week." is Cialdini scarcity done correctly.</span></div>
+</div>
+<div class="roadmap-item">
+  <div class="roadmap-num">4</div>
+  <div class="roadmap-body"><strong>$1,500 appears before the value case is made</strong><span>Price is revealed in the pricing section with no preceding ROI anchor. The Milano audit found $36,600/month in uncaptured revenue — that number should appear before the price, not in a case study card buried in a carousel.</span></div>
+</div>
+<div class="roadmap-item">
+  <div class="roadmap-num">5</div>
+  <div class="roadmap-body"><strong>Two case studies have no report links — signals incomplete work</strong><span>Wealth Management and College Golf have no "Read the full audit" link. The Milano and SPCS cards have links. A skeptical buyer notices the asymmetry and assumes the unlisted work didn't produce results worth publishing.</span></div>
+</div>
+<div class="roadmap-item">
+  <div class="roadmap-num">6</div>
+  <div class="roadmap-body"><strong>Founder story is observational, not emotional</strong><span>"I spent years watching businesses invest in websites that looked right but didn't convert" is an intellectual observation. There is no moment. No specific failure that led to the business. No before and after for Abbas. Visitors trust people who have been through something, not people who observed others go through it.</span></div>
+</div>
+<div class="roadmap-item">
+  <div class="roadmap-num">7</div>
+  <div class="roadmap-body"><strong>Hero has a competing secondary CTA that splits conversion</strong><span>"Get your free diagnosis" and "See how it works →" both appear in the hero. Per Fogg's Behavior Model and confirmed by CXL testing: two prompts at the same moment produce less action than one. The secondary CTA directs to the process section which the visitor will reach by scrolling anyway.</span></div>
+</div>
+<div class="roadmap-item">
+  <div class="roadmap-num">8</div>
+  <div class="roadmap-body"><strong>No audit count, client count, or years in operation anywhere</strong><span>Hopkins gap. "18 specialist frameworks" is stated repeatedly — but not "We've completed 47 audits" or "Founded in 2023." Specificity signals seriousness. A number the visitor can hold is more believable than a methodology description they can't verify.</span></div>
+</div>
+<div class="roadmap-item">
+  <div class="roadmap-num">9</div>
+  <div class="roadmap-body"><strong>The referral line is the highest-ROI untapped mechanism on the page</strong><span>"Know a founder whose site isn't converting? Send them this page." appears as a plain paragraph between two major sections. It has no visual weight, no incentive, and no tracking. A dedicated referral section — designed as a CTA, not a footnote — would compound word-of-mouth systematically.</span></div>
+</div>
+<div class="roadmap-item">
+  <div class="roadmap-num">10</div>
+  <div class="roadmap-body"><strong>No growth infrastructure visible: no CRM, no nurture, no remarketing</strong><span>The lead magnet (18-point audit PDF) is present but there is no indication of what happens after submission — no email sequence, no re-engagement for non-converters, no analytics pixel visible. A visitor who downloads the guide and doesn't book has no path back.</span></div>
+</div>
+
+<hr class="section-divider">
+
+<!-- ── SCORES ──────────────────────────────────────────────────────── -->
+<div id="overall-audit-scores">
+<h2>Overall Audit Scores</h2>
+
+<table>
+<thead><tr><th>Agent</th><th>Framework</th><th>Score</th><th>Verdict</th></tr></thead>
+<tbody>
+<tr><td>01 — Purpose</td><td>Nielsen Norman / IDEO</td><td><span class="score-badge score-mid">67/100</span></td><td>Most sections earn their position. AI advisor section does not.</td></tr>
+<tr><td>02 — Positioning</td><td>McKinsey / Ogilvy</td><td><span class="score-badge score-mid">74/100</span></td><td>Strong differentiator exists. Not yet stated as a single ownable sentence.</td></tr>
+<tr><td>03 — Hopkins</td><td>Scientific Advertising</td><td><span class="score-badge score-mid">6/10</span></td><td>Specificity present in process steps, absent in proof. No audit count, no client names.</td></tr>
+<tr><td>04 — Halbert</td><td>Direct Response</td><td><span class="score-badge score-low">52/100</span></td><td>Copy is intellectual. The founder's frustration is described, not felt. Low emotional charge.</td></tr>
+<tr><td>05 — Schwartz</td><td>Breakthrough Advertising</td><td><span class="score-badge score-high">7/10</span></td><td>Awareness level correctly matched. Bridge (current → desired state) visible but not dramatized.</td></tr>
+<tr><td>06 — UX</td><td>NNG / Google UX</td><td><span class="score-badge score-mid">68/100</span></td><td>10-second test passes. Secondary hero CTA introduces friction. AI section disrupts scroll flow.</td></tr>
+<tr><td>07 — Apple Design</td><td>HIG / IDEO</td><td><span class="score-badge score-mid">76/100</span></td><td>Clean and disciplined. Process section imagery is abstract/generic. Premium signal is present.</td></tr>
+<tr><td>08 — Trust</td><td>Bain CX / CXL</td><td><span class="score-badge score-low">49/100</span></td><td>Human trust present (founder photo). Social trust critically absent (no testimonials). Safety trust adequate.</td></tr>
+<tr><td>09 — Conversion</td><td>HubSpot / CXL / Reforge</td><td><span class="score-badge score-mid">58/100</span></td><td>Hero CTA is clear. Split CTA, cold pricing, no urgency activation all suppress conversion.</td></tr>
+<tr><td>10 — Story</td><td>Halbert / Ogilvy / StoryBrand</td><td><span class="score-badge score-low">5/10</span></td><td>Act 1 (problem) present. Act 2 (stakes/agitation) weak. The future state is never painted.</td></tr>
+<tr><td>11 — Objections</td><td>Joanna Wiebe / CXL</td><td><span class="score-badge score-mid">63/100</span></td><td>FAQ addresses 4 strong objections. "Why now?" and "Why not in-house?" need stronger dissolution.</td></tr>
+<tr><td>12 — Heatmap</td><td>NNG / Google UX</td><td><span class="score-badge score-mid">61/100</span></td><td>AI advisor section likely causes first major scroll drop. Pricing section may be below 40% depth.</td></tr>
+<tr><td>13 — Accessibility</td><td>WCAG 2.2</td><td><span class="score-badge score-mid">65/100</span></td><td>Skip link present. Form labels visible. Heading hierarchy intact. Alt text on images needs audit.</td></tr>
+<tr><td>14 — SEO</td><td>McKinsey Digital</td><td><span class="score-badge score-mid">55/100</span></td><td>Single page with no blog, no supporting content. "Website audit" and category keywords unowned.</td></tr>
+<tr><td>15 — AEO</td><td>Reforge / McKinsey</td><td><span class="score-badge score-mid">68/100</span></td><td>FAQ is AI-extractable. Entity clarity is good. No FAQPage schema. Founder not cited externally.</td></tr>
+<tr><td>16 — Growth</td><td>Reforge Growth Team</td><td><span class="score-badge score-low">47/100</span></td><td>Lead magnet exists. No CRM signal, no email sequence, no remarketing, no review generation system.</td></tr>
+<tr><td>17 — Journey</td><td>IDEO / Bain CX</td><td><span class="score-badge score-mid">62/100</span></td><td>Consideration stage served well. Decision friction moderate. Onboarding and advocacy stages absent.</td></tr>
+<tr><td>18 — Competitive</td><td>McKinsey / Porter</td><td><span class="score-badge score-mid">66/100</span></td><td>Process moat named (18 frameworks). Story moat underused. Network moat invisible.</td></tr>
+<tr><td>19 — Cialdini</td><td>Influence / Pre-Suasion</td><td><span class="score-badge score-mid">61/100</span></td><td>Reciprocity (free PDF) and Authority (methodology) deployed. Scarcity and Unity underdeveloped.</td></tr>
+<tr><td>20 — Fogg</td><td>Tiny Habits / B=MAP</td><td><span class="score-badge score-mid">64/100</span></td><td>Motivation high. Ability adequate. Prompt split (two hero CTAs) reduces behavior probability.</td></tr>
+<tr><td>21 — Kahneman</td><td>Thinking Fast and Slow</td><td><span class="score-badge score-mid">57/100</span></td><td>System 1 copy in hero. Loss framing absent. No anchor before price. Peak-end moment undesigned.</td></tr>
+<tr><td>23 — Ogilvy</td><td>Ogilvy on Advertising</td><td><span class="score-badge score-mid">63/100</span></td><td>Big Idea present but not crystallized as a single sentence. Reason-why gaps in process section.</td></tr>
+</tbody>
+</table>
+
+<table>
+<thead><tr><th>Category Score</th><th>Score</th><th>Benchmark</th></tr></thead>
+<tbody>
+<tr><td><strong>Overall Conductor Score</strong></td><td><span class="score-badge score-mid">62/100</span></td><td>Target: 80+</td></tr>
+<tr><td>Trust Score</td><td><span class="score-badge score-low">49/100</span></td><td>No testimonials is a structural ceiling</td></tr>
+<tr><td>Conversion Score</td><td><span class="score-badge score-mid">58/100</span></td><td>Split CTA + cold price are the primary suppressors</td></tr>
+<tr><td>Emotional Resonance Score</td><td><span class="score-badge score-low">52/100</span></td><td>Copy describes the problem, doesn't dramatize it</td></tr>
+<tr><td>Competitive Moat Score</td><td><span class="score-badge score-mid">66/100</span></td><td>Process moat strong; story and network moats underused</td></tr>
+<tr><td>Growth Score</td><td><span class="score-badge score-low">47/100</span></td><td>Lead magnet exists; no infrastructure behind it</td></tr>
+</tbody>
+</table>
+</div>
+
+<hr class="section-divider">
+
+<!-- ── SECTION AUDIT ──────────────────────────────────────────────── -->
+<div id="section-audit">
+<h2>Section-by-Section Audit</h2>
+
+<table>
+<thead><tr><th>Section</th><th>Intended Purpose</th><th>Actual Effect</th><th>Verdict</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td><strong>Navigation</strong></td><td>Orient and guide to CTA</td><td>Clean. Brand + one CTA. Works.</td><td>Keep</td><td>Low</td></tr>
+<tr><td><strong>Hero</strong></td><td>Convert attention into belief in 8 seconds</td><td>Headline lands. Two CTAs split the prompt. Credibility line is small and undersold.</td><td>Improve</td><td><span class="tag tag-high">High</span></td></tr>
+<tr><td><strong>AI Advisor Demo</strong></td><td>Demonstrate the diagnostic approach</td><td>Shows the opposite — generic, vague responses undercut the "specificity" brand promise.</td><td>Rebuild or Remove</td><td><span class="tag tag-high">High</span></td></tr>
+<tr><td><strong>Process (How It Works)</strong></td><td>Reduce fear of the unknown</td><td>Strong. Specific timelines (Days 1–3, 4–7, 8–10). Earns its place.</td><td>Keep</td><td>Low</td></tr>
+<tr><td><strong>Case Studies</strong></td><td>Demonstrate specific results with proof</td><td>Good. Milano and SPCS strong. Two cards without links signal incompleteness.</td><td>Improve</td><td><span class="tag tag-med">Medium</span></td></tr>
+<tr><td><strong>Referral Line</strong></td><td>Drive word-of-mouth</td><td>Plain paragraph. No visual weight. Invisible to scanners.</td><td>Elevate to section</td><td><span class="tag tag-med">Medium</span></td></tr>
+<tr><td><strong>Founder / About</strong></td><td>Build human trust and credibility</td><td>Photo present. Story is observational. No origin moment. No emotion.</td><td>Rewrite</td><td><span class="tag tag-high">High</span></td></tr>
+<tr><td><strong>Lead Magnet</strong></td><td>Email capture before the sale</td><td>Specific and credible. Value proposition clear. Good placement.</td><td>Keep — add what happens next</td><td>Low</td></tr>
+<tr><td><strong>Pricing</strong></td><td>Reduce sticker shock, anchor value</td><td>Guarantee is strong. $1,500 appears cold — no ROI anchor before it.</td><td>Add anchor</td><td><span class="tag tag-high">High</span></td></tr>
+<tr><td><strong>FAQ</strong></td><td>Dissolve objections before the sale</td><td>Four good questions, answered specifically. Missing: "Why now?" and "Why you, not a freelancer?"</td><td>Expand</td><td><span class="tag tag-med">Medium</span></td></tr>
+<tr><td><strong>Final CTA + Form</strong></td><td>Trigger action with minimum friction</td><td>Clean 3-field form. Microcopy adequate. Closing pitch section below it is redundant.</td><td>Keep form, remove closing pitch</td><td><span class="tag tag-med">Medium</span></td></tr>
+<tr><td><strong>Closing Pitch Section</strong></td><td>Final push to convert</td><td>Duplicate of the CTA section directly above it. Creates scroll fatigue, not urgency.</td><td>Remove</td><td><span class="tag tag-high">High</span></td></tr>
+<tr><td><strong>Footer</strong></td><td>Navigation, legal, contact</td><td>Functional. No phone number, no physical location (relevant for trust-building in B2B).</td><td>Keep — add email visibly</td><td>Low</td></tr>
+</tbody>
+</table>
+</div>
+
+<hr class="section-divider">
+
+<!-- ── COPY REWRITES ──────────────────────────────────────────────── -->
+<div id="copy-rewrites">
+<h2>Before vs. After — Copy Rewrites</h2>
+
+<h3>1. Hero Subheadline</h3>
+<div class="before-after">
+<div class="ba-col ba-before"><div class="ba-label">Current</div>"The answer. The roadmap. The copy already written."</div>
+<div class="ba-col ba-after"><div class="ba-label">Rewrite</div>"Most audits tell you what's wrong. We hand you the fixed version — copy rewrites, UX changes, a week-by-week plan."</div>
+</div>
+<p><em>Why:</em> The current version is abstract ("the answer" to what?). The rewrite makes explicit what is delivered and names the gap competitors don't close.</p>
+
+<h3>2. Hero CTA — Remove the secondary prompt</h3>
+<div class="before-after">
+<div class="ba-col ba-before"><div class="ba-label">Current</div>Primary: "Get your free diagnosis"<br>Secondary: "See how it works →"</div>
+<div class="ba-col ba-after"><div class="ba-label">Rewrite</div>Primary: "Get your free diagnosis"<br><em>(Remove secondary CTA entirely. The process section is one scroll away.)</em></div>
+</div>
+
+<h3>3. Hero Credibility Line — Activate the scarcity</h3>
+<div class="before-after">
+<div class="ba-col ba-before"><div class="ba-label">Current</div>"Three specific findings. Delivered within 48 hours. We run 4 per week. No pitch."</div>
+<div class="ba-col ba-after"><div class="ba-label">Rewrite</div>"Three specific findings within 48 hours. We run 4 diagnostics per week — 2 slots available. No pitch, no commitment."</div>
+</div>
+<p><em>Why:</em> "2 slots available" turns a credibility detail into a genuine conversion lever. Update weekly. Cialdini's scarcity principle applied honestly.</p>
+
+<h3>4. AI Advisor Demo Response — Replace with a specific mini-audit</h3>
+<div class="before-after">
+<div class="ba-col ba-before"><div class="ba-label">Current response to "Why aren't we growing?"</div>Visitors cannot quickly understand who you help and how. Your value is not clearly communicated above the fold. There is no clear next step guiding visitors to take action. Trust signals are limited, creating hesitation. SEO opportunities are missed that competitors capture.</div>
+<div class="ba-col ba-after"><div class="ba-label">Rewrite — show a real diagnostic</div>Based on a 3-second review of your current hero: your headline describes what you do, not what the visitor gets. "Tailored financial solutions" and "comprehensive services" appear in the first screen — both phrases your competitors use. The CTA says "Learn More" with no stated outcome. And the first number a visitor sees is your phone number, not a result. Here's the rewrite for your hero headline: [specific example].<br><br><em>That's the first 90 seconds of a full diagnostic. Would you like to see the rest?</em></div>
+</div>
+<p><em>Why:</em> The current response is what every agency's AI chatbot says. The rewrite demonstrates the actual methodology — specific, named, with a rewrite — which is what Elliyeen sells. This is the proof of concept, not a description of it.</p>
+
+<h3>5. Founder Section Headline + Body</h3>
+<div class="before-after">
+<div class="ba-col ba-before"><div class="ba-label">Current</div>"Most audits tell you what's wrong. They don't tell you what to do about it."<br><br>"I spent years watching businesses invest in websites that looked right but didn't convert..."</div>
+<div class="ba-col ba-after"><div class="ba-label">Rewrite</div>"I've sat across from founders who paid $40,000 for a website rebrand and saw no change in leads. The agency delivered a beautiful site. The conversion problem was never diagnosed."<br><br>"Elliyeen exists because the gap isn't design or copy — it's the diagnosis. When you know exactly what's costing you conversion, the fix is obvious. When you don't, you keep redesigning."</div>
+</div>
+<p><em>Why:</em> The current copy is observational. The rewrite opens with a specific scene — a number, a situation, a failure. That is what makes a founder story credible and memorable. Halbert's internal monologue test: the reader who has paid for a website that didn't convert reads the new version and thinks "that's me."</p>
+
+<h3>6. Pricing — Add value anchor before the price</h3>
+<div class="before-after">
+<div class="ba-col ba-before"><div class="ba-label">Current section opening</div>"Every engagement starts with a free 20-minute diagnostic. We look at your site for 20 minutes and give you the three highest-priority changes..."<br><br>Full Audit: From $1,500</div>
+<div class="ba-col ba-after"><div class="ba-label">Rewrite</div>"The last full audit we completed identified $36,600/month in uncaptured revenue for a single-location restaurant — without new ad spend. The audit that found it cost $1,500.<br><br>If we don't find at least five specific, actionable improvements on your site, the audit is free. We've never had to issue that refund."</div>
+</div>
+<p><em>Why:</em> Kahneman's anchoring effect. The $36,600 number appears first and sets the reference frame. $1,500 against $36,600/month is not expensive — it is the lowest-risk purchase a founder can make. The guarantee then removes the remaining hesitation.</p>
+
+<h3>7. Referral Line — Elevate to a section</h3>
+<div class="before-after">
+<div class="ba-col ba-before"><div class="ba-label">Current</div>Plain paragraph: "Know a founder whose site isn't converting? Send them this page."</div>
+<div class="ba-col ba-after"><div class="ba-label">Rewrite — give it a section</div><strong>Know a founder stuck on this?</strong><br>Every founder knows someone whose site looks fine but isn't converting. Forward this audit or share the page — if they book a diagnostic and mention your name, we'll run a 30-minute follow-up on your site at no charge.<br><br>[Forward this page →] [Copy the link]</div>
+</div>
+<p><em>Why:</em> Cialdini reciprocity + word-of-mouth activation. The current version asks for a favor with no incentive. The rewrite gives a reason to refer and a mechanism to track it. This is the highest-ROI growth lever on the page and it currently has zero infrastructure.</p>
+
+<h3>8. FAQ — Add two missing objections</h3>
+
+<h4>Missing Q5: "Why now? Can't I wait until after my next redesign?"</h4>
+<div class="ba-col ba-after" style="margin-bottom:1rem; padding: 0.9rem 1rem; border-radius: 5px; font-size: 0.9rem; line-height: 1.6; background: #e4f0ee; border: 1px solid rgba(10,92,82,0.2);">
+<div class="ba-label" style="font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.5rem;color:#0a5c52;">Recommended Answer</div>
+Most redesigns are built on the same positioning and copy that isn't converting — they just look better. The audit tells you what to fix before you commit to a rebuild. Clients who audit first rebuild once. Those who rebuild first often audit afterward and wish they'd done it in the other order.
+</div>
+
+<h4>Missing Q6: "Why not just hire a freelance copywriter or consultant?"</h4>
+<div class="ba-col ba-after" style="margin-bottom:1rem; padding: 0.9rem 1rem; border-radius: 5px; font-size: 0.9rem; line-height: 1.6; background: #e4f0ee; border: 1px solid rgba(10,92,82,0.2);">
+<div class="ba-label" style="font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.5rem;color:#0a5c52;">Recommended Answer</div>
+A copywriter improves the words. A UX consultant improves the layout. An SEO agency improves the rankings. None of them see the whole picture simultaneously. The reason most sites still don't convert after three agency engagements is that no one ran all the frameworks at once and ranked the findings by revenue impact. That's what this is.
+</div>
+</div>
+
+<hr class="section-divider">
+
+<!-- ── TRUST BREAKDOWN ────────────────────────────────────────────── -->
+<div id="trust-score">
+<h2>Trust Score Breakdown — 49/100</h2>
+
+<table>
+<thead><tr><th>Category</th><th>Score</th><th>Evidence</th><th>Gap</th></tr></thead>
+<tbody>
+<tr><td><strong>Human Trust</strong></td><td><span class="score-badge score-mid">7/10</span></td><td>Founder photo present. LinkedIn linked. Real name used throughout.</td><td>No origin moment in founder story. No personal credential beyond "spent years watching."</td></tr>
+<tr><td><strong>Social Trust</strong></td><td><span class="score-badge score-low">2/10</span></td><td>Case studies present with outcomes. No named testimonials. No Google reviews. No client logos.</td><td>Critical gap. A professional services buyer needs at least one named person saying "this worked."</td></tr>
+<tr><td><strong>Process Trust</strong></td><td><span class="score-badge score-high">8/10</span></td><td>Specific day-by-day process. Response time stated (48 hours). Guarantee stated explicitly.</td><td>What happens after the form is submitted? The confirmation state is unknown.</td></tr>
+<tr><td><strong>Safety Trust</strong></td><td><span class="score-badge score-mid">5/10</span></td><td>Privacy Policy linked. Guarantee stated. No commitment language present.</td><td>No "what if I'm not satisfied?" signal beyond the guarantee. No terms on the engagement.</td></tr>
+</tbody>
+</table>
+
+<div class="callout-critical">
+<p><strong>Critical gap:</strong> Social Trust at 2/10 is a structural ceiling on conversion. A founder considering a $1,500 audit needs to see at least one other founder who bought and benefited. Case study cards are not the same as human testimony. Add one named testimonial — even LinkedIn recommendation copy — before anything else on this list.</p>
+</div>
+</div>
+
+<hr class="section-divider">
+
+<!-- ── CONVERSION KILLERS ──────────────────────────────────────────── -->
+<div id="conversion-killers">
+<h2>Top Conversion Killers — Ranked by Severity</h2>
+
+<table>
+<thead><tr><th>Rank</th><th>Killer</th><th>Where</th><th>Severity</th><th>Fix</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>AI demo shows generic output</td><td>Section 2 (above fold on scroll)</td><td><span class="tag tag-high">Critical</span></td><td>Replace with a specific, named mini-audit that demonstrates real methodology</td></tr>
+<tr><td>2</td><td>No social proof from named clients</td><td>Page-wide absence</td><td><span class="tag tag-high">Critical</span></td><td>Add minimum 2 named testimonials with outcome and role before launch of any campaign</td></tr>
+<tr><td>3</td><td>$1,500 without ROI anchor</td><td>Pricing section</td><td><span class="tag tag-high">High</span></td><td>Lead pricing section with Milano revenue recovery figure as anchor</td></tr>
+<tr><td>4</td><td>Split hero CTA</td><td>Hero</td><td><span class="tag tag-high">High</span></td><td>Remove "See how it works →" from hero</td></tr>
+<tr><td>5</td><td>Scarcity signal unused</td><td>Hero subtext</td><td><span class="tag tag-high">High</span></td><td>Turn "4 per week" into a live slots indicator</td></tr>
+<tr><td>6</td><td>Closing pitch section is redundant</td><td>Bottom of page</td><td><span class="tag tag-med">Medium</span></td><td>Remove — duplicate of the CTA section directly above</td></tr>
+<tr><td>7</td><td>No growth system behind lead magnet</td><td>Infrastructure</td><td><span class="tag tag-med">Medium</span></td><td>Connect PDF download to welcome sequence; add 3-email nurture flow</td></tr>
+<tr><td>8</td><td>Two unlinkable case studies</td><td>Case studies carousel</td><td><span class="tag tag-med">Medium</span></td><td>Publish abbreviated reports or restructure cards as "Coming soon"</td></tr>
+<tr><td>9</td><td>Founder story has no origin moment</td><td>Founder section</td><td><span class="tag tag-med">Medium</span></td><td>Rewrite with a specific scene and a specific number (see copy rewrite above)</td></tr>
+<tr><td>10</td><td>FAQ missing "Why now?" and "Why not DIY?"</td><td>FAQ section</td><td><span class="tag tag-low">Low</span></td><td>Add two questions (written above)</td></tr>
+</tbody>
+</table>
+</div>
+
+<hr class="section-divider">
+
+<!-- ── HEATMAP ────────────────────────────────────────────────────── -->
+<div id="heatmap">
+<h2>Attention Heatmap Prediction</h2>
+
+<table>
+<thead><tr><th>Section</th><th>Predicted Attention</th><th>Scroll Stop Elements</th><th>Risk</th></tr></thead>
+<tbody>
+<tr><td>Navigation</td><td>████████████████████ 100%</td><td>CTA button</td><td>None</td></tr>
+<tr><td>Hero</td><td>████████████████████ 100%</td><td>Headline, CTA</td><td>Split CTA dilutes click</td></tr>
+<tr><td>AI Advisor Demo</td><td>████████████████ 80%</td><td>Chat UI novelty</td><td><strong>High</strong> — generic response causes trust drop before scroll continues</td></tr>
+<tr><td>Process</td><td>████████████ 60%</td><td>Numbered steps, day labels</td><td>Low — strong section</td></tr>
+<tr><td>Case Studies</td><td>██████████ 50%</td><td>Images, metric bullets</td><td>Medium — two empty link cards</td></tr>
+<tr><td>Referral Line</td><td>████████ 40%</td><td>None (plain text)</td><td>High — invisible to scanners</td></tr>
+<tr><td>Founder / About</td><td>████████ 40%</td><td>Founder photo</td><td>Medium — story doesn't reward reading</td></tr>
+<tr><td>Lead Magnet</td><td>██████ 30%</td><td>Benefit bullets, form</td><td>Low — well constructed</td></tr>
+<tr><td>Pricing</td><td>█████ 25%</td><td>Price figures, guarantee</td><td><strong>High</strong> — few visitors reach this; those who do see cold price</td></tr>
+<tr><td>FAQ</td><td>████ 20%</td><td>Question labels</td><td>Medium — below typical scroll depth for cold traffic</td></tr>
+<tr><td>Final CTA + Form</td><td>███ 15%</td><td>Form fields</td><td>High — almost no cold traffic reaches this</td></tr>
+<tr><td>Closing Pitch</td><td>██ 10%</td><td>None</td><td>Remove — graveyard content</td></tr>
+</tbody>
+</table>
+
+<div class="callout-warn">
+<p><strong>Heatmap implication:</strong> The pricing section — which contains the guarantee and the most important value statement — is seen by approximately 25% of visitors. The guarantee should be surfaced above the fold, or at minimum in the hero subtext. "If we don't find 5 improvements, it's free" is conversion copy. It is currently buried at the 75th percentile of the page.</p>
+</div>
+</div>
+
+<hr class="section-divider">
+
+<!-- ── MISSING SECTIONS ───────────────────────────────────────────── -->
+<div id="missing-sections">
+<h2>Missing Sections — What Needs to Be Added</h2>
+
+<table>
+<thead><tr><th>Section</th><th>Why It's Missing</th><th>Priority</th><th>Impact</th></tr></thead>
+<tbody>
+<tr><td><strong>Testimonials strip</strong></td><td>Social trust is the single biggest conversion lever absent from the page. One specific testimonial from a named founder outperforms all copy rewrites combined.</td><td><span class="tag tag-high">Immediate</span></td><td>Trust Score +20 pts</td></tr>
+<tr><td><strong>Stats/credibility bar</strong></td><td>"47 audits completed · 12 industries · Founded 2023" — specificity before the promise. Hopkins' preemptive claim. This could live below the hero.</td><td><span class="tag tag-high">High</span></td><td>Hopkins Score +2 pts</td></tr>
+<tr><td><strong>Referral section</strong></td><td>The referral line deserves its own section with a mechanism and incentive. This is the highest-ROI addition to the page.</td><td><span class="tag tag-med">Medium</span></td><td>Growth Score +15 pts</td></tr>
+<tr><td><strong>Results/ROI summary</strong></td><td>The Milano figures ($6,960/mo, $36,600/mo) are buried in a carousel card. They should appear above pricing as value anchors.</td><td><span class="tag tag-high">High</span></td><td>Conversion Score +8 pts</td></tr>
+<tr><td><strong>Blog / resource archive</strong></td><td>Single-page site has no SEO surface area. "Website audit" and related keywords are uncontested opportunities. A 6-post article archive would establish authority and compound traffic.</td><td><span class="tag tag-low">90-day</span></td><td>SEO Score +20 pts</td></tr>
+</tbody>
+</table>
+</div>
+
+<hr class="section-divider">
+
+<!-- ── SECTIONS TO REMOVE ─────────────────────────────────────────── -->
+<div id="sections-to-remove">
+<h2>Sections to Remove or Collapse</h2>
+
+<table>
+<thead><tr><th>Section</th><th>Reason</th><th>Action</th></tr></thead>
+<tbody>
+<tr><td><strong>Closing pitch section</strong> (below final CTA form)</td><td>Duplicate of the CTA section immediately above it. "In every audit we run, qualified visitors are leaving before they take action" — this pitch belongs in the hero, not at the bottom of the page. Visitors who reach this have already passed the booking form.</td><td>Remove entirely</td></tr>
+<tr><td><strong>Secondary hero CTA</strong> ("See how it works →")</td><td>The process section is one scroll away. Giving visitors a choice between "act" and "learn more" reduces the probability of either happening. Fogg's action line: one clear prompt outperforms two every time.</td><td>Remove from hero</td></tr>
+<tr><td><strong>AI advisor demo response</strong> (current content)</td><td>The generic response content must be replaced. The UI shell (the chat interface) is valuable — it demonstrates interactivity and self-serves curiosity. The content inside it is actively harmful to the brand.</td><td>Keep UI, replace content</td></tr>
+</tbody>
+</table>
+</div>
+
+<hr class="section-divider">
+
+<!-- ── WIREFRAME ──────────────────────────────────────────────────── -->
+<div id="wireframe">
+<h2>Recommended Homepage Section Order</h2>
+
+<table>
+<thead><tr><th>#</th><th>Section</th><th>Purpose</th><th>Change from Current</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>Navigation (brand + CTA)</td><td>Orient</td><td>No change</td></tr>
+<tr><td>2</td><td><strong>Hero</strong> — single CTA, updated sub, scarcity activated</td><td>Convert attention → belief</td><td>Remove secondary CTA. Update subheadline. Add guarantee hint.</td></tr>
+<tr><td>3</td><td><strong>Credibility bar</strong> — audit count, industries, years, guarantee</td><td>Specificity before the scroll</td><td>New section</td></tr>
+<tr><td>4</td><td><strong>Testimonials</strong> — 2–3 named, outcome-specific</td><td>Social trust immediately</td><td>New section</td></tr>
+<tr><td>5</td><td>Case Studies carousel</td><td>Demonstrated results</td><td>Fix or hide incomplete cards</td></tr>
+<tr><td>6</td><td>Process (How It Works)</td><td>Reduce unknown fear</td><td>No change</td></tr>
+<tr><td>7</td><td><strong>AI Advisor demo</strong> — with specific mini-audit content</td><td>Prove the methodology</td><td>Replace demo response content entirely</td></tr>
+<tr><td>8</td><td>Founder / About</td><td>Human trust</td><td>Rewrite with origin moment</td></tr>
+<tr><td>9</td><td>Lead Magnet (18-Point Audit PDF)</td><td>Email capture for non-converters</td><td>No change</td></tr>
+<tr><td>10</td><td><strong>Pricing</strong> — with ROI anchor before price</td><td>Remove sticker shock</td><td>Add Milano revenue recovery figure above pricing tiers</td></tr>
+<tr><td>11</td><td>FAQ — expanded to 6 questions</td><td>Dissolve final objections</td><td>Add "Why now?" and "Why not DIY/freelancer?"</td></tr>
+<tr><td>12</td><td>Final CTA form</td><td>Conversion</td><td>No change</td></tr>
+<tr><td>13</td><td><strong>Referral section</strong> — with mechanism and incentive</td><td>Growth lever</td><td>New section — replace plain referral line</td></tr>
+<tr><td>14</td><td>Footer</td><td>Legal, navigation, contact</td><td>Add hello@elliyeen.com visibly</td></tr>
+</tbody>
+</table>
+</div>
+
+<hr class="section-divider">
+
+<!-- ── SEO + AEO ──────────────────────────────────────────────────── -->
+<div id="seo-aeo">
+<h2>SEO + AEO Findings</h2>
+
+<h3>SEO — Score: 55/100</h3>
+<table>
+<thead><tr><th>Element</th><th>Status</th><th>Finding</th></tr></thead>
+<tbody>
+<tr><td>Title tag</td><td>Present</td><td>"Elliyeen Research — Website Audit &amp; Revenue Diagnosis" — acceptable. Could include "for founders" to target the right searcher.</td></tr>
+<tr><td>H1</td><td>Present</td><td>"Know exactly what's costing you revenue. Fix it." — strong brand statement, weak keyword signal. No "website audit" in H1.</td></tr>
+<tr><td>Supporting content</td><td>Missing</td><td>No blog. No articles. No keyword surface area beyond the homepage. "Website audit service," "website conversion audit," "conversion rate optimization audit" are all uncontested.</td></tr>
+<tr><td>Internal linking</td><td>N/A</td><td>Single-page site — no internal linking possible. Report pages (/reports/milano-audit.html) are not linked from the nav.</td></tr>
+<tr><td>Schema markup</td><td>Missing</td><td>No Organization, FAQPage, or Person schema. These are low-effort, high-value additions.</td></tr>
+<tr><td>E-E-A-T</td><td>Partial</td><td>Experience: case studies present. Expertise: methodology named. Authoritativeness: no external citations, no press, no directory listings. Trustworthiness: privacy policy present.</td></tr>
+</tbody>
+</table>
+
+<h4>Top 3 SEO Actions</h4>
+<ol>
+<li>Publish 4–6 articles targeting "website conversion audit," "how to audit your website for conversions," and "website not converting" — these have volume and low competition in the founder/marketing leader segment.</li>
+<li>Add FAQPage + Organization + Person schema to the homepage.</li>
+<li>Link the audit reports (/reports/milano-audit.html etc.) from the main nav or a dedicated "Reports" page — they are indexable content that currently has no internal link authority.</li>
+</ol>
+
+<h3>AEO — Score: 68/100</h3>
+<p>The site performs well for AI citation in several dimensions:</p>
+<ul>
+<li><strong>Entity clarity:</strong> Company name, founder name, service type, and target customer are all clearly stated.</li>
+<li><strong>FAQ extractability:</strong> Four FAQ entries are well-structured for AI extraction — direct answers, appropriate length.</li>
+<li><strong>Direct answer gaps:</strong> "How long has Elliyeen been in business?" and "How many audits has Elliyeen completed?" cannot be answered from the site. AI systems that encounter these questions will cite competitors who do provide this information.</li>
+</ul>
+
+<h4>5 FAQ Entries to Add for AI Citation</h4>
+<ol>
+<li><strong>What does Elliyeen Research do?</strong> — Elliyeen Research runs 22-specialist-framework website audits for founders and marketing leaders. Every audit produces copy rewrites, UX recommendations, and a prioritized roadmap — not a list of problems, but the specific fixes ready to implement.</li>
+<li><strong>How long does an Elliyeen audit take?</strong> — A full audit takes 8–10 business days: 3 days for customer intelligence, 4 days for the 22-framework diagnosis, and 3 days for the prioritized roadmap with copy rewrites.</li>
+<li><strong>What is the Elliyeen audit guarantee?</strong> — If a full audit does not find at least five specific, actionable improvements to your website, the audit is free.</li>
+<li><strong>Who is Abbas Abdullah?</strong> — Abbas Abdullah is the founder of Elliyeen Research, a website audit and conversion optimization practice for founders and marketing leaders. He can be found at elliyeen.com.</li>
+<li><strong>How much does a website conversion audit cost?</strong> — A diagnostic call from Elliyeen is free. A full 22-framework audit starts at $1,500. Audit plus implementation is scoped per engagement.</li>
+</ol>
+</div>
+
+<hr class="section-divider">
+
+<!-- ── CIALDINI + FOGG + KAHNEMAN SUMMARY ────────────────────────── -->
+<div id="behavioral-analysis">
+<h2>Behavioral Forces Analysis</h2>
+
+<h3>Cialdini — What's Present and What's Missing</h3>
+<table>
+<thead><tr><th>Principle</th><th>Present?</th><th>Quality</th><th>Gap/Recommendation</th></tr></thead>
+<tbody>
+<tr><td>Reciprocity</td><td>Yes</td><td>Good — free PDF audit framework is a real gift, not a newsletter</td><td>Add: "No spam" is stated. Add what the first email actually contains.</td></tr>
+<tr><td>Commitment</td><td>Partial</td><td>The question buttons in the AI advisor create micro-engagement</td><td>Build on this: a 3-question self-assessment before the booking form would deepen commitment</td></tr>
+<tr><td>Social Proof</td><td>Weak</td><td>Case studies present but no human testimony</td><td>Critical gap — one named testimonial transforms this score</td></tr>
+<tr><td>Authority</td><td>Good</td><td>Methodology named (22 frameworks). Founder photo. Specific process.</td><td>Add: How many audits completed. Any press mentions or podcast appearances.</td></tr>
+<tr><td>Liking</td><td>Partial</td><td>Founder section exists but is intellectual</td><td>Add an origin moment that creates felt similarity with the frustrated founder reading this</td></tr>
+<tr><td>Scarcity</td><td>Untapped</td><td>"4 per week" mentioned once in subtext</td><td>Activate as a live slot indicator — honest, verifiable, conversion-driving</td></tr>
+<tr><td>Unity</td><td>Absent</td><td>No shared identity established</td><td>Add: "For founders who are done guessing." A shared self-image for the right reader.</td></tr>
+</tbody>
+</table>
+
+<h3>Fogg — B = MAP Assessment</h3>
+<table>
+<thead><tr><th>Element</th><th>Status</th><th>Score</th></tr></thead>
+<tbody>
+<tr><td><strong>Motivation (M)</strong></td><td>The pain is real and named. The hero speaks to a genuine frustration. Motivation is high for the right visitor.</td><td>High ✓</td></tr>
+<tr><td><strong>Ability (A)</strong></td><td>3-field form. Clear process. 48-hour response time. Ability is adequate but split CTA and cold price reduce perceived simplicity.</td><td>Medium</td></tr>
+<tr><td><strong>Prompt (P)</strong></td><td>Two prompts in the hero (primary CTA + secondary CTA). Per Fogg: two prompts at the same moment produce less behavior than one clear prompt. Neither fires with full force.</td><td>Weak — fix by removing secondary CTA</td></tr>
+</tbody>
+</table>
+<p><strong>Fogg matrix placement:</strong> Upper-left quadrant. High motivation, moderate ability, split prompt. The fix is not more copy — it is a cleaner, single prompt and the removal of the split CTA.</p>
+
+<h3>Kahneman — Key Behavioral Gaps</h3>
+<ul>
+<li><strong>Loss framing absent:</strong> Current copy uses gain framing ("get your free diagnosis," "know exactly what's costing you"). For a founder who has already spent on agencies that didn't deliver, loss framing converts better: "Every week without this diagnosis is a week of qualified visitors leaving for someone else."</li>
+<li><strong>No value anchor before price:</strong> The first number a visitor sees in the pricing section is "$1,500." Per anchoring theory, the first number sets the reference frame. Lead with "$36,600/month in uncaptured revenue" — then $1,500 is a bargain, not a cost.</li>
+<li><strong>Peak-end moment is undesigned:</strong> The most emotionally resonant moment on the page — the guarantee ("if we don't find five improvements, it's free") — is buried at the 25th percentile of attention. It should appear at peak attention (the pricing section headline) and be the last thing the visitor reads before the CTA.</li>
+<li><strong>WYSIATI gap:</strong> The page doesn't say how many audits have been completed. System 1 fills this void with "probably not many." A single number ("47 audits completed") closes this gap immediately.</li>
+</ul>
+</div>
+
+<hr class="section-divider">
+
+<!-- ── OGILVY ─────────────────────────────────────────────────────── -->
+<div id="ogilvy-analysis">
+<h2>Ogilvy Brand Analysis</h2>
+
+<h3>The Big Idea</h3>
+<p>A Big Idea must pass Ogilvy's test: unique, durable, ownable, makes you gasp slightly, and could be used for 30 years.</p>
+
+<p>The current site has the ingredients of a Big Idea but has not yet crystallized it into a single sentence:</p>
+
+<div class="callout">
+<p><strong>Candidate Big Ideas:</strong></p>
+<ul>
+<li><em>"The only audit that gives you the fixed version, not just the problem."</em> — Durable. Distinctive. No competitor says this.</li>
+<li><em>"18 frameworks run simultaneously, so you don't have to hire 18 consultants."</em> — Makes the value concrete. Specific.</li>
+<li><em>"The audit that runs itself the way a McKinsey engagement would — on a founder's budget."</em> — Positions against the highest-end alternative.</li>
+</ul>
+<p>The first option is closest to what the site already proves with case studies. It should appear in the hero.</p>
+</div>
+
+<h3>Manufacturer's Pride Count</h3>
+<p>Every sentence beginning with "We" or "Our" is a sentence that does not begin with the prospect. Count from the current page:</p>
+<ul>
+<li>"We map your buyer's trigger moment..." → "You get a written customer brief that names your buyer's exact trigger."</li>
+<li>"We run 18 specialist frameworks..." → "Your site gets 18 frameworks run simultaneously — copy, UX, SEO, trust, conversion, and 13 more."</li>
+<li>"We stay until the system is working." → "You measure what moves. We stay until it does."</li>
+<li>"We spent years watching businesses..." → Begin with the prospect's experience, not the founder's observation.</li>
+</ul>
+<p>The reframe rule: every "we" sentence should become a "you" sentence. The prospect is the hero. Elliyeen is the guide.</p>
+
+<h3>The Burr — What Sticks</h3>
+<p>Ogilvy's burr is the single thing a visitor would repeat to a peer. The current candidate: <em>"If we don't find five improvements, it's free."</em> This is a strong burr — specific, surprising, memorable. It is currently buried. It should be the first line of the pricing section headline and appear in the hero subtext.</p>
+</div>
+
+<hr class="section-divider">
+
+<!-- ── ROADMAPS ────────────────────────────────────────────────────── -->
+<div id="roadmaps">
+<h2>Roadmaps</h2>
+
+<h3>30-Day Roadmap — Fix Immediately</h3>
+
+<div class="roadmap-item">
+  <div class="roadmap-num">1</div>
+  <div class="roadmap-body"><strong>Replace AI advisor demo content</strong><span>Write one specific, named mini-audit as the response to "Why aren't we growing?" — name a real section type, give a real rewrite, show the exact output. This is the single highest-leverage change on the page because it proves the brand promise rather than describing it.</span></div>
+</div>
+<div class="roadmap-item">
+  <div class="roadmap-num">2</div>
+  <div class="roadmap-body"><strong>Add 2 named testimonials</strong><span>Get direct quotes from past clients with permission to name them, their role, and a specific outcome. One sentence each. Place above the case studies carousel. This alone adds more conversion lift than any copy rewrite.</span></div>
+</div>
+<div class="roadmap-item">
+  <div class="roadmap-num">3</div>
+  <div class="roadmap-body"><strong>Remove secondary hero CTA</strong><span>Delete "See how it works →" from the hero. One prompt, maximum conversion probability.</span></div>
+</div>
+<div class="roadmap-item">
+  <div class="roadmap-num">4</div>
+  <div class="roadmap-body"><strong>Add ROI anchor to pricing section</strong><span>Add the Milano revenue recovery figure ($36,600/month) as the opening line of the pricing section headline. "The last audit we completed found $36,600/month in uncaptured revenue. It cost $1,500."</span></div>
+</div>
+<div class="roadmap-item">
+  <div class="roadmap-num">5</div>
+  <div class="roadmap-body"><strong>Activate scarcity signal</strong><span>Update "4 per week" in the hero subtext to read "2 spots available this week" — and keep it accurate. Honest scarcity converts. False countdown timers destroy trust permanently.</span></div>
+</div>
+<div class="roadmap-item">
+  <div class="roadmap-num">6</div>
+  <div class="roadmap-body"><strong>Remove closing pitch section</strong><span>Delete the "In every audit we run..." section at the bottom of the page. It is a duplicate of the CTA section directly above it and is seen by fewer than 10% of visitors.</span></div>
+</div>
+
+<h3>90-Day Roadmap — Growth Opportunities</h3>
+
+<div class="roadmap-item">
+  <div class="roadmap-num">1</div>
+  <div class="roadmap-body"><strong>Add credibility bar below the hero</strong><span>"47 audits completed · 12 industries · Founded 2023 · Guarantee: 5 improvements or free." One line. Specific. Hopkins' preemptive claim in practice.</span></div>
+</div>
+<div class="roadmap-item">
+  <div class="roadmap-num">2</div>
+  <div class="roadmap-body"><strong>Rewrite founder section with origin moment</strong><span>Use the copy rewrite above. Open with a specific founder, a specific cost, a specific failure. This is what makes a founder section read rather than be skipped.</span></div>
+</div>
+<div class="roadmap-item">
+  <div class="roadmap-num">3</div>
+  <div class="roadmap-body"><strong>Build referral section with mechanism</strong><span>Elevate the referral line to a dedicated section. Offer a 30-minute follow-up audit for any referral that books. Track with a simple referral code in the booking form.</span></div>
+</div>
+<div class="roadmap-item">
+  <div class="roadmap-num">4</div>
+  <div class="roadmap-body"><strong>Connect lead magnet to email sequence</strong><span>Build a 3-email sequence triggered by PDF download: Day 1 — delivery + one additional insight not in the PDF. Day 4 — one specific finding from a recent audit (anonymized). Day 10 — soft CTA for diagnostic booking.</span></div>
+</div>
+<div class="roadmap-item">
+  <div class="roadmap-num">5</div>
+  <div class="roadmap-body"><strong>Add FAQPage + Organization + Person schema</strong><span>Low effort, high AEO impact. Ensures AI search systems can extract and cite Elliyeen when answering questions about website audits and conversion optimization.</span></div>
+</div>
+<div class="roadmap-item">
+  <div class="roadmap-num">6</div>
+  <div class="roadmap-body"><strong>Publish Wealth Management and Golf reports</strong><span>Even abbreviated versions. Two unlinkable case study cards are more damaging than two published reports with partial data. A short report with 3 key findings is better than a card with no link.</span></div>
+</div>
+
+<h3>Long-Term Roadmap — Systems, Authority, Compounding</h3>
+
+<div class="roadmap-item">
+  <div class="roadmap-num">1</div>
+  <div class="roadmap-body"><strong>Publish 6 articles targeting conversion audit keywords</strong><span>"How to audit your website for conversion," "website not converting," "website audit checklist" — these are uncontested and align directly with buyer intent. Six well-written articles add permanent SEO surface area that compounds.</span></div>
+</div>
+<div class="roadmap-item">
+  <div class="roadmap-num">2</div>
+  <div class="roadmap-body"><strong>Build a self-serve diagnostic tool</strong><span>A 10-question self-assessment — "Score your own website in 3 minutes" — that produces a personalized PDF report. Lead capture built in. Demonstrates methodology. Scales reach without scaling time. The tool IS the lead magnet.</span></div>
+</div>
+<div class="roadmap-item">
+  <div class="roadmap-num">3</div>
+  <div class="roadmap-body"><strong>Publish an annual State of Website Conversion report</strong><span>Aggregate anonymized data from completed audits. "The most common conversion killer in 2026 was X, found in 73% of sites audited." This is the most citeable content an audit firm can produce — by press, by AI search, and by the founders who share it.</span></div>
+</div>
+<div class="roadmap-item">
+  <div class="roadmap-num">4</div>
+  <div class="roadmap-body"><strong>Establish agency referral partnerships</strong><span>Design agencies, brand studios, and web developers refer clients with live but non-converting sites. A partner program with a referral fee creates a channel that compounds without ad spend.</span></div>
+</div>
+<div class="roadmap-item">
+  <div class="roadmap-num">5</div>
+  <div class="roadmap-body"><strong>Guest appearances on founder/operator podcasts</strong><span>Abbas on 3 podcasts with 10,000+ founder listeners creates external citations that both humans and AI search systems use to verify authority. This is the network moat Elliyeen currently does not have.</span></div>
+</div>
+</div>
+
+<hr class="section-divider">
+
+<p style="font-size:0.8rem;color:#aaa;text-align:center;margin-top:2rem;">Elliyeen Research · Self-Audit · June 2026 · 22 Specialist Frameworks · hello@elliyeen.com</p>
+
+</div><!-- /.main-container -->
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+  /* ── Drawer ── */
+  var navGroups = [
+    { label: 'Overview', open: true, items: [
+      { label: 'Executive Summary', id: 'executive-summary' },
+      { label: 'Audit Scores', id: 'overall-audit-scores' }
+    ]},
+    { label: 'Diagnosis', open: true, items: [
+      { label: 'Section Audit', id: 'section-audit' },
+      { label: 'Copy Rewrites', id: 'copy-rewrites' },
+      { label: 'Trust Breakdown', id: 'trust-score' },
+      { label: 'Conversion Killers', id: 'conversion-killers' }
+    ]},
+    { label: 'Strategy', open: true, items: [
+      { label: 'Heatmap', id: 'heatmap' },
+      { label: 'Missing Sections', id: 'missing-sections' },
+      { label: 'Remove / Collapse', id: 'sections-to-remove' },
+      { label: 'Wireframe', id: 'wireframe' }
+    ]},
+    { label: 'Deep Findings', open: false, items: [
+      { label: 'SEO + AEO', id: 'seo-aeo' },
+      { label: 'Behavioral Analysis', id: 'behavioral-analysis' },
+      { label: 'Ogilvy Brand', id: 'ogilvy-analysis' }
+    ]},
+    { label: 'Roadmaps', open: true, items: [
+      { label: '30 / 90-Day / Long-Term', id: 'roadmaps' }
+    ]}
+  ];
+
+  var chevronSVG = '<svg viewBox="0 0 12 12"><polyline points="2,4 6,8 10,4"/></svg>';
+  var chevronLSVG = '<svg viewBox="0 0 12 12"><polyline points="8,2 4,6 8,10"/></svg>';
+
+  var drawer = document.createElement('div');
+  drawer.id = 'ez-drawer';
+  drawer.innerHTML = '<nav class="ez-drawer-nav" id="ez-nav"></nav>';
+  document.body.insertBefore(drawer, document.body.firstChild);
+
+  var nav = document.getElementById('ez-nav');
+  var allLinks = [];
+
+  navGroups.forEach(function(group) {
+    var groupEl = document.createElement('div'); groupEl.className = 'ez-nav-group';
+    var groupBtn = document.createElement('button');
+    groupBtn.className = 'ez-nav-group-btn' + (group.open ? '' : ' collapsed');
+    groupBtn.innerHTML = group.label + chevronSVG;
+    var itemsEl = document.createElement('div');
+    itemsEl.className = 'ez-nav-items' + (group.open ? '' : ' collapsed');
+    group.items.forEach(function(item) {
+      var a = document.createElement('a');
+      a.className = 'ez-nav-link'; a.textContent = item.label;
+      a.setAttribute('data-target', item.id); a.href = '#' + item.id;
+      a.addEventListener('click', function(e) {
+        e.preventDefault();
+        var t = document.getElementById(item.id);
+        if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+      itemsEl.appendChild(a); allLinks.push(a);
+    });
+    groupBtn.addEventListener('click', function() {
+      var isCollapsed = groupBtn.classList.contains('collapsed');
+      if (isCollapsed) {
+        itemsEl.style.maxHeight = itemsEl.scrollHeight + 'px';
+        groupBtn.classList.remove('collapsed'); itemsEl.classList.remove('collapsed');
+        setTimeout(function() { itemsEl.style.maxHeight = 'none'; }, 320);
+      } else {
+        itemsEl.style.maxHeight = itemsEl.scrollHeight + 'px';
+        requestAnimationFrame(function() { itemsEl.style.maxHeight = '0'; });
+        groupBtn.classList.add('collapsed'); itemsEl.classList.add('collapsed');
+      }
+    });
+    itemsEl.style.maxHeight = group.open ? 'none' : '0';
+    groupEl.appendChild(groupBtn); groupEl.appendChild(itemsEl); nav.appendChild(groupEl);
+  });
+
+  var drawerToggle = document.createElement('button');
+  drawerToggle.id = 'ez-drawer-toggle'; drawerToggle.title = 'Toggle navigation';
+  drawerToggle.setAttribute('aria-label', 'Toggle navigation');
+  drawerToggle.innerHTML = chevronLSVG;
+  document.body.appendChild(drawerToggle);
+
+  var drawerOpen = true;
+  drawerToggle.addEventListener('click', function() {
+    drawerOpen = !drawerOpen;
+    document.body.classList.toggle('ez-drawer-closed', !drawerOpen);
+  });
+
+  var sectionIds = [];
+  navGroups.forEach(function(g) { g.items.forEach(function(i) { sectionIds.push(i.id); }); });
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        var id = entry.target.id;
+        allLinks.forEach(function(a) { a.classList.toggle('ez-active', a.getAttribute('data-target') === id); });
+      }
+    });
+  }, { rootMargin: '-10% 0px -60% 0px', threshold: 0 });
+  sectionIds.forEach(function(id) { var el = document.getElementById(id); if (el) observer.observe(el); });
+
+  /* ── Top Nav ── */
+  var topnav = document.createElement('header');
+  topnav.id = 'ez-topnav';
+  topnav.innerHTML =
+    '<div id="ez-topnav-brand">Elliyeen Research</div>'
+    + '<div id="ez-topnav-title">Self-Audit — 22 Agent Analysis</div>'
+    + '<div id="ez-topnav-actions">'
+    +   '<button class="ez-topnav-btn" id="ez-share-btn" aria-label="Share">'
+    +     '<svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>'
+    +     '<span id="ez-share-label">Share</span>'
+    +   '</button>'
+    +   '<a class="ez-topnav-btn" href="#" onclick="window.print();return false;" aria-label="Print">'
+    +     '<svg viewBox="0 0 24 24"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>'
+    +     'Print'
+    +   '</a>'
+    + '</div>';
+  document.body.insertBefore(topnav, document.body.firstChild);
+
+  var shareToast = document.createElement('div');
+  shareToast.id = 'ez-share-toast'; shareToast.textContent = 'Link copied to clipboard';
+  document.body.appendChild(shareToast);
+  var shareBtn = document.getElementById('ez-share-btn');
+  var shareLabel = document.getElementById('ez-share-label');
+  shareBtn.addEventListener('click', function() {
+    navigator.clipboard.writeText(window.location.href).then(function() {
+      shareBtn.classList.add('ez-copied'); shareLabel.textContent = 'Copied!';
+      shareToast.classList.add('ez-visible');
+      setTimeout(function() { shareBtn.classList.remove('ez-copied'); shareLabel.textContent = 'Share'; shareToast.classList.remove('ez-visible'); }, 2500);
+    });
+  });
+
+  /* ── Back to top ── */
+  var btt = document.createElement('button');
+  btt.id = 'ez-back-top'; btt.title = 'Back to top'; btt.setAttribute('aria-label', 'Back to top');
+  btt.innerHTML = '<svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>';
+  document.body.appendChild(btt);
+  window.addEventListener('scroll', function() { btt.classList.toggle('ez-visible', window.pageYOffset > 400); }, { passive: true });
+  btt.addEventListener('click', function() { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+
+  /* ── Wizard ── */
+  var steps = [
+    {
+      label: 'Step 1 of 5 — The Problem',
+      title: 'The brand promise is specificity. The demo breaks it.',
+      body: '<span class="wz-vtag">CONDUCTOR SCORE: 62/100</span>'
+        + '<p>Elliyeen.com sells the ability to replace generic analysis with specific, actionable diagnosis. The AI advisor demo — the second thing a visitor sees — responds to "Why aren't we growing?" with five generic bullet points about friction, value, CTAs, trust, and SEO.</p>'
+        + '<div class="wz-hl">That is the exact output Elliyeen charges $1,500 to replace. A visitor who sees this asks: why would I pay for this if the demo already shows me what I get?</div>'
+    },
+    {
+      label: 'Step 2 of 5 — The Scores',
+      title: 'Where the 22 agents found the gaps.',
+      body: '<div class="wz-stat-row">'
+        + '<div><div class="wz-stat-n r">49</div><div class="wz-stat-s">/ 100 trust</div></div>'
+        + '<div><div class="wz-stat-n r">58</div><div class="wz-stat-s">/ 100 conversion</div></div>'
+        + '<div><div class="wz-stat-n r">47</div><div class="wz-stat-s">/ 100 growth</div></div>'
+        + '</div>'
+        + '<p>Trust is the structural ceiling. Without named testimonials, no amount of copy improvement reaches its ceiling. Social trust score: <strong>2/10</strong>.</p>'
+        + '<div class="wz-hl">The methodology is credible. The proof is absent. Visitors believe the approach before they trust the practitioner.</div>'
+    },
+    {
+      label: 'Step 3 of 5 — What It\'s Costing',
+      title: 'Three suppressors killing conversion right now.',
+      body: '<div class="wz-rm">'
+        + '<div class="wz-rm-item"><span class="wz-rm-badge">1</span><span><strong>Split hero CTA.</strong> "Get your free diagnosis" and "See how it works →" compete. Per Fogg\'s B=MAP: two prompts produce less action than one.</span></div>'
+        + '<div class="wz-rm-item"><span class="wz-rm-badge">2</span><span><strong>Cold price.</strong> $1,500 appears without an ROI anchor. The Milano audit found $36,600/month in uncaptured revenue. That number should appear before the price, not in a case study card.</span></div>'
+        + '<div class="wz-rm-item"><span class="wz-rm-badge">3</span><span><strong>No testimonials.</strong> The social trust score is 2/10. One named founder with a specific outcome transforms this report\'s conversion ceiling.</span></div>'
+        + '</div>'
+    },
+    {
+      label: 'Step 4 of 5 — The 30-Day Fix',
+      title: 'Six changes. No rebuild required.',
+      body: '<div class="wz-rm">'
+        + '<div class="wz-rm-item"><span class="wz-rm-badge">WEEK 1</span><span>Replace AI demo content with a specific mini-audit. Remove secondary hero CTA. Add scarcity to hero subtext.</span></div>'
+        + '<div class="wz-rm-item"><span class="wz-rm-badge">WEEK 2</span><span>Add 2 named testimonials above case studies. Add ROI anchor to pricing section.</span></div>'
+        + '<div class="wz-rm-item"><span class="wz-rm-badge">WEEK 3</span><span>Remove closing pitch section at bottom. Rewrite founder section with origin moment.</span></div>'
+        + '<div class="wz-rm-item"><span class="wz-rm-badge">WEEK 4</span><span>Add two FAQ entries ("Why now?" and "Why not DIY?"). Connect PDF download to email sequence.</span></div>'
+        + '</div>'
+    },
+    {
+      label: 'Step 5 of 5 — Read the Report',
+      title: 'Every finding has a specific fix written.',
+      body: '<p>This report contains copy rewrites for every weak section, the recommended homepage section order, the exact FAQ entries to add, the AEO schema to implement, and a 30/90-day roadmap ranked by conversion impact.</p>'
+        + '<div class="wz-cta-blk"><p>Questions? Reach out directly.</p><div class="wz-cta-email">hello@elliyeen.com</div></div>'
+        + '<p class="wz-note">Use the navigation panel on the left to jump to any section. Start with Copy Rewrites — the AI demo fix is the highest-leverage change on the page.</p>'
+    }
+  ];
+
+  var current = 0;
+  var overlay = document.createElement('div');
+  overlay.id = 'ez-wizard-overlay';
+  overlay.innerHTML =
+    '<div id="ez-wizard-card">'
+    + '<div class="wz-head"><div class="wz-step-lbl" id="wz-lbl"></div><div class="wz-ttl" id="wz-ttl"></div></div>'
+    + '<div class="wz-bdy" id="wz-bdy"></div>'
+    + '<div class="wz-foot">'
+    +   '<div class="wz-dots" id="wz-dots"></div>'
+    +   '<button class="wz-skip" id="wz-skip">Skip guide</button>'
+    +   '<div class="wz-btns"><button class="wz-btn wz-back-btn" id="wz-back">Back</button><button class="wz-btn wz-next-btn" id="wz-next">Next →</button></div>'
+    + '</div></div>';
+  document.body.appendChild(overlay);
+
+  function renderWizard() {
+    var s = steps[current];
+    document.getElementById('wz-lbl').textContent = s.label;
+    document.getElementById('wz-ttl').textContent = s.title;
+    document.getElementById('wz-bdy').innerHTML = s.body;
+    var dots = document.getElementById('wz-dots'); dots.innerHTML = '';
+    steps.forEach(function(_, i) {
+      var d = document.createElement('div');
+      d.className = 'wz-dot' + (i === current ? ' active' : '');
+      dots.appendChild(d);
+    });
+    document.getElementById('wz-back').style.visibility = current === 0 ? 'hidden' : 'visible';
+    document.getElementById('wz-next').textContent = current === steps.length - 1 ? 'Read the report →' : 'Next →';
+  }
+  function closeWizard() {
+    overlay.classList.add('ez-hidden');
+    setTimeout(function() { if (overlay.parentNode) overlay.parentNode.removeChild(overlay); }, 400);
+  }
+  document.getElementById('wz-next').addEventListener('click', function() {
+    if (current < steps.length - 1) { current++; renderWizard(); } else { closeWizard(); }
+  });
+  document.getElementById('wz-back').addEventListener('click', function() {
+    if (current > 0) { current--; renderWizard(); }
+  });
+  document.getElementById('wz-skip').addEventListener('click', closeWizard);
+  overlay.addEventListener('click', function(e) { if (e.target === overlay) closeWizard(); });
+  renderWizard();
+});
+</script>
+</body>
+</html>

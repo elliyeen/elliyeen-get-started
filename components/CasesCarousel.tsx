@@ -53,8 +53,8 @@ const ALL_CASES = [
     ],
     image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=1200&auto=format&fit=crop",
     imageAlt: "Financial advisor reviewing documents with a client at a desk",
-    href: "",
-    reportLabel: "",
+    href: "/reports/wealth-management-audit.html",
+    reportLabel: "Read the full audit report",
     secondaryHref: "",
     secondaryLabel: "",
   },
@@ -71,8 +71,8 @@ const ALL_CASES = [
     ],
     image: "https://images.unsplash.com/photo-1535131749006-b7f58c99034b?q=80&w=1200&auto=format&fit=crop",
     imageAlt: "College golfer lining up a putt on a green during a tournament",
-    href: "",
-    reportLabel: "",
+    href: "/reports/golf-program-audit.html",
+    reportLabel: "Read the full audit report",
     secondaryHref: "",
     secondaryLabel: "",
   },
@@ -199,14 +199,14 @@ export default function CasesCarousel() {
                     >
                       {item.reportLabel} <ArrowRight size={13} />
                     </a>
-                    {"secondaryHref" in item && item.secondaryHref && "secondaryLabel" in item && item.secondaryLabel && (
+                    {item.secondaryHref && item.secondaryLabel && (
                       <a
-                        href={(item as { secondaryHref: string }).secondaryHref}
+                        href={item.secondaryHref}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-500 hover:text-zinc-800 hover:underline"
                       >
-                        {(item as { secondaryLabel: string }).secondaryLabel} <ArrowRight size={13} />
+                        {item.secondaryLabel} <ArrowRight size={13} />
                       </a>
                     )}
                   </div>

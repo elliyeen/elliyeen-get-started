@@ -1,0 +1,21 @@
+{
+  "name": "copy-engineering-system",
+  "version": "1.0.0",
+  "description": "Multi-agent copy engineering system that optimizes for behavioral movement",
+  "main": "dist/main.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/main.js",
+    "dev": "tsx src/main.ts",
+    "test": "tsx --test src/tests/sample_briefs.test.ts src/tests/scoring.test.ts"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.30.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0",
+    "tsx": "^4.7.0",
+    "@types/node": "^20.0.0"
+  }
+}

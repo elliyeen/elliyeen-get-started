@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import React from "react";
 import MobileNav from "./MobileNav";
 import BookingForm from "./BookingForm";
+import ScrollReveal from "./ScrollReveal";
 import CasesCarousel from "@/components/CasesCarousel";
-import { ArrowRight, BarChart3, Bot, CheckCircle2, LineChart, Search, Sparkles, Users } from "lucide-react";
+import { ArrowRight, CheckCircle2, LineChart, Search, Sparkles, Users } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Elliyeen Research — Website Audit & Revenue Diagnosis",
@@ -16,19 +16,19 @@ const process = [
   {
     icon: Users,
     title: "Customer Intelligence",
-    timeline: "Days 1–3",
+    timeline: "Hour 1",
     body: "We map your buyer's trigger moment, dominant emotion, and the exact language they use when they feel the problem you solve. Delivered as a written customer brief.",
   },
   {
     icon: Search,
     title: "Friction Diagnosis",
-    timeline: "Days 4–7",
+    timeline: "Hours 2–3",
     body: "We run 18 specialist frameworks across your copy, UX, trust signals, SEO, accessibility, and conversion architecture. Every gap documented with evidence.",
   },
   {
     icon: Sparkles,
     title: "Prioritized Roadmap",
-    timeline: "Days 8–10",
+    timeline: "Hour 4",
     body: "We rank every finding by revenue impact. You receive copy rewrites, UX recommendations, and a week-by-week action plan — not a PDF that sits in a folder.",
   },
   {
@@ -58,9 +58,76 @@ const pricingTiers = [
   { tier: "Audit + Implementation", price: "Custom", desc: "We audit and execute. Scoped to your site and team." },
 ];
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "How is a website audit from Elliyeen Research different from an agency giving recommendations?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Agencies give you a list. We give you the replacement copy. Every finding in our report includes the specific fix — the actual headline, the rewritten CTA, the exact objection response — ready to implement. You don't need to hire another writer to act on what we find.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Can't we audit our own website internally?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "You can. The problem is you read it as the person who built it — you see what you meant to say, not what a stranger sees for the first time. We bring 18 frameworks that most in-house teams don't run, applied simultaneously across every layer of your site. The findings are things you wouldn't catch because you're too close to it.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What if the website audit doesn't find anything significant?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "If we don't find at least five specific, actionable improvements on a full audit, the audit is free. We've never had to issue that refund. Most sites have 15–30 findings. The question is never whether there's friction — it's which friction is costing the most.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How long until we see results from implementing the audit recommendations?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "The roadmap is ranked by speed of impact, not complexity. Most clients implement the first change within a week of receiving the report. Changes to hero copy and CTA structure tend to show movement within two to four weeks. We stay available to review your implementations and measure what moved.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How long does an Elliyeen Research website audit take?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "A full audit is delivered in four hours or less. Customer intelligence, 22-framework diagnosis, prioritized roadmap, and copy rewrites are completed in a single session — not spread across days or weeks.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What does a website audit from Elliyeen Research include?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "A full audit covers 18 specialist frameworks across positioning, copy, UX, trust signals, SEO, accessibility, conversion architecture, and AI search readiness (AEO). Every gap is documented with evidence. The deliverable includes copy rewrites, UX recommendations, and a week-by-week action plan ranked by revenue impact.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How much does a website audit cost?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "The diagnostic call is free — 20 minutes, three specific findings, no pitch. A full audit starts from $1,500 and includes all 18 frameworks, a full report, and copy rewrites. Audit + implementation is scoped custom to your site and team.",
+      },
+    },
+  ],
+};
+
 export default function GetStartedPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       {/* Fix 8 — Skip to main content for keyboard / screen reader users */}
       <a
         href="#main-content"
@@ -72,13 +139,17 @@ export default function GetStartedPage() {
       <main id="main-content" className="min-h-screen bg-[#f7f4ee] text-[#111111]">
 
         {/* Fix 4 — Nav labels match destinations. Fix 5 — MobileNav handles hamburger. */}
-        <nav aria-label="Main navigation" className="sticky top-0 z-50 bg-[#f7f4ee]/90 backdrop-blur-md">
-          <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 sm:py-5">
+        <nav aria-label="Main navigation" className="sticky top-0 z-50">
+          {/* Frosted glass layer — must be a child, not on nav itself, because
+              backdrop-filter creates a containing block that breaks fixed children */}
+          <div className="absolute inset-0 bg-[#f7f4ee]/85" style={{ backdropFilter: "saturate(180%) blur(12px)", WebkitBackdropFilter: "saturate(180%) blur(12px)" }} aria-hidden="true" />
+          <div className="relative mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 sm:py-5">
             <div className="text-sm font-bold tracking-[0.22em]">ELLIYEEN</div>
 
             <div className="hidden items-center gap-9 text-sm font-medium text-zinc-600 md:flex">
               <a href="#assessment" className="hover:text-black">How It Works</a>
               <a href="#cases"      className="hover:text-black">Case Studies</a>
+              <a href="/reports"    className="hover:text-black">Reports</a>
               <a href="#pricing"    className="hover:text-black">Pricing</a>
               <a href="#advisor"    className="hover:text-black">AI Advisor</a>
             </div>
@@ -87,8 +158,8 @@ export default function GetStartedPage() {
               <a href="#contact" className="hidden rounded-full border border-zinc-300 px-4 py-2 text-sm font-medium text-zinc-800 hover:border-zinc-400 md:block">
                 Contact sales
               </a>
-              <a href="#book" className="rounded-full bg-[#111111] px-4 py-2 text-sm font-semibold text-white hover:bg-zinc-800">
-                Free diagnosis
+              <a href="#book" className="rounded-full bg-[#1B5EA8] px-4 py-2 text-sm font-semibold text-white hover:bg-[#164d8e]">
+                Fix it
               </a>
               {/* Fix 5 — Mobile hamburger */}
               <MobileNav />
@@ -100,18 +171,18 @@ export default function GetStartedPage() {
         <section className="relative mx-auto grid max-w-7xl items-center gap-10 px-4 pb-14 pt-10 sm:px-6 md:grid-cols-2 md:gap-12 md:pb-16 md:pt-20">
           <div>
             <h1 className="font-serif text-5xl leading-[1.05] tracking-[-0.04em] sm:text-6xl md:text-7xl">
-              Know exactly what&apos;s costing you revenue.
+              Know exactly what&apos;s costing your revenue.
               <br />
               <span className="text-[#1B5EA8]">Fix&nbsp;it.</span>
             </h1>
 
-            <p className="mt-6 text-lg leading-relaxed text-zinc-500">
-              The answer. The roadmap. The copy already written.
+            <p className="mt-5 max-w-md text-lg leading-[1.7] text-zinc-600">
+              We run 18 specialist frameworks across your site — copy, trust, UX, SEO, accessibility — then give you the replacement copy and a prioritized roadmap. Not a list of problems.
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <a href="#book" className="inline-flex min-h-[52px] items-center justify-center rounded-xl bg-black px-6 text-sm font-bold text-white shadow-xl shadow-black/10 hover:bg-zinc-800">
-                Get your free diagnosis
+              <a href="#book" className="inline-flex min-h-[52px] items-center justify-center rounded-xl bg-[#1B5EA8] px-6 text-sm font-bold text-white shadow-xl shadow-[#1B5EA8]/20 hover:bg-[#164d8e]">
+                Fix it
               </a>
               <a href="#assessment" className="inline-flex min-h-[52px] items-center justify-center gap-2 rounded-xl px-6 text-sm font-bold hover:bg-white">
                 See how it works <ArrowRight size={16} />
@@ -146,65 +217,143 @@ export default function GetStartedPage() {
               </div>
             </div>
           </div>
+
+          {/* Scroll indicator */}
+          <div className="absolute bottom-5 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-1 animate-bounce md:flex" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M5 8l5 5 5-5" stroke="#a1a1aa" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </div>
         </section>
 
-        {/* AI Advisor */}
+        {/* Trust metrics strip */}
+        <div className="border-y border-zinc-200 bg-white py-5">
+          <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-x-10 gap-y-4 px-4 sm:px-6">
+            {([
+              ["18", "specialist frameworks"],
+              ["4", "diagnostics per week"],
+              ["48h", "delivery guarantee"],
+              ["100%", "copy rewrites included"],
+            ] as const).map(([num, label]) => (
+              <div key={label} className="flex flex-col items-center gap-1">
+                <span className="font-serif text-2xl font-bold tracking-[-0.03em] text-[#1B5EA8]">{num}</span>
+                <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-zinc-500">{label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Real Output Demo — replaces generic AI chatbot with actual SPCS before/after */}
         <section id="advisor" className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
+          <ScrollReveal>
           <div className="rounded-[2rem] border border-zinc-200 bg-white/80 p-5 shadow-xl shadow-zinc-900/5 backdrop-blur sm:p-6 md:p-10">
-            <div className="mb-6 text-center sm:mb-8">
+            <div className="mb-6 sm:mb-8">
               <p className="mb-3 inline-flex items-center gap-2 rounded-full border border-zinc-200 px-3 py-1 text-xs font-semibold text-zinc-500">
-                Sample conversation
+                Real output · Savannah Personal Care Services
               </p>
-              <h2 className="font-serif text-3xl tracking-[-0.04em] sm:text-4xl md:text-5xl">Get answers. Get clarity. Get growing.</h2>
-              <p className="mt-3 text-sm text-zinc-600 sm:text-base">A preview of how a diagnostic conversation works. Book a call to run yours.</p>
+              <h2 className="font-serif text-3xl tracking-[-0.04em] sm:text-4xl md:text-5xl">This is what a finding looks like.</h2>
+              <p className="mt-3 max-w-xl text-sm text-zinc-600 sm:text-base">
+                Not a recommendation. The actual replacement copy — ready to implement.
+                Every audit we deliver produces output at this specificity.
+              </p>
             </div>
 
-            <div className="grid overflow-hidden rounded-3xl border border-zinc-200 bg-white md:grid-cols-[300px_1fr] lg:grid-cols-[360px_1fr]">
-              <aside className="border-b border-zinc-200 p-5 md:border-b-0 md:border-r">
-                <h3 className="mb-4 text-sm font-bold">Start a conversation</h3>
-                <div className="space-y-2">
+            {/* Before / After — Hero Copy */}
+            <div className="grid gap-4 md:grid-cols-2">
+              <div className="rounded-2xl border border-red-100 bg-red-50/50 p-5 sm:p-6">
+                <p className="mb-4 text-[11px] font-bold uppercase tracking-[0.2em] text-red-400">Before — original hero copy</p>
+                <blockquote className="font-serif text-lg leading-[1.5] text-zinc-700 sm:text-xl">
+                  &ldquo;Savannah Personal Care Services provides compassionate, personalized home care for seniors and individuals with disabilities in the Savannah, Georgia area. Our dedicated team of caregivers is committed to improving quality of life.&rdquo;
+                </blockquote>
+                <div className="mt-5 space-y-2">
                   {[
-                    "Why aren't we growing?",
-                    "How much revenue are we losing?",
-                    "Can you audit our website?",
-                    "Why are competitors winning?",
-                    "How do we improve customer experience?",
-                    "What should we do first?",
-                  ].map((prompt, index) => (
-                    <button key={prompt} className={`flex w-full items-center justify-between rounded-xl px-4 py-3 text-left text-sm ${index === 0 ? "bg-[#eef3fb] text-[#1B5EA8]" : "hover:bg-zinc-50"}`}>
-                      <span>{prompt}</span>
-                      {index === 0 && <ArrowRight size={15} />}
-                    </button>
+                    "Opens with the company name, not the buyer's situation",
+                    "\"Compassionate\" and \"dedicated\" — zero evidence, zero belief",
+                    "No buyer is named. No fear is acknowledged. No person is in the room.",
+                  ].map((note) => (
+                    <div key={note} className="flex items-start gap-2 text-xs text-red-600">
+                      <span className="mt-0.5 shrink-0 font-bold">✕</span>
+                      {note}
+                    </div>
                   ))}
                 </div>
-              </aside>
+              </div>
 
-              <div className="p-5 sm:p-6">
-                <div className="mb-4 inline-flex rounded-2xl bg-zinc-100 px-4 py-3 text-sm">Why aren't we growing?</div>
-                <div className="flex gap-3 sm:gap-4">
-                  <div className="mt-1 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-black text-sm font-black text-white">E</div>
-                  <div className="rounded-2xl bg-[#eef3fb] p-4 text-sm leading-7 text-zinc-800 sm:p-6">
-                    <p className="font-semibold">Based on the way most organizations present themselves, growth is often limited by friction points that prevent visitors from becoming customers.</p>
-                    <ul className="mt-4 list-disc space-y-2 pl-5">
-                      <li>Visitors cannot quickly understand who you help and how.</li>
-                      <li>Your value is not clearly communicated above the fold.</li>
-                      <li>There is no clear next step guiding visitors to take action.</li>
-                      <li>Trust signals are limited, creating hesitation.</li>
-                      <li>SEO opportunities are missed that competitors capture.</li>
-                    </ul>
-                    <p className="mt-4">Would you like me to show the specific opportunities and recommendations?</p>
-                  </div>
-                </div>
-                <div className="mt-6 flex rounded-2xl border border-zinc-200 bg-white p-2">
-                  <label htmlFor="advisor-input" className="sr-only">Ask a follow-up question</label>
-                  <input id="advisor-input" className="flex-1 bg-transparent px-3 text-sm outline-none sm:px-4" placeholder="Ask a follow-up question…" />
-                  <button className="rounded-xl bg-[#1B5EA8] p-3 text-white" aria-label="Send message">
-                    <ArrowRight size={18} />
-                  </button>
+              <div className="rounded-2xl border border-green-100 bg-green-50/50 p-5 sm:p-6">
+                <p className="mb-4 text-[11px] font-bold uppercase tracking-[0.2em] text-green-600">After — rebuilt hero copy</p>
+                <blockquote className="font-serif text-lg leading-[1.5] text-zinc-900 sm:text-xl">
+                  &ldquo;You&apos;ve been managing this long enough.&rdquo;
+                </blockquote>
+                <p className="mt-3 text-sm leading-6 text-zinc-600">
+                  Shannon Stafford Simpson is a Certified Nursing Assistant who built a care agency.
+                  Not a business operator who hired caregivers. That difference matters
+                  — and your family deserves to know it before the first call.
+                </p>
+                <div className="mt-5 space-y-2">
+                  {[
+                    "Opens with the buyer's exact emotional state at the decision moment",
+                    "Shannon's CNA credential positioned as primary differentiator",
+                    "Makes the gap between SPCS and franchise competitors explicit",
+                  ].map((note) => (
+                    <div key={note} className="flex items-start gap-2 text-xs text-green-700">
+                      <CheckCircle2 size={13} className="mt-0.5 shrink-0" />
+                      {note}
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
+
+            {/* Before / After — FAQ */}
+            <div className="mt-4 grid gap-4 md:grid-cols-2">
+              <div className="rounded-2xl border border-red-100 bg-red-50/50 p-5">
+                <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.2em] text-red-400">Before — FAQ questions on site</p>
+                <div className="space-y-2">
+                  {[
+                    "What types of products or services do you offer?",
+                    "How can I contact you?",
+                    "Do you have a return policy?",
+                  ].map((q) => (
+                    <div key={q} className="flex items-start gap-2 text-sm text-zinc-500">
+                      <span className="shrink-0 text-red-400 font-bold text-xs mt-0.5">✕</span>
+                      {q}
+                    </div>
+                  ))}
+                  <p className="text-[11px] text-red-500 font-semibold mt-3">Wix default placeholder copy. Visible to every family in crisis who found the site.</p>
+                </div>
+              </div>
+
+              <div className="rounded-2xl border border-green-100 bg-green-50/50 p-5">
+                <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.2em] text-green-600">After — 7 questions families actually ask</p>
+                <div className="space-y-2">
+                  {[
+                    "What happens if my caregiver doesn't show up?",
+                    "How do I know the caregiver is trustworthy?",
+                    "Can care start this week?",
+                  ].map((q) => (
+                    <div key={q} className="flex items-start gap-2 text-sm text-zinc-700">
+                      <CheckCircle2 size={13} className="mt-0.5 shrink-0 text-green-600" />
+                      {q}
+                    </div>
+                  ))}
+                  <p className="text-[11px] text-green-700 font-semibold mt-3">Written from 40 hours of home care family research. Each answer dissolves a specific objection.</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-6 flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <p className="text-sm text-zinc-500 max-w-md">
+                This is one finding from a 19-page audit. Every section of the site received the same treatment.
+              </p>
+              <a
+                href="/spcs-report"
+                className="inline-flex shrink-0 items-center gap-2 rounded-xl border border-zinc-200 px-5 py-3 text-sm font-semibold text-zinc-800 hover:border-zinc-400 hover:bg-zinc-50"
+              >
+                Read the full case study <ArrowRight size={14} />
+              </a>
+            </div>
           </div>
+          </ScrollReveal>
         </section>
 
         {/* Fix 4 — Process section with deliverables and timelines */}
@@ -215,15 +364,17 @@ export default function GetStartedPage() {
           </div>
           <div className="grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-4">
             {process.map((item, index) => (
-              <div key={item.title} className="relative rounded-3xl border border-zinc-200 bg-white p-5 text-center shadow-sm sm:p-8">
+              <ScrollReveal key={item.title} delay={index * 80}>
+              <div className="relative rounded-3xl border border-zinc-200 bg-white p-5 text-center shadow-sm sm:p-8">
                 <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full border border-zinc-200 bg-white shadow-sm sm:h-16 sm:w-16">
                   <item.icon size={20} />
                 </div>
                 <div className="mx-auto mt-3 flex h-6 w-6 items-center justify-center rounded-full bg-[#1B5EA8] text-xs font-bold text-white">{index + 1}</div>
                 <p className="mt-2 text-[10px] font-bold uppercase tracking-widest text-zinc-400 sm:text-[11px]">{item.timeline}</p>
                 <h3 className="mt-2 text-sm font-bold sm:text-base">{item.title}</h3>
-                <p className="mt-2 text-xs leading-5 text-zinc-600 sm:text-sm sm:leading-6">{item.body}</p>
+                <p className="mt-2 text-sm leading-6 text-zinc-600">{item.body}</p>
               </div>
+              </ScrollReveal>
             ))}
           </div>
           <div className="mt-6 rounded-2xl border border-zinc-200 bg-white px-6 py-4 text-center text-sm text-zinc-600">
@@ -233,6 +384,7 @@ export default function GetStartedPage() {
         </section>
 
         <section id="cases" className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
+          <ScrollReveal>
           <div className="rounded-[2rem] border border-zinc-200 bg-white p-5 sm:p-6 md:p-8">
             <div className="mb-7">
               <p className="text-xs font-bold uppercase tracking-[0.28em] text-zinc-400">Case studies</p>
@@ -245,6 +397,7 @@ export default function GetStartedPage() {
             </div>
             <CasesCarousel />
           </div>
+          </ScrollReveal>
         </section>
 
         {/* Advocacy prompt */}
@@ -387,7 +540,12 @@ export default function GetStartedPage() {
             <div className="grid items-center gap-10 md:grid-cols-2">
               <div>
                 <p className="text-xs font-bold uppercase tracking-[0.28em] text-zinc-500">Pricing</p>
-                <h2 className="mt-4 font-serif text-4xl tracking-[-0.04em]">
+                <p className="mt-4 font-serif text-2xl leading-[1.2] tracking-[-0.03em] text-zinc-900 sm:text-3xl">
+                  The last audit we completed found{" "}
+                  <span className="text-[#1B5EA8]">$36,600/month</span>{" "}
+                  in uncaptured revenue. It cost $1,500.
+                </p>
+                <h2 className="mt-5 font-serif text-3xl tracking-[-0.04em] text-zinc-500 sm:text-4xl">
                   Every engagement starts with a free 20-minute&nbsp;diagnostic.
                 </h2>
                 <p className="mt-5 text-base leading-7 text-zinc-600">
@@ -428,6 +586,10 @@ export default function GetStartedPage() {
             </div>
             <div className="grid gap-6 md:grid-cols-2">
               {[
+                {
+                  q: "How long does the audit take?",
+                  a: "Four hours or less. Customer intelligence, 22-framework diagnosis, prioritized roadmap, and copy rewrites are completed in a single session — not spread across days or weeks.",
+                },
                 {
                   q: "How is this different from an agency giving us recommendations?",
                   a: "Agencies give you a list. We give you the replacement copy. Every finding in our report includes the specific fix — the actual headline, the rewritten CTA, the exact objection response — ready to implement. You don't need to hire another writer to act on what we find.",
@@ -485,48 +647,6 @@ export default function GetStartedPage() {
 
               <div className="flex items-center bg-[#f7f4ee] p-8 md:p-12">
                 <BookingForm />
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* CTA block — risk reversal, specific promise */}
-        <section className="mx-auto max-w-7xl px-4 pb-16 pt-8 sm:px-6">
-          <div className="overflow-hidden rounded-[2rem] bg-[#111111] p-8 text-white shadow-2xl shadow-zinc-900/10 sm:p-10 md:p-16">
-            <div className="grid gap-10 md:grid-cols-2">
-              <div>
-                <h2 className="font-serif text-3xl leading-tight tracking-[-0.04em] sm:text-4xl md:text-5xl">
-                  In every audit we run, qualified visitors are leaving before they take action. The reason is always a fixable friction point.
-                </h2>
-                <p className="mt-5 text-sm leading-7 text-zinc-300 sm:text-base">
-                  Your first diagnostic is free. We look at your site for 20 minutes and give you three specific findings — no pitch attached, no obligation to continue.
-                </p>
-                <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-                  <a href="#book" className="inline-flex min-h-[52px] items-center justify-center rounded-xl bg-white px-6 text-sm font-bold text-black hover:bg-zinc-100">
-                    Book your free diagnostic
-                  </a>
-                  <a href="#lead-magnet" className="inline-flex min-h-[52px] items-center justify-center gap-2 px-6 text-sm font-bold text-zinc-300 hover:text-white">
-                    Get the free audit framework <ArrowRight size={16} />
-                  </a>
-                </div>
-                <p className="mt-4 text-xs text-zinc-500">Fill out the form above — we respond within 48 hours.</p>
-              </div>
-              <div className="space-y-5 sm:space-y-6">
-                {([
-                  [Bot,       "18 Specialist Frameworks",     "Every layer of your site diagnosed simultaneously — copy, trust, UX, SEO, accessibility, conversion, and AI search readiness."],
-                  [Users,     "One Person Who Owns the Result", "Not an agency hand-off. One senior practitioner responsible for every finding."],
-                  [BarChart3, "Copy Rewrites Included",        "Every finding comes with a specific fix — the actual replacement copy, not a recommendation."],
-                ] as const).map(([Icon, title, body]) => (
-                  <div key={title} className="flex gap-4">
-                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white/10">
-                      <Icon size={20} />
-                    </div>
-                    <div>
-                      <h3 className="font-bold">{title}</h3>
-                      <p className="mt-1 text-sm leading-6 text-zinc-300">{body}</p>
-                    </div>
-                  </div>
-                ))}
               </div>
             </div>
           </div>

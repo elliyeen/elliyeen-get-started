@@ -1,8 +1,13 @@
 # Universal Website Audit System
 
-**Version:** 1.0
+**Version:** 1.1
+**Last updated:** 2026-06-24
 **Owner:** Elliyeen Research
-**Purpose:** Multidisciplinary revenue audit framework — 18 specialist agents operating as a unified consulting team.
+**Purpose:** Multidisciplinary revenue audit framework — 22 specialist agents operating as a unified consulting team with continuous improvement (kaizen) built in.
+
+**Change log:**
+- v1.1 — Added agents 22 (Kaizen) and 23 (Ogilvy) to consulting team. Added Kaizen Protocol. System upgraded from 18 to 22 agents.
+- v1.0 — Initial system. 18 specialist agents.
 
 ---
 
@@ -61,6 +66,26 @@ The gap between these two is where revenue is lost.
 | [19-cialdini](./19-cialdini.md) | Robert Cialdini — *Influence* + *Pre-Suasion* | Compliance triggers, pre-suasion, influence architecture |
 | [20-fogg](./20-fogg.md) | BJ Fogg — Fogg Behavior Model · *Tiny Habits* | Motivation, ability, prompt — friction mapping and behavior design |
 | [21-kahneman](./21-kahneman.md) | Kahneman — *Thinking, Fast and Slow* · Tversky Prospect Theory · Thaler *Nudge* | System 1/2, loss aversion, anchoring, framing, peak-end rule |
+| [22-kaizen](./22-kaizen.md) | Toyota Production System · Deming · James Clear · Masaaki Imai | Continuous improvement, agent memory, version control, pattern library |
+| [23-ogilvy](./23-ogilvy.md) | David Ogilvy | Brand voice, headlines, long-form persuasion |
+
+---
+
+## Kaizen Protocol
+
+Every agent in this system is a living document. It learns. It updates. It improves.
+
+**After every audit, each agent must:**
+1. Document any new friction pattern encountered
+2. Promote any recommendation that outperformed expectations
+3. Record any recommendation that failed and under what conditions
+4. Update their version number and change log
+
+**System-level review (every 10 audits):**
+Run [Agent 22](./22-kaizen.md) across the full agent system. Identify the weakest agents. Update them before the next engagement.
+
+**The governing principle:**
+An agent that does not improve is an agent that decays. Kaizen is not optional. It is the mechanism by which this system earns the right to operate at a higher standard than the competition.
 
 ---
 

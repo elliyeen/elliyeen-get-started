@@ -1,0 +1,163 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CopyEngineeringConductorOutput",
+  "description": "Output schema for the Copy Engineering Conductor evaluation report.",
+  "type": "object",
+  "required": [
+    "behavioral_verdict",
+    "score",
+    "primary_reason",
+    "force_scores",
+    "critical_bottleneck",
+    "highest_leverage_fix",
+    "rewrite_direction",
+    "risk_flags",
+    "final_recommendation"
+  ],
+  "properties": {
+    "behavioral_verdict": {
+      "type": "string",
+      "enum": ["moves_closer", "neutral", "moves_away"],
+      "description": "Whether the copy moves the prospect closer to, away from, or neither toward the desired behavior."
+    },
+    "score": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "Overall behavioral movement score. Derived from the weighted average of force scores. Not a quality score — a behavioral movement score."
+    },
+    "primary_reason": {
+      "type": "string",
+      "minLength": 1,
+      "description": "One paragraph. The main reason for the verdict. Not a list."
+    },
+    "force_scores": {
+      "type": "object",
+      "required": [
+        "attention",
+        "curiosity",
+        "understanding",
+        "desire",
+        "belief",
+        "trust",
+        "friction_reduction",
+        "action",
+        "loyalty",
+        "advocacy"
+      ],
+      "properties": {
+        "attention": {
+          "$ref": "#/definitions/ForceScore"
+        },
+        "curiosity": {
+          "$ref": "#/definitions/ForceScore"
+        },
+        "understanding": {
+          "$ref": "#/definitions/ForceScore"
+        },
+        "desire": {
+          "$ref": "#/definitions/ForceScore"
+        },
+        "belief": {
+          "$ref": "#/definitions/ForceScore"
+        },
+        "trust": {
+          "$ref": "#/definitions/ForceScore"
+        },
+        "friction_reduction": {
+          "$ref": "#/definitions/ForceScore"
+        },
+        "action": {
+          "$ref": "#/definitions/ForceScore"
+        },
+        "loyalty": {
+          "$ref": "#/definitions/ForceScore"
+        },
+        "advocacy": {
+          "$ref": "#/definitions/ForceScore"
+        }
+      },
+      "additionalProperties": false
+    },
+    "critical_bottleneck": {
+      "type": "string",
+      "minLength": 1,
+      "description": "One sentence. The single force most blocking action right now. Not the lowest score — the force whose absence prevents downstream movement."
+    },
+    "highest_leverage_fix": {
+      "type": "string",
+      "minLength": 1,
+      "description": "One sentence. The single change that would most increase the probability of the desired behavior. Format: 'The highest-leverage fix is to strengthen [force] because [reason].'"
+    },
+    "rewrite_direction": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Two to four sentences. What the next version must accomplish behaviorally — not how to write it, but what behavioral job it must do."
+    },
+    "risk_flags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of fabrication, trust, clarity, or compliance risks. Empty array if none identified."
+    },
+    "final_recommendation": {
+      "type": "string",
+      "enum": ["Ship", "Revise", "Rebuild"],
+      "description": "Terminal verdict. Ship = copy is ready. Revise = fix the bottleneck. Rebuild = structural problem that cannot be fixed with edits."
+    },
+    "final_recommendation_reason": {
+      "type": "string",
+      "description": "One sentence explaining the final recommendation."
+    }
+  },
+  "definitions": {
+    "ForceScore": {
+      "type": "object",
+      "required": ["score", "reason"],
+      "properties": {
+        "score": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10,
+          "description": "Score for this force, 0–10."
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1,
+          "description": "One sentence explaining why this force received this score."
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false,
+  "examples": [
+    {
+      "behavioral_verdict": "neutral",
+      "score": 52,
+      "primary_reason": "The copy correctly names the problem and offers a plausible solution, but fails to generate belief that this specific provider can deliver the result — leaving the prospect informed but unmoved.",
+      "force_scores": {
+        "attention": { "score": 7, "reason": "Opening line creates pattern interrupt for the right audience." },
+        "curiosity": { "score": 6, "reason": "Promise of a 'copy audit' is intriguing but undefined — reader doesn't know what they'll get." },
+        "understanding": { "score": 8, "reason": "Offer is clear: a free 30-minute call." },
+        "desire": { "score": 6, "reason": "Names the pain (ads not converting) but doesn't paint the desired future state." },
+        "belief": { "score": 3, "reason": "No proof, no credentials, no case studies — claim that 'we fix what's broken' is unsubstantiated." },
+        "trust": { "score": 3, "reason": "No social proof, no founder name, no company background visible on this page." },
+        "friction_reduction": { "score": 6, "reason": "Free offer and 30-minute time limit reduce risk, but 'no pitch' claim is not believable without context." },
+        "action": { "score": 6, "reason": "CTA is clear but not compelling — 'Book Now' does not sell the value of the call." },
+        "loyalty": { "score": 2, "reason": "No signal of ongoing relationship or what happens after the call." },
+        "advocacy": { "score": 2, "reason": "Nothing in the copy would cause a prospect to share or recommend." }
+      },
+      "critical_bottleneck": "Belief — the copy makes a strong claim with zero evidence, which stops the prospect from moving from interest to intent.",
+      "highest_leverage_fix": "The highest-leverage fix is to strengthen Belief by adding one specific, verifiable result achieved for a named client type before the CTA.",
+      "rewrite_direction": "The next version must give the prospect one reason to believe the claim before asking them to act. This does not require a full case study — a single specific outcome ('We rewrote the homepage for a Series A SaaS tool and their trial signups increased 40% in 30 days') does more behavioral work than any amount of confident positioning language.",
+      "risk_flags": [
+        "[RISK] 'fix the part that's actually broken' — implies diagnostic certainty that is unsupported; needs evidence or softening.",
+        "[RISK] 'no pitch' — this claim is commonly disbelieved; requires proof or removal."
+      ],
+      "final_recommendation": "Revise",
+      "final_recommendation_reason": "The structure is sound but the belief gap will prevent most solution-aware prospects from booking."
+    }
+  ]
+}

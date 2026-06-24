@@ -1,0 +1,93 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CopyEngineeringConductorInput",
+  "description": "Input schema for the Copy Engineering Conductor evaluation system.",
+  "type": "object",
+  "required": [
+    "asset_type",
+    "copy",
+    "target_audience",
+    "desired_behavior",
+    "offer",
+    "stage_of_awareness"
+  ],
+  "properties": {
+    "asset_type": {
+      "type": "string",
+      "enum": [
+        "landing_page",
+        "ad",
+        "email",
+        "VSL",
+        "sales_letter",
+        "linkedin_post",
+        "headline",
+        "funnel"
+      ],
+      "description": "The type of copy asset being evaluated."
+    },
+    "copy": {
+      "type": "string",
+      "minLength": 1,
+      "description": "The full text of the copy to evaluate. Include all sections, headlines, subheadlines, body, and CTAs."
+    },
+    "target_audience": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Who this copy is written for. Be specific: demographics, role, situation, emotional state."
+    },
+    "desired_behavior": {
+      "type": "string",
+      "minLength": 1,
+      "description": "The exact action the prospect should take after reading this copy. Be specific — not 'get interest' but 'book a consultation call by clicking the CTA button'."
+    },
+    "offer": {
+      "type": "string",
+      "minLength": 1,
+      "description": "What is being offered. Include price if relevant."
+    },
+    "stage_of_awareness": {
+      "type": "string",
+      "enum": [
+        "unaware",
+        "problem_aware",
+        "solution_aware",
+        "product_aware",
+        "most_aware"
+      ],
+      "description": "The prospect's starting awareness level. Determines whether copy meets them where they are or talks past them."
+    },
+    "traffic_source": {
+      "type": "string",
+      "description": "Optional. Where this prospect is coming from — cold Facebook ad, warm email list, Google search, referral, etc. Affects attention and trust expectations."
+    },
+    "context": {
+      "type": "string",
+      "description": "Optional. Any relevant background: what came before this page, what the prospect already knows, competitive environment, previous messaging."
+    },
+    "constraints": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Optional. Known constraints on the copy — character limits, compliance requirements, things that cannot be changed, brand mandates."
+    }
+  },
+  "additionalProperties": false,
+  "examples": [
+    {
+      "asset_type": "landing_page",
+      "copy": "Stop guessing. Start converting.\n\nMost agencies will redesign your website. We'll fix the part that's actually broken: the copy.\n\nBook a free 30-minute copy audit.\n\n[Book Now]",
+      "target_audience": "B2B SaaS founders with 10–50 employees whose paid ads are running but not converting.",
+      "desired_behavior": "Click 'Book Now' and schedule a 30-minute copy audit call.",
+      "offer": "Free 30-minute copy audit call. No pitch.",
+      "stage_of_awareness": "solution_aware",
+      "traffic_source": "Cold LinkedIn ad targeting SaaS founders",
+      "context": "Visitor has seen an ad that said 'Your copy is why your ads don't convert.' This is the landing page they arrive on.",
+      "constraints": [
+        "Cannot change the offer structure",
+        "Must keep 'free' language visible above the fold"
+      ]
+    }
+  ]
+}

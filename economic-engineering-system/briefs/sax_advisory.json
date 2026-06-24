@@ -1,0 +1,107 @@
+{
+  "business_name": "SAX Advisory Group",
+  "industry": "Financial Advisory — Wealth Management / RIA",
+  "business_model": "Retainer",
+  "years_in_operation": 11,
+  "target_customer": {
+    "description": "High-net-worth professionals: business owners, executives, and medical professionals with $500K+ in investable assets",
+    "demographics": "Ages 45–65, household income $300K+, business owners and senior professionals in the Southeast US",
+    "psychographics": "Value trust and competence over price, seeking a long-term advisor relationship, risk-aware, time-poor",
+    "primary_pain": "Distrust of financial advisors who prioritise commissions over outcomes — want a fiduciary who treats them as intelligent adults"
+  },
+  "primary_offer": "Comprehensive financial planning and investment management for high-net-worth individuals and families",
+  "revenue_streams": [
+    {
+      "name": "AUM-based management fees (1% of AUM annually)",
+      "revenue_share_percent": 70,
+      "estimated_margin_percent": 65
+    },
+    {
+      "name": "Retainer fees — financial planning clients",
+      "revenue_share_percent": 20,
+      "estimated_margin_percent": 75
+    },
+    {
+      "name": "Project-based engagements — business exit planning, estate structuring",
+      "revenue_share_percent": 10,
+      "estimated_margin_percent": 60
+    }
+  ],
+  "cost_drivers": [
+    { "category": "Staff compensation (advisors + operations)", "estimated_percent_of_revenue": 45 },
+    { "category": "Technology and compliance", "estimated_percent_of_revenue": 12 },
+    { "category": "Marketing and business development", "estimated_percent_of_revenue": 8 },
+    { "category": "Office and overhead", "estimated_percent_of_revenue": 7 }
+  ],
+  "financials": {
+    "monthly_revenue": null,
+    "annual_revenue": null,
+    "gross_margin_percent": 65,
+    "net_margin_percent": 28,
+    "average_order_value": null,
+    "average_client_value_annual": 12000,
+    "customer_lifetime_value": null,
+    "customer_acquisition_cost": null,
+    "monthly_transactions_or_clients": 68
+  },
+  "operations": {
+    "team_size": 6,
+    "locations": 1,
+    "hours_of_operation": "Mon–Fri 8am–6pm",
+    "peak_hours_or_seasons": "Q1 tax season, Q4 year-end planning",
+    "primary_delivery_method": "In-person meetings and virtual video calls"
+  },
+  "current_goal": "Attract and convert more high-net-worth professionals — increase AUM and revenue per client without proportionally increasing headcount",
+  "current_challenges": [
+    "Generic positioning — website and marketing do not differentiate from large national RIAs",
+    "Booking friction — prospects must call to schedule; no online booking or self-serve qualification",
+    "Slow proposal process — proposals take 3–5 business days and close at lower rate than industry average",
+    "No formal referral programme — referrals happen organically but are not systematically captured or rewarded",
+    "No clear premium entry-point service — all prospects routed to same full-service engagement regardless of readiness"
+  ],
+  "constraints_known": [
+    "Lead advisor capacity — firm can handle approximately 80 clients at current service level before quality degrades",
+    "No CRM-driven pipeline — lead follow-up is manual and inconsistent"
+  ],
+  "competitors": [
+    {
+      "name": "Merrill Lynch / wirehouse advisors",
+      "positioning": "Brand trust, broad product shelf, institutional resources",
+      "estimated_market_share": "Dominant nationally"
+    },
+    {
+      "name": "Regional independent RIAs",
+      "positioning": "Fiduciary, personalised, fee-only",
+      "estimated_market_share": "Growing"
+    },
+    {
+      "name": "Robo-advisors (Betterment, Schwab Intelligent Portfolios)",
+      "positioning": "Low cost, automated, no minimum",
+      "estimated_market_share": "Relevant only at lower AUM tiers"
+    }
+  ],
+  "available_data_sources": [
+    {
+      "source": "CRM (partial — manually maintained)",
+      "data_available": "Client list, AUM per client, tenure, service tier",
+      "date_range": "Last 3 years"
+    },
+    {
+      "source": "Website analytics (Google Analytics)",
+      "data_available": "Traffic, session duration, bounce rate, top pages, contact form submissions",
+      "date_range": "Last 12 months"
+    },
+    {
+      "source": "Email history",
+      "data_available": "Inbound inquiries, proposal requests, follow-up threads",
+      "date_range": "Last 24 months"
+    }
+  ],
+  "missing_critical_data": [
+    "Lead-to-client close rate by source",
+    "Average time from first contact to signed engagement",
+    "Client churn rate and reasons for departure",
+    "Referral source tracking — which clients refer and how often",
+    "Proposal acceptance rate and reasons for decline"
+  ]
+}

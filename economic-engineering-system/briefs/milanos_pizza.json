@@ -1,0 +1,102 @@
+{
+  "business_name": "Milano's Pizza",
+  "industry": "Food & Beverage — Quick Service Restaurant",
+  "business_model": "B2C",
+  "years_in_operation": 7,
+  "target_customer": {
+    "description": "Local families and young adults within 5-mile radius seeking affordable, reliable pizza",
+    "demographics": "Families with children, young adults 18–35, within 5-mile delivery radius",
+    "psychographics": "Value-conscious, convenience-driven, repeat buyers who want consistency and speed",
+    "primary_pain": "Unreliable delivery times and inconsistent quality undermine trust and repeat orders"
+  },
+  "primary_offer": "Pizza delivery and pickup — whole pies, slices, and catering packages",
+  "revenue_streams": [
+    {
+      "name": "Delivery orders",
+      "revenue_share_percent": 60,
+      "estimated_margin_percent": null
+    },
+    {
+      "name": "Pickup orders",
+      "revenue_share_percent": 30,
+      "estimated_margin_percent": null
+    },
+    {
+      "name": "Catering",
+      "revenue_share_percent": 10,
+      "estimated_margin_percent": null
+    }
+  ],
+  "cost_drivers": [
+    { "category": "Labor", "estimated_percent_of_revenue": 31 },
+    { "category": "Food / COGS", "estimated_percent_of_revenue": 30 },
+    { "category": "Third-party delivery fees", "estimated_percent_of_revenue": 22 },
+    { "category": "Rent and utilities", "estimated_percent_of_revenue": 10 }
+  ],
+  "financials": {
+    "monthly_revenue": null,
+    "annual_revenue": null,
+    "gross_margin_percent": null,
+    "net_margin_percent": null,
+    "average_order_value": 30,
+    "average_client_value_annual": null,
+    "customer_lifetime_value": null,
+    "customer_acquisition_cost": null,
+    "monthly_transactions_or_clients": null
+  },
+  "operations": {
+    "team_size": 12,
+    "locations": 1,
+    "hours_of_operation": "11am–11pm daily",
+    "peak_hours_or_seasons": "Friday–Sunday evenings, 6pm–9pm",
+    "primary_delivery_method": "Third-party apps (DoorDash, Uber Eats) + in-house driver"
+  },
+  "current_goal": "Increase profit margin without guessing — identify highest-leverage action and test it first",
+  "current_challenges": [
+    "No item-level margin tracking — unknown which menu items are profitable",
+    "No upsell strategy — staff do not suggest add-ons or bundles at checkout",
+    "Inconsistent delivery times causing negative reviews and lost repeat orders",
+    "Third-party app fees (22–30%) eroding margin on majority of revenue",
+    "Food waste estimated at 4–10% of food cost but not measured precisely"
+  ],
+  "constraints_known": [
+    "Single oven limits throughput during Friday–Sunday peak hours",
+    "No direct ordering channel — all delivery through fee-heavy third-party apps"
+  ],
+  "competitors": [
+    {
+      "name": "Domino's",
+      "positioning": "Speed guarantee, technology-driven ordering, national brand trust",
+      "estimated_market_share": "Dominant in delivery segment"
+    },
+    {
+      "name": "Local independent pizzerias",
+      "positioning": "Local identity, dine-in focus",
+      "estimated_market_share": "Fragmented"
+    }
+  ],
+  "available_data_sources": [
+    {
+      "source": "POS system",
+      "data_available": "Transaction count, revenue by day/hour, top-selling items by volume (not margin)",
+      "date_range": "Last 12 months"
+    },
+    {
+      "source": "Third-party app dashboards",
+      "data_available": "Order count, average order value, customer ratings, delivery time data",
+      "date_range": "Last 6 months"
+    },
+    {
+      "source": "Google Reviews",
+      "data_available": "Customer sentiment, recurring complaints, ratings trend",
+      "date_range": "Last 24 months"
+    }
+  ],
+  "missing_critical_data": [
+    "Item-level food cost and margin by SKU",
+    "Repeat customer rate — no loyalty program or CRM",
+    "Direct vs. third-party order split by revenue",
+    "Food waste by item measured in dollars",
+    "Actual net margin after all costs"
+  ]
+}

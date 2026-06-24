@@ -73,9 +73,10 @@ export const metadata: Metadata = {
   },
 };
 
-const jsonLd = {
+const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
+  "@id": `${BASE_URL}/#organization`,
   name: "Elliyeen Research",
   url: BASE_URL,
   logo: `${BASE_URL}/icon.svg`,
@@ -87,6 +88,34 @@ const jsonLd = {
     contactType: "customer support",
     url: "https://www.linkedin.com/in/abbasabdullah/",
   },
+  founder: { "@id": `${BASE_URL}/#person` },
+  knowsAbout: [
+    "Website conversion optimization",
+    "Revenue engineering",
+    "Customer experience strategy",
+    "AI search optimization (AEO)",
+    "Copywriting and messaging strategy",
+    "Website audit methodology",
+  ],
+};
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": `${BASE_URL}/#person`,
+  name: "Abbas Abdullah",
+  jobTitle: "Founder, Elliyeen Research",
+  url: BASE_URL,
+  sameAs: ["https://www.linkedin.com/in/abbasabdullah/"],
+  worksFor: { "@id": `${BASE_URL}/#organization` },
+  knowsAbout: [
+    "Revenue engineering",
+    "Website auditing",
+    "Conversion rate optimization",
+    "Customer experience design",
+    "AI Answer Engine Optimization",
+    "Copywriting frameworks",
+  ],
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -95,7 +124,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
         />
         {children}
       </body>

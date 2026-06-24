@@ -236,17 +236,17 @@ a { color: var(--navy); }
 
 /* Cover */
 .cover-block { padding: 2.8rem 0 2rem; border-bottom: 1px solid var(--rule); margin-bottom: 0.5rem; }
-.cover-meta { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #999; margin-bottom: 0.9rem; }
-.cover-client { font-family: 'EB Garamond', Georgia, serif; font-size: 2.5rem; font-weight: 500; letter-spacing: -0.025em; color: var(--navy); line-height: 1.1; margin-bottom: 0.35rem; }
-.cover-sub { font-size: 1.05rem; color: #888; margin-bottom: 0.4rem; font-family: 'EB Garamond', Georgia, serif; font-style: italic; }
-.cover-url { font-size: 0.8rem; color: #aaa; margin-bottom: 1.2rem; font-family: 'Courier New', monospace; }
-.verdict-row { display: flex; gap: 0.7rem; flex-wrap: wrap; margin-top: 1rem; }
-.verdict-box { display: inline-flex; align-items: center; gap: 0.65rem; padding: 0.5rem 0.9rem; border: 1px solid rgba(13,33,55,0.15); border-radius: 4px; background: #f0f3f8; }
-.verdict-label { font-size: 0.63rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #888; }
-.verdict-tag { font-size: 0.72rem; font-weight: 500; padding: 0.15rem 0.55rem; border-radius: 3px; letter-spacing: 0.04em; font-family: 'Courier New', monospace; }
-.verdict-tag.critical { background: var(--rust); color: white; }
-.verdict-tag.high { background: var(--amber); color: white; }
-.verdict-tag.navy { background: var(--navy); color: white; }
+.cover-meta { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #111111; margin-bottom: 0.9rem; }
+.cover-client { font-family: 'EB Garamond', Georgia, serif; font-size: 2.5rem; font-weight: 500; letter-spacing: -0.025em; color: #111111; line-height: 1.1; margin-bottom: 0.35rem; }
+.cover-sub { font-size: 1.05rem; color: #111111; margin-bottom: 0.4rem; font-family: 'EB Garamond', Georgia, serif; font-style: italic; }
+.cover-url { font-size: 0.8rem; color: #444; margin-bottom: 1.2rem; font-family: 'Courier New', monospace; }
+.verdict-row { display: flex; gap: 1.2rem; flex-wrap: wrap; margin-top: 1rem; }
+.verdict-box { display: inline-flex; align-items: baseline; gap: 0.5rem; }
+.verdict-label { font-size: 0.63rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #666; }
+.verdict-tag { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em; font-family: 'Courier New', monospace; color: #111111; }
+.verdict-tag.critical { color: var(--rust); }
+.verdict-tag.high { color: var(--amber); }
+.verdict-tag.navy { color: #111111; }
 
 /* Components */
 .pull-quote { font-family: 'EB Garamond', Georgia, serif; font-size: 1.2rem; font-style: italic; line-height: 1.6; color: #333; border-left: 3px solid var(--navy); padding: 0.8rem 1.4rem; margin: 1.4rem 0; background: #f0f3f8; border-radius: 0 4px 4px 0; }
@@ -939,17 +939,19 @@ document.addEventListener('DOMContentLoaded', function () {
   var topnav = document.createElement('header');
   topnav.id = 'ez-topnav';
   topnav.innerHTML =
-    '<div id="ez-topnav-brand">Elliyeen Research</div>'
-    + '<div id="ez-topnav-title">SAX — Four-Site Digital Audit</div>'
+    '<a id="ez-topnav-brand" href="/" style="text-decoration:none;color:inherit;letter-spacing:0.22em;">ELLIYEEN</a>'
+    + '<nav id="ez-topnav-title" style="position:static;left:auto;transform:none;display:flex;align-items:center;gap:1.8rem;">'
+    +   '<a href="/#assessment" style="font-size:0.8rem;font-weight:500;color:#555;text-decoration:none;white-space:nowrap;" onmouseover="this.style.color='#111'" onmouseout="this.style.color='#555'">How It Works</a>'
+    +   '<a href="/#cases" style="font-size:0.8rem;font-weight:500;color:#555;text-decoration:none;white-space:nowrap;" onmouseover="this.style.color='#111'" onmouseout="this.style.color='#555'">Case Studies</a>'
+    +   '<a href="/#pricing" style="font-size:0.8rem;font-weight:500;color:#555;text-decoration:none;white-space:nowrap;" onmouseover="this.style.color='#111'" onmouseout="this.style.color='#555'">Pricing</a>'
+    +   '<a href="/#advisor" style="font-size:0.8rem;font-weight:500;color:#555;text-decoration:none;white-space:nowrap;" onmouseover="this.style.color='#111'" onmouseout="this.style.color='#555'">AI Advisor</a>'
+    + '</nav>'
     + '<div id="ez-topnav-actions">'
     +   '<button class="ez-topnav-btn" id="ez-share-btn">'
     +     '<svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>'
     +     '<span id="ez-share-label">Share</span>'
     +   '</button>'
-    +   '<a class="ez-topnav-btn" href="#" onclick="window.print();return false;">'
-    +     '<svg viewBox="0 0 24 24"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>'
-    +     'Print'
-    +   '</a>'
+    +   '<a class="ez-topnav-btn" href="/#book" style="background:#1B5EA8;color:#fff;border-color:#1B5EA8;border-radius:20px;font-weight:600;" onmouseover="this.style.background='#164d8e'" onmouseout="this.style.background='#1B5EA8'">Fix it</a>'
     + '</div>';
   document.body.insertBefore(topnav, document.body.firstChild);
 
