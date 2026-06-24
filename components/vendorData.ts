@@ -14,7 +14,6 @@ export interface VendorData {
   availableSlots: number;
   totalSlots: number;
   instagram: string;
-  emoji: string;
   relatedIds: string[];
 }
 
@@ -33,7 +32,6 @@ export const SAMPLE_VENDOR: VendorData = {
   availableSlots: 6,
   totalSlots: 12,
   instagram: "studiosagela",
-  emoji: "🎨",
   relatedIds: ["ink-and-wash", "wild-thread-co", "clay-and-co"],
 };
 
@@ -52,8 +50,7 @@ export const ALL_VENDORS: VendorData[] = [
     availableSlots: 8,
     totalSlots: 12,
     instagram: "wildthreadco",
-    emoji: "🧵",
-    relatedIds: ["knot-and-bloom", "studio-sage", "ink-and-wash"],
+      relatedIds: ["knot-and-bloom", "studio-sage", "ink-and-wash"],
   },
   {
     id: "knot-and-bloom",
@@ -68,8 +65,7 @@ export const ALL_VENDORS: VendorData[] = [
     availableSlots: 3,
     totalSlots: 10,
     instagram: "knotandbloom",
-    emoji: "🌿",
-    relatedIds: ["wild-thread-co", "clay-and-co", "kiln-collective"],
+      relatedIds: ["wild-thread-co", "clay-and-co", "kiln-collective"],
   },
   {
     id: "ink-and-wash",
@@ -84,8 +80,7 @@ export const ALL_VENDORS: VendorData[] = [
     availableSlots: 10,
     totalSlots: 15,
     instagram: "inkandwashstudio",
-    emoji: "🌸",
-    relatedIds: ["studio-sage", "wild-thread-co", "kiln-collective"],
+      relatedIds: ["studio-sage", "wild-thread-co", "kiln-collective"],
   },
   {
     id: "clay-and-co",
@@ -100,8 +95,7 @@ export const ALL_VENDORS: VendorData[] = [
     availableSlots: 5,
     totalSlots: 10,
     instagram: "clayandco_la",
-    emoji: "🏺",
-    relatedIds: ["kiln-collective", "studio-sage", "knot-and-bloom"],
+      relatedIds: ["kiln-collective", "studio-sage", "knot-and-bloom"],
   },
   {
     id: "kiln-collective",
@@ -116,7 +110,6 @@ export const ALL_VENDORS: VendorData[] = [
     availableSlots: 2,
     totalSlots: 8,
     instagram: "kilncollective",
-    emoji: "🔥",
-    relatedIds: ["clay-and-co", "studio-sage", "knot-and-bloom"],
+      relatedIds: ["clay-and-co", "studio-sage", "knot-and-bloom"],
   },
 ];

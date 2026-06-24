@@ -325,22 +325,25 @@ hr.section-rule { border: none; border-top: 1px solid var(--rule); margin: 2.8re
 /* Wizard */
 #ez-wizard-overlay {
   position: fixed; inset: 0;
-  background: rgba(4,22,18,0.88);
-  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(18px) saturate(180%); -webkit-backdrop-filter: blur(18px) saturate(180%);
   z-index: 9999; display: flex; align-items: center; justify-content: center;
   padding: 1rem; transition: opacity 0.35s ease;
 }
 #ez-wizard-overlay.ez-hidden { opacity: 0; pointer-events: none; }
 #ez-wizard-card {
-  background: #fff; border-radius: 8px;
-  max-width: 580px; width: 100%; overflow: hidden;
-  box-shadow: 0 28px 90px rgba(0,0,0,0.40);
+  background: #fff; border-radius: 10px;
+  max-width: 580px; width: 100%;
+  max-height: calc(100vh - 80px);
+  display: flex; flex-direction: column; overflow: hidden;
+  box-shadow: 0 4px 40px rgba(10,92,82,0.13), 0 1px 6px rgba(0,0,0,0.05);
+  border: 1px solid rgba(10,92,82,0.10);
   font-family: 'DM Sans', system-ui, sans-serif;
 }
 .wz-head { background: #ffffff; color: #1a1a1a; padding: 1.5rem 1.8rem 1.1rem; }
 .wz-step-lbl { font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.5; margin-bottom: 0.4rem; }
 .wz-ttl { font-family: 'EB Garamond', Georgia, serif; font-size: 1.52rem; line-height: 1.22; margin: 0; font-weight: 500; }
-.wz-bdy { padding: 1.4rem 1.8rem 0.9rem; min-height: 165px; }
+.wz-bdy { padding: 1.4rem 1.8rem 0.9rem; min-height: 0; flex: 1; overflow-y: auto; }
 .wz-bdy p { font-size: 0.92rem; line-height: 1.68; color: #2a2a2a; margin: 0 0 0.7rem; }
 .wz-stat-row { display: flex; gap: 1.6rem; margin: 0.5rem 0 0.9rem; flex-wrap: wrap; }
 .wz-stat-n { font-family: 'EB Garamond', Georgia, serif; font-size: 2.4rem; font-weight: 500; line-height: 1; }
@@ -384,6 +387,10 @@ hr.section-rule { border: none; border-top: 1px solid var(--rule); margin: 2.8re
   <a id="ez-topnav-brand" href="/">ELLIYEEN</a>
   <span id="ez-topnav-title">Savannah Personal Care — Full Business Audit</span>
   <div id="ez-topnav-actions">
+    <button class="ez-topnav-btn" id="ez-guide-btn" title="Open report guide">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+      <span>Guide</span>
+    </button>
     <button class="ez-topnav-btn" id="ez-share-btn">
       <svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
       <span id="ez-share-label">Share</span>
@@ -422,6 +429,8 @@ hr.section-rule { border: none; border-top: 1px solid var(--rule); margin: 2.8re
       <a class="ez-nav-link" href="#fin-streams">Revenue Architecture</a>
       <a class="ez-nav-link" href="#fin-economics">Unit Economics</a>
       <a class="ez-nav-link" href="#fin-pathway">Path to $2M</a>
+      <a class="ez-nav-link" href="#fin-labor">Labor Market Rates</a>
+      <a class="ez-nav-link" href="#fin-pnl">Operating P&amp;L</a>
     </div>
     <div class="ez-nav-group">
       <span class="ez-nav-group-label">Roadmap</span>
@@ -884,6 +893,251 @@ hr.section-rule { border: none; border-top: 1px solid var(--rule); margin: 2.8re
 
     <div class="callout amber">
       <strong>[VERIFY]</strong> Current active client count, weekly hours per client, and blended billing rate should be confirmed with Shannon's actual books before projecting against these milestones. The pathway structure is correct; the starting baseline requires her actual data.
+    </div>
+  </div>
+
+  <hr class="section-rule">
+
+  <!-- ── SAVANNAH LABOR MARKET ──────────────────────────────────── -->
+  <div class="section" id="fin-labor">
+    <h2>Financial Model — Savannah Labor Market (2026)</h2>
+    <p>Caregiver wages are the largest variable cost in home care. Rates below are sourced from ZipRecruiter and Indeed for the Savannah MSA as of June 2026. Payroll burden is calculated using Georgia employer FICA (7.65%), state unemployment at 2.7%, and workers' compensation Code 8835 — the classification for home health care in Georgia — at $1.66 per $100 of payroll. Base burden = 12.1%. The model uses 15% to include rounding and any modest benefits.</p>
+
+    <table class="journey-table">
+      <thead>
+        <tr><th>Role</th><th>Savannah Wage</th><th>Burden (15%)</th><th>Total Cost/hr</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>HHA / Personal Care Aide</td><td>$14.47</td><td>$2.17</td><td><strong>$16.64</strong></td>
+          <td>Entry level; typically placed on Medicaid CCSP clients</td>
+        </tr>
+        <tr>
+          <td>CNA (Certified)</td><td>$16.94</td><td>$2.54</td><td><strong>$19.48</strong></td>
+          <td>Shannon's core hire for private pay clients</td>
+        </tr>
+        <tr>
+          <td>LPN (Supervisory)</td><td>$24.50</td><td>$3.68</td><td><strong>$28.18</strong></td>
+          <td>Optional mid-tier; replaces RN oversight at lower cost</td>
+        </tr>
+        <tr>
+          <td>RN — Home Health</td><td>$41.00</td><td>$6.15</td><td><strong>$47.15</strong></td>
+          <td>Clinical supervisor; part-time Years 1–2; full-time at $2M milestone</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout" style="border-left-color:var(--teal);background:var(--teal-lt);">
+      <strong>Blended workforce assumption:</strong> The four-stage P&amp;L uses <strong>$18/hr</strong> as blended caregiver cost — a 60/40 CNA/HHA mix, fully burdened at 15%. This sits $1.52 above the HHA floor and $1.48 below the pure-CNA ceiling. <strong>[VERIFY with Shannon's actual payroll records before projecting.]</strong>
+    </div>
+
+    <h3 style="margin:1.8rem 0 0.5rem;font-size:1.05rem;">Payer Margin Per Hour — Savannah Market Rates</h3>
+    <p style="font-size:0.88rem;color:var(--soft);margin-bottom:1rem;">Dark bar = blended caregiver cost ($18/hr total). Light bar = payer billing rate. The unlabeled gap is gross margin per hour before overhead. Medicaid CCSP at the Georgia reported rate is a net loss when CNA wages apply at Savannah market.</p>
+
+    <svg viewBox="0 0 520 200" style="width:100%;max-width:520px;display:block;overflow:visible;" role="img" aria-label="Payer margin per hour">
+      <!-- scale headers — track from x=140 to x=430, 290px = $30 range, 9.67px/$ -->
+      <text x="140" y="11" font-size="9" fill="#bbb" font-family="DM Sans,sans-serif">$0</text>
+      <text x="276" y="11" font-size="9" fill="#bbb" font-family="DM Sans,sans-serif" text-anchor="middle">$15/hr</text>
+      <text x="430" y="11" font-size="9" fill="#bbb" font-family="DM Sans,sans-serif" text-anchor="end">$30/hr</text>
+      <line x1="277" y1="15" x2="277" y2="172" stroke="#f0f0f0" stroke-width="1"/>
+
+      <!-- Row 1: Private Pay — bill $28=271px, cost $19.48=188px -->
+      <text x="0" y="31" font-size="11" fill="#1d1d1f" font-family="DM Sans,sans-serif" dominant-baseline="middle" font-weight="500">Private Pay</text>
+      <rect x="140" y="21" width="271" height="20" fill="#e4f0ee" rx="2"/>
+      <rect x="140" y="21" width="188" height="20" fill="#073d36" rx="2"/>
+      <text x="143" y="32" font-size="8" fill="rgba(255,255,255,0.8)" font-family="DM Sans,sans-serif" dominant-baseline="middle">$19.48 cost</text>
+      <text x="416" y="27" font-size="10" fill="#0a5c52" font-family="DM Sans,sans-serif" font-weight="700">+$8.52</text>
+      <text x="416" y="39" font-size="8" fill="#4a9489" font-family="DM Sans,sans-serif">30.4% margin</text>
+
+      <!-- Row 2: LTC Insurance — bill $25=242px, cost 188px -->
+      <text x="0" y="67" font-size="11" fill="#1d1d1f" font-family="DM Sans,sans-serif" dominant-baseline="middle" font-weight="500">LTC Insurance</text>
+      <rect x="140" y="57" width="242" height="20" fill="#e4f0ee" rx="2"/>
+      <rect x="140" y="57" width="188" height="20" fill="#073d36" rx="2"/>
+      <text x="143" y="68" font-size="8" fill="rgba(255,255,255,0.8)" font-family="DM Sans,sans-serif" dominant-baseline="middle">$19.48 cost</text>
+      <text x="387" y="63" font-size="10" fill="#0a5c52" font-family="DM Sans,sans-serif" font-weight="700">+$5.52</text>
+      <text x="387" y="75" font-size="8" fill="#4a9489" font-family="DM Sans,sans-serif">22.1% margin</text>
+
+      <!-- Row 3: VA Benefits — bill $23=222px, cost 188px -->
+      <text x="0" y="103" font-size="11" fill="#1d1d1f" font-family="DM Sans,sans-serif" dominant-baseline="middle" font-weight="500">VA Benefits</text>
+      <rect x="140" y="93" width="222" height="20" fill="#e4f0ee" rx="2"/>
+      <rect x="140" y="93" width="188" height="20" fill="#073d36" rx="2"/>
+      <text x="143" y="104" font-size="8" fill="rgba(255,255,255,0.8)" font-family="DM Sans,sans-serif" dominant-baseline="middle">$19.48 cost</text>
+      <text x="367" y="99" font-size="10" fill="#0a5c52" font-family="DM Sans,sans-serif" font-weight="700">+$3.52</text>
+      <text x="367" y="111" font-size="8" fill="#4a9489" font-family="DM Sans,sans-serif">15.3% margin</text>
+
+      <!-- Row 4: Medicaid CCSP — bill $16=155px, HHA cost $16.64=161px (6px overrun) -->
+      <text x="0" y="139" font-size="11" fill="#1d1d1f" font-family="DM Sans,sans-serif" dominant-baseline="middle" font-weight="500">Medicaid CCSP</text>
+      <rect x="140" y="129" width="155" height="20" fill="#fef0f0" rx="2"/>
+      <rect x="140" y="129" width="155" height="20" fill="#073d36" rx="0"/>
+      <rect x="295" y="129" width="6" height="20" fill="#c0392b" rx="2"/>
+      <text x="143" y="140" font-size="8" fill="rgba(255,255,255,0.8)" font-family="DM Sans,sans-serif" dominant-baseline="middle">$16.64 cost</text>
+      <text x="306" y="135" font-size="10" fill="#c0392b" font-family="DM Sans,sans-serif" font-weight="700">−$0.64</text>
+      <text x="306" y="147" font-size="8" fill="#c0392b" font-family="DM Sans,sans-serif">loss at market wages</text>
+
+      <!-- Legend -->
+      <rect x="140" y="170" width="10" height="8" fill="#073d36" rx="1"/>
+      <text x="153" y="177" font-size="8" fill="#999" font-family="DM Sans,sans-serif">Blended caregiver cost (wage + 15% burden)</text>
+      <rect x="330" y="170" width="10" height="8" fill="#e4f0ee" stroke="#b0d8d0" stroke-width="1" rx="1"/>
+      <text x="343" y="177" font-size="8" fill="#999" font-family="DM Sans,sans-serif">Payer billing rate (range midpoint)</text>
+    </svg>
+
+    <div class="finding-card vision key-hl" style="margin-top:1.6rem;">
+      <div class="fc-label">Critical Finding</div>
+      <div class="fc-title">Medicaid CCSP is structurally unprofitable at Savannah market wages</div>
+      <div class="fc-body">At Georgia's Medicaid CCSP rate of $16/hr and Savannah HHA wages of $14.47/hr plus $2.17 burden ($16.64 total), every Medicaid hour billed at market wages produces a <strong>−$0.64 loss per hour</strong>. A single client at 30 hrs/week generates a $998/month operating loss from labor alone — before overhead. The model's Year 1 blended rate of $24/hr implies Medicaid volume no greater than 20–25% of total hours to remain viable. Private pay is not just the higher-margin choice. At Savannah market wages, it is the only structurally profitable payer type.</div>
+    </div>
+  </div>
+
+  <hr class="section-rule">
+
+  <!-- ── FOUR-STAGE OPERATING P&L ──────────────────────────────────── -->
+  <div class="section" id="fin-pnl">
+    <h2>Financial Model — Four-Stage Operating P&amp;L</h2>
+    <p>Revenue, direct labor, and operating expenses at each milestone. Caregiver cost uses $18/hr blended. The chart shows how the EBITDA layer (gold) expands from negligible at Year 1 to a stable 15–16% band from Year 2 onward — driven by rate mix improving faster than overhead growth.</p>
+
+    <table class="journey-table" style="margin-bottom:1.6rem;">
+      <thead>
+        <tr><th>Line Item</th><th>Year 1</th><th>Year 2</th><th>Year 3</th><th>$2M Milestone</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Revenue</td><td>$449K</td><td>$885K</td><td>$1,490K</td><td>$2,038K</td></tr>
+        <tr><td>Direct Labor (COGS)</td><td>$337K</td><td>$590K</td><td>$1,031K</td><td>$1,310K</td></tr>
+        <tr>
+          <td><strong>Gross Profit</strong></td>
+          <td><strong>$112K</strong></td><td><strong>$295K</strong></td><td><strong>$459K</strong></td><td><strong>$728K</strong></td>
+        </tr>
+        <tr style="color:var(--soft);">
+          <td>Gross Margin %</td><td>25.0%</td><td>33.3%</td><td>30.8%</td><td>35.7%</td>
+        </tr>
+        <tr><td>Operating Expenses</td><td>$96K</td><td>$151K</td><td>$236K</td><td>$401K</td></tr>
+        <tr>
+          <td><strong>EBITDA</strong></td>
+          <td><strong>$16K</strong></td><td><strong>$144K</strong></td><td><strong>$223K</strong></td><td><strong>$327K</strong></td>
+        </tr>
+        <tr style="color:var(--teal);font-weight:600;">
+          <td>EBITDA Margin %</td><td>3.6%</td><td>16.3%</td><td>15.0%</td><td>16.0%</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p style="font-size:0.82rem;color:var(--soft);margin-bottom:0.5rem;">Stacked bars — dark: caregiver wages · mid-teal: operating expenses · gold: EBITDA. Year 1 EBITDA (2px) is nearly invisible by design — the margin is that thin. It doubles in Year 2 when the blended rate rises $3/hr.</p>
+    <div style="overflow-x:auto;">
+      <svg viewBox="0 0 520 290" style="width:100%;min-width:360px;max-width:520px;display:block;" role="img" aria-label="Four-stage P&amp;L stacked bar chart">
+
+        <!-- Year 1 (x=30, w=70) — scale: 200px/$2038K, base y=230 -->
+        <!-- COGS 33px, OpEx 9px, EBITDA 2px, total 44px -->
+        <rect x="30" y="197" width="70" height="33" fill="#073d36"/>
+        <rect x="30" y="188" width="70" height="9"  fill="#4a9489"/>
+        <rect x="30" y="186" width="70" height="2"  fill="#c09040"/>
+        <text x="65" y="180" text-anchor="middle" font-size="9" fill="#555" font-family="DM Sans,sans-serif">$449K</text>
+
+        <!-- Year 2 (x=155, w=70) — COGS 58, OpEx 15, EBITDA 14, total 87px -->
+        <rect x="155" y="172" width="70" height="58" fill="#073d36"/>
+        <rect x="155" y="157" width="70" height="15" fill="#4a9489"/>
+        <rect x="155" y="143" width="70" height="14" fill="#c09040"/>
+        <text x="190" y="137" text-anchor="middle" font-size="9" fill="#555" font-family="DM Sans,sans-serif">$885K</text>
+
+        <!-- Year 3 (x=280, w=70) — COGS 101, OpEx 23, EBITDA 22, total 146px -->
+        <rect x="280" y="129" width="70" height="101" fill="#073d36"/>
+        <rect x="280" y="106" width="70" height="23"  fill="#4a9489"/>
+        <rect x="280" y="84"  width="70" height="22"  fill="#c09040"/>
+        <text x="315" y="78" text-anchor="middle" font-size="9" fill="#555" font-family="DM Sans,sans-serif">$1.5M</text>
+
+        <!-- $2M (x=405, w=70) — COGS 129, OpEx 39, EBITDA 32, total 200px -->
+        <rect x="405" y="101" width="70" height="129" fill="#073d36"/>
+        <rect x="405" y="62"  width="70" height="39"  fill="#4a9489"/>
+        <rect x="405" y="30"  width="70" height="32"  fill="#c09040"/>
+        <text x="440" y="24" text-anchor="middle" font-size="9" fill="#555" font-family="DM Sans,sans-serif">$2.0M</text>
+
+        <!-- X-axis baseline -->
+        <line x1="20" y1="230" x2="500" y2="230" stroke="#ddd" stroke-width="1"/>
+
+        <!-- X-axis labels -->
+        <text x="65"  y="243" text-anchor="middle" font-size="10" fill="#6e6e73" font-family="DM Sans,sans-serif">Year 1</text>
+        <text x="65"  y="254" text-anchor="middle" font-size="8"  fill="#bbb"     font-family="DM Sans,sans-serif">12 clients</text>
+        <text x="65"  y="265" text-anchor="middle" font-size="8"  fill="#0a5c52"  font-family="DM Sans,sans-serif" font-weight="600">3.6% EBITDA</text>
+
+        <text x="190" y="243" text-anchor="middle" font-size="10" fill="#6e6e73" font-family="DM Sans,sans-serif">Year 2</text>
+        <text x="190" y="254" text-anchor="middle" font-size="8"  fill="#bbb"     font-family="DM Sans,sans-serif">18 clients</text>
+        <text x="190" y="265" text-anchor="middle" font-size="8"  fill="#0a5c52"  font-family="DM Sans,sans-serif" font-weight="600">16.3% EBITDA</text>
+
+        <text x="315" y="243" text-anchor="middle" font-size="10" fill="#6e6e73" font-family="DM Sans,sans-serif">Year 3</text>
+        <text x="315" y="254" text-anchor="middle" font-size="8"  fill="#bbb"     font-family="DM Sans,sans-serif">29 clients</text>
+        <text x="315" y="265" text-anchor="middle" font-size="8"  fill="#0a5c52"  font-family="DM Sans,sans-serif" font-weight="600">15.0% EBITDA</text>
+
+        <text x="440" y="243" text-anchor="middle" font-size="10" fill="#6e6e73" font-family="DM Sans,sans-serif">$2M+</text>
+        <text x="440" y="254" text-anchor="middle" font-size="8"  fill="#bbb"     font-family="DM Sans,sans-serif">35 clients</text>
+        <text x="440" y="265" text-anchor="middle" font-size="8"  fill="#0a5c52"  font-family="DM Sans,sans-serif" font-weight="600">16.0% EBITDA</text>
+
+        <!-- Legend -->
+        <rect x="30"  y="278" width="10" height="8" fill="#073d36" rx="1"/>
+        <text x="43"  y="285" font-size="8" fill="#888" font-family="DM Sans,sans-serif">Direct Labor (COGS)</text>
+        <rect x="175" y="278" width="10" height="8" fill="#4a9489" rx="1"/>
+        <text x="188" y="285" font-size="8" fill="#888" font-family="DM Sans,sans-serif">Operating Expenses</text>
+        <rect x="320" y="278" width="10" height="8" fill="#c09040" rx="1"/>
+        <text x="333" y="285" font-size="8" fill="#888" font-family="DM Sans,sans-serif">EBITDA</text>
+      </svg>
+    </div>
+
+    <hr style="border:none;border-top:1px solid var(--rule);margin:1.8rem 0;">
+
+    <h3 style="font-size:1.05rem;margin-bottom:0.6rem;">Operating Expense Detail</h3>
+    <table class="journey-table" style="font-size:0.84rem;">
+      <thead>
+        <tr><th>Line Item</th><th>Year 1</th><th>Year 2</th><th>Year 3</th><th>$2M</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Shannon — Owner Draw / Salary</td><td>$60K</td><td>$72K</td><td>$85K</td><td>$90K</td><td>Grows as revenue stabilizes</td></tr>
+        <tr><td>Operations Manager</td><td>—</td><td>—</td><td>—</td><td>$60K</td><td>Hired when Shannon becomes Clinical Director</td></tr>
+        <tr><td>Care Coordinator</td><td>—</td><td>$20K</td><td>$42K</td><td>$48K</td><td>Part-time Y2 → full-time Y3</td></tr>
+        <tr><td>Admin / Scheduler</td><td>—</td><td>$8K</td><td>—</td><td>$40K</td><td>Part-time Y2 · absorbed by coordinator Y3 · FT at $2M</td></tr>
+        <tr><td>RN Clinical Supervisor</td><td>$4K</td><td>$11K</td><td>$43K</td><td>$85K</td><td>~8 hrs/mo Y1 · ~20 hrs/mo Y2 · 20 hrs/wk Y3 · FT $2M ($41/hr)</td></tr>
+        <tr><td>Business Insurance (GL + E&amp;O)</td><td>$10K</td><td>$12K</td><td>$16K</td><td>$20K</td><td>[VERIFY with broker]</td></tr>
+        <tr><td>Scheduling Software (ClearCare / WellSky)</td><td>$4K</td><td>$6K</td><td>$10K</td><td>$12K</td><td>Scales with caregiver headcount</td></tr>
+        <tr><td>Marketing / SEO / Website</td><td>$6K</td><td>$10K</td><td>$15K</td><td>$18K</td><td>Referral development + search presence</td></tr>
+        <tr><td>Accounting / Bookkeeping</td><td>$5K</td><td>$6K</td><td>$10K</td><td>$10K</td><td></td></tr>
+        <tr><td>Training / Compliance</td><td>$4K</td><td>$6K</td><td>$8K</td><td>$12K</td><td>Georgia PHCP continuing requirements</td></tr>
+        <tr><td>Office / Misc</td><td>$3K</td><td>—</td><td>$7K</td><td>$6K</td><td></td></tr>
+        <tr style="font-weight:700;border-top:2px solid var(--teal);">
+          <td>Total OpEx</td><td>$96K</td><td>$151K</td><td>$236K</td><td>$401K</td><td></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout amber" style="margin-top:0.8rem;">
+      <strong>[VERIFY]</strong> RN costs depend on whether SPCS holds a skilled nursing license or personal care only. If personal care only, the RN is not legally required — it is a quality and positioning investment supporting the Shannon Standard. Confirm licensing scope before building this line into the forward budget.
+    </div>
+
+    <hr style="border:none;border-top:1px solid var(--rule);margin:1.8rem 0;">
+
+    <h3 style="font-size:1.05rem;margin-bottom:0.5rem;">Caregiver Headcount by Stage</h3>
+    <p style="font-size:0.88rem;color:var(--soft);margin-bottom:1rem;">FTE = total weekly care hours ÷ 30 billable hrs per caregiver per week. Real-world scheduling requires a 15–20% bench above this floor to cover call-outs and gaps.</p>
+
+    <table class="journey-table" style="font-size:0.84rem;">
+      <thead>
+        <tr><th>Role</th><th>Year 1</th><th>Year 2</th><th>Year 3</th><th>$2M</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>CNA / HHA Caregivers (FTE)</td><td>12</td><td>21</td><td>37</td><td>47</td></tr>
+        <tr style="color:var(--soft);"><td>Bench / On-call (15–20%)</td><td>2</td><td>4</td><td>7</td><td>9</td></tr>
+        <tr><td>RN Supervisor</td><td>0.05</td><td>0.10</td><td>0.50</td><td>1</td></tr>
+        <tr><td>Care Coordinator</td><td>—</td><td>0.50</td><td>1</td><td>1</td></tr>
+        <tr><td>Scheduler / Admin</td><td>—</td><td>0.25</td><td>—</td><td>1</td></tr>
+        <tr><td>Operations Manager</td><td>—</td><td>—</td><td>—</td><td>1</td></tr>
+        <tr><td>Shannon (Owner / Director)</td><td>1</td><td>1</td><td>1</td><td>1</td></tr>
+        <tr style="font-weight:700;border-top:2px solid var(--teal);">
+          <td>Total People</td><td>~15</td><td>~27</td><td>~47</td><td>~61</td>
+        </tr>
+        <tr style="color:var(--soft);font-size:0.8rem;">
+          <td>Weekly care hours</td><td>360</td><td>630</td><td>1,102</td><td>1,400</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="finding-card vision" style="margin-top:1.6rem;">
+      <div class="fc-label">Breakeven Per Stage</div>
+      <div class="fc-title">Shannon needs roughly 10 clients before the business earns a dollar</div>
+      <div class="fc-body">At Year 1 overhead ($96K) and a $6/hr contribution margin ($24 blended billing − $18 caregiver cost), SPCS needs 16,000 billed hours per year — <strong>10.3 clients at 30 hrs/week</strong> — to cover fixed costs. At Year 2 the margin rises to $9/hr ($27 − $18), cutting breakeven to <strong>9.2 clients</strong> despite higher overhead. This is why Year 2 EBITDA margin jumps from 3.6% to 16.3%: not just more volume, but a $3/hr improvement in blended rate. Each private pay client above breakeven produces $9–$10 of contribution per hour directly to EBITDA. That is the financial case for referral relationships — one discharge coordinator who trusts Shannon changes the arithmetic at every stage.</div>
     </div>
   </div>
 

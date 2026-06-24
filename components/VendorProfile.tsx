@@ -59,7 +59,7 @@ function RelatedVendorCard({ vendor }: { vendor: VendorData }) {
       href={`/vendors/${vendor.id}`}
       className="flex items-center gap-3 p-3 rounded-xl border border-gray-100 hover:border-[#e8339a] hover:bg-pink-50 transition-all group"
     >
-      <span className="text-2xl">{vendor.emoji}</span>
+      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#e8339a]/10 text-xs font-black text-[#e8339a]">{vendor.category.charAt(0)}</span>
       <div className="flex-1 min-w-0">
         <p className="text-xs font-bold tracking-wider uppercase text-[#e8339a] mb-0.5">{vendor.category}</p>
         <p className="text-sm font-semibold text-[#111] truncate group-hover:text-[#e8339a] transition-colors">{vendor.name}</p>
@@ -92,9 +92,9 @@ export default function VendorProfile({ vendor = SAMPLE_VENDOR }: VendorProfileP
         {/* ── Left column ────────────────────────────────────────── */}
         <div className="lg:col-span-2 flex flex-col gap-8">
           {/* Hero */}
-          <div className="rounded-2xl overflow-hidden aspect-[16/7] flex items-center justify-center text-8xl"
+          <div className="rounded-2xl overflow-hidden aspect-[16/7] flex items-center justify-center"
             style={{ background: "linear-gradient(135deg, #f0fce0 0%, #e4f9f5 50%, #fce8f4 100%)" }}>
-            {vendor.emoji}
+            <span className="text-6xl font-black tracking-tighter" style={{ color: "rgba(232,51,154,0.25)" }}>{vendor.category.toUpperCase()}</span>
           </div>
 
           {/* Category + name */}
@@ -125,15 +125,15 @@ export default function VendorProfile({ vendor = SAMPLE_VENDOR }: VendorProfileP
             <p className="text-gray-700 leading-relaxed">{vendor.activityDetail}</p>
             <div className="flex flex-wrap gap-4 mt-4">
               <div className="flex items-center gap-2 text-sm text-gray-600">
-                <span className="text-base">⏱</span>
+                <span className="text-xs font-bold uppercase text-gray-400">Duration</span>
                 <span>{vendor.duration}</span>
               </div>
               <div className="flex items-center gap-2 text-sm text-gray-600">
-                <span className="text-base">✅</span>
+                <span className="text-xs font-bold uppercase text-gray-400">Level</span>
                 <span>{vendor.skillLevel}</span>
               </div>
               <div className="flex items-center gap-2 text-sm text-gray-600">
-                <span className="text-base">🎟</span>
+                <span className="text-xs font-bold uppercase text-gray-400">Ticket</span>
                 <span>Included with Creative Passport</span>
               </div>
             </div>
@@ -185,7 +185,7 @@ export default function VendorProfile({ vendor = SAMPLE_VENDOR }: VendorProfileP
             rel="noopener noreferrer"
             className="flex items-center gap-3 p-4 rounded-2xl border border-gray-100 hover:border-[#e8339a] hover:bg-pink-50 transition-all group"
           >
-            <span className="text-2xl">📸</span>
+            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-pink-50 text-xs font-black text-[#e8339a]">IG</span>
             <div>
               <p className="text-xs text-gray-400 mb-0.5">Follow the maker</p>
               <p className="text-sm font-semibold text-[#111] group-hover:text-[#e8339a] transition-colors">
@@ -202,7 +202,7 @@ export default function VendorProfile({ vendor = SAMPLE_VENDOR }: VendorProfileP
             rel="noopener noreferrer"
             className="flex items-center gap-3 p-4 rounded-2xl border border-gray-100 hover:border-gray-300 transition-all group"
           >
-            <span className="text-2xl">🏠</span>
+            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gray-50 text-xs font-black text-gray-400">OH</span>
             <div>
               <p className="text-xs text-gray-400 mb-0.5">Follow the fest</p>
               <p className="text-sm font-semibold text-[#111]">@openhousecreativefest</p>

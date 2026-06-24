@@ -34,7 +34,6 @@ export default async function QRPage({ params }: Props) {
         name: vendor.name,
         founder: vendor.founder,
         activity: vendor.activityDetail,
-        emoji: vendor.emoji,
         instagram: vendor.instagram,
         availableSlots: vendor.availableSlots,
       }}
