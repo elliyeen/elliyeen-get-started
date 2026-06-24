@@ -521,7 +521,7 @@ export default function GetStartedPage() {
                   </div>
                   <button
                     type="submit"
-                    className="w-full rounded-xl bg-[#111111] px-6 py-4 text-sm font-bold text-white hover:bg-zinc-800"
+                    className="w-full rounded-xl bg-[#1B5EA8] px-6 py-4 text-sm font-bold text-white hover:bg-[#164d8e]"
                   >
                     Send me the free audit framework
                   </button>
@@ -557,7 +557,7 @@ export default function GetStartedPage() {
                 <a
                   id="contact"
                   href="#book"
-                  className="mt-6 inline-flex items-center gap-2 rounded-xl bg-black px-6 py-4 text-sm font-bold text-white hover:bg-zinc-800"
+                  className="mt-6 inline-flex items-center gap-2 rounded-xl bg-[#1B5EA8] px-6 py-4 text-sm font-bold text-white hover:bg-[#164d8e]"
                 >
                   Book your free diagnostic <ArrowRight size={16} />
                 </a>
@@ -689,11 +689,12 @@ export default function GetStartedPage() {
                   </ul>
                 </div>
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-widest text-zinc-400">Resources</p>
+                  <p className="text-xs font-semibold uppercase tracking-widest text-zinc-400">Reports</p>
                   <ul className="mt-4 space-y-3 text-sm text-zinc-600">
-                    <li><a href="#lead-magnet"  className="hover:text-black">18-Point Audit</a></li>
-                    <li><a href="#advisor"       className="hover:text-black">AI Advisor</a></li>
-                    <li><a href="#book" className="hover:text-black">Get in touch</a></li>
+                    <li><a href="/reports"                              className="hover:text-black">All Reports</a></li>
+                    <li><a href="/reports/milano-audit.html"            className="hover:text-black">Milano Family Pizza</a></li>
+                    <li><a href="/reports/wealth-management-audit.html" className="hover:text-black">Wealth Management</a></li>
+                    <li><a href="/spcs-report"                          className="hover:text-black">Savannah Personal Care</a></li>
                   </ul>
                 </div>
               </div>

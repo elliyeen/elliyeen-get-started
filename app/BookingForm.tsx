@@ -78,7 +78,7 @@ export default function BookingForm() {
       </div>
       <button
         type="submit"
-        className="w-full rounded-xl bg-[#111111] px-6 py-4 text-sm font-bold text-white hover:bg-zinc-800"
+        className="w-full rounded-xl bg-[#1B5EA8] px-6 py-4 text-sm font-bold text-white hover:bg-[#164d8e]"
       >
         Request my free diagnostic
       </button>

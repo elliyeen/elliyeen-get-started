@@ -80,7 +80,7 @@ export default function MobileNav() {
             <a
               href="#book"
               onClick={() => setOpen(false)}
-              className="rounded-xl bg-black px-6 py-4 text-center text-sm font-bold text-white"
+              className="rounded-xl bg-[#1B5EA8] px-6 py-4 text-center text-sm font-bold text-white hover:bg-[#164d8e]"
             >
               Get your free site diagnosis
             </a>
