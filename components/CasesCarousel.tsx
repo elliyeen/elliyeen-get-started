@@ -19,6 +19,8 @@ const ALL_CASES = [
     imageAlt: "Fresh pizza with toppings coming out of a wood-fired oven",
     href: "/reports/milano-audit.html",
     reportLabel: "Read the full audit report",
+    secondaryHref: "",
+    secondaryLabel: "",
   },
   {
     industry: "Home Care",
@@ -33,8 +35,10 @@ const ALL_CASES = [
     ],
     image: "https://images.unsplash.com/photo-1584515933487-779824d29309?q=80&w=1200&auto=format&fit=crop",
     imageAlt: "Home caregiver assisting an elderly patient indoors",
-    href: "/case-studies/savannah",
-    reportLabel: "Read the full report",
+    href: "/spcs-report",
+    reportLabel: "Read the full audit report",
+    secondaryHref: "https://elliyeen.github.io/savannah-pcs/",
+    secondaryLabel: "Experience the new site",
   },
   {
     industry: "Financial Services",
@@ -51,6 +55,8 @@ const ALL_CASES = [
     imageAlt: "Financial advisor reviewing documents with a client at a desk",
     href: "",
     reportLabel: "",
+    secondaryHref: "",
+    secondaryLabel: "",
   },
   {
     industry: "Education",
@@ -67,6 +73,8 @@ const ALL_CASES = [
     imageAlt: "College golfer lining up a putt on a green during a tournament",
     href: "",
     reportLabel: "",
+    secondaryHref: "",
+    secondaryLabel: "",
   },
 ];
 
@@ -182,15 +190,25 @@ export default function CasesCarousel() {
 
                 {/* CTA */}
                 {item.href && item.reportLabel && (
-                  <div className="mt-auto border-t border-zinc-100 pt-4">
+                  <div className="mt-auto border-t border-zinc-100 pt-4 flex flex-col gap-2">
                     <a
                       href={item.href}
-                      target={item.href.startsWith("/reports/") ? "_blank" : undefined}
-                      rel={item.href.startsWith("/reports/") ? "noopener noreferrer" : undefined}
+                      target={item.href.startsWith("https://") ? "_blank" : undefined}
+                      rel={item.href.startsWith("https://") ? "noopener noreferrer" : undefined}
                       className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#1B5EA8] hover:underline"
                     >
                       {item.reportLabel} <ArrowRight size={13} />
                     </a>
+                    {"secondaryHref" in item && item.secondaryHref && "secondaryLabel" in item && item.secondaryLabel && (
+                      <a
+                        href={(item as { secondaryHref: string }).secondaryHref}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-500 hover:text-zinc-800 hover:underline"
+                      >
+                        {(item as { secondaryLabel: string }).secondaryLabel} <ArrowRight size={13} />
+                      </a>
+                    )}
                   </div>
                 )}
               </div>
