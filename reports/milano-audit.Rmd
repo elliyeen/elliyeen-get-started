@@ -48,7 +48,7 @@ theme_audit <- function(base_size = 12) {
 
 CLR_MAIN  <- "#1f3a3a"
 CLR_WEAK  <- "#a05c3c"
-CLR_GOOD  <- "#2d6a4f"
+CLR_GOOD  <- "#e8e4dd"
 CLR_MID   <- "#b8a88a"
 CLR_LIGHT <- "#e8e4dd"
 CLR_TEXT  <- "#1a1a1a"
@@ -99,7 +99,7 @@ The full 12-month roadmap adds **$36,600/month** — an annual uplift of **$439,
 <div class="kpi-label">Estimated Revenue<br><small>per day (baseline)</small></div>
 </div>
 <div class="kpi-card">
-<div class="kpi-number" style="color: #2d6a4f;">+$232</div>
+<div class="kpi-number" style="color: #e8e4dd;">+$232</div>
 <div class="kpi-label">Additional Revenue<br><small>per day (30-day fix)</small></div>
 </div>
 <div class="kpi-card">
@@ -144,7 +144,7 @@ kable(site_comp, format = "html", caption = "Side-by-Side: Site A vs. Site B") |
   kable_styling(bootstrap_options = c("striped","hover"), full_width = TRUE, font_size = 12) |>
   column_spec(1, bold = TRUE, width = "24%") |>
   column_spec(2, background = "#f5ede8") |>
-  column_spec(3, background = "#e4eeee")
+  column_spec(3, background = "#e8e4dd")
 ```
 
 <div class="insight-box">
@@ -220,9 +220,9 @@ kable(rev, format = "html", caption = "Revenue Projections by Scenario") |>
     background = c("transparent", CLR_GOOD, CLR_GOLD, CLR_MAIN)
   ) |>
   row_spec(1, background = "#f8f7f4") |>
-  row_spec(2, background = "#f0f7f4") |>
-  row_spec(3, background = "#e8f4ee") |>
-  row_spec(4, background = "#e0f0e8")
+  row_spec(2, background = "#f5f0e8") |>
+  row_spec(3, background = "#ede8de") |>
+  row_spec(4, background = "#e8e4dd")
 ```
 
 ## 12-Month Revenue Build-Up
@@ -478,7 +478,7 @@ ggplot(scores, aes(x = score, y = dimension)) +
   scale_fill_identity() +
   scale_x_continuous(limits = c(0, 115), breaks = c(0, 25, 50, 75, 100)) +
   labs(title = "Audit Dimension Scores  (1–100 scale)",
-       subtitle = "All 9 dimensions below the 50-point threshold  ·  rust = liability  ·  green = functional",
+       subtitle = "All 9 dimensions below the 50-point threshold  ·  rust = liability  ·  cream = functional",
        caption = "Source: 22-Agent Universal Website Audit System · Site A (milanofamilypizza.com)") +
   theme_audit()
 ```
