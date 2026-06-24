@@ -196,20 +196,46 @@ export default function GetStartedPage() {
           </div>
         </section>
 
-        {/* Trust metrics strip */}
-        <div className="border-y border-zinc-200 bg-white py-5">
-          <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-x-10 gap-y-4 px-4 sm:px-6">
-            {([
-              ["18", "specialist frameworks"],
-              ["4", "diagnostics per week"],
-              ["48h", "delivery guarantee"],
-              ["100%", "copy rewrites included"],
-            ] as const).map(([num, label]) => (
-              <div key={label} className="flex flex-col items-center gap-1">
-                <span className="font-serif text-2xl font-bold tracking-[-0.03em] text-[#1B5EA8]">{num}</span>
-                <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-zinc-500">{label}</span>
-              </div>
-            ))}
+        {/* Logo ticker */}
+        <div className="border-y border-zinc-200 bg-white py-5 overflow-hidden">
+          <p className="mb-4 text-center text-[10px] font-bold uppercase tracking-[0.26em] text-zinc-400">
+            Experience from
+          </p>
+          <div className="relative overflow-hidden">
+            {/* Fade edges */}
+            <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-20 bg-gradient-to-r from-white to-transparent" />
+            <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-20 bg-gradient-to-l from-white to-transparent" />
+            <div className="ticker-track">
+              {[
+                { name: "Verizon",               domain: "verizon.com" },
+                { name: "Motorola Solutions",     domain: "motorolasolutions.com" },
+                { name: "Amazon DSP",             domain: "amazon.com" },
+                { name: "OCC",                    domain: "theocc.com" },
+                { name: "Boeing",                 domain: "boeing.com" },
+                { name: "Aurora Flight Systems",  domain: "aurora.aero" },
+                { name: "Verizon",               domain: "verizon.com" },
+                { name: "Motorola Solutions",     domain: "motorolasolutions.com" },
+                { name: "Amazon DSP",             domain: "amazon.com" },
+                { name: "OCC",                    domain: "theocc.com" },
+                { name: "Boeing",                 domain: "boeing.com" },
+                { name: "Aurora Flight Systems",  domain: "aurora.aero" },
+              ].map(({ name, domain }, i) => (
+                <div
+                  key={i}
+                  className="mx-12 flex shrink-0 items-center gap-3"
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={`https://logo.clearbit.com/${domain}`}
+                    alt={name}
+                    width={120}
+                    height={32}
+                    style={{ height: 28, width: "auto", maxWidth: 110, filter: "grayscale(100%) opacity(0.5)", objectFit: "contain" }}
+                    loading="lazy"
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
@@ -219,12 +245,14 @@ export default function GetStartedPage() {
           <div className="rounded-[2rem] border border-zinc-200 bg-white/80 p-5 shadow-xl shadow-zinc-900/5 backdrop-blur sm:p-6 md:p-10">
             <div className="mb-6 sm:mb-8">
               <p className="mb-3 inline-flex items-center gap-2 rounded-full border border-zinc-200 px-3 py-1 text-xs font-semibold text-zinc-500">
-                Real output · Savannah Personal Care Services
+                Live sample · Savannah Personal Care Services · June 2026
               </p>
-              <h2 className="font-serif text-3xl tracking-[-0.04em] sm:text-4xl md:text-5xl">This is what a finding looks like.</h2>
-              <p className="mt-3 max-w-xl text-sm text-zinc-600 sm:text-base">
-                Not a recommendation. The actual replacement copy — ready to implement.
-                Every audit we deliver produces output at this specificity.
+              <h2 className="font-serif text-3xl tracking-[-0.04em] sm:text-4xl md:text-5xl">We don&apos;t describe the problem.<br className="hidden sm:block" /> We write the fix.</h2>
+              <p className="mt-4 max-w-xl text-sm leading-7 text-zinc-600 sm:text-base">
+                Every finding ships with the rewritten version — formatted, ready to paste.
+                Shannon received this the day her audit was delivered.
+                No copywriter needed. No briefing required.{" "}
+                <span className="font-semibold text-zinc-800">The fix is in the finding.</span>
               </p>
             </div>
 
@@ -313,7 +341,7 @@ export default function GetStartedPage() {
 
             <div className="mt-6 flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between">
               <p className="text-sm text-zinc-500 max-w-md">
-                This is one finding from a 19-page audit. Every section of the site received the same treatment.
+                One of 23 findings from Shannon&apos;s audit. Every section received the same treatment — diagnosis and replacement copy, delivered in the same document.
               </p>
               <a
                 href="/spcs-report"
