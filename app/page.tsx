@@ -487,7 +487,7 @@ export default function GetStartedPage() {
                   <p className="text-xs font-semibold uppercase tracking-widest text-zinc-400">Services</p>
                   <ul className="mt-4 space-y-3 text-sm text-zinc-600">
                     <li><a href="#lead-magnet"  className="hover:text-black">Free Audit PDF</a></li>
-                    <li><a href="#cases"         className="hover:text-black">Case Studies</a></li>
+                    <li><a href="#cases"         className="hover:text-black">Industries</a></li>
                     <li><a href="#pricing" className="hover:text-black">Full Audit</a></li>
                   </ul>
                 </div>
@@ -495,7 +495,7 @@ export default function GetStartedPage() {
                   <p className="text-xs font-semibold uppercase tracking-widest text-zinc-400">Company</p>
                   <ul className="mt-4 space-y-3 text-sm text-zinc-600">
                     <li><a href="#founder"      className="hover:text-black">About</a></li>
-                    <li><a href="#cases"         className="hover:text-black">Case Studies</a></li>
+                    <li><a href="#cases"         className="hover:text-black">Industries</a></li>
                     <li><a href={CONTACT_MAILTO} className="hover:text-black">Contact</a></li>
                   </ul>
                 </div>

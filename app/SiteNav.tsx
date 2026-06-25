@@ -20,7 +20,7 @@ export default function SiteNav() {
 
         <div className="hidden items-center gap-9 text-sm font-medium text-black md:flex">
           <a href="/#assessment" className="hover:text-black">How It Works</a>
-          <a href="/#cases"      className="hover:text-black">Case Studies</a>
+          <a href="/#cases"      className="hover:text-black">Industries</a>
           <a href="/reports"     className="hover:text-black">Reports</a>
           <a href="/#pricing"    className="hover:text-black">Pricing</a>
         </div>
