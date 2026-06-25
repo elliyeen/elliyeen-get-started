@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
-const BASE_URL = "https://elliyeen-get-started.pages.dev";
+const BASE_URL = "https://www.elliyeen.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
       "AI-powered revenue engineering for growth-focused organizations. We help you understand customers, remove friction, and build experiences that convert.",
     images: [
       {
-        url: "/og-image.png",
+        url: "/opengraph-image",
         width: 1200,
         height: 630,
         alt: "Elliyeen Research — Engineer Higher Revenue",
@@ -65,11 +65,11 @@ export const metadata: Metadata = {
     title: "Elliyeen Research — Engineer Higher Revenue",
     description:
       "AI-powered revenue engineering for growth-focused organizations.",
-    images: ["/og-image.png"],
+    images: ["/opengraph-image"],
   },
 
   alternates: {
-    canonical: BASE_URL,
+    canonical: "/",
   },
 };
 

@@ -6,7 +6,7 @@ A high-performance marketing landing page for **Elliyeen Research**, built with 
 
 ## Live Site
 
-**[elliyeen-get-started.pages.dev](https://elliyeen-get-started.pages.dev)**
+**[www.elliyeen.com](https://www.elliyeen.com)**
 
 ---
 
