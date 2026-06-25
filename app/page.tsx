@@ -4,6 +4,11 @@ import ScrollReveal from "./ScrollReveal";
 import CasesCarousel from "@/components/CasesCarousel";
 import { ArrowRight, CheckCircle2, LineChart, Search, Sparkles, Users } from "lucide-react";
 
+const CONTACT_MAILTO =
+  "mailto:abdullah@elliyeen.com" +
+  "?subject=Website%20audit%20inquiry%20%E2%80%94%20let%27s%20work%20together" +
+  "&body=Hi%20Abbas%2C%0A%0AI%27d%20like%20to%20get%20my%20website%20audited%20by%20Elliyeen.%0A%0AWebsite%3A%20%5Bpaste%20your%20URL%20here%5D%0A%0ALooking%20forward%20to%20it.";
+
 export const metadata: Metadata = {
   title: "Elliyeen Research — Website Audit & Revenue Diagnosis",
   description:
@@ -52,7 +57,6 @@ const auditDimensions = [
 ];
 
 const pricingTiers = [
-  { tier: "Diagnostic Call", price: "Free", desc: "20-minute review. Three specific findings. No pitch." },
   { tier: "Full Audit", price: "From $1,500", desc: "All 18 frameworks. Full report. Copy rewrites included." },
   { tier: "Audit + Implementation", price: "Custom", desc: "We audit and execute. Scoped to your site and team." },
 ];
@@ -106,7 +110,7 @@ const faqSchema = {
       name: "How much does a website audit cost?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "The diagnostic call is free — 20 minutes, three specific findings, no pitch. A full audit starts from $1,500 and includes all 18 frameworks, a full report, and copy rewrites. Audit + implementation is scoped custom to your site and team.",
+        text: "A full audit starts from $1,500 and includes all 18 frameworks, a full report, and copy rewrites. Audit + implementation is scoped custom to your site and team.",
       },
     },
   ],
@@ -145,7 +149,7 @@ export default function GetStartedPage() {
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <a href="#book" className="inline-flex min-h-[52px] items-center justify-center rounded-xl bg-[#1B5EA8] px-6 text-sm font-bold text-white shadow-xl shadow-[#1B5EA8]/20 hover:bg-[#164d8e]">
+              <a href={CONTACT_MAILTO} className="inline-flex min-h-[52px] items-center justify-center rounded-xl bg-[#1B5EA8] px-6 text-sm font-bold text-white shadow-xl shadow-[#1B5EA8]/20 hover:bg-[#164d8e]">
                 Fix it
               </a>
               <a href="#assessment" className="inline-flex min-h-[52px] items-center justify-center gap-2 rounded-xl px-6 text-sm font-bold hover:bg-white">
@@ -403,7 +407,7 @@ export default function GetStartedPage() {
                 </p>
                 <a
                   id="contact"
-                  href="#book"
+                  href={CONTACT_MAILTO}
                   className="mt-6 inline-flex items-center gap-2 rounded-xl bg-[#1B5EA8] px-6 py-4 text-sm font-bold text-white hover:bg-[#164d8e]"
                 >
                   Book your free diagnostic <ArrowRight size={16} />
@@ -566,7 +570,7 @@ export default function GetStartedPage() {
                   <ul className="mt-4 space-y-3 text-sm text-zinc-600">
                     <li><a href="#founder"      className="hover:text-black">About</a></li>
                     <li><a href="#cases"         className="hover:text-black">Case Studies</a></li>
-                    <li><a href="#book" className="hover:text-black">Contact</a></li>
+                    <li><a href={CONTACT_MAILTO} className="hover:text-black">Contact</a></li>
                   </ul>
                 </div>
                 <div>

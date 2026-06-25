@@ -490,7 +490,7 @@ export default function SoHalalReportClient() {
         {/* Sidebar CTA */}
         <div className="border-t border-white/10 p-4">
           <a
-            href="/#book"
+            href="mailto:abdullah@elliyeen.com?subject=Website%20audit%20inquiry%20%E2%80%94%20let%27s%20work%20together&body=Hi%20Abbas%2C%0A%0AI%27d%20like%20to%20get%20my%20website%20audited%20by%20Elliyeen.%0A%0AWebsite%3A%20%5Bpaste%20your%20URL%20here%5D%0A%0ALooking%20forward%20to%20it."
             className="block rounded-lg bg-[#1B5EA8] px-4 py-2.5 text-center text-xs font-bold text-white hover:bg-[#164d8e]"
           >
             Get your free diagnosis
@@ -600,7 +600,7 @@ export default function SoHalalReportClient() {
                 </button>
               ) : (
                 <a
-                  href="/#book"
+                  href="mailto:abdullah@elliyeen.com?subject=Website%20audit%20inquiry%20%E2%80%94%20let%27s%20work%20together&body=Hi%20Abbas%2C%0A%0AI%27d%20like%20to%20get%20my%20website%20audited%20by%20Elliyeen.%0A%0AWebsite%3A%20%5Bpaste%20your%20URL%20here%5D%0A%0ALooking%20forward%20to%20it."
                   className="flex items-center gap-1.5 text-xs font-semibold text-[#1B5EA8] hover:underline"
                   onClick={() => setWizardOpen(false)}
                 >
@@ -1495,7 +1495,7 @@ export default function SoHalalReportClient() {
                   </div>
                 </div>
                 <a
-                  href="/#book"
+                  href="mailto:abdullah@elliyeen.com?subject=Website%20audit%20inquiry%20%E2%80%94%20let%27s%20work%20together&body=Hi%20Abbas%2C%0A%0AI%27d%20like%20to%20get%20my%20website%20audited%20by%20Elliyeen.%0A%0AWebsite%3A%20%5Bpaste%20your%20URL%20here%5D%0A%0ALooking%20forward%20to%20it."
                   className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#1B5EA8] px-6 py-4 text-sm font-bold text-white hover:bg-[#164d8e] transition-colors"
                 >
                   Book the free diagnostic <ArrowUpRight size={15} />

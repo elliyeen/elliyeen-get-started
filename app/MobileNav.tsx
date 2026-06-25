@@ -71,14 +71,7 @@ export default function MobileNav() {
 
           <div className="mt-auto flex flex-col gap-3">
             <a
-              href="/#contact"
-              onClick={() => setOpen(false)}
-              className="rounded-xl border border-zinc-300 px-6 py-4 text-center text-sm font-medium text-black"
-            >
-              Contact sales
-            </a>
-            <a
-              href="/#book"
+              href="mailto:abdullah@elliyeen.com?subject=Website%20audit%20inquiry%20%E2%80%94%20let%27s%20work%20together&body=Hi%20Abbas%2C%0A%0AI%27d%20like%20to%20get%20my%20website%20audited%20by%20Elliyeen.%0A%0AWebsite%3A%20%5Bpaste%20your%20URL%20here%5D%0A%0ALooking%20forward%20to%20it."
               onClick={() => setOpen(false)}
               className="rounded-xl bg-[#1B5EA8] px-6 py-4 text-center text-sm font-bold text-white hover:bg-[#164d8e]"
             >
