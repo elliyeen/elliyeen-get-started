@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 
 export const dynamic = "force-static";
 
-const BASE_URL = "https://elliyeen-get-started.pages.dev";
+const BASE_URL = "https://www.elliyeen.com";
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -14,6 +14,5 @@ export default function robots(): MetadataRoute.Robots {
       },
     ],
     sitemap: `${BASE_URL}/sitemap.xml`,
-    host: BASE_URL,
   };
 }

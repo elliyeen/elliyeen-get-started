@@ -4,7 +4,7 @@ import SiteNav from "@/app/SiteNav";
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description: "How Elliyeen Research collects, uses, and protects your information. Read our full privacy policy.",
-  alternates: { canonical: "https://elliyeen-get-started.pages.dev/privacy" },
+  alternates: { canonical: "https://www.elliyeen.com/privacy" },
 };
 
 export default function PrivacyPage() {
@@ -23,7 +23,7 @@ export default function PrivacyPage() {
 
           <h2 className="mt-12 font-serif text-2xl font-normal tracking-tight">1. Who We Are</h2>
           <p className="mt-4 text-zinc-700">
-            Elliyeen Research ("Elliyeen", "we", "us", or "our") is a revenue engineering and customer experience consultancy. Our website is located at <strong>elliyeen-get-started.pages.dev</strong>. This Privacy Policy explains how we collect, use, disclose, and protect information about you when you visit our site or engage with our services.
+            Elliyeen Research ("Elliyeen", "we", "us", or "our") is a revenue engineering and customer experience consultancy. Our website is located at <strong>www.elliyeen.com</strong>. This Privacy Policy explains how we collect, use, disclose, and protect information about you when you visit our site or engage with our services.
           </p>
 
           <h2 className="mt-12 font-serif text-2xl font-normal tracking-tight">2. Information We Collect</h2>

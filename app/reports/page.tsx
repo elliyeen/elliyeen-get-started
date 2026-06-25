@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "Audit Reports — Elliyeen Research",
   description:
     "Published website audit reports by Elliyeen Research. Full 22-framework diagnoses with copy rewrites, financial projections, and prioritized roadmaps.",
-  alternates: { canonical: "https://elliyeen-get-started.pages.dev/reports" },
+  alternates: { canonical: "https://www.elliyeen.com/reports" },
 };
 
 type Report = {

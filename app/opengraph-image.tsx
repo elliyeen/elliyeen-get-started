@@ -102,7 +102,7 @@ export default function OGImage() {
               letterSpacing: "0.05em",
             }}
           >
-            elliyeen-get-started.pages.dev
+            www.elliyeen.com
           </span>
 
           {/* Decorative bar chart */}

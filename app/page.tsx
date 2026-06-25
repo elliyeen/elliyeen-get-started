@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: "Elliyeen Research — Website Audit & Revenue Diagnosis",
   description:
     "We audit every layer of your website — copy, trust, UX, SEO, conversion, and AI search readiness — using 18 specialist frameworks. Then we tell you exactly what to fix, in what order, with copy rewrites included.",
-  alternates: { canonical: "https://elliyeen-get-started.pages.dev" },
+  alternates: { canonical: "https://www.elliyeen.com" },
 };
 
 const process = [

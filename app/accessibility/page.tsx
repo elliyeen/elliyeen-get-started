@@ -4,7 +4,7 @@ import SiteNav from "@/app/SiteNav";
 export const metadata: Metadata = {
   title: "Accessibility",
   description: "Elliyeen Research's commitment to WCAG 2.1 AA accessibility standards and building an inclusive web experience for all users.",
-  alternates: { canonical: "https://elliyeen-get-started.pages.dev/accessibility" },
+  alternates: { canonical: "https://www.elliyeen.com/accessibility" },
 };
 
 export default function AccessibilityPage() {

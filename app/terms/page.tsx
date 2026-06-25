@@ -4,7 +4,7 @@ import SiteNav from "@/app/SiteNav";
 export const metadata: Metadata = {
   title: "Terms & Conditions",
   description: "Terms and conditions governing the use of Elliyeen Research's website and services.",
-  alternates: { canonical: "https://elliyeen-get-started.pages.dev/terms" },
+  alternates: { canonical: "https://www.elliyeen.com/terms" },
 };
 
 export default function TermsPage() {
