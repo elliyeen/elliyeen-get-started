@@ -8,8 +8,6 @@ const links = [
   { label: "Case Studies", href: "/#cases" },
   { label: "Reports", href: "/reports" },
   { label: "Pricing", href: "/#pricing" },
-  { label: "Advisor", href: "/#advisor" },
-  { label: "About",   href: "/about" },
 ];
 
 export default function MobileNav() {
