@@ -392,7 +392,7 @@ export default function GetStartedPage() {
         {/* Fix 1 — Founder section */}
         <section id="founder" className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
           <div className="rounded-[2rem] border border-zinc-200 bg-white p-8 md:p-12">
-            <div className="grid items-start gap-10 md:grid-cols-[260px_1fr] md:gap-16">
+            <div className="flex justify-center md:justify-start">
               <div className="flex flex-col items-center text-center md:items-start md:text-left">
                 <div className="h-36 w-36 overflow-hidden rounded-full border-4 border-zinc-100 shadow-lg bg-zinc-100">
                   <img
@@ -419,23 +419,6 @@ export default function GetStartedPage() {
                 </a>
               </div>
 
-              <div>
-                <p className="text-xs font-bold uppercase tracking-[0.28em] text-zinc-500">Why Elliyeen exists</p>
-                <h2 className="mt-4 font-serif text-3xl tracking-[-0.03em] md:text-4xl">
-                  Most audits tell you what's wrong. They don't tell you what to do about&nbsp;it.
-                </h2>
-                <div className="mt-6 space-y-4 text-base leading-7 text-zinc-600">
-                  <p>
-                    I spent years watching businesses invest in websites that looked right but didn't convert. The audits they received were long, generic, and produced no specific action. Designers blamed copy. Copywriters blamed design. No one owned the result.
-                  </p>
-                  <p>
-                    Elliyeen was built to close that gap. Eighteen specialist frameworks run simultaneously on a single site. The output is not a report. It is a prioritized roadmap with copy rewrites, UX recommendations, and a week-by-week action plan.
-                  </p>
-                  <p>
-                    The businesses I work with don't need more opinions. They need one clear answer: <em>here is exactly what to fix, and here is the order to fix it in.</em>
-                  </p>
-                </div>
-              </div>
             </div>
           </div>
         </section>
