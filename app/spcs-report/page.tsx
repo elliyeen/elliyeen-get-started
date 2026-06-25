@@ -53,14 +53,11 @@ export default function SPCSReportPage() {
           Case Study · Home Care · Savannah, GA
         </p>
         <h1 className="mt-4 max-w-3xl font-serif text-4xl leading-[1.08] tracking-[-0.04em] sm:text-5xl md:text-6xl">
-          22 agents found it.
-          <br />
           <span className="text-[#1B5EA8]">We rebuilt it.</span>
         </h1>
         <p className="mt-5 max-w-2xl text-lg leading-[1.7] text-zinc-600">
           Savannah Personal Care Services had a website. Families were finding it.
-          Nobody was calling. This is the full engagement — the 22-agent audit,
-          every finding, and the site we built after.
+          Nobody was calling. Read the full report.
         </p>
 
         {/* Stats strip */}

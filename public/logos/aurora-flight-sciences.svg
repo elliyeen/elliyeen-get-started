@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 80" overflow="visible" fill="none">
+  <!-- Blue circle -->
+  <circle cx="36" cy="40" r="34" fill="#1A5EA8"/>
+  <!-- White orbital arc lines -->
+  <path d="M 10 58 Q 16 8 62 18" stroke="white" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <path d="M 6 50 Q 8 2 66 10" stroke="white" stroke-width="3.5" fill="none" stroke-linecap="round" opacity="0.65"/>
+  <path d="M 4 42 Q 2 0 70 4" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.4"/>
+  <!-- Aurora text -->
+  <text x="82" y="50" font-family="Georgia, 'Times New Roman', serif" font-size="42" font-style="italic" font-weight="700" fill="#1A5EA8" letter-spacing="-1">Aurora</text>
+  <!-- Flight Sciences -->
+  <text x="84" y="68" font-family="Arial, sans-serif" font-size="11" font-weight="600" fill="#111111" letter-spacing="4">FLIGHT SCIENCES</text>
+</svg>

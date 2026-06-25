@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 80" fill="none">
+  <!-- Blue circle -->
+  <circle cx="35" cy="40" r="32" fill="#0075BE"/>
+  <!-- White bat-wing M (scaled from original r=37 cx=40 to r=32 cx=35) -->
+  <path d="M 12 59 L 12 23 L 31 23 L 31 18 L 38 18 L 38 23 L 57 23 L 57 59 L 52 59 L 52 28 Q 45 49 35 61 Q 25 49 18 28 L 18 59 Z" fill="white"/>
+  <!-- MOTOROLA bold italic -->
+  <text x="76" y="42" font-family="'Arial Black', Impact, Arial, sans-serif" font-size="26" font-weight="900" font-style="italic" fill="#111111" letter-spacing="-0.5">MOTOROLA</text>
+  <!-- SOLUTIONS lighter italic -->
+  <text x="78" y="67" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" font-style="italic" fill="#111111" letter-spacing="0.5">SOLUTIONS</text>
+</svg>

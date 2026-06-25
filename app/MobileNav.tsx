@@ -25,7 +25,7 @@ export default function MobileNav() {
         onClick={() => setOpen(!open)}
         aria-label={open ? "Close menu" : "Open menu"}
         aria-expanded={open}
-        className="flex h-9 w-9 items-center justify-center rounded-full border border-zinc-300 text-zinc-700 hover:border-zinc-500"
+        className="flex h-9 w-9 items-center justify-center rounded-full border border-zinc-300 text-black hover:border-zinc-500"
       >
         {open ? <X size={18} /> : <Menu size={18} />}
       </button>
@@ -51,7 +51,7 @@ export default function MobileNav() {
           <button
             onClick={() => setOpen(false)}
             aria-label="Close menu"
-            className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full border border-zinc-300 text-zinc-700"
+            className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full border border-zinc-300 text-black"
           >
             <X size={18} />
           </button>
@@ -62,7 +62,7 @@ export default function MobileNav() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="py-5 text-xl font-semibold text-zinc-800 hover:text-black"
+                className="py-5 text-xl font-semibold text-black hover:text-black"
               >
                 {link.label}
               </a>
@@ -73,7 +73,7 @@ export default function MobileNav() {
             <a
               href="/#contact"
               onClick={() => setOpen(false)}
-              className="rounded-xl border border-zinc-300 px-6 py-4 text-center text-sm font-medium text-zinc-800"
+              className="rounded-xl border border-zinc-300 px-6 py-4 text-center text-sm font-medium text-black"
             >
               Contact sales
             </a>

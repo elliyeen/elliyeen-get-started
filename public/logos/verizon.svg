@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 230 80" overflow="visible" fill="none">
+  <!-- verizon text — ends around x=186 at this font-size -->
+  <text x="0" y="57" font-family="'Arial Black', 'Helvetica Neue', Arial, sans-serif" font-size="52" font-weight="800" fill="#000000" letter-spacing="-1">verizon</text>
+  <!-- Red checkmark: small vertical bar directly after text, then V stroke -->
+  <line x1="188" y1="18" x2="188" y2="28" stroke="#CD040B" stroke-width="6" stroke-linecap="round"/>
+  <polyline points="188,28 198,52 213,20" fill="none" stroke="#CD040B" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

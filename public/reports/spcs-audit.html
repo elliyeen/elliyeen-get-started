@@ -152,7 +152,7 @@ body.ez-drawer-closed #ez-drawer-toggle svg { transform: rotate(180deg); }
 /* Typography */
 h1, h2, h3 { font-family: 'EB Garamond', Georgia, serif; font-weight: 500; }
 h1 { font-size: 2.6rem; line-height: 1.18; letter-spacing: -0.02em; margin-bottom: 1.2rem; }
-h2 { font-size: 1.72rem; line-height: 1.24; margin-bottom: 0.9rem; }
+h2 { font-size: 1.72rem; line-height: 1.24; margin-bottom: 0.9rem; font-weight: 600; color: #000; display: flex; align-items: flex-start; gap: 0.5rem; }
 h3 { font-size: 1.22rem; line-height: 1.3; margin-bottom: 0.5rem; }
 p { margin-bottom: 1rem; font-size: 0.95rem; color: #2a2a2a; }
 p:last-child { margin-bottom: 0; }
@@ -195,14 +195,9 @@ hr.section-rule { border: none; border-top: 1px solid var(--rule); margin: 2.8re
   font-weight: 500; line-height: 1.28; margin-bottom: 0.5rem;
 }
 .finding-card .fc-body { font-size: 0.88rem; color: #444; line-height: 1.6; }
-.finding-card.issue { border-left: 3px solid var(--rust); }
-.finding-card.fix   { border-left: 3px solid var(--good); }
-.finding-card.opp   { border-left: 3px solid var(--gold); }
-.finding-card.vision { border-left: 3px solid var(--teal); }
 
 .finding-card.key-hl {
   background: #f0f7f5;
-  border-left: 3px solid var(--teal);
   box-shadow: 0 0 0 2px rgba(10,92,82,0.07), 0 3px 14px rgba(0,0,0,0.07);
 }
 .finding-card.key-hl::before {
@@ -216,12 +211,12 @@ hr.section-rule { border: none; border-top: 1px solid var(--rule); margin: 2.8re
 
 /* Callout */
 .callout {
-  background: var(--teal-lt); border-left: 3px solid var(--teal);
-  border-radius: 0 6px 6px 0; padding: 1rem 1.2rem; margin: 1.4rem 0;
+  background: var(--teal-lt);
+  border-radius: 6px; padding: 1rem 1.2rem; margin: 1.4rem 0;
   font-size: 0.9rem; color: #0a2e2a;
 }
-.callout.amber { background: var(--amber-lt); border-left-color: var(--amber); color: #3a2a00; }
-.callout.rust  { background: var(--rust-lt);  border-left-color: var(--rust);  color: #3a0a00; }
+.callout.amber { background: var(--amber-lt); color: #3a2a00; }
+.callout.rust  { background: var(--rust-lt);  color: #3a0a00; }
 .callout strong { font-weight: 600; }
 
 /* Journey table */
@@ -351,7 +346,7 @@ hr.section-rule { border: none; border-top: 1px solid var(--rule); margin: 2.8re
 .wz-stat-n.t { color: var(--teal); }
 .wz-stat-n.a { color: var(--amber); }
 .wz-stat-s { font-size: 0.7rem; color: #999; text-transform: uppercase; letter-spacing: 0.08em; margin-top: 0.1rem; }
-.wz-hl { background: #e8f2f0; border-left: 3px solid var(--teal); padding: 0.65rem 1rem; border-radius: 0 4px 4px 0; font-size: 0.88rem; color: #0a2e2a; margin: 0.4rem 0 0.8rem; font-style: italic; line-height: 1.5; font-family: 'EB Garamond', Georgia, serif; }
+.wz-hl { background: #e8f2f0; padding: 0.65rem 1rem; border-radius: 4px; font-size: 0.88rem; color: #0a2e2a; margin: 0.4rem 0 0.8rem; font-style: italic; line-height: 1.5; font-family: 'EB Garamond', Georgia, serif; }
 .wz-rm { margin: 0.3rem 0 0.75rem; }
 .wz-rm-item { display: flex; gap: 0.7rem; align-items: flex-start; margin-bottom: 0.5rem; font-size: 0.87rem; line-height: 1.5; color: #2a2a2a; }
 .wz-rm-badge { flex-shrink: 0; background: var(--rust); color: white; font-size: 0.62rem; padding: 0.15rem 0.4rem; border-radius: 3px; margin-top: 0.15rem; letter-spacing: 0.04em; font-weight: 500; }
@@ -378,6 +373,39 @@ hr.section-rule { border: none; border-top: 1px solid var(--rule); margin: 2.8re
   .wz-ttl { font-size: 1.25rem; }
   .wz-skip { display: none; }
 }
+
+/* Section collapse */
+.section-body {
+  overflow: hidden;
+  max-height: 9000px;
+  opacity: 1;
+  transition: max-height 0.42s cubic-bezier(.4,0,.2,1), opacity 0.28s ease;
+}
+.section-body.collapsed {
+  max-height: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+.section-chevron {
+  display: inline-flex; align-items: center; justify-content: center;
+  flex-shrink: 0; width: 22px; height: 22px; margin-top: 0.28rem;
+  background: none; border: 1px solid rgba(0,0,0,0.14);
+  border-radius: 50%; cursor: pointer; padding: 0;
+  transition: background 0.15s, border-color 0.15s;
+}
+.section-chevron:hover { background: rgba(0,0,0,0.05); border-color: rgba(0,0,0,0.26); }
+.section-chevron svg { width: 12px; height: 12px; fill: none; stroke: #666; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: transform 0.35s cubic-bezier(.4,0,.2,1); }
+.section-chevron.rotated svg { transform: rotate(180deg); }
+
+/* Micro-interactions */
+.finding-card { transition: box-shadow 0.22s ease, transform 0.18s ease; cursor: default; }
+.finding-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.10); transform: translateY(-1px); }
+.revenue-block { transition: box-shadow 0.22s ease, border-color 0.18s ease; }
+.revenue-block:hover { box-shadow: 0 4px 18px rgba(0,0,0,0.09); border-color: rgba(0,0,0,0.18); }
+.vision-card { transition: box-shadow 0.22s ease; }
+.vision-card:hover { box-shadow: 0 4px 18px rgba(0,0,0,0.09); }
+.ez-nav-link { transition: color 0.15s, border-color 0.15s, background 0.15s, padding-left 0.15s; }
+.ez-nav-link:hover { padding-left: 1.6rem; }
 </style>
 </head>
 <body class="">
@@ -413,10 +441,10 @@ hr.section-rule { border: none; border-top: 1px solid var(--rule); margin: 2.8re
     </div>
     <div class="ez-nav-group">
       <span class="ez-nav-group-label">Website Audit</span>
-      <a class="ez-nav-link" href="#web-1">1 — FAQ Was Placeholder Copy</a>
-      <a class="ez-nav-link" href="#web-2">2 — Hero Spoke to No One</a>
-      <a class="ez-nav-link" href="#web-3">3 — Credential Invisible</a>
-      <a class="ez-nav-link" href="#web-4">4 — No Local Search Presence</a>
+      <a class="ez-nav-link" href="#web-1">FAQ Was Placeholder Copy</a>
+      <a class="ez-nav-link" href="#web-2">Hero Spoke to No One</a>
+      <a class="ez-nav-link" href="#web-3">Credential Invisible</a>
+      <a class="ez-nav-link" href="#web-4">No Local Search Presence</a>
     </div>
     <div class="ez-nav-group">
       <span class="ez-nav-group-label">Customer Experience</span>
@@ -927,7 +955,7 @@ hr.section-rule { border: none; border-top: 1px solid var(--rule); margin: 2.8re
       </tbody>
     </table>
 
-    <div class="callout" style="border-left-color:var(--teal);background:var(--teal-lt);">
+    <div class="callout" style="background:var(--teal-lt);">
       <strong>Blended workforce assumption:</strong> The four-stage P&amp;L uses <strong>$18/hr</strong> as blended caregiver cost — a 60/40 CNA/HHA mix, fully burdened at 15%. This sits $1.52 above the HHA floor and $1.48 below the pure-CNA ceiling. <strong>[VERIFY with Shannon's actual payroll records before projecting.]</strong>
     </div>
 
@@ -1267,46 +1295,119 @@ shareBtn.addEventListener('click', function () {
 // Wizard steps
 var wzSteps = [
   {
-    label: 'Step 1 of 5 \u2014 The Credential',
+    label: 'Step 1 of 7 \u2014 The Credential',
     title: 'Shannon built the standard. The website hadn\u2019t caught up.',
     body: '<div class="wz-stat-row">'
-      + '<div><div class="wz-stat-n r">4</div><div class="wz-stat-s">website failures</div></div>'
-      + '<div><div class="wz-stat-n r">0</div><div class="wz-stat-s">pages for the 11pm buyer</div></div>'
-      + '<div><div class="wz-stat-n t">$2M+</div><div class="wz-stat-s">revenue possible</div></div>'
+      + '<div><div class="wz-stat-n r">4</div><div class="wz-stat-s">Website failures</div></div>'
+      + '<div><div class="wz-stat-n r">0</div><div class="wz-stat-s">Pages for the 11pm buyer</div></div>'
+      + '<div><div class="wz-stat-n t">$2M+</div><div class="wz-stat-s">Revenue possible</div></div>'
       + '</div>'
       + '<p>Shannon Stafford Simpson is a Certified Nursing Assistant who built a home care agency. Home Instead\u2019s Savannah operator bought a franchise manual. That gap \u2014 the most powerful differentiator in Savannah home care \u2014 appeared nowhere on the site.</p>'
   },
   {
-    label: 'Step 2 of 5 \u2014 The Vision',
+    label: 'Step 2 of 7 \u2014 The Vision',
     title: 'From \u201cthe agency Shannon runs\u201d to \u201cthe agency Shannon built.\u201d',
     body: '<div class="wz-hl">Shannon\u2019s desired state: phone rings because families already trust her before they call. The most trusted home care provider in Savannah. Discharge coordinators at Memorial Health refer without hesitation.</div>'
       + '<p>Every recommendation in this audit is in service of that future. The website is not a marketing project. It is the infrastructure between where Shannon is today and where she is building toward.</p>'
   },
   {
-    label: 'Step 3 of 5 \u2014 Website Audit',
+    label: 'Step 3 of 7 \u2014 Website Audit',
     title: 'Four failures. All locatable. All fixable.',
     body: '<div class="wz-rm">'
-      + '<div class="wz-rm-item"><span class="wz-rm-badge">FAILURE 1</span><span>FAQ was Wix placeholder copy \u2014 not one of the seven questions families actually ask before calling a home care agency.</span></div>'
-      + '<div class="wz-rm-item"><span class="wz-rm-badge">FAILURE 2</span><span>Hero spoke to the company, not the buyer. The adult daughter at 11pm was invisible on her own.</span></div>'
-      + '<div class="wz-rm-item"><span class="wz-rm-badge">FAILURE 3</span><span>CNA credential buried in About section. The only differentiator that mattered \u2014 invisible above the fold.</span></div>'
-      + '<div class="wz-rm-item"><span class="wz-rm-badge">FAILURE 4</span><span>Zero local search presence. \u201cHome care Savannah GA\u201d returned Home Instead. Not Shannon.</span></div>'
+      + '<div class="wz-rm-item"><span class="wz-rm-badge">FAILURE 1</span><span>FAQ was Wix placeholder copy. Not one of the seven questions families actually ask before calling a home care agency.</span></div>'
+      + '<div class="wz-rm-item"><span class="wz-rm-badge">FAILURE 2</span><span>Hero spoke to the company, not the buyer. The adult daughter at 11pm was invisible.</span></div>'
+      + '<div class="wz-rm-item"><span class="wz-rm-badge">FAILURE 3</span><span>CNA credential buried in About section. The only differentiator that mattered was invisible above the fold.</span></div>'
+      + '<div class="wz-rm-item"><span class="wz-rm-badge">FAILURE 4</span><span>Zero local search presence. "Home care Savannah GA" returned Home Instead. Not Shannon.</span></div>'
       + '</div>'
   },
   {
-    label: 'Step 4 of 5 \u2014 Customer Experience',
+    label: 'Step 4 of 7 \u2014 Customer Experience',
     title: 'She arrived at 11pm. She left without calling.',
     body: '<p>The adult daughter\u2019s journey: Google search returned no SPCS result. If she found the site anyway, the hero didn\u2019t name her. The FAQ didn\u2019t answer her fears. No process described. No response time stated. Calling felt like risk. She called Home Instead instead.</p>'
       + '<div class="wz-hl">The core failure: the site never gave her permission to stop worrying. That is the only thing she needed before she could act.</div>'
   },
   {
-    label: 'Step 5 of 5 \u2014 Financial Model',
+    label: 'Step 5 of 7 \u2014 Labor and Margins',
+    title: 'Private pay earns $8.52/hr. Medicaid at market wages loses $0.64/hr.',
+    body: '<p style="font-size:0.8rem;color:#6e6e73;margin:0 0 0.7rem;">Dark bar = blended caregiver cost ($18/hr, Savannah 2026 rates). Light bar = payer billing rate. Red overrun on Medicaid = structural loss at market wages.</p>'
+      + '<svg viewBox="0 0 420 155" style="width:100%;display:block;max-width:420px;" xmlns="http://www.w3.org/2000/svg">'
+      + '<text x="110" y="10" font-size="8" fill="#bbb" font-family="DM Sans,sans-serif">$0</text>'
+      + '<text x="235" y="10" font-size="8" fill="#bbb" font-family="DM Sans,sans-serif" text-anchor="middle">$15/hr</text>'
+      + '<text x="360" y="10" font-size="8" fill="#bbb" font-family="DM Sans,sans-serif" text-anchor="end">$30/hr</text>'
+      + '<line x1="235" y1="13" x2="235" y2="138" stroke="#f0f0f0" stroke-width="1"/>'
+      + '<text x="0" y="26" font-size="10" fill="#1d1d1f" font-family="DM Sans,sans-serif" dominant-baseline="middle">Private Pay</text>'
+      + '<rect x="110" y="16" width="233" height="18" fill="#e4f0ee" rx="2"/>'
+      + '<rect x="110" y="16" width="162" height="18" fill="#0a5c52" rx="2"/>'
+      + '<text x="113" y="25" font-size="7" fill="rgba(255,255,255,0.85)" font-family="DM Sans,sans-serif" dominant-baseline="middle">$19.48 cost</text>'
+      + '<text x="347" y="22" font-size="9" fill="#0a5c52" font-family="DM Sans,sans-serif" font-weight="700">+$8.52</text>'
+      + '<text x="347" y="32" font-size="7" fill="#4a9489" font-family="DM Sans,sans-serif">30.4%</text>'
+      + '<text x="0" y="58" font-size="10" fill="#1d1d1f" font-family="DM Sans,sans-serif" dominant-baseline="middle">LTC Insurance</text>'
+      + '<rect x="110" y="48" width="208" height="18" fill="#e4f0ee" rx="2"/>'
+      + '<rect x="110" y="48" width="162" height="18" fill="#0a5c52" rx="2"/>'
+      + '<text x="113" y="57" font-size="7" fill="rgba(255,255,255,0.85)" font-family="DM Sans,sans-serif" dominant-baseline="middle">$19.48 cost</text>'
+      + '<text x="322" y="54" font-size="9" fill="#0a5c52" font-family="DM Sans,sans-serif" font-weight="700">+$5.52</text>'
+      + '<text x="322" y="64" font-size="7" fill="#4a9489" font-family="DM Sans,sans-serif">22.1%</text>'
+      + '<text x="0" y="90" font-size="10" fill="#1d1d1f" font-family="DM Sans,sans-serif" dominant-baseline="middle">VA Benefits</text>'
+      + '<rect x="110" y="80" width="192" height="18" fill="#e4f0ee" rx="2"/>'
+      + '<rect x="110" y="80" width="162" height="18" fill="#0a5c52" rx="2"/>'
+      + '<text x="113" y="89" font-size="7" fill="rgba(255,255,255,0.85)" font-family="DM Sans,sans-serif" dominant-baseline="middle">$19.48 cost</text>'
+      + '<text x="306" y="86" font-size="9" fill="#0a5c52" font-family="DM Sans,sans-serif" font-weight="700">+$3.52</text>'
+      + '<text x="306" y="96" font-size="7" fill="#4a9489" font-family="DM Sans,sans-serif">15.3%</text>'
+      + '<text x="0" y="122" font-size="10" fill="#1d1d1f" font-family="DM Sans,sans-serif" dominant-baseline="middle">Medicaid CCSP</text>'
+      + '<rect x="110" y="112" width="133" height="18" fill="#fef0f0" rx="2"/>'
+      + '<rect x="110" y="112" width="133" height="18" fill="#0a5c52" rx="0"/>'
+      + '<rect x="243" y="112" width="6" height="18" fill="#c0392b" rx="2"/>'
+      + '<text x="113" y="121" font-size="7" fill="rgba(255,255,255,0.85)" font-family="DM Sans,sans-serif" dominant-baseline="middle">$16.64 cost</text>'
+      + '<text x="253" y="118" font-size="9" fill="#c0392b" font-family="DM Sans,sans-serif" font-weight="700">\u2212$0.64 loss</text>'
+      + '<rect x="110" y="140" width="8" height="7" fill="#0a5c52" rx="1"/><text x="121" y="147" font-size="7" fill="#999" font-family="DM Sans,sans-serif">Caregiver cost</text>'
+      + '<rect x="205" y="140" width="8" height="7" fill="#e4f0ee" stroke="#b0d8d0" stroke-width="1" rx="1"/><text x="216" y="147" font-size="7" fill="#999" font-family="DM Sans,sans-serif">Billing rate</text>'
+      + '</svg>'
+  },
+  {
+    label: 'Step 6 of 7 \u2014 Path to $2M',
+    title: 'Year 2 unlocks the margin. Year 1 is intentionally thin.',
+    body: '<p style="font-size:0.8rem;color:#6e6e73;margin:0 0 0.7rem;">Dark = caregiver wages · mid-teal = operating expenses · gold = EBITDA. The gold layer at Year 1 is nearly invisible by design.</p>'
+      + '<svg viewBox="0 0 370 190" style="width:100%;display:block;max-width:370px;" xmlns="http://www.w3.org/2000/svg">'
+      + '<rect x="20" y="132" width="55" height="23" fill="#073d36"/>'
+      + '<rect x="20" y="125" width="55" height="7" fill="#4a9489"/>'
+      + '<rect x="20" y="124" width="55" height="1" fill="#c09040"/>'
+      + '<text x="47" y="118" text-anchor="middle" font-size="8" fill="#555" font-family="DM Sans,sans-serif">$449K</text>'
+      + '<rect x="100" y="114" width="55" height="41" fill="#073d36"/>'
+      + '<rect x="100" y="104" width="55" height="10" fill="#4a9489"/>'
+      + '<rect x="100" y="94" width="55" height="10" fill="#c09040"/>'
+      + '<text x="127" y="88" text-anchor="middle" font-size="8" fill="#555" font-family="DM Sans,sans-serif">$885K</text>'
+      + '<rect x="180" y="84" width="55" height="71" fill="#073d36"/>'
+      + '<rect x="180" y="68" width="55" height="16" fill="#4a9489"/>'
+      + '<rect x="180" y="53" width="55" height="15" fill="#c09040"/>'
+      + '<text x="207" y="47" text-anchor="middle" font-size="8" fill="#555" font-family="DM Sans,sans-serif">$1.5M</text>'
+      + '<rect x="260" y="65" width="55" height="90" fill="#073d36"/>'
+      + '<rect x="260" y="37" width="55" height="28" fill="#4a9489"/>'
+      + '<rect x="260" y="15" width="55" height="22" fill="#c09040"/>'
+      + '<text x="287" y="9" text-anchor="middle" font-size="8" fill="#555" font-family="DM Sans,sans-serif">$2.0M</text>'
+      + '<line x1="10" y1="155" x2="360" y2="155" stroke="#ddd" stroke-width="1"/>'
+      + '<text x="47" y="165" text-anchor="middle" font-size="9" fill="#888" font-family="DM Sans,sans-serif">Year 1</text>'
+      + '<text x="47" y="175" text-anchor="middle" font-size="7" fill="#0a5c52" font-family="DM Sans,sans-serif" font-weight="600">3.6% EBITDA</text>'
+      + '<text x="127" y="165" text-anchor="middle" font-size="9" fill="#888" font-family="DM Sans,sans-serif">Year 2</text>'
+      + '<text x="127" y="175" text-anchor="middle" font-size="7" fill="#0a5c52" font-family="DM Sans,sans-serif" font-weight="600">16.3% EBITDA</text>'
+      + '<text x="207" y="165" text-anchor="middle" font-size="9" fill="#888" font-family="DM Sans,sans-serif">Year 3</text>'
+      + '<text x="207" y="175" text-anchor="middle" font-size="7" fill="#0a5c52" font-family="DM Sans,sans-serif" font-weight="600">15.0% EBITDA</text>'
+      + '<text x="287" y="165" text-anchor="middle" font-size="9" fill="#888" font-family="DM Sans,sans-serif">$2M+</text>'
+      + '<text x="287" y="175" text-anchor="middle" font-size="7" fill="#0a5c52" font-family="DM Sans,sans-serif" font-weight="600">16.0% EBITDA</text>'
+      + '<rect x="20" y="182" width="8" height="7" fill="#073d36" rx="1"/><text x="31" y="188" font-size="7" fill="#888" font-family="DM Sans,sans-serif">Labor</text>'
+      + '<rect x="70" y="182" width="8" height="7" fill="#4a9489" rx="1"/><text x="81" y="188" font-size="7" fill="#888" font-family="DM Sans,sans-serif">OpEx</text>'
+      + '<rect x="120" y="182" width="8" height="7" fill="#c09040" rx="1"/><text x="131" y="188" font-size="7" fill="#888" font-family="DM Sans,sans-serif">EBITDA</text>'
+      + '</svg>'
+      + '<p style="font-size:0.78rem;color:#6e6e73;margin:0.5rem 0 0;">Breakeven: 10.3 clients at Year 1 ($96K overhead \xf7 $6/hr margin). Year 2 rises to $9/hr, which is why EBITDA jumps from 3.6% to 16.3%.</p>'
+  },
+  {
+    label: 'Step 7 of 7 \u2014 Next Steps',
     title: 'Five diverted clients is $291,200 in annual revenue.',
     body: '<div class="wz-rm">'
-      + '<div class="wz-rm-item"><span class="wz-rm-badge" style="background:var(--teal)">ENGINE</span><span>Private pay: ~$28/hr · ~39% gross margin. One referral coordinator sends 3\u20134 clients/month.</span></div>'
-      + '<div class="wz-rm-item"><span class="wz-rm-badge" style="background:var(--teal)">PATH</span><span>35 clients \xd7 40 hrs/wk \xd7 $28/hr = $2M+ annual revenue. The bottleneck is referral trust \u2014 not caregiver capacity.</span></div>'
+      + '<div class="wz-rm-item"><span class="wz-rm-badge" style="background:var(--teal)">ENGINE</span><span>Private pay: $28/hr billing \xb7 30.4% gross margin. One referral coordinator sends 3\u20134 clients/month.</span></div>'
+      + '<div class="wz-rm-item"><span class="wz-rm-badge" style="background:var(--teal)">PATH</span><span>35 clients \xd7 40 hrs/wk \xd7 $28/hr = $2M+ annual revenue. The bottleneck is referral trust, not caregiver capacity.</span></div>'
       + '</div>'
       + '<div class="wz-cta-blk"><p>Ready to start Phase 1?</p><div class="wz-cta-email">abdullah@elliyeen.com</div></div>'
-      + '<p class="wz-note">Use the navigation on the left to read each finding in full.</p>'
+      + '<p class="wz-note">Use the navigation on the left to read each finding in full. Reopen this guide anytime with the Guide button in the top bar.</p>'
   }
 ];
 
@@ -1329,10 +1430,9 @@ function wzRender() {
   document.getElementById('wz-next').textContent = wzCur === wzSteps.length - 1 ? 'Read the report \u2192' : 'Next \u2192';
 }
 
-function wzClose() {
-  wzOverlay.classList.add('ez-hidden');
-  setTimeout(function () { if (wzOverlay.parentNode) wzOverlay.parentNode.removeChild(wzOverlay); }, 400);
-}
+function wzClose() { wzOverlay.classList.add('ez-hidden'); }
+
+function wzOpen() { wzCur = 0; wzRender(); wzOverlay.classList.remove('ez-hidden'); }
 
 document.getElementById('wz-next').addEventListener('click', function () {
   if (wzCur < wzSteps.length - 1) { wzCur++; wzRender(); } else { wzClose(); }
@@ -1343,7 +1443,37 @@ document.getElementById('wz-back').addEventListener('click', function () {
 document.getElementById('wz-skip').addEventListener('click', wzClose);
 wzOverlay.addEventListener('click', function (e) { if (e.target === wzOverlay) wzClose(); });
 
+var guideBtn = document.getElementById('ez-guide-btn');
+if (guideBtn) guideBtn.addEventListener('click', wzOpen);
+
 wzRender();
+
+// Section collapse/expand
+(function() {
+  document.querySelectorAll('.section').forEach(function(sec) {
+    var h2 = sec.querySelector('h2');
+    if (!h2) return;
+    var body = document.createElement('div');
+    body.className = 'section-body';
+    var next = h2.nextElementSibling;
+    while (next) {
+      var n = next.nextElementSibling;
+      body.appendChild(next);
+      next = n;
+    }
+    sec.appendChild(body);
+    var btn = document.createElement('button');
+    btn.className = 'section-chevron';
+    btn.setAttribute('aria-label', 'Toggle section');
+    btn.innerHTML = '<svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>';
+    h2.appendChild(btn);
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      var collapsed = body.classList.toggle('collapsed');
+      btn.classList.toggle('rotated', collapsed);
+    });
+  });
+})();
 </script>
 </body>
 </html>

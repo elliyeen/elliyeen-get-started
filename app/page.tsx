@@ -197,7 +197,7 @@ export default function GetStartedPage() {
         </section>
 
         {/* Logo ticker */}
-        <div className="border-y border-zinc-200 bg-white py-5 overflow-hidden">
+        <div className="bg-white py-5 overflow-hidden">
           <p className="mb-4 text-center text-[10px] font-bold uppercase tracking-[0.26em] text-zinc-400">
             Experience from
           </p>
@@ -207,30 +207,33 @@ export default function GetStartedPage() {
             <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-20 bg-gradient-to-l from-white to-transparent" />
             <div className="ticker-track">
               {[
-                { name: "Verizon",               domain: "verizon.com" },
-                { name: "Motorola Solutions",     domain: "motorolasolutions.com" },
-                { name: "Amazon DSP",             domain: "amazon.com" },
-                { name: "OCC",                    domain: "theocc.com" },
-                { name: "Boeing",                 domain: "boeing.com" },
-                { name: "Aurora Flight Systems",  domain: "aurora.aero" },
-                { name: "Verizon",               domain: "verizon.com" },
-                { name: "Motorola Solutions",     domain: "motorolasolutions.com" },
-                { name: "Amazon DSP",             domain: "amazon.com" },
-                { name: "OCC",                    domain: "theocc.com" },
-                { name: "Boeing",                 domain: "boeing.com" },
-                { name: "Aurora Flight Systems",  domain: "aurora.aero" },
-              ].map(({ name, domain }, i) => (
+                { name: "Verizon",                src: "/logos/verizon.png",                                   square: false },
+                { name: "Motorola Solutions",     src: "/logos/motorola-solutions.png",                        square: false },
+                { name: "OCC",                    src: "/logos/occ.svg",                                       square: true  },
+                { name: "Aurora Flight Sciences", src: "/logos/aurora-flight-sciences.svg",                    square: false },
+                { name: "PayBlue",                src: "/logos/payblue.svg",                                   square: false },
+                { name: "Verizon",                src: "/logos/verizon.png",                                   square: false },
+                { name: "Motorola Solutions",     src: "/logos/motorola-solutions.png",                        square: false },
+                { name: "OCC",                    src: "/logos/occ.svg",                                       square: true  },
+                { name: "Aurora Flight Sciences", src: "/logos/aurora-flight-sciences.svg",                    square: false },
+                { name: "PayBlue",                src: "/logos/payblue.svg",                                   square: false },
+              ].map(({ name, src, square }, i) => (
                 <div
                   key={i}
-                  className="mx-12 flex shrink-0 items-center gap-3"
+                  className="shrink-0 flex items-center justify-center"
+                  style={{ width: 140 }}
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src={`https://logo.clearbit.com/${domain}`}
+                    src={src}
                     alt={name}
-                    width={120}
-                    height={32}
-                    style={{ height: 28, width: "auto", maxWidth: 110, filter: "grayscale(100%) opacity(0.5)", objectFit: "contain" }}
+                    style={{
+                      height: 36,
+                      width: "auto",
+                      maxWidth: square ? 36 : 140,
+                      objectFit: "contain",
+                      display: "block",
+                    }}
                     loading="lazy"
                   />
                 </div>
@@ -244,9 +247,6 @@ export default function GetStartedPage() {
           <ScrollReveal>
           <div className="rounded-[2rem] border border-zinc-200 bg-white/80 p-5 shadow-xl shadow-zinc-900/5 backdrop-blur sm:p-6 md:p-10">
             <div className="mb-6 sm:mb-8">
-              <p className="mb-3 inline-flex items-center gap-2 rounded-full border border-zinc-200 px-3 py-1 text-xs font-semibold text-zinc-500">
-                Live sample · Savannah Personal Care Services · June 2026
-              </p>
               <h2 className="font-serif text-3xl tracking-[-0.04em] sm:text-4xl md:text-5xl">We don&apos;t describe the problem.<br className="hidden sm:block" /> We write the fix.</h2>
               <p className="mt-4 max-w-xl text-sm leading-7 text-zinc-600 sm:text-base">
                 Every finding ships with the rewritten version — formatted, ready to paste.
@@ -258,7 +258,7 @@ export default function GetStartedPage() {
 
             {/* Before / After — Hero Copy */}
             <div className="grid gap-4 md:grid-cols-2">
-              <div className="rounded-2xl border border-red-100 bg-red-50/50 p-5 sm:p-6">
+              <div className="rounded-2xl bg-zinc-50 p-5 sm:p-6">
                 <p className="mb-4 text-[11px] font-bold uppercase tracking-[0.2em] text-red-400">Before — original hero copy</p>
                 <blockquote className="font-serif text-lg leading-[1.5] text-zinc-700 sm:text-xl">
                   &ldquo;Savannah Personal Care Services provides compassionate, personalized home care for seniors and individuals with disabilities in the Savannah, Georgia area. Our dedicated team of caregivers is committed to improving quality of life.&rdquo;
@@ -277,7 +277,7 @@ export default function GetStartedPage() {
                 </div>
               </div>
 
-              <div className="rounded-2xl border border-green-100 bg-green-50/50 p-5 sm:p-6">
+              <div className="rounded-2xl bg-zinc-50 p-5 sm:p-6">
                 <p className="mb-4 text-[11px] font-bold uppercase tracking-[0.2em] text-green-600">After — rebuilt hero copy</p>
                 <blockquote className="font-serif text-lg leading-[1.5] text-zinc-900 sm:text-xl">
                   &ldquo;You&apos;ve been managing this long enough.&rdquo;
@@ -304,7 +304,7 @@ export default function GetStartedPage() {
 
             {/* Before / After — FAQ */}
             <div className="mt-4 grid gap-4 md:grid-cols-2">
-              <div className="rounded-2xl border border-red-100 bg-red-50/50 p-5">
+              <div className="rounded-2xl bg-zinc-50 p-5">
                 <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.2em] text-red-400">Before — FAQ questions on site</p>
                 <div className="space-y-2">
                   {[
@@ -321,7 +321,7 @@ export default function GetStartedPage() {
                 </div>
               </div>
 
-              <div className="rounded-2xl border border-green-100 bg-green-50/50 p-5">
+              <div className="rounded-2xl bg-zinc-50 p-5">
                 <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.2em] text-green-600">After — 7 questions families actually ask</p>
                 <div className="space-y-2">
                   {[
@@ -334,15 +334,11 @@ export default function GetStartedPage() {
                       {q}
                     </div>
                   ))}
-                  <p className="text-[11px] text-green-700 font-semibold mt-3">Written from 40 hours of home care family research. Each answer dissolves a specific objection.</p>
                 </div>
               </div>
             </div>
 
-            <div className="mt-6 flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between">
-              <p className="text-sm text-zinc-500 max-w-md">
-                One of 23 findings from Shannon&apos;s audit. Every section received the same treatment — diagnosis and replacement copy, delivered in the same document.
-              </p>
+            <div className="mt-6 flex items-start">
               <a
                 href="/spcs-report"
                 className="inline-flex shrink-0 items-center gap-2 rounded-xl border border-zinc-200 px-5 py-3 text-sm font-semibold text-zinc-800 hover:border-zinc-400 hover:bg-zinc-50"
@@ -465,7 +461,7 @@ export default function GetStartedPage() {
                   The 18-Point Website Audit
                 </h2>
                 <p className="mt-4 text-base leading-7 text-zinc-600">
-                  The complete framework we use to diagnose why websites don't convert — and what to do about it. Covers copy, trust, UX, SEO, AEO, accessibility, conversion, and growth systems.
+                  The complete framework we use to diagnose why websites don't convert — and what to do about it.
                 </p>
                 <ul className="mt-6 space-y-3">
                   {[
@@ -662,7 +658,7 @@ export default function GetStartedPage() {
                   <p className="text-xs font-semibold uppercase tracking-widest text-zinc-400">Product</p>
                   <ul className="mt-4 space-y-3 text-sm text-zinc-600">
                     <li><a href="#assessment"  className="hover:text-black">How It Works</a></li>
-                    <li><a href="#advisor"      className="hover:text-black">AI Advisor</a></li>
+                    <li><a href="#advisor"      className="hover:text-black">See the Work</a></li>
                     <li><a href="#pricing"      className="hover:text-black">Pricing</a></li>
                   </ul>
                 </div>
