@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import SiteNav from "./SiteNav";
-import BookingForm from "./BookingForm";
 import ScrollReveal from "./ScrollReveal";
 import CasesCarousel from "@/components/CasesCarousel";
 import { ArrowRight, CheckCircle2, LineChart, Search, Sparkles, Users } from "lucide-react";
@@ -76,14 +75,6 @@ const faqSchema = {
       acceptedAnswer: {
         "@type": "Answer",
         text: "You can. The problem is you read it as the person who built it — you see what you meant to say, not what a stranger sees for the first time. We bring 18 frameworks that most in-house teams don't run, applied simultaneously across every layer of your site. The findings are things you wouldn't catch because you're too close to it.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "What if the website audit doesn't find anything significant?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "If we don't find at least five specific, actionable improvements on a full audit, the audit is free. We've never had to issue that refund. Most sites have 15–30 findings. The question is never whether there's friction — it's which friction is costing the most.",
       },
     },
     {
@@ -533,15 +524,6 @@ export default function GetStartedPage() {
                   <span className="text-[#1B5EA8]">$36,600/month</span>{" "}
                   in uncaptured revenue. It cost $1,500.
                 </p>
-                <h2 className="mt-5 font-serif text-3xl tracking-[-0.04em] text-zinc-500 sm:text-4xl">
-                  Every engagement starts with a free 20-minute&nbsp;diagnostic.
-                </h2>
-                <p className="mt-5 text-base leading-7 text-zinc-600">
-                  We look at your site for 20 minutes and give you the three highest-priority changes — whether you work with us or not. No commitment. No sales call disguised as a consultation.
-                </p>
-                <p className="mt-4 text-sm leading-6 text-zinc-500">
-                  On a full audit: if we don&apos;t find at least five specific, actionable improvements, the audit is free.
-                </p>
                 <a
                   id="contact"
                   href="#book"
@@ -587,10 +569,6 @@ export default function GetStartedPage() {
                   a: "You can. The problem is you read it as the person who built it — you see what you meant to say, not what a stranger sees for the first time. We bring 18 frameworks that most in-house teams don't run, applied simultaneously across every layer of your site. The findings are things you wouldn't catch because you're too close to it.",
                 },
                 {
-                  q: "What if the audit doesn't find anything significant?",
-                  a: "If we don't find at least five specific, actionable improvements on a full audit, the audit is free. We've never had to issue that refund. Most sites have 15–30 findings. The question is never whether there's friction — it's which friction is costing the most.",
-                },
-                {
                   q: "How long until we see results from the changes?",
                   a: "The roadmap is ranked by speed of impact, not complexity. Most clients implement the first change within a week of receiving the report. Changes to hero copy and CTA structure tend to show movement within two to four weeks. We stay available to review your implementations and measure what moved.",
                 },
@@ -604,41 +582,6 @@ export default function GetStartedPage() {
           </div>
         </section>
 
-        {/* Booking form — replaces all mailto CTAs */}
-        <section id="book" className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
-          <div className="overflow-hidden rounded-[2rem] border border-zinc-200 bg-white">
-            <div className="grid md:grid-cols-2">
-              <div className="p-8 md:p-12">
-                <p className="text-xs font-bold uppercase tracking-[0.28em] text-zinc-500">Free diagnostic</p>
-                <h2 className="mt-4 font-serif text-3xl tracking-[-0.03em] md:text-4xl">
-                  20 minutes. Three specific findings. No pitch.
-                </h2>
-                <p className="mt-4 text-base leading-7 text-zinc-600">
-                  We review your site and send you the three highest-priority changes within 48 hours — whether you work with us or not.
-                </p>
-                <ul className="mt-6 space-y-3">
-                  {[
-                    "What's breaking your conversion — named and located",
-                    "The highest-leverage fix and why it matters first",
-                    "What we'd rewrite in the hero",
-                  ].map((point) => (
-                    <li key={point} className="flex items-start gap-3 text-sm text-zinc-700">
-                      <CheckCircle2 size={16} className="mt-0.5 shrink-0 text-[#1B5EA8]" />
-                      {point}
-                    </li>
-                  ))}
-                </ul>
-                <p className="mt-6 text-xs text-zinc-400">
-                  We run 4 diagnostics per week. If you&apos;re planning a redesign or campaign launch, book before you build.
-                </p>
-              </div>
-
-              <div className="flex items-center bg-[#f7f4ee] p-8 md:p-12">
-                <BookingForm />
-              </div>
-            </div>
-          </div>
-        </section>
 
         {/* Footer — all links point to real anchors */}
         <footer className="border-t border-zinc-100 bg-white">
