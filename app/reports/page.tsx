@@ -80,6 +80,18 @@ const sections: Section[] = [
       "Deep dives into the customer journey and unit economics — buyer occasions, ordering friction, platform risk, and direct revenue pathways.",
     reports: [
       {
+        client: "So Halal Soul Food",
+        location: "Stone Mountain, GA",
+        auditType: "Website Audit · CX Audit · Financial Model",
+        summary:
+          "Halal-certified soul food restaurant with 60+ menu items, active social channels, and a compelling founder story. Site body renders at 1336px on a 390px screen — broken on every phone. Three ranked opportunities with a 30/90-day roadmap.",
+        score: null,
+        href: "/reports/sohalal",
+        date: "June 2026",
+        badge: "New",
+        finding: "Mobile broken — 1336px on a 390px screen",
+      },
+      {
         client: "Milano Family Pizza",
         location: "Richardson, TX",
         auditType: "CX Audit · Financial Model",

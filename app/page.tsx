@@ -150,7 +150,7 @@ export default function GetStartedPage() {
             </h1>
 
             <p className="mt-5 max-w-md text-lg leading-[1.7] text-zinc-600">
-              We run 18 specialist frameworks across your site — copy, trust, UX, SEO, accessibility — then give you the replacement copy and a prioritized roadmap. Not a list of problems.
+              Something specific is costing you customers every week. We find it, write the replacement copy, and rank every gap by revenue impact — so you know exactly what to fix, in what order, with the work already done.
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
