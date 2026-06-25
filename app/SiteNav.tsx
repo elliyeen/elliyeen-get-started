@@ -24,6 +24,7 @@ export default function SiteNav() {
           <a href="/reports"     className="hover:text-black">Reports</a>
           <a href="/#pricing"    className="hover:text-black">Pricing</a>
           <a href="/#advisor"    className="hover:text-black">Advisor</a>
+          <a href="/about"       className="hover:text-black">About</a>
         </div>
 
         <div className="flex items-center gap-2">
