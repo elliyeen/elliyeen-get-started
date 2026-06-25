@@ -389,39 +389,76 @@ export default function GetStartedPage() {
           </p>
         </div>
 
-        {/* Fix 1 — Founder section */}
-        <section id="founder" className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
+
+        {/* Pricing section — fixes the broken "Pricing" nav link */}
+        <section id="pricing" className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
           <div className="rounded-[2rem] border border-zinc-200 bg-white p-8 md:p-12">
-            <div className="flex justify-center md:justify-start">
-              <div className="flex flex-col items-center text-center md:items-start md:text-left">
-                <div className="h-36 w-36 overflow-hidden rounded-full border-4 border-zinc-100 shadow-lg bg-zinc-100">
-                  <img
-                    src="https://media.licdn.com/dms/image/v2/D4E03AQGnYLKGJxJlbQ/profile-displayphoto-shrink_200_200/B4EZPpGfbeHsAY-/0/1734799482195?e=1756944000&v=beta&t=Eg2d7VRGKHJqNM1sJzEoJrUuYpRl-l5EaNyQpJ8vZhk"
-                    alt="Abbas Abdullah, founder of Elliyeen Research"
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-                <h3 className="mt-5 text-xl font-bold">Abbas Abdullah</h3>
-                <p className="mt-1 text-sm text-zinc-500">Founder, Elliyeen Research</p>
+            <div className="grid items-center gap-10 md:grid-cols-2">
+              <div>
+                <p className="text-xs font-bold uppercase tracking-[0.28em] text-zinc-500">Pricing</p>
+                <p className="mt-4 font-serif text-2xl leading-[1.2] tracking-[-0.03em] text-zinc-900 sm:text-3xl">
+                  The last audit we completed found{" "}
+                  <span className="text-[#1B5EA8]">$36,600/month</span>{" "}
+                  in uncaptured revenue. It cost $1,500.
+                </p>
                 <a
-                  href="https://www.linkedin.com/in/abbasabdullah/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Abbas Abdullah on LinkedIn (opens in new tab)"
-                  className="mt-4 inline-flex items-center gap-2 rounded-full border border-zinc-200 px-4 py-2 text-xs font-semibold text-zinc-600 transition-colors hover:border-[#0A66C2] hover:text-[#0A66C2]"
+                  id="contact"
+                  href="#book"
+                  className="mt-6 inline-flex items-center gap-2 rounded-xl bg-[#1B5EA8] px-6 py-4 text-sm font-bold text-white hover:bg-[#164d8e]"
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-                    <rect x="2" y="9" width="4" height="12" />
-                    <circle cx="4" cy="4" r="2" />
-                  </svg>
-                  LinkedIn
+                  Book your free diagnostic <ArrowRight size={16} />
                 </a>
               </div>
-
+              <div className="grid gap-4">
+                {pricingTiers.map((item) => (
+                  <div key={item.tier} className="rounded-2xl border border-zinc-200 bg-[#f7f4ee] p-6">
+                    <div className="flex items-center justify-between">
+                      <p className="font-semibold text-zinc-900">{item.tier}</p>
+                      <p className="text-sm font-bold text-[#1B5EA8]">{item.price}</p>
+                    </div>
+                    <p className="mt-2 text-sm text-zinc-600">{item.desc}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
+
+        {/* Objection FAQ */}
+        <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
+          <div className="rounded-[2rem] border border-zinc-200 bg-white p-8 md:p-12">
+            <div className="mb-8">
+              <p className="text-xs font-bold uppercase tracking-[0.28em] text-zinc-500">Common questions</p>
+              <h2 className="mt-4 font-serif text-3xl tracking-[-0.03em] md:text-4xl">Before you decide.</h2>
+            </div>
+            <div className="grid gap-6 md:grid-cols-2">
+              {[
+                {
+                  q: "How long does the audit take?",
+                  a: "Four hours or less. Customer intelligence, 22-framework diagnosis, prioritized roadmap, and copy rewrites are completed in a single session — not spread across days or weeks.",
+                },
+                {
+                  q: "How is this different from an agency giving us recommendations?",
+                  a: "Agencies give you a list. We give you the replacement copy. Every finding in our report includes the specific fix — the actual headline, the rewritten CTA, the exact objection response — ready to implement. You don't need to hire another writer to act on what we find.",
+                },
+                {
+                  q: "Can't we audit our own site?",
+                  a: "You can. The problem is you read it as the person who built it — you see what you meant to say, not what a stranger sees for the first time. We bring 18 frameworks that most in-house teams don't run, applied simultaneously across every layer of your site. The findings are things you wouldn't catch because you're too close to it.",
+                },
+                {
+                  q: "How long until we see results from the changes?",
+                  a: "The roadmap is ranked by speed of impact, not complexity. Most clients implement the first change within a week of receiving the report. Changes to hero copy and CTA structure tend to show movement within two to four weeks. We stay available to review your implementations and measure what moved.",
+                },
+              ].map(({ q, a }) => (
+                <div key={q} className="rounded-2xl border border-zinc-100 bg-[#f7f4ee] p-6">
+                  <p className="font-semibold text-zinc-900">{q}</p>
+                  <p className="mt-3 text-sm leading-6 text-zinc-600">{a}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
 
         {/* Fix 9 — Email capture / Lead magnet */}
         <section id="lead-magnet" className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
@@ -495,76 +532,6 @@ export default function GetStartedPage() {
             </div>
           </div>
         </section>
-
-        {/* Pricing section — fixes the broken "Pricing" nav link */}
-        <section id="pricing" className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
-          <div className="rounded-[2rem] border border-zinc-200 bg-white p-8 md:p-12">
-            <div className="grid items-center gap-10 md:grid-cols-2">
-              <div>
-                <p className="text-xs font-bold uppercase tracking-[0.28em] text-zinc-500">Pricing</p>
-                <p className="mt-4 font-serif text-2xl leading-[1.2] tracking-[-0.03em] text-zinc-900 sm:text-3xl">
-                  The last audit we completed found{" "}
-                  <span className="text-[#1B5EA8]">$36,600/month</span>{" "}
-                  in uncaptured revenue. It cost $1,500.
-                </p>
-                <a
-                  id="contact"
-                  href="#book"
-                  className="mt-6 inline-flex items-center gap-2 rounded-xl bg-[#1B5EA8] px-6 py-4 text-sm font-bold text-white hover:bg-[#164d8e]"
-                >
-                  Book your free diagnostic <ArrowRight size={16} />
-                </a>
-              </div>
-              <div className="grid gap-4">
-                {pricingTiers.map((item) => (
-                  <div key={item.tier} className="rounded-2xl border border-zinc-200 bg-[#f7f4ee] p-6">
-                    <div className="flex items-center justify-between">
-                      <p className="font-semibold text-zinc-900">{item.tier}</p>
-                      <p className="text-sm font-bold text-[#1B5EA8]">{item.price}</p>
-                    </div>
-                    <p className="mt-2 text-sm text-zinc-600">{item.desc}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Objection FAQ */}
-        <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
-          <div className="rounded-[2rem] border border-zinc-200 bg-white p-8 md:p-12">
-            <div className="mb-8">
-              <p className="text-xs font-bold uppercase tracking-[0.28em] text-zinc-500">Common questions</p>
-              <h2 className="mt-4 font-serif text-3xl tracking-[-0.03em] md:text-4xl">Before you decide.</h2>
-            </div>
-            <div className="grid gap-6 md:grid-cols-2">
-              {[
-                {
-                  q: "How long does the audit take?",
-                  a: "Four hours or less. Customer intelligence, 22-framework diagnosis, prioritized roadmap, and copy rewrites are completed in a single session — not spread across days or weeks.",
-                },
-                {
-                  q: "How is this different from an agency giving us recommendations?",
-                  a: "Agencies give you a list. We give you the replacement copy. Every finding in our report includes the specific fix — the actual headline, the rewritten CTA, the exact objection response — ready to implement. You don't need to hire another writer to act on what we find.",
-                },
-                {
-                  q: "Can't we audit our own site?",
-                  a: "You can. The problem is you read it as the person who built it — you see what you meant to say, not what a stranger sees for the first time. We bring 18 frameworks that most in-house teams don't run, applied simultaneously across every layer of your site. The findings are things you wouldn't catch because you're too close to it.",
-                },
-                {
-                  q: "How long until we see results from the changes?",
-                  a: "The roadmap is ranked by speed of impact, not complexity. Most clients implement the first change within a week of receiving the report. Changes to hero copy and CTA structure tend to show movement within two to four weeks. We stay available to review your implementations and measure what moved.",
-                },
-              ].map(({ q, a }) => (
-                <div key={q} className="rounded-2xl border border-zinc-100 bg-[#f7f4ee] p-6">
-                  <p className="font-semibold text-zinc-900">{q}</p>
-                  <p className="mt-3 text-sm leading-6 text-zinc-600">{a}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
 
         {/* Footer — all links point to real anchors */}
         <footer className="border-t border-zinc-100 bg-white">
