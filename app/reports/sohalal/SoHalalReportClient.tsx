@@ -6,6 +6,7 @@ import {
   CheckCircle2,
   XCircle,
   ArrowUpRight,
+  ArrowUp,
   ChevronDown,
   X,
   ChevronRight,
@@ -332,6 +333,14 @@ export default function SoHalalReportClient() {
   const [wizardStep, setWizardStep] = useState(0);
   const [activeSection, setActiveSection] = useState("overview");
   const [collapsed, setCollapsed] = useState<Record<string, boolean>>({});
+  const [showTop, setShowTop] = useState(false);
+
+  // Show back-to-top button after scrolling down
+  useEffect(() => {
+    const onScroll = () => setShowTop(window.scrollY > 400);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   // Open sidebar on desktop by default
   useEffect(() => {
@@ -1512,6 +1521,17 @@ export default function SoHalalReportClient() {
           </div>
         </footer>
       </main>
+
+      {/* Back to top */}
+      {showTop && (
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          aria-label="Back to top"
+          className="fixed bottom-6 right-6 z-50 flex h-10 w-10 items-center justify-center rounded-full bg-[#1B5EA8] text-white shadow-lg transition-all hover:bg-[#164d8e] hover:scale-110"
+        >
+          <ArrowUp size={18} />
+        </button>
+      )}
     </>
   );
 }
