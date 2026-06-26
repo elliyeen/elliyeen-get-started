@@ -469,30 +469,27 @@ export default function GetStartedPage() {
             <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
               <div>
                 <div className="text-sm font-bold tracking-[0.22em] text-zinc-900">ELLIYEEN</div>
-                <p className="mt-2 max-w-xs text-sm leading-6 text-zinc-500">
-                  18-framework website audits for founders and marketing leaders who need to know exactly why their site isn't converting.
-                </p>
               </div>
 
               <div className="grid grid-cols-2 gap-8 sm:grid-cols-4">
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-widest text-zinc-400">Product</p>
+                  <p className="text-xs font-semibold uppercase tracking-widest text-zinc-900">Product</p>
                   <ul className="mt-4 space-y-3 text-sm text-zinc-600">
                     <li><a href="#assessment"  className="hover:text-black">How It Works</a></li>
                     <li><a href="#advisor"      className="hover:text-black">See the Work</a></li>
                     <li><a href="#pricing"      className="hover:text-black">Pricing</a></li>
+                    <li><a href="/faq"          className="hover:text-black">FAQ</a></li>
                   </ul>
                 </div>
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-widest text-zinc-400">Services</p>
+                  <p className="text-xs font-semibold uppercase tracking-widest text-zinc-900">Services</p>
                   <ul className="mt-4 space-y-3 text-sm text-zinc-600">
-                    <li><a href="#lead-magnet"  className="hover:text-black">Free Audit PDF</a></li>
                     <li><a href="#cases"         className="hover:text-black">Industries</a></li>
                     <li><a href="#pricing" className="hover:text-black">Full Audit</a></li>
                   </ul>
                 </div>
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-widest text-zinc-400">Company</p>
+                  <p className="text-xs font-semibold uppercase tracking-widest text-zinc-900">Company</p>
                   <ul className="mt-4 space-y-3 text-sm text-zinc-600">
                     <li><a href="#founder"      className="hover:text-black">About</a></li>
                     <li><a href="#cases"         className="hover:text-black">Industries</a></li>
@@ -500,7 +497,7 @@ export default function GetStartedPage() {
                   </ul>
                 </div>
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-widest text-zinc-400">Reports</p>
+                  <p className="text-xs font-semibold uppercase tracking-widest text-zinc-900">Reports</p>
                   <ul className="mt-4 space-y-3 text-sm text-zinc-600">
                     <li><a href="/reports"                              className="hover:text-black">All Reports</a></li>
                     <li><a href="/reports/milano-audit.html"            className="hover:text-black">Milano Family Pizza</a></li>
@@ -517,6 +514,8 @@ export default function GetStartedPage() {
                 <a href="/privacy"       className="text-sm text-zinc-400 hover:text-black">Privacy Policy</a>
                 <a href="/terms"         className="text-sm text-zinc-400 hover:text-black">Terms</a>
                 <a href="/accessibility" className="text-sm text-zinc-400 hover:text-black">Accessibility</a>
+                <a href="/do-not-sell"   className="text-sm text-zinc-400 hover:text-black">Do Not Sell My Data</a>
+                <a href="/sitemap-page"  className="text-sm text-zinc-400 hover:text-black">Sitemap</a>
               </div>
               <a
                 href="https://www.linkedin.com/in/abbasabdullah/"
