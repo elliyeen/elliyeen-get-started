@@ -73,6 +73,18 @@ export const metadata: Metadata = {
   },
 };
 
+const webSiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${BASE_URL}/#website`,
+  url: BASE_URL,
+  name: "Elliyeen Research",
+  description:
+    "AI-powered revenue engineering and customer experience audits for growth-focused businesses.",
+  publisher: { "@id": `${BASE_URL}/#organization` },
+  inLanguage: "en-US",
+};
+
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
@@ -122,6 +134,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(webSiteSchema) }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}

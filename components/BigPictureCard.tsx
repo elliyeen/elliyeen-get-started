@@ -68,15 +68,12 @@ export function BigPictureCard({
             afterLabel={afterLabel}
             beforeValue={beforeValue}
             afterValue={afterValue}
-            yLabels={yLabels}
             tone={tone === "success" ? "success" : "danger"}
           />
         ) : (
           <MiniLineChart
             points={linePoints}
             dashedFromIndex={dashedFromIndex}
-            beforeLabel={beforeLabel}
-            afterLabel={afterLabel}
             tone={tone === "success" ? "success" : "danger"}
           />
         )}

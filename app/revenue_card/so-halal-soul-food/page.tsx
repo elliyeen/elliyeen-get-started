@@ -1,31 +1,123 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { reportData } from "@/lib/report-data";
-import { Navigation } from "@/components/Navigation";
+import SiteNav from "@/app/SiteNav";
 import { ReportHero } from "@/components/ReportHero";
-import { SectionShell } from "@/components/SectionShell";
 import { BigPictureCard } from "@/components/BigPictureCard";
-import { RoadmapStep } from "@/components/RoadmapStep";
-import { ImpactProjectionCard } from "@/components/ImpactProjectionCard";
+import { ReportWizard } from "@/components/ReportWizard";
 
 const CONTACT_MAILTO =
   "mailto:abdullah@elliyeen.com" +
   "?subject=Website%20audit%20inquiry%20%E2%80%94%20let%27s%20work%20together" +
   "&body=Hi%20Abbas%2C%0A%0AI%27d%20like%20to%20get%20my%20website%20audited%20by%20Elliyeen.%0A%0AWebsite%3A%20%5Bpaste%20your%20URL%20here%5D%0A%0ALooking%20forward%20to%20it.";
 
+const PAGE_URL = "https://www.elliyeen.com/revenue_card/so-halal-soul-food";
+const PAGE_IMAGE = "https://www.elliyeen.com/1000191521.jpg";
+
 export const metadata: Metadata = {
-  title: "So Halal Soul Food Website Audit — Revenue & CX Report · Elliyeen",
-  description:
-    "Mobile rendering broken on every phone. Order flow losing conversions at peak intent. Three ranked fixes worth $1.2K–$3K/mo (web channel) for So Halal Soul Food, Stone Mountain, GA.",
-  alternates: { canonical: "https://www.elliyeen.com/revenue_card/so-halal-soul-food" },
-  openGraph: {
-    title: "So Halal Soul Food — Website Audit & Revenue Report",
-    description:
-      "Site renders 1336px wide on a 390px screen. Three ranked fixes. $1.2K–$3K/mo verified web channel upside.",
-    url: "https://www.elliyeen.com/revenue_card/so-halal-soul-food",
-    siteName: "Elliyeen",
-    type: "article",
+  title: {
+    absolute: "So Halal Soul Food — Revenue & CX Audit · Elliyeen Research",
   },
+  description:
+    "Mobile site broken on every phone. Order flow losing conversions at peak intent. Three ranked fixes worth $1.2K–$3K/mo verified upside for So Halal Soul Food, Stone Mountain, GA.",
+  keywords: [
+    "So Halal Soul Food",
+    "Stone Mountain GA restaurant",
+    "halal soul food restaurant audit",
+    "restaurant website audit",
+    "restaurant revenue optimization",
+    "restaurant mobile experience",
+    "Elliyeen Research",
+    "QSR conversion rate",
+  ],
+  authors: [{ name: "Elliyeen Research", url: "https://www.elliyeen.com" }],
+  alternates: { canonical: PAGE_URL },
+  openGraph: {
+    title: "So Halal Soul Food — Revenue & CX Audit Report",
+    description:
+      "Site renders 1336px wide on a 390px screen. Three ranked fixes. $1.2K–$3K/mo verified web channel upside for So Halal Soul Food.",
+    url: PAGE_URL,
+    siteName: "Elliyeen Research",
+    type: "article",
+    publishedTime: "2026-06-25T00:00:00.000Z",
+    modifiedTime: "2026-06-25T00:00:00.000Z",
+    authors: ["https://www.elliyeen.com"],
+    images: [
+      {
+        url: PAGE_IMAGE,
+        width: 1200,
+        height: 630,
+        alt: "So Halal Soul Food — Revenue & CX Audit by Elliyeen Research",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "So Halal Soul Food — Revenue & CX Audit Report",
+    description:
+      "Three ranked fixes worth $1.2K–$3K/mo for So Halal Soul Food, Stone Mountain, GA.",
+    images: [PAGE_IMAGE],
+  },
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "@id": `${PAGE_URL}#breadcrumb`,
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://www.elliyeen.com" },
+    { "@type": "ListItem", position: 2, name: "Reports", item: "https://www.elliyeen.com/reports" },
+    { "@type": "ListItem", position: 3, name: "So Halal Soul Food — Revenue Audit", item: PAGE_URL },
+  ],
+};
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "@id": `${PAGE_URL}#article`,
+  headline: "So Halal Soul Food — Revenue & CX Audit Report",
+  description:
+    "Mobile rendering broken on every phone. Order flow losing conversions at peak intent. Three ranked fixes worth $1.2K–$3K/mo verified upside.",
+  datePublished: "2026-06-25",
+  dateModified: "2026-06-25",
+  author: { "@id": "https://www.elliyeen.com/#person" },
+  publisher: { "@id": "https://www.elliyeen.com/#organization" },
+  url: PAGE_URL,
+  mainEntityOfPage: { "@type": "WebPage", "@id": PAGE_URL },
+  image: { "@type": "ImageObject", url: PAGE_IMAGE, width: 1200, height: 630 },
+  about: {
+    "@type": "LocalBusiness",
+    name: "So Halal Soul Food",
+    url: "https://www.sohalalsoulfood.com",
+    servesCuisine: ["Soul Food", "Halal", "Caribbean"],
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Stone Mountain",
+      addressRegion: "GA",
+      addressCountry: "US",
+    },
+  },
+  keywords:
+    "So Halal Soul Food, restaurant revenue audit, mobile experience, Stone Mountain GA, halal restaurant, conversion optimization",
+};
+
+const webPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": PAGE_URL,
+  url: PAGE_URL,
+  name: "So Halal Soul Food — Revenue & CX Audit Report",
+  description:
+    "Mobile rendering broken on every phone. Three ranked fixes worth $1.2K–$3K/mo for So Halal Soul Food, Stone Mountain, GA.",
+  inLanguage: "en-US",
+  isPartOf: {
+    "@type": "WebSite",
+    "@id": "https://www.elliyeen.com/#website",
+    url: "https://www.elliyeen.com",
+    name: "Elliyeen Research",
+  },
+  breadcrumb: { "@id": `${PAGE_URL}#breadcrumb` },
+  potentialAction: { "@type": "ReadAction", target: PAGE_URL },
 };
 
 export default function SoHalalReportPage() {
@@ -34,20 +126,13 @@ export default function SoHalalReportPage() {
       className="min-h-screen text-[#111111]"
       style={{ backgroundColor: "#FBFAF7" }}
     >
+      {/* ── Structured data ──────────────────────────────────────── */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }} />
+
       {/* ── Navigation ──────────────────────────────────────────── */}
-      <Navigation
-        logo="ELLIYEEN"
-        links={[
-          { label: "How It Works",  href: "/#assessment"  },
-          { label: "Solutions",     href: "/#advisor"     },
-          { label: "Revenue Cards", href: "/reports"      },
-          { label: "Resources",     href: "/#lead-magnet" },
-          { label: "About",         href: "/about"        },
-        ]}
-        ctaLabel="Fix it"
-        ctaVariant="blue"
-        ctaHref={CONTACT_MAILTO}
-      />
+      <SiteNav />
 
       {/* ── Hero ────────────────────────────────────────────────── */}
       <ReportHero
@@ -62,7 +147,7 @@ export default function SoHalalReportPage() {
       />
 
       {/* ── Your Agentic Revenue Team ────────────────────────────── */}
-      <section className="mx-auto max-w-[1280px] px-8 py-20 text-center">
+      <section id="revenue-team" className="mx-auto max-w-[1280px] px-8 py-20 text-center">
         <h2
           className="font-serif font-bold text-[#111111]"
           style={{ fontSize: "clamp(22px, 3vw, 36px)", lineHeight: 1.15, letterSpacing: "-0.02em" }}
@@ -83,7 +168,7 @@ export default function SoHalalReportPage() {
       </section>
 
       {/* ── Key Findings ────────────────────────────────────────── */}
-      <section className="mx-auto max-w-[1280px] px-8 py-20">
+      <section id="key-findings" className="mx-auto max-w-[1280px] px-8 py-20">
         <div className="grid items-center gap-16 lg:grid-cols-[1.1fr_0.9fr]">
 
           {/* ── Left: numbered findings ───────────────────────────── */}
@@ -133,8 +218,8 @@ export default function SoHalalReportPage() {
                 </div>
               ))}
               {/* Total */}
-              <div className="border-t border-[#E7E2DA] pt-4">
-                <p className="text-xs font-semibold text-[#111111]">Combined monthly impact</p>
+              <div className="border-t border-[#E7E2DA] pt-4 text-right">
+                <p className="text-xs font-semibold text-[#111111]">Total Impact</p>
                 <p className="mt-1 font-mono text-2xl font-bold text-[#111111]">$1.2K–$3K <span className="text-base font-normal text-[#8A837A]">/mo</span></p>
                 <p className="mt-1 text-[10px] text-[#8A837A]">Web channel only — validate with POS data for total impact</p>
               </div>
@@ -145,19 +230,227 @@ export default function SoHalalReportPage() {
       </section>
 
       {/* ── Roadmap ─────────────────────────────────────────────── */}
-      <SectionShell number="3" title="Three Moves. Maximum Impact.">
-        <div className="grid gap-6 lg:grid-cols-[1fr_1fr_1fr_260px]">
-          {reportData.roadmap.map((step) => (
-            <RoadmapStep key={step.step} {...step} />
-          ))}
-          <ImpactProjectionCard
-            title="Cumulative Monthly Impact"
-            value="+$1.2K–$3K"
-            subtitle="in additional revenue"
-            bars={[18, 36, 58, 86]}
-          />
+      <section id="roadmap" className="mx-auto max-w-[1280px] px-8 py-24">
+
+        {/* Header */}
+        <div className="mb-14">
+          {/* Chip */}
+          <span
+            className="mb-5 inline-block rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-[0.18em] text-[#111111]"
+            style={{ backgroundColor: "#EDE8E0" }}
+          >
+            The Roadmap
+          </span>
+          {/* Headline */}
+          <h2
+            className="font-serif font-bold text-[#111111]"
+            style={{ fontSize: "clamp(34px, 4.5vw, 56px)", lineHeight: 1.05, letterSpacing: "-0.025em" }}
+          >
+            Three moves.<br />Maximum impact.
+          </h2>
+          {/* Description — left-aligned, under headline */}
+          <p className="mt-4 max-w-[480px] text-sm leading-7 text-[#555552]">
+            Ranked by confidence and speed to implement. Fix mobile first — it unblocks the other two and stops the bleeding immediately.
+          </p>
         </div>
-      </SectionShell>
+
+        {/* Step cards */}
+        <div className="grid gap-4 lg:grid-cols-3">
+
+          {/* ── Move 01 ── */}
+          <div className="relative rounded-2xl border border-[#E7E2DA] bg-white p-7 transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_8px_32px_rgba(0,0,0,0.10)]" style={{ boxShadow: "0 2px 20px rgba(0,0,0,0.04)" }}>
+            {/* Arrow */}
+            <div className="absolute -right-3 top-1/2 z-10 hidden -translate-y-1/2 lg:flex h-6 w-6 items-center justify-center rounded-full bg-white border border-[#E7E2DA] text-[#BBBAB4] text-xs" style={{ boxShadow: "0 1px 6px rgba(0,0,0,0.07)" }}>
+              →
+            </div>
+            <span className="mb-4 block text-[10px] font-bold uppercase tracking-[0.2em] text-[#111111]">Move 1</span>
+            <h3 className="mb-3 font-serif text-[19px] font-bold leading-snug text-[#111111]">Fix Mobile Experience</h3>
+            <p className="mb-6 text-[13px] leading-[1.7] text-[#555552]">
+              Eliminate horizontal scroll, optimize for every phone, and remove conversion friction at peak ordering intent.
+            </p>
+            <div className="space-y-3 border-t border-[#F0EBE3] pt-5">
+              <div className="flex items-center justify-between">
+                <span className="text-[11px] uppercase tracking-[0.12em] text-[#9E9994]">Impact</span>
+                <span className="font-mono text-[13px] font-bold text-[#111111]">+$2K–$4K/mo</span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-[11px] uppercase tracking-[0.12em] text-[#9E9994]">Time</span>
+                <span className="text-[12px] font-semibold text-[#111111]">2–4 hours</span>
+              </div>
+              <div className="flex items-center justify-between gap-4">
+                <span className="text-[11px] uppercase tracking-[0.12em] text-[#9E9994]">Confidence</span>
+                <div className="flex items-center gap-2">
+                  <div className="h-1 w-24 rounded-full bg-[#EDE8E0]">
+                    <div className="h-1 rounded-full bg-[#111111]" style={{ width: "85%" }} />
+                  </div>
+                  <span className="text-[11px] font-bold tabular-nums text-[#111111]">0.85</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* ── Move 02 ── */}
+          <div className="relative rounded-2xl border border-[#E7E2DA] bg-white p-7 transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_8px_32px_rgba(0,0,0,0.10)]" style={{ boxShadow: "0 2px 20px rgba(0,0,0,0.04)" }}>
+            <div className="absolute -right-3 top-1/2 z-10 hidden -translate-y-1/2 lg:flex h-6 w-6 items-center justify-center rounded-full bg-white border border-[#E7E2DA] text-[#BBBAB4] text-xs" style={{ boxShadow: "0 1px 6px rgba(0,0,0,0.07)" }}>
+              →
+            </div>
+            <span className="mb-4 block text-[10px] font-bold uppercase tracking-[0.2em] text-[#111111]">Move 2</span>
+            <h3 className="mb-3 font-serif text-[19px] font-bold leading-snug text-[#111111]">Optimizing Menu</h3>
+            <p className="mb-6 text-[13px] leading-[1.7] text-[#555552]">
+              Add direct ordering with Otter or similar to eliminate 20–30% third-party commission fees on every order.
+            </p>
+            <div className="space-y-3 border-t border-[#F0EBE3] pt-5">
+              <div className="flex items-center justify-between">
+                <span className="text-[11px] uppercase tracking-[0.12em] text-[#9E9994]">Impact</span>
+                <span className="font-mono text-[13px] font-bold text-[#111111]">+$1.8K–$4K/mo</span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-[11px] uppercase tracking-[0.12em] text-[#9E9994]">Time</span>
+                <span className="text-[12px] font-semibold text-[#111111]">1–2 weeks</span>
+              </div>
+              <div className="flex items-center justify-between gap-4">
+                <span className="text-[11px] uppercase tracking-[0.12em] text-[#9E9994]">Confidence</span>
+                <div className="flex items-center gap-2">
+                  <div className="h-1 w-24 rounded-full bg-[#EDE8E0]">
+                    <div className="h-1 rounded-full bg-[#111111]" style={{ width: "40%" }} />
+                  </div>
+                  <span className="text-[11px] font-bold tabular-nums text-[#111111]">0.40</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* ── Move 03 ── */}
+          <div className="relative rounded-2xl border border-[#E7E2DA] bg-white p-7 transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_8px_32px_rgba(0,0,0,0.10)]" style={{ boxShadow: "0 2px 20px rgba(0,0,0,0.04)" }}>
+            <span className="mb-4 block text-[10px] font-bold uppercase tracking-[0.2em] text-[#111111]">Move 3</span>
+            <h3 className="mb-3 font-serif text-[19px] font-bold leading-snug text-[#111111]">Build Higher-Value Offers</h3>
+            <p className="mb-6 text-[13px] leading-[1.7] text-[#555552]">
+              Introduce bundles and family meals to increase average order value without adding seats or staff.
+            </p>
+            <div className="space-y-3 border-t border-[#F0EBE3] pt-5">
+              <div className="flex items-center justify-between">
+                <span className="text-[11px] uppercase tracking-[0.12em] text-[#9E9994]">Impact</span>
+                <span className="font-mono text-[13px] font-bold text-[#111111]">+$800–$2K/mo</span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-[11px] uppercase tracking-[0.12em] text-[#9E9994]">Time</span>
+                <span className="text-[12px] font-semibold text-[#111111]">1 week</span>
+              </div>
+              <div className="flex items-center justify-between gap-4">
+                <span className="text-[11px] uppercase tracking-[0.12em] text-[#9E9994]">Confidence</span>
+                <div className="flex items-center gap-2">
+                  <div className="h-1 w-24 rounded-full bg-[#EDE8E0]">
+                    <div className="h-1 rounded-full bg-[#111111]" style={{ width: "45%" }} />
+                  </div>
+                  <span className="text-[11px] font-bold tabular-nums text-[#111111]">0.45</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* ── Revenue Model Assumptions ────────────────────────────── */}
+      <section id="assumptions" className="mx-auto max-w-[1280px] px-8 py-20">
+
+        {/* Header */}
+        <div className="mb-10">
+          <span
+            className="mb-5 inline-block rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-[0.18em] text-[#111111]"
+            style={{ backgroundColor: "#EDE8E0" }}
+          >
+            Financial Analysis
+          </span>
+          <h2
+            className="font-serif font-bold text-[#111111]"
+            style={{ fontSize: "clamp(28px, 3.5vw, 44px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}
+          >
+            Revenue model assumptions.
+          </h2>
+          <p className="mt-3 max-w-[520px] text-sm leading-7 text-[#555552]">
+            All projections use conservative estimates. No POS or revenue data was available — figures derived from menu analysis, site audit, and QSR industry benchmarks.
+          </p>
+        </div>
+
+        {/* Assumptions table card */}
+        <div className="rounded-2xl border border-[#E7E2DA] bg-white overflow-hidden" style={{ boxShadow: "0 4px 24px rgba(0,0,0,0.05)" }}>
+          {/* Table header */}
+          <div className="grid grid-cols-[1fr_auto] border-b border-[#F0EBE3] px-5 py-4 sm:grid-cols-[2fr_1.2fr_2fr] sm:px-7">
+            <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#9E9994]">Assumption</span>
+            <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#9E9994]">Value</span>
+            <span className="hidden text-[10px] font-bold uppercase tracking-[0.18em] text-[#9E9994] sm:block">Source / Note</span>
+          </div>
+          {/* Rows */}
+          {[
+            {
+              assumption: "Monthly website visits",
+              value: "~6,000",
+              note: "Estimated — Google search + Instagram/TikTok referrals",
+            },
+            {
+              assumption: "Mobile traffic share",
+              value: "72%",
+              note: "Primary acquisition via Instagram/TikTok — all mobile",
+            },
+            {
+              assumption: "Average order value (blended)",
+              value: "$18",
+              note: "60+ item menu, soul food QSR — typical 2–3 item order",
+            },
+            {
+              assumption: "Current conversion rate",
+              value: "7.08%",
+              note: "Below QSR benchmark of 9–12% — broken mobile is primary cause",
+            },
+            {
+              assumption: "Target conversion rate (post-fix)",
+              value: "10–12%",
+              note: "QSR industry benchmark with functional mobile experience",
+            },
+            {
+              assumption: "Estimated monthly web orders",
+              value: "~425",
+              note: "6,000 visits × 7.08% conversion",
+            },
+            {
+              assumption: "Estimated baseline monthly revenue (web)",
+              value: "~$7,650",
+              note: "425 orders × $18 AOV — web channel only",
+            },
+            {
+              assumption: "Third-party commission rate",
+              value: "20–30%",
+              note: "Otter platform fee on each order",
+            },
+            {
+              assumption: "Gross margin",
+              value: "55–65%",
+              note: "QSR industry benchmark — not verified against actuals",
+            },
+            {
+              assumption: "Analysis confidence",
+              value: "0.42",
+              note: "Menu and site verified. No POS or revenue data available.",
+            },
+          ].map((row, i) => (
+            <div
+              key={row.assumption}
+              className="grid grid-cols-[1fr_auto] px-5 py-4 transition-colors duration-150 hover:bg-[#FBFAF7] sm:grid-cols-[2fr_1.2fr_2fr] sm:px-7"
+              style={{ borderBottom: i < 9 ? "1px solid #F0EBE3" : undefined }}
+            >
+              <span className="text-[13px] font-semibold text-[#111111]">{row.assumption}</span>
+              <span className="font-mono text-[13px] font-bold text-[#111111]">{row.value}</span>
+              <span className="hidden text-[13px] text-[#555552] sm:block">{row.note}</span>
+            </div>
+          ))}
+        </div>
+
+        {/* Footnote */}
+        <p className="mt-4 text-[11px] text-[#9E9994]">
+          * Web channel only. Validate all figures against POS data before using for business decisions. See confidence scores in roadmap above.
+        </p>
+      </section>
 
       {/* ── Pre-footer CTA ──────────────────────────────────────── */}
       <section className="relative overflow-hidden" style={{ backgroundColor: "#0A0A0A" }}>
@@ -323,6 +616,8 @@ export default function SoHalalReportPage() {
           </div>
         </div>
       </footer>
+      {/* ── Guided Wizard ───────────────────────────────────────── */}
+      <ReportWizard />
     </main>
   );
 }
