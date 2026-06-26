@@ -37,8 +37,8 @@ const ALL_CASES = [
     imageAlt: "So Halal Soul Food — Stone Mountain, GA",
     href: "/reports/sohalal",
     reportLabel: "Read the full audit report",
-    secondaryHref: "",
-    secondaryLabel: "",
+    secondaryHref: "/revenue_card/so-halal-soul-food",
+    secondaryLabel: "View revenue card",
   },
   {
     industry: "Home Care",
