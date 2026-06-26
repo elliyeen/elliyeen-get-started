@@ -147,7 +147,7 @@ export default function SoHalalReportPage() {
       />
 
       {/* ── Your Agentic Revenue Team ────────────────────────────── */}
-      <section id="revenue-team" className="mx-auto max-w-[1280px] px-8 py-20 text-center">
+      <section id="revenue-team" className="mx-auto max-w-[1280px] px-4 py-12 text-center sm:px-8 sm:py-20">
         <h2
           className="font-serif font-bold text-[#111111]"
           style={{ fontSize: "clamp(22px, 3vw, 36px)", lineHeight: 1.15, letterSpacing: "-0.02em" }}
@@ -168,11 +168,11 @@ export default function SoHalalReportPage() {
       </section>
 
       {/* ── Key Findings ────────────────────────────────────────── */}
-      <section id="key-findings" className="mx-auto max-w-[1280px] px-8 py-20">
-        <div className="grid items-center gap-16 lg:grid-cols-[1.1fr_0.9fr]">
+      <section id="key-findings" className="mx-auto max-w-[1280px] px-4 py-12 sm:px-8 sm:py-20">
+        <div className="grid items-center gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
 
           {/* ── Left: numbered findings ───────────────────────────── */}
-          <div className="rounded-2xl border border-[#E7E2DA] bg-white p-8" style={{ boxShadow: "0 4px 24px rgba(0,0,0,0.05)" }}>
+          <div className="rounded-2xl border border-[#E7E2DA] bg-white p-5 sm:p-8" style={{ boxShadow: "0 4px 24px rgba(0,0,0,0.05)" }}>
             <p className="mb-6 text-xs font-bold uppercase tracking-[0.2em] text-[#111111]">
               Finding · Annual Impact
             </p>
@@ -230,10 +230,10 @@ export default function SoHalalReportPage() {
       </section>
 
       {/* ── Roadmap ─────────────────────────────────────────────── */}
-      <section id="roadmap" className="mx-auto max-w-[1280px] px-8 py-24">
+      <section id="roadmap" className="mx-auto max-w-[1280px] px-4 py-14 sm:px-8 lg:py-24">
 
         {/* Header */}
-        <div className="mb-14">
+        <div className="mb-8 lg:mb-14">
           {/* Chip */}
           <span
             className="mb-5 inline-block rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-[0.18em] text-[#111111]"
@@ -258,7 +258,7 @@ export default function SoHalalReportPage() {
         <div className="grid gap-4 lg:grid-cols-3">
 
           {/* ── Move 01 ── */}
-          <div className="relative rounded-2xl border border-[#E7E2DA] bg-white p-7 transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_8px_32px_rgba(0,0,0,0.10)]" style={{ boxShadow: "0 2px 20px rgba(0,0,0,0.04)" }}>
+          <div className="relative rounded-2xl border border-[#E7E2DA] bg-white p-5 sm:p-7 transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_8px_32px_rgba(0,0,0,0.10)]" style={{ boxShadow: "0 2px 20px rgba(0,0,0,0.04)" }}>
             {/* Arrow */}
             <div className="absolute -right-3 top-1/2 z-10 hidden -translate-y-1/2 lg:flex h-6 w-6 items-center justify-center rounded-full bg-white border border-[#E7E2DA] text-[#BBBAB4] text-xs" style={{ boxShadow: "0 1px 6px rgba(0,0,0,0.07)" }}>
               →
@@ -290,7 +290,7 @@ export default function SoHalalReportPage() {
           </div>
 
           {/* ── Move 02 ── */}
-          <div className="relative rounded-2xl border border-[#E7E2DA] bg-white p-7 transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_8px_32px_rgba(0,0,0,0.10)]" style={{ boxShadow: "0 2px 20px rgba(0,0,0,0.04)" }}>
+          <div className="relative rounded-2xl border border-[#E7E2DA] bg-white p-5 sm:p-7 transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_8px_32px_rgba(0,0,0,0.10)]" style={{ boxShadow: "0 2px 20px rgba(0,0,0,0.04)" }}>
             <div className="absolute -right-3 top-1/2 z-10 hidden -translate-y-1/2 lg:flex h-6 w-6 items-center justify-center rounded-full bg-white border border-[#E7E2DA] text-[#BBBAB4] text-xs" style={{ boxShadow: "0 1px 6px rgba(0,0,0,0.07)" }}>
               →
             </div>
@@ -321,7 +321,7 @@ export default function SoHalalReportPage() {
           </div>
 
           {/* ── Move 03 ── */}
-          <div className="relative rounded-2xl border border-[#E7E2DA] bg-white p-7 transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_8px_32px_rgba(0,0,0,0.10)]" style={{ boxShadow: "0 2px 20px rgba(0,0,0,0.04)" }}>
+          <div className="relative rounded-2xl border border-[#E7E2DA] bg-white p-5 sm:p-7 transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_8px_32px_rgba(0,0,0,0.10)]" style={{ boxShadow: "0 2px 20px rgba(0,0,0,0.04)" }}>
             <span className="mb-4 block text-[10px] font-bold uppercase tracking-[0.2em] text-[#111111]">Move 3</span>
             <h3 className="mb-3 font-serif text-[19px] font-bold leading-snug text-[#111111]">Build Higher-Value Offers</h3>
             <p className="mb-6 text-[13px] leading-[1.7] text-[#555552]">
@@ -352,10 +352,10 @@ export default function SoHalalReportPage() {
       </section>
 
       {/* ── Revenue Model Assumptions ────────────────────────────── */}
-      <section id="assumptions" className="mx-auto max-w-[1280px] px-8 py-20">
+      <section id="assumptions" className="mx-auto max-w-[1280px] px-4 py-12 sm:px-8 sm:py-20">
 
         {/* Header */}
-        <div className="mb-10">
+        <div className="mb-6 sm:mb-10">
           <span
             className="mb-5 inline-block rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-[0.18em] text-[#111111]"
             style={{ backgroundColor: "#EDE8E0" }}

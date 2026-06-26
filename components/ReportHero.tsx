@@ -12,7 +12,7 @@ export function ReportHero({
   confidenceNote,
 }: ReportHeroProps) {
   return (
-    <div className="relative w-full overflow-hidden" style={{ height: "320px" }}>
+    <div className="relative w-full overflow-hidden" style={{ minHeight: "320px" }}>
 
       {/* ── Full-bleed image ──────────────────────────────────── */}
       <Image
@@ -59,7 +59,7 @@ export function ReportHero({
         {/* Description — narrowest */}
         <p
           className="mt-4 text-white/90"
-          style={{ fontSize: 17, lineHeight: 1.65, maxWidth: 520 }}
+          style={{ fontSize: "clamp(14px, 2.5vw, 17px)", lineHeight: 1.65, maxWidth: 520 }}
         >
           {description}
         </p>
