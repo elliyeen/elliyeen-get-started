@@ -18,11 +18,11 @@ export function Navigation({ logo, links, ctaLabel, ctaVariant = "dark", ctaHref
         <div className="hidden items-center gap-8 md:flex">
           {links.map((link) => (
             <a
-              key={link}
-              href="#"
-              className="text-sm font-medium text-[#8A837A] transition-colors hover:text-[#111111]"
+              key={link.href}
+              href={link.href}
+              className="text-sm font-medium text-[#111111] transition-colors hover:text-[#111111]"
             >
-              {link}
+              {link.label}
             </a>
           ))}
         </div>

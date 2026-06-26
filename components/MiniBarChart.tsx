@@ -31,8 +31,8 @@ export function MiniBarChart({
         <rect x="68" y={4 + H - afterH} width="22" height={afterH} fill={barColor} rx="2" />
 
         {/* Labels */}
-        <text x="43" y="86" fontSize="6" textAnchor="middle" fill="#8A837A">{beforeLabel}</text>
-        <text x="79" y="86" fontSize="6" textAnchor="middle" fill="#8A837A">{afterLabel}</text>
+        <text x="43" y="86" fontSize="6" textAnchor="middle" fill="#111111">{beforeLabel}</text>
+        <text x="79" y="86" fontSize="6" textAnchor="middle" fill="#111111">{afterLabel}</text>
       </svg>
     </div>
   );

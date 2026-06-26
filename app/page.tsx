@@ -152,7 +152,7 @@ export default function GetStartedPage() {
               <a href={CONTACT_MAILTO} className="inline-flex min-h-[52px] items-center justify-center rounded-xl bg-[#1B5EA8] px-6 text-sm font-bold text-white shadow-xl shadow-[#1B5EA8]/20 hover:bg-[#164d8e]">
                 Fix it
               </a>
-              <a href="#assessment" className="inline-flex min-h-[52px] items-center justify-center gap-2 rounded-xl px-6 text-sm font-bold hover:bg-white">
+              <a href="/#assessment" className="inline-flex min-h-[52px] items-center justify-center gap-2 rounded-xl px-6 text-sm font-bold hover:bg-white">
                 See how it works <ArrowRight size={16} />
               </a>
             </div>
@@ -475,17 +475,17 @@ export default function GetStartedPage() {
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-widest text-zinc-900">Product</p>
                   <ul className="mt-4 space-y-3 text-sm text-zinc-600">
-                    <li><a href="#assessment"  className="hover:text-black">How It Works</a></li>
-                    <li><a href="#advisor"      className="hover:text-black">See the Work</a></li>
-                    <li><a href="#pricing"      className="hover:text-black">Pricing</a></li>
+                    <li><a href="/#assessment"  className="hover:text-black">How It Works</a></li>
+                    <li><a href="/#advisor"      className="hover:text-black">See the Work</a></li>
+                    <li><a href="/#pricing"      className="hover:text-black">Pricing</a></li>
                     <li><a href="/faq"          className="hover:text-black">FAQ</a></li>
                   </ul>
                 </div>
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-widest text-zinc-900">Services</p>
                   <ul className="mt-4 space-y-3 text-sm text-zinc-600">
-                    <li><a href="#cases"         className="hover:text-black">Industries</a></li>
-                    <li><a href="#pricing" className="hover:text-black">Full Audit</a></li>
+                    <li><a href="/case-studies"   className="hover:text-black">Industries</a></li>
+                    <li><a href="/#pricing"       className="hover:text-black">Full Audit</a></li>
                   </ul>
                 </div>
                 <div>

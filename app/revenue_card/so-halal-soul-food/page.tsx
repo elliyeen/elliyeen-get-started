@@ -5,9 +5,6 @@ import { Navigation } from "@/components/Navigation";
 import { ReportHero } from "@/components/ReportHero";
 import { SectionShell } from "@/components/SectionShell";
 import { BigPictureCard } from "@/components/BigPictureCard";
-import { FindingList } from "@/components/FindingList";
-import { OpportunityMap } from "@/components/OpportunityMap";
-import { OpportunitySizeCard } from "@/components/OpportunitySizeCard";
 import { RoadmapStep } from "@/components/RoadmapStep";
 import { ImpactProjectionCard } from "@/components/ImpactProjectionCard";
 
@@ -19,12 +16,12 @@ const CONTACT_MAILTO =
 export const metadata: Metadata = {
   title: "So Halal Soul Food Website Audit — Revenue & CX Report · Elliyeen",
   description:
-    "Mobile rendering broken on every phone. Order flow losing conversions at peak intent. Three ranked fixes worth $4.6K–$10K/mo for So Halal Soul Food, Stone Mountain, GA.",
+    "Mobile rendering broken on every phone. Order flow losing conversions at peak intent. Three ranked fixes worth $1.2K–$3K/mo (web channel) for So Halal Soul Food, Stone Mountain, GA.",
   alternates: { canonical: "https://www.elliyeen.com/revenue_card/so-halal-soul-food" },
   openGraph: {
     title: "So Halal Soul Food — Website Audit & Revenue Report",
     description:
-      "Site renders 1336px wide on a 390px screen. Three ranked fixes. $4.6K–$10K/mo estimated upside.",
+      "Site renders 1336px wide on a 390px screen. Three ranked fixes. $1.2K–$3K/mo verified web channel upside.",
     url: "https://www.elliyeen.com/revenue_card/so-halal-soul-food",
     siteName: "Elliyeen",
     type: "article",
@@ -35,12 +32,18 @@ export default function SoHalalReportPage() {
   return (
     <main
       className="min-h-screen text-[#111111]"
-      style={{ backgroundColor: "#FBFAF7", fontFamily: "system-ui, sans-serif" }}
+      style={{ backgroundColor: "#FBFAF7" }}
     >
       {/* ── Navigation ──────────────────────────────────────────── */}
       <Navigation
         logo="ELLIYEEN"
-        links={["How It Works", "Solutions", "Revenue Cards", "Resources", "About"]}
+        links={[
+          { label: "How It Works",  href: "/#assessment"  },
+          { label: "Solutions",     href: "/#advisor"     },
+          { label: "Revenue Cards", href: "/reports"      },
+          { label: "Resources",     href: "/#lead-magnet" },
+          { label: "About",         href: "/about"        },
+        ]}
         ctaLabel="Fix it"
         ctaVariant="blue"
         ctaHref={CONTACT_MAILTO}
@@ -58,38 +61,88 @@ export default function SoHalalReportPage() {
         confidenceNote={reportData.business.confidence}
       />
 
-      {/* ── The Big Picture ─────────────────────────────────────── */}
-      <SectionShell number="1" title="The Big Picture">
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+      {/* ── Your Agentic Revenue Team ────────────────────────────── */}
+      <section className="mx-auto max-w-[1280px] px-8 py-20 text-center">
+        <h2
+          className="font-serif font-bold text-[#111111]"
+          style={{ fontSize: "clamp(22px, 3vw, 36px)", lineHeight: 1.15, letterSpacing: "-0.02em" }}
+        >
+          Your Agentic Revenue Team
+        </h2>
+        <p className="mx-auto mt-4 text-[#111111]" style={{ fontSize: 16, lineHeight: 1.7, maxWidth: 520 }}>
+          Find money that is left on the table. Improve customer experience and increase your revenue.
+        </p>
+
+        <div className="mt-10 grid gap-5 text-left md:grid-cols-2 lg:grid-cols-4">
           {reportData.bigPicture.map((item) => (
-            <BigPictureCard key={item.title} {...item} />
+            <div key={item.title} className="rounded-2xl border border-[#E7E2DA] bg-white" style={{ boxShadow: "0 2px 16px rgba(0,0,0,0.05)" }}>
+              <BigPictureCard {...item} />
+            </div>
           ))}
         </div>
-      </SectionShell>
+      </section>
 
       {/* ── Key Findings ────────────────────────────────────────── */}
-      <SectionShell number="2" title="Key Findings" subtitle="Where value is leaking.">
-        <div className="grid gap-6 lg:grid-cols-[1fr_1.2fr_1fr]">
-          <FindingList findings={reportData.findings} />
-          <OpportunityMap
-            caption="All social visitors today land on a broken mobile experience."
-            hotspots={[
-              { x: 52, y: 38, size: "lg", intensity: "high" },
-              { x: 38, y: 28, size: "md", intensity: "medium" },
-              { x: 34, y: 20, size: "sm", intensity: "medium" },
-              { x: 44, y: 18, size: "sm", intensity: "low" },
-              { x: 62, y: 42, size: "sm", intensity: "low" },
-              { x: 29, y: 38, size: "sm", intensity: "low" },
-            ]}
-          />
-          <OpportunitySizeCard
-            items={reportData.opportunitySize}
-            totalLabel="Combined monthly impact"
-            totalValue="$4.6K–$10K /mo"
-            note="[ASSUMPTION] — validate with POS data"
-          />
+      <section className="mx-auto max-w-[1280px] px-8 py-20">
+        <div className="grid items-center gap-16 lg:grid-cols-[1.1fr_0.9fr]">
+
+          {/* ── Left: numbered findings ───────────────────────────── */}
+          <div className="rounded-2xl border border-[#E7E2DA] bg-white p-8" style={{ boxShadow: "0 4px 24px rgba(0,0,0,0.05)" }}>
+            <p className="mb-6 text-xs font-bold uppercase tracking-[0.2em] text-[#111111]">
+              Finding · Annual Impact
+            </p>
+            <div className="space-y-0">
+              {reportData.findings.map((f) => (
+                <div key={f.rank} className="flex items-start gap-5 border-b border-[#F7EEE7] py-5 last:border-0">
+                  <div className="min-w-0 flex-1">
+                    <p className="text-sm font-bold text-[#111111]">{f.title}</p>
+                    <p className="mt-0.5 text-xs text-[#111111]">{f.description}</p>
+                  </div>
+                  <span className="shrink-0 font-mono text-sm font-bold text-[#B91C1C]">{f.value}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* ── Right: label + headline + opportunity size ─────────── */}
+          <div>
+            {/* Label */}
+            <span className="text-xs font-bold uppercase tracking-[0.2em]" style={{ color: "#B91C1C" }}>
+              Key Findings
+            </span>
+
+            {/* Headline */}
+            <h2
+              className="mt-4 font-serif font-bold text-[#111111]"
+              style={{ fontSize: "clamp(28px, 3.5vw, 44px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}
+            >
+              What&apos;s costing you customers and revenue.
+            </h2>
+
+            <p className="mt-4 text-sm leading-6 text-[#111111]">
+              These aren&apos;t hypothetical gaps. Every finding below was verified against the live site, menu pricing, and QSR industry benchmarks.
+            </p>
+
+            {/* Opportunity size */}
+            <div className="mt-8 space-y-4">
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#111111]">Opportunity Size · 10-Month Impact</p>
+              {reportData.opportunitySize.map((item) => (
+                <div key={item.label} className="flex items-center justify-between border-b border-[#F7EEE7] pb-4">
+                  <span className="text-sm text-[#111111]">{item.label}</span>
+                  <span className="font-mono text-sm font-bold text-[#111111]">{item.value}</span>
+                </div>
+              ))}
+              {/* Total */}
+              <div className="border-t border-[#E7E2DA] pt-4">
+                <p className="text-xs font-semibold text-[#111111]">Combined monthly impact</p>
+                <p className="mt-1 font-mono text-2xl font-bold text-[#111111]">$1.2K–$3K <span className="text-base font-normal text-[#8A837A]">/mo</span></p>
+                <p className="mt-1 text-[10px] text-[#8A837A]">Web channel only — validate with POS data for total impact</p>
+              </div>
+            </div>
+          </div>
+
         </div>
-      </SectionShell>
+      </section>
 
       {/* ── Roadmap ─────────────────────────────────────────────── */}
       <SectionShell number="3" title="Three Moves. Maximum Impact.">
@@ -99,7 +152,7 @@ export default function SoHalalReportPage() {
           ))}
           <ImpactProjectionCard
             title="Cumulative Monthly Impact"
-            value="+$4.6K–$10K"
+            value="+$1.2K–$3K"
             subtitle="in additional revenue"
             bars={[18, 36, 58, 86]}
           />

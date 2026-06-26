@@ -41,25 +41,25 @@ export function BigPictureCard({
   const color = toneColor[tone] ?? "#B91C1C";
 
   return (
-    <div className="flex flex-col p-6">
+    <div className="flex h-full flex-col p-6">
       <p
-        className="font-sans font-bold uppercase tracking-[0.08em] text-[#8A837A]"
-        style={{ fontSize: 10 }}
+        className="font-sans font-bold uppercase tracking-[0.08em] text-[#111111]"
+        style={{ fontSize: 12 }}
       >
         {title}
       </p>
 
       <p
         className="mt-3 font-serif font-medium leading-none tracking-tight"
-        style={{ fontSize: 36, color }}
+        style={{ fontSize: 28, color }}
       >
         {value}
         {valueSuffix && (
-          <span style={{ fontSize: 20, color }}>{valueSuffix}</span>
+          <span style={{ fontSize: 16, color }}>{valueSuffix}</span>
         )}
       </p>
 
-      <p className="mt-2 text-xs leading-5 text-[#5F5A52]">{description}</p>
+      <p className="mt-2 text-sm leading-6 text-[#111111]">{description}</p>
 
       <div className="mt-auto">
         {chartType === "bar" ? (

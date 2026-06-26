@@ -5,6 +5,7 @@ export type MetricCardProps = {
   label: string;
   note: string;
   tone?: Tone;
+  dark?: boolean;
 };
 
 export type BigPictureCardProps = {
@@ -98,7 +99,7 @@ export type SectionShellProps = {
 
 export type NavigationProps = {
   logo: string;
-  links: string[];
+  links: { label: string; href: string }[];
   ctaLabel: string;
   ctaVariant?: "dark" | "blue";
   ctaHref?: string;
