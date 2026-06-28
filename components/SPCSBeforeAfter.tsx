@@ -6,18 +6,27 @@ import { ArrowRight } from "lucide-react";
 const tabs = [
   {
     id: "before",
-    label: "Original Site",
+    label: "Original",
+    labelLg: "Original Site",
     badge: "Before",
     url: "savannahpersonalcareservices.com",
-    img: "/spcs-before.png",
+    images: [
+      { src: "/spcs-before.png",       alt: "Original homepage hero",      eager: true  },
+      { src: "/spcs-before-lower.png", alt: "Original services section",   eager: false },
+    ],
     note: "Generic Wix template. Placeholder FAQs visible to families in crisis. No founder identity. No clinical credential on page.",
   },
   {
     id: "after",
-    label: "Rebuilt Site",
+    label: "Rebuilt",
+    labelLg: "Rebuilt Site",
     badge: "After",
     url: "elliyeen.github.io/savannah-pcs",
-    img: "/spcs-after.png",
+    images: [
+      { src: "/spcs-after.png",        alt: "Rebuilt homepage hero",                  eager: true  },
+      { src: "/spcs-after-care.png",   alt: "Why families choose Savannah section",   eager: false },
+      { src: "/spcs-after-cta.png",    alt: "Get started section and footer",         eager: false },
+    ],
     note: "Opens with the buyer's exact fear. Shannon's CNA credential leads. Care Standards process named and owned. Mobile-first. No stock photo carousels.",
   },
 ];
@@ -30,7 +39,7 @@ export default function SPCSBeforeAfter() {
     <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
       <div className="rounded-[2rem] border border-zinc-200 bg-white overflow-hidden shadow-xl shadow-zinc-900/5">
 
-        {/* Top label bar */}
+        {/* Header */}
         <div className="border-b border-zinc-100 px-6 py-5 sm:px-10 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <h2 className="font-serif text-3xl tracking-[-0.04em] sm:text-4xl md:text-[2.6rem] leading-[1.05]">
@@ -49,13 +58,14 @@ export default function SPCSBeforeAfter() {
               <button
                 key={tab.id}
                 onClick={() => setActive(tab.id)}
-                className={`flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold transition-all ${
+                className={`flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-semibold transition-all ${
                   active === tab.id
                     ? "bg-white text-zinc-900 shadow-sm border border-zinc-200"
                     : "text-zinc-500 hover:text-zinc-800"
                 }`}
               >
-                {tab.label}
+                <span className="sm:hidden">{tab.label}</span>
+                <span className="hidden sm:inline">{tab.labelLg}</span>
               </button>
             ))}
           </div>
@@ -66,7 +76,7 @@ export default function SPCSBeforeAfter() {
           <div className="rounded-t-2xl border border-zinc-200 border-b-0 bg-white overflow-hidden shadow-lg shadow-zinc-900/8">
 
             {/* Browser chrome */}
-            <div className="flex items-center gap-3 border-b border-zinc-100 px-4 py-3 bg-zinc-50">
+            <div className="flex items-center gap-3 border-b border-zinc-100 px-4 py-3 bg-zinc-50 sticky top-0 z-10">
               <div className="flex gap-1.5">
                 <span className="h-3 w-3 rounded-full bg-red-400/70" />
                 <span className="h-3 w-3 rounded-full bg-amber-400/70" />
@@ -86,18 +96,28 @@ export default function SPCSBeforeAfter() {
               </span>
             </div>
 
-            {/* Screenshot */}
-            <div className="relative overflow-hidden" style={{ aspectRatio: "16/9" }}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                key={current.id}
-                src={current.img}
-                alt={`${current.label} — Savannah Personal Care Services`}
-                className="w-full object-cover object-top transition-opacity duration-300"
-                style={{ height: "100%", objectFit: "cover", objectPosition: "top" }}
-              />
-              {/* Fade out at bottom */}
-              <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#f7f4ee] to-transparent" />
+            {/* Stacked screenshots — fixed viewport height so images preview at a contained size */}
+            <div
+              key={current.id}
+              className="relative overflow-hidden"
+              style={{ maxHeight: "420px" }}
+            >
+              {current.images.map((image, i) => (
+                <div key={image.src}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={image.src}
+                    alt={`${image.alt} — Savannah Personal Care Services`}
+                    loading={image.eager ? "eager" : "lazy"}
+                    className="w-full block"
+                  />
+                  {i < current.images.length - 1 && (
+                    <div className="h-px bg-zinc-100" />
+                  )}
+                </div>
+              ))}
+              {/* Fade to background at bottom */}
+              <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-28 bg-gradient-to-t from-[#f7f4ee] to-transparent" />
             </div>
           </div>
         </div>
