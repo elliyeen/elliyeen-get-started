@@ -184,7 +184,7 @@ export default function ReportsPage() {
               <a
                 key={s.label}
                 href={`#${s.label.toLowerCase().replace(/\s+/g, "-")}`}
-                className="rounded-full border border-zinc-200 bg-white px-4 py-1.5 text-xs font-semibold text-zinc-600 transition hover:border-zinc-400 hover:text-zinc-900"
+                className="rounded-md border border-zinc-200 bg-white px-4 py-1.5 text-xs font-semibold text-zinc-600 transition hover:border-zinc-400 hover:text-zinc-900"
               >
                 {s.label}
               </a>
@@ -207,7 +207,7 @@ export default function ReportsPage() {
                       {section.title}
                     </h2>
                   </div>
-                  <span className="shrink-0 rounded-full bg-zinc-100 px-3 py-1 text-xs font-semibold text-zinc-500">
+                  <span className="shrink-0 text-xs font-semibold text-zinc-400">
                     {section.reports.length} {section.reports.length === 1 ? "report" : "reports"}
                   </span>
                 </div>
@@ -233,17 +233,17 @@ export default function ReportsPage() {
                           </p>
                           {r.badge && (
                             <span
-                              className={`rounded-full px-2 py-0.5 text-xs font-semibold ${
+                              className={`text-xs font-bold uppercase tracking-[0.15em] ${
                                 r.badge === "New"
-                                  ? "bg-[#1B5EA8]/10 text-[#1B5EA8]"
-                                  : "bg-amber-100 text-amber-700"
+                                  ? "text-[#1B5EA8]"
+                                  : "text-amber-600"
                               }`}
                             >
                               {r.badge}
                             </span>
                           )}
                           {r.score && (
-                            <span className="rounded-full bg-red-50 px-2 py-0.5 text-xs font-semibold text-red-500">
+                            <span className="text-xs font-bold text-red-500">
                               Score {r.score}
                             </span>
                           )}
@@ -293,7 +293,7 @@ export default function ReportsPage() {
           </h2>
           <a
             href="mailto:abdullah@elliyeen.com?subject=Website%20audit%20inquiry%20%E2%80%94%20let%27s%20work%20together&body=Hi%20Abbas%2C%0A%0AI%27d%20like%20to%20get%20my%20website%20audited%20by%20Elliyeen.%0A%0AWebsite%3A%20%5Bpaste%20your%20URL%20here%5D%0A%0ALooking%20forward%20to%20it."
-            className="mt-6 inline-flex items-center justify-center rounded-full bg-[#1B5EA8] px-6 py-3 text-sm font-bold text-white hover:bg-[#164d8e]"
+            className="mt-6 inline-flex items-center justify-center rounded-xl bg-[#1B5EA8] px-6 py-3 text-sm font-bold text-white hover:bg-[#164d8e]"
           >
             Get your free diagnosis
           </a>

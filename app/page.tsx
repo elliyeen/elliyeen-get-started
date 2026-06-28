@@ -386,13 +386,13 @@ export default function GetStartedPage() {
             <div className="mt-6 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:justify-center">
               <a
                 href={CONTACT_MAILTO}
-                className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-xl bg-[#1B5EA8] px-6 text-sm font-bold text-white shadow-md shadow-[#1B5EA8]/20 hover:bg-[#164d8e]"
+                className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-xl bg-[#1B5EA8] px-6 text-sm font-bold text-white shadow-md shadow-[#1B5EA8]/20 hover:bg-[#164d8e] sm:min-w-[180px]"
               >
                 Fix it <ArrowRight size={15} />
               </a>
               <a
                 href="/how-it-works"
-                className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-xl border border-zinc-200 px-6 text-sm font-semibold text-zinc-600 hover:border-zinc-400 hover:text-black"
+                className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-xl border border-zinc-200 px-6 text-sm font-semibold text-zinc-600 hover:border-zinc-400 hover:text-black sm:min-w-[180px]"
               >
                 See how it works <ArrowRight size={15} />
               </a>
