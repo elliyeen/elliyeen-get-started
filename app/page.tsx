@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import SiteNav from "./SiteNav";
 import ScrollReveal from "./ScrollReveal";
 import CasesCarousel from "@/components/CasesCarousel";
-import { ArrowRight, CheckCircle2, LineChart, Search, Sparkles, Users } from "lucide-react";
+import { ArrowRight, CheckCircle2, Sparkles } from "lucide-react";
 
 const CONTACT_MAILTO =
   "mailto:abdullah@elliyeen.com" +
@@ -13,33 +13,16 @@ export const metadata: Metadata = {
   title: "Elliyeen Research — Website Audit & Revenue Diagnosis",
   description:
     "We audit every layer of your website — copy, trust, UX, SEO, conversion, and AI search readiness — using 18 specialist frameworks. Then we tell you exactly what to fix, in what order, with copy rewrites included.",
+  keywords: ["Customer Intelligence", "Buyer Research", "Friction Diagnosis", "Website Audit", "Implementation Support", "Growth System"],
   alternates: { canonical: "https://www.elliyeen.com" },
 };
 
 const process = [
   {
-    icon: Users,
-    title: "Customer Intelligence",
-    type: "Buyer Research",
-    body: "We map your buyer's trigger moment, dominant emotion, and the exact language they use when they feel the problem you solve. Delivered as a written customer brief.",
-  },
-  {
-    icon: Search,
-    title: "Friction Diagnosis",
-    type: "Website Audit",
-    body: "We run 18 specialist frameworks across your copy, UX, trust signals, SEO, accessibility, and conversion architecture. Every gap documented with evidence.",
-  },
-  {
     icon: Sparkles,
     title: "Prioritized Roadmap",
     type: "Revenue Model",
     body: "We rank every finding by revenue impact. You receive copy rewrites, UX recommendations, and a week-by-week action plan — not a PDF that sits in a folder.",
-  },
-  {
-    icon: LineChart,
-    title: "Implementation Support",
-    type: "Growth System",
-    body: "We review your changes, run a second-pass audit, and measure what moved. Every implementation tracked against a baseline.",
   },
 ];
 
