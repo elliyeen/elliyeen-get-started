@@ -413,41 +413,6 @@ export default function GetStartedPage() {
           </div>
         </section>
 
-        {/* Objection FAQ */}
-        <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
-          <div className="rounded-[2rem] border border-zinc-200 bg-white p-8 md:p-12">
-            <div className="mb-8">
-              <p className="text-xs font-bold uppercase tracking-[0.28em] text-zinc-500">Common questions</p>
-              <h2 className="mt-4 font-serif text-3xl tracking-[-0.03em] md:text-4xl">Before you decide.</h2>
-            </div>
-            <div className="grid gap-6 md:grid-cols-2">
-              {[
-                {
-                  q: "How long does the audit take?",
-                  a: "Four hours or less. Customer intelligence, 22-framework diagnosis, prioritized roadmap, and copy rewrites are completed in a single session — not spread across days or weeks.",
-                },
-                {
-                  q: "How is this different from an agency giving us recommendations?",
-                  a: "Agencies give you a list. We give you the replacement copy. Every finding in our report includes the specific fix — the actual headline, the rewritten CTA, the exact objection response — ready to implement. You don't need to hire another writer to act on what we find.",
-                },
-                {
-                  q: "Can't we audit our own site?",
-                  a: "You can. The problem is you read it as the person who built it — you see what you meant to say, not what a stranger sees for the first time. We bring 18 frameworks that most in-house teams don't run, applied simultaneously across every layer of your site. The findings are things you wouldn't catch because you're too close to it.",
-                },
-                {
-                  q: "How long until we see results from the changes?",
-                  a: "The roadmap is ranked by speed of impact, not complexity. Most clients implement the first change within a week of receiving the report. Changes to hero copy and CTA structure tend to show movement within two to four weeks. We stay available to review your implementations and measure what moved.",
-                },
-              ].map(({ q, a }) => (
-                <div key={q} className="rounded-2xl border border-zinc-100 bg-[#f7f4ee] p-6">
-                  <p className="font-semibold text-zinc-900">{q}</p>
-                  <p className="mt-3 text-sm leading-6 text-zinc-600">{a}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* Footer — all links point to real anchors */}
         <footer className="border-t border-zinc-100 bg-white">
           <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-12">
