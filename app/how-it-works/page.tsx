@@ -50,27 +50,27 @@ const howToSchema = {
 const steps = [
   {
     number: "01",
-    title: "Customer Intelligence",
-    type: "Buyer Research",
-    body: "We map your buyer's trigger moment, dominant emotion, and the exact language they use when they feel the problem you solve. Delivered as a written customer brief.",
+    title: "Know your buyer's exact language before writing a word.",
+    type: "Customer Intelligence",
+    body: "We map the trigger moment, dominant emotion, and the precise phrasing buyers use when they feel the problem you solve.",
   },
   {
     number: "02",
-    title: "Friction Diagnosis",
-    type: "Website Audit",
-    body: "We run 18 specialist frameworks across your copy, UX, trust signals, SEO, accessibility, and conversion architecture. Every gap documented with evidence.",
+    title: "Surface every revenue gap across 18 frameworks in a single session.",
+    type: "Friction Diagnosis",
+    body: "Copy, UX, trust signals, SEO, accessibility, and conversion architecture — audited simultaneously, every finding documented with evidence.",
   },
   {
     number: "03",
-    title: "Prioritized Roadmap",
-    type: "Revenue Model",
-    body: "We rank every finding by revenue impact. You receive copy rewrites, UX recommendations, and a week-by-week action plan — not a PDF that sits in a folder.",
+    title: "Receive the replacement copy, ranked by revenue impact, ready to ship.",
+    type: "Prioritized Roadmap",
+    body: "Not a list of recommendations. The actual rewritten headline, the fixed CTA, the resolved objection — ranked by what moves revenue fastest.",
   },
   {
     number: "04",
-    title: "Implementation Support",
-    type: "Growth System",
-    body: "We review your changes, run a second-pass audit, and measure what moved. Every implementation tracked against a baseline.",
+    title: "Track every change against a baseline so you know exactly what moved.",
+    type: "Implementation Support",
+    body: "We review your implementations, run a second-pass audit, and measure what changed — so results are visible, not assumed.",
   },
 ];
 
@@ -98,10 +98,10 @@ export default function HowItWorksPage() {
 
           <p className="text-xs font-bold uppercase tracking-[0.28em] text-zinc-500">Our process</p>
           <h1 className="mt-4 font-serif text-4xl tracking-[-0.03em] sm:text-5xl">
-            From insight to impact.
+            Find the gap. Write the fix. Ship it.
           </h1>
           <p className="mt-6 text-base leading-7 text-zinc-600">
-            Four steps. Completed in a single engagement. Every deliverable in writing — no retainer required.
+            Four steps. One engagement. Every deliverable in writing — the diagnosis, the copy, the roadmap, and the measurement. No retainer required.
           </p>
 
           <div className="mt-14 space-y-10">

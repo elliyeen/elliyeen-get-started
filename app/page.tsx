@@ -20,9 +20,9 @@ export const metadata: Metadata = {
 const process = [
   {
     icon: Sparkles,
-    title: "Prioritized Roadmap",
-    type: "Revenue Model",
-    body: "We rank every finding by revenue impact. You receive copy rewrites, UX recommendations, and a week-by-week action plan — not a PDF that sits in a folder.",
+    title: "Receive the replacement copy, ranked by revenue impact, ready to ship.",
+    type: "Prioritized Roadmap",
+    body: "Not a list of recommendations. The actual rewritten headline, the fixed CTA, the resolved objection — ranked by what moves revenue fastest.",
   },
 ];
 
@@ -332,7 +332,7 @@ export default function GetStartedPage() {
         <section id="assessment" className="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-16">
           <div className="mb-8 text-center sm:mb-10">
             <p className="text-xs font-bold uppercase tracking-[0.28em] text-zinc-500">Our process</p>
-            <h2 className="mt-4 font-serif text-3xl tracking-[-0.04em] sm:text-4xl md:text-5xl">From insight to impact.</h2>
+            <h2 className="mt-4 font-serif text-3xl tracking-[-0.04em] sm:text-4xl md:text-5xl">Find the gap. Write the fix. Ship it.</h2>
           </div>
           <div className="grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-4">
             {process.map((item, index) => (
