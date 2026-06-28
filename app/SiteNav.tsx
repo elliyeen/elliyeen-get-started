@@ -28,7 +28,7 @@ export default function SiteNav() {
         <div className="flex items-center gap-2">
           <a
             href="mailto:abdullah@elliyeen.com?subject=Website%20audit%20inquiry%20%E2%80%94%20let%27s%20work%20together&body=Hi%20Abbas%2C%0A%0AI%27d%20like%20to%20get%20my%20website%20audited%20by%20Elliyeen.%0A%0AWebsite%3A%20%5Bpaste%20your%20URL%20here%5D%0A%0ALooking%20forward%20to%20it."
-            className="rounded-full bg-[#1B5EA8] px-4 py-2 text-sm font-semibold text-white hover:bg-[#164d8e]"
+            className="rounded-xl bg-[#1B5EA8] px-5 py-2.5 text-sm font-bold text-white shadow-lg shadow-[#1B5EA8]/20 hover:bg-[#164d8e]"
           >
             Fix it
           </a>

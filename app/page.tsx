@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import SiteNav from "./SiteNav";
 import ScrollReveal from "./ScrollReveal";
 import CasesCarousel from "@/components/CasesCarousel";
+import SPCSBeforeAfter from "@/components/SPCSBeforeAfter";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 
 const CONTACT_MAILTO =
@@ -207,6 +208,11 @@ export default function GetStartedPage() {
             </div>
           </div>
         </div>
+
+        {/* Clay-inspired before/after showcase */}
+        <ScrollReveal>
+          <SPCSBeforeAfter />
+        </ScrollReveal>
 
         {/* Real Output Demo — replaces generic AI chatbot with actual SPCS before/after */}
         <section id="advisor" className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
