@@ -150,9 +150,6 @@ export default function GetStartedPage() {
                     </div>
                   ))}
                 </div>
-                <div className="mt-6 rounded-xl bg-[#111111] px-4 py-3 text-center text-xs font-bold tracking-wide text-white">
-                  18 frameworks · 1 clear roadmap
-                </div>
               </div>
             </div>
           </div>
@@ -337,17 +334,6 @@ export default function GetStartedPage() {
           </ScrollReveal>
         </section>
 
-        {/* Advocacy prompt */}
-        <div className="mx-auto max-w-7xl px-4 pb-2 sm:px-6">
-          <p className="text-center text-sm text-zinc-400">
-            Know a founder whose site isn&apos;t converting?{" "}
-            <a href="mailto:abdullah@elliyeen.com?subject=Referral" className="font-semibold text-zinc-600 underline underline-offset-2 hover:text-black">
-              Send them this page.
-            </a>
-          </p>
-        </div>
-
-
         {/* Pricing section — fixes the broken "Pricing" nav link */}
         <section id="pricing" className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
           <div className="rounded-[2rem] border border-zinc-200 bg-white p-8 md:p-12">
@@ -400,19 +386,11 @@ export default function GetStartedPage() {
             />
 
             <div className="relative z-10">
-              <p className="text-[11px] font-bold uppercase tracking-[0.28em] text-zinc-500">
-                The cost of waiting
-              </p>
               <h2 className="mt-5 font-serif text-4xl leading-[1.05] tracking-[-0.04em] text-white sm:text-5xl md:text-6xl lg:text-[72px]">
-                Your site is losing customers
+                Grow and turn your passion
                 <br className="hidden sm:block" />
-                <span className="text-[#1B5EA8]">right now.</span>
+                <span className="text-[#1B5EA8]">into real customers.</span>
               </h2>
-              <p className="mt-6 mx-auto max-w-lg text-base leading-7 text-zinc-400">
-                Not next quarter. Today. While this page is open, someone is landing on your site,
-                reading the hero, and leaving — because nothing made them stay.
-                We find exactly where. We write the fix. You ship it.
-              </p>
 
               <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
                 <a
@@ -429,9 +407,6 @@ export default function GetStartedPage() {
                 </a>
               </div>
 
-              <p className="mt-8 text-xs text-zinc-600">
-                Full audit delivered in 4 hours · Copy rewrites included · No retainer required
-              </p>
             </div>
           </div>
           </ScrollReveal>
@@ -465,8 +440,8 @@ export default function GetStartedPage() {
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-widest text-zinc-900">Company</p>
                   <ul className="mt-4 space-y-3 text-sm text-zinc-600">
-                    <li><a href="#founder"      className="hover:text-black">About</a></li>
-                    <li><a href="#cases"         className="hover:text-black">Industries</a></li>
+                    <li><a href="/#founder"     className="hover:text-black">About</a></li>
+                    <li><a href="/#cases"        className="hover:text-black">Industries</a></li>
                     <li><a href={CONTACT_MAILTO} className="hover:text-black">Contact</a></li>
                   </ul>
                 </div>
