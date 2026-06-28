@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import SiteNav from "./SiteNav";
 import ScrollReveal from "./ScrollReveal";
 import CasesCarousel from "@/components/CasesCarousel";
-import { ArrowRight, CheckCircle2, Sparkles } from "lucide-react";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
 
 const CONTACT_MAILTO =
   "mailto:abdullah@elliyeen.com" +
@@ -16,15 +16,6 @@ export const metadata: Metadata = {
   keywords: ["Customer Intelligence", "Buyer Research", "Friction Diagnosis", "Website Audit", "Implementation Support", "Growth System"],
   alternates: { canonical: "https://www.elliyeen.com" },
 };
-
-const process = [
-  {
-    icon: Sparkles,
-    title: "Receive the replacement copy, ranked by revenue impact, ready to ship.",
-    type: "Prioritized Roadmap",
-    body: "Not a list of recommendations. The actual rewritten headline, the fixed CTA, the resolved objection — ranked by what moves revenue fastest.",
-  },
-];
 
 
 const auditDimensions = [
@@ -328,28 +319,6 @@ export default function GetStartedPage() {
           </ScrollReveal>
         </section>
 
-        {/* Fix 4 — Process section with deliverables and timelines */}
-        <section id="assessment" className="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-16">
-          <div className="mb-8 text-center sm:mb-10">
-            <p className="text-xs font-bold uppercase tracking-[0.28em] text-zinc-500">Our process</p>
-            <h2 className="mt-4 font-serif text-3xl tracking-[-0.04em] sm:text-4xl md:text-5xl">Find the gap. Write the fix. Ship it.</h2>
-          </div>
-          <div className="grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-4">
-            {process.map((item, index) => (
-              <ScrollReveal key={item.title} delay={index * 80}>
-              <div className="relative rounded-3xl border border-zinc-200 bg-white p-5 text-center shadow-sm sm:p-8">
-                <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full border border-zinc-200 bg-white shadow-sm sm:h-16 sm:w-16">
-                  <item.icon size={20} />
-                </div>
-                <div className="mx-auto mt-3 flex h-6 w-6 items-center justify-center rounded-full bg-[#1B5EA8] text-xs font-bold text-white">{index + 1}</div>
-                <p className="mt-2 text-[10px] font-bold uppercase tracking-widest text-zinc-400 sm:text-[11px]">{item.type}</p>
-                <h3 className="mt-2 text-sm font-bold sm:text-base">{item.title}</h3>
-                <p className="mt-2 text-sm leading-6 text-zinc-600">{item.body}</p>
-              </div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </section>
 
         <section id="cases" className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
           <ScrollReveal>
@@ -411,6 +380,61 @@ export default function GetStartedPage() {
               </div>
             </div>
           </div>
+        </section>
+
+        {/* Pre-footer conviction CTA */}
+        <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6 md:py-16">
+          <ScrollReveal>
+          <div className="relative overflow-hidden rounded-[2rem] bg-[#0d0d0d] px-8 py-20 text-center md:px-20 md:py-28">
+            {/* Blue glow — brand anchor */}
+            <div className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[480px] w-[480px] rounded-full bg-[#1B5EA8]/20 blur-[120px]" aria-hidden="true" />
+            {/* Subtle grid texture */}
+            <div
+              className="pointer-events-none absolute inset-0 opacity-[0.03]"
+              style={{
+                backgroundImage:
+                  "linear-gradient(rgba(255,255,255,.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.6) 1px, transparent 1px)",
+                backgroundSize: "48px 48px",
+              }}
+              aria-hidden="true"
+            />
+
+            <div className="relative z-10">
+              <p className="text-[11px] font-bold uppercase tracking-[0.28em] text-zinc-500">
+                The cost of waiting
+              </p>
+              <h2 className="mt-5 font-serif text-4xl leading-[1.05] tracking-[-0.04em] text-white sm:text-5xl md:text-6xl lg:text-[72px]">
+                Your site is losing customers
+                <br className="hidden sm:block" />
+                <span className="text-[#1B5EA8]">right now.</span>
+              </h2>
+              <p className="mt-6 mx-auto max-w-lg text-base leading-7 text-zinc-400">
+                Not next quarter. Today. While this page is open, someone is landing on your site,
+                reading the hero, and leaving — because nothing made them stay.
+                We find exactly where. We write the fix. You ship it.
+              </p>
+
+              <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+                <a
+                  href={CONTACT_MAILTO}
+                  className="inline-flex min-h-[56px] items-center gap-2 rounded-xl bg-[#1B5EA8] px-8 text-sm font-bold text-white shadow-lg shadow-[#1B5EA8]/30 hover:bg-[#164d8e]"
+                >
+                  Book your audit <ArrowRight size={16} />
+                </a>
+                <a
+                  href="/how-it-works"
+                  className="inline-flex min-h-[56px] items-center gap-2 rounded-xl px-6 text-sm font-semibold text-zinc-500 hover:text-white"
+                >
+                  See how it works <ArrowRight size={16} />
+                </a>
+              </div>
+
+              <p className="mt-8 text-xs text-zinc-600">
+                Full audit delivered in 4 hours · Copy rewrites included · No retainer required
+              </p>
+            </div>
+          </div>
+          </ScrollReveal>
         </section>
 
         {/* Footer — all links point to real anchors */}
