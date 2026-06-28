@@ -377,7 +377,7 @@ export default function GetStartedPage() {
         {/* Pre-footer conviction CTA */}
         <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6 md:py-16">
           <ScrollReveal>
-          <div className="relative overflow-hidden rounded-[2rem] bg-[#0d0d0d] px-8 py-20 text-center md:px-20 md:py-28">
+          <div className="relative overflow-hidden rounded-[2rem] bg-[#0d0d0d] px-5 py-14 text-center sm:px-10 sm:py-20 md:px-20 md:py-28">
             {/* Blue glow — brand anchor */}
             <div className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[480px] w-[480px] rounded-full bg-[#1B5EA8]/20 blur-[120px]" aria-hidden="true" />
             {/* Subtle grid texture */}
@@ -392,8 +392,8 @@ export default function GetStartedPage() {
             />
 
             <div className="relative z-10">
-              <h2 className="mt-5 font-serif text-4xl leading-[1.05] tracking-[-0.04em] text-white sm:text-5xl md:text-6xl lg:text-[72px]">
-                Grow and turn your passion
+              <h2 className="mt-3 font-serif text-[2rem] leading-[1.1] tracking-[-0.03em] text-white sm:mt-5 sm:text-5xl sm:leading-[1.05] sm:tracking-[-0.04em] md:text-6xl lg:text-[72px]">
+                Grow and turn your passion{" "}
                 <br className="hidden sm:block" />
                 <span className="text-[#1B5EA8]">into real customers.</span>
               </h2>
