@@ -375,31 +375,27 @@ export default function GetStartedPage() {
         </section>
 
         {/* Pre-footer conviction CTA */}
-        <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6 md:py-16">
+        <section className="mx-auto max-w-7xl px-4 py-6 sm:px-6 sm:py-8">
           <ScrollReveal>
-          <div className="relative overflow-hidden rounded-[2rem] bg-[#f7f4ee] px-5 py-14 text-center sm:px-10 sm:py-20 md:px-20 md:py-28">
-            <div className="relative z-10">
-              <h2 className="mt-3 font-serif text-[2rem] leading-[1.1] tracking-[-0.03em] text-[#111111] sm:mt-5 sm:text-5xl sm:leading-[1.05] sm:tracking-[-0.04em] md:text-6xl lg:text-[72px]">
-                Grow and turn your passion{" "}
-                <br className="hidden sm:block" />
-                <span className="text-[#1B5EA8]">into real customers.</span>
-              </h2>
-
-              <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-                <a
-                  href={CONTACT_MAILTO}
-                  className="inline-flex min-h-[56px] items-center gap-2 rounded-xl bg-[#1B5EA8] px-8 text-sm font-bold text-white shadow-lg shadow-[#1B5EA8]/30 hover:bg-[#164d8e]"
-                >
-                  Fix it <ArrowRight size={16} />
-                </a>
-                <a
-                  href="/how-it-works"
-                  className="inline-flex min-h-[56px] items-center gap-2 rounded-xl px-6 text-sm font-semibold text-zinc-500 hover:text-black"
-                >
-                  See how it works <ArrowRight size={16} />
-                </a>
-              </div>
-
+          <div className="rounded-2xl bg-[#f7f4ee] px-6 py-10 text-center sm:px-10 sm:py-12 md:px-16 md:py-14">
+            <h2 className="font-serif text-2xl leading-[1.15] tracking-[-0.03em] text-[#111111] sm:text-3xl md:text-4xl md:tracking-[-0.04em]">
+              Grow and turn your passion{" "}
+              <br className="hidden sm:block" />
+              <span className="text-[#1B5EA8]">into real customers.</span>
+            </h2>
+            <div className="mt-6 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:justify-center">
+              <a
+                href={CONTACT_MAILTO}
+                className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-xl bg-[#1B5EA8] px-6 text-sm font-bold text-white shadow-md shadow-[#1B5EA8]/20 hover:bg-[#164d8e]"
+              >
+                Fix it <ArrowRight size={15} />
+              </a>
+              <a
+                href="/how-it-works"
+                className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-xl border border-zinc-200 px-6 text-sm font-semibold text-zinc-600 hover:border-zinc-400 hover:text-black"
+              >
+                See how it works <ArrowRight size={15} />
+              </a>
             </div>
           </div>
           </ScrollReveal>
