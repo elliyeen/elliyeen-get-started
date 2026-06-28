@@ -202,10 +202,12 @@ export default function GetStartedPage() {
             <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-20 bg-gradient-to-l from-white to-transparent" />
             <div className="ticker-track">
               {[
+                { name: "Verizon",                src: "/logos/verizon-logo.jpg",                              square: false },
                 { name: "Motorola Solutions",     src: "/logos/motorola-solutions.png",                        square: false },
                 { name: "OCC",                    src: "/logos/occ.svg",                                       square: true  },
                 { name: "Aurora Flight Sciences", src: "/logos/aurora-flight-sciences.svg",                    square: false },
                 { name: "PayBlue",                src: "/logos/payblue.svg",                                   square: false },
+                { name: "Verizon",                src: "/logos/verizon-logo.jpg",                              square: false },
                 { name: "Motorola Solutions",     src: "/logos/motorola-solutions.png",                        square: false },
                 { name: "OCC",                    src: "/logos/occ.svg",                                       square: true  },
                 { name: "Aurora Flight Sciences", src: "/logos/aurora-flight-sciences.svg",                    square: false },
