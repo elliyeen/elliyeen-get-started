@@ -101,7 +101,7 @@ export default function HowItWorksPage() {
             Find the gap. Write the fix. Ship it.
           </h1>
           <p className="mt-6 text-base leading-7 text-zinc-600">
-            Four steps. One engagement. Every deliverable in writing — the diagnosis, the copy, the roadmap, and the measurement. No retainer required.
+            Four steps. One engagement. Every deliverable in writing — the diagnosis, the copy, the roadmap, and the measurement.
           </p>
 
           <div className="mt-14 space-y-10">
@@ -143,7 +143,7 @@ export default function HowItWorksPage() {
           <div className="mt-10 rounded-2xl border border-zinc-200 bg-white p-8">
             <p className="font-semibold text-zinc-900">Ready to see what&apos;s costing you revenue?</p>
             <p className="mt-2 text-sm leading-6 text-zinc-600">
-              Full audit starts from $1,500. Copy rewrites included. No retainer.
+              Full audit starts from $1,500. Copy rewrites included.
             </p>
             <a
               href="mailto:abdullah@elliyeen.com?subject=Website%20audit%20inquiry%20%E2%80%94%20let%27s%20work%20together&body=Hi%20Abbas%2C%0A%0AI%27d%20like%20to%20get%20my%20website%20audited%20by%20Elliyeen.%0A%0AWebsite%3A%20%5Bpaste%20your%20URL%20here%5D%0A%0ALooking%20forward%20to%20it."
