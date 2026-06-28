@@ -356,7 +356,7 @@ export default function GetStartedPage() {
                   href={CONTACT_MAILTO}
                   className="mt-6 inline-flex items-center gap-2 rounded-xl bg-[#1B5EA8] px-6 py-4 text-sm font-bold text-white hover:bg-[#164d8e]"
                 >
-                  Book your free diagnostic <ArrowRight size={16} />
+                  Fix it <ArrowRight size={16} />
                 </a>
               </div>
               <div className="grid gap-4">
@@ -377,22 +377,9 @@ export default function GetStartedPage() {
         {/* Pre-footer conviction CTA */}
         <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6 md:py-16">
           <ScrollReveal>
-          <div className="relative overflow-hidden rounded-[2rem] bg-[#0d0d0d] px-5 py-14 text-center sm:px-10 sm:py-20 md:px-20 md:py-28">
-            {/* Blue glow — brand anchor */}
-            <div className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[480px] w-[480px] rounded-full bg-[#1B5EA8]/20 blur-[120px]" aria-hidden="true" />
-            {/* Subtle grid texture */}
-            <div
-              className="pointer-events-none absolute inset-0 opacity-[0.03]"
-              style={{
-                backgroundImage:
-                  "linear-gradient(rgba(255,255,255,.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.6) 1px, transparent 1px)",
-                backgroundSize: "48px 48px",
-              }}
-              aria-hidden="true"
-            />
-
+          <div className="relative overflow-hidden rounded-[2rem] bg-[#f7f4ee] px-5 py-14 text-center sm:px-10 sm:py-20 md:px-20 md:py-28">
             <div className="relative z-10">
-              <h2 className="mt-3 font-serif text-[2rem] leading-[1.1] tracking-[-0.03em] text-white sm:mt-5 sm:text-5xl sm:leading-[1.05] sm:tracking-[-0.04em] md:text-6xl lg:text-[72px]">
+              <h2 className="mt-3 font-serif text-[2rem] leading-[1.1] tracking-[-0.03em] text-[#111111] sm:mt-5 sm:text-5xl sm:leading-[1.05] sm:tracking-[-0.04em] md:text-6xl lg:text-[72px]">
                 Grow and turn your passion{" "}
                 <br className="hidden sm:block" />
                 <span className="text-[#1B5EA8]">into real customers.</span>
@@ -403,11 +390,11 @@ export default function GetStartedPage() {
                   href={CONTACT_MAILTO}
                   className="inline-flex min-h-[56px] items-center gap-2 rounded-xl bg-[#1B5EA8] px-8 text-sm font-bold text-white shadow-lg shadow-[#1B5EA8]/30 hover:bg-[#164d8e]"
                 >
-                  Book your audit <ArrowRight size={16} />
+                  Fix it <ArrowRight size={16} />
                 </a>
                 <a
                   href="/how-it-works"
-                  className="inline-flex min-h-[56px] items-center gap-2 rounded-xl px-6 text-sm font-semibold text-zinc-500 hover:text-white"
+                  className="inline-flex min-h-[56px] items-center gap-2 rounded-xl px-6 text-sm font-semibold text-zinc-500 hover:text-black"
                 >
                   See how it works <ArrowRight size={16} />
                 </a>
