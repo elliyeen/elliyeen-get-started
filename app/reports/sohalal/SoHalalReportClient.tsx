@@ -1498,11 +1498,8 @@ export default function SoHalalReportClient() {
                   href="mailto:abdullah@elliyeen.com?subject=Website%20audit%20inquiry%20%E2%80%94%20let%27s%20work%20together&body=Hi%20Abbas%2C%0A%0AI%27d%20like%20to%20get%20my%20website%20audited%20by%20Elliyeen.%0A%0AWebsite%3A%20%5Bpaste%20your%20URL%20here%5D%0A%0ALooking%20forward%20to%20it."
                   className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#1B5EA8] px-6 py-4 text-sm font-bold text-white hover:bg-[#164d8e] transition-colors"
                 >
-                  Book the free diagnostic <ArrowUpRight size={15} />
+                  Fix it <ArrowUpRight size={15} />
                 </a>
-                <p className="text-center text-xs text-zinc-500">
-                  20 minutes · Three specific findings · No pitch
-                </p>
               </div>
             </div>
           </div>

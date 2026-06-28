@@ -239,29 +239,77 @@ export default function SPCSReportPage() {
                 href="mailto:abdullah@elliyeen.com?subject=Website%20audit%20inquiry%20%E2%80%94%20let%27s%20work%20together&body=Hi%20Abbas%2C%0A%0AI%27d%20like%20to%20get%20my%20website%20audited%20by%20Elliyeen.%0A%0AWebsite%3A%20%5Bpaste%20your%20URL%20here%5D%0A%0ALooking%20forward%20to%20it."
                 className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#1B5EA8] px-6 py-4 text-sm font-bold text-white hover:bg-[#164d8e]"
               >
-                Book the free diagnostic <ArrowRight size={15} />
+                Fix it <ArrowRight size={15} />
               </a>
-              <p className="text-center text-xs text-zinc-500">
-                20 minutes · Three specific findings · No pitch
-              </p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-zinc-800 bg-[#0D1B2A] py-8">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6">
-          <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
-            <a href="/" className="text-sm font-bold tracking-[0.22em] text-white hover:opacity-70 transition-opacity">
-              ELLIYEEN
-            </a>
-            <p className="text-xs text-zinc-500">© {new Date().getFullYear()} Elliyeen Research</p>
+      <footer className="border-t border-zinc-100 bg-white">
+        <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-12">
+          <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
+            <div>
+              <div className="text-sm font-bold tracking-[0.22em] text-zinc-900">ELLIYEEN</div>
+            </div>
+            <div className="grid grid-cols-2 gap-8 sm:grid-cols-4">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-widest text-zinc-900">Product</p>
+                <ul className="mt-4 space-y-3 text-sm text-zinc-600">
+                  <li><a href="/how-it-works" className="hover:text-black">How It Works</a></li>
+                  <li><a href="/#advisor"     className="hover:text-black">See the Work</a></li>
+                  <li><a href="/#pricing"     className="hover:text-black">Pricing</a></li>
+                  <li><a href="/faq"          className="hover:text-black">FAQ</a></li>
+                </ul>
+              </div>
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-widest text-zinc-900">Services</p>
+                <ul className="mt-4 space-y-3 text-sm text-zinc-600">
+                  <li><a href="/case-studies" className="hover:text-black">Industries</a></li>
+                  <li><a href="/#pricing"     className="hover:text-black">Full Audit</a></li>
+                </ul>
+              </div>
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-widest text-zinc-900">Company</p>
+                <ul className="mt-4 space-y-3 text-sm text-zinc-600">
+                  <li><a href="/#founder"     className="hover:text-black">About</a></li>
+                  <li><a href="/#cases"       className="hover:text-black">Industries</a></li>
+                  <li><a href="mailto:abdullah@elliyeen.com" className="hover:text-black">Contact</a></li>
+                </ul>
+              </div>
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-widest text-zinc-900">Reports</p>
+                <ul className="mt-4 space-y-3 text-sm text-zinc-600">
+                  <li><a href="/reports"                              className="hover:text-black">All Reports</a></li>
+                  <li><a href="/reports/milano-audit.html"            className="hover:text-black">Milano Family Pizza</a></li>
+                  <li><a href="/reports/wealth-management-audit.html" className="hover:text-black">Wealth Management</a></li>
+                  <li><a href="/spcs-report"                          className="hover:text-black">Savannah Personal Care</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div className="mt-10 flex flex-col gap-4 border-t border-zinc-100 pt-8 sm:flex-row sm:items-center sm:justify-between">
+            <p className="text-sm text-zinc-400">© {new Date().getFullYear()} Elliyeen Research. All rights reserved.</p>
+            <div className="flex flex-wrap gap-x-6 gap-y-2">
+              <a href="/privacy"      className="text-sm text-zinc-400 hover:text-black">Privacy Policy</a>
+              <a href="/terms"        className="text-sm text-zinc-400 hover:text-black">Terms</a>
+              <a href="/accessibility" className="text-sm text-zinc-400 hover:text-black">Accessibility</a>
+              <a href="/do-not-sell"  className="text-sm text-zinc-400 hover:text-black">Do Not Sell My Data</a>
+              <a href="/sitemap-page" className="text-sm text-zinc-400 hover:text-black">Sitemap</a>
+            </div>
             <a
-              href="/#cases"
-              className="text-xs font-semibold text-zinc-400 hover:text-white"
+              href="https://www.linkedin.com/in/abbasabdullah/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Abbas Abdullah on LinkedIn (opens in new tab)"
+              className="flex h-9 w-9 items-center justify-center rounded-full border border-zinc-200 text-zinc-500 transition-colors hover:border-[#0A66C2] hover:text-[#0A66C2]"
             >
-              ← All case studies
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                <rect x="2" y="9" width="4" height="12" />
+                <circle cx="4" cy="4" r="2" />
+              </svg>
             </a>
           </div>
         </div>
