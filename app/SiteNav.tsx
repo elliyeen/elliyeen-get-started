@@ -1,8 +1,23 @@
 "use client";
 
+import { useState, useRef, useEffect } from "react";
+import { ChevronDown } from "lucide-react";
 import MobileNav from "./MobileNav";
 
 export default function SiteNav() {
+  const [resourcesOpen, setResourcesOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClick(e: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setResourcesOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, []);
+
   return (
     <nav aria-label="Main navigation" className="sticky top-0 z-50">
       <div
@@ -20,8 +35,41 @@ export default function SiteNav() {
 
         <div className="hidden items-center gap-9 text-sm font-medium text-black md:flex">
           <a href="/how-it-works" className="hover:text-black">How It Works</a>
-          <a href="/#cases"      className="hover:text-black">Industries</a>
-          <a href="/reports"     className="hover:text-black">Reports</a>
+          <a href="/#cases"       className="hover:text-black">Industries</a>
+
+          {/* Resources dropdown */}
+          <div className="relative" ref={dropdownRef}>
+            <button
+              onClick={() => setResourcesOpen((o) => !o)}
+              aria-expanded={resourcesOpen}
+              className="flex items-center gap-1 hover:text-black"
+            >
+              Resources
+              <ChevronDown
+                size={14}
+                className={`transition-transform duration-200 ${resourcesOpen ? "rotate-180" : ""}`}
+              />
+            </button>
+            {resourcesOpen && (
+              <div className="absolute left-0 top-full mt-2 w-44 overflow-hidden rounded-xl border border-zinc-200 bg-white shadow-lg">
+                <a
+                  href="/reports"
+                  onClick={() => setResourcesOpen(false)}
+                  className="block px-4 py-3 text-sm font-medium text-zinc-700 hover:bg-zinc-50"
+                >
+                  Reports
+                </a>
+                <a
+                  href="/good-profits"
+                  onClick={() => setResourcesOpen(false)}
+                  className="block px-4 py-3 text-sm font-medium text-zinc-700 hover:bg-zinc-50"
+                >
+                  Good Profits
+                </a>
+              </div>
+            )}
+          </div>
+
           <a href="/#pricing"    className="hover:text-black">Pricing</a>
         </div>
 

@@ -1,12 +1,15 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronRight } from "lucide-react";
 
 const links = [
   { label: "How It Works", href: "/how-it-works" },
   { label: "Industries", href: "/#cases" },
-  { label: "Reports", href: "/reports" },
+  { label: "Resources", href: null, children: [
+    { label: "Reports", href: "/reports" },
+    { label: "Good Profits", href: "/good-profits" },
+  ]},
   { label: "Pricing", href: "/#pricing" },
 ];
 
@@ -56,16 +59,37 @@ export default function MobileNav() {
           </button>
 
           <nav className="flex flex-col divide-y divide-zinc-100">
-            {links.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={() => setOpen(false)}
-                className="py-5 text-xl font-semibold text-black hover:text-black"
-              >
-                {link.label}
-              </a>
-            ))}
+            {links.map((link) =>
+              link.children ? (
+                <div key={link.label}>
+                  <p className="pt-5 pb-2 text-xs font-bold uppercase tracking-[0.2em] text-zinc-400">
+                    {link.label}
+                  </p>
+                  <div className="flex flex-col pb-2 gap-0.5">
+                    {link.children.map((child) => (
+                      <a
+                        key={child.href}
+                        href={child.href}
+                        onClick={() => setOpen(false)}
+                        className="flex items-center gap-2 py-2 text-lg font-semibold text-black"
+                      >
+                        <ChevronRight size={14} className="text-zinc-400" />
+                        {child.label}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                <a
+                  key={link.href!}
+                  href={link.href!}
+                  onClick={() => setOpen(false)}
+                  className="py-5 text-xl font-semibold text-black hover:text-black"
+                >
+                  {link.label}
+                </a>
+              )
+            )}
           </nav>
 
           <div className="mt-auto flex flex-col gap-3">

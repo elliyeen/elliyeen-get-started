@@ -262,14 +262,12 @@ export default function ReportsPage() {
                           {r.summary}
                         </p>
 
-                        {/* Key finding pill */}
+                        {/* Key finding */}
                         {r.finding && (
-                          <div className="mt-4">
-                            <span className="inline-flex items-center gap-1.5 rounded-full border border-zinc-100 bg-zinc-50 px-3 py-1 text-xs font-semibold text-zinc-500">
-                              <span className="h-1.5 w-1.5 rounded-full bg-[#1B5EA8]" />
-                              {r.finding}
-                            </span>
-                          </div>
+                          <p className="mt-3 flex items-center gap-1.5 text-xs font-semibold text-zinc-500">
+                            <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#1B5EA8]" />
+                            {r.finding}
+                          </p>
                         )}
                       </div>
 
