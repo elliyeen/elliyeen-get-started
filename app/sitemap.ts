@@ -1,16 +1,30 @@
 import type { MetadataRoute } from "next";
+import { articles } from "@/lib/good-profits";
 
 export const dynamic = "force-static";
 
 const BASE_URL = "https://www.elliyeen.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const goodProfitArticles: MetadataRoute.Sitemap = articles.map((a) => ({
+    url: `${BASE_URL}/good-profits/${a.slug}`,
+    lastModified: new Date(a.dateISO),
+    changeFrequency: "monthly",
+    priority: 0.7,
+  }));
+
   return [
     {
       url: BASE_URL,
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 1,
+    },
+    {
+      url: `${BASE_URL}/how-it-works`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
     },
     {
       url: `${BASE_URL}/about`,
@@ -31,23 +45,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: `${BASE_URL}/revenue_card/so-halal-soul-food`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
       url: `${BASE_URL}/spcs-report`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.7,
     },
     {
-      url: `${BASE_URL}/case-studies/savannah`,
+      url: `${BASE_URL}/revenue_card/so-halal-soul-food`,
       lastModified: new Date(),
       changeFrequency: "monthly",
-      priority: 0.7,
+      priority: 0.6,
     },
+    {
+      url: `${BASE_URL}/good-profits`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    ...goodProfitArticles,
     {
       url: `${BASE_URL}/privacy`,
       lastModified: new Date(),

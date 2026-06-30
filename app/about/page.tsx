@@ -24,10 +24,10 @@ export default function AboutPage() {
         <p className="text-xs font-bold uppercase tracking-[0.28em] text-zinc-400">
           About Elliyeen Research
         </p>
-        <h1 className="mt-4 font-serif text-4xl leading-[1.1] tracking-[-0.03em] sm:text-5xl md:text-6xl">
+        <h1 className="mt-4 font-serif t-display">
           The audit industry has a delivery problem.
         </h1>
-        <p className="mt-6 max-w-2xl text-lg leading-[1.75] text-zinc-600">
+        <p className="mt-6 max-w-2xl t-body-lg text-zinc-600">
           Most audits produce a list of what&apos;s wrong. Elliyeen produces a decision:
           here is what to fix, here is why it comes first, and here is the
           replacement copy — ready to implement.
@@ -40,7 +40,7 @@ export default function AboutPage() {
           <p className="text-xs font-bold uppercase tracking-[0.28em] text-zinc-400">
             Why this exists
           </p>
-          <h2 className="mt-4 font-serif text-3xl tracking-[-0.03em] md:text-4xl">
+          <h2 className="mt-4 font-serif t-title">
             The report sat on a shared drive.<br />Nothing changed.
           </h2>
           <div className="mt-6 space-y-5 text-base leading-[1.8] text-zinc-600">
@@ -74,7 +74,7 @@ export default function AboutPage() {
           <p className="text-xs font-bold uppercase tracking-[0.28em] text-zinc-400">
             The methodology
           </p>
-          <h2 className="mt-4 font-serif text-3xl tracking-[-0.03em] md:text-4xl">
+          <h2 className="mt-4 font-serif t-title">
             18 frameworks. One site. One session.
           </h2>
           <p className="mt-4 text-base leading-[1.8] text-zinc-600">
@@ -115,7 +115,7 @@ export default function AboutPage() {
           <p className="text-xs font-bold uppercase tracking-[0.28em] text-zinc-400">
             The founder
           </p>
-          <h2 className="mt-4 font-serif text-3xl tracking-[-0.03em] md:text-4xl">
+          <h2 className="mt-4 font-serif t-title">
             Abbas Abdullah
           </h2>
           <p className="mt-1 text-sm text-zinc-400">Founder, Elliyeen Research</p>
@@ -160,7 +160,7 @@ export default function AboutPage() {
           <p className="text-xs font-bold uppercase tracking-[0.28em] text-zinc-400">
             What you receive
           </p>
-          <h2 className="mt-4 font-serif text-3xl tracking-[-0.03em] md:text-4xl">
+          <h2 className="mt-4 font-serif t-title">
             Not a report. A decision.
           </h2>
           <p className="mt-4 text-base leading-[1.8] text-zinc-600">
@@ -201,7 +201,7 @@ export default function AboutPage() {
           <p className="text-xs font-bold uppercase tracking-[0.28em] text-zinc-500">
             Work with Elliyeen
           </p>
-          <h2 className="mt-4 font-serif text-3xl tracking-[-0.03em] md:text-4xl">
+          <h2 className="mt-4 font-serif t-title">
             Four engagements per quarter.
           </h2>
           <p className="mt-4 max-w-xl text-base leading-[1.8] text-zinc-400">

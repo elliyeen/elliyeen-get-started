@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ArrowRight } from "lucide-react";
 import SiteNav from "../SiteNav";
 
 export const metadata: Metadata = {
@@ -99,10 +100,10 @@ export default function HowItWorksPage() {
         <div className="mx-auto max-w-3xl px-4 py-20 sm:px-6">
 
           <p className="text-xs font-bold uppercase tracking-[0.28em] text-zinc-500">Our process</p>
-          <h1 className="mt-4 font-serif text-4xl tracking-[-0.03em] sm:text-5xl">
+          <h1 className="mt-4 font-serif t-display">
             Find the gap. Write the fix. Ship it.
           </h1>
-          <p className="mt-6 text-base leading-7 text-zinc-600">
+          <p className="mt-6 t-body text-zinc-600">
             Four steps. One engagement. Every deliverable in writing — the diagnosis, the copy, the roadmap, and the measurement.
           </p>
 
@@ -110,14 +111,14 @@ export default function HowItWorksPage() {
             {steps.map((step) => (
               <div key={step.number} className="border-t border-zinc-200 pt-10">
                 <div className="flex items-start gap-6">
-                  <span className="shrink-0 font-serif text-4xl font-bold text-zinc-200">
+                  <span className="shrink-0 font-serif t-title font-bold text-zinc-200">
                     {step.number}
                   </span>
                   <div>
                     <p className="text-[10px] font-bold uppercase tracking-widest text-zinc-400">
                       {step.type}
                     </p>
-                    <h2 className="mt-1 text-lg font-bold text-zinc-900">{step.title}</h2>
+                    <h2 className="mt-1 t-card-title font-bold text-zinc-900">{step.title}</h2>
                     <p className="mt-3 text-sm leading-7 text-zinc-600">{step.body}</p>
                   </div>
                 </div>
@@ -129,7 +130,7 @@ export default function HowItWorksPage() {
             <p className="text-xs font-bold uppercase tracking-[0.28em] text-zinc-500">
               18 frameworks
             </p>
-            <h2 className="mt-3 font-serif text-2xl tracking-[-0.03em]">
+            <h2 className="mt-3 font-serif t-heading">
               Every layer of your site, examined.
             </h2>
             <ul className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
@@ -149,9 +150,9 @@ export default function HowItWorksPage() {
             </p>
             <a
               href="mailto:abdullah@elliyeen.com?subject=Website%20audit%20inquiry%20%E2%80%94%20let%27s%20work%20together&body=Hi%20Abbas%2C%0A%0AI%27d%20like%20to%20get%20my%20website%20audited%20by%20Elliyeen.%0A%0AWebsite%3A%20%5Bpaste%20your%20URL%20here%5D%0A%0ALooking%20forward%20to%20it."
-              className="mt-4 inline-flex items-center justify-center rounded-full bg-[#1B5EA8] px-4 py-2 text-sm font-semibold text-white hover:bg-[#164d8e]"
+              className="mt-4 inline-flex h-[52px] min-w-[190px] items-center justify-center gap-2 rounded-xl bg-[#123A5A] px-8 text-sm font-bold text-[#F5F1E7] shadow-[0_6px_28px_rgba(18,58,90,0.22)] hover:bg-[#0e2d47]"
             >
-              Fix it
+              Fix it <ArrowRight size={15} />
             </a>
           </div>
 

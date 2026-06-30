@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { articles } from "@/lib/good-profits";
 
 export const metadata: Metadata = {
   title: "Site Map · Elliyeen Research",
@@ -15,31 +16,38 @@ const sections = [
   {
     title: "Main",
     pages: [
-      { label: "Home", href: "/", desc: "Website audit & revenue diagnosis" },
-      { label: "About", href: "/about", desc: "Our story and approach" },
-      { label: "FAQ", href: "/faq", desc: "Common questions answered" },
+      { label: "Home",         href: "/",            desc: "Website audit & revenue diagnosis" },
+      { label: "How It Works", href: "/how-it-works", desc: "The 18-framework audit process" },
+      { label: "About",        href: "/about",        desc: "Our story and approach" },
+      { label: "FAQ",          href: "/faq",          desc: "Common questions answered" },
     ],
   },
   {
-    title: "Revenue Cards",
+    title: "Good Profit",
     pages: [
-      { label: "All Reports", href: "/reports", desc: "Full index of published revenue cards" },
-      { label: "So Halal Soul Food", href: "/revenue_card/so-halal-soul-food", desc: "Mobile rendering audit · Stone Mountain, GA" },
+      { label: "Good Profit — Index", href: "/good-profits", desc: "Essays on earning revenue by serving customers better" },
+      ...articles.map((a) => ({
+        label: `Issue #${a.issue} — ${a.title}`,
+        href: `/good-profits/${a.slug}`,
+        desc: a.description,
+      })),
     ],
   },
   {
-    title: "Case Studies",
+    title: "Reports",
     pages: [
-      { label: "Savannah Personal Care Services", href: "/spcs-report", desc: "Hero copy & FAQ rebuild case study" },
+      { label: "All Reports",              href: "/reports",                              desc: "Full index of published audit reports" },
+      { label: "Savannah Personal Care",   href: "/spcs-report",                          desc: "Hero copy & FAQ rebuild case study" },
+      { label: "So Halal Soul Food",       href: "/revenue_card/so-halal-soul-food",      desc: "Mobile rendering audit · Stone Mountain, GA" },
     ],
   },
   {
     title: "Legal",
     pages: [
-      { label: "Privacy Policy", href: "/privacy", desc: "How we handle your data" },
-      { label: "Terms", href: "/terms", desc: "Terms and conditions" },
-      { label: "Accessibility", href: "/accessibility", desc: "WCAG compliance statement" },
-      { label: "Do Not Sell My Data", href: "/do-not-sell", desc: "CCPA opt-out request" },
+      { label: "Privacy Policy",       href: "/privacy",       desc: "How we handle your data" },
+      { label: "Terms",                href: "/terms",          desc: "Terms and conditions" },
+      { label: "Accessibility",        href: "/accessibility",  desc: "WCAG compliance statement" },
+      { label: "Do Not Sell My Data",  href: "/do-not-sell",   desc: "CCPA opt-out request" },
     ],
   },
   {
@@ -61,7 +69,7 @@ export default function SitemapPage() {
           <a href="/" className="text-xs font-bold tracking-[0.22em] text-zinc-400 hover:text-zinc-700">
             ELLIYEEN
           </a>
-          <h1 className="mt-4 font-serif text-4xl tracking-[-0.03em] sm:text-5xl">Site Map</h1>
+          <h1 className="mt-4 font-serif t-display">Site Map</h1>
           <p className="mt-3 text-sm leading-6 text-zinc-500">
             Every page on elliyeen.com, organized by section.
           </p>

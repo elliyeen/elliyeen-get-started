@@ -11,10 +11,10 @@ export default function DoNotSellPage() {
     <main className="min-h-screen bg-[#f7f4ee] text-[#111111]">
       <div className="mx-auto max-w-2xl px-4 py-20 sm:px-6">
         <p className="text-xs font-bold uppercase tracking-[0.28em] text-zinc-500">Privacy Rights</p>
-        <h1 className="mt-4 font-serif text-4xl tracking-[-0.03em] sm:text-5xl">
+        <h1 className="mt-4 font-serif t-display">
           Do Not Sell My Personal Data
         </h1>
-        <p className="mt-6 text-base leading-7 text-zinc-600">
+        <p className="mt-6 t-body text-zinc-600">
           Under the California Consumer Privacy Act (CCPA) and other applicable privacy laws, you have the right to opt out of the sale or sharing of your personal information.
         </p>
         <p className="mt-4 text-base leading-7 text-zinc-600">

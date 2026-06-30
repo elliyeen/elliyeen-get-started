@@ -148,10 +148,7 @@ export default function SoHalalReportPage() {
 
       {/* ── Your Agentic Revenue Team ────────────────────────────── */}
       <section id="revenue-team" className="mx-auto max-w-[1280px] px-4 py-12 text-center sm:px-8 sm:py-20">
-        <h2
-          className="font-serif font-bold text-[#111111]"
-          style={{ fontSize: "clamp(22px, 3vw, 36px)", lineHeight: 1.15, letterSpacing: "-0.02em" }}
-        >
+        <h2 className="font-serif t-heading font-bold text-[#111111]">
           Your Agentic Revenue Team
         </h2>
         <p className="mx-auto mt-4 text-[#111111]" style={{ fontSize: 16, lineHeight: 1.7, maxWidth: 520 }}>
@@ -197,10 +194,7 @@ export default function SoHalalReportPage() {
             </span>
 
             {/* Headline */}
-            <h2
-              className="mt-4 font-serif font-bold text-[#111111]"
-              style={{ fontSize: "clamp(28px, 3.5vw, 44px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}
-            >
+            <h2 className="mt-4 font-serif t-title font-bold text-[#111111]">
               What&apos;s costing you customers and revenue.
             </h2>
 
@@ -242,10 +236,7 @@ export default function SoHalalReportPage() {
             The Roadmap
           </span>
           {/* Headline */}
-          <h2
-            className="font-serif font-bold text-[#111111]"
-            style={{ fontSize: "clamp(34px, 4.5vw, 56px)", lineHeight: 1.05, letterSpacing: "-0.025em" }}
-          >
+          <h2 className="font-serif t-title font-bold text-[#111111]">
             Three moves.<br />Maximum impact.
           </h2>
           {/* Description — left-aligned, under headline */}
@@ -362,10 +353,7 @@ export default function SoHalalReportPage() {
           >
             Financial Analysis
           </span>
-          <h2
-            className="font-serif font-bold text-[#111111]"
-            style={{ fontSize: "clamp(28px, 3.5vw, 44px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}
-          >
+          <h2 className="font-serif t-title font-bold text-[#111111]">
             Revenue model assumptions.
           </h2>
           <p className="mt-3 max-w-[520px] text-sm leading-7 text-[#555552]">
@@ -478,12 +466,8 @@ export default function SoHalalReportPage() {
 
           {/* Headline */}
           <h2
-            className="font-serif text-white"
-            style={{
-              fontSize: "clamp(42px, 8vw, 100px)",
-              lineHeight: 0.95,
-              letterSpacing: "-0.03em",
-            }}
+            className="font-serif t-hero text-white"
+            style={{ lineHeight: 0.95 }}
           >
             Let&apos;s fix what&apos;s<br />
             costing you.

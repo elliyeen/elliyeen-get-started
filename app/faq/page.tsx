@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import SiteNav from "@/app/SiteNav";
 
 export const metadata: Metadata = {
   title: "FAQ · Elliyeen Research",
@@ -44,20 +45,21 @@ const faqs = [
 export default function FAQPage() {
   return (
     <main className="min-h-screen bg-[#f7f4ee] text-[#111111]">
+      <SiteNav />
       <div className="mx-auto max-w-2xl px-4 py-20 sm:px-6">
-        <p className="text-xs font-bold uppercase tracking-[0.28em] text-zinc-500">Common questions</p>
-        <h1 className="mt-4 font-serif text-4xl tracking-[-0.03em] sm:text-5xl">
+        <p className="t-label text-zinc-500">Common questions</p>
+        <h1 className="mt-4 font-serif t-display">
           Before you decide.
         </h1>
-        <p className="mt-6 text-base leading-7 text-zinc-600">
+        <p className="mt-6 t-body text-zinc-600">
           Everything you need to know about how an Elliyeen audit works, what it costs, and what to expect.
         </p>
 
         <div className="mt-12 space-y-8">
           {faqs.map(({ q, a }) => (
             <div key={q} className="border-t border-zinc-200 pt-8">
-              <p className="font-semibold text-zinc-900">{q}</p>
-              <p className="mt-3 text-sm leading-7 text-zinc-600">{a}</p>
+              <p className="t-body font-semibold text-zinc-900">{q}</p>
+              <p className="mt-3 t-sm leading-7 text-zinc-600">{a}</p>
             </div>
           ))}
         </div>

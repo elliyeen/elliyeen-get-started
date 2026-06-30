@@ -170,10 +170,10 @@ export default function ReportsPage() {
           <p className="text-xs font-bold uppercase tracking-[0.28em] text-zinc-500">
             Published work
           </p>
-          <h1 className="mt-4 font-serif text-4xl tracking-[-0.03em] md:text-5xl">
+          <h1 className="mt-4 font-serif t-display">
             Audit Reports
           </h1>
-          <p className="mt-4 max-w-xl text-base leading-7 text-zinc-600">
+          <p className="mt-4 max-w-xl t-body text-zinc-600">
             Full 22-framework diagnoses with copy rewrites, financial projections, and
             prioritized roadmaps. Each report is published with client permission.
           </p>
@@ -203,7 +203,7 @@ export default function ReportsPage() {
                     <p className="text-xs font-bold uppercase tracking-[0.28em] text-zinc-400">
                       {section.label}
                     </p>
-                    <h2 className="mt-1 font-serif text-2xl tracking-[-0.02em] md:text-3xl">
+                    <h2 className="mt-1 font-serif t-heading">
                       {section.title}
                     </h2>
                   </div>
@@ -250,7 +250,7 @@ export default function ReportsPage() {
                         </div>
 
                         {/* Client + location */}
-                        <h3 className="mt-2 font-serif text-xl tracking-[-0.02em] md:text-2xl">
+                        <h3 className="mt-2 font-serif t-subheading">
                           {r.client}
                         </h3>
                         <p className="mt-0.5 text-sm text-zinc-400">
@@ -288,7 +288,7 @@ export default function ReportsPage() {
           <p className="text-xs font-bold uppercase tracking-[0.28em] text-zinc-500">
             Your site
           </p>
-          <h2 className="mt-4 font-serif text-3xl tracking-[-0.03em]">
+          <h2 className="mt-4 font-serif t-title">
             Want a report like this on your site?
           </h2>
           <a

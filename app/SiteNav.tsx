@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, ArrowRight } from "lucide-react";
 import MobileNav from "./MobileNav";
 
 export default function SiteNav() {
@@ -14,8 +14,15 @@ export default function SiteNav() {
         setResourcesOpen(false);
       }
     }
+    function handleKey(e: KeyboardEvent) {
+      if (e.key === "Escape") setResourcesOpen(false);
+    }
     document.addEventListener("mousedown", handleClick);
-    return () => document.removeEventListener("mousedown", handleClick);
+    document.addEventListener("keydown", handleKey);
+    return () => {
+      document.removeEventListener("mousedown", handleClick);
+      document.removeEventListener("keydown", handleKey);
+    };
   }, []);
 
   return (
@@ -64,7 +71,7 @@ export default function SiteNav() {
                   onClick={() => setResourcesOpen(false)}
                   className="block px-4 py-3 text-sm font-medium text-zinc-700 hover:bg-zinc-50"
                 >
-                  Good Profits
+                  Good Profit
                 </a>
               </div>
             )}
@@ -76,9 +83,9 @@ export default function SiteNav() {
         <div className="flex items-center gap-2">
           <a
             href="mailto:abdullah@elliyeen.com?subject=Website%20audit%20inquiry%20%E2%80%94%20let%27s%20work%20together&body=Hi%20Abbas%2C%0A%0AI%27d%20like%20to%20get%20my%20website%20audited%20by%20Elliyeen.%0A%0AWebsite%3A%20%5Bpaste%20your%20URL%20here%5D%0A%0ALooking%20forward%20to%20it."
-            className="inline-flex min-h-[44px] items-center rounded-xl bg-[#1B5EA8] px-6 text-sm font-bold text-white shadow-xl shadow-[#1B5EA8]/20 hover:bg-[#164d8e]"
+            className="inline-flex min-h-[44px] items-center gap-2 rounded-xl bg-[#123A5A] px-6 text-sm font-bold text-[#F5F1E7] shadow-[0_6px_28px_rgba(18,58,90,0.22)] hover:bg-[#0e2d47]"
           >
-            Fix it
+            Fix it <ArrowRight size={14} />
           </a>
           <MobileNav />
         </div>

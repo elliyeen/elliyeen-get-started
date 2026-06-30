@@ -402,7 +402,7 @@ export default function SoHalalReportClient() {
               <p className={`text-[10px] font-bold uppercase tracking-[0.28em] ${dark ? "text-zinc-500" : "text-zinc-400"}`}>
                 {label}
               </p>
-              <h2 className={`mt-1.5 font-serif text-2xl tracking-[-0.02em] md:text-3xl ${dark ? "text-white" : ""}`}>
+              <h2 className={`mt-1.5 font-serif t-heading ${dark ? "text-white" : ""}`}>
                 {title}
               </h2>
             </div>
@@ -527,7 +527,7 @@ export default function SoHalalReportClient() {
                 <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-400">
                   {step.step} — So Halal Soul Food
                 </p>
-                <h3 className="mt-1.5 font-serif text-xl leading-tight tracking-[-0.02em] text-zinc-900 sm:text-2xl">
+                <h3 className="mt-1.5 font-serif t-subheading text-zinc-900">
                   {step.title}
                 </h3>
               </div>
@@ -623,7 +623,7 @@ export default function SoHalalReportClient() {
               <p className="text-[10px] font-bold uppercase tracking-[0.28em] text-zinc-400">
                 Revenue & CX Audit · June 2026
               </p>
-              <h1 className="mt-3 font-serif text-4xl tracking-[-0.03em] md:text-5xl">
+              <h1 className="mt-3 font-serif t-display">
                 So Halal Soul Food
               </h1>
               <p className="mt-1 text-sm text-zinc-400">
@@ -654,7 +654,7 @@ export default function SoHalalReportClient() {
               { value: "60+", label: "Menu items", sub: "All prices verified" },
             ].map((s) => (
               <div key={s.label} className="rounded-2xl border border-zinc-200 bg-white p-4">
-                <p className="font-serif text-2xl tracking-tight text-[#0D1B2A]">{s.value}</p>
+                <p className="font-serif t-subheading text-[#0D1B2A]">{s.value}</p>
                 <p className="mt-0.5 text-xs font-semibold text-zinc-600">{s.label}</p>
                 <p className="text-[10px] text-zinc-400">{s.sub}</p>
               </div>
@@ -857,7 +857,7 @@ export default function SoHalalReportClient() {
         <section id="constraint" className="scroll-mt-20 bg-[#0D1B2A] text-white">
           <div className="mx-auto max-w-5xl px-4 py-14 sm:px-6">
             <p className="text-[10px] font-bold uppercase tracking-[0.28em] text-zinc-500">Primary Constraint</p>
-            <h2 className="mt-3 font-serif text-3xl tracking-[-0.03em] md:text-4xl">
+            <h2 className="mt-3 font-serif t-title">
               The site is broken on every phone.
             </h2>
             <p className="mt-4 max-w-2xl text-base leading-7 text-zinc-300">
@@ -883,7 +883,7 @@ export default function SoHalalReportClient() {
         {/* ── Financial Model ─────────────────────────────────────────────── */}
         <section id="revenue-estimate" className="scroll-mt-20 mx-auto max-w-5xl px-4 py-10 sm:px-6">
           <p className="text-[10px] font-bold uppercase tracking-[0.28em] text-zinc-400">Financial Model</p>
-          <h2 className="mt-2 font-serif text-2xl tracking-[-0.02em] md:text-3xl">
+          <h2 className="mt-2 font-serif t-heading">
             Revenue estimate — no POS data provided
           </h2>
           <p className="mt-2 text-sm leading-6 text-zinc-500">
@@ -969,7 +969,7 @@ export default function SoHalalReportClient() {
         {/* ── Opportunity Impact ──────────────────────────────────────────── */}
         <section id="opportunity-impact" className="scroll-mt-20 mx-auto max-w-5xl px-4 py-10 sm:px-6">
           <p className="text-[10px] font-bold uppercase tracking-[0.28em] text-zinc-400">Financial Model</p>
-          <h2 className="mt-2 font-serif text-2xl tracking-[-0.02em] md:text-3xl">
+          <h2 className="mt-2 font-serif t-heading">
             Three fixes · cumulative monthly impact
           </h2>
           <p className="mt-2 text-sm leading-6 text-zinc-500">
@@ -1037,7 +1037,7 @@ export default function SoHalalReportClient() {
         {/* ── Profit Opportunities ────────────────────────────────────────── */}
         <section id="opportunities" className="scroll-mt-20 mx-auto max-w-5xl px-4 py-10 sm:px-6">
           <p className="text-[10px] font-bold uppercase tracking-[0.28em] text-zinc-400">Profit Opportunities</p>
-          <h2 className="mt-2 font-serif text-2xl tracking-[-0.02em] md:text-3xl">
+          <h2 className="mt-2 font-serif t-heading">
             Three actions, ranked by Opportunity Score
           </h2>
           <p className="mt-2 text-sm text-zinc-500">
@@ -1051,7 +1051,7 @@ export default function SoHalalReportClient() {
                     <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-300">
                       #{opp.rank}
                     </span>
-                    <span className="mt-1 font-serif text-3xl tracking-tight text-[#1B5EA8]">
+                    <span className="mt-1 font-serif t-heading text-[#1B5EA8]">
                       {opp.score}
                     </span>
                     <span className="text-[10px] text-zinc-400">/ 100</span>
@@ -1059,7 +1059,7 @@ export default function SoHalalReportClient() {
                   <div className="w-px self-stretch bg-zinc-100" />
                   <div className="flex-1 min-w-0">
                     <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-400">{opp.type}</p>
-                    <h3 className="mt-1 font-serif text-xl tracking-[-0.02em]">{opp.title}</h3>
+                    <h3 className="mt-1 font-serif t-card-title">{opp.title}</h3>
 
                     <div className="mt-4 grid gap-3 sm:grid-cols-2">
                       <div>
@@ -1107,7 +1107,7 @@ export default function SoHalalReportClient() {
         {/* ── Waste ───────────────────────────────────────────────────────── */}
         <section id="waste" className="scroll-mt-20 mx-auto max-w-5xl px-4 py-10 sm:px-6">
           <p className="text-[10px] font-bold uppercase tracking-[0.28em] text-zinc-400">Waste Identified</p>
-          <h2 className="mt-2 font-serif text-2xl tracking-[-0.02em] md:text-3xl">
+          <h2 className="mt-2 font-serif t-heading">
             Six verified friction points
           </h2>
           <div className="mt-5 space-y-3">
@@ -1139,7 +1139,7 @@ export default function SoHalalReportClient() {
         {/* ── Digital & SEO ───────────────────────────────────────────────── */}
         <section id="seo" className="scroll-mt-20 mx-auto max-w-5xl px-4 py-10 sm:px-6">
           <p className="text-[10px] font-bold uppercase tracking-[0.28em] text-zinc-400">Digital & SEO Audit</p>
-          <h2 className="mt-2 font-serif text-2xl tracking-[-0.02em] md:text-3xl">
+          <h2 className="mt-2 font-serif t-heading">
             All findings from live technical measurement [VERIFIED]
           </h2>
           <div className="mt-5 overflow-hidden rounded-2xl border border-zinc-200 bg-white">
@@ -1182,7 +1182,7 @@ export default function SoHalalReportClient() {
         {/* ── Menu Analysis ───────────────────────────────────────────────── */}
         <section id="menu" className="scroll-mt-20 mx-auto max-w-5xl px-4 py-10 sm:px-6">
           <p className="text-[10px] font-bold uppercase tracking-[0.28em] text-zinc-400">Menu Analysis</p>
-          <h2 className="mt-2 font-serif text-2xl tracking-[-0.02em] md:text-3xl">
+          <h2 className="mt-2 font-serif t-heading">
             Full menu · 60+ items · 10 categories · [VERIFIED]
           </h2>
           <p className="mt-2 text-sm text-zinc-500">
@@ -1218,7 +1218,7 @@ export default function SoHalalReportClient() {
               <div key={cat.cat} className="overflow-hidden rounded-2xl border border-zinc-200 bg-white">
                 <div className="border-b border-zinc-100 px-5 py-3.5">
                   <div className="flex items-baseline gap-3">
-                    <h3 className="font-serif text-lg tracking-tight text-zinc-900">{cat.cat}</h3>
+                    <h3 className="font-serif t-card-title text-zinc-900">{cat.cat}</h3>
                     <span className="text-[10px] text-zinc-400">{cat.items.length} items</span>
                   </div>
                   {cat.note && (
@@ -1252,7 +1252,7 @@ export default function SoHalalReportClient() {
             <div className="overflow-hidden rounded-2xl border border-red-100 bg-white">
               <div className="border-b border-red-100 px-5 py-3.5">
                 <div className="flex items-baseline gap-3">
-                  <h3 className="font-serif text-lg tracking-tight text-red-700">Rice Bowls</h3>
+                  <h3 className="font-serif t-card-title text-red-700">Rice Bowls</h3>
                   <span className="rounded-full bg-red-50 px-2 py-0.5 text-[10px] font-semibold text-red-500">
                     0 items — empty section
                   </span>
@@ -1269,7 +1269,7 @@ export default function SoHalalReportClient() {
         {/* ── Price Range Chart ────────────────────────────────────────────── */}
         <section id="price-chart" className="scroll-mt-20 mx-auto max-w-5xl px-4 py-10 sm:px-6">
           <p className="text-[10px] font-bold uppercase tracking-[0.28em] text-zinc-400">Menu Pricing</p>
-          <h2 className="mt-2 font-serif text-2xl tracking-[-0.02em] md:text-3xl">
+          <h2 className="mt-2 font-serif t-heading">
             Price range by category — [VERIFIED]
           </h2>
           <p className="mt-2 text-sm text-zinc-500">
@@ -1332,7 +1332,7 @@ export default function SoHalalReportClient() {
             >
               <div>
                 <p className="text-[10px] font-bold uppercase tracking-[0.28em] text-zinc-500">Roadmap</p>
-                <h2 className="mt-2 font-serif text-2xl tracking-[-0.03em] md:text-3xl">
+                <h2 className="mt-2 font-serif t-heading">
                   30 days — fix, measure, test
                 </h2>
               </div>
@@ -1404,7 +1404,7 @@ export default function SoHalalReportClient() {
         {/* ── 90-Day Roadmap ───────────────────────────────────────────────── */}
         <section id="roadmap-90" className="scroll-mt-20 mx-auto max-w-5xl px-4 py-10 sm:px-6">
           <p className="text-[10px] font-bold uppercase tracking-[0.28em] text-zinc-400">Roadmap</p>
-          <h2 className="mt-2 font-serif text-2xl tracking-[-0.02em] md:text-3xl">
+          <h2 className="mt-2 font-serif t-heading">
             90 days — build on what works
           </h2>
           <div className="mt-5 grid gap-4 sm:grid-cols-3">
@@ -1465,7 +1465,7 @@ export default function SoHalalReportClient() {
                 <p className="text-[10px] font-bold uppercase tracking-[0.28em] text-zinc-500">
                   Elliyeen Research
                 </p>
-                <h2 className="mt-4 font-serif text-3xl tracking-[-0.03em] md:text-4xl">
+                <h2 className="mt-4 font-serif t-title">
                   This report is the diagnosis.
                 </h2>
                 <p className="mt-4 text-base leading-7 text-zinc-400">

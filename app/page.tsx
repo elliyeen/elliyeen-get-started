@@ -3,6 +3,7 @@ import SiteNav from "./SiteNav";
 import ScrollReveal from "./ScrollReveal";
 import CasesCarousel from "@/components/CasesCarousel";
 import SPCSBeforeAfter from "@/components/SPCSBeforeAfter";
+import ElliyeenHero from "@/components/ElliyeenHero";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 
 const CONTACT_MAILTO =
@@ -101,7 +102,7 @@ export default function GetStartedPage() {
       {/* Fix 8 — Skip to main content for keyboard / screen reader users */}
       <a
         href="#main-content"
-        className="fixed left-4 top-4 z-[60] -translate-y-20 rounded-lg bg-black px-4 py-2 text-sm font-bold text-white focus:translate-y-0 transition-transform"
+        className="skip-link"
       >
         Skip to main content
       </a>
@@ -110,58 +111,7 @@ export default function GetStartedPage() {
 
         <SiteNav />
 
-        {/* Fix 2 — Committed headline. Fix 6 — No stock avatars. Fix 10 — Methodology card replaces fake revenue number. */}
-        <section className="relative mx-auto grid max-w-7xl items-center gap-10 px-4 pb-14 pt-10 sm:px-6 md:grid-cols-2 md:gap-12 md:pb-16 md:pt-20">
-          <div>
-            <h1 className="font-serif text-5xl leading-[1.05] tracking-[-0.04em] sm:text-6xl md:text-7xl">
-              Know exactly what&apos;s costing your revenue.
-              <br />
-              <span className="text-[#1B5EA8]">Fix&nbsp;it.</span>
-            </h1>
-
-            <p className="mt-5 max-w-md text-lg leading-[1.7] text-zinc-600">
-              Something specific is costing you customers every week. We find it, write the replacement copy, and rank every gap by revenue impact — so you know exactly what to fix, in what order, with the work already done.
-            </p>
-
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <a href={CONTACT_MAILTO} className="inline-flex min-h-[52px] items-center justify-center rounded-xl bg-[#1B5EA8] px-6 text-sm font-bold text-white shadow-xl shadow-[#1B5EA8]/20 hover:bg-[#164d8e]">
-                Fix it
-              </a>
-              <a href="/how-it-works" className="inline-flex min-h-[52px] items-center justify-center gap-2 rounded-xl px-6 text-sm font-bold hover:bg-white">
-                See how it works <ArrowRight size={16} />
-              </a>
-            </div>
-
-          </div>
-
-          {/* Fix 10 — Audit methodology card replaces the fake $2.4M revenue number */}
-          <div className="relative hidden sm:block">
-            <div className="absolute -right-8 -top-10 hidden h-48 w-48 rounded-full bg-[#1B5EA8]/10 blur-3xl md:block" />
-            <div className="relative rotate-[-2deg] rounded-[2rem] border border-zinc-200 bg-white p-4 shadow-2xl shadow-zinc-900/10 sm:p-5">
-              <div className="rounded-[1.4rem] border border-zinc-100 bg-gradient-to-br from-white to-[#eef3fb] p-5 sm:p-8">
-                <div className="mb-5 text-xs font-bold tracking-[0.18em] text-zinc-500">
-                  ELLIYEEN AUDIT FRAMEWORK
-                </div>
-                <p className="text-sm font-semibold text-zinc-500">What gets diagnosed</p>
-                <div className="mt-5 grid gap-3 text-sm">
-                  {auditDimensions.map((dim) => (
-                    <div key={dim} className="flex items-center gap-3 text-zinc-700">
-                      <CheckCircle2 size={15} className="shrink-0 text-[#1B5EA8]" />
-                      {dim}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Scroll indicator */}
-          <div className="absolute bottom-5 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-1 animate-bounce md:flex" aria-hidden="true">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-              <path d="M5 8l5 5 5-5" stroke="#a1a1aa" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </div>
-        </section>
+        <ElliyeenHero />
 
         {/* Logo ticker */}
         <div className="bg-white py-5 overflow-hidden">
@@ -219,7 +169,7 @@ export default function GetStartedPage() {
           <ScrollReveal>
           <div className="rounded-[2rem] border border-zinc-200 bg-white/80 p-5 shadow-xl shadow-zinc-900/5 backdrop-blur sm:p-6 md:p-10">
             <div className="mb-6 sm:mb-8">
-              <h2 className="font-serif text-3xl tracking-[-0.04em] sm:text-4xl md:text-5xl">We don&apos;t describe the problem.<br className="hidden sm:block" /> We write the fix.</h2>
+              <h2 className="font-serif t-title">We don&apos;t describe the problem.<br className="hidden sm:block" /> We write the fix.</h2>
               <p className="mt-4 max-w-xl text-sm leading-7 text-zinc-600 sm:text-base">
                 Every finding ships with the rewritten version — formatted, ready to paste.
                 Shannon received this the day her audit was delivered.
@@ -328,7 +278,7 @@ export default function GetStartedPage() {
           <div className="rounded-[2rem] border border-zinc-200 bg-white p-5 sm:p-6 md:p-8">
             <div className="mb-7">
               <p className="text-xs font-bold uppercase tracking-[0.28em] text-zinc-400">Case studies</p>
-              <h2 className="mt-3 font-serif text-3xl tracking-[-0.04em] sm:text-4xl">
+              <h2 className="mt-3 font-serif t-title">
                 The sites were live.<br className="hidden sm:block" /> The revenue wasn&apos;t.
               </h2>
               <p className="mt-2 max-w-lg text-sm leading-6 text-zinc-500">
@@ -346,7 +296,7 @@ export default function GetStartedPage() {
             <div className="grid items-center gap-10 md:grid-cols-2">
               <div>
                 <p className="text-xs font-bold uppercase tracking-[0.28em] text-zinc-500">Pricing</p>
-                <p className="mt-4 font-serif text-2xl leading-[1.2] tracking-[-0.03em] text-zinc-900 sm:text-3xl">
+                <p className="mt-4 font-serif t-heading text-zinc-900">
                   The last audit we completed found{" "}
                   <span className="text-[#1B5EA8]">$36,600/month</span>{" "}
                   in uncaptured revenue. It cost $1,500.
@@ -354,9 +304,9 @@ export default function GetStartedPage() {
                 <a
                   id="contact"
                   href={CONTACT_MAILTO}
-                  className="mt-6 inline-flex items-center gap-2 rounded-xl bg-[#1B5EA8] px-6 py-4 text-sm font-bold text-white hover:bg-[#164d8e]"
+                  className="mt-6 inline-flex h-[52px] min-w-[190px] items-center justify-center gap-2 rounded-xl bg-[#123A5A] px-8 text-sm font-bold text-[#F5F1E7] shadow-[0_6px_28px_rgba(18,58,90,0.22)] hover:bg-[#0e2d47]"
                 >
-                  Fix it <ArrowRight size={16} />
+                  Fix it <ArrowRight size={15} />
                 </a>
               </div>
               <div className="grid gap-4">
@@ -378,7 +328,7 @@ export default function GetStartedPage() {
         <section className="mx-auto max-w-7xl px-4 py-6 sm:px-6 sm:py-8">
           <ScrollReveal>
           <div className="rounded-2xl bg-[#f7f4ee] px-6 py-10 text-center sm:px-10 sm:py-12 md:px-16 md:py-14">
-            <h2 className="font-serif text-2xl leading-[1.15] tracking-[-0.03em] text-[#111111] sm:text-3xl md:text-4xl md:tracking-[-0.04em]">
+            <h2 className="font-serif t-title text-[#111111]">
               Grow and turn your passion{" "}
               <br className="hidden sm:block" />
               <span className="text-[#1B5EA8]">into real customers.</span>
@@ -386,7 +336,7 @@ export default function GetStartedPage() {
             <div className="mt-6 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:justify-center">
               <a
                 href={CONTACT_MAILTO}
-                className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-xl bg-[#1B5EA8] px-6 text-sm font-bold text-white shadow-md shadow-[#1B5EA8]/20 hover:bg-[#164d8e] sm:min-w-[180px]"
+                className="inline-flex h-[52px] min-w-[190px] items-center justify-center gap-2 rounded-xl bg-[#123A5A] px-8 text-sm font-bold text-[#F5F1E7] shadow-[0_6px_28px_rgba(18,58,90,0.22)] hover:bg-[#0e2d47]"
               >
                 Fix it <ArrowRight size={15} />
               </a>

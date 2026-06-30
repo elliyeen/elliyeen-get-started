@@ -1,14 +1,14 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Menu, X, ChevronRight } from "lucide-react";
+import { Menu, X, ChevronRight, ArrowRight } from "lucide-react";
 
 const links = [
   { label: "How It Works", href: "/how-it-works" },
   { label: "Industries", href: "/#cases" },
   { label: "Resources", href: null, children: [
     { label: "Reports", href: "/reports" },
-    { label: "Good Profits", href: "/good-profits" },
+    { label: "Good Profit", href: "/good-profits" },
   ]},
   { label: "Pricing", href: "/#pricing" },
 ];
@@ -21,13 +21,21 @@ export default function MobileNav() {
     return () => { document.body.style.overflow = ""; };
   }, [open]);
 
+  useEffect(() => {
+    function handleKey(e: KeyboardEvent) {
+      if (e.key === "Escape" && open) setOpen(false);
+    }
+    document.addEventListener("keydown", handleKey);
+    return () => document.removeEventListener("keydown", handleKey);
+  }, [open]);
+
   return (
     <div className="md:hidden">
       <button
         onClick={() => setOpen(!open)}
         aria-label={open ? "Close menu" : "Open menu"}
         aria-expanded={open}
-        className="flex h-9 w-9 items-center justify-center rounded-full border border-zinc-300 text-black hover:border-zinc-500"
+        className="flex h-11 w-11 items-center justify-center rounded-full border border-zinc-300 text-black hover:border-zinc-500"
       >
         {open ? <X size={18} /> : <Menu size={18} />}
       </button>
@@ -53,7 +61,7 @@ export default function MobileNav() {
           <button
             onClick={() => setOpen(false)}
             aria-label="Close menu"
-            className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full border border-zinc-300 text-black"
+            className="absolute right-4 top-4 flex h-11 w-11 items-center justify-center rounded-full border border-zinc-300 text-black"
           >
             <X size={18} />
           </button>
@@ -96,9 +104,9 @@ export default function MobileNav() {
             <a
               href="mailto:abdullah@elliyeen.com?subject=Website%20audit%20inquiry%20%E2%80%94%20let%27s%20work%20together&body=Hi%20Abbas%2C%0A%0AI%27d%20like%20to%20get%20my%20website%20audited%20by%20Elliyeen.%0A%0AWebsite%3A%20%5Bpaste%20your%20URL%20here%5D%0A%0ALooking%20forward%20to%20it."
               onClick={() => setOpen(false)}
-              className="rounded-xl bg-[#1B5EA8] px-6 py-4 text-center text-sm font-bold text-white hover:bg-[#164d8e]"
+              className="inline-flex h-[52px] items-center justify-center gap-2 rounded-xl bg-[#123A5A] px-8 text-sm font-bold text-[#F5F1E7] shadow-[0_6px_28px_rgba(18,58,90,0.22)] hover:bg-[#0e2d47]"
             >
-              Get your free site diagnosis
+              Fix it <ArrowRight size={15} />
             </a>
           </div>
         </div>

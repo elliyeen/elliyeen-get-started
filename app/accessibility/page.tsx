@@ -16,7 +16,7 @@ export default function AccessibilityPage() {
 
       <main className="mx-auto max-w-4xl px-6 py-16">
         <p className="text-xs font-semibold uppercase tracking-widest text-zinc-400">Inclusion</p>
-        <h1 className="mt-4 font-serif text-5xl tracking-[-0.03em]">Accessibility Statement</h1>
+        <h1 className="mt-4 font-serif t-display">Accessibility Statement</h1>
         <p className="mt-4 text-sm text-zinc-400">Last updated: {updated}</p>
 
         <div className="mt-12 max-w-none text-[17px] leading-8">
@@ -25,12 +25,12 @@ export default function AccessibilityPage() {
             Elliyeen Research is committed to ensuring that our website is accessible to everyone — including people with disabilities. We believe that good experience design means designing for all people, and we hold ourselves to that standard.
           </p>
 
-          <h2 className="mt-12 font-serif text-2xl font-normal tracking-tight">Our Commitment</h2>
+          <h2 className="mt-12 font-serif t-subheading font-normal">Our Commitment</h2>
           <p className="mt-4 text-zinc-700">
             We aim to conform to the <strong>Web Content Accessibility Guidelines (WCAG) 2.1 Level AA</strong> as published by the World Wide Web Consortium (W3C). These guidelines explain how to make web content more accessible to people with a wide range of disabilities, including visual, auditory, physical, speech, cognitive, language, learning, and neurological disabilities.
           </p>
 
-          <h2 className="mt-12 font-serif text-2xl font-normal tracking-tight">What We've Done</h2>
+          <h2 className="mt-12 font-serif t-subheading font-normal">What We've Done</h2>
           <ul className="mt-4 list-disc space-y-3 pl-6 text-zinc-700">
             <li><strong>Semantic HTML</strong> — We use proper heading hierarchy, landmark regions, and semantic elements so screen readers can navigate the page efficiently.</li>
             <li><strong>Keyboard navigation</strong> — All interactive elements (links, buttons, forms) are reachable and operable using a keyboard alone.</li>
@@ -42,7 +42,7 @@ export default function AccessibilityPage() {
             <li><strong>ARIA labels</strong> — Icon-only controls include descriptive <code>aria-label</code> attributes to communicate purpose to assistive technologies.</li>
           </ul>
 
-          <h2 className="mt-12 font-serif text-2xl font-normal tracking-tight">Known Limitations</h2>
+          <h2 className="mt-12 font-serif t-subheading font-normal">Known Limitations</h2>
           <p className="mt-4 text-zinc-700">
             We are continuously working to improve accessibility. Some areas where we are actively making improvements include:
           </p>
@@ -51,7 +51,7 @@ export default function AccessibilityPage() {
             <li>Some complex interactive components may not yet fully support all screen reader interactions. We are working to resolve these.</li>
           </ul>
 
-          <h2 className="mt-12 font-serif text-2xl font-normal tracking-tight">Assistive Technologies Supported</h2>
+          <h2 className="mt-12 font-serif t-subheading font-normal">Assistive Technologies Supported</h2>
           <p className="mt-4 text-zinc-700">Our site is designed to be compatible with the following assistive technologies:</p>
           <ul className="mt-4 list-disc space-y-2 pl-6 text-zinc-700">
             <li>Screen readers — NVDA, JAWS, VoiceOver (macOS/iOS), TalkBack (Android)</li>
@@ -60,12 +60,12 @@ export default function AccessibilityPage() {
             <li>Browser zoom up to 200%</li>
           </ul>
 
-          <h2 className="mt-12 font-serif text-2xl font-normal tracking-tight">Browser Compatibility</h2>
+          <h2 className="mt-12 font-serif t-subheading font-normal">Browser Compatibility</h2>
           <p className="mt-4 text-zinc-700">
             This site is tested and supported on current versions of Chrome, Firefox, Safari, and Microsoft Edge across desktop and mobile devices.
           </p>
 
-          <h2 className="mt-12 font-serif text-2xl font-normal tracking-tight">Feedback & Contact</h2>
+          <h2 className="mt-12 font-serif t-subheading font-normal">Feedback & Contact</h2>
           <p className="mt-4 text-zinc-700">
             We welcome feedback on the accessibility of our site. If you encounter any barriers, experience difficulty accessing any content, or have suggestions for improvement, please contact us. We take all accessibility feedback seriously and will respond promptly.
           </p>

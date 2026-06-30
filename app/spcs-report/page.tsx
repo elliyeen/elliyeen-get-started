@@ -52,10 +52,10 @@ export default function SPCSReportPage() {
         <p className="text-xs font-bold uppercase tracking-[0.28em] text-zinc-500">
           Case Study · Home Care · Savannah, GA
         </p>
-        <h1 className="mt-4 max-w-3xl font-serif text-4xl leading-[1.08] tracking-[-0.04em] sm:text-5xl md:text-6xl">
+        <h1 className="mt-4 max-w-3xl font-serif t-display">
           <span className="text-[#1B5EA8]">We rebuilt it.</span>
         </h1>
-        <p className="mt-5 max-w-2xl text-lg leading-[1.7] text-zinc-600">
+        <p className="mt-5 max-w-2xl t-body-lg text-zinc-600">
           Savannah Personal Care Services had a website. Families were finding it.
           Nobody was calling. Read the full report.
         </p>
@@ -69,7 +69,7 @@ export default function SPCSReportPage() {
             ["0", "generic findings"],
           ].map(([num, label]) => (
             <div key={label} className="flex flex-col">
-              <span className="font-serif text-3xl font-bold tracking-[-0.03em] text-[#1B5EA8]">{num}</span>
+              <span className="font-serif t-heading font-bold text-[#1B5EA8]">{num}</span>
               <span className="mt-1 text-[11px] font-bold uppercase tracking-[0.18em] text-zinc-500">{label}</span>
             </div>
           ))}
@@ -80,7 +80,7 @@ export default function SPCSReportPage() {
       <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
         <div className="rounded-[2rem] border border-zinc-200 bg-white p-6 sm:p-8 md:p-10">
           <p className="text-xs font-bold uppercase tracking-[0.28em] text-zinc-500">Before — what we found</p>
-          <h2 className="mt-3 font-serif text-2xl tracking-[-0.03em] sm:text-3xl">
+          <h2 className="mt-3 font-serif t-title">
             The site was live. The revenue wasn&apos;t.
           </h2>
           <p className="mt-3 max-w-2xl text-sm leading-6 text-zinc-500">
@@ -113,7 +113,7 @@ export default function SPCSReportPage() {
       <div className="mx-auto max-w-7xl px-4 pb-6 sm:px-6">
         <div className="rounded-[2rem] border border-[#0D1B2A]/20 bg-[#0D1B2A] px-8 py-6 text-center">
           <p className="text-xs font-bold uppercase tracking-[0.28em] text-[#2E5F8A]">The audit</p>
-          <p className="mt-2 font-serif text-xl text-white sm:text-2xl">
+          <p className="mt-2 font-serif t-subheading text-white">
             22 specialist frameworks. 19 pages. Every finding documented with evidence and a specific fix.
           </p>
           <p className="mt-2 text-sm text-zinc-400">Scroll through or download the PDF below.</p>
@@ -129,7 +129,7 @@ export default function SPCSReportPage() {
           <div className="grid md:grid-cols-2">
             <div className="p-8 md:p-10">
               <p className="text-xs font-bold uppercase tracking-[0.28em] text-zinc-500">After — what was built</p>
-              <h2 className="mt-3 font-serif text-2xl tracking-[-0.03em] sm:text-3xl md:text-4xl">
+              <h2 className="mt-3 font-serif t-title">
                 The rebuilt site is live.
               </h2>
               <p className="mt-4 text-sm leading-6 text-zinc-600">
@@ -207,7 +207,7 @@ export default function SPCSReportPage() {
               <p className="text-xs font-bold uppercase tracking-[0.28em] text-[#2E5F8A]">
                 Your site next
               </p>
-              <h2 className="mt-3 font-serif text-3xl tracking-[-0.03em] text-white sm:text-4xl">
+              <h2 className="mt-3 font-serif t-title text-white">
                 If you recognized any of those four problems in your own site, that&apos;s not a coincidence.
               </h2>
               <p className="mt-4 text-sm leading-6 text-zinc-400">
@@ -237,7 +237,7 @@ export default function SPCSReportPage() {
               </div>
               <a
                 href="mailto:abdullah@elliyeen.com?subject=Website%20audit%20inquiry%20%E2%80%94%20let%27s%20work%20together&body=Hi%20Abbas%2C%0A%0AI%27d%20like%20to%20get%20my%20website%20audited%20by%20Elliyeen.%0A%0AWebsite%3A%20%5Bpaste%20your%20URL%20here%5D%0A%0ALooking%20forward%20to%20it."
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#1B5EA8] px-6 py-4 text-sm font-bold text-white hover:bg-[#164d8e]"
+                className="inline-flex h-[52px] min-w-[190px] items-center justify-center gap-2 rounded-xl bg-[#123A5A] px-8 text-sm font-bold text-[#F5F1E7] shadow-[0_6px_28px_rgba(18,58,90,0.22)] hover:bg-[#0e2d47]"
               >
                 Fix it <ArrowRight size={15} />
               </a>
