@@ -548,7 +548,7 @@ export default function SoHalalReportClient() {
                 {step.stats.map((s) => (
                   <div key={s.label} className="rounded-xl border border-zinc-100 bg-zinc-50 p-3 text-center">
                     <p
-                      className={`font-serif text-2xl tracking-tight ${
+                      className={`font-serif t-subheading ${
                         s.color === "red"
                           ? "text-red-500"
                           : s.color === "green"
