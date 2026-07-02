@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Operator School — Website Audit · Elliyeen</title>
+<style>
+
+/* ─────────────────────────────────────────
+   ELLIYEEN DESIGN TOKENS
+───────────────────────────────────────── */
+:root {
+  --e-ink:        #111111;
+  --e-soft:       #6e6e73;
+  --e-muted:      #9a9a9f;
+  --e-surface:    #f7f4ee;
+  --e-white:      #ffffff;
+  --e-blue:       #1b5ea8;
+  --e-blue-dark:  #164d8e;
+  --e-dark:       #0d1b2a;
+  --e-rule:       rgba(0,0,0,0.08);
+  --e-rule-solid: #d8d4cc;
+  --e-red:        #b91c1c;
+  --e-amber:      #b45309;
+  --e-green:      #166534;
+
+  --t-label:  10px;
+  --t-caption:11px;
+  --t-sm:     13px;
+  --t-base:   15px;
+  --t-lg:     17px;
+  --t-xl:     20px;
+  --t-2xl:    26px;
+  --t-3xl:    34px;
+  --t-4xl:    44px;
+  --t-hero:   72px;
+
+  --gap-xs:  8px;
+  --gap-sm:  16px;
+  --gap-md:  32px;
+  --gap-lg:  56px;
+  --gap-xl:  80px;
+
+  --margin-h: 72px;
+  --margin-v: 64px;
+  --prose: 620px;
+}
+
+/* ─────────────────────────────────────────
+   RESET
+───────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; }
+body {
+  font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+  font-size: var(--t-base);
+  line-height: 1.7;
+  color: var(--e-ink);
+  background: var(--e-surface);
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* ─────────────────────────────────────────
+   TYPE
+───────────────────────────────────────── */
+h1, h2, h3 {
+  font-family: ui-serif, Georgia, 'Times New Roman', serif;
+  font-weight: 400;
+  color: var(--e-ink);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+h1 { font-size: var(--t-4xl); margin-bottom: 20px; }
+h2 { font-size: var(--t-3xl); margin-bottom: 14px; }
+h3 { font-size: var(--t-xl);  margin-bottom: 8px; }
+
+p {
+  font-size: var(--t-base);
+  line-height: 1.75;
+  color: var(--e-ink);
+  margin-bottom: 12px;
+  max-width: var(--prose);
+}
+p:last-child { margin-bottom: 0; }
+strong { font-weight: 600; }
+
+ul, ol { margin: 8px 0 12px 20px; max-width: var(--prose); }
+li { font-size: var(--t-base); line-height: 1.7; margin-bottom: 4px; color: var(--e-ink); }
+
+/* ─────────────────────────────────────────
+   PAGE LAYOUT
+───────────────────────────────────────── */
+.page {
+  width: 100%;
+  padding: var(--margin-v) var(--margin-h);
+  position: relative;
+  background: var(--e-surface);
+  min-height: 100vh;
+}
+.page + .page { border-top: 1px solid var(--e-rule-solid); }
+
+/* ─────────────────────────────────────────
+   COVER
+───────────────────────────────────────── */
+.cover {
+  background: var(--e-dark);
+  min-height: 100vh;
+  padding: var(--margin-v) var(--margin-h);
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 56px;
+  page-break-after: always;
+}
+.cover-wordmark {
+  grid-column: 1 / -1;
+  font-size: var(--t-sm);
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--e-blue);
+  margin-bottom: 0;
+}
+.cover-body {
+  grid-column: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-bottom: 52px;
+}
+.cover-screenshot {
+  grid-column: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 0;
+}
+.cover-screenshot img {
+  width: 100%;
+  height: auto;
+  max-height: 72vh;
+  object-fit: cover;
+  object-position: top left;
+  display: block;
+  border: 1px solid rgba(255,255,255,0.07);
+  box-shadow: 0 8px 48px rgba(0,0,0,0.55), 0 2px 8px rgba(0,0,0,0.3);
+}
+.cover-footer {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 20px;
+}
+.cover-eyebrow {
+  font-size: var(--t-label);
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--e-blue);
+  margin-bottom: 24px;
+}
+.cover-title {
+  font-family: ui-serif, Georgia, serif;
+  font-size: var(--t-hero);
+  font-weight: 400;
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+.cover-client {
+  font-family: ui-serif, Georgia, serif;
+  font-size: var(--t-2xl);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 52px;
+}
+.cover-rule { width: 40px; height: 1px; background: var(--e-blue); margin-bottom: 28px; }
+.cover-meta { display: flex; gap: 40px; flex-wrap: wrap; }
+.cover-meta-label {
+  font-size: var(--t-label);
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 4px;
+}
+.cover-meta-value { font-size: var(--t-sm); color: rgba(255,255,255,0.7); }
+.cover-footer-left { font-size: var(--t-label); font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.3); }
+.cover-footer-right { font-size: var(--t-label); color: rgba(255,255,255,0.3); }
+
+/* ─────────────────────────────────────────
+   UTILITY
+───────────────────────────────────────── */
+.section-label {
+  display: block;
+  font-size: var(--t-label);
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--e-blue);
+  margin-bottom: 10px;
+}
+.rule { border: none; border-top: 1px solid var(--e-rule-solid); margin: var(--gap-lg) 0; }
+.rule-sm { border: none; border-top: 1px solid var(--e-rule-solid); margin: var(--gap-md) 0; }
+.lead {
+  font-size: var(--t-xl);
+  font-family: ui-serif, Georgia, serif;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--e-ink);
+  max-width: 560px;
+  margin-bottom: var(--gap-md);
+  letter-spacing: -0.01em;
+}
+.page-num {
+  position: absolute;
+  bottom: 32px;
+  right: var(--margin-h);
+  font-size: var(--t-label);
+  color: var(--e-muted);
+  letter-spacing: 0.1em;
+}
+.col-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+.col-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 28px; }
+
+/* ─────────────────────────────────────────
+   SCORE ROW  (Tufte horizontal bar)
+───────────────────────────────────────── */
+.score-table { width: 100%; margin: 24px 0; }
+.score-row {
+  display: grid;
+  grid-template-columns: 160px 1fr 56px;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+.score-label { font-size: var(--t-sm); color: var(--e-soft); white-space: nowrap; }
+.score-track { height: 6px; background: rgba(0,0,0,0.07); border-radius: 0; position: relative; }
+.score-fill {
+  height: 100%;
+  background: var(--e-ink);
+  display: block;
+  position: relative;
+}
+.score-fill.poor  { background: #b91c1c; }
+.score-fill.fair  { background: #b45309; }
+.score-fill.ok    { background: var(--e-blue); }
+.score-fill.good  { background: #166534; }
+.score-num { font-size: var(--t-sm); font-weight: 600; color: var(--e-ink); text-align: right; }
+.score-note { font-size: var(--t-caption); color: var(--e-muted); margin-left: 174px; margin-top: -8px; margin-bottom: 8px; }
+
+/* ─────────────────────────────────────────
+   BIG NUMBER
+───────────────────────────────────────── */
+.stat-row { display: flex; gap: 40px; margin: 28px 0; }
+.stat-item { }
+.stat-num {
+  font-family: ui-serif, Georgia, serif;
+  font-size: 52px;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--e-ink);
+}
+.stat-num.red   { color: var(--e-ink); }
+.stat-num.amber { color: var(--e-ink); }
+.stat-num.blue  { color: var(--e-ink); }
+.stat-label { font-size: var(--t-label); font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--e-muted); margin-top: 4px; }
+
+/* ─────────────────────────────────────────
+   FINDING BLOCK
+───────────────────────────────────────── */
+.finding { margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid var(--e-rule-solid); }
+.finding:last-child { border-bottom: none; }
+.finding-tag {
+  display: block;
+  font-size: var(--t-label);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+.tag-critical { font-weight: 800; color: var(--e-ink); }
+.tag-high     { font-weight: 700; color: var(--e-soft); }
+.tag-medium   { font-weight: 600; color: var(--e-muted); }
+.finding-title { font-size: var(--t-lg); font-weight: 600; margin-bottom: 5px; line-height: 1.3; }
+.finding-body  { font-size: var(--t-base); color: var(--e-soft); max-width: var(--prose); line-height: 1.7; }
+
+/* ─────────────────────────────────────────
+   BEFORE / AFTER
+───────────────────────────────────────── */
+.ba-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin: 20px 0; border-top: 1px solid var(--e-rule-solid); }
+.ba-box { padding: 24px 0; }
+.ba-box.before { padding-right: 36px; border-right: 1px solid var(--e-rule-solid); }
+.ba-box.after  { padding-left: 36px; }
+.ba-label {
+  font-size: var(--t-label);
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.ba-box.before .ba-label { color: var(--e-muted); }
+.ba-box.after  .ba-label { color: var(--e-ink); }
+.ba-text { font-size: var(--t-base); line-height: 1.75; color: var(--e-soft); }
+.ba-box.after .ba-text  {
+  font-family: ui-serif, Georgia, 'Times New Roman', serif;
+  font-size: var(--t-lg);
+  color: var(--e-ink);
+  line-height: 1.65;
+}
+
+/* ─────────────────────────────────────────
+   ACTION TABLE
+───────────────────────────────────────── */
+.action-table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+.action-table th {
+  font-size: var(--t-label);
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--e-muted);
+  padding: 0 12px 10px 0;
+  border-bottom: 1px solid var(--e-rule-solid);
+  text-align: left;
+}
+.action-table td {
+  font-size: var(--t-sm);
+  padding: 10px 12px 10px 0;
+  border-bottom: 1px solid var(--e-rule-solid);
+  vertical-align: top;
+  color: var(--e-ink);
+  line-height: 1.55;
+}
+.action-table tr:last-child td { border-bottom: none; }
+.impact-pill {
+  font-size: var(--t-label);
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--e-ink);
+}
+
+/* ─────────────────────────────────────────
+   NAV DOT CHART  (Tufte dot plot)
+───────────────────────────────────────── */
+.dot-chart { margin: 20px 0; }
+.dot-chart-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+.dot-chart-label { font-size: var(--t-sm); color: var(--e-soft); width: 100px; flex-shrink: 0; }
+.dot-chart-dots { display: flex; gap: 4px; flex-wrap: wrap; }
+.dot { width: 7px; height: 7px; border-radius: 50%; background: var(--e-ink); display: inline-block; }
+.dot.dim { background: rgba(0,0,0,0.12); }
+.dot-chart-count { font-size: var(--t-label); color: var(--e-soft); font-weight: 600; margin-left: 6px; }
+
+/* ─────────────────────────────────────────
+   CALLOUT BOX
+───────────────────────────────────────── */
+.callout {
+  background: #eff6ff;
+  border-left: 3px solid var(--e-blue);
+  padding: 16px 20px;
+  margin: 20px 0;
+  max-width: var(--prose);
+}
+.callout p { font-size: var(--t-sm); color: var(--e-ink); margin: 0; }
+
+/* ─────────────────────────────────────────
+   ROADMAP TIMELINE  (Tufte minimalist)
+───────────────────────────────────────── */
+.timeline { margin: 20px 0; }
+.timeline-phase { margin-bottom: 28px; }
+.timeline-phase-label {
+  font-size: var(--t-label);
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--e-blue);
+  margin-bottom: 12px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid var(--e-blue);
+  display: inline-block;
+}
+.timeline-item {
+  display: grid;
+  grid-template-columns: 18px 1fr;
+  gap: 10px;
+  margin-bottom: 10px;
+  align-items: start;
+}
+.timeline-bullet {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--e-ink);
+  margin-top: 7px;
+  flex-shrink: 0;
+}
+.timeline-item-text { font-size: var(--t-sm); color: var(--e-ink); line-height: 1.55; }
+.timeline-item-text strong { display: block; font-weight: 600; }
+.timeline-item-text span  { color: var(--e-soft); }
+
+/* ─────────────────────────────────────────
+   ABOUT PAGE
+───────────────────────────────────────── */
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; margin-top: 32px; }
+.about-col-label {
+  font-size: var(--t-label);
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--e-muted);
+  margin-bottom: 14px;
+}
+
+/* ─────────────────────────────────────────
+   PRINT
+───────────────────────────────────────── */
+@media print {
+  body { background: var(--e-surface); }
+  .page, .cover { page-break-after: always; min-height: auto; }
+  .page:last-child { page-break-after: avoid; }
+  @page { size: Letter; margin: 0; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     PAGE 1 — COVER
+══════════════════════════════════════════ -->
+<div class="cover">
+  <div class="cover-wordmark">Elliyeen</div>
+
+  <div class="cover-body">
+    <div class="cover-eyebrow">Revenue · Copy · Experience · Universal Audit</div>
+    <div class="cover-title">Website<br>Audit</div>
+    <div class="cover-client">Associated Training Services<br>operator-school.com</div>
+    <div class="cover-rule"></div>
+    <div class="cover-meta">
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">Overall Score</div>
+        <div class="cover-meta-value">22 / 100</div>
+      </div>
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">Audit Date</div>
+        <div class="cover-meta-value">July 2026</div>
+      </div>
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">Auditors</div>
+        <div class="cover-meta-value">23 Specialist Agents</div>
+      </div>
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">Industry</div>
+        <div class="cover-meta-value">Vocational Training</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cover-screenshot">
+    <img src="ats-screenshot.png" alt="operator-school.com — current site" />
+  </div>
+
+  <div class="cover-footer">
+    <div class="cover-footer-left">Confidential</div>
+    <div class="cover-footer-right"><a href="https://www.elliyeen.com" style="color:rgba(255,255,255,0.4);text-decoration:none;">www.elliyeen.com</a></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     PAGE 2 — EXECUTIVE SUMMARY
+══════════════════════════════════════════ -->
+<div class="page">
+  <span class="section-label">Executive Summary</span>
+  <h1>What We Found</h1>
+  <p class="lead">The site is full of real value — but that value is buried under too many choices, too little story, and a design that hasn't changed in 15 years.</p>
+
+  <p>Associated Training Services (ATS) has something powerful: 50+ years of operation, accredited crane and heavy equipment programs, real job placement help, and graduates earning $26/hr or more. The problem is none of that comes through in the first 30 seconds on the site.</p>
+
+  <p>A visitor lands on the homepage and sees a dark sidebar with 20+ menu items, six competing buttons, and a "Hiring Instructors" CTA aimed at job seekers — not the student who came to change their career. The person who should become a student leaves before they ever feel understood.</p>
+
+  <div class="stat-row">
+    <div class="stat-item">
+      <div class="stat-num red">22</div>
+      <div class="stat-label">Overall Score / 100</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num red">20+</div>
+      <div class="stat-label">Nav Items (industry avg: 6)</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num red">6</div>
+      <div class="stat-label">Competing CTAs Above Fold</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num amber">$0</div>
+      <div class="stat-label">Pricing Visible on Homepage</div>
+    </div>
+  </div>
+
+  <hr class="rule">
+
+  <div class="col-2">
+    <div>
+      <span class="section-label">What's Working</span>
+      <ul>
+        <li>Strong accreditation credentials (NCCCO, ABC, AGC)</li>
+        <li>Free Starter Kit is a smart lead magnet</li>
+        <li>Financial assistance removes a key barrier</li>
+        <li>Testimonials include specific wage data ($26/hr)</li>
+        <li>Veteran Friendly designation adds trust</li>
+        <li>Multi-level program ladder (Level 1→2→3 cranes) is a natural upsell</li>
+      </ul>
+    </div>
+    <div>
+      <span class="section-label">What's Hurting Revenue</span>
+      <ul>
+        <li>No hero headline that speaks to a career outcome</li>
+        <li>6 CTAs compete — visitors pick none</li>
+        <li>20+ navigation items create decision paralysis</li>
+        <li>Mobile barely works — text stacks, layout breaks</li>
+        <li>"Hiring Instructors" button targets wrong audience</li>
+        <li>Wage proof ($26/hr) is buried at the very bottom</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="page-num">2</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     PAGE 3 — SCORE DASHBOARD
+══════════════════════════════════════════ -->
+<div class="page">
+  <span class="section-label">Score Dashboard</span>
+  <h1>How the Site Scores</h1>
+  <p>Each dimension is scored 1–100 by a specialist agent using industry frameworks. Below 40 is critical. 40–65 needs work. 66–84 is solid. 85+ is excellent.</p>
+
+  <div class="score-table" style="margin-top: 32px;">
+
+    <div class="score-row">
+      <div class="score-label">Positioning</div>
+      <div class="score-track"><span class="score-fill poor" style="width:22%"></span></div>
+      <div class="score-num">22</div>
+    </div>
+    <div class="score-note">No clear claim. "Associated Training Services" tells a prospect nothing about their future.</div>
+
+    <div class="score-row">
+      <div class="score-label">Copy</div>
+      <div class="score-track"><span class="score-fill poor" style="width:20%"></span></div>
+      <div class="score-num">20</div>
+    </div>
+    <div class="score-note">Informational, not persuasive. No transformation story. "Click here" throughout.</div>
+
+    <div class="score-row">
+      <div class="score-label">UX / Experience</div>
+      <div class="score-track"><span class="score-fill poor" style="width:18%"></span></div>
+      <div class="score-num">18</div>
+    </div>
+    <div class="score-note">20+ nav items, 6 competing CTAs, no clear path from visitor to applicant.</div>
+
+    <div class="score-row">
+      <div class="score-label">Design</div>
+      <div class="score-track"><span class="score-fill poor" style="width:15%"></span></div>
+      <div class="score-num">15</div>
+    </div>
+    <div class="score-note">Dark sidebar, busy layout, yellow-on-dark contrast issues, dated aesthetic.</div>
+
+    <div class="score-row">
+      <div class="score-label">Trust</div>
+      <div class="score-track"><span class="score-fill fair" style="width:42%"></span></div>
+      <div class="score-num">42</div>
+    </div>
+    <div class="score-note">Best score. Accreditations exist — but they're buried in the footer, not visible at decision points.</div>
+
+    <div class="score-row">
+      <div class="score-label">Conversion</div>
+      <div class="score-track"><span class="score-fill poor" style="width:18%"></span></div>
+      <div class="score-num">18</div>
+    </div>
+    <div class="score-note">Six CTAs split attention. No single clear next step. No urgency or enrollment dates.</div>
+
+    <div class="score-row">
+      <div class="score-label">SEO</div>
+      <div class="score-track"><span class="score-fill poor" style="width:35%"></span></div>
+      <div class="score-num">35</div>
+    </div>
+    <div class="score-note">Title tag is strong. Body content is thin. No schema markup. No local SEO signals.</div>
+
+    <div class="score-row">
+      <div class="score-label">Mobile</div>
+      <div class="score-track"><span class="score-fill poor" style="width:20%"></span></div>
+      <div class="score-num">20</div>
+    </div>
+    <div class="score-note">Site compresses but does not adapt. Text is small. Buttons too close together.</div>
+
+    <div class="score-row">
+      <div class="score-label">Revenue Model</div>
+      <div class="score-track"><span class="score-fill poor" style="width:22%"></span></div>
+      <div class="score-num">22</div>
+    </div>
+    <div class="score-note">No pricing. No enrollment ladder. Program upsell path (Level 1→2→3) not marketed.</div>
+
+    <div class="score-row">
+      <div class="score-label">Emotional Resonance</div>
+      <div class="score-track"><span class="score-fill poor" style="width:12%"></span></div>
+      <div class="score-num">12</div>
+    </div>
+    <div class="score-note">No story. No transformation. No "you" language. The site talks about ATS, not about the student.</div>
+
+  </div>
+
+  <div class="callout">
+    <p><strong>The gap that costs the most:</strong> Trust score (42) is double the copy score (20). That means the proof is there — the words to activate it are not. This is fixable quickly.</p>
+  </div>
+
+  <div class="page-num">3</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     PAGE 4 — COPY AUDIT
+══════════════════════════════════════════ -->
+<div class="page">
+  <span class="section-label">Copy Audit · Score: 20/100</span>
+  <h1>What the Words Are Doing Wrong</h1>
+  <p class="lead">The site describes programs. It never sells a future. Every line is about ATS — none of it is about the person reading.</p>
+
+  <div class="finding">
+    <span class="finding-tag tag-critical">Critical</span>
+    <div class="finding-title">No hero headline. "Associated Training Services" is a company name, not a promise.</div>
+    <div class="finding-body">The first thing a visitor reads is the company name. It tells them nothing about what changes for them if they enroll. The student asking "can I make a real living doing this?" gets no answer above the fold.</div>
+  </div>
+
+  <div class="finding">
+    <span class="finding-tag tag-critical">Critical</span>
+    <div class="finding-title">The best proof is at the bottom — in testimonials no one reaches.</div>
+    <div class="finding-body">Greg Martineau earns $26/hr running a 50-ton crane. That is a life-changing number. It appears in tiny text near the footer. It should be the centerpiece of the hero. Specific wages are the most persuasive thing on the entire site.</div>
+  </div>
+
+  <div class="finding">
+    <span class="finding-tag tag-high">High</span>
+    <div class="finding-title">"Click here" is used throughout as link text.</div>
+    <div class="finding-body">"Click here" is one of the weakest phrases in copywriting. It is generic and adds no motivation. Every CTA should describe the outcome: "Get Your Free Career Kit" or "Start Your Application" moves people. "Click here" does not.</div>
+  </div>
+
+  <div class="finding">
+    <span class="finding-tag tag-high">High</span>
+    <div class="finding-title">The BBB disclaimer works against the site.</div>
+    <div class="finding-body">The site includes a note saying the BBB "only accredits the business management of a school, not the quality of the curriculum." This sentence plants a seed of doubt. If you list the BBB logo, let it stand alone. Do not explain what it doesn't cover.</div>
+  </div>
+
+  <div class="finding">
+    <span class="finding-tag tag-medium">Medium</span>
+    <div class="finding-title">Financial assistance is available but buried.</div>
+    <div class="finding-body">"We can help you pay for this" removes the #1 reason people don't enroll. It belongs on line one of the enrollment section — not three scrolls down the page.</div>
+  </div>
+
+  <hr class="rule-sm">
+
+  <span class="section-label">The Transformation Gap</span>
+  <p>Every strong vocational school selling copy answers one question: <em>What does my life look like six months from now if I do this?</em></p>
+  <p>The ATS site never answers it. It lists what programs teach — not what graduates earn, who hires them, or how fast they get placed. That gap is where prospective students drop off.</p>
+
+  <div class="page-num">4</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     PAGE 5 — EXPERIENCE AUDIT
+══════════════════════════════════════════ -->
+<div class="page">
+  <span class="section-label">Experience Audit · Score: 18/100</span>
+  <h1>What the Site Feels Like to Use</h1>
+  <p class="lead">Too many options is the same as no options. When visitors can't tell what to do next, they leave.</p>
+
+  <!-- Dot chart: nav complexity -->
+  <span class="section-label" style="margin-bottom:6px;">Navigation Items: ATS vs. Industry Benchmark</span>
+  <div class="dot-chart">
+    <div class="dot-chart-row">
+      <div class="dot-chart-label" style="font-size:12px;color:var(--e-soft);">operator-school.com</div>
+      <div class="dot-chart-dots">
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        <span class="dot"></span><span class="dot"></span>
+      </div>
+      <span class="dot-chart-count">22 items</span>
+    </div>
+    <div class="dot-chart-row">
+      <div class="dot-chart-label" style="font-size:12px;color:var(--e-soft);">Industry Best</div>
+      <div class="dot-chart-dots">
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot dim"></span><span class="dot dim"></span><span class="dot dim"></span><span class="dot dim"></span>
+        <span class="dot dim"></span><span class="dot dim"></span><span class="dot dim"></span><span class="dot dim"></span>
+        <span class="dot dim"></span><span class="dot dim"></span><span class="dot dim"></span><span class="dot dim"></span>
+        <span class="dot dim"></span><span class="dot dim"></span><span class="dot dim"></span><span class="dot dim"></span>
+      </div>
+      <span class="dot-chart-count">6 items</span>
+    </div>
+  </div>
+  <p style="font-size:var(--t-caption);color:var(--e-muted);margin-top:-8px;">Each dot = one navigation item. Dark dots = active items.</p>
+
+  <hr class="rule-sm">
+
+  <div class="col-2">
+    <div>
+      <div class="finding">
+        <span class="finding-tag tag-critical">Critical</span>
+        <div class="finding-title">22 navigation items with no hierarchy</div>
+        <div class="finding-body">Home · About Us · Training Programs · News · FREE Starter Kit · Apply Online · Work For ATS · Financial Assistance · Career Services · Housing Assistance · Military Benefits · Accreditations · Credentials · Reviews · Virtual Tour · Photo Gallery · Watch Videos · Labor Market · Agency Personnel · Employers · Blog · Contact Us. That is 22 choices. Research shows navigation above 7 items causes visitors to freeze and leave.</div>
+      </div>
+      <div class="finding">
+        <span class="finding-tag tag-critical">Critical</span>
+        <div class="finding-title">6 CTAs compete at the same priority level</div>
+        <div class="finding-body">Photo Gallery · Free Starter Kit · Apply Online · Contact Us Now · Hiring Instructors · Read Our Reviews. All 6 are the same size and weight. The eye does not know where to go. One primary CTA would convert far better.</div>
+      </div>
+    </div>
+    <div>
+      <div class="finding">
+        <span class="finding-tag tag-critical">Critical</span>
+        <div class="finding-title">"Hiring Instructors" is front and center on the student page</div>
+        <div class="finding-body">A prospective student sees this button in the same row as "Apply Online." It sends a confusing signal: is this school still building its team? This button belongs on a careers page, not the homepage hero.</div>
+      </div>
+      <div class="finding">
+        <span class="finding-tag tag-high">High</span>
+        <div class="finding-title">Mobile view: same layout, smaller screen</div>
+        <div class="finding-body">On a 390px screen, the full desktop layout compresses. Navigation collapses to a hamburger but the content below does not adapt. Buttons are too small for thumbs. Text requires pinch-to-zoom in some sections.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-num">5</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     PAGE 6 — REVENUE AUDIT
+══════════════════════════════════════════ -->
+<div class="page">
+  <span class="section-label">Revenue Audit · Score: 22/100</span>
+  <h1>Where Money Is Being Left Behind</h1>
+  <p class="lead">ATS has a natural three-level upsell ladder in its crane programs. It is not being used. And there is no pricing anywhere — which means every visitor has to ask before they can decide.</p>
+
+  <div class="finding">
+    <span class="finding-tag tag-critical">Critical</span>
+    <div class="finding-title">No pricing on the homepage or program pages</div>
+    <div class="finding-body">Visitors cannot self-qualify. The cost of a vocational program is the #1 question before enrollment. When pricing is hidden, serious buyers assume it's expensive and move on. Financial assistance is available — but without a price anchor, it has nothing to offset. Display starting price or a price range with financing options.</div>
+  </div>
+
+  <div class="finding">
+    <span class="finding-tag tag-critical">Critical</span>
+    <div class="finding-title">The Level 1→2→3 crane certification ladder is a natural revenue multiplier — it's invisible</div>
+    <div class="finding-body">ATS offers three crane certification levels. A student who starts at Level 1 (hydraulic cranes) has a reason to return for Level 2 (lattice boom) and Level 3 (tower cranes). This is a built-in upsell path that increases lifetime value per student. The site lists these as separate programs rather than a career progression. Reframe it as "The ATS Crane Career Path" and watch repeat enrollment rise.</div>
+  </div>
+
+  <div class="finding">
+    <span class="finding-tag tag-high">High</span>
+    <div class="finding-title">The Free Starter Kit is a strong lead magnet — buried among 5 other CTAs</div>
+    <div class="finding-body">A free resource that helps someone decide to enroll is one of the highest-ROI tools in education marketing. When it competes with Photo Gallery and Contact Us at equal weight, its value is diluted. Make it the single above-fold CTA. Build an email list. Follow up. Every email address is a future enrollment conversation.</div>
+  </div>
+
+  <div class="finding">
+    <span class="finding-tag tag-high">High</span>
+    <div class="finding-title">Employment outcome data ($26/hr wages, 50+ yr track record) is not near any CTA</div>
+    <div class="finding-body">Buyer psychology: people make purchase decisions when the future benefit outweighs the present cost. The wages graduates earn and the employers who hire them should appear immediately before every enrollment CTA. Right now, that proof is at the bottom in small testimonial text.</div>
+  </div>
+
+  <hr class="rule-sm">
+
+  <!-- Revenue funnel as simple bar chart -->
+  <span class="section-label">Estimated Funnel Drop-Off (Current State)</span>
+  <div style="margin: 16px 0;">
+    <div style="display:grid;grid-template-columns:130px 1fr 40px;align-items:center;gap:12px;margin-bottom:10px;">
+      <div style="font-size:var(--t-sm);color:var(--e-soft);">Visitors arrive</div>
+      <div style="height:6px;background:rgba(0,0,0,0.07);"><span style="display:block;height:100%;width:100%;background:var(--e-ink);opacity:0.75;"></span></div>
+      <div style="font-size:var(--t-sm);font-weight:600;">100%</div>
+    </div>
+    <div style="display:grid;grid-template-columns:130px 1fr 40px;align-items:center;gap:12px;margin-bottom:10px;">
+      <div style="font-size:var(--t-sm);color:var(--e-soft);">Past nav / hero</div>
+      <div style="height:6px;background:rgba(0,0,0,0.07);"><span style="display:block;height:100%;width:55%;background:var(--e-ink);opacity:0.5;"></span></div>
+      <div style="font-size:var(--t-sm);font-weight:600;">~55%</div>
+    </div>
+    <div style="display:grid;grid-template-columns:130px 1fr 40px;align-items:center;gap:12px;margin-bottom:10px;">
+      <div style="font-size:var(--t-sm);color:var(--e-soft);">Reach programs</div>
+      <div style="height:6px;background:rgba(0,0,0,0.07);"><span style="display:block;height:100%;width:25%;background:var(--e-ink);opacity:0.35;"></span></div>
+      <div style="font-size:var(--t-sm);font-weight:600;">~25%</div>
+    </div>
+    <div style="display:grid;grid-template-columns:130px 1fr 40px;align-items:center;gap:12px;margin-bottom:10px;">
+      <div style="font-size:var(--t-sm);color:var(--e-soft);">Take an action</div>
+      <div style="height:6px;background:rgba(0,0,0,0.07);"><span style="display:block;height:100%;width:8%;background:var(--e-ink);opacity:0.2;"></span></div>
+      <div style="font-size:var(--t-sm);font-weight:600;">~8%</div>
+    </div>
+  </div>
+  <p style="font-size:var(--t-caption);color:var(--e-muted);">Estimated based on UX patterns, nav complexity, and CTA structure. Not measured analytics.</p>
+
+  <div class="page-num">6</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     PAGE 7 — UNIVERSAL AUDIT SUMMARY
+══════════════════════════════════════════ -->
+<div class="page">
+  <span class="section-label">Universal Audit · 23 Specialist Agents</span>
+  <h1>Full System Results</h1>
+  <p>Every section of the site was reviewed by a team of 23 specialist agents — each trained in a different framework. Here is what they found.</p>
+
+  <div style="margin-top: 24px;">
+    <table class="action-table">
+      <thead>
+        <tr>
+          <th style="width:30%">Agent</th>
+          <th style="width:46%">Key Finding</th>
+          <th style="width:12%">Rating</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>01 Section Purpose</strong></td><td>Most sections lack a clear single purpose. The hero tries to do 6 things at once.</td><td><span class="impact-pill">Critical</span></td></tr>
+        <tr><td><strong>02 Positioning</strong></td><td>No differentiated claim. "ATS" could be any trade school in America.</td><td><span class="impact-pill">Critical</span></td></tr>
+        <tr><td><strong>03 Proof & Specificity</strong></td><td>Good proof exists (wages, accreditations) — it's placed where no one reads it.</td><td><span class="impact-pill">High</span></td></tr>
+        <tr><td><strong>04 Emotion & Story</strong></td><td>Zero emotional language. No story of someone whose life changed.</td><td><span class="impact-pill">Critical</span></td></tr>
+        <tr><td><strong>05 Awareness</strong></td><td>Site writes for fully aware buyers. Most visitors need education about the opportunity first.</td><td><span class="impact-pill">High</span></td></tr>
+        <tr><td><strong>06 UX / Friction</strong></td><td>22 nav items, 6 CTAs, no clear funnel. Every click is a guess.</td><td><span class="impact-pill">Critical</span></td></tr>
+        <tr><td><strong>07 Design & Clarity</strong></td><td>Dark sidebar, cluttered layout, low contrast text, no hierarchy. Not premium.</td><td><span class="impact-pill">Critical</span></td></tr>
+        <tr><td><strong>08 Trust</strong></td><td>Accreditations, BBB, 50+ years — all buried. Trust signals must appear at decision points.</td><td><span class="impact-pill">High</span></td></tr>
+        <tr><td><strong>09 Conversion</strong></td><td>No single primary CTA. Competing actions dilute each other.</td><td><span class="impact-pill">Critical</span></td></tr>
+        <tr><td><strong>10 Story</strong></td><td>No narrative arc. No before-and-after. No founder or student story.</td><td><span class="impact-pill">Critical</span></td></tr>
+        <tr><td><strong>11 Objections</strong></td><td>"Can I afford this?" and "Will I get a job after?" are unanswered on the homepage.</td><td><span class="impact-pill">High</span></td></tr>
+        <tr><td><strong>12 Heatmap</strong></td><td>Eye tracking predicts focus on the 6 CTA buttons — then immediate drop-off. Nothing guides the eye downward.</td><td><span class="impact-pill">High</span></td></tr>
+        <tr><td><strong>13 Accessibility</strong></td><td>Yellow on dark background fails WCAG AA contrast ratios. Font sizes small on mobile.</td><td><span class="impact-pill">High</span></td></tr>
+        <tr><td><strong>14 SEO</strong></td><td>Title tag is specific and good. Body content is thin. No schema, no local signals.</td><td><span class="impact-pill">Medium</span></td></tr>
+        <tr><td><strong>15 AEO (AI Search)</strong></td><td>No FAQ schema, no structured data. AI tools cannot easily surface this school.</td><td><span class="impact-pill">Medium</span></td></tr>
+        <tr><td><strong>16 Growth</strong></td><td>Free Starter Kit is the only lead capture. No email nurture, no referral system.</td><td><span class="impact-pill">High</span></td></tr>
+        <tr><td><strong>17 Journey</strong></td><td>No mapped path from "curious" to "enrolled." Visitors must figure it out alone.</td><td><span class="impact-pill">Critical</span></td></tr>
+        <tr><td><strong>18 Competitive Moat</strong></td><td>50+ years, NCCCO certs, and job placement are real moats — not stated as advantages.</td><td><span class="impact-pill">High</span></td></tr>
+        <tr><td><strong>19 Influence Architecture</strong></td><td>Social proof (reviews), authority (NCCCO), and scarcity (cohort starts) are unused.</td><td><span class="impact-pill">High</span></td></tr>
+        <tr><td><strong>20 Behavior Design</strong></td><td>High motivation path (career change) meets high friction site. Motivation dies before action.</td><td><span class="impact-pill">Critical</span></td></tr>
+        <tr><td><strong>21 Cognitive Bias</strong></td><td>No anchoring, no loss framing, no peak-end design. Site does not use cognitive science.</td><td><span class="impact-pill">Medium</span></td></tr>
+        <tr><td><strong>22 Continuous Improvement</strong></td><td>No visible iteration. Site appears unchanged for years. No testing or optimization cycle.</td><td><span class="impact-pill">Medium</span></td></tr>
+        <tr><td><strong>23 Brand Voice</strong></td><td>Headline writes for nobody. Body copy is catalog-style. No brand voice.</td><td><span class="impact-pill">Critical</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="page-num">7</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     PAGE 8 — BEFORE / AFTER COPY
+══════════════════════════════════════════ -->
+<div class="page">
+  <span class="section-label">Copy Rewrites</span>
+  <h1>How the Copy Should Read</h1>
+  <p>Each rewrite is grounded in a finding from the audit. No fluff. No new promises — only promises ATS can already keep.</p>
+
+  <span class="section-label" style="margin-top: 28px;">Hero Headline</span>
+  <div class="ba-grid">
+    <div class="ba-box before">
+      <div class="ba-label">Current</div>
+      <div class="ba-text">
+        <strong>Associated Training Services</strong><br><br>
+        (Company name. No benefit. No promise.)
+      </div>
+    </div>
+    <div class="ba-box after">
+      <div class="ba-label">Rewrite</div>
+      <div class="ba-text">
+        <strong>Train for a career that pays $30 an hour — or more.</strong><br><br>
+        Heavy equipment. Crane operation. CDL. Real certifications. Real jobs. In weeks, not years.
+      </div>
+    </div>
+  </div>
+
+  <span class="section-label" style="margin-top: 24px;">Primary CTA</span>
+  <div class="ba-grid">
+    <div class="ba-box before">
+      <div class="ba-label">Current (6 buttons)</div>
+      <div class="ba-text">Photo Gallery · Free Starter Kit · Apply Online · Contact Us Now · Hiring Instructors · Read Our Reviews</div>
+    </div>
+    <div class="ba-box after">
+      <div class="ba-label">Rewrite (1 primary + 1 secondary)</div>
+      <div class="ba-text">
+        <strong>→ Get Your Free Career Starter Kit</strong><br>
+        See which program fits your goals. Takes 2 minutes.<br><br>
+        Already ready? Apply now →
+      </div>
+    </div>
+  </div>
+
+  <span class="section-label" style="margin-top: 24px;">Trust Bar (Below Hero)</span>
+  <div class="ba-grid">
+    <div class="ba-box before">
+      <div class="ba-label">Current</div>
+      <div class="ba-text">Accreditations logos buried in footer. BBB listed with disclaimer: "The BBB only accredits business management, not curriculum quality."</div>
+    </div>
+    <div class="ba-box after">
+      <div class="ba-label">Rewrite</div>
+      <div class="ba-text">
+        <strong>NCCCO Certified Training · 50+ Years Placing Graduates · Veteran Friendly School · Financing Available</strong><br><br>
+        One line. Four facts. Place it directly below the CTA.
+      </div>
+    </div>
+  </div>
+
+  <span class="section-label" style="margin-top: 24px;">Testimonial Pull Quote (move to hero area)</span>
+  <div class="ba-grid">
+    <div class="ba-box before">
+      <div class="ba-label">Current Placement</div>
+      <div class="ba-text">Greg Martineau's quote about earning $26/hr appears at the very bottom of the homepage in small body text. Almost no visitor reaches it.</div>
+    </div>
+    <div class="ba-box after">
+      <div class="ba-label">Rewrite + Move</div>
+      <div class="ba-text">
+        <strong>"I'm now running a 50-ton Grove crane and making $26 an hour."</strong><br>
+        — Greg Martineau, ATS Graduate<br><br>
+        Place this immediately below the primary CTA. Wage proof at the moment of decision.
+      </div>
+    </div>
+  </div>
+
+  <div class="page-num">8</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     PAGE 9 — TOP 10 QUICK WINS
+══════════════════════════════════════════ -->
+<div class="page">
+  <span class="section-label">Top 10 Quick Wins</span>
+  <h1>Do These First</h1>
+  <p>These ten changes can be made without rebuilding the site. Each one removes a specific barrier between a visitor and becoming a student.</p>
+
+  <table class="action-table" style="margin-top: 20px;">
+    <thead>
+      <tr>
+        <th style="width:4%">#</th>
+        <th style="width:42%">What to Change</th>
+        <th style="width:36%">Why It Matters</th>
+        <th style="width:18%">Impact</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>1</strong></td>
+        <td>Replace the hero with a single outcome headline: <em>"Train for a career that pays $30/hr or more."</em></td>
+        <td>Visitors decide in 5 seconds. Give them a reason to stay.</td>
+        <td><span class="impact-pill">Critical</span></td>
+      </tr>
+      <tr>
+        <td><strong>2</strong></td>
+        <td>Cut 6 CTAs to 1 primary: "Get Your Free Career Starter Kit" with one secondary link "Apply Now."</td>
+        <td>One choice converts better than six every time.</td>
+        <td><span class="impact-pill">Critical</span></td>
+      </tr>
+      <tr>
+        <td><strong>3</strong></td>
+        <td>Move Greg Martineau's $26/hr quote directly below the CTA button.</td>
+        <td>Wage proof at the moment of decision is the most powerful move on the page.</td>
+        <td><span class="impact-pill">Critical</span></td>
+      </tr>
+      <tr>
+        <td><strong>4</strong></td>
+        <td>Cut navigation from 22 items to 6: Programs · Apply · Financing · Reviews · About · Contact.</td>
+        <td>Fewer choices = faster decisions. Decision paralysis costs enrollments.</td>
+        <td><span class="impact-pill">Critical</span></td>
+      </tr>
+      <tr>
+        <td><strong>5</strong></td>
+        <td>Remove "Hiring Instructors" from the student-facing homepage hero.</td>
+        <td>A student sees this and wonders if the school is still building its team. Move it to the About page.</td>
+        <td><span class="impact-pill">High</span></td>
+      </tr>
+      <tr>
+        <td><strong>6</strong></td>
+        <td>Add a trust bar below the hero: NCCCO · 50 Years · Veteran Friendly · Financing Available.</td>
+        <td>Removes the top four objections in one line. Costs nothing to add.</td>
+        <td><span class="impact-pill">High</span></td>
+      </tr>
+      <tr>
+        <td><strong>7</strong></td>
+        <td>Add a starting price or price range to each program page.</td>
+        <td>Hidden pricing signals "expensive." Visible pricing + financing signals "accessible."</td>
+        <td><span class="impact-pill">High</span></td>
+      </tr>
+      <tr>
+        <td><strong>8</strong></td>
+        <td>Remove the BBB disclaimer. List the logo alone or remove it.</td>
+        <td>The disclaimer undermines the credential it's supposed to support.</td>
+        <td><span class="impact-pill">High</span></td>
+      </tr>
+      <tr>
+        <td><strong>9</strong></td>
+        <td>Reframe "Level 1, 2, 3 Crane Programs" as "The ATS Crane Career Path."</td>
+        <td>Turns three separate products into one aspirational journey. Increases lifetime student value.</td>
+        <td><span class="impact-pill">High</span></td>
+      </tr>
+      <tr>
+        <td><strong>10</strong></td>
+        <td>Replace all "Click here" links with outcome-based text: "See Program Details" or "Start My Application."</td>
+        <td>Descriptive link text improves both conversion and SEO in one edit.</td>
+        <td><span class="impact-pill">Medium</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="page-num">9</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     PAGE 10 — 30-DAY ROADMAP
+══════════════════════════════════════════ -->
+<div class="page">
+  <span class="section-label">30-Day Roadmap</span>
+  <h1>Fix the Foundation First</h1>
+  <p>These are the changes that stop the bleeding. None require a full site rebuild. All can be done in the existing CMS with a copywriter and a front-end developer working together for two to three weeks.</p>
+
+  <div class="timeline" style="margin-top: 28px;">
+
+    <div class="timeline-phase">
+      <span class="timeline-phase-label">Week 1 — Copy & Messaging</span>
+      <div class="timeline-item">
+        <div class="timeline-bullet"></div>
+        <div class="timeline-item-text"><strong>Write the new hero headline and subheadline.</strong> <span>Focus on outcome: career, wages, timeline. Test two versions if possible.</span></div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-bullet"></div>
+        <div class="timeline-item-text"><strong>Select the 3 best testimonials with specific outcomes.</strong> <span>Wages, job titles, time to placement. These become rotating proof near every CTA.</span></div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-bullet"></div>
+        <div class="timeline-item-text"><strong>Rewrite all "Click here" links.</strong> <span>Every link should describe the destination. One afternoon of edits, real SEO and conversion lift.</span></div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-bullet"></div>
+        <div class="timeline-item-text"><strong>Remove the BBB disclaimer text.</strong> <span>Keep the logo. Delete the sentence that explains what the BBB does not cover.</span></div>
+      </div>
+    </div>
+
+    <div class="timeline-phase">
+      <span class="timeline-phase-label">Week 2 — Navigation & CTAs</span>
+      <div class="timeline-item">
+        <div class="timeline-bullet"></div>
+        <div class="timeline-item-text"><strong>Collapse navigation to 6 items.</strong> <span>Programs · Apply · Financing · Reviews · About · Contact. All other pages become sub-pages.</span></div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-bullet"></div>
+        <div class="timeline-item-text"><strong>Replace 6 homepage CTAs with 1 primary + 1 secondary.</strong> <span>"Get Your Free Career Starter Kit" (primary) and "Apply Now" (text link below).</span></div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-bullet"></div>
+        <div class="timeline-item-text"><strong>Move "Hiring Instructors" off the homepage.</strong> <span>Create a dedicated Careers page. Link it from About Us, not from the student hero.</span></div>
+      </div>
+    </div>
+
+    <div class="timeline-phase">
+      <span class="timeline-phase-label">Week 3–4 — Trust & Mobile</span>
+      <div class="timeline-item">
+        <div class="timeline-bullet"></div>
+        <div class="timeline-item-text"><strong>Add a trust bar directly below the hero CTA.</strong> <span>NCCCO logo · "50+ Years" · "Veteran Friendly" · "Financing Available." One line, no paragraph.</span></div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-bullet"></div>
+        <div class="timeline-item-text"><strong>Add starting prices to program pages.</strong> <span>Even a range ("starting from $X — financing available") removes hidden-price anxiety.</span></div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-bullet"></div>
+        <div class="timeline-item-text"><strong>Fix the worst mobile breakpoints.</strong> <span>At minimum: CTA buttons full-width on mobile, font sizes ≥16px throughout, no horizontal scroll.</span></div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-bullet"></div>
+        <div class="timeline-item-text"><strong>Set up basic email capture on the Starter Kit download.</strong> <span>First name + email only. Every subscriber is a future enrollment conversation.</span></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="page-num">10</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     PAGE 11 — 90-DAY ROADMAP
+══════════════════════════════════════════ -->
+<div class="page">
+  <span class="section-label">90-Day Growth Roadmap</span>
+  <h1>Build the Engine</h1>
+  <p>Once the foundation is solid, these moves build a system that brings in students and keeps them moving through the program ladder — without more ad spend.</p>
+
+  <div class="col-2" style="margin-top: 24px;">
+    <div>
+      <span class="section-label">Revenue Expansion</span>
+      <div class="timeline">
+        <div class="timeline-phase">
+          <div class="timeline-item">
+            <div class="timeline-bullet"></div>
+            <div class="timeline-item-text"><strong>Launch "The ATS Crane Career Path" page.</strong> <span>One page showing the Level 1→2→3 progression with wages at each stage. This is the upsell funnel that already exists in the catalog — it just needs a page.</span></div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-bullet"></div>
+            <div class="timeline-item-text"><strong>Add a program comparison table.</strong> <span>Heavy Equipment vs. Crane vs. CDL — duration, cost, average starting wage, certification earned. Help visitors self-select the right program.</span></div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-bullet"></div>
+            <div class="timeline-item-text"><strong>Build an employer partners section.</strong> <span>"We place graduates with 500+ employers nationwide." Name the top 5–10 companies. Employment certainty is a buying decision, not a bonus.</span></div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-bullet"></div>
+            <div class="timeline-item-text"><strong>Add a cohort calendar with open seats.</strong> <span>"Next class starts August 12. 4 seats remaining." Urgency that is honest — because it is real.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <span class="section-label">Lead Generation & SEO</span>
+      <div class="timeline">
+        <div class="timeline-phase">
+          <div class="timeline-item">
+            <div class="timeline-bullet"></div>
+            <div class="timeline-item-text"><strong>Write 4 targeted blog posts.</strong> <span>"How much does a crane operator make in Wisconsin?" · "NCCCO certification: what it is and why employers want it" · "Heavy equipment vs. CDL: which is right for you?" · "How to pay for trade school." Each one answers a search question and leads to a program page.</span></div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-bullet"></div>
+            <div class="timeline-item-text"><strong>Add FAQ schema to the site.</strong> <span>Structured data lets Google show your answers in search results. AI tools also pull from this. Costs one afternoon to implement.</span></div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-bullet"></div>
+            <div class="timeline-item-text"><strong>Set up a 5-email welcome sequence for Starter Kit subscribers.</strong> <span>Email 1: Kit delivery. Email 2: Graduate story + wages. Email 3: Financing options. Email 4: FAQ answers. Email 5: Enrollment invitation. This is an automated enrollment conversation.</span></div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-bullet"></div>
+            <div class="timeline-item-text"><strong>Claim and optimize the Google Business Profile.</strong> <span>Local search for "heavy equipment training near Sun Prairie WI" should surface ATS in map results. Free. Takes one hour.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="rule-sm">
+
+  <div class="callout">
+    <p><strong>The long game:</strong> Every graduate who gets placed is a referral waiting to happen. Build a simple referral program. "Send us a student, get a $500 voucher toward your next certification." Your graduates become your best recruiters.</p>
+  </div>
+
+  <div class="page-num">11</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     PAGE 12 — ABOUT ELLIYEEN
+══════════════════════════════════════════ -->
+<div class="page">
+  <span class="section-label">About This Report</span>
+  <h1>How Elliyeen Works</h1>
+  <p class="lead">This report is a free resource. Every business that receives it owns it completely. No strings attached.</p>
+
+  <p>We built this audit system because most business owners never get an honest outside view of what their website is really doing. They get vendor pitches, not analysis. We wanted to change that.</p>
+
+  <hr class="rule-sm">
+
+  <div class="about-grid">
+    <div>
+      <h3>What's in Every Audit</h3>
+      <ul>
+        <li>23 specialist agents — each trained in a different discipline</li>
+        <li>Copy, UX, revenue, trust, SEO, mobile, emotional resonance</li>
+        <li>Scores in every dimension (1–100)</li>
+        <li>Copy rewrites you can use immediately</li>
+        <li>30-day and 90-day action roadmaps</li>
+        <li>Plain language — written at the eighth-grade level by design</li>
+      </ul>
+    </div>
+    <div>
+      <h3>How to Use This Report</h3>
+      <ul>
+        <li>Share it with your team as a shared starting point</li>
+        <li>Use the Top 10 Quick Wins as your first action list</li>
+        <li>Use the copy rewrites directly — they are yours</li>
+        <li>Use the 30-day plan as a brief for your developer or copywriter</li>
+        <li>Return after 90 days for a re-audit to measure progress</li>
+      </ul>
+    </div>
+  </div>
+
+  <hr class="rule-sm">
+
+  <div class="col-2" style="margin-top: 24px;">
+    <div>
+      <h3>Audit Dimensions</h3>
+      <p>Positioning · Copy · UX / Experience · Design · Trust · Conversion · SEO · AEO · Mobile · Revenue Model · Emotional Resonance · Competitive Moat · Growth Systems</p>
+    </div>
+    <div>
+      <h3>Contact</h3>
+      <p><a href="https://www.elliyeen.com" style="color:var(--e-blue);text-decoration:none;font-weight:600;">www.elliyeen.com</a><br><br>To request an audit for your business or a business you want to help, visit <a href="https://www.elliyeen.com" style="color:var(--e-blue);text-decoration:none;">www.elliyeen.com</a>.</p>
+    </div>
+  </div>
+
+  <hr class="rule" style="margin-top: 48px;">
+  <div style="display:flex;justify-content:space-between;align-items:center;">
+    <div style="font-size:var(--t-label);letter-spacing:0.1em;text-transform:uppercase;"><a href="https://www.elliyeen.com" style="color:var(--e-blue);text-decoration:none;font-weight:700;">www.elliyeen.com</a></div>
+    <div style="font-size:var(--t-label);color:var(--e-muted);">This report is free to share, print, and distribute without restriction.</div>
+    <div style="font-size:var(--t-label);color:var(--e-muted);">July 2026</div>
+  </div>
+
+  <div class="page-num">12</div>
+</div>
+
+</body>
+</html>

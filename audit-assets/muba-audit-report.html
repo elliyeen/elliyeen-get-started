@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Miss Universe Bahamas — Website Audit · Elliyeen</title>
+<style>
+
+/* ─────────────────────────────────────────
+   ELLIYEEN DESIGN TOKENS
+   Source: www.elliyeen.com :root
+───────────────────────────────────────── */
+:root {
+  --e-ink:       #111111;
+  --e-soft:      #6e6e73;
+  --e-muted:     #9a9a9f;
+  --e-surface:   #f7f4ee;
+  --e-white:     #ffffff;
+  --e-blue:      #1b5ea8;
+  --e-blue-dark: #164d8e;
+  --e-dark:      #0d1b2a;
+  --e-rule:      rgba(0,0,0,0.08);
+  --e-rule-solid: #d8d4cc;
+
+  /* type scale — fixed for print */
+  --t-label:   10px;
+  --t-caption: 11px;
+  --t-sm:      13px;
+  --t-base:    15px;
+  --t-lg:      17px;
+  --t-xl:      20px;
+  --t-2xl:     26px;
+  --t-3xl:     34px;
+  --t-4xl:     44px;
+  --t-hero:    72px;
+
+  /* spacing */
+  --gap-xs:  8px;
+  --gap-sm:  16px;
+  --gap-md:  32px;
+  --gap-lg:  56px;
+  --gap-xl:  80px;
+
+  /* page margins */
+  --margin-h: 80px;
+  --margin-v: 72px;
+
+  /* prose width */
+  --prose: 640px;
+}
+
+/* ─────────────────────────────────────────
+   RESET & BASE
+───────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { font-size: 16px; }
+
+body {
+  font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+  font-size: var(--t-base);
+  line-height: 1.7;
+  color: var(--e-ink);
+  background: var(--e-surface);
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* ─────────────────────────────────────────
+   TYPOGRAPHY
+───────────────────────────────────────── */
+h1, h2, h3 {
+  font-family: ui-serif, Georgia, 'Times New Roman', serif;
+  font-weight: 400;
+  color: var(--e-ink);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+h1 { font-size: var(--t-4xl); margin-bottom: 20px; }
+h2 { font-size: var(--t-3xl); margin-bottom: 14px; }
+h3 { font-size: var(--t-2xl); margin-bottom: 10px; }
+
+p {
+  font-size: var(--t-base);
+  line-height: 1.75;
+  color: var(--e-ink);
+  margin-bottom: 14px;
+  max-width: var(--prose);
+}
+
+p:last-child { margin-bottom: 0; }
+
+strong { font-weight: 600; color: var(--e-ink); }
+
+ul, ol {
+  margin: 10px 0 14px 22px;
+  max-width: var(--prose);
+}
+
+li {
+  font-size: var(--t-base);
+  line-height: 1.7;
+  color: var(--e-ink);
+  margin-bottom: 5px;
+}
+
+/* ─────────────────────────────────────────
+   PAGE LAYOUT
+───────────────────────────────────────── */
+.page {
+  width: 100%;
+  padding: var(--margin-v) var(--margin-h);
+  position: relative;
+  background: var(--e-surface);
+  min-height: 100vh;
+}
+
+.page + .page {
+  border-top: 1px solid var(--e-rule-solid);
+}
+
+/* ─────────────────────────────────────────
+   COVER
+───────────────────────────────────────── */
+.cover {
+  background: var(--e-surface);
+  min-height: 100vh;
+  padding: var(--margin-v) var(--margin-h);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  page-break-after: always;
+}
+
+.cover-wordmark {
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: var(--t-sm);
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--e-blue);
+}
+
+.cover-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-bottom: 64px;
+}
+
+.cover-eyebrow {
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: var(--t-label);
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--e-blue);
+  margin-bottom: 24px;
+}
+
+.cover-title {
+  font-family: ui-serif, Georgia, 'Times New Roman', serif;
+  font-size: var(--t-hero);
+  font-weight: 400;
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  color: var(--e-dark);
+  margin-bottom: 10px;
+}
+
+.cover-client {
+  font-family: ui-serif, Georgia, 'Times New Roman', serif;
+  font-size: var(--t-2xl);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: var(--e-soft);
+  margin-bottom: 56px;
+}
+
+.cover-rule {
+  width: 40px;
+  height: 1px;
+  background: var(--e-blue);
+  margin-bottom: 32px;
+}
+
+.cover-meta {
+  display: flex;
+  gap: 48px;
+}
+
+.cover-meta-item {}
+
+.cover-meta-label {
+  font-size: var(--t-label);
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--e-muted);
+  margin-bottom: 4px;
+}
+
+.cover-meta-value {
+  font-size: var(--t-sm);
+  color: var(--e-ink);
+  font-weight: 400;
+}
+
+.cover-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--e-rule-solid);
+  padding-top: 24px;
+}
+
+.cover-footer-left {
+  font-size: var(--t-label);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--e-muted);
+}
+
+.cover-footer-right {
+  font-size: var(--t-label);
+  color: var(--e-muted);
+  letter-spacing: 0.05em;
+}
+
+/* ─────────────────────────────────────────
+   SECTION LABEL
+───────────────────────────────────────── */
+.section-label {
+  display: block;
+  font-size: var(--t-label);
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--e-blue);
+  margin-bottom: 12px;
+}
+
+/* ─────────────────────────────────────────
+   HORIZONTAL RULE
+───────────────────────────────────────── */
+.rule {
+  border: none;
+  border-top: 1px solid var(--e-rule-solid);
+  margin: var(--gap-lg) 0;
+}
+
+.rule-sm {
+  border: none;
+  border-top: 1px solid var(--e-rule-solid);
+  margin: var(--gap-md) 0;
+}
+
+/* ─────────────────────────────────────────
+   LEAD TEXT
+───────────────────────────────────────── */
+.lead {
+  font-size: var(--t-xl);
+  font-family: ui-serif, Georgia, 'Times New Roman', serif;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--e-ink);
+  max-width: 560px;
+  margin-bottom: var(--gap-md);
+  letter-spacing: -0.01em;
+}
+
+/* ─────────────────────────────────────────
+   SCORECARD — type only, no colored boxes
+───────────────────────────────────────── */
+.scorecard {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  margin: var(--gap-md) 0;
+  border-top: 1px solid var(--e-rule-solid);
+}
+
+.score-item {
+  padding: 32px 0 32px 0;
+  border-bottom: 1px solid var(--e-rule-solid);
+}
+
+.score-item:nth-child(odd) {
+  padding-right: 40px;
+  border-right: 1px solid var(--e-rule-solid);
+}
+
+.score-item:nth-child(even) {
+  padding-left: 40px;
+}
+
+.score-lane {
+  font-size: var(--t-label);
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--e-soft);
+  margin-bottom: 12px;
+}
+
+.score-grade {
+  font-family: ui-serif, Georgia, 'Times New Roman', serif;
+  font-size: 52px;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--e-ink);
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+}
+
+.score-desc {
+  font-size: var(--t-sm);
+  color: var(--e-soft);
+  line-height: 1.6;
+  max-width: 280px;
+}
+
+/* ─────────────────────────────────────────
+   FINDINGS — left rule only, no fill
+───────────────────────────────────────── */
+.finding {
+  padding: 24px 0 24px 24px;
+  border-left: 2px solid var(--e-blue);
+  margin: var(--gap-md) 0;
+}
+
+.finding-label {
+  font-size: var(--t-label);
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--e-blue);
+  margin-bottom: 8px;
+}
+
+.finding-title {
+  font-size: var(--t-lg);
+  font-weight: 600;
+  color: var(--e-ink);
+  margin-bottom: 10px;
+  line-height: 1.35;
+}
+
+.finding p {
+  font-size: var(--t-sm);
+  color: #333;
+  line-height: 1.72;
+  margin-bottom: 10px;
+}
+
+/* ─────────────────────────────────────────
+   PULL QUOTE / CALLOUT — no box, just type
+───────────────────────────────────────── */
+.pullquote {
+  border-left: 3px solid var(--e-blue);
+  padding-left: 24px;
+  margin: var(--gap-md) 0;
+}
+
+.pullquote-text {
+  font-family: ui-serif, Georgia, 'Times New Roman', serif;
+  font-size: var(--t-xl);
+  font-weight: 400;
+  line-height: 1.45;
+  color: var(--e-ink);
+  letter-spacing: -0.01em;
+  margin-bottom: 8px;
+}
+
+.pullquote-sub {
+  font-size: var(--t-sm);
+  color: var(--e-soft);
+}
+
+/* ─────────────────────────────────────────
+   STATS ROW — no box borders, just type
+───────────────────────────────────────── */
+.stats-row {
+  display: flex;
+  gap: 0;
+  margin: var(--gap-md) 0;
+  border-top: 1px solid var(--e-rule-solid);
+  border-bottom: 1px solid var(--e-rule-solid);
+}
+
+.stat {
+  flex: 1;
+  padding: 28px 0;
+  border-right: 1px solid var(--e-rule-solid);
+}
+
+.stat:last-child { border-right: none; }
+
+.stat:not(:first-child) { padding-left: 28px; }
+
+.stat-num {
+  font-family: ui-serif, Georgia, 'Times New Roman', serif;
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--e-ink);
+  margin-bottom: 6px;
+  letter-spacing: -0.02em;
+}
+
+.stat-label {
+  font-size: var(--t-label);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--e-soft);
+}
+
+/* ─────────────────────────────────────────
+   CODE BLOCK — dark, necessary contrast
+───────────────────────────────────────── */
+.code {
+  background: #0d1b2a;
+  border-radius: 6px;
+  padding: 20px 24px;
+  margin: 14px 0;
+  font-family: ui-monospace, 'Courier New', monospace;
+  font-size: 12px;
+  line-height: 1.65;
+  color: #c9d1d9;
+  white-space: pre;
+  overflow-x: auto;
+}
+
+.code .c  { color: #6a9955; } /* comment */
+.code .bad { color: #f47067; }
+.code .ok  { color: #7ec8a4; }
+
+/* ─────────────────────────────────────────
+   SCREENSHOTS
+───────────────────────────────────────── */
+.screenshot {
+  margin: var(--gap-md) 0;
+  page-break-inside: avoid;
+}
+
+.screenshot-label {
+  font-size: var(--t-label);
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--e-soft);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.screenshot-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--e-rule-solid);
+}
+
+.screenshot-frame {
+  border: 1px solid var(--e-rule-solid);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.screenshot-frame img {
+  width: 100%;
+  display: block;
+}
+
+.screenshot-cap {
+  font-size: var(--t-caption);
+  color: var(--e-soft);
+  line-height: 1.55;
+  margin-top: 8px;
+  max-width: var(--prose);
+}
+
+.screenshot-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin: var(--gap-md) 0;
+  page-break-inside: avoid;
+}
+
+/* ─────────────────────────────────────────
+   ACTION TABLE
+───────────────────────────────────────── */
+.action-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--t-sm);
+  margin: var(--gap-md) 0;
+}
+
+.action-table thead th {
+  font-size: var(--t-label);
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--e-soft);
+  padding: 0 16px 12px 0;
+  text-align: left;
+  border-bottom: 1px solid var(--e-ink);
+}
+
+.action-table thead th:last-child { padding-right: 0; }
+
+.action-table tbody td {
+  padding: 14px 16px 14px 0;
+  vertical-align: top;
+  border-bottom: 1px solid var(--e-rule-solid);
+  line-height: 1.5;
+  color: var(--e-ink);
+}
+
+.action-table tbody td:last-child { padding-right: 0; }
+
+.action-table tbody tr:last-child td { border-bottom: none; }
+
+.tag {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--e-blue);
+  border: 1px solid var(--e-blue);
+  padding: 2px 7px;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+
+.tag.large { color: var(--e-soft); border-color: var(--e-soft); }
+
+/* ─────────────────────────────────────────
+   INLINE LABEL (severity inline)
+───────────────────────────────────────── */
+.inline-label {
+  font-size: var(--t-label);
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--e-blue);
+}
+
+/* ─────────────────────────────────────────
+   PAGE NUMBERS
+───────────────────────────────────────── */
+@page {
+  margin: 0;
+  @bottom-center {
+    content: counter(page);
+    font-size: 10px;
+    color: #9a9a9f;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+  }
+}
+
+.page-num {
+  position: absolute;
+  bottom: 32px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: var(--t-label);
+  color: var(--e-muted);
+  letter-spacing: 0.1em;
+}
+
+/* ─────────────────────────────────────────
+   PRINT
+───────────────────────────────────────── */
+@media print {
+  html { font-size: 14px; }
+  .page-break { page-break-before: always; }
+  .cover { page-break-after: always; }
+  .no-break { page-break-inside: avoid; }
+  .screenshot-frame img { max-height: 380px; object-fit: cover; object-position: top; }
+}
+
+</style>
+</head>
+<body>
+
+
+<!-- ══════════════════════════════════
+     COVER
+══════════════════════════════════ -->
+<div class="cover">
+  <div class="cover-wordmark">Elliyeen</div>
+
+  <div class="cover-body">
+    <div class="cover-eyebrow">Website Audit Report</div>
+
+    <div class="cover-title">Miss Universe<br>Bahamas</div>
+    <div class="cover-client">mubahamas.com</div>
+
+    <div class="cover-rule"></div>
+
+    <div class="cover-meta">
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">Client</div>
+        <div class="cover-meta-value">MUB Organization</div>
+      </div>
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">Audit Date</div>
+        <div class="cover-meta-value">July 1, 2026</div>
+      </div>
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">Goal</div>
+        <div class="cover-meta-value">Increase applicants &amp; sign-ups</div>
+      </div>
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">Viewports</div>
+        <div class="cover-meta-value">1440px &amp; 390px</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cover-footer">
+    <div class="cover-footer-left">Elliyeen Research — Strategic Web Audits</div>
+    <div class="cover-footer-right">Confidential · Prepared for Miss Universe Bahamas</div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════
+     01 — EXECUTIVE SUMMARY
+══════════════════════════════════ -->
+<div class="page page-break">
+  <span class="section-label">01 — Executive Summary</span>
+  <h2>The Big Picture</h2>
+
+  <p class="lead">The site looks like it's capturing leads. It isn't.</p>
+
+  <p>The design is strong. The application form connects to a live database. But every other system meant to capture interest — the email signup, the contact form, the social media links — is completely broken. They look finished. They send nothing.</p>
+
+  <p>Every person who has subscribed to the mailing list has not been added to any list. Every contact inquiry has been discarded. All four social media icons link to a dead anchor. There is no analytics. When anyone shares the site link on social media, the preview is blank.</p>
+
+  <p>The fixes are not structural — most are one-line changes. But they need to happen before another applicant cycle begins.</p>
+
+  <hr class="rule">
+
+  <div class="stats-row">
+    <div class="stat">
+      <div class="stat-num">0</div>
+      <div class="stat-label">Emails captured</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">0</div>
+      <div class="stat-label">Contact messages received</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">4</div>
+      <div class="stat-label">Dead social links</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">0</div>
+      <div class="stat-label">Analytics installed</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">1</div>
+      <div class="stat-label">Working form (application only)</div>
+    </div>
+  </div>
+
+  <hr class="rule">
+
+  <h3>What the site does well</h3>
+  <p>The visual design is genuinely strong. The gold-and-navy palette looks professional. The fonts are well-chosen. The hero section commands attention. The 7-step application form is architecturally sound and connected to a real Supabase database. The Privacy Policy and Terms of Use pages exist and load correctly. The page loads fast — under 250ms to first paint.</p>
+
+  <h3>What requires immediate attention</h3>
+
+  <div class="pullquote">
+    <div class="pullquote-text">Four systems appear to work and do nothing. None require a redesign to fix.</div>
+  </div>
+
+  <ol>
+    <li>The <strong>email subscribe button</strong> shows a success animation and captures no emails</li>
+    <li>The <strong>contact form</strong> shows "Message Sent" and delivers nothing</li>
+    <li>All four <strong>social media icons</strong> (Instagram, Facebook, TikTok, YouTube) link to a dead anchor</li>
+    <li>There are <strong>no analytics</strong> — no visibility into visitor volume, traffic source, or form drop-off</li>
+  </ol>
+
+  <p>There is also a JavaScript error on every page load that freezes the application form's step counter, and the site has no Open Graph tags, meaning every shared link shows a blank preview on social media.</p>
+
+  <div class="page-num">1</div>
+</div>
+
+
+<!-- ══════════════════════════════════
+     02 — SCORECARD
+══════════════════════════════════ -->
+<div class="page page-break">
+  <span class="section-label">02 — Scorecard</span>
+  <h2>How Each Area Grades Out</h2>
+  <p>Four lanes evaluated. Each grade reflects how well that area serves the primary goal: more applicants and sign-ups.</p>
+
+  <div class="scorecard">
+    <div class="score-item">
+      <div class="score-lane">Design</div>
+      <div class="score-grade">B+</div>
+      <div class="score-desc">Strong visual identity and hierarchy. The hero stops a visitor from scrolling. One issue: a text instruction tells users how to interact with the pillar cards instead of the design making it obvious.</div>
+    </div>
+    <div class="score-item">
+      <div class="score-lane">Copy</div>
+      <div class="score-grade">B</div>
+      <div class="score-desc">"Apply Now — It's Free" is smart conversion copy. Program details are specific and credible. The hero headline doesn't orient a first-time visitor, and the footer phone number is a placeholder.</div>
+    </div>
+    <div class="score-item">
+      <div class="score-lane">UX &amp; Accessibility</div>
+      <div class="score-grade">C</div>
+      <div class="score-desc">The application form is well-structured but has a JavaScript bug that freezes the progress header on every step. Pinch-to-zoom is disabled on mobile, violating WCAG 1.4.4. Step 2 of the form contains no input fields.</div>
+    </div>
+    <div class="score-item">
+      <div class="score-lane">Conversion &amp; Sharing</div>
+      <div class="score-grade">D</div>
+      <div class="score-desc">The most urgent lane. Email capture is fake. Contact form is fake. Social links are dead. No analytics. No Open Graph tags — every social share shows a blank preview. The application form is the only working conversion point.</div>
+    </div>
+  </div>
+
+  <hr class="rule">
+
+  <p><strong>For the designer:</strong> The visual work is strong and doesn't need to be revisited. The urgent work is connecting the forms that look finished to real backends. Items 1–7 in the action plan are all one-line or minimal changes and can be completed in a single session.</p>
+
+  <div class="page-num">2</div>
+</div>
+
+
+<!-- ══════════════════════════════════
+     03 — SCREENSHOTS: DESKTOP
+══════════════════════════════════ -->
+<div class="page page-break">
+  <span class="section-label">03 — Desktop Screenshots · 1440px</span>
+  <h2>How It Looks on a Computer</h2>
+  <p>Captured July 1, 2026 at 1440px — standard laptop or desktop width.</p>
+
+  <div class="screenshot no-break">
+    <div class="screenshot-label">Hero — Above the Fold</div>
+    <div class="screenshot-frame">
+      <img src="homepage-1440-hero.png" alt="MUB homepage hero at 1440px">
+    </div>
+    <div class="screenshot-cap">The hero section is well-executed. Headline, logo, and both CTAs are above the fold. "Apply Now — It's Free" reads clearly. Note: the headline "Beautifully Confident." doesn't tell a cold visitor what the organization is — the small sub-label above the logo carries that weight.</div>
+  </div>
+
+  <div class="screenshot no-break">
+    <div class="screenshot-label">Program Pillars — "What We Stand For"</div>
+    <div class="screenshot-frame">
+      <img src="homepage-1440-pillars.png" alt="MUB pillars section at 1440px">
+    </div>
+    <div class="screenshot-cap">The four pillars are specific and credible. The text "Hover to reveal · Click to expand" is a design symptom — when users need written instructions, the visual affordance has failed. This is a design fix, not a copy fix.</div>
+  </div>
+
+  <div class="page-num">3</div>
+</div>
+
+<div class="page page-break">
+
+  <div class="screenshot no-break">
+    <div class="screenshot-label">Contestant Gallery</div>
+    <div class="screenshot-frame">
+      <img src="homepage-1440-gallery.png" alt="MUB contestant gallery at 1440px">
+    </div>
+    <div class="screenshot-cap">Nine 2025 contestants displayed with portraits, names, and island titles. Horizontal scroll layout works well at desktop width.</div>
+  </div>
+
+  <div class="screenshot no-break">
+    <div class="screenshot-label">Footer — Contact, Subscribe, Social Icons</div>
+    <div class="screenshot-frame">
+      <img src="homepage-1440-footer.png" alt="MUB footer at 1440px">
+    </div>
+    <div class="screenshot-cap">Critical finding: this footer contains the email subscribe field, the contact form, and four social media icons. All of these appear functional. None of them work — see Findings 1–4 in the Conversion section.</div>
+  </div>
+
+  <div class="page-num">4</div>
+</div>
+
+
+<!-- ══════════════════════════════════
+     04 — SCREENSHOTS: MOBILE
+══════════════════════════════════ -->
+<div class="page page-break">
+  <span class="section-label">04 — Mobile Screenshots · 390px</span>
+  <h2>How It Looks on a Phone</h2>
+  <p>Tested at 390px — iPhone 14 Pro width. Most prospective applicants will arrive on a phone.</p>
+
+  <div class="screenshot-pair">
+    <div class="screenshot no-break" style="margin:0">
+      <div class="screenshot-label">Mobile Hero</div>
+      <div class="screenshot-frame">
+        <img src="homepage-390-fold.png" alt="MUB mobile hero at 390px">
+      </div>
+      <div class="screenshot-cap">The hero adapts well. Headline and CTAs remain readable and proportional.</div>
+    </div>
+    <div class="screenshot no-break" style="margin:0">
+      <div class="screenshot-label">Full Mobile Page</div>
+      <div class="screenshot-frame" style="overflow:hidden;max-height:420px;">
+        <img src="homepage-390-full.png" alt="MUB full page at 390px" style="object-fit:cover;object-position:top;width:100%;height:420px;">
+      </div>
+      <div class="screenshot-cap">The full page stacks correctly on mobile. Sections are readable. The broken footer is at the bottom.</div>
+    </div>
+  </div>
+
+  <div class="page-num">5</div>
+</div>
+
+
+<!-- ══════════════════════════════════
+     05 — APPLICATION FLOW
+══════════════════════════════════ -->
+<div class="page page-break">
+  <span class="section-label">05 — Application Flow Screenshots</span>
+  <h2>Walking Through the 7-Step Form</h2>
+  <p>The "Apply Now" button was clicked and each step of the application was navigated. One bug was found on step 3 that affects every applicant.</p>
+
+  <div class="screenshot-pair">
+    <div class="screenshot no-break" style="margin:0">
+      <div class="screenshot-label">Step 1 — Eligibility</div>
+      <div class="screenshot-frame">
+        <img src="apply-step1-390.png" alt="Application step 1 eligibility">
+      </div>
+      <div class="screenshot-cap">Step 1 shows a checklist of eligibility requirements. Clear and well-designed.</div>
+    </div>
+    <div class="screenshot no-break" style="margin:0">
+      <div class="screenshot-label">Step 2 — How to Apply (No Input Fields)</div>
+      <div class="screenshot-frame">
+        <img src="apply-step2-390.png" alt="Application step 2 informational">
+      </div>
+      <div class="screenshot-cap">Step 2 is purely informational — no form fields. Counts as a step but asks nothing. This inflates the perceived length of the form.</div>
+    </div>
+  </div>
+
+  <div class="screenshot no-break">
+    <div class="screenshot-label">Bug Found — Step Header Frozen on "Step 1"</div>
+    <div class="screenshot-frame">
+      <img src="apply-step3-bug.png" alt="Bug: step header frozen on Step 1 while footer shows Step 3">
+    </div>
+    <div class="screenshot-cap">This screenshot was captured on Step 3 (Personal Information). The header reads "STEP 1 OF 7 — ELIGIBILITY." The footer nav correctly reads "Step 3 of 7." The header is frozen on every step due to a JavaScript error. Every applicant who has used this form has seen the wrong step in the header. See UX Finding 1 for the root cause and fix.</div>
+  </div>
+
+  <div class="page-num">6</div>
+</div>
+
+
+<!-- ══════════════════════════════════
+     06 — DESIGN
+══════════════════════════════════ -->
+<div class="page page-break">
+  <span class="section-label">06 — Design</span>
+  <h2>Design: B+</h2>
+  <p>The visual design is doing real work. There are two things worth addressing — one is a design fix, one is a judgment call.</p>
+
+  <hr class="rule-sm">
+
+  <div class="finding no-break">
+    <div class="finding-label">Working Well</div>
+    <div class="finding-title">The visual identity is professional and credible</div>
+    <p>The gold-and-navy palette reads as prestigious without being stiff. The font pairing — Cormorant Garamond for headlines and Montserrat for body — is well-chosen. The hero section commands attention. The stat strip (10 Week Program · 700+ Alumni · 30+ Islands) is smart — specific numbers carry more weight than general claims. The contestant portraits are clean and well-framed.</p>
+  </div>
+
+  <div class="finding no-break">
+    <div class="finding-label">Design Issue</div>
+    <div class="finding-title">"Hover to reveal · Click to expand" signals a broken affordance</div>
+    <p>The "What We Stand For" section includes the instruction "Hover to reveal · Click to expand" written as a paragraph. When users need to be told how to interact with an element, the visual design isn't communicating it on its own. This is Nielsen heuristic #6 — Recognition over Recall. The fix is visual: a visible bottom border, a small arrow icon, or a partial-text reveal on the pillar cards that signals interactivity without words.</p>
+    <p>Secondary issue: "Hover to reveal" is a mouse-only affordance. On a phone there is no hover state. Touch visitors read this instruction and have no way to follow it.</p>
+  </div>
+
+  <div class="finding no-break">
+    <div class="finding-label">Judgment Call</div>
+    <div class="finding-title">The hero headline doesn't orient a cold visitor</div>
+    <p>"Beautifully Confident." is on-brand. But a first-time visitor arriving from a social share — someone with no prior knowledge of MUB — doesn't immediately know what they're looking at. The small sub-label above the logo ("Official National Pageant · The Bahamas · 2026") carries this orientation, but it's small and reads as metadata rather than an invitation. This is a judgment call, not a rule violation — ambiguous hero headlines can work when the audience already knows the brand. It becomes a liability when cold referral traffic is a primary acquisition channel.</p>
+  </div>
+
+  <div class="page-num">7</div>
+</div>
+
+
+<!-- ══════════════════════════════════
+     07 — UX
+══════════════════════════════════ -->
+<div class="page page-break">
+  <span class="section-label">07 — UX &amp; Accessibility</span>
+  <h2>UX: C</h2>
+  <p>The application form is well-structured. Three technical problems affect every visitor — two of them are single-line fixes.</p>
+
+  <hr class="rule-sm">
+
+  <div class="finding no-break">
+    <div class="finding-label">Bug — Affects Every Applicant</div>
+    <div class="finding-title">Finding 1: The step counter in the application header never updates</div>
+    <p>No matter which step of the 7-step form a visitor is on, the header permanently reads "STEP 1 OF 7 — ELIGIBILITY." The footer correctly displays the current step. The header progress bar never moves.</p>
+    <p><strong>Root cause:</strong> Two lines of code that should be inside the <code>hudGo(n)</code> function were placed outside it at the top level of the script. At the top level, the variable <code>n</code> doesn't exist, throwing a <code>ReferenceError</code> that the browser logs on every page load.</p>
+    <div class="code"><span class="c">// ❌ BROKEN — these two lines sit outside hudGo(), `n` is undefined</span>
+<span class="bad">if(fill)  fill.style.width   = `${Math.round((n/TOTAL)*100)}%`;
+if(label) label.innerHTML   = `Step ${n} of ${TOTAL} — ${stepNames[n-1]}`;</span>
+
+function hudGo(n) {
+  hudStep = n;
+  <span class="c">// ✅ FIX — move both lines here, after hudStep = n</span>
+  <span class="ok">if(fill)  fill.style.width   = `${Math.round((n/TOTAL)*100)}%`;
+  if(label) label.innerHTML   = `Step ${n} of ${TOTAL} — ${stepNames[n-1]}`;</span>
+  ...
+}</div>
+    <p>This is a 15-minute fix with no design changes required.</p>
+  </div>
+
+  <div class="finding no-break">
+    <div class="finding-label">Accessibility Violation · WCAG 1.4.4</div>
+    <div class="finding-title">Finding 2: Pinch-to-zoom is disabled on mobile</div>
+    <p>The viewport meta tag contains <code>maximum-scale=1.0</code>, which prevents mobile users from zooming in. This violates WCAG 1.4.4 (Resize Text, Level AA), which requires text to be resizable to 200% without loss of content or functionality. The fix is deleting four words.</p>
+    <div class="code"><span class="bad">&lt;!-- Current — zoom disabled --&gt;
+&lt;meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0"&gt;</span>
+
+<span class="ok">&lt;!-- Fixed — remove maximum-scale=1.0 --&gt;
+&lt;meta name="viewport" content="width=device-width,initial-scale=1.0"&gt;</span></div>
+  </div>
+
+  <div class="finding no-break">
+    <div class="finding-label">UX Friction</div>
+    <div class="finding-title">Finding 3: Step 2 of the form contains no input fields</div>
+    <p>Step 2 ("How to Apply") is a purely informational screen. It lists the overall process with no form fields. An applicant reads "Step 2 of 7" and thinks they're making progress, but they haven't typed a single character. This makes the form feel longer than it is. Recommendation: move the "How to Apply" content to a screen shown before the form opens, or merge it with the Step 1 eligibility overview. The remaining five steps are all genuine data-entry steps.</p>
+  </div>
+
+  <div class="finding no-break">
+    <div class="finding-label">Mobile UX</div>
+    <div class="finding-title">Finding 4: Validation errors can be off-screen on mobile</div>
+    <p>When a required field is missed and "Continue" is tapped, the form highlights the empty field with a red border. On mobile, if the invalid field is above the current scroll position, the red border is off-screen and the user sees nothing happen. One line of code fixes this:</p>
+    <div class="code"><span class="c">// After the validation loop, scroll to the first invalid field</span>
+<span class="ok">if (firstInvalid) firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });</span></div>
+  </div>
+
+  <div class="page-num">8</div>
+</div>
+
+
+<!-- ══════════════════════════════════
+     08 — COPY
+══════════════════════════════════ -->
+<div class="page page-break">
+  <span class="section-label">08 — Copy</span>
+  <h2>Copy: B</h2>
+  <p>Most of the writing is effective. Two things need attention before the next applicant cycle.</p>
+
+  <hr class="rule-sm">
+
+  <div class="finding no-break">
+    <div class="finding-label">Working Well</div>
+    <div class="finding-title">"Apply Now — It's Free" removes a hesitation before it forms</div>
+    <p>Appending "It's Free" directly to the call-to-action button is smart. Before a visitor can wonder whether there's an entry fee, the button already answers the question. The Competition Timeline section is also well-executed — it gives prospective applicants specific dates and shows exactly what a 10-week commitment looks like. Specificity builds trust.</p>
+  </div>
+
+  <div class="finding no-break">
+    <div class="finding-label">Factual Problem</div>
+    <div class="finding-title">Finding 5: The phone number in the footer is a placeholder</div>
+    <p>The footer lists <strong>+1 (242) 123-4567</strong>. This is a sequential placeholder — digits 1 through 7 in order. It is not a working number. A journalist, parent, sponsor, or island coordinator who tries to call it will reach a disconnected line or an unaffiliated party. Replace it with a real number or remove the phone field entirely.</p>
+  </div>
+
+  <div class="finding no-break">
+    <div class="finding-label">Judgment Call</div>
+    <div class="finding-title">The four pillar names are good — the body copy repeats itself once</div>
+    <p>The "About MUB" section uses "platform" as both a form field name (Platform &amp; Vision) and a headline claim ("More Than a Pageant. A Platform."). That's one overloaded word in two consecutive visible sections. Not a critical issue, but worth a look when the copy is next reviewed.</p>
+  </div>
+
+  <div class="page-num">9</div>
+</div>
+
+
+<!-- ══════════════════════════════════
+     09 — CONVERSION (urgent)
+══════════════════════════════════ -->
+<div class="page page-break">
+  <span class="section-label">09 — Conversion &amp; Shareability</span>
+  <h2>Conversion: D</h2>
+  <p>This is the most urgent section. The findings here are costing applicants right now, with every person who visits the site.</p>
+
+  <div class="pullquote">
+    <div class="pullquote-text">The site grades B+ on design and D on conversion. These two grades describe a site that looks like it's working and isn't.</div>
+  </div>
+
+  <hr class="rule-sm">
+
+  <div class="finding no-break">
+    <div class="finding-label">Critical</div>
+    <div class="finding-title">Finding 6: The email subscribe button collects zero emails</div>
+    <p>The footer has an email signup field with a Subscribe button. When someone enters their email and clicks Subscribe, they see a checkmark and a thank-you message. It looks like it worked. No email is saved anywhere.</p>
+    <div class="code"><span class="c">// handleSub() — what it actually does:</span>
+function handleSub(btn) {
+  if(!inp.value || !inp.value.includes('@')) { return; }
+
+  <span class="bad">// No network request. No API call. No database insert.
+  // Just a timer that shows a fake confirmation.</span>
+  btn.textContent = '✓';
+  inp.value = '';
+  showSuccessMessage(); <span class="c">// visual only — sends nothing</span>
+}</div>
+    <p><strong>Fix:</strong> Connect the submit handler to Mailchimp, ConvertKit, or a Supabase <code>subscribers</code> table. The Supabase infrastructure is already live on the page — it just needs a table and a connection call in this function.</p>
+  </div>
+
+  <div class="page-num">10</div>
+</div>
+
+<div class="page page-break">
+
+  <div class="finding no-break">
+    <div class="finding-label">Critical</div>
+    <div class="finding-title">Finding 7: The contact form sends nothing</div>
+    <p>The footer's "Contact Our Team" form has fields for name, email, phone, topic, and message. When submitted, the button shows "✓ Message Sent" after one second. No message is delivered anywhere.</p>
+    <div class="code"><span class="c">// handleContact() — what it actually does:</span>
+function handleContact(btn) {
+  btn.textContent = 'Sending...';
+  <span class="bad">// Waits 1 second then shows fake success.
+  // No fetch(). No email. Nothing sent.</span>
+  setTimeout(() => {
+    btn.textContent = '✓ Message Sent';
+  }, 1000);
+}</div>
+    <p><strong>Fix:</strong> Replace the <code>setTimeout</code> with a real <code>fetch()</code> to Formspree (free, 15-minute setup) or a Supabase Edge Function.</p>
+  </div>
+
+  <div class="finding no-break">
+    <div class="finding-label">Critical</div>
+    <div class="finding-title">Finding 8: All four social media icons link to a dead anchor</div>
+    <p>The footer shows icons for Instagram, Facebook, TikTok, and YouTube. Every one of them links to <code>"#"</code> — which reloads the current page. For a pageant organization whose primary recruitment channel is social media, dead social links are a direct loss of applicant traffic.</p>
+    <div class="code"><span class="bad">&lt;a href="#"&gt;IG&lt;/a&gt;  &lt;!-- Dead --&gt;
+&lt;a href="#"&gt;FB&lt;/a&gt;  &lt;!-- Dead --&gt;
+&lt;a href="#"&gt;TK&lt;/a&gt;  &lt;!-- Dead --&gt;
+&lt;a href="#"&gt;YT&lt;/a&gt;  &lt;!-- Dead --&gt;</span></div>
+    <p><strong>Fix:</strong> Replace each <code>#</code> with the real profile URL. If a channel doesn't have an active profile yet, remove the icon rather than link to a dead end.</p>
+  </div>
+
+  <div class="finding no-break">
+    <div class="finding-label">Critical</div>
+    <div class="finding-title">Finding 9: No analytics installed</div>
+    <p>There is no Google Analytics, no Facebook Pixel, no visitor counter of any kind. Without it, no one can answer: How many people visit each week? Where do they come from? How many open the application? Which step do they quit on? Every decision about the website and social strategy is currently being made without data.</p>
+    <p><strong>Fix:</strong> Google Analytics 4 is free. One script tag in <code>&lt;head&gt;</code>. Add conversion events on HUD open and form submission.</p>
+  </div>
+
+  <div class="page-num">11</div>
+</div>
+
+<div class="page page-break">
+
+  <div class="finding no-break">
+    <div class="finding-label">High Priority</div>
+    <div class="finding-title">Finding 10: No Open Graph tags — every shared link shows a blank preview</div>
+    <p>When the site URL is shared anywhere — an Instagram bio, a WhatsApp message, a Facebook post — the preview that appears is completely blank. No image, no title, no description. This is because the site's <code>&lt;head&gt;</code> contains no Open Graph or Twitter Card meta tags. Currently the entire meta section contains a single tag:</p>
+    <div class="code"><span class="bad">&lt;!-- Current: only one meta tag --&gt;
+&lt;meta name="viewport" content="..."&gt;</span>
+
+<span class="ok">&lt;!-- Add these 8 lines to &lt;head&gt; --&gt;
+&lt;meta name="description" content="Miss Universe Bahamas — a ten-week empowerment program for Bahamian women. Apply free for 2026."&gt;
+&lt;meta property="og:type"        content="website"&gt;
+&lt;meta property="og:url"         content="https://www.mubahamas.com/"&gt;
+&lt;meta property="og:title"       content="Miss Universe Bahamas 2026 — Apply Now"&gt;
+&lt;meta property="og:description" content="Ten-week program. 700+ alumni. 30+ islands. Applications open."&gt;
+&lt;meta property="og:image"       content="[URL to hero image at 1200×630]"&gt;
+&lt;meta name="twitter:card"       content="summary_large_image"&gt;
+&lt;meta name="twitter:image"      content="[same image URL]"&gt;</span></div>
+    <p>These 8 lines would immediately make every shared link show a rich preview — image, title, and description — which significantly increases click-through from social posts.</p>
+  </div>
+
+  <div class="finding no-break">
+    <div class="finding-label">Good News</div>
+    <div class="finding-title">Finding 11: The application form connects to a real database</div>
+    <p>The 7-step application form is properly connected to a live Supabase instance. When a user completes all steps and submits, their data is posted to the database and a confirmation email is triggered via a Supabase Edge Function. The submission function is correctly declared as <code>async</code>. This is the most technically complex part of the site — and it's the part that actually works.</p>
+  </div>
+
+  <div class="page-num">12</div>
+</div>
+
+
+<!-- ══════════════════════════════════
+     10 — ACTION PLAN
+══════════════════════════════════ -->
+<div class="page page-break">
+  <span class="section-label">10 — Prioritized Action Plan</span>
+  <h2>What to Fix and In What Order</h2>
+  <p>Ranked by impact on the primary goal: more applicants and sign-ups. The most impactful fixes are also the fastest.</p>
+
+  <table class="action-table">
+    <thead>
+      <tr>
+        <th style="width:28px">#</th>
+        <th>Fix</th>
+        <th style="width:200px">Why It Matters</th>
+        <th style="width:80px">Effort</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td><strong>Add Open Graph &amp; Twitter Card meta tags</strong></td>
+        <td>Every shared link currently shows blank. 8 lines in &lt;head&gt; fix every future share.</td>
+        <td><span class="tag">Quick</span></td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td><strong>Install Google Analytics 4</strong></td>
+        <td>No visibility into anything without this. One script tag in &lt;head&gt;.</td>
+        <td><span class="tag">Quick</span></td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td><strong>Fix 4 dead social media links</strong></td>
+        <td>Replace each href="#" with the real profile URL. Remove any without an active profile.</td>
+        <td><span class="tag">Quick</span></td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td><strong>Replace placeholder phone number</strong></td>
+        <td>+1 (242) 123-4567 is a sequential placeholder. Replace or remove before it damages credibility.</td>
+        <td><span class="tag">Quick</span></td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td><strong>Fix JavaScript bug — step header frozen</strong></td>
+        <td>Move 2 lines of code inside hudGo(). Fixes progress header and bar for every applicant.</td>
+        <td><span class="tag">Quick</span></td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td><strong>Remove maximum-scale=1.0 from viewport</strong></td>
+        <td>One attribute deletion. Restores pinch-to-zoom. Fixes WCAG 1.4.4 violation.</td>
+        <td><span class="tag">Quick</span></td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td><strong>Add meta description &amp; canonical tag</strong></td>
+        <td>Two lines in &lt;head&gt;. Controls the snippet shown in Google search results.</td>
+        <td><span class="tag">Quick</span></td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td><strong>Wire email subscribe to a real list</strong></td>
+        <td>Connect handleSub() to Mailchimp, ConvertKit, or Supabase. The DB is already live.</td>
+        <td><span class="tag large">Medium</span></td>
+      </tr>
+      <tr>
+        <td>9</td>
+        <td><strong>Wire contact form to a real endpoint</strong></td>
+        <td>Connect handleContact() to Formspree (free, 15 min) or a Supabase Edge Function.</td>
+        <td><span class="tag large">Medium</span></td>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td><strong>Fix validation scroll-to-error on mobile</strong></td>
+        <td>One line: firstInvalid.scrollIntoView(). Makes invisible errors visible on phones.</td>
+        <td><span class="tag large">Medium</span></td>
+      </tr>
+      <tr>
+        <td>11</td>
+        <td><strong>Remove Step 2 from the form flow</strong></td>
+        <td>Move "How to Apply" to a pre-form screen. Remaining 5 steps are all real data entry.</td>
+        <td><span class="tag large">Larger</span></td>
+      </tr>
+      <tr>
+        <td>12</td>
+        <td><strong>Replace hover instruction with visual affordance</strong></td>
+        <td>Design fix: add arrow, border reveal, or partial-text preview to pillar cards.</td>
+        <td><span class="tag large">Larger</span></td>
+      </tr>
+      <tr>
+        <td>13</td>
+        <td><strong>Add Schema.org structured data</strong></td>
+        <td>Event + Organization markup improves Google search rich results. 30–50 lines of JSON-LD.</td>
+        <td><span class="tag large">Larger</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="page-num">13</div>
+</div>
+
+
+<!-- ══════════════════════════════════
+     11 — APPENDIX
+══════════════════════════════════ -->
+<div class="page page-break">
+  <span class="section-label">11 — Appendix · Technical Data</span>
+  <h2>Raw Numbers</h2>
+
+  <h3>Performance</h3>
+  <p><em>Measured by Playwright with warm cache on July 1, 2026. Real-world mobile times on Caribbean LTE will be higher. A Lighthouse run from a cold cache is recommended.</em></p>
+
+  <table class="action-table">
+    <thead><tr><th>Metric</th><th>Value</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td>First Contentful Paint</td><td>212 ms</td><td>Fast</td></tr>
+      <tr><td>DOM Content Loaded</td><td>93 ms</td><td>Fast</td></tr>
+      <tr><td>Page weight (encoded)</td><td>767 KB</td><td>Reasonable</td></tr>
+      <tr><td>Page weight (decoded)</td><td>1,184 KB</td><td>~1.2 MB — acceptable</td></tr>
+      <tr><td>External resources</td><td>7</td><td>Very lean</td></tr>
+      <tr><td>Console errors on load</td><td>1</td><td>ReferenceError: n is not defined</td></tr>
+    </tbody>
+  </table>
+
+  <hr class="rule-sm">
+
+  <h3>Meta Tags</h3>
+  <table class="action-table">
+    <thead><tr><th>Tag</th><th>Present</th><th>Action</th></tr></thead>
+    <tbody>
+      <tr><td>meta viewport</td><td>Yes</td><td>Remove maximum-scale=1.0</td></tr>
+      <tr><td>meta description</td><td>No</td><td>Add 1 line</td></tr>
+      <tr><td>og:title</td><td>No</td><td>Add 1 line</td></tr>
+      <tr><td>og:description</td><td>No</td><td>Add 1 line</td></tr>
+      <tr><td>og:image</td><td>No</td><td>Add 1 line + image URL</td></tr>
+      <tr><td>og:type</td><td>No</td><td>Add 1 line</td></tr>
+      <tr><td>twitter:card</td><td>No</td><td>Add 1 line</td></tr>
+      <tr><td>canonical link</td><td>No</td><td>Add 1 line</td></tr>
+      <tr><td>Schema.org JSON-LD</td><td>No</td><td>30–50 lines, lower priority</td></tr>
+    </tbody>
+  </table>
+
+  <hr class="rule-sm">
+
+  <h3>Links</h3>
+  <table class="action-table">
+    <thead><tr><th>Destination</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td>All in-page nav anchors</td><td>Working</td></tr>
+      <tr><td>privacy.html</td><td>Working (200 OK)</td></tr>
+      <tr><td>terms.html</td><td>Working (200 OK)</td></tr>
+      <tr><td>Instagram icon</td><td>Dead — href="#"</td></tr>
+      <tr><td>Facebook icon</td><td>Dead — href="#"</td></tr>
+      <tr><td>TikTok icon</td><td>Dead — href="#"</td></tr>
+      <tr><td>YouTube icon</td><td>Dead — href="#"</td></tr>
+    </tbody>
+  </table>
+
+  <hr class="rule-sm">
+
+  <h3>Forms</h3>
+  <table class="action-table">
+    <thead><tr><th>Form</th><th>Looks Like It Works</th><th>Actually Works</th><th>Backend</th></tr></thead>
+    <tbody>
+      <tr><td>Email Subscribe</td><td>Yes</td><td>No</td><td>None — fake timer</td></tr>
+      <tr><td>Contact Form</td><td>Yes</td><td>No</td><td>None — fake timer</td></tr>
+      <tr><td>Application (7 steps)</td><td>Yes</td><td>Yes</td><td>Supabase — live and working</td></tr>
+    </tbody>
+  </table>
+
+  <hr class="rule-sm">
+
+  <h3>Accessibility</h3>
+  <table class="action-table">
+    <thead><tr><th>Issue</th><th>Standard</th><th>Fix</th></tr></thead>
+    <tbody>
+      <tr><td>maximum-scale=1.0 disables zoom</td><td>WCAG 1.4.4 (AA)</td><td>Remove from viewport meta</td></tr>
+      <tr><td>1 image with empty alt=""</td><td>WCAG 1.1.1 (A)</td><td>Add descriptive alt text</td></tr>
+      <tr><td>Custom interactive cards lack ARIA roles</td><td>WCAG 4.1.2</td><td>Add role="button" + tabindex="0"</td></tr>
+    </tbody>
+  </table>
+
+  <p style="margin-top:24px;"><strong>Image licensing:</strong> The hero background image is served from the Unsplash CDN. Unsplash's free license permits commercial use. No action required.</p>
+
+  <div class="page-num">14</div>
+</div>
+
+
+<!-- ══════════════════════════════════
+     BACK COVER
+══════════════════════════════════ -->
+<div class="cover page-break" style="justify-content:center;align-items:center;text-align:center;">
+  <div>
+    <div class="cover-wordmark" style="margin-bottom:16px;">Elliyeen</div>
+    <div style="font-size:13px;color:var(--e-muted);letter-spacing:0.1em;">Strategic Web Audits</div>
+    <div style="width:32px;height:1px;background:var(--e-rule-solid);margin:32px auto;"></div>
+    <div style="font-size:12px;color:var(--e-muted);line-height:1.8;">
+      Miss Universe Bahamas · mubahamas.com<br>
+      Audit Date: July 1, 2026<br>
+      Confidential
+    </div>
+  </div>
+</div>
+
+
+</body>
+</html>

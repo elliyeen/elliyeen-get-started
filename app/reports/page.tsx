@@ -30,22 +30,22 @@ type Section = {
 
 const sections: Section[] = [
   {
-    label: "Full Business Audits",
-    title: "Website · Customer Experience · Financial Model",
+    label: "Recent Audits",
+    title: "Revenue · Copy · Experience · Universal Audit",
     description:
-      "Three-part audits covering the full business — website friction, buyer journey gaps, and a revenue model with a path-to-scale.",
+      "Full multi-agent audits covering website friction, copy, customer experience, and revenue opportunity — with plain-English action plans.",
     reports: [
       {
-        client: "OPEN HOUSE Creative Fest",
-        location: "Torrance, CA",
-        auditType: "Website Audit · CX Audit · Financial Model",
+        client: "Associated Training Services",
+        location: "Sun Prairie, WI",
+        auditType: "Revenue Audit · Copy Audit · Experience Audit",
         summary:
-          "Creative market passport selling on faith. No activity directory, conflicting vendor counts, flat CTA hierarchy. $6.9K in additional passport revenue available from one afternoon of content work.",
-        score: null,
-        href: "/reports/openhouse-audit.html",
-        date: "June 2026",
+          "Heavy equipment, crane, and CDL training school with 50+ years of operation. 22 navigation items, 6 competing CTAs, no pricing visible anywhere. The site buries its best proof — a graduate earning $26/hr — at the very bottom.",
+        score: "22 / 100",
+        href: "/reports/operator-school-audit.html",
+        date: "July 2026",
         badge: "New",
-        finding: "$6.9K passport revenue gap",
+        finding: "22 nav items · 6 competing CTAs · no pricing",
       },
       {
         client: "Savannah Personal Care Services",
@@ -59,26 +59,6 @@ const sections: Section[] = [
         badge: "New",
         finding: "$2M+ revenue opportunity",
       },
-      {
-        client: "Wealth Management Firm",
-        location: "Confidential",
-        auditType: "Conversion Audit · CX Audit · Financial Model",
-        summary:
-          "Three objections stopping conversion. Zero pages that answered them. CX journey rebuilt, founder vision documented, and AUM growth pathway modeled.",
-        score: null,
-        href: "/reports/wealth-management-audit.html",
-        date: "June 2026",
-        badge: "Updated",
-        finding: "3 objections, 0 answers on site",
-      },
-    ],
-  },
-  {
-    label: "Revenue & CX Audits",
-    title: "Customer Experience · Financial Model",
-    description:
-      "Deep dives into the customer journey and unit economics — buyer occasions, ordering friction, platform risk, and direct revenue pathways.",
-    reports: [
       {
         client: "So Halal Soul Food",
         location: "Stone Mountain, GA",
@@ -102,6 +82,38 @@ const sections: Section[] = [
         date: "June 2026",
         badge: "New",
         finding: "15¢ on the dollar via delivery platforms",
+      },
+    ],
+  },
+  {
+    label: "Full Business Audits",
+    title: "Website · Customer Experience · Financial Model",
+    description:
+      "Three-part audits covering the full business — website friction, buyer journey gaps, and a revenue model with a path-to-scale.",
+    reports: [
+      {
+        client: "OPEN HOUSE Creative Fest",
+        location: "Torrance, CA",
+        auditType: "Website Audit · CX Audit · Financial Model",
+        summary:
+          "Creative market passport selling on faith. No activity directory, conflicting vendor counts, flat CTA hierarchy. $6.9K in additional passport revenue available from one afternoon of content work.",
+        score: null,
+        href: "/reports/openhouse-audit.html",
+        date: "June 2026",
+        badge: "New",
+        finding: "$6.9K passport revenue gap",
+      },
+      {
+        client: "Wealth Management Firm",
+        location: "Confidential",
+        auditType: "Conversion Audit · CX Audit · Financial Model",
+        summary:
+          "Three objections stopping conversion. Zero pages that answered them. CX journey rebuilt, founder vision documented, and AUM growth pathway modeled.",
+        score: null,
+        href: "/reports/wealth-management-audit.html",
+        date: "June 2026",
+        badge: "Updated",
+        finding: "3 objections, 0 answers on site",
       },
     ],
   },
