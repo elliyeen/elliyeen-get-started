@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Menu, X, ChevronRight, ArrowRight } from "lucide-react";
+import { Menu, X, ChevronRight } from "lucide-react";
 
 const links = [
   { label: "How It Works", href: "/how-it-works" },
@@ -30,12 +30,12 @@ export default function MobileNav() {
   }, [open]);
 
   return (
-    <div className="md:hidden">
+    <div>
       <button
         onClick={() => setOpen(!open)}
         aria-label={open ? "Close menu" : "Open menu"}
         aria-expanded={open}
-        className="flex h-11 w-11 items-center justify-center rounded-full border border-zinc-300 text-black hover:border-zinc-500"
+        className="flex h-11 w-11 items-center justify-center text-black hover:opacity-60 transition-opacity"
       >
         {open ? <X size={18} /> : <Menu size={18} />}
       </button>
@@ -106,7 +106,7 @@ export default function MobileNav() {
               onClick={() => setOpen(false)}
               className="inline-flex h-[52px] items-center justify-center gap-2 rounded-xl bg-[#123A5A] px-8 text-sm font-bold text-[#F5F1E7] shadow-[0_6px_28px_rgba(18,58,90,0.22)] hover:bg-[#0e2d47]"
             >
-              Fix it <ArrowRight size={15} />
+              Get Started
             </a>
           </div>
         </div>

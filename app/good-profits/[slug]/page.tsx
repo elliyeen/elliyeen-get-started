@@ -181,7 +181,7 @@ export default async function GoodProfitArticlePage({
               href={`mailto:abdullah@elliyeen.com?subject=Good%20Profit%20Issue%20%23${article.issue}%20%E2%80%94%20audit%20inquiry&body=Hi%20Abbas%2C%0A%0AI%20read%20Issue%20%23${article.issue}%20and%20want%20to%20apply%20this%20to%20my%20site.%0A%0AWebsite%3A%20%5Bpaste%20your%20URL%20here%5D`}
               className="mt-5 inline-flex h-[52px] min-w-[190px] items-center justify-center gap-2 rounded-xl bg-[#123A5A] px-8 text-sm font-bold text-[#F5F1E7] shadow-[0_6px_28px_rgba(18,58,90,0.22)] hover:bg-[#0e2d47]"
             >
-              Fix it <ArrowRight size={15} />
+              Get Started <ArrowRight size={15} />
             </a>
           </div>
 

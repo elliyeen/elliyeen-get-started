@@ -8,117 +8,85 @@ const CONTACT_MAILTO =
 
 export default function ElliyeenHero() {
   return (
-    <section
-      aria-labelledby="hero-heading"
-      className="relative isolate flex flex-col overflow-hidden bg-[#F5F1E7]"
-      style={{ minHeight: "clamp(680px, 90svh, 900px)" }}
-    >
-      {/* ── Illustration ─────────────────────────────────────────────────
-          Full-width image at reduced opacity so the ink-wash feel reads
-          as a backdrop. The gradient overlays below do the heavy lifting
-          of keeping the content area clean.
-      ─────────────────────────────────────────────────────────────────── */}
+    <section aria-labelledby="hero-heading" className="bg-[#F5F1E7]">
+      {/* ── Full-bleed image panel (Calm.com structure) ─────────────────────
+          Image fills the top of the viewport. Nav is transparent and floats
+          above it. A gradient at the bottom dissolves the art into parchment.
+      ────────────────────────────────────────────────────────────────────── */}
       <div
-        className="pointer-events-none absolute inset-0 select-none opacity-[1]"
-        aria-hidden="true"
+        className="relative w-full overflow-hidden"
+        style={{ height: "clamp(360px, 58vh, 640px)" }}
       >
         <Image
-          src="/images/elliyeen-hero-art.png"
+          src="/images/elliyeen-hero-art-v2.png"
           alt=""
           fill
           priority
           sizes="100vw"
-          className="object-cover object-right"
+          className="object-cover object-top"
+        />
+
+        {/* Bottom fade — dissolves art into parchment */}
+        <div
+          className="pointer-events-none absolute inset-x-0 bottom-0"
+          style={{
+            height: "45%",
+            background:
+              "linear-gradient(to bottom, transparent 0%, rgba(245,241,231,0.6) 60%, #F5F1E7 100%)",
+          }}
+          aria-hidden="true"
         />
       </div>
 
-      {/* ── Overlays ─────────────────────────────────────────────────── */}
+      {/* ── Centered content ─────────────────────────────────────────────────
+          Headline + subtext + pill CTAs, centered below the image just like
+          calm.com. Generous vertical breathing room drives focus on the CTA.
+      ────────────────────────────────────────────────────────────────────── */}
+      <div className="px-6 pb-24 pt-10 text-center sm:pb-28 sm:pt-12">
+        <h1
+          id="hero-heading"
+          className="font-serif font-semibold"
+          style={{
+            fontSize: "clamp(2.6rem, 5.2vw, 5.2rem)",
+            lineHeight: "1.02",
+            letterSpacing: "-0.022em",
+            color: "#123A5A",
+          }}
+        >
+          Your Path To Good{" "}
+          <span style={{ color: "#D87A24" }}>Profits</span>
+        </h1>
 
-      {/* Mobile: very strong parchment wash — only the right-edge art bleeds through */}
-      <div
-        className="pointer-events-none absolute inset-0 lg:hidden"
-        style={{ background: "rgba(245,241,231,0.88)" }}
-        aria-hidden="true"
-      />
+        <p
+          className="mx-auto mt-5 font-serif leading-relaxed"
+          style={{
+            fontSize: "clamp(1.05rem, 1.7vw, 1.35rem)",
+            color: "#123A5A",
+            opacity: 0.68,
+            maxWidth: "460px",
+          }}
+        >
+          Build systems with data and grow your bottom line revenue.
+        </p>
 
-      {/* Desktop: directional fade + targeted blob that buries the step-number labels */}
-      <div
-        className="pointer-events-none absolute inset-0 hidden lg:block"
-        style={{
-          background: [
-            /* blob targeting "5 KAIZEN" — reduced so art shows through */
-            "radial-gradient(ellipse 220px 160px at 78% 35%, rgba(245,241,231,0.72) 30%, rgba(245,241,231,0) 75%)",
-            /* wider blob covering EXECUTION + GROW — pulled back */
-            "radial-gradient(ellipse 300px 180px at 60% 49%, rgba(245,241,231,0.60) 15%, rgba(245,241,231,0) 65%)",
-            /* main left-to-right directional fade — starts later, ends later */
-            "linear-gradient(to right, #F5F1E7 36%, #F5F1E7E8 48%, #F5F1E7AA 60%, #F5F1E744 72%, transparent 82%)",
-          ].join(", "),
-        }}
-        aria-hidden="true"
-      />
-
-      {/* Top + bottom edge fade */}
-      <div
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background:
-            "linear-gradient(to bottom, #F5F1E7 0%, transparent 8%, transparent 88%, #F5F1E7 100%)",
-        }}
-        aria-hidden="true"
-      />
-
-      {/* ── Content ─────────────────────────────────────────────────── */}
-      <div className="relative z-10 flex flex-1 items-center px-6 py-24 sm:px-10 lg:px-[7vw]">
-        <div className="max-w-[520px]">
-
-          {/* Headline */}
-          <h1
-            id="hero-heading"
-            className="font-serif font-semibold"
+        {/* Pill CTAs — Calm.com style */}
+        <div className="mt-10 flex flex-wrap justify-center gap-4">
+          <a
+            href={CONTACT_MAILTO}
+            className="inline-flex h-[54px] min-w-[180px] items-center justify-center gap-2 rounded-full bg-[#123A5A] px-9 text-sm font-bold text-[#F5F1E7] shadow-[0_6px_28px_rgba(18,58,90,0.22)] transition-colors hover:bg-[#0e2d47]"
+          >
+            Get Started
+          </a>
+          <a
+            href="/how-it-works"
+            className="inline-flex h-[54px] min-w-[180px] items-center justify-center gap-2 rounded-full border px-9 text-sm font-bold transition-colors hover:bg-white/60"
             style={{
-              fontSize: "clamp(2.5rem, 4.5vw, 5rem)",
-              lineHeight: "0.92",
-              letterSpacing: "0.01em",
+              borderColor: "rgba(18,58,90,0.30)",
               color: "#123A5A",
             }}
           >
-            <span className="block">Your Path</span>
-            <span className="block">To Good</span>
-            <span className="block" style={{ color: "#D87A24" }}>Profits</span>
-          </h1>
-
-          {/* Supporting copy */}
-          <p
-            className="mt-7 font-serif leading-snug"
-            style={{
-              fontSize: "clamp(1.1rem, 1.8vw, 1.5rem)",
-              color: "#123A5A",
-              opacity: 0.72,
-              maxWidth: 440,
-            }}
-          >
-            Build systems with data and grow your bottom line revenue.
-          </p>
-
-          {/* CTAs */}
-          <div className="mt-10 flex flex-wrap gap-4">
-            <a
-              href={CONTACT_MAILTO}
-              className="inline-flex h-[52px] min-w-[190px] items-center justify-center gap-2 rounded-xl bg-[#123A5A] px-8 text-sm font-bold text-[#F5F1E7] shadow-[0_6px_28px_rgba(18,58,90,0.22)] transition-colors hover:bg-[#0e2d47]"
-            >
-              Fix it <ArrowRight size={15} />
-            </a>
-            <a
-              href="/how-it-works"
-              className="inline-flex h-[52px] min-w-[190px] items-center justify-center gap-2 rounded-xl border px-8 text-sm font-bold transition-colors hover:bg-white/60"
-              style={{
-                borderColor: "rgba(18,58,90,0.28)",
-                color: "#123A5A",
-              }}
-            >
-              See how it works <ArrowRight size={15} />
-            </a>
-          </div>
+            See how it works <ArrowRight size={15} />
+          </a>
         </div>
       </div>
     </section>

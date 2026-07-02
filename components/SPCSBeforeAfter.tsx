@@ -150,7 +150,7 @@ export default function SPCSBeforeAfter() {
                 href={CONTACT_MAILTO}
                 className="inline-flex h-[52px] min-w-[140px] items-center justify-center gap-2 rounded-xl bg-[#123A5A] px-8 text-sm font-bold text-[#F5F1E7] shadow-[0_6px_28px_rgba(18,58,90,0.22)] transition-colors hover:bg-[#0e2d47]"
               >
-                Fix it <ArrowRight size={15} />
+                Get Started <ArrowRight size={15} />
               </a>
               <a
                 href="/spcs-report"
