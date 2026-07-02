@@ -13,27 +13,29 @@
   --e-ink:        #111111;
   --e-soft:       #6e6e73;
   --e-muted:      #9a9a9f;
-  --e-surface:    #f7f4ee;
+  --e-surface:    #f5f1e7;
   --e-white:      #ffffff;
+  --e-sun:        #D87A24;
+  --e-sun-dark:   #b8620e;
   --e-blue:       #1b5ea8;
   --e-blue-dark:  #164d8e;
   --e-dark:       #0d1b2a;
   --e-rule:       rgba(0,0,0,0.08);
-  --e-rule-solid: #d8d4cc;
+  --e-rule-solid: #dbd6cb;
   --e-red:        #b91c1c;
   --e-amber:      #b45309;
   --e-green:      #166534;
 
-  --t-label:  10px;
-  --t-caption:11px;
-  --t-sm:     13px;
-  --t-base:   15px;
-  --t-lg:     17px;
-  --t-xl:     20px;
-  --t-2xl:    26px;
-  --t-3xl:    34px;
-  --t-4xl:    44px;
-  --t-hero:   72px;
+  --t-label:  11px;
+  --t-caption:13px;
+  --t-sm:     15px;
+  --t-base:   17px;
+  --t-lg:     19px;
+  --t-xl:     23px;
+  --t-2xl:    30px;
+  --t-3xl:    40px;
+  --t-4xl:    52px;
+  --t-hero:   88px;
 
   --gap-xs:  8px;
   --gap-sm:  16px;
@@ -43,7 +45,7 @@
 
   --margin-h: 72px;
   --margin-v: 64px;
-  --prose: 620px;
+  --prose: 640px;
 }
 
 /* ─────────────────────────────────────────
@@ -52,28 +54,29 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { font-size: 16px; }
 body {
-  font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   font-size: var(--t-base);
   line-height: 1.7;
   color: var(--e-ink);
   background: var(--e-surface);
   -webkit-print-color-adjust: exact;
   print-color-adjust: exact;
+  -webkit-font-smoothing: antialiased;
 }
 
 /* ─────────────────────────────────────────
    TYPE
 ───────────────────────────────────────── */
 h1, h2, h3 {
-  font-family: ui-serif, Georgia, 'Times New Roman', serif;
-  font-weight: 400;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-weight: 600;
   color: var(--e-ink);
-  letter-spacing: -0.02em;
-  line-height: 1.1;
+  letter-spacing: -0.025em;
+  line-height: 1.08;
 }
-h1 { font-size: var(--t-4xl); margin-bottom: 20px; }
-h2 { font-size: var(--t-3xl); margin-bottom: 14px; }
-h3 { font-size: var(--t-xl);  margin-bottom: 8px; }
+h1 { font-size: var(--t-4xl); margin-bottom: 22px; }
+h2 { font-size: var(--t-3xl); margin-bottom: 16px; }
+h3 { font-size: var(--t-xl);  margin-bottom: 10px; }
 
 p {
   font-size: var(--t-base);
@@ -119,7 +122,7 @@ li { font-size: var(--t-base); line-height: 1.7; margin-bottom: 4px; color: var(
   font-weight: 700;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--e-blue);
+  color: var(--e-sun);
   margin-bottom: 0;
 }
 .cover-body {
@@ -159,7 +162,7 @@ li { font-size: var(--t-base); line-height: 1.7; margin-bottom: 4px; color: var(
   font-weight: 600;
   letter-spacing: 0.24em;
   text-transform: uppercase;
-  color: var(--e-blue);
+  color: var(--e-sun);
   margin-bottom: 24px;
 }
 .cover-title {
@@ -179,7 +182,7 @@ li { font-size: var(--t-base); line-height: 1.7; margin-bottom: 4px; color: var(
   color: rgba(255,255,255,0.45);
   margin-bottom: 52px;
 }
-.cover-rule { width: 40px; height: 1px; background: var(--e-blue); margin-bottom: 28px; }
+.cover-rule { width: 40px; height: 1px; background: var(--e-sun); margin-bottom: 28px; }
 .cover-meta { display: flex; gap: 40px; flex-wrap: wrap; }
 .cover-meta-label {
   font-size: var(--t-label);
@@ -202,7 +205,7 @@ li { font-size: var(--t-base); line-height: 1.7; margin-bottom: 4px; color: var(
   font-weight: 700;
   letter-spacing: 0.24em;
   text-transform: uppercase;
-  color: var(--e-blue);
+  color: var(--e-sun);
   margin-bottom: 10px;
 }
 .rule { border: none; border-top: 1px solid var(--e-rule-solid); margin: var(--gap-lg) 0; }
@@ -249,7 +252,7 @@ li { font-size: var(--t-base); line-height: 1.7; margin-bottom: 4px; color: var(
 }
 .score-fill.poor  { background: #b91c1c; }
 .score-fill.fair  { background: #b45309; }
-.score-fill.ok    { background: var(--e-blue); }
+.score-fill.ok    { background: var(--e-sun); }
 .score-fill.good  { background: #166534; }
 .score-num { font-size: var(--t-sm); font-weight: 600; color: var(--e-ink); text-align: right; }
 .score-note { font-size: var(--t-caption); color: var(--e-muted); margin-left: 174px; margin-top: -8px; margin-bottom: 8px; }
@@ -360,8 +363,8 @@ li { font-size: var(--t-base); line-height: 1.7; margin-bottom: 4px; color: var(
    CALLOUT BOX
 ───────────────────────────────────────── */
 .callout {
-  background: #eff6ff;
-  border-left: 3px solid var(--e-blue);
+  background: #fdf3e7;
+  border-left: 3px solid var(--e-sun);
   padding: 16px 20px;
   margin: 20px 0;
   max-width: var(--prose);
@@ -378,10 +381,10 @@ li { font-size: var(--t-base); line-height: 1.7; margin-bottom: 4px; color: var(
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--e-blue);
+  color: var(--e-sun);
   margin-bottom: 12px;
   padding-bottom: 6px;
-  border-bottom: 2px solid var(--e-blue);
+  border-bottom: 2px solid var(--e-sun);
   display: inline-block;
 }
 .timeline-item {
@@ -1200,13 +1203,13 @@ li { font-size: var(--t-base); line-height: 1.7; margin-bottom: 4px; color: var(
     </div>
     <div>
       <h3>Contact</h3>
-      <p><a href="https://www.elliyeen.com" style="color:var(--e-blue);text-decoration:none;font-weight:600;">www.elliyeen.com</a><br><br>To request an audit for your business or a business you want to help, visit <a href="https://www.elliyeen.com" style="color:var(--e-blue);text-decoration:none;">www.elliyeen.com</a>.</p>
+      <p><a href="https://www.elliyeen.com" style="color:var(--e-sun);text-decoration:none;font-weight:600;">www.elliyeen.com</a><br><br>To request an audit for your business or a business you want to help, visit <a href="https://www.elliyeen.com" style="color:var(--e-sun);text-decoration:none;">www.elliyeen.com</a>.</p>
     </div>
   </div>
 
   <hr class="rule" style="margin-top: 48px;">
   <div style="display:flex;justify-content:space-between;align-items:center;">
-    <div style="font-size:var(--t-label);letter-spacing:0.1em;text-transform:uppercase;"><a href="https://www.elliyeen.com" style="color:var(--e-blue);text-decoration:none;font-weight:700;">www.elliyeen.com</a></div>
+    <div style="font-size:var(--t-label);letter-spacing:0.1em;text-transform:uppercase;"><a href="https://www.elliyeen.com" style="color:var(--e-sun);text-decoration:none;font-weight:700;">www.elliyeen.com</a></div>
     <div style="font-size:var(--t-label);color:var(--e-muted);">This report is free to share, print, and distribute without restriction.</div>
     <div style="font-size:var(--t-label);color:var(--e-muted);">July 2026</div>
   </div>
