@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ArrowRight } from "lucide-react";
 import SiteNav from "../SiteNav";
+import HowItWorksDemo from "@/components/HowItWorksDemo";
 
 export const metadata: Metadata = {
   title: "How It Works · Elliyeen Research — Website Audit Process",
@@ -28,53 +29,26 @@ const howToSchema = {
   step: [
     {
       "@type": "HowToStep",
-      name: "Customer Intelligence",
-      text: "We map your buyer's trigger moment, dominant emotion, and the exact language they use when they feel the problem you solve. Delivered as a written customer brief.",
+      name: "Map Your Buyer",
+      text: "We identify who makes the decision, what triggers it, and the exact language they use when they feel the problem you solve.",
     },
     {
       "@type": "HowToStep",
-      name: "Friction Diagnosis",
-      text: "We run 18 specialist frameworks across your copy, UX, trust signals, SEO, accessibility, and conversion architecture. Every gap documented with evidence.",
+      name: "Find the Breaks",
+      text: "18 frameworks run simultaneously across copy, UX, trust signals, SEO, and conversion. Every disconnection documented with evidence.",
     },
     {
       "@type": "HowToStep",
-      name: "Prioritized Roadmap",
-      text: "We rank every finding by revenue impact. You receive copy rewrites, UX recommendations, and a week-by-week action plan — not a PDF that sits in a folder.",
+      name: "Write the Fix",
+      text: "Not a list of recommendations. The actual rewritten headline, the fixed CTA, the resolved objection — ranked by what moves revenue fastest.",
     },
     {
       "@type": "HowToStep",
-      name: "Implementation Support",
-      text: "We review your changes, run a second-pass audit, and measure what moved. Every implementation tracked against a baseline.",
+      name: "Connect the System",
+      text: "You implement. We run a second-pass audit and measure every change against a baseline. Revenue impact — visible.",
     },
   ],
 };
-
-const steps = [
-  {
-    number: "01",
-    title: "Know your buyer's exact language before writing a word.",
-    type: "Customer Intelligence",
-    body: "We map the trigger moment, dominant emotion, and the precise phrasing buyers use when they feel the problem you solve.",
-  },
-  {
-    number: "02",
-    title: "Surface every revenue gap across 18 frameworks in a single session.",
-    type: "Friction Diagnosis",
-    body: "Copy, UX, trust signals, SEO, accessibility, and conversion architecture — audited simultaneously, every finding documented with evidence.",
-  },
-  {
-    number: "03",
-    title: "Receive the replacement copy, ranked by revenue impact, ready to ship.",
-    type: "Prioritized Roadmap",
-    body: "Not a list of recommendations. The actual rewritten headline, the fixed CTA, the resolved objection — ranked by what moves revenue fastest.",
-  },
-  {
-    number: "04",
-    title: "Track every change against a baseline so you know exactly what moved.",
-    type: "Implementation Support",
-    body: "We review your implementations, run a second-pass audit, and measure what changed — so results are visible, not assumed.",
-  },
-];
 
 const frameworks = [
   "Positioning & Differentiation",
@@ -97,36 +71,33 @@ export default function HowItWorksPage() {
       />
       <main className="min-h-screen bg-[#f7f4ee] text-[#111111]">
         <SiteNav />
-        <div className="mx-auto max-w-3xl px-4 py-20 sm:px-6">
 
-          <p className="text-xs font-bold uppercase tracking-[0.28em] text-zinc-500">Our process</p>
-          <h1 className="mt-4 font-serif t-display">
-            Find the gap. Write the fix. Ship it.
-          </h1>
-          <p className="mt-6 t-body text-zinc-600">
-            Four steps. One engagement. Every deliverable in writing — the diagnosis, the copy, the roadmap, and the measurement.
-          </p>
+        {/* ── Hero: headline + interactive demo ───────────────────────── */}
+        <section className="mx-auto max-w-7xl px-4 pt-16 pb-6 sm:px-6 sm:pt-20">
 
-          <div className="mt-14 space-y-10">
-            {steps.map((step) => (
-              <div key={step.number} className="border-t border-zinc-200 pt-10">
-                <div className="flex items-start gap-6">
-                  <span className="shrink-0 font-serif t-title font-bold text-zinc-200">
-                    {step.number}
-                  </span>
-                  <div>
-                    <p className="text-[10px] font-bold uppercase tracking-widest text-zinc-400">
-                      {step.type}
-                    </p>
-                    <h2 className="mt-1 t-card-title font-bold text-zinc-900">{step.title}</h2>
-                    <p className="mt-3 text-sm leading-7 text-zinc-600">{step.body}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
+          {/* Compact headline */}
+          <div className="mb-10 max-w-2xl">
+            <p className="text-xs font-bold uppercase tracking-[0.28em] text-zinc-500">
+              How it works
+            </p>
+            <h1 className="mt-4 font-serif t-display">
+              We treat every business as a system.
+            </h1>
+            <p className="mt-5 t-body text-zinc-500">
+              Revenue is lost when the parts — copy, trust signals, navigation,
+              proof — aren&apos;t connected to the decision your buyer is
+              trying to make. We find what&apos;s broken. We write the fix.
+            </p>
           </div>
 
-          <div className="mt-16 rounded-2xl border border-zinc-200 bg-white p-8">
+          {/* Interactive 4-step demo */}
+          <HowItWorksDemo />
+
+        </section>
+
+        {/* ── Frameworks list ──────────────────────────────────────────── */}
+        <section className="mx-auto max-w-3xl px-4 py-6 sm:px-6">
+          <div className="rounded-2xl border border-zinc-200 bg-white p-8">
             <p className="text-xs font-bold uppercase tracking-[0.28em] text-zinc-500">
               18 frameworks
             </p>
@@ -143,8 +114,10 @@ export default function HowItWorksPage() {
             </ul>
           </div>
 
-          <div className="mt-10 rounded-2xl border border-zinc-200 bg-white p-8">
-            <p className="font-semibold text-zinc-900">Ready to see what&apos;s costing you revenue?</p>
+          <div className="mt-6 rounded-2xl border border-zinc-200 bg-white p-8">
+            <p className="font-semibold text-zinc-900">
+              Ready to see what&apos;s costing you revenue?
+            </p>
             <p className="mt-2 text-sm leading-6 text-zinc-600">
               Full audit starts from $1,500. Copy rewrites included.
             </p>
@@ -155,9 +128,9 @@ export default function HowItWorksPage() {
               Get Started <ArrowRight size={15} />
             </a>
           </div>
+        </section>
 
-        </div>
-
+        {/* ── Footer ───────────────────────────────────────────────────── */}
         <footer className="border-t border-zinc-100 bg-white">
           <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-12">
             <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
@@ -193,10 +166,10 @@ export default function HowItWorksPage() {
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-widest text-zinc-900">Reports</p>
                   <ul className="mt-4 space-y-3 text-sm text-zinc-600">
-                    <li><a href="/reports"                              className="hover:text-black">All Reports</a></li>
-                    <li><a href="/reports/milano-audit.html"            className="hover:text-black">Milano Family Pizza</a></li>
-                    <li><a href="/reports/wealth-management-audit.html" className="hover:text-black">Wealth Management</a></li>
-                    <li><a href="/spcs-report"                          className="hover:text-black">Savannah Personal Care</a></li>
+                    <li><a href="/reports"                                   className="hover:text-black">All Reports</a></li>
+                    <li><a href="/reports/operator-school-audit.html"        className="hover:text-black">Associated Training</a></li>
+                    <li><a href="/reports/milano-audit.html"                 className="hover:text-black">Milano Family Pizza</a></li>
+                    <li><a href="/spcs-report"                               className="hover:text-black">Savannah Personal Care</a></li>
                   </ul>
                 </div>
               </div>

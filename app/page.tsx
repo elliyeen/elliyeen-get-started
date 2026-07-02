@@ -282,7 +282,7 @@ export default function GetStartedPage() {
                 The sites were live.<br className="hidden sm:block" /> The revenue wasn&apos;t.
               </h2>
               <p className="mt-2 max-w-lg text-sm leading-6 text-zinc-500">
-                Four audits. Four gaps no owner had named. Here&apos;s what we found — and what each one was costing.
+                Five audits. Five gaps no owner had named. Here&apos;s what we found — and what each one was costing.
               </p>
             </div>
             <CasesCarousel />
@@ -387,10 +387,10 @@ export default function GetStartedPage() {
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-widest text-zinc-900">Reports</p>
                   <ul className="mt-4 space-y-3 text-sm text-zinc-600">
-                    <li><a href="/reports"                              className="hover:text-black">All Reports</a></li>
-                    <li><a href="/reports/milano-audit.html"            className="hover:text-black">Milano Family Pizza</a></li>
-                    <li><a href="/reports/wealth-management-audit.html" className="hover:text-black">Wealth Management</a></li>
-                    <li><a href="/spcs-report"                          className="hover:text-black">Savannah Personal Care</a></li>
+                    <li><a href="/reports"                                   className="hover:text-black">All Reports</a></li>
+                    <li><a href="/reports/operator-school-audit.html"       className="hover:text-black">Associated Training</a></li>
+                    <li><a href="/reports/milano-audit.html"                className="hover:text-black">Milano Family Pizza</a></li>
+                    <li><a href="/spcs-report"                              className="hover:text-black">Savannah Personal Care</a></li>
                   </ul>
                 </div>
               </div>

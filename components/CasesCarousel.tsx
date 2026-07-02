@@ -94,9 +94,27 @@ const ALL_CASES = [
     secondaryHref: "",
     secondaryLabel: "",
   },
+  {
+    industry: "Vocational",
+    tag: "Vocational Training",
+    title: "Associated Training Services",
+    location: "Sun Prairie, WI",
+    body: "65 years of proof, four accreditations, and a graduate earning $26/hr — but the system was disconnected. 22 nav items. Six CTAs competing at equal weight. The best evidence buried in the footer.",
+    metrics: [
+      "22 navigation items — visitors froze before reaching programs",
+      "Wage proof ($26/hr) moved from footer to hero decision point",
+      "Career Path ladder reframed as a built-in revenue multiplier",
+    ],
+    image: "/ops-before-hero.png",
+    imageAlt: "Associated Training Services — heavy equipment operator training, Sun Prairie WI",
+    href: "/reports/operator-school-audit.html",
+    reportLabel: "Read the full audit report",
+    secondaryHref: "https://elliyeen.github.io/associatedtrainingservices/",
+    secondaryLabel: "See the rebuilt site",
+  },
 ];
 
-const TABS = ["All", "Hospitality", "Home Care", "Financial Services", "Education"];
+const TABS = ["All", "Hospitality", "Home Care", "Financial Services", "Education", "Vocational"];
 
 export default function CasesCarousel() {
   const [activeTab, setActiveTab] = useState("All");
