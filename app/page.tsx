@@ -304,7 +304,7 @@ export default function GetStartedPage() {
                 <a
                   id="contact"
                   href={CONTACT_MAILTO}
-                  className="mt-6 inline-flex h-[52px] min-w-[190px] items-center justify-center gap-2 rounded-xl bg-[#123A5A] px-8 text-sm font-bold text-[#F5F1E7] shadow-[0_6px_28px_rgba(18,58,90,0.22)] hover:bg-[#0e2d47]"
+                  className="mt-6 inline-flex h-[54px] w-full items-center justify-center gap-2 rounded-full bg-[#123A5A] px-9 text-sm font-bold text-[#F5F1E7] shadow-[0_6px_28px_rgba(18,58,90,0.22)] transition-colors duration-200 hover:bg-[#D87A24] active:bg-[#b8620e] sm:w-auto sm:min-w-[180px]"
                 >
                   Get Started <ArrowRight size={15} />
                 </a>
@@ -336,13 +336,13 @@ export default function GetStartedPage() {
             <div className="mt-6 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:justify-center">
               <a
                 href={CONTACT_MAILTO}
-                className="inline-flex h-[52px] min-w-[190px] items-center justify-center gap-2 rounded-xl bg-[#123A5A] px-8 text-sm font-bold text-[#F5F1E7] shadow-[0_6px_28px_rgba(18,58,90,0.22)] hover:bg-[#0e2d47]"
+                className="inline-flex h-[54px] w-full items-center justify-center gap-2 rounded-full bg-[#123A5A] px-9 text-sm font-bold text-[#F5F1E7] shadow-[0_6px_28px_rgba(18,58,90,0.22)] transition-colors duration-200 hover:bg-[#D87A24] active:bg-[#b8620e] sm:w-auto sm:min-w-[180px]"
               >
                 Get Started <ArrowRight size={15} />
               </a>
               <a
                 href="/how-it-works"
-                className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-xl border border-zinc-200 px-6 text-sm font-semibold text-zinc-600 hover:border-zinc-400 hover:text-black sm:min-w-[180px]"
+                className="inline-flex h-[54px] w-full items-center justify-center gap-2 rounded-full border border-[rgba(18,58,90,0.28)] px-9 text-sm font-bold text-[#123A5A] transition-colors duration-200 hover:bg-white/60 hover:border-[rgba(18,58,90,0.5)] sm:w-auto sm:min-w-[180px]"
               >
                 See how it works <ArrowRight size={15} />
               </a>

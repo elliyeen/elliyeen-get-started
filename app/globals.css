@@ -218,6 +218,7 @@ pre { overflow-x: auto; max-width: 100%; }
 .btn-sm { min-height: 36px; padding: 0.4375rem 0.875rem; font-size: var(--t-caption); border-radius: 0.5rem; }
 .btn-lg { min-height: 52px; padding: 1rem 2rem; font-size: var(--t-base); }
 
+
 /* ─── Skip Link (accessibility) ──────────────────────────────────────── */
 .skip-link {
   position: fixed;

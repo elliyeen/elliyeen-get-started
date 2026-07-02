@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { ArrowRight } from "lucide-react";
 
 const CONTACT_MAILTO =
   "mailto:abdullah@elliyeen.com" +
@@ -69,23 +68,19 @@ export default function ElliyeenHero() {
           Build systems with data and grow your bottom line revenue.
         </p>
 
-        {/* Pill CTAs — Calm.com style */}
-        <div className="mt-10 flex flex-wrap justify-center gap-4">
+        {/* Pill CTAs — stacked full-width on mobile, side-by-side on sm+ */}
+        <div className="mt-10 flex flex-col items-stretch gap-3 sm:flex-row sm:justify-center">
           <a
             href={CONTACT_MAILTO}
-            className="inline-flex h-[54px] min-w-[180px] items-center justify-center gap-2 rounded-full bg-[#123A5A] px-9 text-sm font-bold text-[#F5F1E7] shadow-[0_6px_28px_rgba(18,58,90,0.22)] transition-colors hover:bg-[#0e2d47]"
+            className="inline-flex h-[54px] w-full items-center justify-center gap-2 rounded-full bg-[#123A5A] px-9 text-sm font-bold text-[#F5F1E7] shadow-[0_6px_28px_rgba(18,58,90,0.22)] transition-colors duration-200 hover:bg-[#D87A24] hover:shadow-[0_6px_28px_rgba(216,122,36,0.30)] active:bg-[#b8620e] sm:w-auto sm:min-w-[180px]"
           >
             Get Started
           </a>
           <a
             href="/how-it-works"
-            className="inline-flex h-[54px] min-w-[180px] items-center justify-center gap-2 rounded-full border px-9 text-sm font-bold transition-colors hover:bg-white/60"
-            style={{
-              borderColor: "rgba(18,58,90,0.30)",
-              color: "#123A5A",
-            }}
+            className="inline-flex h-[54px] w-full items-center justify-center gap-2 rounded-full border border-[rgba(18,58,90,0.28)] px-9 text-sm font-bold text-[#123A5A] transition-colors duration-200 hover:bg-white/60 hover:border-[rgba(18,58,90,0.5)] active:bg-white/80 sm:w-auto sm:min-w-[180px]"
           >
-            See how it works <ArrowRight size={15} />
+            See how it works
           </a>
         </div>
       </div>

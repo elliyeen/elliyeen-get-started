@@ -148,7 +148,7 @@ export default function SPCSBeforeAfter() {
             <div className="flex flex-wrap items-center gap-3">
               <a
                 href={CONTACT_MAILTO}
-                className="inline-flex h-[52px] min-w-[140px] items-center justify-center gap-2 rounded-xl bg-[#123A5A] px-8 text-sm font-bold text-[#F5F1E7] shadow-[0_6px_28px_rgba(18,58,90,0.22)] transition-colors hover:bg-[#0e2d47]"
+                className="inline-flex h-[54px] w-full items-center justify-center gap-2 rounded-full bg-[#123A5A] px-9 text-sm font-bold text-[#F5F1E7] shadow-[0_6px_28px_rgba(18,58,90,0.22)] transition-colors duration-200 hover:bg-[#D87A24] active:bg-[#b8620e] sm:w-auto sm:min-w-[180px]"
               >
                 Get Started <ArrowRight size={15} />
               </a>
