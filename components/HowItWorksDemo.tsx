@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ArrowDown } from "lucide-react";
 
 const STEP_DURATION = 5000;
 
@@ -82,17 +82,17 @@ const steps: Step[] = [
 ];
 
 const badgeColors: Record<string, string> = {
-  neutral: "bg-zinc-100 text-zinc-500",
+  neutral: "bg-zinc-100 text-zinc-600",
   red:     "bg-red-50 text-red-500",
   blue:    "bg-[#e8eef6] text-[#1B5EA8]",
   green:   "bg-emerald-50 text-emerald-600",
 };
 
 export default function HowItWorksDemo() {
-  const [active, setActive]       = useState(0);
-  const [paused, setPaused]       = useState(false);
+  const [active, setActive]           = useState(0);
+  const [paused, setPaused]           = useState(false);
   const [progressKey, setProgressKey] = useState(0);
-  const [imgKey, setImgKey]       = useState(0);
+  const [imgKey, setImgKey]           = useState(0);
 
   const go = useCallback((i: number) => {
     setActive(i);
@@ -100,7 +100,6 @@ export default function HowItWorksDemo() {
     setImgKey((k) => k + 1);
   }, []);
 
-  // Auto-advance
   useEffect(() => {
     if (paused) return;
     const t = setTimeout(() => go((active + 1) % steps.length), STEP_DURATION);
@@ -110,183 +109,239 @@ export default function HowItWorksDemo() {
   const step = steps[active];
 
   return (
-    <div className="grid gap-10 lg:grid-cols-[1fr_1.2fr] lg:gap-16 lg:items-start">
+    <div>
+      {/* ── Two-column layout ────────────────────────────────────────────── */}
+      <div className="grid gap-10 lg:grid-cols-[1fr_1.2fr] lg:gap-16 lg:items-start">
 
-      {/* ── LEFT: Step list ───────────────────────────────────────────── */}
-      <div>
+        {/* LEFT: Step list */}
         <div>
-          {steps.map((s, i) => (
-            <button
-              key={s.number}
-              onClick={() => { go(i); setPaused(true); }}
-              aria-current={active === i ? "step" : undefined}
-              className={`group w-full text-left border-t border-zinc-200 py-6 transition-colors first:border-t-0 first:pt-0 ${
-                active !== i ? "hover:bg-[#f7f4ee]/60 -mx-2 px-2 rounded-xl" : ""
-              }`}
-            >
-              <div className="flex items-start gap-5">
-
-                {/* Number */}
-                <span
-                  className={`shrink-0 w-10 font-serif text-[2.25rem] font-bold leading-none tabular-nums transition-colors duration-300 ${
-                    active === i
-                      ? "text-[#123A5A]"
-                      : "text-zinc-200 group-hover:text-zinc-300"
-                  }`}
-                >
-                  {s.number}
-                </span>
-
-                <div className="flex-1 min-w-0">
-                  <p
-                    className={`text-base font-bold transition-colors duration-300 ${
-                      active === i
-                        ? "text-zinc-900"
-                        : "text-zinc-400 group-hover:text-zinc-600"
-                    }`}
-                  >
-                    {s.title}
-                  </p>
-
-                  {/* Animated body reveal */}
-                  <div
-                    className={`grid transition-all duration-500 ease-out ${
-                      active === i
-                        ? "grid-rows-[1fr] opacity-100 mt-2"
-                        : "grid-rows-[0fr] opacity-0"
-                    }`}
-                  >
-                    <p className="overflow-hidden text-sm leading-7 text-zinc-500">
-                      {s.body}
-                    </p>
-                  </div>
-
-                  {/* Progress bar */}
-                  {active === i && (
-                    <div className="mt-3 h-0.5 overflow-hidden rounded-full bg-zinc-100">
-                      <div
-                        key={progressKey}
-                        className="h-full rounded-full bg-[#123A5A] hiw-progress"
-                      />
-                    </div>
-                  )}
-                </div>
-              </div>
-            </button>
-          ))}
-        </div>
-
-        {/* Step dots */}
-        <div className="mt-6 flex gap-2">
-          {steps.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => { go(i); setPaused(true); }}
-              aria-label={`Go to step ${i + 1}`}
-              className={`h-1.5 rounded-full transition-all duration-300 ${
-                active === i
-                  ? "w-6 bg-[#123A5A]"
-                  : "w-1.5 bg-zinc-300 hover:bg-zinc-400"
-              }`}
-            />
-          ))}
-        </div>
-
-        {/* CTAs */}
-        <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-          <a
-            href={CONTACT_MAILTO}
-            className="inline-flex h-[54px] w-full items-center justify-center gap-2 rounded-full bg-[#123A5A] px-8 text-sm font-bold text-[#F5F1E7] shadow-[0_6px_28px_rgba(18,58,90,0.22)] transition-colors hover:bg-[#D87A24] active:bg-[#b8620e] sm:w-auto sm:min-w-[180px]"
-          >
-            Get your audit <ArrowRight size={15} />
-          </a>
-          <a
-            href="/reports/operator-school-audit.html"
-            className="inline-flex h-[52px] w-full items-center justify-center gap-2 rounded-xl border border-zinc-200 px-6 text-sm font-semibold text-zinc-700 transition-colors hover:border-zinc-400 hover:bg-zinc-50 sm:w-auto"
-          >
-            Read the ATS report <ArrowRight size={14} />
-          </a>
-        </div>
-      </div>
-
-      {/* ── RIGHT: Browser mockup ──────────────────────────────────────── */}
-      <div className="lg:sticky lg:top-24">
-        <div className="overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-2xl shadow-zinc-900/8">
-
-          {/* Browser chrome */}
-          <div className="flex items-center gap-3 border-b border-zinc-100 bg-zinc-50 px-4 py-3">
-            <div className="flex gap-1.5">
-              <span className="h-3 w-3 rounded-full bg-red-400/70" />
-              <span className="h-3 w-3 rounded-full bg-amber-400/70" />
-              <span className="h-3 w-3 rounded-full bg-emerald-400/70" />
-            </div>
-            <div className="min-w-0 flex-1 truncate rounded-md border border-zinc-200 bg-white px-3 py-1 text-center font-mono text-[11px] text-zinc-400">
-              {step.url}
-            </div>
-            <span
-              className={`shrink-0 rounded-full px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wide transition-all duration-300 ${badgeColors[step.badge.color]}`}
-            >
-              {step.badge.label}
-            </span>
-          </div>
-
-          {/* Screenshot + annotation layer */}
-          <div className="relative overflow-hidden bg-zinc-100" style={{ height: 460 }}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              key={imgKey}
-              src={step.screenshot}
-              alt={step.screenshotAlt}
-              className="w-full object-cover object-top hiw-img-fade"
-              style={{ height: 460 }}
-            />
-
-            {/* Gradient at bottom for readability */}
-            <div
-              className="pointer-events-none absolute inset-x-0 bottom-0"
-              style={{
-                height: "30%",
-                background: "linear-gradient(to bottom, transparent, rgba(0,0,0,0.08))",
-              }}
-            />
-
-            {/* Annotation chips */}
-            {step.annotations.map((a, j) => (
-              <div
-                key={`${active}-${j}`}
-                className={`hiw-chip hiw-chip-${a.color}`}
-                style={{
-                  position: "absolute",
-                  top: a.top,
-                  left: a.left,
-                  animationDelay: `${a.delay}ms`,
-                }}
-              >
-                {a.text}
-              </div>
-            ))}
-          </div>
-
-          {/* Bottom step indicator strip */}
-          <div className="flex border-t border-zinc-100">
+          <div>
             {steps.map((s, i) => (
               <button
                 key={s.number}
                 onClick={() => { go(i); setPaused(true); }}
-                aria-label={`View step ${s.number}: ${s.title}`}
-                className={`flex-1 py-2.5 text-center text-[10px] font-bold uppercase tracking-wider transition-colors ${
-                  active === i
-                    ? "bg-[#123A5A] text-white"
-                    : "text-zinc-400 hover:bg-zinc-50 hover:text-zinc-700"
-                }`}
+                aria-current={active === i ? "step" : undefined}
+                className="group w-full text-left border-t border-zinc-200 py-6 first:border-t-0 first:pt-0"
               >
-                {s.number}
+                <div className="flex items-start gap-5">
+
+                  {/* Number */}
+                  <span
+                    className={`shrink-0 w-10 font-serif text-[2.25rem] font-bold leading-none tabular-nums transition-colors duration-300 ${
+                      active === i ? "text-[#123A5A]" : "text-zinc-300 group-hover:text-zinc-400"
+                    }`}
+                  >
+                    {s.number}
+                  </span>
+
+                  <div className="flex-1 min-w-0">
+                    <p
+                      className={`text-base font-bold transition-colors duration-300 ${
+                        active === i ? "text-[#111111]" : "text-zinc-500 group-hover:text-zinc-700"
+                      }`}
+                    >
+                      {s.title}
+                    </p>
+
+                    {/* Animated body */}
+                    <div
+                      className={`grid transition-all duration-500 ease-out ${
+                        active === i
+                          ? "grid-rows-[1fr] opacity-100 mt-2"
+                          : "grid-rows-[0fr] opacity-0"
+                      }`}
+                    >
+                      <p className="overflow-hidden text-sm leading-7 text-[#3f3f46]">
+                        {s.body}
+                      </p>
+                    </div>
+
+                    {/* Progress bar */}
+                    {active === i && (
+                      <div className="mt-3 h-0.5 overflow-hidden rounded-full bg-zinc-200">
+                        <div
+                          key={progressKey}
+                          className="h-full rounded-full bg-[#123A5A] hiw-progress"
+                        />
+                      </div>
+                    )}
+                  </div>
+                </div>
               </button>
             ))}
+          </div>
+
+          {/* Dot nav */}
+          <div className="mt-6 flex gap-2">
+            {steps.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => { go(i); setPaused(true); }}
+                aria-label={`Go to step ${i + 1}`}
+                className={`h-1.5 rounded-full transition-all duration-300 ${
+                  active === i ? "w-6 bg-[#123A5A]" : "w-1.5 bg-zinc-300 hover:bg-zinc-400"
+                }`}
+              />
+            ))}
+          </div>
+
+          {/* CTAs */}
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <a
+              href={CONTACT_MAILTO}
+              className="inline-flex h-[54px] w-full items-center justify-center gap-2 rounded-full bg-[#123A5A] px-8 text-sm font-bold text-[#F5F1E7] shadow-[0_6px_28px_rgba(18,58,90,0.22)] transition-colors hover:bg-[#D87A24] active:bg-[#b8620e] sm:w-auto sm:min-w-[180px]"
+            >
+              Get your audit <ArrowRight size={15} />
+            </a>
+            <a
+              href="/reports/operator-school-audit.html"
+              className="inline-flex h-[52px] w-full items-center justify-center gap-2 rounded-xl border border-zinc-200 px-6 text-sm font-semibold text-[#111111] transition-colors hover:border-zinc-400 hover:bg-zinc-50 sm:w-auto"
+            >
+              Read the ATS report <ArrowRight size={14} />
+            </a>
+          </div>
+        </div>
+
+        {/* RIGHT: Desktop browser mockup — hidden on mobile */}
+        <div className="hidden lg:block lg:sticky lg:top-24">
+          <div className="overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-2xl shadow-zinc-900/10">
+
+            {/* Browser chrome */}
+            <div className="flex items-center gap-3 border-b border-zinc-100 bg-zinc-50 px-4 py-3">
+              <div className="flex gap-1.5">
+                <span className="h-3 w-3 rounded-full bg-red-400/70" />
+                <span className="h-3 w-3 rounded-full bg-amber-400/70" />
+                <span className="h-3 w-3 rounded-full bg-emerald-400/70" />
+              </div>
+              <div className="min-w-0 flex-1 truncate rounded-md border border-zinc-200 bg-white px-3 py-1 text-center font-mono text-[11px] text-zinc-500">
+                {step.url}
+              </div>
+              <span
+                className={`shrink-0 rounded-full px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wide transition-all duration-300 ${badgeColors[step.badge.color]}`}
+              >
+                {step.badge.label}
+              </span>
+            </div>
+
+            {/* Screenshot + annotations */}
+            <div className="relative overflow-hidden bg-zinc-100" style={{ height: 460 }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                key={imgKey}
+                src={step.screenshot}
+                alt={step.screenshotAlt}
+                className="w-full object-cover object-top hiw-img-fade"
+                style={{ height: 460 }}
+              />
+
+              <div
+                className="pointer-events-none absolute inset-x-0 bottom-0"
+                style={{ height: "25%", background: "linear-gradient(to bottom, transparent, rgba(0,0,0,0.07))" }}
+              />
+
+              {step.annotations.map((a, j) => (
+                <div
+                  key={`${active}-${j}`}
+                  className={`hiw-chip hiw-chip-${a.color}`}
+                  style={{ position: "absolute", top: a.top, left: a.left, animationDelay: `${a.delay}ms` }}
+                >
+                  {a.text}
+                </div>
+              ))}
+            </div>
+
+            {/* Step tab strip */}
+            <div className="flex border-t border-zinc-100">
+              {steps.map((s, i) => (
+                <button
+                  key={s.number}
+                  onClick={() => { go(i); setPaused(true); }}
+                  aria-label={`View step ${s.number}: ${s.title}`}
+                  className={`flex-1 py-2.5 text-center text-[10px] font-bold uppercase tracking-wider transition-colors ${
+                    active === i
+                      ? "bg-[#123A5A] text-white"
+                      : "text-zinc-400 hover:bg-zinc-50 hover:text-zinc-700"
+                  }`}
+                >
+                  {s.number}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       </div>
 
+      {/* ── Mobile phone comparison — visible only on mobile ─────────────── */}
+      <div className="mt-12 lg:hidden">
+
+        <div className="mb-8 text-center">
+          <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-zinc-400">
+            The transformation · on mobile
+          </p>
+          <p className="mt-2 text-sm font-semibold text-[#111111]">
+            This is what a student sees when they find you.
+          </p>
+        </div>
+
+        {/* Two phone frames side by side */}
+        <div className="flex items-start justify-center gap-5">
+
+          {/* Before phone */}
+          <div className="flex flex-col items-center gap-3">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-red-50 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-red-500">
+              Before
+            </span>
+            <div className="phone-frame">
+              <div className="phone-notch" />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/ops-mobile-before.png"
+                alt="Original ATS site on mobile — cluttered layout"
+                className="w-full block rounded-[28px]"
+              />
+            </div>
+            <p className="max-w-[150px] text-center text-[11px] leading-5 text-zinc-500">
+              Grid of CTAs. No clear path for students.
+            </p>
+          </div>
+
+          {/* Arrow */}
+          <div className="flex flex-col items-center pt-12">
+            <ArrowDown size={18} className="text-zinc-300" />
+            <div className="mt-2 h-12 w-px bg-zinc-200" />
+            <ArrowDown size={18} className="text-zinc-300" />
+          </div>
+
+          {/* After phone */}
+          <div className="flex flex-col items-center gap-3">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-emerald-600">
+              After
+            </span>
+            <div className="phone-frame">
+              <div className="phone-notch" />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/ops-mobile-after.png"
+                alt="Rebuilt ATS site on mobile — clean hero, clear CTA"
+                className="w-full block rounded-[28px]"
+              />
+            </div>
+            <p className="max-w-[150px] text-center text-[11px] leading-5 text-zinc-500">
+              Clean hero. One number. One action.
+            </p>
+          </div>
+        </div>
+
+        {/* Report link below phones */}
+        <div className="mt-8 text-center">
+          <a
+            href="/reports/operator-school-audit.html"
+            className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#1B5EA8] hover:underline"
+          >
+            Read the full ATS audit report <ArrowRight size={13} />
+          </a>
+        </div>
+      </div>
     </div>
   );
 }

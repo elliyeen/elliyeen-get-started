@@ -77,13 +77,13 @@ export default function HowItWorksPage() {
 
           {/* Compact headline */}
           <div className="mb-10 max-w-2xl">
-            <p className="text-xs font-bold uppercase tracking-[0.28em] text-zinc-500">
+            <p className="text-xs font-bold uppercase tracking-[0.28em] text-[#1B5EA8]">
               How it works
             </p>
-            <h1 className="mt-4 font-serif t-display">
+            <h1 className="mt-4 font-serif t-display text-[#111111]">
               We treat every business as a system.
             </h1>
-            <p className="mt-5 t-body text-zinc-500">
+            <p className="mt-5 t-body text-[#3f3f46]">
               Revenue is lost when the parts — copy, trust signals, navigation,
               proof — aren&apos;t connected to the decision your buyer is
               trying to make. We find what&apos;s broken. We write the fix.
@@ -98,15 +98,15 @@ export default function HowItWorksPage() {
         {/* ── Frameworks list ──────────────────────────────────────────── */}
         <section className="mx-auto max-w-3xl px-4 py-6 sm:px-6">
           <div className="rounded-2xl border border-zinc-200 bg-white p-8">
-            <p className="text-xs font-bold uppercase tracking-[0.28em] text-zinc-500">
+            <p className="text-xs font-bold uppercase tracking-[0.28em] text-[#1B5EA8]">
               18 frameworks
             </p>
-            <h2 className="mt-3 font-serif t-heading">
+            <h2 className="mt-3 font-serif t-heading text-[#111111]">
               Every layer of your site, examined.
             </h2>
             <ul className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
               {frameworks.map((f) => (
-                <li key={f} className="flex items-center gap-2 text-sm text-zinc-700">
+                <li key={f} className="flex items-center gap-2 text-sm text-[#3f3f46]">
                   <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#1B5EA8]" />
                   {f}
                 </li>
@@ -115,10 +115,10 @@ export default function HowItWorksPage() {
           </div>
 
           <div className="mt-6 rounded-2xl border border-zinc-200 bg-white p-8">
-            <p className="font-semibold text-zinc-900">
+            <p className="font-semibold text-[#111111]">
               Ready to see what&apos;s costing you revenue?
             </p>
-            <p className="mt-2 text-sm leading-6 text-zinc-600">
+            <p className="mt-2 text-sm leading-6 text-[#3f3f46]">
               Full audit starts from $1,500. Copy rewrites included.
             </p>
             <a
