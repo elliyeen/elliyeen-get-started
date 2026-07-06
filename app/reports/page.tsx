@@ -5,7 +5,7 @@ import SiteNav from "@/app/SiteNav";
 export const metadata: Metadata = {
   title: "Audit Reports — Elliyeen Research",
   description:
-    "Published website audit reports by Elliyeen Research. Full 22-framework diagnoses with copy rewrites, financial projections, and prioritized roadmaps.",
+    "Published website audit reports by Elliyeen Research. Full 18-framework diagnoses with copy rewrites, financial projections, and prioritized roadmaps.",
   alternates: { canonical: "https://www.elliyeen.com/reports" },
 };
 
@@ -121,7 +121,7 @@ const sections: Section[] = [
     label: "Digital Presence Audits",
     title: "Website · SEO · Conversion Architecture",
     description:
-      "Full-site scoring against 22 frameworks — copy, trust signals, conversion architecture, SEO authority, and AI search readiness.",
+      "Full-site scoring against 18 frameworks — copy, trust signals, conversion architecture, SEO authority, and AI search readiness.",
     reports: [
       {
         client: "Milano Family Pizza",
@@ -167,6 +167,18 @@ const sections: Section[] = [
         badge: null,
         finding: "Full before/after documented",
       },
+      {
+        client: "Associated Training Services",
+        location: "Sun Prairie, WI",
+        auditType: "22-Agent Audit + Site Rebuild",
+        summary:
+          "Crane, heavy equipment, and CDL training school with 22 nav items, six competing CTAs, and $26/hr wage proof buried in the footer. Full site rebuild documented with before/after and live site.",
+        score: null,
+        href: "/ats-report",
+        date: "July 2026",
+        badge: "New",
+        finding: "Full before/after documented",
+      },
     ],
   },
 ];
@@ -186,7 +198,7 @@ export default function ReportsPage() {
             Audit Reports
           </h1>
           <p className="mt-4 max-w-xl t-body text-zinc-600">
-            Full 22-framework diagnoses with copy rewrites, financial projections, and
+            Full 18-framework diagnoses with copy rewrites, financial projections, and
             prioritized roadmaps. Each report is published with client permission.
           </p>
 
