@@ -191,7 +191,7 @@ export default function HowItWorksDemo() {
               href={CONTACT_MAILTO}
               className="inline-flex h-[54px] w-full items-center justify-center gap-2 rounded-full bg-[#123A5A] px-8 text-sm font-bold text-[#F5F1E7] shadow-[0_6px_28px_rgba(18,58,90,0.22)] transition-colors hover:bg-[#D87A24] active:bg-[#b8620e] sm:w-auto sm:min-w-[180px]"
             >
-              Get your audit <ArrowRight size={15} />
+              Show me where I&apos;m losing customers <ArrowRight size={15} />
             </a>
             <a
               href="/reports/operator-school-audit.html"

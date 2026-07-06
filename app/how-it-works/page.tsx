@@ -6,7 +6,7 @@ import HowItWorksDemo from "@/components/HowItWorksDemo";
 export const metadata: Metadata = {
   title: "How It Works · Elliyeen Research — Website Audit Process",
   description:
-    "Elliyeen audits every layer of your website using 18 specialist frameworks — copy, trust, UX, SEO, conversion, and AI search readiness. Here is exactly how the process works, step by step.",
+    "Your website is losing customers at one exact point. Elliyeen finds it, fixes it, and shows you the revenue impact — step by step.",
   keywords: [
     "website audit process",
     "how website audit works",
@@ -25,7 +25,7 @@ const howToSchema = {
   "@type": "HowTo",
   name: "How an Elliyeen Website Audit Works",
   description:
-    "A step-by-step website audit using 18 specialist frameworks across copy, UX, trust, SEO, conversion, and AI search readiness — with copy rewrites and a prioritized revenue roadmap included.",
+    "A step-by-step audit that finds the exact point your site loses customers — copy, trust, UX, SEO, and conversion — with rewritten fixes ranked by revenue impact.",
   step: [
     {
       "@type": "HowToStep",
@@ -51,15 +51,11 @@ const howToSchema = {
 };
 
 const frameworks = [
-  "Show what makes you different",
-  "Use words people understand",
-  "Make the site easy to use",
-  "Look trustworthy",
-  "Give one clear next step, not ten",
-  "Show up on Google",
-  "Show up in AI search, like ChatGPT",
-  "Work for everyone, including disabled users",
-  "Capture new leads automatically",
+  "What makes you different",
+  "Words people understand",
+  "A site that's easy to use and trust",
+  "Getting found on Google and AI search",
+  "Turning visitors into leads",
 ];
 
 export default function HowItWorksPage() {
@@ -84,12 +80,12 @@ export default function HowItWorksPage() {
               className="mt-4 font-serif t-display text-[#111111]"
               style={{ fontSize: "clamp(2rem, 1.6rem + 2.5vw, 4rem)" }}
             >
-              We treat every business as a system.
+              Your site is losing customers at one exact point. We find it — and fix it.
             </h1>
             <p className="mt-5 t-body text-[#3f3f46]">
-              Revenue is lost when the parts — copy, trust signals, navigation,
-              proof — aren&apos;t connected to the decision your buyer is
-              trying to make. We find what&apos;s broken. We write the fix.
+              We map how real visitors move through your site, find the exact
+              place they stop trusting or stop understanding, and hand you the
+              rewritten fix — ranked by what earns back the most money first.
             </p>
           </div>
 
@@ -102,16 +98,16 @@ export default function HowItWorksPage() {
         <section className="mx-auto max-w-3xl px-4 py-6 sm:px-6">
           <div className="rounded-2xl border border-zinc-200 bg-white p-8">
             <p className="text-xs font-bold uppercase tracking-[0.28em] text-[#1B5EA8]">
-              One broken part is all it takes
+              What we check
             </p>
             <h2 className="mt-3 font-serif t-heading text-[#111111]">
-              You&apos;re not losing customers. You&apos;re losing them at one exact spot.
+              Five places most sites bleed customers.
             </h2>
             <p className="mt-4 text-sm leading-6 text-[#3f3f46]">
-              Someone who wanted to buy hit something confusing, slow, or
-              missing — and left. More traffic won&apos;t fix that. More
-              content won&apos;t fix that. We find that exact spot, fix it
-              first, then move to the next one.
+              A visitor can stall anywhere — confused by the words, unsure if
+              you&apos;re legit, stuck with no clear next step, or invisible
+              to begin with. We check all five, then fix whichever one is
+              costing you the most customers right now.
             </p>
             <ul className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
               {frameworks.map((f) => (
@@ -125,13 +121,16 @@ export default function HowItWorksPage() {
 
           <div className="mt-6 rounded-2xl border border-zinc-200 bg-white p-8">
             <p className="font-semibold text-[#111111]">
-              Ready to see what&apos;s costing you revenue?
+              Ready to see where you&apos;re losing customers?
+            </p>
+            <p className="mt-2 text-sm leading-6 text-[#3f3f46]">
+              One audit. Every gap flagged. Ranked by revenue impact.
             </p>
             <a
               href="mailto:abdullah@elliyeen.com?subject=Website%20audit%20inquiry%20%E2%80%94%20let%27s%20work%20together&body=Hi%20Abbas%2C%0A%0AI%27d%20like%20to%20get%20my%20website%20audited%20by%20Elliyeen.%0A%0AWebsite%3A%20%5Bpaste%20your%20URL%20here%5D%0A%0ALooking%20forward%20to%20it."
               className="mt-4 inline-flex h-[54px] w-full items-center justify-center gap-2 rounded-full bg-[#123A5A] px-9 text-sm font-bold text-[#F5F1E7] shadow-[0_6px_28px_rgba(18,58,90,0.22)] transition-colors duration-200 hover:bg-[#D87A24] active:bg-[#b8620e] sm:w-auto sm:min-w-[180px]"
             >
-              Get Started <ArrowRight size={15} />
+              Show me where I&apos;m losing customers <ArrowRight size={15} />
             </a>
           </div>
         </section>
