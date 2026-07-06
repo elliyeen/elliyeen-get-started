@@ -287,9 +287,9 @@ li { font-size: var(--t-base); line-height: 1.7; margin-bottom: 4px; color: var(
   text-transform: uppercase;
   margin-bottom: 5px;
 }
-.tag-critical { font-weight: 800; color: var(--e-ink); }
-.tag-high     { font-weight: 700; color: var(--e-soft); }
-.tag-medium   { font-weight: 600; color: var(--e-muted); }
+.tag-critical { font-weight: 800; color: var(--e-red); }
+.tag-high     { font-weight: 700; color: var(--e-amber); }
+.tag-medium   { font-weight: 600; color: var(--e-soft); }
 .finding-title { font-size: var(--t-lg); font-weight: 600; margin-bottom: 5px; line-height: 1.3; }
 .finding-body  { font-size: var(--t-base); color: var(--e-soft); max-width: var(--prose); line-height: 1.7; }
 
@@ -426,6 +426,59 @@ li { font-size: var(--t-base); line-height: 1.7; margin-bottom: 4px; color: var(
   .page, .cover { page-break-after: always; min-height: auto; }
   .page:last-child { page-break-after: avoid; }
   @page { size: Letter; margin: 0; }
+}
+
+/* ─────────────────────────────────────────
+   MOBILE
+───────────────────────────────────────── */
+@media (max-width: 780px) {
+  :root {
+    --margin-h: 20px;
+    --margin-v: 40px;
+    --t-4xl: 34px;
+    --t-3xl: 26px;
+    --t-xl:  19px;
+    --t-hero: 44px;
+    --t-2xl: 22px;
+  }
+
+  .page { min-height: auto; }
+
+  .cover {
+    min-height: auto;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto;
+    gap: 32px 0;
+    page-break-after: auto;
+  }
+  .cover-body { grid-column: 1; padding-bottom: 0; }
+  .cover-screenshot { grid-column: 1; padding: 0; order: 2; }
+  .cover-footer { grid-column: 1; flex-direction: column; align-items: flex-start; gap: 8px; }
+  .cover-meta { gap: 24px; }
+  .cover-client { margin-bottom: 32px; font-size: var(--t-xl); }
+
+  .col-2, .col-3 { grid-template-columns: 1fr; gap: 24px; }
+
+  .ba-grid { grid-template-columns: 1fr; border-top: none; }
+  .ba-box.before { padding: 0 0 20px; border-right: none; border-bottom: 1px solid var(--e-rule-solid); }
+  .ba-box.after { padding: 20px 0 0; }
+
+  .about-grid { grid-template-columns: 1fr; gap: 32px; }
+
+  .stat-row { flex-wrap: wrap; gap: 24px; row-gap: 20px; }
+  .stat-num { font-size: 40px; }
+
+  .score-row { grid-template-columns: 96px 1fr 40px; gap: 8px; }
+  .score-label { font-size: 13px; white-space: normal; }
+  .score-note { margin-left: 0; }
+
+  .action-table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; white-space: nowrap; }
+  .action-table th, .action-table td { white-space: normal; }
+
+  .dot-chart-label { width: 74px; font-size: 11px !important; }
+  .dot { width: 5px; height: 5px; }
+
+  p, li { max-width: 100%; }
 }
 
 </style>
@@ -826,29 +879,29 @@ li { font-size: var(--t-base); line-height: 1.7; margin-bottom: 4px; color: var(
         </tr>
       </thead>
       <tbody>
-        <tr><td><strong>01 Section Purpose</strong></td><td>Most sections lack a clear single purpose. The hero tries to do 6 things at once.</td><td><span class="impact-pill">Critical</span></td></tr>
-        <tr><td><strong>02 Positioning</strong></td><td>No differentiated claim. "ATS" could be any trade school in America.</td><td><span class="impact-pill">Critical</span></td></tr>
-        <tr><td><strong>03 Proof & Specificity</strong></td><td>Good proof exists (wages, accreditations) — it's placed where no one reads it.</td><td><span class="impact-pill">High</span></td></tr>
-        <tr><td><strong>04 Emotion & Story</strong></td><td>Zero emotional language. No story of someone whose life changed.</td><td><span class="impact-pill">Critical</span></td></tr>
-        <tr><td><strong>05 Awareness</strong></td><td>Site writes for fully aware buyers. Most visitors need education about the opportunity first.</td><td><span class="impact-pill">High</span></td></tr>
-        <tr><td><strong>06 UX / Friction</strong></td><td>22 nav items, 6 CTAs, no clear funnel. Every click is a guess.</td><td><span class="impact-pill">Critical</span></td></tr>
-        <tr><td><strong>07 Design & Clarity</strong></td><td>Dark sidebar, cluttered layout, low contrast text, no hierarchy. Not premium.</td><td><span class="impact-pill">Critical</span></td></tr>
-        <tr><td><strong>08 Trust</strong></td><td>Accreditations, BBB, 50+ years — all buried. Trust signals must appear at decision points.</td><td><span class="impact-pill">High</span></td></tr>
-        <tr><td><strong>09 Conversion</strong></td><td>No single primary CTA. Competing actions dilute each other.</td><td><span class="impact-pill">Critical</span></td></tr>
-        <tr><td><strong>10 Story</strong></td><td>No narrative arc. No before-and-after. No founder or student story.</td><td><span class="impact-pill">Critical</span></td></tr>
-        <tr><td><strong>11 Objections</strong></td><td>"Can I afford this?" and "Will I get a job after?" are unanswered on the homepage.</td><td><span class="impact-pill">High</span></td></tr>
-        <tr><td><strong>12 Heatmap</strong></td><td>Eye tracking predicts focus on the 6 CTA buttons — then immediate drop-off. Nothing guides the eye downward.</td><td><span class="impact-pill">High</span></td></tr>
-        <tr><td><strong>13 Accessibility</strong></td><td>Yellow on dark background fails WCAG AA contrast ratios. Font sizes small on mobile.</td><td><span class="impact-pill">High</span></td></tr>
-        <tr><td><strong>14 SEO</strong></td><td>Title tag is specific and good. Body content is thin. No schema, no local signals.</td><td><span class="impact-pill">Medium</span></td></tr>
-        <tr><td><strong>15 AEO (AI Search)</strong></td><td>No FAQ schema, no structured data. AI tools cannot easily surface this school.</td><td><span class="impact-pill">Medium</span></td></tr>
-        <tr><td><strong>16 Growth</strong></td><td>Free Starter Kit is the only lead capture. No email nurture, no referral system.</td><td><span class="impact-pill">High</span></td></tr>
-        <tr><td><strong>17 Journey</strong></td><td>No mapped path from "curious" to "enrolled." Visitors must figure it out alone.</td><td><span class="impact-pill">Critical</span></td></tr>
-        <tr><td><strong>18 Competitive Moat</strong></td><td>50+ years, NCCCO certs, and job placement are real moats — not stated as advantages.</td><td><span class="impact-pill">High</span></td></tr>
-        <tr><td><strong>19 Influence Architecture</strong></td><td>Social proof (reviews), authority (NCCCO), and scarcity (cohort starts) are unused.</td><td><span class="impact-pill">High</span></td></tr>
-        <tr><td><strong>20 Behavior Design</strong></td><td>High motivation path (career change) meets high friction site. Motivation dies before action.</td><td><span class="impact-pill">Critical</span></td></tr>
-        <tr><td><strong>21 Cognitive Bias</strong></td><td>No anchoring, no loss framing, no peak-end design. Site does not use cognitive science.</td><td><span class="impact-pill">Medium</span></td></tr>
-        <tr><td><strong>22 Continuous Improvement</strong></td><td>No visible iteration. Site appears unchanged for years. No testing or optimization cycle.</td><td><span class="impact-pill">Medium</span></td></tr>
-        <tr><td><strong>23 Brand Voice</strong></td><td>Headline writes for nobody. Body copy is catalog-style. No brand voice.</td><td><span class="impact-pill">Critical</span></td></tr>
+        <tr><td><strong>01 Section Purpose</strong></td><td>Most sections lack a clear single purpose. The hero tries to do 6 things at once.</td><td><span class="impact-pill tag-critical">Critical</span></td></tr>
+        <tr><td><strong>02 Positioning</strong></td><td>No differentiated claim. "ATS" could be any trade school in America.</td><td><span class="impact-pill tag-critical">Critical</span></td></tr>
+        <tr><td><strong>03 Proof & Specificity</strong></td><td>Good proof exists (wages, accreditations) — it's placed where no one reads it.</td><td><span class="impact-pill tag-high">High</span></td></tr>
+        <tr><td><strong>04 Emotion & Story</strong></td><td>Zero emotional language. No story of someone whose life changed.</td><td><span class="impact-pill tag-critical">Critical</span></td></tr>
+        <tr><td><strong>05 Awareness</strong></td><td>Site writes for fully aware buyers. Most visitors need education about the opportunity first.</td><td><span class="impact-pill tag-high">High</span></td></tr>
+        <tr><td><strong>06 UX / Friction</strong></td><td>22 nav items, 6 CTAs, no clear funnel. Every click is a guess.</td><td><span class="impact-pill tag-critical">Critical</span></td></tr>
+        <tr><td><strong>07 Design & Clarity</strong></td><td>Dark sidebar, cluttered layout, low contrast text, no hierarchy. Not premium.</td><td><span class="impact-pill tag-critical">Critical</span></td></tr>
+        <tr><td><strong>08 Trust</strong></td><td>Accreditations, BBB, 50+ years — all buried. Trust signals must appear at decision points.</td><td><span class="impact-pill tag-high">High</span></td></tr>
+        <tr><td><strong>09 Conversion</strong></td><td>No single primary CTA. Competing actions dilute each other.</td><td><span class="impact-pill tag-critical">Critical</span></td></tr>
+        <tr><td><strong>10 Story</strong></td><td>No narrative arc. No before-and-after. No founder or student story.</td><td><span class="impact-pill tag-critical">Critical</span></td></tr>
+        <tr><td><strong>11 Objections</strong></td><td>"Can I afford this?" and "Will I get a job after?" are unanswered on the homepage.</td><td><span class="impact-pill tag-high">High</span></td></tr>
+        <tr><td><strong>12 Heatmap</strong></td><td>Eye tracking predicts focus on the 6 CTA buttons — then immediate drop-off. Nothing guides the eye downward.</td><td><span class="impact-pill tag-high">High</span></td></tr>
+        <tr><td><strong>13 Accessibility</strong></td><td>Yellow on dark background fails WCAG AA contrast ratios. Font sizes small on mobile.</td><td><span class="impact-pill tag-high">High</span></td></tr>
+        <tr><td><strong>14 SEO</strong></td><td>Title tag is specific and good. Body content is thin. No schema, no local signals.</td><td><span class="impact-pill tag-medium">Medium</span></td></tr>
+        <tr><td><strong>15 AEO (AI Search)</strong></td><td>No FAQ schema, no structured data. AI tools cannot easily surface this school.</td><td><span class="impact-pill tag-medium">Medium</span></td></tr>
+        <tr><td><strong>16 Growth</strong></td><td>Free Starter Kit is the only lead capture. No email nurture, no referral system.</td><td><span class="impact-pill tag-high">High</span></td></tr>
+        <tr><td><strong>17 Journey</strong></td><td>No mapped path from "curious" to "enrolled." Visitors must figure it out alone.</td><td><span class="impact-pill tag-critical">Critical</span></td></tr>
+        <tr><td><strong>18 Competitive Moat</strong></td><td>50+ years, NCCCO certs, and job placement are real moats — not stated as advantages.</td><td><span class="impact-pill tag-high">High</span></td></tr>
+        <tr><td><strong>19 Influence Architecture</strong></td><td>Social proof (reviews), authority (NCCCO), and scarcity (cohort starts) are unused.</td><td><span class="impact-pill tag-high">High</span></td></tr>
+        <tr><td><strong>20 Behavior Design</strong></td><td>High motivation path (career change) meets high friction site. Motivation dies before action.</td><td><span class="impact-pill tag-critical">Critical</span></td></tr>
+        <tr><td><strong>21 Cognitive Bias</strong></td><td>No anchoring, no loss framing, no peak-end design. Site does not use cognitive science.</td><td><span class="impact-pill tag-medium">Medium</span></td></tr>
+        <tr><td><strong>22 Continuous Improvement</strong></td><td>No visible iteration. Site appears unchanged for years. No testing or optimization cycle.</td><td><span class="impact-pill tag-medium">Medium</span></td></tr>
+        <tr><td><strong>23 Brand Voice</strong></td><td>Headline writes for nobody. Body copy is catalog-style. No brand voice.</td><td><span class="impact-pill tag-critical">Critical</span></td></tr>
       </tbody>
     </table>
   </div>
@@ -956,61 +1009,61 @@ li { font-size: var(--t-base); line-height: 1.7; margin-bottom: 4px; color: var(
         <td><strong>1</strong></td>
         <td>Replace the hero with a single outcome headline: <em>"Train for a career that pays $30/hr or more."</em></td>
         <td>Visitors decide in 5 seconds. Give them a reason to stay.</td>
-        <td><span class="impact-pill">Critical</span></td>
+        <td><span class="impact-pill tag-critical">Critical</span></td>
       </tr>
       <tr>
         <td><strong>2</strong></td>
         <td>Cut 6 CTAs to 1 primary: "Get Your Free Career Starter Kit" with one secondary link "Apply Now."</td>
         <td>One choice converts better than six every time.</td>
-        <td><span class="impact-pill">Critical</span></td>
+        <td><span class="impact-pill tag-critical">Critical</span></td>
       </tr>
       <tr>
         <td><strong>3</strong></td>
         <td>Move Greg Martineau's $26/hr quote directly below the CTA button.</td>
         <td>Wage proof at the moment of decision is the most powerful move on the page.</td>
-        <td><span class="impact-pill">Critical</span></td>
+        <td><span class="impact-pill tag-critical">Critical</span></td>
       </tr>
       <tr>
         <td><strong>4</strong></td>
         <td>Cut navigation from 22 items to 6: Programs · Apply · Financing · Reviews · About · Contact.</td>
         <td>Fewer choices = faster decisions. Decision paralysis costs enrollments.</td>
-        <td><span class="impact-pill">Critical</span></td>
+        <td><span class="impact-pill tag-critical">Critical</span></td>
       </tr>
       <tr>
         <td><strong>5</strong></td>
         <td>Remove "Hiring Instructors" from the student-facing homepage hero.</td>
         <td>A student sees this and wonders if the school is still building its team. Move it to the About page.</td>
-        <td><span class="impact-pill">High</span></td>
+        <td><span class="impact-pill tag-high">High</span></td>
       </tr>
       <tr>
         <td><strong>6</strong></td>
         <td>Add a trust bar below the hero: NCCCO · 50 Years · Veteran Friendly · Financing Available.</td>
         <td>Removes the top four objections in one line. Costs nothing to add.</td>
-        <td><span class="impact-pill">High</span></td>
+        <td><span class="impact-pill tag-high">High</span></td>
       </tr>
       <tr>
         <td><strong>7</strong></td>
         <td>Add a starting price or price range to each program page.</td>
         <td>Hidden pricing signals "expensive." Visible pricing + financing signals "accessible."</td>
-        <td><span class="impact-pill">High</span></td>
+        <td><span class="impact-pill tag-high">High</span></td>
       </tr>
       <tr>
         <td><strong>8</strong></td>
         <td>Remove the BBB disclaimer. List the logo alone or remove it.</td>
         <td>The disclaimer undermines the credential it's supposed to support.</td>
-        <td><span class="impact-pill">High</span></td>
+        <td><span class="impact-pill tag-high">High</span></td>
       </tr>
       <tr>
         <td><strong>9</strong></td>
         <td>Reframe "Level 1, 2, 3 Crane Programs" as "The ATS Crane Career Path."</td>
         <td>Turns three separate products into one aspirational journey. Increases lifetime student value.</td>
-        <td><span class="impact-pill">High</span></td>
+        <td><span class="impact-pill tag-high">High</span></td>
       </tr>
       <tr>
         <td><strong>10</strong></td>
         <td>Replace all "Click here" links with outcome-based text: "See Program Details" or "Start My Application."</td>
         <td>Descriptive link text improves both conversion and SEO in one edit.</td>
-        <td><span class="impact-pill">Medium</span></td>
+        <td><span class="impact-pill tag-medium">Medium</span></td>
       </tr>
     </tbody>
   </table>
