@@ -10,7 +10,6 @@ const links = [
     { label: "Reports", href: "/reports" },
     { label: "Good Profit", href: "/good-profits" },
   ]},
-  { label: "Pricing", href: "/#pricing" },
 ];
 
 export default function MobileNav() {

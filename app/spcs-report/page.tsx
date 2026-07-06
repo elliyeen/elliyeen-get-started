@@ -114,7 +114,7 @@ export default function SPCSReportPage() {
         <div className="rounded-[2rem] border border-[#0D1B2A]/20 bg-[#0D1B2A] px-8 py-6 text-center">
           <p className="text-xs font-bold uppercase tracking-[0.28em] text-[#2E5F8A]">The audit</p>
           <p className="mt-2 font-serif t-subheading text-white">
-            22 specialist frameworks. 19 pages. Every finding documented with evidence and a specific fix.
+            18 specialist frameworks. 19 pages. Every finding documented with evidence and a specific fix.
           </p>
           <p className="mt-2 text-sm text-zinc-400">Scroll through or download the PDF below.</p>
         </div>
@@ -259,15 +259,13 @@ export default function SPCSReportPage() {
                 <ul className="mt-4 space-y-3 text-sm text-zinc-600">
                   <li><a href="/how-it-works" className="hover:text-black">How It Works</a></li>
                   <li><a href="/#advisor"     className="hover:text-black">See the Work</a></li>
-                  <li><a href="/#pricing"     className="hover:text-black">Pricing</a></li>
                   <li><a href="/faq"          className="hover:text-black">FAQ</a></li>
                 </ul>
               </div>
               <div>
                 <p className="text-xs font-semibold uppercase tracking-widest text-zinc-900">Services</p>
                 <ul className="mt-4 space-y-3 text-sm text-zinc-600">
-                  <li><a href="/case-studies" className="hover:text-black">Industries</a></li>
-                  <li><a href="/#pricing"     className="hover:text-black">Full Audit</a></li>
+                  <li><a href="/case-studies/savannah" className="hover:text-black">Industries</a></li>
                 </ul>
               </div>
               <div>

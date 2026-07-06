@@ -149,15 +149,13 @@ export default function HowItWorksPage() {
                   <ul className="mt-4 space-y-3 text-sm text-zinc-600">
                     <li><a href="/how-it-works" className="hover:text-black">How It Works</a></li>
                     <li><a href="/#cases"        className="hover:text-black">See the Work</a></li>
-                    <li><a href="/#pricing"      className="hover:text-black">Pricing</a></li>
                     <li><a href="/faq"           className="hover:text-black">FAQ</a></li>
                   </ul>
                 </div>
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-widest text-zinc-900">Services</p>
                   <ul className="mt-4 space-y-3 text-sm text-zinc-600">
-                    <li><a href="/case-studies"  className="hover:text-black">Industries</a></li>
-                    <li><a href="/#pricing"      className="hover:text-black">Full Audit</a></li>
+                    <li><a href="/case-studies/savannah"  className="hover:text-black">Industries</a></li>
                   </ul>
                 </div>
                 <div>

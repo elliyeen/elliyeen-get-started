@@ -100,8 +100,6 @@ export default function SiteNav() {
               </div>
             )}
           </div>
-
-          <a href="/#pricing" className="hover:opacity-70 transition-opacity">Pricing</a>
         </div>
 
         {/* ── Right side: CTA + hamburger ─────────────────────────── */}

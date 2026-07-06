@@ -70,7 +70,7 @@ const faqSchema = {
       name: "How long does an Elliyeen Research website audit take?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "A full audit is delivered in four hours or less. Customer intelligence, 22-framework diagnosis, prioritized roadmap, and copy rewrites are completed in a single session — not spread across days or weeks.",
+        text: "A full audit is delivered in four hours or less. Customer intelligence, 18-framework diagnosis, prioritized roadmap, and copy rewrites are completed in a single session — not spread across days or weeks.",
       },
     },
     {
@@ -365,15 +365,13 @@ export default function GetStartedPage() {
                   <ul className="mt-4 space-y-3 text-sm text-zinc-600">
                     <li><a href="/how-it-works"  className="hover:text-black">How It Works</a></li>
                     <li><a href="/#advisor"      className="hover:text-black">See the Work</a></li>
-                    <li><a href="/#pricing"      className="hover:text-black">Pricing</a></li>
                     <li><a href="/faq"          className="hover:text-black">FAQ</a></li>
                   </ul>
                 </div>
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-widest text-zinc-900">Services</p>
                   <ul className="mt-4 space-y-3 text-sm text-zinc-600">
-                    <li><a href="/case-studies"   className="hover:text-black">Industries</a></li>
-                    <li><a href="/#pricing"       className="hover:text-black">Full Audit</a></li>
+                    <li><a href="/case-studies/savannah"   className="hover:text-black">Industries</a></li>
                   </ul>
                 </div>
                 <div>

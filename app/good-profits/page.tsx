@@ -140,7 +140,6 @@ export default function GoodProfitsPage() {
                   <ul className="mt-4 space-y-3 text-sm text-zinc-600">
                     <li><a href="/how-it-works" className="hover:text-black">How It Works</a></li>
                     <li><a href="/#cases"        className="hover:text-black">Industries</a></li>
-                    <li><a href="/#pricing"      className="hover:text-black">Pricing</a></li>
                     <li><a href="/faq"           className="hover:text-black">FAQ</a></li>
                   </ul>
                 </div>
