@@ -42,9 +42,23 @@ const faqs = [
   },
 ];
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map(({ q, a }) => ({
+    "@type": "Question",
+    name: q,
+    acceptedAnswer: { "@type": "Answer", text: a },
+  })),
+};
+
 export default function FAQPage() {
   return (
     <main className="min-h-screen bg-[#f7f4ee] text-[#111111]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <SiteNav />
       <div className="mx-auto max-w-2xl px-4 py-20 sm:px-6">
         <p className="t-label text-zinc-500">Common questions</p>

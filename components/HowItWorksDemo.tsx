@@ -195,7 +195,7 @@ export default function HowItWorksDemo() {
             </a>
             <a
               href="/reports/operator-school-audit.html"
-              className="inline-flex h-[52px] w-full items-center justify-center gap-2 rounded-xl border border-zinc-200 px-6 text-sm font-semibold text-[#111111] transition-colors hover:border-zinc-400 hover:bg-zinc-50 sm:w-auto"
+              className="inline-flex h-[54px] w-full items-center justify-center gap-2 rounded-full border border-zinc-200 px-8 text-sm font-semibold text-[#111111] transition-colors hover:border-zinc-400 hover:bg-zinc-50 sm:w-auto sm:min-w-[180px]"
             >
               Read the ATS report <ArrowRight size={14} />
             </a>

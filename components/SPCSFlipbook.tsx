@@ -176,18 +176,18 @@ export default function SPCSFlipbook() {
     <div className="flex flex-col min-h-screen bg-[#0D1B2A] select-none">
 
       {/* ── Header ─────────────────────────────────────────── */}
-      <header className="flex items-center justify-between px-5 py-3 border-b border-white/10 shrink-0">
-        <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-md bg-[#2E5F8A] flex items-center justify-center font-black text-white text-sm">
+      <header className="flex items-center justify-between gap-2 px-3 py-3 border-b border-white/10 shrink-0 sm:px-5">
+        <div className="flex min-w-0 items-center gap-2 sm:gap-3">
+          <div className="w-8 h-8 shrink-0 rounded-md bg-[#2E5F8A] flex items-center justify-center font-black text-white text-sm">
             E
           </div>
-          <div>
-            <p className="text-white font-bold text-sm leading-none">ELLIYEEN RESEARCH</p>
-            <p className="text-[#7AACCC] text-xs mt-0.5 leading-none">{REPORT_SUBTITLE}</p>
+          <div className="min-w-0">
+            <p className="truncate text-white font-bold text-sm leading-none">ELLIYEEN RESEARCH</p>
+            <p className="hidden truncate text-[#7AACCC] text-xs mt-0.5 leading-none sm:block">{REPORT_SUBTITLE}</p>
           </div>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex shrink-0 items-center gap-1 sm:gap-2">
           <button
             onClick={toggleSpread}
             className={`hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
@@ -202,7 +202,7 @@ export default function SPCSFlipbook() {
 
           <button
             onClick={() => setZoomed((z) => !z)}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+            className={`flex items-center gap-1.5 px-2 py-1.5 rounded-lg text-xs font-medium transition-all sm:px-3 ${
               zoomed
                 ? "bg-[#2E5F8A] text-white"
                 : "bg-white/10 text-[#C8D4DF] hover:bg-white/15"
@@ -214,7 +214,7 @@ export default function SPCSFlipbook() {
 
           <button
             onClick={handleShare}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/15 text-[#C8D4DF] text-xs font-medium transition-all"
+            className="flex items-center gap-1.5 px-2 py-1.5 rounded-lg bg-white/10 hover:bg-white/15 text-[#C8D4DF] text-xs font-medium transition-all sm:px-3"
           >
             {copied ? <Icon.Check /> : <Icon.Share />}
             <span className="hidden sm:inline">{copied ? "Copied!" : "Share"}</span>
@@ -223,7 +223,7 @@ export default function SPCSFlipbook() {
           <a
             href={PDF_URL}
             download="SPCS_Revenue_Opportunity_Report.pdf"
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#2E5F8A] hover:bg-[#1A3F5F] text-white text-xs font-semibold transition-all"
+            className="flex items-center gap-1.5 px-2 py-1.5 rounded-lg bg-[#2E5F8A] hover:bg-[#1A3F5F] text-white text-xs font-semibold transition-all sm:px-3"
           >
             <Icon.Download />
             <span>Download</span>

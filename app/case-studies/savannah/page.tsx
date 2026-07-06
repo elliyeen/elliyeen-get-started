@@ -19,6 +19,7 @@ export const metadata: Metadata = {
     description: "74 competitors audited. Full digital rebuild. Read the case study.",
     images: ["/spcs-report/page_01.jpg"],
   },
+  alternates: { canonical: "https://www.elliyeen.com/case-studies/savannah" },
 };
 
 export default function SPCSCaseStudyPage() {
