@@ -32,8 +32,8 @@ type Step = {
 const steps: Step[] = [
   {
     number: "01",
-    title: "Map your buyer",
-    body: "We identify who makes the decision, what triggers it, and the exact language they use when they feel the problem you solve.",
+    title: "Map your current path",
+    body: "We trace how a visitor actually moves through your site today — where they hesitate, where they lose trust, and where they leave instead of buying.",
     screenshot: "/ops-before-hero.png",
     screenshotAlt: "ATS original site — the starting point",
     url: "operator-school.com",
@@ -43,7 +43,7 @@ const steps: Step[] = [
   {
     number: "02",
     title: "Find the breaks",
-    body: "18 frameworks run simultaneously across copy, UX, trust signals, SEO, and conversion. Every disconnection documented with evidence.",
+    body: "We check every part of the site at once — the words, the design, the trust signals, the path to checkout. Every gap gets documented with proof.",
     screenshot: "/ops-before-hero.png",
     screenshotAlt: "ATS original site — 18 gaps identified",
     url: "operator-school.com",
@@ -127,7 +127,7 @@ export default function HowItWorksDemo() {
 
                   {/* Number */}
                   <span
-                    className={`shrink-0 w-10 font-serif text-[2.25rem] font-bold leading-none tabular-nums transition-colors duration-300 ${
+                    className={`shrink-0 w-8 font-serif text-[1.75rem] font-bold leading-none tabular-nums transition-colors duration-300 sm:w-10 sm:text-[2.25rem] ${
                       active === i ? "text-[#123A5A]" : "text-zinc-300 group-hover:text-zinc-400"
                     }`}
                   >
@@ -224,14 +224,16 @@ export default function HowItWorksDemo() {
             </div>
 
             {/* Screenshot + annotations */}
-            <div className="relative overflow-hidden bg-zinc-100" style={{ height: 460 }}>
+            <div
+              className="relative overflow-hidden bg-zinc-100"
+              style={{ aspectRatio: "1440 / 900" }}
+            >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 key={imgKey}
                 src={step.screenshot}
                 alt={step.screenshotAlt}
-                className="w-full object-cover object-top hiw-img-fade"
-                style={{ height: 460 }}
+                className="h-full w-full object-cover object-top hiw-img-fade"
               />
 
               <div
@@ -291,13 +293,11 @@ export default function HowItWorksDemo() {
             <span className="inline-flex items-center gap-1.5 rounded-full bg-red-50 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-red-500">
               Before
             </span>
-            <div className="phone-frame">
-              <div className="phone-notch" />
+            <div className="phone-old">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/ops-mobile-before.png"
                 alt="Original ATS site on mobile — cluttered layout"
-                className="w-full block rounded-[28px]"
               />
             </div>
             <p className="max-w-[150px] text-center text-[11px] leading-5 text-zinc-500">
@@ -317,13 +317,12 @@ export default function HowItWorksDemo() {
             <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-emerald-600">
               After
             </span>
-            <div className="phone-frame">
-              <div className="phone-notch" />
+            <div className="phone-new">
+              <div className="phone-island" />
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/ops-mobile-after.png"
                 alt="Rebuilt ATS site on mobile — clean hero, clear CTA"
-                className="w-full block rounded-[28px]"
               />
             </div>
             <p className="max-w-[150px] text-center text-[11px] leading-5 text-zinc-500">

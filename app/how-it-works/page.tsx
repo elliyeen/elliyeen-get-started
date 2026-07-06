@@ -29,13 +29,13 @@ const howToSchema = {
   step: [
     {
       "@type": "HowToStep",
-      name: "Map Your Buyer",
-      text: "We identify who makes the decision, what triggers it, and the exact language they use when they feel the problem you solve.",
+      name: "Map Your Current Path",
+      text: "We trace how a visitor actually moves through your site today — where they hesitate, where they lose trust, and where they leave instead of buying.",
     },
     {
       "@type": "HowToStep",
       name: "Find the Breaks",
-      text: "18 frameworks run simultaneously across copy, UX, trust signals, SEO, and conversion. Every disconnection documented with evidence.",
+      text: "We check every part of the site at once — the words, the design, the trust signals, the path to checkout. Every gap gets documented with proof.",
     },
     {
       "@type": "HowToStep",
@@ -51,15 +51,15 @@ const howToSchema = {
 };
 
 const frameworks = [
-  "Positioning & Differentiation",
-  "Copy & Emotional Resonance",
-  "UX & Cognitive Load",
-  "Visual Design & Trust",
-  "Conversion Architecture",
-  "SEO & Content Authority",
-  "AI Search Readiness (AEO)",
-  "Accessibility (WCAG 2.2)",
-  "Growth Systems & Lead Capture",
+  "Show what makes you different",
+  "Use words people understand",
+  "Make the site easy to use",
+  "Look trustworthy",
+  "Give one clear next step, not ten",
+  "Show up on Google",
+  "Show up in AI search, like ChatGPT",
+  "Work for everyone, including disabled users",
+  "Capture new leads automatically",
 ];
 
 export default function HowItWorksPage() {
@@ -80,7 +80,10 @@ export default function HowItWorksPage() {
             <p className="text-xs font-bold uppercase tracking-[0.28em] text-[#1B5EA8]">
               How it works
             </p>
-            <h1 className="mt-4 font-serif t-display text-[#111111]">
+            <h1
+              className="mt-4 font-serif t-display text-[#111111]"
+              style={{ fontSize: "clamp(2rem, 1.6rem + 2.5vw, 4rem)" }}
+            >
               We treat every business as a system.
             </h1>
             <p className="mt-5 t-body text-[#3f3f46]">
@@ -99,11 +102,17 @@ export default function HowItWorksPage() {
         <section className="mx-auto max-w-3xl px-4 py-6 sm:px-6">
           <div className="rounded-2xl border border-zinc-200 bg-white p-8">
             <p className="text-xs font-bold uppercase tracking-[0.28em] text-[#1B5EA8]">
-              18 frameworks
+              One broken part is all it takes
             </p>
             <h2 className="mt-3 font-serif t-heading text-[#111111]">
-              Every layer of your site, examined.
+              You&apos;re not losing customers. You&apos;re losing them at one exact spot.
             </h2>
+            <p className="mt-4 text-sm leading-6 text-[#3f3f46]">
+              Someone who wanted to buy hit something confusing, slow, or
+              missing — and left. More traffic won&apos;t fix that. More
+              content won&apos;t fix that. We find that exact spot, fix it
+              first, then move to the next one.
+            </p>
             <ul className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
               {frameworks.map((f) => (
                 <li key={f} className="flex items-center gap-2 text-sm text-[#3f3f46]">
@@ -117,9 +126,6 @@ export default function HowItWorksPage() {
           <div className="mt-6 rounded-2xl border border-zinc-200 bg-white p-8">
             <p className="font-semibold text-[#111111]">
               Ready to see what&apos;s costing you revenue?
-            </p>
-            <p className="mt-2 text-sm leading-6 text-[#3f3f46]">
-              Full audit starts from $1,500. Copy rewrites included.
             </p>
             <a
               href="mailto:abdullah@elliyeen.com?subject=Website%20audit%20inquiry%20%E2%80%94%20let%27s%20work%20together&body=Hi%20Abbas%2C%0A%0AI%27d%20like%20to%20get%20my%20website%20audited%20by%20Elliyeen.%0A%0AWebsite%3A%20%5Bpaste%20your%20URL%20here%5D%0A%0ALooking%20forward%20to%20it."
