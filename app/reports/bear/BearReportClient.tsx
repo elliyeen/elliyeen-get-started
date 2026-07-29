@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import SiteNav from "@/app/SiteNav";
 import { Copy, Check, ArrowRight } from "lucide-react";
 
@@ -128,6 +129,11 @@ export default function BearReportClient() {
             <span><b className="text-zinc-800">Reviewed</b> July 2026</span>
             <span><b className="text-zinc-800">Stage</b> Pre-launch, waitlist gated</span>
             <span><b className="text-zinc-800">Stack</b> Next.js on Vercel, PostHog analytics</span>
+          </div>
+          <div className="mt-4">
+            <Link href="/reports/bear/plan" className="text-sm font-semibold" style={{ color: BLUE }}>
+              Prefer a simple checklist? See the six-step plan &rarr;
+            </Link>
           </div>
         </div>
 
