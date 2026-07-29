@@ -36,6 +36,18 @@ const sections: Section[] = [
       "Full multi-agent audits covering website friction, copy, customer experience, and revenue opportunity — with plain-English action plans.",
     reports: [
       {
+        client: "BEAR",
+        location: "Fintech · AI Trading Coach",
+        auditType: "Security Audit · Performance Audit · GTM Plan · Financial Model",
+        summary:
+          "Pre-launch AI trading coach with a 6.3-second load time, an unused viral loop in its own Trading DNA feature, and a pricing ladder priced below what the market already pays for less. Full audit, GTM plan, and pricing strategy.",
+        score: null,
+        href: "/reports/bear",
+        date: "July 2026",
+        badge: "New",
+        finding: "6.3s load time · unpriced viral loop",
+      },
+      {
         client: "Associated Training Services",
         location: "Sun Prairie, WI",
         auditType: "Revenue Audit · Copy Audit · Experience Audit",
