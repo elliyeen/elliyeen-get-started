@@ -14,7 +14,7 @@ const BASE_URL = "https://www.elliyeen.com";
 // entry list by hand.
 const ESA_GAME_ROUTES: Array<{ url: string; card: typeof sampleGameCard }> = [
   {
-    url: `${BASE_URL}/sports/nfl/analysis/2026/week-6/denver-broncos-vs-kansas-city-chiefs`,
+    url: `${BASE_URL}/sports/nfl/analysis/2026/week-1/denver-broncos-at-kansas-city-chiefs`,
     card: sampleGameCard,
   },
 ];

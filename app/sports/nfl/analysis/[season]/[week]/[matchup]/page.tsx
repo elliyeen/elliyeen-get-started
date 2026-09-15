@@ -22,8 +22,8 @@ interface GameRoute {
 const GAMES: GameRoute[] = [
   {
     season: "2026",
-    week: "week-6",
-    matchup: "denver-broncos-vs-kansas-city-chiefs",
+    week: "week-1",
+    matchup: "denver-broncos-at-kansas-city-chiefs",
     gameId: sampleGameCard.gameId,
   },
 ];

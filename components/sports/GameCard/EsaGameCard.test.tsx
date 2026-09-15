@@ -9,7 +9,7 @@ let mockSearchParams = new URLSearchParams();
 
 vi.mock("next/navigation", () => ({
   useRouter: () => ({ replace }),
-  usePathname: () => "/sports/nfl/analysis/2026/week-6/denver-broncos-vs-kansas-city-chiefs",
+  usePathname: () => "/sports/nfl/analysis/2026/week-1/denver-broncos-at-kansas-city-chiefs",
   useSearchParams: () => mockSearchParams,
 }));
 
@@ -108,7 +108,7 @@ describe("EsaGameCard — data integrity (D-01..D-08)", () => {
 
   it("D-02: preliminary record status renders the preliminary notice", () => {
     render(<EsaGameCard gameId={sampleGameCard.gameId} data={sampleGameCard} />);
-    expect(screen.getByText(/Preliminary — official gamebook not yet verified/)).toBeInTheDocument();
+    expect(screen.getByText(/Preliminary analysis · Official NFL gamebook pending/)).toBeInTheDocument();
   });
 
   it("D-03: a failed metric is withheld from the metric strip", () => {
