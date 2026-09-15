@@ -3,7 +3,7 @@
 import { useCallback, useMemo, useState } from "react";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import { parseGameCardResponse } from "@/lib/sports/esa/schema";
-import type { Finding, GameCardResponse, TeamId, Unit, UnitAnalysis } from "@/lib/sports/esa/types";
+import type { Finding, GameCardResponse, Team, TeamId, Unit, UnitAnalysis } from "@/lib/sports/esa/types";
 import { emitAnalyticsEvent } from "@/lib/sports/esa/analytics";
 import { PossessionMap } from "./PossessionMap";
 
@@ -14,20 +14,23 @@ export interface EsaGameCardProps {
   data?: GameCardResponse;
 }
 
-const VALID_TEAMS: TeamId[] = ["DEN", "KC"];
 const VALID_UNITS: Unit[] = ["offense", "defense"];
 
-function coerceTeam(value: string | null): TeamId {
-  return value === "DEN" || value === "KC" ? value : "DEN";
+// Resolves a team's configured color token to a CSS color value. A token is
+// either a CSS custom-property suffix (var(--esa-<token>)) or a literal CSS
+// color (e.g. "#003594"). No team identity is known here — only tokens.
+function resolveTeamColor(token: string | undefined, fallback: string): string {
+  if (!token) return fallback;
+  return token.startsWith("#") || token.startsWith("var(") || token.startsWith("rgb") || token.startsWith("hsl")
+    ? token
+    : `var(--esa-${token}, ${fallback})`;
 }
 
 function coerceUnit(value: string | null): Unit {
   return value === "offense" || value === "defense" ? value : "offense";
 }
 
-const TEAM_NAME: Record<TeamId, string> = { DEN: "Denver", KC: "Kansas City" };
-
-export function EsaGameCard({ gameId, initialTeam = "DEN", initialUnit = "offense", data }: EsaGameCardProps) {
+export function EsaGameCard({ gameId, initialTeam, initialUnit = "offense", data }: EsaGameCardProps) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -40,9 +43,21 @@ export function EsaGameCard({ gameId, initialTeam = "DEN", initialUnit = "offens
   const teamFromUrl = searchParams.get("team");
   const unitFromUrl = searchParams.get("unit");
 
-  const [team, setTeamState] = useState<TeamId>(
-    teamFromUrl ? coerceTeam(teamFromUrl) : initialTeam,
-  );
+  // The away team is the safe default for this game — never a hard-coded
+  // franchise. A URL-supplied team is only honored if it belongs to this
+  // game; otherwise it falls back to the away team, same as an invalid value.
+  const gameTeams: [Team, Team] | null =
+    validated?.success ? [validated.data.game.away, validated.data.game.home] : null;
+
+  function coerceTeam(value: string | null): TeamId {
+    if (!gameTeams) return initialTeam ?? "";
+    const [away, home] = gameTeams;
+    if (value === away.teamId || value === home.teamId) return value;
+    if (initialTeam && (initialTeam === away.teamId || initialTeam === home.teamId)) return initialTeam;
+    return away.teamId;
+  }
+
+  const [team, setTeamState] = useState<TeamId>(() => coerceTeam(teamFromUrl));
   const [unit, setUnitState] = useState<Unit>(
     unitFromUrl ? coerceUnit(unitFromUrl) : initialUnit,
   );
@@ -109,8 +124,10 @@ export function EsaGameCard({ gameId, initialTeam = "DEN", initialUnit = "offens
     });
   };
 
-  const accentVar = team === "DEN" ? "var(--esa-denver-blue)" : "var(--esa-chiefs-red)";
-  const accentLtVar = team === "DEN" ? "var(--esa-denver-blue-lt)" : "var(--esa-chiefs-red-lt)";
+  const selectedTeam =
+    gameCard.game.away.teamId === team ? gameCard.game.away : gameCard.game.home;
+  const accentVar = resolveTeamColor(selectedTeam.primaryColorToken, "var(--e-ink)");
+  const accentLtVar = resolveTeamColor(selectedTeam.secondaryColorToken, "var(--e-surface)");
 
   return (
     <section
@@ -130,7 +147,7 @@ export function EsaGameCard({ gameId, initialTeam = "DEN", initialUnit = "offens
       <FinalScore data={gameCard} />
 
       <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-        <TeamSelector team={team} onSelect={handleSelectTeam} />
+        <TeamSelector teams={[gameCard.game.away, gameCard.game.home]} team={team} onSelect={handleSelectTeam} />
         <UnitSelector unit={unit} onSelect={handleSelectUnit} />
       </div>
 
@@ -141,6 +158,7 @@ export function EsaGameCard({ gameId, initialTeam = "DEN", initialUnit = "offens
       ) : (
         <UnitView
           analysis={selectedAnalysis}
+          team={selectedTeam}
           gameId={gameId}
           selectedFindingId={selectedFindingId}
           onSelectFinding={handleSelectFinding}
@@ -158,9 +176,17 @@ function FinalScore({ data }: { data: GameCardResponse }) {
       className="flex items-center justify-center gap-6 rounded-2xl border border-[var(--e-rule)] bg-white px-6 py-5"
       aria-label={`Final score: ${data.game.away.name} ${data.game.away.score}, ${data.game.home.name} ${data.game.home.score}`}
     >
-      <TeamScore name={data.game.away.name} score={data.game.away.score} accent="var(--esa-denver-blue)" />
+      <TeamScore
+        name={data.game.away.name}
+        score={data.game.away.score}
+        accent={resolveTeamColor(data.game.away.primaryColorToken, "var(--e-ink)")}
+      />
       <span className="text-xs font-bold uppercase tracking-widest text-[var(--e-muted)]">Final</span>
-      <TeamScore name={data.game.home.name} score={data.game.home.score} accent="var(--esa-chiefs-red)" />
+      <TeamScore
+        name={data.game.home.name}
+        score={data.game.home.score}
+        accent={resolveTeamColor(data.game.home.primaryColorToken, "var(--e-ink)")}
+      />
     </div>
   );
 }
@@ -175,33 +201,43 @@ function TeamScore({ name, score, accent }: { name: string; score: number; accen
   );
 }
 
-function TeamSelector({ team, onSelect }: { team: TeamId; onSelect: (team: TeamId) => void }) {
+function TeamSelector({
+  teams,
+  team,
+  onSelect,
+}: {
+  teams: [Team, Team];
+  team: TeamId;
+  onSelect: (team: TeamId) => void;
+}) {
   return (
     <div>
       <div className="mb-1 text-xs font-semibold uppercase tracking-wide text-[var(--e-muted)]" id="esa-team-label">
         Team
       </div>
       <div role="tablist" aria-labelledby="esa-team-label" className="flex gap-2">
-        {VALID_TEAMS.map((t) => (
-          <button
-            key={t}
-            type="button"
-            role="tab"
-            aria-selected={team === t}
-            onClick={() => onSelect(t)}
-            className="min-h-11 rounded-full border-2 px-4 py-2 text-sm font-semibold transition-colors"
-            style={{
-              borderColor: team === t ? (t === "DEN" ? "var(--esa-denver-blue)" : "var(--esa-chiefs-red)") : "var(--e-rule)",
-              backgroundColor: team === t ? (t === "DEN" ? "var(--esa-denver-blue)" : "var(--esa-chiefs-red)") : "transparent",
-              color: team === t ? "#fff" : "var(--e-ink)",
-            }}
-          >
-            {team === t && (
-              <span aria-hidden="true">✓ </span>
-            )}
-            {TEAM_NAME[t]}
-          </button>
-        ))}
+        {teams.map((t) => {
+          const isSelected = team === t.teamId;
+          const accent = resolveTeamColor(t.primaryColorToken, "var(--e-ink)");
+          return (
+            <button
+              key={t.teamId}
+              type="button"
+              role="tab"
+              aria-selected={isSelected}
+              onClick={() => onSelect(t.teamId)}
+              className="min-h-11 rounded-full border-2 px-4 py-2 text-sm font-semibold transition-colors"
+              style={{
+                borderColor: isSelected ? accent : "var(--e-rule)",
+                backgroundColor: isSelected ? accent : "transparent",
+                color: isSelected ? "#fff" : "var(--e-ink)",
+              }}
+            >
+              {isSelected && <span aria-hidden="true">✓ </span>}
+              {t.shortName ?? t.name}
+            </button>
+          );
+        })}
       </div>
     </div>
   );
@@ -241,11 +277,13 @@ function UnitSelector({ unit, onSelect }: { unit: Unit; onSelect: (unit: Unit) =
 
 function UnitView({
   analysis,
+  team,
   gameId,
   selectedFindingId,
   onSelectFinding,
 }: {
   analysis: UnitAnalysis;
+  team: Team;
   gameId: string;
   selectedFindingId: string | null;
   onSelectFinding: (finding: Finding) => void;
@@ -262,7 +300,7 @@ function UnitView({
   return (
     <div className="mt-8">
       <p className="text-2xl font-semibold leading-snug text-[var(--e-ink)]">
-        <strong style={{ color: "var(--esa-accent)" }}>{TEAM_NAME[analysis.teamId]}</strong>{" "}
+        <strong style={{ color: "var(--esa-accent)" }}>{team.name}</strong>{" "}
         {analysis.unit}: {analysis.thesis}
       </p>
 
@@ -341,7 +379,7 @@ function UnitView({
 
       <div className="mt-10">
         <h2 className="text-lg font-semibold text-[var(--e-ink)]">Possession map</h2>
-        <PossessionMap teamName={TEAM_NAME[analysis.teamId]} teamId={analysis.teamId} />
+        <PossessionMap teamName={team.name} teamId={analysis.teamId} />
       </div>
 
       <p className="mt-2 text-xs text-[var(--e-muted)]">Game ID: {gameId}</p>
