@@ -3,7 +3,7 @@
 import { useCallback, useMemo, useState } from "react";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import { parseGameCardResponse } from "@/lib/sports/esa/schema";
-import type { Finding, GameCardResponse, Team, TeamId, Unit, UnitAnalysis } from "@/lib/sports/esa/types";
+import type { Finding, GameCardResponse, MetricValue, Team, TeamId, Unit, UnitAnalysis } from "@/lib/sports/esa/types";
 import { emitAnalyticsEvent } from "@/lib/sports/esa/analytics";
 import { PossessionMap } from "./PossessionMap";
 
@@ -126,6 +126,11 @@ export function EsaGameCard({ gameId, initialTeam, initialUnit = "offense", data
 
   const selectedTeam =
     gameCard.game.away.teamId === team ? gameCard.game.away : gameCard.game.home;
+  const opponentTeam =
+    gameCard.game.away.teamId === team ? gameCard.game.home : gameCard.game.away;
+  const opponentAnalysis = gameCard.analyses.find(
+    (item: UnitAnalysis) => item.teamId === opponentTeam.teamId && item.unit === unit,
+  );
   const accentVar = resolveTeamColor(selectedTeam.primaryColorToken, "var(--e-ink)");
   const accentLtVar = resolveTeamColor(selectedTeam.secondaryColorToken, "var(--e-surface)");
 
@@ -159,6 +164,8 @@ export function EsaGameCard({ gameId, initialTeam, initialUnit = "offense", data
         <UnitView
           analysis={selectedAnalysis}
           team={selectedTeam}
+          opponent={opponentTeam}
+          opponentAnalysis={opponentAnalysis}
           gameId={gameId}
           selectedFindingId={selectedFindingId}
           onSelectFinding={handleSelectFinding}
@@ -243,6 +250,66 @@ function TeamSelector({
   );
 }
 
+// Horizontal two-row bar comparison for the primary metric. Plain divs sized
+// by percentage width — no charting library. Bar length is only meaningful
+// when both values are numeric; non-numeric primary metrics (e.g. "2/12")
+// still show their labeled values without a proportional fill.
+function PrimaryComparison({
+  team,
+  teamMetric,
+  opponent,
+  opponentMetric,
+}: {
+  team: Team;
+  teamMetric: MetricValue;
+  opponent: Team;
+  opponentMetric: MetricValue | undefined;
+}) {
+  const teamValue = typeof teamMetric.value === "number" ? teamMetric.value : null;
+  const opponentValue =
+    opponentMetric && typeof opponentMetric.value === "number" ? opponentMetric.value : null;
+  const max = Math.max(teamValue ?? 0, opponentValue ?? 0) || 1;
+
+  const rows: Array<{ label: string; value: number | null; formatted: string; color: string }> = [
+    {
+      label: team.abbreviation,
+      value: teamValue,
+      formatted: teamMetric.formattedValue,
+      color: resolveTeamColor(team.primaryColorToken, "var(--e-ink)"),
+    },
+  ];
+  if (opponentMetric) {
+    rows.push({
+      label: opponent.abbreviation,
+      value: opponentValue,
+      formatted: opponentMetric.formattedValue,
+      color: resolveTeamColor(opponent.primaryColorToken, "var(--e-muted)"),
+    });
+  }
+
+  return (
+    <div className="mt-4 flex flex-col gap-2" aria-hidden="false">
+      {rows.map((row) => (
+        <div key={row.label} className="flex items-center gap-3">
+          <span className="w-10 shrink-0 text-xs font-semibold text-[var(--e-soft)]">{row.label}</span>
+          <div className="h-2 flex-1 overflow-hidden rounded-full bg-[var(--e-rule)]">
+            <div
+              className="h-full rounded-full"
+              style={{
+                width: row.value !== null ? `${Math.max(4, (row.value / max) * 100)}%` : "0%",
+                backgroundColor: row.color,
+              }}
+            />
+          </div>
+          <span className="w-12 shrink-0 text-right text-xs font-semibold tabular-nums text-[var(--e-ink)]">
+            {row.formatted}
+          </span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 function UnitSelector({ unit, onSelect }: { unit: Unit; onSelect: (unit: Unit) => void }) {
   return (
     <div>
@@ -278,12 +345,16 @@ function UnitSelector({ unit, onSelect }: { unit: Unit; onSelect: (unit: Unit) =
 function UnitView({
   analysis,
   team,
+  opponent,
+  opponentAnalysis,
   gameId,
   selectedFindingId,
   onSelectFinding,
 }: {
   analysis: UnitAnalysis;
   team: Team;
+  opponent: Team;
+  opponentAnalysis: UnitAnalysis | undefined;
   gameId: string;
   selectedFindingId: string | null;
   onSelectFinding: (finding: Finding) => void;
@@ -297,35 +368,62 @@ function UnitView({
   const activeFinding =
     publishedFindings.find((f) => f.findingId === selectedFindingId) ?? publishedFindings[0] ?? null;
 
+  const primaryMetric = analysis.metrics.find((m) => analysis.primaryMetricIds.includes(m.metricId));
+  const opponentPrimaryMetric = opponentAnalysis?.metrics.find((m) => m.label === primaryMetric?.label);
+
   return (
     <div className="mt-8">
-      <p className="text-2xl font-semibold leading-snug text-[var(--e-ink)]">
-        <strong style={{ color: "var(--esa-accent)" }}>{team.name}</strong>{" "}
-        {analysis.unit}: {analysis.thesis}
-      </p>
+      <p className="text-2xl font-semibold leading-snug text-[var(--e-ink)]">{analysis.thesis}</p>
 
-      <div className="mt-2 text-sm text-[var(--e-soft)]" id="esa-primary-finding">
-        {analysis.primaryFinding}
-      </div>
+      <section aria-live="polite" className="mt-5 rounded-xl border border-[var(--e-rule)] bg-[var(--e-surface)] p-4 sm:p-5">
+        <div className="text-[11px] font-semibold uppercase tracking-wide text-[var(--e-muted)]" id="esa-primary-finding-label">
+          Primary finding
+        </div>
+        <h2 className="text-lg! font-bold! leading-tight! text-[var(--e-ink)] mt-1">
+          {primaryMetric?.coachingLabel ?? analysis.primaryFinding}
+        </h2>
+        <p className="mt-1 text-sm text-[var(--e-soft)]">{analysis.primaryFinding}</p>
+
+        {primaryMetric && (
+          <PrimaryComparison
+            team={team}
+            teamMetric={primaryMetric}
+            opponent={opponent}
+            opponentMetric={opponentPrimaryMetric}
+          />
+        )}
+      </section>
 
       <ul className="esa-metric-strip mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4" aria-label="Decision-relevant metrics">
-        {visibleMetrics.map((metric) => (
-          <li
-            key={metric.metricId}
-            className="rounded-xl border border-[var(--e-rule)] bg-[var(--e-surface)] p-3"
-          >
-            <div className="text-xs font-semibold text-[var(--e-soft)]">{metric.coachingLabel}</div>
-            <div className="mt-1 text-xl font-bold tabular-nums text-[var(--e-ink)]">
-              {metric.formattedValue}
-            </div>
-            <div className="text-[11px] text-[var(--e-muted)]">{metric.label}</div>
-          </li>
-        ))}
+        {visibleMetrics.map((metric) => {
+          const opponentMetric = opponentAnalysis?.metrics.find((m) => m.label === metric.label);
+          return (
+            <li
+              key={metric.metricId}
+              className="rounded-xl border border-[var(--e-rule)] bg-[var(--e-surface)] p-3"
+            >
+              <div className="text-[10px] font-semibold uppercase tracking-wide text-[var(--e-muted)]">
+                {metric.label}
+              </div>
+              <div className="mt-1 flex items-baseline gap-2">
+                <span className="text-xl font-bold tabular-nums" style={{ color: "var(--esa-accent)" }}>
+                  {metric.formattedValue}
+                </span>
+                {opponentMetric && (
+                  <span className="text-xs tabular-nums text-[var(--e-muted)]">
+                    {opponentMetric.formattedValue}
+                  </span>
+                )}
+              </div>
+              <div className="text-[11px] text-[var(--e-soft)]">{metric.coachingLabel}</div>
+            </li>
+          );
+        })}
       </ul>
 
       <div className="mt-8 grid gap-8 md:grid-cols-2">
         <div>
-          <h2 className="text-lg font-semibold text-[var(--e-ink)]">Evidence findings</h2>
+          <h2 className="text-lg! font-semibold! text-[var(--e-ink)]">Evidence findings</h2>
           <ul className="mt-3 flex flex-col">
             {publishedFindings.map((finding) => {
               const isActive = activeFinding?.findingId === finding.findingId;
@@ -362,7 +460,7 @@ function UnitView({
         </div>
 
         <div>
-          <h2 className="text-lg font-semibold text-[var(--e-ink)]">Coaching priorities</h2>
+          <h2 className="text-lg! font-semibold! text-[var(--e-ink)]">Coaching priorities</h2>
           <ol className="mt-3 flex flex-col gap-4">
             {analysis.priorities.map((priority) => (
               <li key={priority.priority} className="flex gap-3">
@@ -378,7 +476,7 @@ function UnitView({
       </div>
 
       <div className="mt-10">
-        <h2 className="text-lg font-semibold text-[var(--e-ink)]">Possession map</h2>
+        <h2 className="text-lg! font-semibold! text-[var(--e-ink)]">Possession map</h2>
         <PossessionMap teamName={team.name} teamId={analysis.teamId} />
       </div>
 
