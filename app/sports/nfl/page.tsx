@@ -9,14 +9,14 @@ const FEATURED_GAME_HREF =
 export const metadata: Metadata = {
   title: "NFL Sports Intelligence — Elliyeen Research",
   description:
-    "Verified NFL game analysis, possession production, Five Winning Truths, and measurable preparation priorities.",
+    "NFL game analysis, possession production, Five Winning Truths, and measurable preparation priorities.",
   alternates: { canonical: `${BASE_URL}/sports/nfl` },
   openGraph: {
     type: "website",
     url: `${BASE_URL}/sports/nfl`,
     title: "NFL Sports Intelligence — Elliyeen Research",
     description:
-      "Verified NFL game analysis, possession production, Five Winning Truths, and measurable preparation priorities.",
+      "NFL game analysis, possession production, Five Winning Truths, and measurable preparation priorities.",
   },
 };
 
@@ -38,9 +38,10 @@ export default function NflSportsPage() {
         </a>
         <h1 className="mt-4 font-serif text-4xl font-bold text-black sm:text-5xl">NFL</h1>
         <p className="mt-5 max-w-2xl text-base text-zinc-600 sm:text-lg">
-          Elliyeen Sports Analytics reconstructs each NFL game from verified play-by-play data —
+          Elliyeen Sports Analytics reconstructs each NFL game from play-by-play data —
           possessions, chunk gains, red-zone finishes, and the coaching priorities that follow —
-          so preparation starts from evidence, not impressions.
+          so preparation starts from evidence, not impressions. Analyses are marked preliminary
+          until they pass ESA quality control against the official gamebook.
         </p>
 
         <section className="mt-12">
@@ -88,7 +89,8 @@ export default function NflSportsPage() {
           <ul className="mt-4 flex flex-col divide-y divide-zinc-100">
             <li className="py-4">
               <a href={FEATURED_GAME_HREF} className="text-sm font-semibold text-[#123A5A] hover:underline">
-                {sampleGameCard.game.away.name} at {sampleGameCard.game.home.name} — Week 6, 2026
+                {sampleGameCard.game.away.name} at {sampleGameCard.game.home.name} — Week{" "}
+                {sampleGameCard.game.week}, {sampleGameCard.game.date.slice(0, 4)}
               </a>
             </li>
           </ul>

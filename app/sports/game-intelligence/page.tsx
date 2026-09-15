@@ -7,14 +7,14 @@ const FEATURED_GAME_HREF =
 export const metadata: Metadata = {
   title: "Game Intelligence — Elliyeen Research",
   description:
-    "How Elliyeen Sports Analytics turns verified game evidence into coaching decisions: source acquisition, reconciliation, normalization, analysis, and quality control.",
+    "How Elliyeen Sports Analytics turns game evidence into coaching decisions: source acquisition, reconciliation, normalization, analysis, and quality control.",
   alternates: { canonical: `${BASE_URL}/sports/game-intelligence` },
   openGraph: {
     type: "website",
     url: `${BASE_URL}/sports/game-intelligence`,
     title: "Game Intelligence — Elliyeen Research",
     description:
-      "How Elliyeen Sports Analytics turns verified game evidence into coaching decisions.",
+      "How Elliyeen Sports Analytics turns game evidence into coaching decisions.",
   },
 };
 
@@ -55,10 +55,12 @@ export default function GameIntelligencePage() {
         Game Intelligence
       </h1>
       <p className="mt-5 max-w-2xl text-base text-zinc-600 sm:text-lg">
-        Game Intelligence is how Elliyeen Sports Analytics turns verified game
+        Game Intelligence is how Elliyeen Sports Analytics turns game
         evidence into coaching decisions — not a highlight reel, and not a raw
         stat dump. Every published number is traceable back to a source
-        record and a documented calculation.
+        record and a documented calculation. A record stays marked
+        preliminary until it passes ESA quality control against the official
+        gamebook.
       </p>
 
       <section id="latest-game-cards" className="mt-16 scroll-mt-24">

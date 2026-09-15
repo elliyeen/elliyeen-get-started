@@ -8,7 +8,7 @@ const FEATURED_GAME_HREF =
 
 export const metadata: Metadata = {
   title: "NFL Game Analysis — Elliyeen Research",
-  description: "Verified NFL game analysis from Elliyeen Sports Analytics.",
+  description: "NFL game analysis from Elliyeen Sports Analytics.",
   alternates: { canonical: `${BASE_URL}/sports/nfl/analysis` },
 };
 
@@ -23,8 +23,9 @@ export default function NflAnalysisIndexPage() {
           NFL Game Analysis
         </h1>
         <p className="mt-5 max-w-2xl text-base text-zinc-600 sm:text-lg">
-          Every published analysis below is reconstructed from verified game data, with
-          coaching-facing findings and measurable preparation priorities.
+          Every analysis below is reconstructed from game data, with coaching-facing findings
+          and measurable preparation priorities. Records stay marked preliminary until they pass
+          ESA quality control against the official gamebook.
         </p>
 
         <ul className="mt-10 flex flex-col divide-y divide-zinc-100">
@@ -33,7 +34,8 @@ export default function NflAnalysisIndexPage() {
               href={FEATURED_GAME_HREF}
               className="group flex items-center justify-between gap-2 text-sm font-semibold text-[#123A5A] hover:underline"
             >
-              {sampleGameCard.game.away.name} at {sampleGameCard.game.home.name} — Week 6, 2026
+              {sampleGameCard.game.away.name} at {sampleGameCard.game.home.name} — Week{" "}
+              {sampleGameCard.game.week}, {sampleGameCard.game.date.slice(0, 4)}
               <ArrowRight size={14} className="transition-transform group-hover:translate-x-0.5" />
             </a>
           </li>
