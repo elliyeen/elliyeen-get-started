@@ -39,6 +39,8 @@ export default function MobileNav() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [openGroup, setOpenGroup] = useState<string | null>(null);
+  const isSportsRoute = pathname?.startsWith("/sports") ?? false;
+  const hideGetStarted = isSportsRoute || pathname === "/how-it-works";
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -106,7 +108,9 @@ export default function MobileNav() {
           </button>
 
           <nav className="flex flex-col divide-y divide-zinc-100">
-            {links.map((link) => (
+            {links
+              .filter((link) => !isSportsRoute || link.href !== "/#cases")
+              .map((link) => (
               <a
                 key={link.href}
                 href={link.href}
@@ -172,36 +176,40 @@ export default function MobileNav() {
             </div>
 
             {/* Resources section */}
-            <div>
-              <p className="pt-5 pb-2 text-xs font-bold uppercase tracking-[0.2em] text-zinc-400">
-                Resources
-              </p>
-              <div className="flex flex-col pb-2 gap-0.5">
-                {resources.map((child) => (
-                  <a
-                    key={child.href}
-                    href={child.href}
-                    onClick={close}
-                    aria-current={pathname === child.href ? "page" : undefined}
-                    className="flex items-center gap-2 py-2 text-lg font-semibold text-black"
-                  >
-                    <ChevronRight size={14} className="text-zinc-400" />
-                    {child.label}
-                  </a>
-                ))}
+            {!isSportsRoute && (
+              <div>
+                <p className="pt-5 pb-2 text-xs font-bold uppercase tracking-[0.2em] text-zinc-400">
+                  Resources
+                </p>
+                <div className="flex flex-col pb-2 gap-0.5">
+                  {resources.map((child) => (
+                    <a
+                      key={child.href}
+                      href={child.href}
+                      onClick={close}
+                      aria-current={pathname === child.href ? "page" : undefined}
+                      className="flex items-center gap-2 py-2 text-lg font-semibold text-black"
+                    >
+                      <ChevronRight size={14} className="text-zinc-400" />
+                      {child.label}
+                    </a>
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
           </nav>
 
-          <div className="mt-auto flex flex-col gap-3">
-            <a
-              href="mailto:abdullah@elliyeen.com?subject=Website%20audit%20inquiry%20%E2%80%94%20let%27s%20work%20together&body=Hi%20Abbas%2C%0A%0AI%27d%20like%20to%20get%20my%20website%20audited%20by%20Elliyeen.%0A%0AWebsite%3A%20%5Bpaste%20your%20URL%20here%5D%0A%0ALooking%20forward%20to%20it."
-              onClick={close}
-              className="inline-flex h-[54px] w-full items-center justify-center gap-2 rounded-full bg-[#123A5A] px-9 text-sm font-bold text-[#F5F1E7] shadow-[0_6px_28px_rgba(18,58,90,0.22)] transition-colors duration-200 hover:bg-[#D87A24] active:bg-[#b8620e]"
-            >
-              Get Started
-            </a>
-          </div>
+          {!hideGetStarted && (
+            <div className="mt-auto flex flex-col gap-3">
+              <a
+                href="mailto:abdullah@elliyeen.com?subject=Website%20audit%20inquiry%20%E2%80%94%20let%27s%20work%20together&body=Hi%20Abbas%2C%0A%0AI%27d%20like%20to%20get%20my%20website%20audited%20by%20Elliyeen.%0A%0AWebsite%3A%20%5Bpaste%20your%20URL%20here%5D%0A%0ALooking%20forward%20to%20it."
+                onClick={close}
+                className="inline-flex h-[54px] w-full items-center justify-center gap-2 rounded-full bg-[#123A5A] px-9 text-sm font-bold text-[#F5F1E7] shadow-[0_6px_28px_rgba(18,58,90,0.22)] transition-colors duration-200 hover:bg-[#D87A24] active:bg-[#b8620e]"
+              >
+                Get Started
+              </a>
+            </div>
+          )}
         </div>
       )}
     </div>
