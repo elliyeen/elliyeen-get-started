@@ -8,7 +8,8 @@ test.describe("Sports section header", () => {
     page,
   }) => {
     await page.goto("/sports");
-    await expect(page.locator("header").getByText("Sports Home")).toBeVisible();
+    await expect(page.locator("header").getByText("ELLIYEEN")).toBeVisible();
+    await expect(page.getByRole("button", { name: /^NFL/ })).toBeVisible();
     await expect(page.getByRole("link", { name: "Get Started" })).toHaveCount(0);
 
     await page.goto("/");
@@ -54,7 +55,6 @@ test.describe("Sports section header", () => {
   test("keyboard users can reach and operate the dropdown", async ({ page }) => {
     await page.goto("/sports");
     await page.keyboard.press("Tab"); // wordmark
-    await page.keyboard.press("Tab"); // Sports Home
     await page.keyboard.press("Tab"); // NFL
     await page.keyboard.press("Enter");
     await expect(page.getByRole("menu", { name: "NFL" })).toBeVisible();
@@ -84,7 +84,6 @@ test.describe("Sports section header", () => {
 
       await page.getByRole("button", { name: "Open menu" }).click();
       const panel = page.getByRole("dialog", { name: "Sports navigation menu" });
-      await expect(panel.getByText("Sports Home")).toBeVisible();
       await expect(panel.getByText("College Football")).toBeVisible();
       await expect(panel.getByText("Game Intelligence")).toBeVisible();
 
