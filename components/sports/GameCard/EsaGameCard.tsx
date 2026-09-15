@@ -143,6 +143,15 @@ export function EsaGameCard({ gameId, initialTeam, initialUnit = "offense", data
     >
       <FinalScore data={gameCard} />
 
+      <div className="mt-8">
+        <h2 className="text-lg! font-semibold! text-[var(--e-ink)]">Possession map</h2>
+        <PossessionMap
+          teamName={selectedTeam.name}
+          teamId={selectedTeam.teamId}
+          possessions={possessionsByTeam[selectedTeam.teamId]}
+        />
+      </div>
+
       <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
         <TeamSelector teams={[gameCard.game.away, gameCard.game.home]} team={team} onSelect={handleSelectTeam} />
         <UnitSelector unit={unit} onSelect={handleSelectUnit} />
@@ -463,15 +472,6 @@ function UnitView({
             ))}
           </ol>
         </div>
-      </div>
-
-      <div className="mt-10">
-        <h2 className="text-lg! font-semibold! text-[var(--e-ink)]">Possession map</h2>
-        <PossessionMap
-          teamName={team.name}
-          teamId={analysis.teamId}
-          possessions={possessionsByTeam[analysis.teamId]}
-        />
       </div>
 
       <p className="mt-2 text-xs text-[var(--e-muted)]">Game ID: {gameId}</p>
