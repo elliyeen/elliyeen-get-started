@@ -13,11 +13,9 @@ describe("SportsHeader", () => {
     mockPathname = "/sports";
     render(<SportsHeader />);
     expect(screen.getByText("ELLIYEEN")).toBeVisible();
-    expect(screen.getByText("Sports Home")).toBeVisible();
     expect(screen.getByRole("button", { name: /^NFL/ })).toBeVisible();
     expect(screen.getByRole("button", { name: /^College Football/ })).toBeVisible();
     expect(screen.getByRole("button", { name: /^Game Intelligence/ })).toBeVisible();
-    expect(screen.getByText("Main Site")).toBeVisible();
   });
 
   it("marks the current top-level route with aria-current", () => {

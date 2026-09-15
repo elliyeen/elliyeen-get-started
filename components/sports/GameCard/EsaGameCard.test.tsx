@@ -106,10 +106,11 @@ describe("EsaGameCard — data integrity (D-01..D-08)", () => {
     expect(screen.getByLabelText(/Final score: Denver 10, Kansas City 31/)).toBeInTheDocument();
   });
 
-  it("D-02: preliminary record status renders the preliminary notice", () => {
-    render(<EsaGameCard gameId={sampleGameCard.gameId} data={sampleGameCard} />);
-    expect(screen.getByText(/Preliminary analysis · Official NFL gamebook pending/)).toBeInTheDocument();
-  });
+  // D-02 (original spec): preliminary record status must render a visible
+  // preliminary/gamebook-pending notice. That visible notice was explicitly
+  // removed from the UI at the user's direction; recordStatus/gamebookVerified
+  // remain "preliminary"/false in the underlying data (see sample-game-card.ts),
+  // but no on-page label communicates that to a viewer anymore.
 
   it("D-03: a failed metric is withheld from the metric strip", () => {
     const data = structuredClone(sampleGameCard);

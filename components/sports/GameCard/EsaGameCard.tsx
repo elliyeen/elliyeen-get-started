@@ -140,15 +140,6 @@ export function EsaGameCard({ gameId, initialTeam, initialUnit = "offense", data
       className="mx-auto w-full max-w-[960px] px-4 py-8 sm:px-6"
       style={{ ["--esa-accent" as string]: accentVar, ["--esa-accent-lt" as string]: accentLtVar }}
     >
-      {gameCard.recordStatus === "preliminary" && (
-        <p
-          role="status"
-          className="mb-4 inline-block rounded-full border border-[var(--e-rule)] bg-[var(--e-surface)] px-3 py-1 text-xs font-semibold uppercase tracking-wide text-[var(--e-soft)]"
-        >
-          Preliminary analysis · Official NFL gamebook pending
-        </p>
-      )}
-
       <FinalScore data={gameCard} />
 
       <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
@@ -171,8 +162,6 @@ export function EsaGameCard({ gameId, initialTeam, initialUnit = "offense", data
           onSelectFinding={handleSelectFinding}
         />
       )}
-
-      <DataQualityFooter data={gameCard} />
     </section>
   );
 }

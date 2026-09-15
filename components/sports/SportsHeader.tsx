@@ -111,16 +111,6 @@ export default function SportsHeader() {
           aria-label="Sports navigation"
           className="hidden items-center gap-7 text-sm font-medium text-white md:flex"
         >
-          <a
-            href="/sports"
-            aria-current={pathname === "/sports" ? "page" : undefined}
-            className={`relative py-2 transition-opacity hover:opacity-80 ${
-              pathname === "/sports" ? "after:absolute after:-bottom-[1px] after:left-0 after:h-px after:w-full after:bg-white" : ""
-            }`}
-          >
-            Sports Home
-          </a>
-
           {NAV_GROUPS.map((group) => {
             const active = isActive(pathname, group.href);
             const open = openGroup === group.label;
@@ -168,14 +158,6 @@ export default function SportsHeader() {
               </div>
             );
           })}
-
-          <a
-            href="/"
-            className="flex items-center gap-1 py-2 text-white/80 transition-opacity hover:opacity-80 hover:text-white"
-          >
-            Main Site
-            <span aria-hidden="true">↗</span>
-          </a>
         </nav>
 
         {/* Mobile trigger */}
@@ -206,14 +188,6 @@ export default function SportsHeader() {
             background: "var(--esa-nav-navy)",
           }}
         >
-          <a
-            href="/sports"
-            onClick={closeMobile}
-            aria-current={pathname === "/sports" ? "page" : undefined}
-            className="flex min-h-[44px] items-center border-b border-white/10 py-4 text-lg font-semibold text-white"
-          >
-            Sports Home
-          </a>
 
           {NAV_GROUPS.map((group) => {
             const active = isActive(pathname, group.href);
@@ -255,14 +229,6 @@ export default function SportsHeader() {
               </div>
             );
           })}
-
-          <a
-            href="/"
-            onClick={closeMobile}
-            className="flex min-h-[44px] items-center gap-1 py-4 text-lg font-semibold text-white/85"
-          >
-            Main Site <span aria-hidden="true">↗</span>
-          </a>
         </div>
       )}
     </header>
