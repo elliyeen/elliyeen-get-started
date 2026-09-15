@@ -8,20 +8,28 @@ const samplePossessions: PossessionEntry[] = [
   {
     possessionNumber: 1,
     teamId: "DEN",
+    quarter: "Q1",
+    clock: "10:00",
     startFieldPosition: 25,
     endFieldPosition: 70,
     result: "PUNT",
     points: 0,
     isScoring: false,
+    coachingNote: "Stay on the field",
+    sourceLabel: "Series survival",
   },
   {
     possessionNumber: 2,
     teamId: "DEN",
+    quarter: "Q2",
+    clock: "5:00",
     startFieldPosition: 32,
     endFieldPosition: 100,
     result: "TD",
     points: 7,
     isScoring: true,
+    coachingNote: "Turn possessions into points",
+    sourceLabel: "Throughput achieved",
   },
 ];
 

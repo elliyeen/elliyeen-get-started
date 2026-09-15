@@ -63,6 +63,24 @@ export const unitAnalysisSchema = z.object({
   priorities: z.array(coachingPrioritySchema),
 });
 
+// Possession-level detail is not part of the handoff's GameCardResponse
+// contract (see types.ts) — validated separately since it's supplied to
+// PossessionMap directly rather than through gameCardResponseSchema.
+export const possessionEntrySchema = z.object({
+  possessionNumber: z.number().int().positive(),
+  teamId: teamIdSchema,
+  quarter: z.string().min(1),
+  clock: z.string().min(1),
+  startFieldPosition: z.number().min(0).max(100),
+  endFieldPosition: z.number().min(0).max(100),
+  result: z.enum(["TD", "FG", "PUNT", "TURNOVER", "DOWNS", "END_OF_HALF", "END_OF_GAME"]),
+  turnoverType: z.enum(["interception", "fumble"]).optional(),
+  points: z.number().int().min(0),
+  isScoring: z.boolean(),
+  coachingNote: z.string().min(1),
+  sourceLabel: z.string().min(1),
+});
+
 export const gameCardResponseSchema = z.object({
   schemaVersion: z.literal("1.0"),
   gameId: z.string().min(1),

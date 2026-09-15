@@ -5,6 +5,7 @@ import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import { parseGameCardResponse } from "@/lib/sports/esa/schema";
 import type { Finding, GameCardResponse, MetricValue, Team, TeamId, Unit, UnitAnalysis } from "@/lib/sports/esa/types";
 import { emitAnalyticsEvent } from "@/lib/sports/esa/analytics";
+import { possessionsByTeam } from "@/lib/sports/esa/possessions";
 import { PossessionMap } from "./PossessionMap";
 
 export interface EsaGameCardProps {
@@ -466,7 +467,11 @@ function UnitView({
 
       <div className="mt-10">
         <h2 className="text-lg! font-semibold! text-[var(--e-ink)]">Possession map</h2>
-        <PossessionMap teamName={team.name} teamId={analysis.teamId} />
+        <PossessionMap
+          teamName={team.name}
+          teamId={analysis.teamId}
+          possessions={possessionsByTeam[analysis.teamId]}
+        />
       </div>
 
       <p className="mt-2 text-xs text-[var(--e-muted)]">Game ID: {gameId}</p>

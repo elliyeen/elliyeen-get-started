@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi, beforeEach } from "vitest";
 import { EsaGameCard } from "./EsaGameCard";
@@ -123,7 +123,8 @@ describe("EsaGameCard — data integrity (D-01..D-08)", () => {
     mockSearchParams = new URLSearchParams("team=DEN&unit=defense");
     render(<EsaGameCard gameId={sampleGameCard.gameId} data={sampleGameCard} />);
     expect(screen.getByText("Unavailable")).toBeInTheDocument();
-    expect(screen.queryByText("0")).not.toBeInTheDocument();
+    const metricStrip = screen.getByRole("list", { name: "Decision-relevant metrics" });
+    expect(within(metricStrip).queryByText("0")).not.toBeInTheDocument();
   });
 
   it("D-05: a Grade D finding does not appear among published findings", () => {

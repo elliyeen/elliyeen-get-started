@@ -65,19 +65,30 @@ export interface UnitAnalysis {
 }
 
 // Possession-level detail is not part of the handoff's GameCardResponse
-// contract and no verified play-by-play exists for this fixture yet (see
-// sample-game-card.ts). This shape is defined so the possession map
-// component has a real, testable data contract ready for when a future ESA
-// pipeline stage (see the ESA architecture proposal) supplies it — it is
-// deliberately never populated with invented per-drive data today.
+// contract. This fixture's possession rows come from an externally-supplied
+// drive chart (not an official NFL gamebook) — see the "sourceLabel" field
+// and the provenance note in sample-game-card.ts. recordStatus stays
+// "preliminary" and gamebookVerified stays false regardless of whether
+// possession data is present.
 export interface PossessionEntry {
   possessionNumber: number;
   teamId: TeamId;
+  quarter: string;
+  clock: string;
   startFieldPosition: number; // yards from the possessing team's own goal line, 0-100
   endFieldPosition: number;
-  result: "TD" | "FG" | "PUNT" | "TURNOVER" | "DOWNS" | "END_OF_HALF";
+  result: "TD" | "FG" | "PUNT" | "TURNOVER" | "DOWNS" | "END_OF_HALF" | "END_OF_GAME";
+  // For TURNOVER results, the specific mechanism (interception vs. fumble) —
+  // per ESA rule: never collapse a turnover into a single generic label.
+  turnoverType?: "interception" | "fumble";
   points: number;
   isScoring: boolean;
+  // ESA-normalized coaching language for this possession's outcome (approved
+  // vocabulary only — see COACHING_CONSTRAINT_LABELS in sample-game-card.ts).
+  coachingNote: string;
+  // The original, unedited source label from the externally-supplied drive
+  // chart, kept for provenance/audit — never shown as the primary label.
+  sourceLabel: string;
 }
 
 export interface GameCardResponse {

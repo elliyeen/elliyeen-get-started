@@ -19,10 +19,20 @@ const RESULT_LABEL: Record<PossessionEntry["result"], string> = {
   TD: "Touchdown",
   FG: "Field goal",
   PUNT: "Punt",
+  // A bare "Turnover" is never shown alone — resultLabel() below appends the
+  // specific mechanism (interception vs. fumble) whenever one is known.
   TURNOVER: "Turnover",
   DOWNS: "Turnover on downs",
   END_OF_HALF: "End of half",
+  END_OF_GAME: "End of game",
 };
+
+function resultLabel(p: PossessionEntry): string {
+  if (p.result === "TURNOVER" && p.turnoverType) {
+    return `Turnover (${p.turnoverType === "interception" ? "interception" : "fumble"})`;
+  }
+  return RESULT_LABEL[p.result];
+}
 
 export function PossessionMap({ teamName, teamId, possessions }: PossessionMapProps) {
   const titleId = useId();
@@ -63,7 +73,7 @@ export function PossessionMap({ teamName, teamId, possessions }: PossessionMapPr
         preserveAspectRatio="xMidYMid meet"
         className="h-auto w-full"
       >
-        <title id={titleId}>{teamName} possession production</title>
+        <title id={titleId}>{`${teamName} possession production`}</title>
         <desc id={descId}>
           {possessions.length} possession lanes showing starting field position, ending field
           position and result. Select a possession for full detail.
@@ -107,7 +117,7 @@ export function PossessionMap({ teamName, teamId, possessions }: PossessionMapPr
               tabIndex={0}
               aria-pressed={isSelected}
               aria-controls={detailId}
-              aria-label={`Possession ${p.possessionNumber}, ${RESULT_LABEL[p.result]}, starting at ${p.startFieldPosition} and ending at ${p.endFieldPosition}`}
+              aria-label={`Possession ${p.possessionNumber}, ${p.quarter} ${p.clock}, ${resultLabel(p)}, starting at ${p.startFieldPosition} and ending at ${p.endFieldPosition}`}
               className="cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--esa-accent)]"
               onClick={() => selectPossession(p.possessionNumber)}
               onKeyDown={(e) => {
@@ -149,7 +159,7 @@ export function PossessionMap({ teamName, teamId, possessions }: PossessionMapPr
                 opacity={selected == null || isSelected ? 1 : 0.45}
               />
               <text x={MARGIN.left + laneWidth + 10} y={y + 4} fontSize={11} fill="var(--e-ink)">
-                {RESULT_LABEL[p.result]}
+                {resultLabel(p)}
                 {p.isScoring ? ` · ${p.points} pts` : ""}
               </text>
             </g>
@@ -178,39 +188,38 @@ export function PossessionMap({ teamName, teamId, possessions }: PossessionMapPr
       <p id={detailId} role="status" aria-live="polite" className="mt-3 text-sm text-[var(--e-soft)]">
         {selectedPossession ? (
           <>
-            <strong className="text-[var(--e-ink)]">Possession {selectedPossession.possessionNumber}</strong> —
-            started at {selectedPossession.startFieldPosition}, ended at{" "}
-            {selectedPossession.endFieldPosition}, {RESULT_LABEL[selectedPossession.result]}
-            {selectedPossession.isScoring ? `, ${selectedPossession.points} points` : ""}.
+            <strong className="text-[var(--e-ink)]">
+              Possession {selectedPossession.possessionNumber} · {selectedPossession.quarter}{" "}
+              {selectedPossession.clock}
+            </strong>{" "}
+            — started at {selectedPossession.startFieldPosition}, ended at{" "}
+            {selectedPossession.endFieldPosition}, {resultLabel(selectedPossession)}
+            {selectedPossession.isScoring ? `, ${selectedPossession.points} points` : ""}.{" "}
+            <span className="text-[var(--e-muted)]">{selectedPossession.coachingNote}</span>
           </>
         ) : (
           "Select a possession to see its full detail."
         )}
       </p>
 
-      <table className="sr-only">
-        <caption className="sr-only">{teamName} possession-by-possession detail</caption>
-        <thead>
-          <tr>
-            <th scope="col">Possession</th>
-            <th scope="col">Start</th>
-            <th scope="col">End</th>
-            <th scope="col">Result</th>
-            <th scope="col">Points</th>
-          </tr>
-        </thead>
-        <tbody>
-          {possessions.map((p) => (
-            <tr key={p.possessionNumber}>
-              <td>{p.possessionNumber}</td>
-              <td>{p.startFieldPosition}</td>
-              <td>{p.endFieldPosition}</td>
-              <td>{RESULT_LABEL[p.result]}</td>
-              <td>{p.points}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      {/*
+        A real <table> here is subject to browser auto-table-layout: even
+        with an explicit small width, a table's rendered width can't shrink
+        below its content's minimum, which silently produced page-level
+        horizontal overflow once this component started receiving real
+        possession data. A <ul> has no such sizing behavior, so it stays
+        genuinely 0-footprint while remaining screen-reader accessible.
+      */}
+      <ul className="sr-only">
+        <li>{teamName} possession-by-possession detail</li>
+        {possessions.map((p) => (
+          <li key={p.possessionNumber}>
+            Possession {p.possessionNumber}, {p.quarter} {p.clock}: started at{" "}
+            {p.startFieldPosition}, ended at {p.endFieldPosition}, {resultLabel(p)}
+            {p.isScoring ? `, ${p.points} points` : ""}. {p.coachingNote}.
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
