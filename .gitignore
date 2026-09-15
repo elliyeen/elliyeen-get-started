@@ -7,4 +7,6 @@ out/
 .claude/
 .playwright-mcp/
 tsconfig.tsbuildinfo
+test-results/
+playwright-report/
 Rplots.pdf
