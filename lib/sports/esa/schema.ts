@@ -5,10 +5,23 @@ import type { GameCardResponse } from "./types";
 // payload is validated through this schema before it is ever rendered —
 // invented or malformed data must fail loudly, not degrade into a guess.
 
-export const teamIdSchema = z.enum(["DEN", "KC"]);
+// Team IDs are open strings, not a fixture-specific enum — any matchup must
+// validate. unit/recordStatus/validationStatus remain closed enums: those
+// are fixed ESA vocabulary, not per-fixture data.
+export const teamIdSchema = z.string().min(1);
 export const unitSchema = z.enum(["offense", "defense"]);
 export const recordStatusSchema = z.enum(["preliminary", "verified", "blocked"]);
 export const validationStatusSchema = z.enum(["passed", "failed", "unresolved", "unavailable"]);
+
+export const teamSchema = z.object({
+  teamId: teamIdSchema,
+  name: z.string().min(1),
+  shortName: z.string().min(1).optional(),
+  abbreviation: z.string().min(1),
+  slug: z.string().min(1),
+  primaryColorToken: z.string().min(1).optional(),
+  secondaryColorToken: z.string().min(1).optional(),
+});
 
 export const metricValueSchema = z.object({
   metricId: z.string().min(1),
@@ -62,18 +75,8 @@ export const gameCardResponseSchema = z.object({
     date: z.string().min(1),
     week: z.number().int().positive(),
     status: z.literal("FINAL"),
-    away: z.object({
-      teamId: teamIdSchema,
-      name: z.string().min(1),
-      score: z.number().int().min(0),
-      colorToken: z.literal("denver-blue"),
-    }),
-    home: z.object({
-      teamId: teamIdSchema,
-      name: z.string().min(1),
-      score: z.number().int().min(0),
-      colorToken: z.literal("chiefs-red"),
-    }),
+    away: teamSchema.extend({ score: z.number().int().min(0) }),
+    home: teamSchema.extend({ score: z.number().int().min(0) }),
   }),
   analyses: z.array(unitAnalysisSchema),
 });

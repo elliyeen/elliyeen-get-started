@@ -1,10 +1,23 @@
 import type { MetadataRoute } from "next";
 import { articles } from "@/lib/good-profits";
 import { sampleGameCard } from "@/lib/sports/esa/sample-game-card";
+import { isPublishable } from "@/lib/sports/esa/publication";
 
 export const dynamic = "force-static";
 
 const BASE_URL = "https://www.elliyeen.com";
+
+// Every ESA game card fixture that has a live route, keyed by its canonical
+// URL. Sitemap inclusion is decided by isPublishable() below, not by manual
+// selection — a still-preliminary game is automatically excluded, and a
+// future verified game appears automatically without editing this file's
+// entry list by hand.
+const ESA_GAME_ROUTES: Array<{ url: string; card: typeof sampleGameCard }> = [
+  {
+    url: `${BASE_URL}/sports/nfl/analysis/2026/week-6/denver-broncos-vs-kansas-city-chiefs`,
+    card: sampleGameCard,
+  },
+];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const goodProfitArticles: MetadataRoute.Sitemap = articles.map((a) => ({
@@ -71,14 +84,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     ...goodProfitArticles,
     // ESA (Elliyeen Sports Analytics) published game cards. Only games that
-    // have reached the PUBLISHED state belong here — see the ESA
-    // architecture proposal's publishing state machine.
-    {
-      url: `${BASE_URL}/sports/nfl/analysis/2026/week-6/denver-broncos-vs-kansas-city-chiefs`,
-      lastModified: new Date(sampleGameCard.generatedAtUtc),
-      changeFrequency: "monthly",
+    // pass isPublishable() (recordStatus "verified" and gamebookVerified
+    // true) belong here — see the ESA architecture proposal's publishing
+    // state machine. A still-preliminary game is filtered out automatically.
+    ...ESA_GAME_ROUTES.filter((game) => isPublishable(game.card)).map((game) => ({
+      url: game.url,
+      lastModified: new Date(game.card.generatedAtUtc),
+      changeFrequency: "monthly" as const,
       priority: 0.6,
-    },
+    })),
     {
       url: `${BASE_URL}/privacy`,
       lastModified: new Date(),

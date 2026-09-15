@@ -2,10 +2,27 @@
 // Mirrors the typed API model in ESA_CLAUDE_CODE_HANDOFF.md exactly — do not
 // diverge without updating both this file and lib/sports/esa/schema.ts.
 
-export type TeamId = "DEN" | "KC";
+// TeamId is intentionally an open string, not a fixture-specific enum — the
+// shared ESA Game Card must render any matchup from data. Do not narrow this
+// back to a closed union of specific franchises.
+export type TeamId = string;
 export type Unit = "offense" | "defense";
 export type RecordStatus = "preliminary" | "verified" | "blocked";
 export type ValidationStatus = "passed" | "failed" | "unresolved" | "unavailable";
+
+// A team as it appears in a game payload. colorToken values are either a CSS
+// custom-property suffix (e.g. "denver-blue" → var(--esa-denver-blue)) or a
+// literal color (e.g. "#003594") — see resolveTeamColor in EsaGameCard.tsx.
+// No component may hard-code a specific team's identity or color.
+export interface Team {
+  teamId: TeamId;
+  name: string;
+  shortName?: string;
+  abbreviation: string;
+  slug: string;
+  primaryColorToken?: string;
+  secondaryColorToken?: string;
+}
 
 export interface MetricValue {
   metricId: string;
@@ -75,8 +92,8 @@ export interface GameCardResponse {
     date: string;
     week: number;
     status: "FINAL";
-    away: { teamId: TeamId; name: string; score: number; colorToken: "denver-blue" };
-    home: { teamId: TeamId; name: string; score: number; colorToken: "chiefs-red" };
+    away: Team & { score: number };
+    home: Team & { score: number };
   };
   analyses: UnitAnalysis[];
 }

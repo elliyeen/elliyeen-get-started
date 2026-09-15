@@ -20,8 +20,24 @@ export const sampleGameCard: GameCardResponse = {
     date: "2026-10-11",
     week: 6,
     status: "FINAL",
-    away: { teamId: "DEN", name: "Denver", score: 10, colorToken: "denver-blue" },
-    home: { teamId: "KC", name: "Kansas City", score: 31, colorToken: "chiefs-red" },
+    away: {
+      teamId: "DEN",
+      name: "Denver",
+      abbreviation: "DEN",
+      slug: "denver-broncos",
+      score: 10,
+      primaryColorToken: "denver-blue",
+      secondaryColorToken: "denver-blue-lt",
+    },
+    home: {
+      teamId: "KC",
+      name: "Kansas City",
+      abbreviation: "KC",
+      slug: "kansas-city-chiefs",
+      score: 31,
+      primaryColorToken: "chiefs-red",
+      secondaryColorToken: "chiefs-red-lt",
+    },
   },
   analyses: [
     {

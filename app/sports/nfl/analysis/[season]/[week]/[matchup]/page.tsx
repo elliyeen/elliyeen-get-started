@@ -4,6 +4,7 @@ import { Suspense } from "react";
 import SiteNav from "@/app/SiteNav";
 import { EsaGameCard } from "@/components/sports/GameCard/EsaGameCard";
 import { sampleGameCard } from "@/lib/sports/esa/sample-game-card";
+import { isPublishable } from "@/lib/sports/esa/publication";
 
 const BASE_URL = "https://www.elliyeen.com";
 
@@ -52,10 +53,18 @@ export async function generateMetadata({
   const description = `Elliyeen Sports Analytics interactive game card for ${away.name} at ${home.name}: possession production, chunk gains, red-zone finishes and coaching priorities. Preliminary — official gamebook pending verification.`;
   const canonicalPath = `/sports/nfl/analysis/${season}/${week}/${matchup}/`;
 
+  // Preliminary records (recordStatus !== "verified" or gamebookVerified
+  // false) stay live for preview/sharing but must not be indexed — see the
+  // ESA publication eligibility rule in lib/sports/esa/publication.ts.
+  const publishable = isPublishable(sampleGameCard);
+
   return {
     title,
     description,
     alternates: { canonical: `${BASE_URL}${canonicalPath}` },
+    robots: publishable
+      ? { index: true, follow: true }
+      : { index: false, follow: false },
     openGraph: {
       type: "article",
       url: `${BASE_URL}${canonicalPath}`,
