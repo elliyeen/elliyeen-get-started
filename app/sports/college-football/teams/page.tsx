@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import SiteNav from "@/app/SiteNav";
 
 const BASE_URL = "https://www.elliyeen.com";
 
@@ -12,7 +11,6 @@ export const metadata: Metadata = {
 export default function CollegeFootballTeamsPage() {
   return (
     <>
-      <SiteNav />
       <main className="mx-auto max-w-5xl px-6 py-16 sm:py-24">
         <a
           href="/sports/college-football"

@@ -26,6 +26,10 @@
   --esa-chiefs-red:       #e31837;
   --esa-chiefs-red-lt:    #fbe7ea;
 
+  /* ESA Sports-section header — distinct flat institutional identity,
+     deliberately separate from the marketing header's navy button. */
+  --esa-nav-navy:         #0B4268;
+
   /* ── Fluid type scale ─────────────────────────────────────────────
      Formula: clamp(min, preferred-vw-expression, max)
      Values in rem. Scales smoothly from 320px to 2560px.

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { ArrowRight } from "lucide-react";
-import SiteNav from "@/app/SiteNav";
 
 const BASE_URL = "https://www.elliyeen.com";
 
@@ -36,7 +35,6 @@ const leagues = [
 export default function SportsPage() {
   return (
     <>
-      <SiteNav />
       <main className="mx-auto max-w-5xl px-6 py-16 sm:py-24">
         <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#8B4A1A]">
           Elliyeen Sports Analytics

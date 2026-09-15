@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { ArrowRight } from "lucide-react";
-import SiteNav from "@/app/SiteNav";
 import { sampleGameCard } from "@/lib/sports/esa/sample-game-card";
 
 const BASE_URL = "https://www.elliyeen.com";
@@ -16,7 +15,6 @@ export const metadata: Metadata = {
 export default function NflAnalysisIndexPage() {
   return (
     <>
-      <SiteNav />
       <main className="mx-auto max-w-5xl px-6 py-16 sm:py-24">
         <a href="/sports/nfl" className="text-sm font-medium text-zinc-500 hover:text-zinc-800">
           ← NFL

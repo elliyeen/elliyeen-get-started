@@ -46,9 +46,14 @@ test.describe("Desktop Sports navigation", () => {
     await expect(page).toHaveURL(/\/sports\/college-football$/);
   });
 
-  test("Sports is marked as the current route on a sports page", async ({ page }) => {
+  test("sports routes render the dedicated Sports header instead of the main nav", async ({
+    page,
+  }) => {
+    // Sports routes now use SportsHeader (see e2e/sports-header.spec.ts for its
+    // own active-state coverage) — the main site nav is not rendered there.
     await page.goto("/sports/nfl");
-    await expect(page.getByRole("button", { name: /Sports/i })).toHaveAttribute(
+    await expect(page.getByRole("navigation", { name: "Main navigation" })).toHaveCount(0);
+    await expect(page.getByRole("button", { name: /^NFL/ })).toHaveAttribute(
       "aria-current",
       "page",
     );

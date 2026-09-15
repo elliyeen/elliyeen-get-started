@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
-import SiteNav from "@/app/SiteNav";
 import { EsaGameCard } from "@/components/sports/GameCard/EsaGameCard";
 import { sampleGameCard } from "@/lib/sports/esa/sample-game-card";
 import { isPublishable } from "@/lib/sports/esa/publication";
@@ -82,7 +81,6 @@ export default async function EsaGameCardPage({ params }: { params: Promise<Rout
 
   return (
     <>
-      <SiteNav />
       <main className="min-h-screen bg-[var(--e-white)] pt-20">
         <Suspense fallback={null}>
           <EsaGameCard gameId={game.gameId} data={sampleGameCard} />
