@@ -334,35 +334,80 @@ details > summary::-webkit-details-marker { display: none; }
 }
 .hiw-chip-green::before { background: #22c55e; }
 
-/* ─── iPhone frame mockup ───────────────────────────────────────────── */
-.phone-frame {
+/* ─── Phone mockups: dated handset (before) vs modern iPhone (after) ── */
+.phone-old {
   position: relative;
-  background: #1c1c1e;
-  border-radius: 44px;
-  padding: 14px 8px 14px;
-  width: 148px;
+  background: linear-gradient(160deg, #d9d9dd, #a6a6ac);
+  border-radius: 20px;
+  padding: 28px 8px 34px;
+  width: clamp(112px, 34vw, 136px);
   box-shadow:
-    0 0 0 1.5px #3a3a3c,
-    0 24px 48px rgba(0, 0, 0, 0.32),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.07);
+    0 0 0 1px #8e8e93,
+    0 14px 28px rgba(0, 0, 0, 0.2);
 }
-.phone-notch {
+.phone-old::before {
+  /* earpiece slot */
+  content: '';
   position: absolute;
-  top: 14px;
+  top: 12px;
   left: 50%;
   transform: translateX(-50%);
-  width: 76px;
-  height: 22px;
-  background: #1c1c1e;
-  border-radius: 0 0 16px 16px;
-  z-index: 10;
+  width: 38px;
+  height: 5px;
+  border-radius: 3px;
+  background: #7c7c81;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4);
 }
-.phone-frame img {
+.phone-old::after {
+  /* home button */
+  content: '';
+  position: absolute;
+  bottom: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #bcbcc2;
+  box-shadow: inset 0 0 0 1.5px #8e8e93;
+}
+.phone-old img {
   display: block;
   width: 100%;
   height: auto;
-  border-radius: 34px;
+  border-radius: 5px;
   object-fit: cover;
   object-position: top;
-  max-height: 300px;
+}
+
+.phone-new {
+  position: relative;
+  background: #1c1c1e;
+  border-radius: 40px;
+  padding: 9px;
+  width: clamp(124px, 38vw, 152px);
+  box-shadow:
+    0 0 0 1.5px #48484c,
+    0 24px 48px rgba(0, 0, 0, 0.32),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+.phone-island {
+  /* Dynamic Island pill */
+  position: absolute;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 48px;
+  height: 14px;
+  background: #000;
+  border-radius: 999px;
+  z-index: 10;
+}
+.phone-new img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 32px;
+  object-fit: cover;
+  object-position: top;
 }

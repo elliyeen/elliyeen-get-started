@@ -1,13 +1,40 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { ChevronDown } from "lucide-react";
 import MobileNav from "./MobileNav";
 
+const SPORTS_GROUPS = [
+  {
+    label: "NFL",
+    href: "/sports/nfl",
+    items: [
+      { label: "NFL Overview", href: "/sports/nfl" },
+      { label: "Teams", href: "/sports/nfl/teams" },
+      { label: "Game Analysis", href: "/sports/nfl/analysis" },
+    ],
+  },
+  {
+    label: "College Football",
+    href: "/sports/college-football",
+    items: [
+      { label: "College Football Overview", href: "/sports/college-football" },
+      { label: "Teams", href: "/sports/college-football/teams" },
+      { label: "Game Analysis", href: "/sports/college-football/analysis" },
+    ],
+  },
+];
+
 export default function SiteNav() {
+  const pathname = usePathname();
   const [resourcesOpen, setResourcesOpen] = useState(false);
+  const [sportsOpen, setSportsOpen] = useState(false);
   const [atTop, setAtTop] = useState(true);
-  const dropdownRef = useRef<HTMLDivElement>(null);
+  const resourcesRef = useRef<HTMLDivElement>(null);
+  const sportsRef = useRef<HTMLDivElement>(null);
+
+  const isSportsRoute = pathname?.startsWith("/sports") ?? false;
 
   /* ── Scroll-aware background (transparent over hero → frosted when scrolled) */
   useEffect(() => {
@@ -17,15 +44,21 @@ export default function SiteNav() {
     return () => window.removeEventListener("scroll", check);
   }, []);
 
-  /* ── Close Resources dropdown on outside click or Escape ───────────────── */
+  /* ── Close dropdowns on outside click or Escape ─────────────────────────── */
   useEffect(() => {
     function handleClick(e: MouseEvent) {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+      if (resourcesRef.current && !resourcesRef.current.contains(e.target as Node)) {
         setResourcesOpen(false);
+      }
+      if (sportsRef.current && !sportsRef.current.contains(e.target as Node)) {
+        setSportsOpen(false);
       }
     }
     function handleKey(e: KeyboardEvent) {
-      if (e.key === "Escape") setResourcesOpen(false);
+      if (e.key === "Escape") {
+        setResourcesOpen(false);
+        setSportsOpen(false);
+      }
     }
     document.addEventListener("mousedown", handleClick);
     document.addEventListener("keydown", handleKey);
@@ -34,6 +67,18 @@ export default function SiteNav() {
       document.removeEventListener("keydown", handleKey);
     };
   }, []);
+
+  /* ── Close a dropdown when focus leaves its container ───────────────────── */
+  function handleSportsBlur(e: React.FocusEvent<HTMLDivElement>) {
+    if (!e.currentTarget.contains(e.relatedTarget as Node)) {
+      setSportsOpen(false);
+    }
+  }
+  function handleResourcesBlur(e: React.FocusEvent<HTMLDivElement>) {
+    if (!e.currentTarget.contains(e.relatedTarget as Node)) {
+      setResourcesOpen(false);
+    }
+  }
 
   return (
     <nav aria-label="Main navigation" className="sticky top-0 z-50">
@@ -68,11 +113,62 @@ export default function SiteNav() {
           <a href="/how-it-works" className="hover:opacity-70 transition-opacity">How It Works</a>
           <a href="/#cases"       className="hover:opacity-70 transition-opacity">Industries</a>
 
+          {/* Sports dropdown */}
+          <div className="relative" ref={sportsRef} onBlur={handleSportsBlur}>
+            <button
+              onClick={() => setSportsOpen((o) => !o)}
+              aria-expanded={sportsOpen}
+              aria-haspopup="true"
+              aria-current={isSportsRoute ? "page" : undefined}
+              className="flex items-center gap-1 hover:opacity-70 transition-opacity"
+            >
+              Sports
+              <ChevronDown
+                size={14}
+                className={`transition-transform duration-200 ${sportsOpen ? "rotate-180" : ""}`}
+              />
+            </button>
+            {sportsOpen && (
+              <div
+                role="menu"
+                aria-label="Sports"
+                className="absolute left-0 top-full mt-2 grid w-[420px] grid-cols-2 gap-1 overflow-hidden rounded-xl border border-zinc-200 bg-white p-2 shadow-lg"
+              >
+                {SPORTS_GROUPS.map((group) => (
+                  <div key={group.label} className="flex flex-col">
+                    <a
+                      href={group.href}
+                      role="menuitem"
+                      onClick={() => setSportsOpen(false)}
+                      aria-current={pathname === group.href ? "page" : undefined}
+                      className="rounded-lg px-3 py-2 text-sm font-semibold text-zinc-900 hover:bg-zinc-50"
+                    >
+                      {group.label}
+                    </a>
+                    {group.items.map((item) => (
+                      <a
+                        key={item.href}
+                        href={item.href}
+                        role="menuitem"
+                        onClick={() => setSportsOpen(false)}
+                        aria-current={pathname === item.href ? "page" : undefined}
+                        className="rounded-lg px-3 py-2 text-sm text-zinc-600 hover:bg-zinc-50 hover:text-zinc-900"
+                      >
+                        {item.label}
+                      </a>
+                    ))}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+
           {/* Resources dropdown */}
-          <div className="relative" ref={dropdownRef}>
+          <div className="relative" ref={resourcesRef} onBlur={handleResourcesBlur}>
             <button
               onClick={() => setResourcesOpen((o) => !o)}
               aria-expanded={resourcesOpen}
+              aria-haspopup="true"
               className="flex items-center gap-1 hover:opacity-70 transition-opacity"
             >
               Resources
@@ -82,9 +178,14 @@ export default function SiteNav() {
               />
             </button>
             {resourcesOpen && (
-              <div className="absolute left-0 top-full mt-2 w-44 overflow-hidden rounded-xl border border-zinc-200 bg-white shadow-lg">
+              <div
+                role="menu"
+                aria-label="Resources"
+                className="absolute left-0 top-full mt-2 w-44 overflow-hidden rounded-xl border border-zinc-200 bg-white shadow-lg"
+              >
                 <a
                   href="/reports"
+                  role="menuitem"
                   onClick={() => setResourcesOpen(false)}
                   className="block px-4 py-3 text-sm font-medium text-zinc-700 hover:bg-zinc-50"
                 >
@@ -92,6 +193,7 @@ export default function SiteNav() {
                 </a>
                 <a
                   href="/good-profits"
+                  role="menuitem"
                   onClick={() => setResourcesOpen(false)}
                   className="block px-4 py-3 text-sm font-medium text-zinc-700 hover:bg-zinc-50"
                 >

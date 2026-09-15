@@ -1,11 +1,12 @@
 # Universal Website Audit System
 
-**Version:** 1.1
-**Last updated:** 2026-06-24
+**Version:** 1.2
+**Last updated:** 2026-08-17
 **Owner:** Elliyeen Research
 **Purpose:** Multidisciplinary revenue audit framework — 22 specialist agents operating as a unified consulting team with continuous improvement (kaizen) built in.
 
 **Change log:**
+- v1.2 — Added click-verification rule: no CTA/form/widget finding ships without being physically triggered via both a direct link and normal in-page navigation. Added after a desk-review pass on briancliette.com produced two false-positive "broken CTA" findings that had to be retracted on retest, and a broad "Calendly never loads" finding that retesting narrowed to a direct-link-only failure.
 - v1.1 — Added agents 22 (Kaizen) and 23 (Ogilvy) to consulting team. Added Kaizen Protocol. System upgraded from 18 to 22 agents.
 - v1.0 — Initial system. 18 specialist agents.
 
@@ -117,6 +118,8 @@ Every full audit produces:
 Do not preserve sections out of habit.
 Do not praise.
 Do not optimize for aesthetics alone.
+
+No CTA, form, or widget finding ships without being physically clicked or triggered — never inferred from markup alone. Verify it twice: once via a direct link straight to that element (a fresh page load landing right on it), and once via normal in-page navigation (scrolling or clicking through from the nav). The two paths can behave differently on the same element — a widget that initializes on a scroll or intersection event will work when browsed into and silently fail on a direct link. A desk review that skips this step produces false positives that have to be publicly retracted later; the retest is cheaper than the retraction.
 
 Optimize for: Trust · Clarity · Simplicity · Human connection · Conversion · Long-term growth.
 
