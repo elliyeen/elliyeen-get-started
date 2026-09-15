@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { articles } from "@/lib/good-profits";
+import { sampleGameCard } from "@/lib/sports/esa/sample-game-card";
 
 export const dynamic = "force-static";
 
@@ -69,6 +70,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     ...goodProfitArticles,
+    // ESA (Elliyeen Sports Analytics) published game cards. Only games that
+    // have reached the PUBLISHED state belong here — see the ESA
+    // architecture proposal's publishing state machine.
+    {
+      url: `${BASE_URL}/sports/nfl/analysis/2026/week-6/denver-broncos-vs-kansas-city-chiefs`,
+      lastModified: new Date(sampleGameCard.generatedAtUtc),
+      changeFrequency: "monthly",
+      priority: 0.6,
+    },
     {
       url: `${BASE_URL}/privacy`,
       lastModified: new Date(),
