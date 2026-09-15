@@ -145,7 +145,7 @@ export function EsaGameCard({ gameId, initialTeam, initialUnit = "offense", data
           role="status"
           className="mb-4 inline-block rounded-full border border-[var(--e-rule)] bg-[var(--e-surface)] px-3 py-1 text-xs font-semibold uppercase tracking-wide text-[var(--e-soft)]"
         >
-          Preliminary — official gamebook not yet verified
+          Preliminary analysis · Official NFL gamebook pending
         </p>
       )}
 

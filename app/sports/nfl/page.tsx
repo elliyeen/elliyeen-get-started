@@ -5,7 +5,7 @@ import { sampleGameCard } from "@/lib/sports/esa/sample-game-card";
 
 const BASE_URL = "https://www.elliyeen.com";
 const FEATURED_GAME_HREF =
-  "/sports/nfl/analysis/2026/week-6/denver-broncos-vs-kansas-city-chiefs";
+  "/sports/nfl/analysis/2026/week-1/denver-broncos-at-kansas-city-chiefs";
 
 export const metadata: Metadata = {
   title: "NFL Sports Intelligence — Elliyeen Research",

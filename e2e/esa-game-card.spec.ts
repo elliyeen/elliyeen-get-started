@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 
-const GAME_URL = "/sports/nfl/analysis/2026/week-6/denver-broncos-vs-kansas-city-chiefs";
+const GAME_URL = "/sports/nfl/analysis/2026/week-1/denver-broncos-at-kansas-city-chiefs";
 
 const VIEWPORTS = [
   { name: "320x568", width: 320, height: 568 },

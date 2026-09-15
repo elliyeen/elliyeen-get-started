@@ -17,8 +17,8 @@ export const sampleGameCard: GameCardResponse = {
   dataQualityScore: 0.55,
   gamebookVerified: false,
   game: {
-    date: "2026-10-11",
-    week: 6,
+    date: "2026-09-14",
+    week: 1,
     status: "FINAL",
     away: {
       teamId: "DEN",

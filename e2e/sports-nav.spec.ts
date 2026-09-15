@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 
 const GAME_CARD_PATH =
-  "/sports/nfl/analysis/2026/week-6/denver-broncos-vs-kansas-city-chiefs";
+  "/sports/nfl/analysis/2026/week-1/denver-broncos-at-kansas-city-chiefs";
 
 test.describe("Desktop Sports navigation", () => {
   test.use({ viewport: { width: 1440, height: 900 } });
