@@ -37,7 +37,10 @@
     "pages/**/*.ts",
     "pages/**/*.tsx",
     "lib/**/*.ts",
-    "types/**/*.ts"
+    "types/**/*.ts",
+    "vitest.config.ts",
+    "vitest.setup.ts",
+    "e2e/**/*.ts"
   ],
   "exclude": [
     "node_modules",
