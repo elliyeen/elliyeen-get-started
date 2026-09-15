@@ -375,7 +375,7 @@ function UnitView({
     <div className="mt-8">
       <p className="text-2xl font-semibold leading-snug text-[var(--e-ink)]">{analysis.thesis}</p>
 
-      <section aria-live="polite" className="mt-5 rounded-xl border border-[var(--e-rule)] bg-[var(--e-surface)] p-4 sm:p-5">
+      <section aria-live="polite" className="mt-5 rounded-xl border border-[var(--e-rule)] bg-white p-4 sm:p-5">
         <div className="text-[11px] font-semibold uppercase tracking-wide text-[var(--e-muted)]" id="esa-primary-finding-label">
           Primary finding
         </div>
@@ -400,7 +400,7 @@ function UnitView({
           return (
             <li
               key={metric.metricId}
-              className="rounded-xl border border-[var(--e-rule)] bg-[var(--e-surface)] p-3"
+              className="rounded-xl border border-[var(--e-rule)] bg-white p-3"
             >
               <div className="text-[10px] font-semibold uppercase tracking-wide text-[var(--e-muted)]">
                 {metric.label}
