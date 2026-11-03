@@ -7,6 +7,7 @@ import { Menu, X, ChevronRight, ChevronDown } from "lucide-react";
 const links = [
   { label: "How It Works", href: "/how-it-works" },
   { label: "Industries", href: "/#cases" },
+  { label: "Capabilities", href: "/capabilities" },
 ];
 
 const sportsGroups = [

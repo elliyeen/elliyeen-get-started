@@ -115,6 +115,7 @@ export default function SiteNav() {
           {!isSportsRoute && (
             <a href="/#cases" className="hover:opacity-70 transition-opacity">Industries</a>
           )}
+          <a href="/capabilities" className="hover:opacity-70 transition-opacity">Capabilities</a>
 
           {/* Sports dropdown */}
           <div className="relative" ref={sportsRef} onBlur={handleSportsBlur}>
