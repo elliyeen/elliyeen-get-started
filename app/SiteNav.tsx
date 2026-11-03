@@ -67,6 +67,7 @@ export default function SiteNav() {
         <div className="hidden items-center gap-9 text-sm font-medium text-black md:flex">
           <a href="/how-it-works" className="hover:opacity-70 transition-opacity">How It Works</a>
           <a href="/#cases"       className="hover:opacity-70 transition-opacity">Industries</a>
+          <a href="/capabilities" className="hover:opacity-70 transition-opacity">Capabilities</a>
 
           {/* Resources dropdown */}
           <div className="relative" ref={dropdownRef}>
