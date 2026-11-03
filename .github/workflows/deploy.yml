@@ -30,6 +30,8 @@ jobs:
         working-directory: kai-dart
         env:
           EXPORT_TARGET: cloudflare-dart
+          # Public (pk.) Mapbox token, inlined at build time. Restrict it to https://www.elliyeen.com/* in the Mapbox dashboard.
+          NEXT_PUBLIC_MAPBOX_TOKEN: ${{ secrets.NEXT_PUBLIC_MAPBOX_TOKEN }}
         run: |
           npm ci
           npm run build
