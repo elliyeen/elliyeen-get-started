@@ -19,6 +19,30 @@ jobs:
 
       - run: npm run build
 
+      # Mount the Station Readiness demo (elliyeen/kai-dart) under /dart.
+      - uses: actions/checkout@v4
+        with:
+          repository: elliyeen/kai-dart
+          ref: main
+          path: kai-dart
+
+      - name: Build kai-dart for /dart and merge into out/dart
+        working-directory: kai-dart
+        env:
+          EXPORT_TARGET: cloudflare-dart
+        run: |
+          npm ci
+          npm run build
+          test -f out/index.html
+          mkdir -p ../out/dart
+          cp -R out/. ../out/dart/
+
+      - name: Verify /dart mount
+        run: |
+          test -f out/dart/index.html
+          test -f out/dart/demo.html
+          ! grep -rq "kai-dart" out/dart
+
       - uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
