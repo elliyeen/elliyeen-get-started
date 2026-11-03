@@ -19,6 +19,17 @@
   --e-dark:      #0d1b2a;
   --e-rule:      rgba(0, 0, 0, 0.08);
 
+  /* ESA (Elliyeen Sports Analytics) team identity tokens — never repeat
+     these hex values as literals in components; reference the tokens. */
+  --esa-denver-blue:      #002244;
+  --esa-denver-blue-lt:   #e6ecf3;
+  --esa-chiefs-red:       #e31837;
+  --esa-chiefs-red-lt:    #fbe7ea;
+
+  /* ESA Sports-section header — distinct flat institutional identity,
+     deliberately separate from the marketing header's navy button. */
+  --esa-nav-navy:         #0B4268;
+
   /* ── Fluid type scale ─────────────────────────────────────────────
      Formula: clamp(min, preferred-vw-expression, max)
      Values in rem. Scales smoothly from 320px to 2560px.
