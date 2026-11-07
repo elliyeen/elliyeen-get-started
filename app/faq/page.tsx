@@ -30,7 +30,7 @@ const faqs = [
   },
   {
     q: "How much does a website audit cost?",
-    a: "A full audit starts from $1,500 and includes all 18 frameworks, a full report, and copy rewrites. Audit + implementation is scoped custom to your site and team.",
+    a: "A full audit starts from $3,000 and includes all 18 frameworks, a full report, and copy rewrites. Audit + implementation is scoped custom to your site and team.",
   },
   {
     q: "Do you work with any type of business?",
