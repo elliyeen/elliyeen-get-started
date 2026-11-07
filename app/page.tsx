@@ -33,7 +33,7 @@ const auditDimensions = [
 ];
 
 const pricingTiers = [
-  { tier: "Full Audit", price: "From $1,500", desc: "All 18 frameworks. Full report. Copy rewrites included." },
+  { tier: "Full Audit", price: "From $3,000", desc: "All 18 frameworks. Full report. Copy rewrites included." },
   { tier: "Audit + Implementation", price: "Custom", desc: "We audit and execute. Scoped to your site and team." },
 ];
 
@@ -86,7 +86,7 @@ const faqSchema = {
       name: "How much does a website audit cost?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "A full audit starts from $1,500 and includes all 18 frameworks, a full report, and copy rewrites. Audit + implementation is scoped custom to your site and team.",
+        text: "A full audit starts from $3,000 and includes all 18 frameworks, a full report, and copy rewrites. Audit + implementation is scoped custom to your site and team.",
       },
     },
   ],
@@ -299,7 +299,7 @@ export default function GetStartedPage() {
                 <p className="mt-4 font-serif t-heading text-zinc-900">
                   The last audit we completed found{" "}
                   <span className="text-[#1B5EA8]">$36,600/month</span>{" "}
-                  in uncaptured revenue. It cost $1,500.
+                  in uncaptured revenue. A full audit now starts at $3,000.
                 </p>
                 <a
                   id="contact"
