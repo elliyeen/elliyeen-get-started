@@ -101,7 +101,7 @@ describe("position", () => {
 describe("feedback records", () => {
   const base = { agent: "09-conversion", version: "1.1", runId: "r1", inputs: "https://example.test/", evidenceLinks: ["E1"], findings: [{ id: "09-1", confidence: "high" }] };
   it("builds a valid record with Not Measured outcome", () => {
-    const r = a.buildFeedbackRecord(base);
+    const r = a.buildFeedbackRecord({ ...base, runsAgreeing: 2 });
     expect(a.validateFeedbackRecord(r)).toEqual([]);
     expect(r.outcome).toBe("Not Measured");
     expect(r.findings[0].disposition).toBe("pending_human_review");
@@ -110,5 +110,60 @@ describe("feedback records", () => {
     const r = a.buildFeedbackRecord({ ...base, findings: [{ id: "x", confidence: "certain" }] });
     expect(a.validateFeedbackRecord(r).join()).toMatch(/confidence/);
     expect(a.validateFeedbackRecord({}).length).toBeGreaterThan(3);
+  });
+});
+
+describe("evidence-supported confidence (v1.2)", () => {
+  it("never reports confidence for something not measured", () => { expect(a.evidenceConfidence({ measured: false })).toBe("Not Measured"); });
+  it("caps a single load at medium and ambiguity at low", () => {
+    expect(a.evidenceConfidence({ measured: true, runsAgreeing: 1 })).toBe("medium");
+    expect(a.evidenceConfidence({ measured: true, runsAgreeing: 2 })).toBe("high");
+    expect(a.evidenceConfidence({ measured: true, ambiguous: true, runsAgreeing: 2 })).toBe("low");
+  });
+  it("rejects a feedback record that claims high confidence from one run", () => {
+    const r = a.buildFeedbackRecord({ agent: "x", version: "1", runId: "r", inputs: "i", evidenceLinks: ["e"], findings: [{ id: "f", confidence: "high" }], runsAgreeing: 1 });
+    expect(a.validateFeedbackRecord(r).join()).toMatch(/runs_agreeing/);
+  });
+  it("accepts Not Measured confidence", () => {
+    const r = a.buildFeedbackRecord({ agent: "x", version: "1", runId: "r", inputs: "i", evidenceLinks: ["e"], findings: [{ id: "f", confidence: "Not Measured" }] });
+    expect(a.validateFeedbackRecord(r)).toEqual([]);
+  });
+});
+
+describe("referrals", () => {
+  it("flags crisis-sensitive wording for human routing, without judging the page", () => {
+    const r = a.referrals("Thoughts that you would be better off dead");
+    expect(r[0].kind).toBe("out-of-scope-referral");
+    expect(r[0].action).toMatch(/human/);
+  });
+  it("is silent on neutral text", () => { expect(a.referrals("We treat anxiety and depression.")).toEqual([]); });
+});
+
+describe("deriveViewport", () => {
+  const v = (o = {}) => ({
+    heroCta: { heroStatus: "fully-visible", rows: [] }, labels: { issues: [], genericCounts: {} }, step1: { pctDown: 10 }, howItWorksText: 0, referrals: [],
+    overlays: { count: 0, rows: [], covering: [] }, contrast: { candidates: 1, sampled: 1, failing: [], notMeasured: [] }, fontFamilies: ["A"],
+    jsonLd: { duplicates: [] }, urlPatterns: { pages: 0 }, phones: { linkOnly: [] }, head: { title: "t", metaDescription: "d", canonical: "c", lang: "en" }, h1: ["x"], ...o,
+  });
+  const get = (r, d) => r.find((x) => x.detector === d);
+  it("marks a JSON-LD duplicate as an observation with schema validation Not Measured", () => {
+    const r = get(a.deriveViewport(v({ jsonLd: { duplicates: [{ type: "WebSite", n: 2 }] } })), "D24-jsonld-duplicate");
+    expect(r.flagged).toBe(true); expect(r.observation).toBe(true); expect(r.evidence.schemaValidation).toBe("Not Measured"); expect(r.confidence).toBe("low");
+  });
+  it("reports Not Measured, not a pass, when contrast cannot be resolved", () => {
+    const r = get(a.deriveViewport(v({ contrast: { candidates: 1, sampled: 1, failing: [], notMeasured: [{ text: "x", reason: "image" }] } })), "D07-contrast-fail");
+    expect(r.flagged).toBe(false); expect(r.notMeasured).toBe(true); expect(r.confidence).toBe("Not Measured");
+  });
+  it("labels a contrast failure as a candidate, with low confidence when other text is ambiguous", () => {
+    const r = get(a.deriveViewport(v({ contrast: { candidates: 2, sampled: 2, failing: [{ text: "x", ratio: 3 }], notMeasured: [{ text: "y", reason: "image" }] } })), "D07-contrast-fail");
+    expect(r.flagged).toBe(true); expect(r.evidence.label).toMatch(/candidate failure/); expect(r.confidence).toBe("low");
+  });
+  it("confidence tracks the number of agreeing loads", () => {
+    expect(get(a.deriveViewport(v({ h1: [] }), { runsAgreeing: 1 }), "D24-h1-count").confidence).toBe("medium");
+    expect(get(a.deriveViewport(v({ h1: [] }), { runsAgreeing: 2 }), "D24-h1-count").confidence).toBe("high");
+  });
+  it("every detector in the catalogue produces a result", () => {
+    const ids = a.deriveViewport(v()).map((x) => x.detector).sort();
+    expect(ids).toEqual(Object.keys(a.DETECTORS).sort());
   });
 });

@@ -1,9 +1,10 @@
 # Agent 09 — Conversion Audit
 
-**Version:** 1.1
+**Version:** 1.2
 **Last updated:** 2026-11-08
 **Updated by:** Claude Code session (PR for independent review)
 **Change log:**
+- v1.2 — Collector security hardening (URL allowlist, filtering proxy, confined output), evidence-derived confidence, expanded contrast coverage with Not Measured for ambiguous cases, JSON-LD duplicates treated as observations, human gold-standard rubric with precision/recall scoring. Criteria unchanged.
 - v1.1 — Added Evidence Protocol: measured hero-fold CTA status, label/destination check, phone targets, journey position; Not Measured rule; out-of-scope referral; feedback record. Existing criteria unchanged.
 - v1.0 — Baseline version header added. Audit criteria unchanged.
 
@@ -134,7 +135,7 @@ Does the website create forward momentum, or does it allow visitors to defer ind
 Before auditing, run the read-only collector against the public URL:
 
 ```
-node agents/tools/audit-evidence/collect.mjs <url> <outDir> <runId>
+node agents/tools/audit-evidence/collect.mjs <url> <outName> <runId>
 ```
 
 - Use the measured values in `evidence.json` and cite the screenshots in `evidence/`. Do not estimate what the collector can measure.
@@ -142,9 +143,13 @@ node agents/tools/audit-evidence/collect.mjs <url> <outDir> <runId>
 - Inspection is public and non-intrusive only: no logins, no form entry or submission, no scanning, no patient data.
 - Stay inside this agent's scope: admissions journey and CTA friction. A patient-safety, security, privacy or clinical issue outside that scope (for example missing crisis help in an intake form) is recorded as an `Out-of-scope referral` with its evidence and routed to a human reviewer. Do not assess it here.
 - After every run write `feedback-09.json` using the schema in [FEEDBACK.md](./FEEDBACK.md). `collect.mjs` validates it. Finding dispositions stay `pending_human_review` until a human changes them.
+- The collector only accepts https URLs on hosts listed in `agents/tools/audit-evidence/allowed-hosts.json` (a reviewed file) and writes only under the artifacts root. If it refuses, report the refusal; do not look for another way to fetch the page.
+- Confidence comes from evidence: `Not Measured` if not measured, `low` if the method is ambiguous, `medium` after one load, `high` only when two independent loads agree. An object existing is not evidence.
+- Third-party requests the page makes by itself are limited to public https hosts on port 443 and are logged in `evidence.json`. Navigation is not side-effect free; see `agents/tools/audit-evidence/README.md`.
+- The gold-standard rubric in `agents/tools/audit-evidence/rubric/` scores detector output with precision and recall. Until a human reviewer signs off the gold file, those numbers are not a release gate.
 - Self-heal boundary: this agent may retry a failed page load up to 3 times and may mark values `Not Measured`. It may not edit this file, the collector, permissions or policy. Changes are proposed by pull request and need independent approval.
 
-### Checks added in v1.1
+### Checks added in v1.1 (refined in v1.2)
 - **Hero CTA fold status:** for each viewport report whether a non-header, non-fixed CTA or tel link is fully visible, partially visible (with pixels) or below the fold.
 - **Label versus destination:** flag labels such as "Verify Insurance" that only place a phone call, and count generic labels ("Learn More", "Get Started").
 - **Phone targets:** list distinct tel targets versus numbers shown as text. Do not infer whether they are tracking numbers.

@@ -13,8 +13,9 @@ const dir = __dirname;
 describe.each(Object.entries(ORIGINAL))("%s", (file, sections) => {
   const text = readFileSync(join(dir, file), "utf8");
   it.each(sections)("keeps original section %s", (s) => { expect(text).toContain(s); });
-  it("has a v1.1 version header and change log keeping v1.0", () => {
-    expect(text).toMatch(/\*\*Version:\*\* 1\.1/);
+  it("has a v1.2 version header and a change log keeping v1.1 and v1.0", () => {
+    expect(text).toMatch(/\*\*Version:\*\* 1\.2/);
+    expect(text).toContain("- v1.1 — ");
     expect(text).toContain("- v1.0 — Baseline version header added.");
   });
   it("has the evidence protocol with Not Measured, referral and self-heal limits", () => {
@@ -22,6 +23,9 @@ describe.each(Object.entries(ORIGINAL))("%s", (file, sections) => {
     expect(text).toContain("`Not Measured`");
     expect(text).toContain("Out-of-scope referral");
     expect(text).toContain("It may not edit this file");
+    expect(text).toContain("allowed-hosts.json");
+    expect(text).toContain("Confidence comes from evidence");
+    expect(text).toContain("<outName>");
   });
 });
 

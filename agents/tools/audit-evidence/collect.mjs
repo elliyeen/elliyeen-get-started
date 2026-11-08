@@ -1,100 +1,91 @@
 #!/usr/bin/env node
 // Read-only evidence collector for agents 07, 09 and 24.
-// Usage: node agents/tools/audit-evidence/collect.mjs <url> <outDir> [runId]
-// Loads public pages in headless Chromium. No clicks, no typing, no form submission, no login.
-// Writes only inside <outDir>. Anything it cannot measure is recorded as "Not Measured".
+// Usage: node agents/tools/audit-evidence/collect.mjs <url> <outName> [runId]
+//   url      must be https and on a host listed in allowed-hosts.json (a reviewed file)
+//   outName  relative name created under the artifacts root (env AUDIT_ARTIFACTS_ROOT, default ./agents/artifacts)
+// No clicks, no typing, no form submission, no login. Third-party requests the page makes on its own are
+// limited to public https hosts on port 443, capped, and logged in evidence.json. See README.md for residual risk.
 import { chromium } from "playwright-core";
-import { mkdirSync, writeFileSync } from "node:fs";
-import { join } from "node:path";
+import { fileURLToPath } from "node:url";
+import path from "node:path";
 import * as A from "./analyze.mjs";
+import * as G from "./guard.mjs";
+import { startProxy } from "./proxy.mjs";
+import { VIEWPORTS, initCwv, measurePage } from "./core.mjs";
 
-const [url, outDir, runIdArg] = process.argv.slice(2);
-if (!url || !outDir) { console.error("usage: collect.mjs <url> <outDir> [runId]"); process.exit(2); }
-const runId = runIdArg || `run-${new Date().toISOString().replace(/[:.]/g, "-")}`;
-mkdirSync(join(outDir, "evidence"), { recursive: true });
-
-const VIEWPORTS = { desktop: { width: 1440, height: 900 }, mobile: { width: 390, height: 844 } };
+const here = path.dirname(fileURLToPath(import.meta.url));
 const MAX_ATTEMPTS = 3; // bounded retry: the only self-heal this tool performs
+const PASSES = 2;       // independent loads per viewport, used for evidence-based confidence
 
-async function load(page, attempt = 1) {
-  try { return await page.goto(url, { waitUntil: "load", timeout: 60000 }); }
-  catch (e) { if (attempt >= MAX_ATTEMPTS) throw e; await page.waitForTimeout(1000 * attempt); return load(page, attempt + 1); }
+async function main() {
+  const [urlArg, outName, runIdArg] = process.argv.slice(2);
+  if (!urlArg || !outName) throw new G.GuardError("usage", "collect.mjs <url> <outName> [runId]");
+  const allowed = G.loadAllowedHosts(path.join(here, "allowed-hosts.json"));
+  const target = G.parseTarget(urlArg, allowed);
+  const host = target.hostname.toLowerCase().replace(/\.$/, "");
+  const runId = G.assertRunId(runIdArg || `run-${new Date().toISOString().replace(/[:.]/g, "-")}`);
+  const root = path.resolve(process.env.AUDIT_ARTIFACTS_ROOT || path.join(process.cwd(), "agents", "artifacts"));
+  const outDir = G.resolveOutputDir(root, outName);
+  await G.assertPublicHost(host); // pre-flight; the proxy re-resolves and connects to the vetted address itself
+
+  const started = Date.now();
+  const guard = G.makeRequestGuard({ allowed });
+  const proxy = await startProxy({ guard });
+  // Every connection the browser opens goes through the proxy (including loopback, which Chromium otherwise bypasses).
+  const browser = await chromium.launch({ proxy: { server: `http://127.0.0.1:${proxy.port}`, bypass: "<-loopback>" }, args: ["--force-webrtc-ip-handling-policy=disable_non_proxied_udp", "--disable-quic"] });
+  const out = { tool: "audit-evidence/collect.mjs v1.2", runId, url: target.href, startedAt: new Date(started).toISOString(), browser: browser.version(), attemptsMax: MAX_ATTEMPTS, passes: PASSES, viewports: {} };
+  const shots = [];
+
+  async function onePass(name, vp, first) {
+    const ctx = await browser.newContext({ viewport: vp, isMobile: name === "mobile", serviceWorkers: "block" });
+    const page = await ctx.newPage();
+    const hops = [];
+    page.on("framenavigated", (f) => { if (f === page.mainFrame()) hops.push(f.url()); });
+    try {
+      await page.addInitScript(initCwv);
+      let resp, last;
+      for (let a = 1; a <= MAX_ATTEMPTS; a++) {
+        try { resp = await page.goto(target.href, { waitUntil: "load", timeout: 60000 }); break; } catch (e) { last = e; await page.waitForTimeout(1000 * a); }
+      }
+      if (!resp) throw last;
+      await page.waitForTimeout(2500);
+      const bad = G.navigationViolations(hops, allowed);
+      if (bad.length) throw new G.GuardError("redirect-pivot", `main frame left the allowlist: ${bad.map((b) => b.url).join(", ").slice(0, 160)}`);
+      const m = await measurePage(page, vp, host);
+      if (first) shots.push([`evidence/${name}-fold.png`, await page.screenshot()]);
+      return { status: resp.status(), ...m };
+    } finally { await ctx.close(); }
+  }
+
+  const derived = {};
+  const sig = (d) => JSON.stringify(d.map((x) => [x.detector, x.flagged, x.notMeasured]));
+  for (const [name, vp] of Object.entries(VIEWPORTS)) {
+    const t0 = Date.now();
+    try {
+      const a = await onePass(name, vp, true);
+      const b = await onePass(name, vp, false);
+      const agree = sig(A.deriveViewport(a)) === sig(A.deriveViewport(b)) ? 2 : 1;
+      derived[name] = A.deriveViewport(a, { runsAgreeing: agree });
+      out.viewports[name] = { ...a, runsAgreeing: agree, wallMs: Date.now() - t0, detectors: derived[name] };
+    } catch (e) { out.viewports[name] = { error: String(e.message).slice(0, 200), wallMs: Date.now() - t0, note: A.NOT_MEASURED }; if (e instanceof G.GuardError) out.integrity = `INVALID: ${e.message}`; }
+  }
+  await browser.close();
+  await proxy.close();
+  out.network = { allowedRequests: guard.log.allowed, thirdPartyConnections: Object.values(guard.log.thirdPartyHosts).reduce((a, b) => a + b, 0), thirdPartyHosts: guard.log.thirdPartyHosts, blocked: guard.log.blocked.slice(0, 50), blockedCount: guard.log.blocked.length, proxy: { connects: proxy.stats.connects, refused: proxy.stats.refused }, note: "All browser connections pass a local filtering proxy: https/443 only, DNS resolved by the proxy, public addresses only." };
+  out.totalMs = Date.now() - started;
+
+  const ok = Object.keys(derived);
+  const agreeAll = ok.length ? Math.min(...ok.map((k) => out.viewports[k].runsAgreeing)) : 1;
+  const common = { version: "1.2", runId, inputs: `${target.href} ${ok.map((k) => `${k} ${VIEWPORTS[k].width}x${VIEWPORTS[k].height}`).join(", ")}`, evidenceLinks: ["evidence.json", ...shots.map((s) => s[0])], runsAgreeing: agreeAll };
+  const rec = (nn, agent) => A.buildFeedbackRecord({ ...common, agent, findings: ok.flatMap((k) => A.feedbackFindings(derived[k], nn).map((f) => ({ ...f, id: `${f.id}@${k}` }))), pattern: "see evidence.json detectors" });
+  const records = { "07": rec("07", "07-apple-design"), "09": rec("09", "09-conversion"), "24": rec("24", "24-seo-growth-engineering") };
+  if (out.integrity) { console.error(`REFUSED ${out.integrity}`); }
+  const problems = Object.entries(records).flatMap(([k, r]) => A.validateFeedbackRecord(r).map((p) => `${k}: ${p}`));
+  out.feedbackValidation = problems.length ? problems : "valid";
+  G.safeWrite(outDir, "evidence.json", JSON.stringify(out, null, 2));
+  for (const [rel, buf] of shots) G.safeWrite(outDir, rel, buf);
+  for (const [k, r] of Object.entries(records)) G.safeWrite(outDir, `feedback-${k}.json`, JSON.stringify(r, null, 2));
+  console.log(`wrote ${outDir} in ${out.totalMs}ms; feedback ${problems.length ? "INVALID" : "valid"}; third-party connections ${out.network.thirdPartyConnections}; blocked ${out.network.blockedCount}`);
+  return out.integrity ? 3 : problems.length ? 1 : 0;
 }
-
-const probe = () => {
-  const top = (e) => Math.round(e.getBoundingClientRect().top + scrollY);
-  const vis = (e) => { const r = e.getBoundingClientRect(), s = getComputedStyle(e); return r.width > 0 && r.height > 0 && s.display !== "none" && s.visibility !== "hidden" && s.opacity !== "0"; };
-  const rgb = (c) => { const m = c.match(/rgba?\(([^)]+)\)/); if (!m) return null; const p = m[1].split(",").map(Number); return { c: p.slice(0, 3), a: p.length > 3 ? p[3] : 1 }; };
-  const isFixed = (e) => { for (let n = e; n && n !== document.body; n = n.parentElement) { const p = getComputedStyle(n).position; if (p === "fixed" || p === "sticky") return true; } return false; };
-  const inHeader = (e) => !!e.closest("header, nav");
-  const ctaEls = [...document.querySelectorAll("a,button")].filter(vis).map((e) => ({ text: (e.innerText || "").trim().replace(/\s+/g, " ").slice(0, 60), href: e.getAttribute("href") || "", top: top(e), height: Math.round(e.getBoundingClientRect().height), inHeader: inHeader(e), fixed: isFixed(e) })).filter((x) => x.text);
-  const deep = (root) => [...root.querySelectorAll("*")].flatMap((e) => (e.shadowRoot ? [e, ...deep(e.shadowRoot)] : [e]));
-  const fixedRects = deep(document.body).filter((e) => vis(e) && getComputedStyle(e).position === "fixed" && e.getBoundingClientRect().width * e.getBoundingClientRect().height > 400 && !e.closest("header,nav")).map((e) => { const r = e.getBoundingClientRect(); return { name: (e.id || (typeof e.className === "string" ? e.className : "") || e.tagName).toString().slice(0, 40), x: Math.round(r.x), y: Math.round(r.y), w: Math.round(r.width), h: Math.round(r.height) }; }).filter((r) => r.y < innerHeight && r.y + r.h > 0);
-  const textRects = [...document.querySelectorAll("h1,h2,p,li")].filter((e) => vis(e) && !isFixed(e) && (e.innerText || "").trim()).map((e) => { const r = e.getBoundingClientRect(); return { x: Math.round(r.x), y: Math.round(r.y), w: Math.round(r.width), h: Math.round(r.height), text: e.innerText.trim() }; }).filter((r) => r.y < innerHeight && r.y + r.h > 0);
-  const bgOf = (e) => { for (let n = e; n; n = n.parentElement) { const s = getComputedStyle(n); if (s.backgroundImage !== "none") return { kind: "image", color: null }; const b = rgb(s.backgroundColor); if (b && b.a > 0.99) return { kind: "solid", color: b.c }; } return { kind: "solid", color: [255, 255, 255] }; };
-  const contrastTargets = [...document.querySelectorAll("h1,p")].filter((e) => vis(e) && !isFixed(e) && e.getBoundingClientRect().top < innerHeight && (e.innerText || "").trim()).slice(0, 4).map((e) => { const s = getComputedStyle(e); const fg = rgb(s.color); const bg = bgOf(e); const size = parseFloat(s.fontSize), bold = parseInt(s.fontWeight) >= 700; return { tag: e.tagName, text: e.innerText.trim().slice(0, 40), fg: fg ? fg.c : null, bg: bg.color, bgKind: bg.kind, large: size >= 24 || (size >= 18.66 && bold) }; });
-  const stepEls = (re) => [...document.querySelectorAll("h1,h2,h3,h4,div,span,p,a")].filter((e) => e.children.length < 3 && vis(e) && re.test((e.innerText || "").trim()) && (e.innerText || "").trim().length < 40).map((e) => ({ text: e.innerText.trim(), top: top(e) }));
-  const links = [...document.querySelectorAll("a[href]")];
-  const sameHost = links.filter((a) => a.host === location.host).map((a) => a.href);
-  const ld = [...document.querySelectorAll('script[type="application/ld+json"]')].map((s) => { try { const j = JSON.parse(s.textContent); return (j["@graph"] || [j]).flatMap((x) => (Array.isArray(x["@type"]) ? x["@type"] : [x["@type"]])).filter(Boolean); } catch { return []; } });
-  return {
-    pageH: document.documentElement.scrollHeight, title: document.title, h1: [...document.querySelectorAll("h1")].map((h) => h.innerText.trim()),
-    ctaEls, fixedRects, textRects, contrastTargets, step1: stepEls(/^step\s*1$/i)[0] || null, step2: stepEls(/^step\s*2$/i)[0] || null, step3: stepEls(/^step\s*3$/i)[0] || null,
-    howItWorks: stepEls(/how it works|our process|admissions process/i).slice(0, 3),
-    telHrefs: links.map((a) => a.getAttribute("href")).filter((h) => /^tel:/i.test(h)), visibleText: document.body.innerText,
-    jsonLd: ld, sameHostUrls: [...new Set(sameHost)].filter((u) => !u.includes("#")),
-    cwv: window.__cwv || {}, fontFamilies: [...new Set([...document.querySelectorAll("body *")].filter((e) => vis(e) && (e.innerText || "").trim()).map((e) => getComputedStyle(e).fontFamily.split(",")[0].replace(/["']/g, "").trim()))],
-  };
-};
-
-const initCwv = () => {
-  window.__cwv = { lcpMs: null, cls: 0 };
-  new PerformanceObserver((l) => { const e = l.getEntries().pop(); window.__cwv.lcpMs = Math.round(e.startTime); }).observe({ type: "largest-contentful-paint", buffered: true });
-  new PerformanceObserver((l) => { for (const e of l.getEntries()) if (!e.hadRecentInput) window.__cwv.cls = Math.round((window.__cwv.cls + e.value) * 1000) / 1000; }).observe({ type: "layout-shift", buffered: true });
-};
-
-const started = Date.now();
-const browser = await chromium.launch();
-const out = { tool: "audit-evidence/collect.mjs v1.0", runId, url, startedAt: new Date(started).toISOString(), browser: browser.version(), attemptsMax: MAX_ATTEMPTS, viewports: {} };
-for (const [name, vp] of Object.entries(VIEWPORTS)) {
-  const t0 = Date.now();
-  const ctx = await browser.newContext({ viewport: vp, isMobile: name === "mobile" });
-  const page = await ctx.newPage();
-  try {
-    await page.addInitScript(initCwv);
-    const resp = await load(page);
-    await page.waitForTimeout(2500);
-    const raw = await page.evaluate(probe);
-    await page.screenshot({ path: join(outDir, "evidence", `${name}-fold.png`) });
-    const fold = A.foldCtas(raw.ctaEls, vp.height);
-    out.viewports[name] = {
-      status: resp.status(), viewport: vp, wallMs: Date.now() - t0, pageH: raw.pageH, h1: raw.h1,
-      heroCta: fold, labels: A.labelChecks(raw.ctaEls), phones: A.phoneTargets(raw.telHrefs, raw.visibleText),
-      overlays: A.overlays(raw.fixedRects, raw.textRects),
-      contrast: raw.contrastTargets.map((t) => ({ tag: t.tag, text: t.text, ...(t.fg ? A.contrastVerdict(t.fg, t.bg, t.bgKind, t.large) : { ratio: A.NOT_MEASURED, pass: A.NOT_MEASURED }) })),
-      step1: raw.step1 && A.position(raw.step1.top, raw.pageH, vp.height), step2: raw.step2 && A.position(raw.step2.top, raw.pageH, vp.height), step3Present: !!raw.step3, howItWorksText: raw.howItWorks.length,
-      jsonLd: A.jsonLdDuplicates(raw.jsonLd), urlPatterns: A.urlPatterns(raw.sameHostUrls.filter((u) => /treatment|mental-health|substance/.test(u))),
-      lab: { ...raw.cwv, note: "Lab values, unthrottled, single run. Not field data. INP Not Measured." }, inp: A.NOT_MEASURED, fontFamilies: raw.fontFamilies,
-    };
-  } catch (e) {
-    out.viewports[name] = { error: String(e.message).slice(0, 200), wallMs: Date.now() - t0, note: A.NOT_MEASURED };
-  } finally { await ctx.close(); }
-}
-await browser.close();
-out.totalMs = Date.now() - started;
-
-// Feedback records, one per agent, built from what this run measured.
-const d = out.viewports.desktop || {}, m = out.viewports.mobile || {};
-const common = { version: "1.1", runId, inputs: `${url} desktop 1440x900, mobile 390x844`, evidenceLinks: ["evidence.json", "evidence/desktop-fold.png", "evidence/mobile-fold.png"] };
-const f = (id, ok, hi = "high") => ({ id, confidence: ok ? hi : "low", uncertainty: ok ? A.NOT_MEASURED : "viewport failed to load" });
-const records = {
-  "07": A.buildFeedbackRecord({ ...common, agent: "07-apple-design", findings: [f("07-3", !!d.overlays), f("07-4", !!m.overlays), f("07-5", !!d.contrast, "medium")], pattern: "overlays and unmeasurable contrast over images" }),
-  "09": A.buildFeedbackRecord({ ...common, agent: "09-conversion", findings: [f("09-1", !!d.heroCta), f("09-2", !!m.heroCta), f("09-3", !!d.phones, "medium"), f("09-4", !!d.step1), f("09-5", !!d.labels)], pattern: "hero CTA fold position and label/destination" }),
-  "24": A.buildFeedbackRecord({ ...common, agent: "24-seo-growth-engineering", findings: [f("24-2", !!d.jsonLd), f("24-3", !!d.urlPatterns), f("24-4", !!d.phones, "medium")], pattern: "structured data duplication, URL patterns, phone consistency" }),
-};
-const problems = Object.entries(records).flatMap(([k, r]) => A.validateFeedbackRecord(r).map((p) => `${k}: ${p}`));
-out.feedbackValidation = problems.length ? problems : "valid";
-writeFileSync(join(outDir, "evidence.json"), JSON.stringify(out, null, 2));
-for (const [k, r] of Object.entries(records)) writeFileSync(join(outDir, `feedback-${k}.json`), JSON.stringify(r, null, 2));
-console.log(`wrote ${outDir} in ${out.totalMs}ms; feedback ${out.feedbackValidation}`);
-process.exit(problems.length ? 1 : 0);
+main().then((c) => process.exit(c), (e) => { console.error(e instanceof G.GuardError ? `REFUSED ${e.message}` : `ERROR ${e.message}`); process.exit(e instanceof G.GuardError ? 3 : 1); });
