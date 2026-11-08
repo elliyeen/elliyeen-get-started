@@ -1,0 +1,64 @@
+{
+  "agent": "07-apple-design",
+  "version": "1.2",
+  "run_id": "v12-run-1",
+  "inputs": "https://compassionrecoverycenters.com/ desktop 1440x900, mobile 390x844",
+  "evidence_links": [
+    "evidence.json",
+    "evidence/desktop-fold.png",
+    "evidence/mobile-fold.png"
+  ],
+  "runs_agreeing": 2,
+  "findings": [
+    {
+      "id": "D07-overlay-count@desktop",
+      "disposition": "pending_human_review",
+      "confidence": "high",
+      "uncertainty": "Not Measured"
+    },
+    {
+      "id": "D07-overlay-cover@desktop",
+      "disposition": "pending_human_review",
+      "confidence": "high",
+      "uncertainty": "Not Measured"
+    },
+    {
+      "id": "D07-contrast-fail@desktop",
+      "disposition": "pending_human_review",
+      "confidence": "low",
+      "uncertainty": "Not Measured"
+    },
+    {
+      "id": "D07-typefaces@desktop",
+      "disposition": "pending_human_review",
+      "confidence": "high",
+      "uncertainty": "Not Measured"
+    },
+    {
+      "id": "D07-overlay-count@mobile",
+      "disposition": "pending_human_review",
+      "confidence": "high",
+      "uncertainty": "Not Measured"
+    },
+    {
+      "id": "D07-overlay-cover@mobile",
+      "disposition": "pending_human_review",
+      "confidence": "high",
+      "uncertainty": "Not Measured"
+    },
+    {
+      "id": "D07-contrast-fail@mobile",
+      "disposition": "pending_human_review",
+      "confidence": "low",
+      "uncertainty": "Not Measured"
+    },
+    {
+      "id": "D07-typefaces@mobile",
+      "disposition": "pending_human_review",
+      "confidence": "high",
+      "uncertainty": "Not Measured"
+    }
+  ],
+  "outcome": "Not Measured",
+  "pattern": "see evidence.json detectors"
+}

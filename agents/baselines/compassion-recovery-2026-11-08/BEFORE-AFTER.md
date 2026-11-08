@@ -1,5 +1,7 @@
 # Before / after: agents 07, 09, 24 on compassionrecoverycenters.com
 
+> **Superseded in part (2026-11-08, v1.2).** The tables below compare v1.0 with v1.1. After PR #10 review the collector, contrast method, confidence rules and tests changed; test counts and the collector description below are out of date. See the v1.2 section at the end and `UAT-PACKET.md` (authoritative).
+
 Before = baseline run on agent v1.0 (2026-11-08). After = `collect.mjs` run with agents at v1.1 (same URL, same viewports 1440x900 and 390x844, same day). Evidence layer only: the agents' judgment scores are not re-scored because no human rubric exists.
 
 | Test case | Before (v1.0 baseline) | After (v1.1) | Change |
@@ -41,3 +43,23 @@ Revert the merge commit of this PR (`git revert -m 1 <merge sha>`), or `git chec
 ## Gates still required
 
 Independent security and quality review. Human approval. No auto-merge, no deploy.
+
+## v1.2 update (after PR #10 review)
+
+Same URL and viewports. Evidence in `after-v1.2/`.
+
+| Aspect | v1.0 baseline | v1.1 | v1.2 |
+|---|---|---|---|
+| URL scope | any URL by hand | any URL | https + `allowed-hosts.json` only; every connection through a filtering proxy |
+| Output | any directory | any directory | confined under an artifacts root, new empty directory, exclusive writes |
+| Contrast coverage | not measured | first 4 `h1`/`p` elements | every visible text element in the first viewport: desktop 15/15, mobile 9/9 |
+| Contrast result | not measured | yellow label 3.03:1 | yellow label 3.03:1 confirmed by an independent calculation; 5 desktop and 3 mobile candidate failures; ambiguous text is Not Measured (8 / 5) |
+| Confidence | hand-assigned | `high` whenever an object existed | derived from evidence: Not Measured, low, medium (1 load), high (2 agreeing loads) |
+| JSON-LD duplicates | not measured | reported as a finding | observation, schema validity Not Measured, low confidence |
+| Rubric / scoring | none | none | 170 gold cases, TP/FP/FN/TN, precision, recall, F1, hard gate; gold is `candidate_unreviewed` |
+| Collector wall time (both viewports) | about 18s hand-run | 8s | 16.6s and 15.5s (two independent loads per viewport) |
+| Two runs agree | 15 of 15 fields | key fields | all detector results identical |
+| Tests | none | 57 agent tests | 14 files, 282 tests pass in the full suite; `tsc --noEmit` clean |
+| Rollback | stated | stated | verified against `d5ebcd8`: 13 checks, revert restores the exact base tree, 21 other agents byte-identical |
+
+Not measured at any version: agent run time, token or API cost, false positives and omissions against a human rubric, field Core Web Vitals, INP, conversion.

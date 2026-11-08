@@ -1,0 +1,58 @@
+{
+  "agent": "09-conversion",
+  "version": "1.2",
+  "run_id": "v12-run-1",
+  "inputs": "https://compassionrecoverycenters.com/ desktop 1440x900, mobile 390x844",
+  "evidence_links": [
+    "evidence.json",
+    "evidence/desktop-fold.png",
+    "evidence/mobile-fold.png"
+  ],
+  "runs_agreeing": 2,
+  "findings": [
+    {
+      "id": "D09-hero-fold@desktop",
+      "disposition": "pending_human_review",
+      "confidence": "high",
+      "uncertainty": "Not Measured"
+    },
+    {
+      "id": "D09-generic-labels@desktop",
+      "disposition": "pending_human_review",
+      "confidence": "high",
+      "uncertainty": "Not Measured"
+    },
+    {
+      "id": "D09-process-buried@desktop",
+      "disposition": "pending_human_review",
+      "confidence": "high",
+      "uncertainty": "Not Measured"
+    },
+    {
+      "id": "D09-hero-fold@mobile",
+      "disposition": "pending_human_review",
+      "confidence": "high",
+      "uncertainty": "Not Measured"
+    },
+    {
+      "id": "D09-verify-calls@mobile",
+      "disposition": "pending_human_review",
+      "confidence": "high",
+      "uncertainty": "Not Measured"
+    },
+    {
+      "id": "D09-generic-labels@mobile",
+      "disposition": "pending_human_review",
+      "confidence": "high",
+      "uncertainty": "Not Measured"
+    },
+    {
+      "id": "D09-process-buried@mobile",
+      "disposition": "pending_human_review",
+      "confidence": "high",
+      "uncertainty": "Not Measured"
+    }
+  ],
+  "outcome": "Not Measured",
+  "pattern": "see evidence.json detectors"
+}
