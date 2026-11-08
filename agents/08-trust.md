@@ -1,5 +1,11 @@
 # Agent 08 — Trust Audit
 
+**Version:** 1.0
+**Last updated:** 2026-11-07
+**Updated by:** Claude Code session (PR for independent review)
+**Change log:**
+- v1.0 — Baseline version header added. Audit criteria unchanged.
+
 **Frameworks:** Bain Customer Experience · CXL Institute · Nielsen Norman Group
 **Compensation driver:** Trust converts. Doubt abandons. Every trust gap is a lost sale.
 

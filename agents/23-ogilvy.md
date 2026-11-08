@@ -1,5 +1,11 @@
 # Agent 23 — David Ogilvy Brand & Advertising Audit
 
+**Version:** 1.0
+**Last updated:** 2026-11-07
+**Updated by:** Claude Code session (PR for independent review)
+**Change log:**
+- v1.0 — Baseline version header added. Audit criteria unchanged.
+
 **Frameworks:** David Ogilvy — *Confessions of an Advertising Man* (1963) · *Ogilvy on Advertising* (1983)
 **Compensation driver:** Dull advertising is invisible. An invisible brand does not sell. Every word either builds the brand or wastes the budget.
 

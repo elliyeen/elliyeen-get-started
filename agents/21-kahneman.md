@@ -1,5 +1,11 @@
 # Agent 21 — Kahneman Behavioral Economics Audit
 
+**Version:** 1.0
+**Last updated:** 2026-11-07
+**Updated by:** Claude Code session (PR for independent review)
+**Change log:**
+- v1.0 — Baseline version header added. Audit criteria unchanged.
+
 **Frameworks:** Daniel Kahneman — *Thinking, Fast and Slow* (2011) · Amos Tversky — Prospect Theory · Richard Thaler — *Nudge* (2008)
 **Compensation driver:** Visitors do not evaluate your offer rationally. They evaluate it quickly, emotionally, and in comparison to whatever reference point you gave them first. Design for how decisions are actually made.
 
