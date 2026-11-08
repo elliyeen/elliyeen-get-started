@@ -1,0 +1,45 @@
+{
+  "agent": "09-conversion",
+  "version": "1.1",
+  "run_id": "after-4",
+  "inputs": "https://compassionrecoverycenters.com/ desktop 1440x900, mobile 390x844",
+  "evidence_links": [
+    "evidence.json",
+    "evidence/desktop-fold.png",
+    "evidence/mobile-fold.png"
+  ],
+  "findings": [
+    {
+      "id": "09-1",
+      "disposition": "pending_human_review",
+      "confidence": "high",
+      "uncertainty": "Not Measured"
+    },
+    {
+      "id": "09-2",
+      "disposition": "pending_human_review",
+      "confidence": "high",
+      "uncertainty": "Not Measured"
+    },
+    {
+      "id": "09-3",
+      "disposition": "pending_human_review",
+      "confidence": "medium",
+      "uncertainty": "Not Measured"
+    },
+    {
+      "id": "09-4",
+      "disposition": "pending_human_review",
+      "confidence": "high",
+      "uncertainty": "Not Measured"
+    },
+    {
+      "id": "09-5",
+      "disposition": "pending_human_review",
+      "confidence": "high",
+      "uncertainty": "Not Measured"
+    }
+  ],
+  "outcome": "Not Measured",
+  "pattern": "hero CTA fold position and label/destination"
+}

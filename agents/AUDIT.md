@@ -1,11 +1,12 @@
 # Universal Website Audit System
 
-**Version:** 1.2
-**Last updated:** 2026-11-07
+**Version:** 1.3
+**Last updated:** 2026-11-08
 **Owner:** Elliyeen Research
 **Purpose:** Multidisciplinary revenue audit framework — 24 specialist agents operating as a unified consulting team with continuous improvement (kaizen) built in.
 
 **Change log:**
+- v1.3 — Agents 07, 09 and 24 upgraded to v1.1 with an Evidence Protocol and the read-only collector in `agents/tools/audit-evidence/`. The other 21 agents are unchanged pending approval of a staged rollout.
 - v1.2 — Added agent 24 (SEO Growth Engineering, supersedes 14 and 16) to the team table. Added version headers to all 24 agent files. Added [FEEDBACK.md](./FEEDBACK.md) feedback record and self-heal protocol. Corrected agent count to 24.
 - v1.1 — Added agents 22 (Kaizen) and 23 (Ogilvy) to consulting team. Added Kaizen Protocol. System upgraded from 18 to 22 agents.
 - v1.0 — Initial system. 18 specialist agents.

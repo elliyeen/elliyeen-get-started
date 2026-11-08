@@ -1,0 +1,46 @@
+{
+ "agent": "07-apple-design",
+ "version": "1.0",
+ "run_id": "baseline-2026-11-08-07",
+ "inputs": "https://compassionrecoverycenters.com/ desktop 1440x900, mobile 390x844",
+ "evidence_links": [
+  "E1",
+  "E3",
+  "E5"
+ ],
+ "findings": [
+  {
+   "id": "07-1",
+   "disposition": "pending_human_review",
+   "confidence": "high"
+  },
+  {
+   "id": "07-2",
+   "disposition": "pending_human_review",
+   "confidence": "medium"
+  },
+  {
+   "id": "07-3",
+   "disposition": "pending_human_review",
+   "confidence": "high"
+  },
+  {
+   "id": "07-4",
+   "disposition": "pending_human_review",
+   "confidence": "high"
+  },
+  {
+   "id": "07-5",
+   "disposition": "pending_human_review",
+   "confidence": "low"
+  },
+  {
+   "id": "07-6",
+   "disposition": "pending_human_review",
+   "confidence": "medium"
+  }
+ ],
+ "outcome": "Not Measured",
+ "pattern": "Floating overlays and widget fonts add visual load; candidate for a measured overlay check",
+ "confidence_note": "Contrast and padding not measured"
+}

@@ -1,0 +1,54 @@
+{
+ "agent": "09-conversion",
+ "version": "1.0",
+ "run_id": "baseline-2026-11-08-09",
+ "inputs": "same",
+ "evidence_links": [
+  "E1",
+  "E2",
+  "E3",
+  "E4",
+  "E5",
+  "E6"
+ ],
+ "findings": [
+  {
+   "id": "09-1",
+   "disposition": "pending_human_review",
+   "confidence": "high"
+  },
+  {
+   "id": "09-2",
+   "disposition": "pending_human_review",
+   "confidence": "high"
+  },
+  {
+   "id": "09-3",
+   "disposition": "pending_human_review",
+   "confidence": "high"
+  },
+  {
+   "id": "09-4",
+   "disposition": "pending_human_review",
+   "confidence": "high"
+  },
+  {
+   "id": "09-5",
+   "disposition": "pending_human_review",
+   "confidence": "high"
+  },
+  {
+   "id": "09-6",
+   "disposition": "pending_human_review",
+   "confidence": "high"
+  },
+  {
+   "id": "09-7",
+   "disposition": "pending_human_review",
+   "confidence": "medium"
+  }
+ ],
+ "outcome": "Not Measured",
+ "pattern": "Primary CTA below fold on desktop; multiple phone numbers; process steps buried",
+ "confidence_note": "No analytics; no conversion lift claimed"
+}

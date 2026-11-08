@@ -1,0 +1,410 @@
+{
+  "desktop": {
+    "status": 200,
+    "wallLoadMs": 1650,
+    "perf": {
+      "domContentLoadedMs": 366,
+      "loadMs": 1647,
+      "transferKB": 70
+    },
+    "vw": 1440,
+    "vh": 900,
+    "pageH": 14611,
+    "title": "Compassion Recovery Centers | Mental Health & Addiction Treatment",
+    "h1": [
+      "Compassionate Care For Mental Health & Addiction"
+    ],
+    "step1": [
+      {
+        "text": "STEP 1",
+        "top": 9657
+      },
+      {
+        "text": "STEP 1",
+        "top": 9662
+      }
+    ],
+    "step2": [
+      {
+        "text": "STEP 2",
+        "top": 10008
+      },
+      {
+        "text": "STEP 2",
+        "top": 10013
+      }
+    ],
+    "step3": [],
+    "howItWorks": [],
+    "ctas": [
+      {
+        "text": "VERIFY BENEFITS",
+        "top": 360,
+        "aboveFold": true
+      },
+      {
+        "text": "Get Started",
+        "top": 2006,
+        "aboveFold": false
+      },
+      {
+        "text": "Get Started",
+        "top": 1965,
+        "aboveFold": false
+      },
+      {
+        "text": "Learn More",
+        "top": 2949,
+        "aboveFold": false
+      },
+      {
+        "text": "Learn More",
+        "top": 2949,
+        "aboveFold": false
+      },
+      {
+        "text": "Learn More",
+        "top": 2949,
+        "aboveFold": false
+      },
+      {
+        "text": "Learn More",
+        "top": 2943,
+        "aboveFold": false
+      },
+      {
+        "text": "Learn More",
+        "top": 3338,
+        "aboveFold": false
+      },
+      {
+        "text": "Learn More",
+        "top": 3338,
+        "aboveFold": false
+      },
+      {
+        "text": "Learn More",
+        "top": 3338,
+        "aboveFold": false
+      },
+      {
+        "text": "Learn More",
+        "top": 3338,
+        "aboveFold": false
+      },
+      {
+        "text": "Schedule Your Free Assessment",
+        "top": 9104,
+        "aboveFold": false
+      },
+      {
+        "text": "Call Now | (949) 849-4362",
+        "top": 9104,
+        "aboveFold": false
+      },
+      {
+        "text": "Learn More",
+        "top": 9881,
+        "aboveFold": false
+      },
+      {
+        "text": "Learn More",
+        "top": 10259,
+        "aboveFold": false
+      },
+      {
+        "text": "Start treatment now",
+        "top": 12327,
+        "aboveFold": false
+      },
+      {
+        "text": "Get in touch",
+        "top": 12923,
+        "aboveFold": false
+      },
+      {
+        "text": "Instantly Verify Insurance",
+        "top": 13355,
+        "aboveFold": false
+      }
+    ],
+    "telLinks": [
+      "tel:+19496494314",
+      "tel:+19496494314",
+      "tel:+19496494314",
+      "tel:+19496494314",
+      "tel:(877)%20375-4344",
+      "tel:(877)%20375-4344",
+      "tel:+19496494314",
+      "tel:+19496494314",
+      "tel:+19496494314",
+      "tel:+19496494314",
+      "tel:+19496494314",
+      "tel:(949)%20849-4362",
+      "tel:(877)%20414-3007",
+      "tel:+19496494314",
+      "tel:+19496494314",
+      "tel:+18773754344"
+    ],
+    "phonesInText": [
+      "(949) 649-4314",
+      "(949) 849-4362"
+    ],
+    "fontFamilies": [
+      "Figtree",
+      "Poppins",
+      "Trustindex Poppins",
+      "Inter"
+    ],
+    "distinctTextColors": 9,
+    "distinctFontSizes": 16,
+    "imgCount": 130,
+    "imgNoAltAttr": 0,
+    "imgEmptyAlt": 26,
+    "hCounts": {
+      "h1": 1,
+      "h2": 14,
+      "h3": 30
+    },
+    "metaDescription": "Compassion Recovery Centers provides in-person and virtual mental health & addiction treatment, accepting most insurance plans.",
+    "canonical": "https://compassionrecoverycenters.com/",
+    "robotsMeta": "follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large",
+    "og": {
+      "title": "Compassion Recovery Centers | Mental Health & Addiction Treatment",
+      "image": true
+    },
+    "twitterCard": "summary_large_image",
+    "jsonLdTypes": [
+      [
+        "Place",
+        "Organization",
+        "WebSite",
+        "ImageObject",
+        "WebPage"
+      ],
+      [
+        "MedicalOrganization",
+        "MedicalClinic",
+        "MedicalClinic",
+        "WebSite"
+      ],
+      [
+        "WebSite"
+      ],
+      [
+        "MedicalBusiness"
+      ]
+    ],
+    "htmlLang": "en-US",
+    "viewportMeta": "width=device-width, initial-scale=1"
+  },
+  "mobile": {
+    "status": 200,
+    "wallLoadMs": 1091,
+    "perf": {
+      "domContentLoadedMs": 311,
+      "loadMs": 1089,
+      "transferKB": 70
+    },
+    "vw": 390,
+    "vh": 844,
+    "pageH": 26262,
+    "title": "Compassion Recovery Centers | Mental Health & Addiction Treatment",
+    "h1": [
+      "Compassionate Care For Mental Health & Addiction"
+    ],
+    "step1": [
+      {
+        "text": "STEP 1",
+        "top": 17255
+      },
+      {
+        "text": "STEP 1",
+        "top": 17264
+      }
+    ],
+    "step2": [
+      {
+        "text": "STEP 2",
+        "top": 17729
+      },
+      {
+        "text": "STEP 2",
+        "top": 17738
+      }
+    ],
+    "step3": [],
+    "howItWorks": [],
+    "ctas": [
+      {
+        "text": "VERIFY BENEFITS",
+        "top": 338,
+        "aboveFold": true
+      },
+      {
+        "text": "Call Now",
+        "top": 817,
+        "aboveFold": true
+      },
+      {
+        "text": "Verify Insurance",
+        "top": 896,
+        "aboveFold": false
+      },
+      {
+        "text": "Get Started",
+        "top": 1873,
+        "aboveFold": false
+      },
+      {
+        "text": "Get Started",
+        "top": 2247,
+        "aboveFold": false
+      },
+      {
+        "text": "Learn More",
+        "top": 3876,
+        "aboveFold": false
+      },
+      {
+        "text": "Learn More",
+        "top": 4199,
+        "aboveFold": false
+      },
+      {
+        "text": "Learn More",
+        "top": 4521,
+        "aboveFold": false
+      },
+      {
+        "text": "Learn More",
+        "top": 4873,
+        "aboveFold": false
+      },
+      {
+        "text": "Learn More",
+        "top": 5230,
+        "aboveFold": false
+      },
+      {
+        "text": "Learn More",
+        "top": 5553,
+        "aboveFold": false
+      },
+      {
+        "text": "Learn More",
+        "top": 5875,
+        "aboveFold": false
+      },
+      {
+        "text": "Learn More",
+        "top": 6227,
+        "aboveFold": false
+      },
+      {
+        "text": "Schedule Your Free Assessment",
+        "top": 15557,
+        "aboveFold": false
+      },
+      {
+        "text": "Call Now | (949) 849-4362",
+        "top": 15637,
+        "aboveFold": false
+      },
+      {
+        "text": "Learn More",
+        "top": 17601,
+        "aboveFold": false
+      },
+      {
+        "text": "Learn More",
+        "top": 18103,
+        "aboveFold": false
+      },
+      {
+        "text": "Start treatment now",
+        "top": 21709,
+        "aboveFold": false
+      },
+      {
+        "text": "Get in touch",
+        "top": 22921,
+        "aboveFold": false
+      },
+      {
+        "text": "Instantly Verify Insurance",
+        "top": 24117,
+        "aboveFold": false
+      }
+    ],
+    "telLinks": [
+      "tel:+19496494314",
+      "tel:+19496494314",
+      "tel:+19496494314",
+      "tel:+19496494314",
+      "tel:(877)%20375-4344",
+      "tel:(877)%20375-4344",
+      "tel:+19496494314",
+      "tel:+19496494314",
+      "tel:+19496494314",
+      "tel:+19496494314",
+      "tel:+19496494314",
+      "tel:(949)%20849-4362",
+      "tel:(877)%20414-3007",
+      "tel:+19496494314",
+      "tel:+19496494314",
+      "tel:+18773754344"
+    ],
+    "phonesInText": [
+      "(949) 649-4314",
+      "(949) 849-4362"
+    ],
+    "fontFamilies": [
+      "Figtree",
+      "Poppins",
+      "Trustindex Poppins",
+      "Inter"
+    ],
+    "distinctTextColors": 8,
+    "distinctFontSizes": 17,
+    "imgCount": 128,
+    "imgNoAltAttr": 0,
+    "imgEmptyAlt": 26,
+    "hCounts": {
+      "h1": 1,
+      "h2": 14,
+      "h3": 30
+    },
+    "metaDescription": "Compassion Recovery Centers provides in-person and virtual mental health & addiction treatment, accepting most insurance plans.",
+    "canonical": "https://compassionrecoverycenters.com/",
+    "robotsMeta": "follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large",
+    "og": {
+      "title": "Compassion Recovery Centers | Mental Health & Addiction Treatment",
+      "image": true
+    },
+    "twitterCard": "summary_large_image",
+    "jsonLdTypes": [
+      [
+        "Place",
+        "Organization",
+        "WebSite",
+        "ImageObject",
+        "WebPage"
+      ],
+      [
+        "MedicalOrganization",
+        "MedicalClinic",
+        "MedicalClinic",
+        "WebSite"
+      ],
+      [
+        "WebSite"
+      ],
+      [
+        "MedicalBusiness"
+      ]
+    ],
+    "htmlLang": "en-US",
+    "viewportMeta": "width=device-width, initial-scale=1"
+  }
+}

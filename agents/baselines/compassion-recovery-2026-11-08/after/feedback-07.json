@@ -1,0 +1,33 @@
+{
+  "agent": "07-apple-design",
+  "version": "1.1",
+  "run_id": "after-4",
+  "inputs": "https://compassionrecoverycenters.com/ desktop 1440x900, mobile 390x844",
+  "evidence_links": [
+    "evidence.json",
+    "evidence/desktop-fold.png",
+    "evidence/mobile-fold.png"
+  ],
+  "findings": [
+    {
+      "id": "07-3",
+      "disposition": "pending_human_review",
+      "confidence": "high",
+      "uncertainty": "Not Measured"
+    },
+    {
+      "id": "07-4",
+      "disposition": "pending_human_review",
+      "confidence": "high",
+      "uncertainty": "Not Measured"
+    },
+    {
+      "id": "07-5",
+      "disposition": "pending_human_review",
+      "confidence": "medium",
+      "uncertainty": "Not Measured"
+    }
+  ],
+  "outcome": "Not Measured",
+  "pattern": "overlays and unmeasurable contrast over images"
+}

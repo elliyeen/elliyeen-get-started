@@ -1,0 +1,33 @@
+{
+  "agent": "24-seo-growth-engineering",
+  "version": "1.1",
+  "run_id": "after-4",
+  "inputs": "https://compassionrecoverycenters.com/ desktop 1440x900, mobile 390x844",
+  "evidence_links": [
+    "evidence.json",
+    "evidence/desktop-fold.png",
+    "evidence/mobile-fold.png"
+  ],
+  "findings": [
+    {
+      "id": "24-2",
+      "disposition": "pending_human_review",
+      "confidence": "high",
+      "uncertainty": "Not Measured"
+    },
+    {
+      "id": "24-3",
+      "disposition": "pending_human_review",
+      "confidence": "high",
+      "uncertainty": "Not Measured"
+    },
+    {
+      "id": "24-4",
+      "disposition": "pending_human_review",
+      "confidence": "medium",
+      "uncertainty": "Not Measured"
+    }
+  ],
+  "outcome": "Not Measured",
+  "pattern": "structured data duplication, URL patterns, phone consistency"
+}

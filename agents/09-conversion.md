@@ -1,9 +1,10 @@
 # Agent 09 — Conversion Audit
 
-**Version:** 1.0
-**Last updated:** 2026-11-07
+**Version:** 1.1
+**Last updated:** 2026-11-08
 **Updated by:** Claude Code session (PR for independent review)
 **Change log:**
+- v1.1 — Added Evidence Protocol: measured hero-fold CTA status, label/destination check, phone targets, journey position; Not Measured rule; out-of-scope referral; feedback record. Existing criteria unchanged.
 - v1.0 — Baseline version header added. Audit criteria unchanged.
 
 **Frameworks:** HubSpot Conversion Team · CXL Institute · Reforge Growth Team · Joanna Wiebe
@@ -125,3 +126,26 @@ Does the website create forward momentum, or does it allow visitors to defer ind
 7. **Momentum assessment**
 8. **Conversion Score: X/100**
 9. **Top 3 changes that will move the conversion rate immediately**
+
+---
+
+## Evidence Protocol (v1.1)
+
+Before auditing, run the read-only collector against the public URL:
+
+```
+node agents/tools/audit-evidence/collect.mjs <url> <outDir> <runId>
+```
+
+- Use the measured values in `evidence.json` and cite the screenshots in `evidence/`. Do not estimate what the collector can measure.
+- Anything not measured is written `Not Measured`. Never invent percentages, rankings, costs or conversion effects. Do not claim conversion lift or ranking change without analytics or a controlled experiment.
+- Inspection is public and non-intrusive only: no logins, no form entry or submission, no scanning, no patient data.
+- Stay inside this agent's scope: admissions journey and CTA friction. A patient-safety, security, privacy or clinical issue outside that scope (for example missing crisis help in an intake form) is recorded as an `Out-of-scope referral` with its evidence and routed to a human reviewer. Do not assess it here.
+- After every run write `feedback-09.json` using the schema in [FEEDBACK.md](./FEEDBACK.md). `collect.mjs` validates it. Finding dispositions stay `pending_human_review` until a human changes them.
+- Self-heal boundary: this agent may retry a failed page load up to 3 times and may mark values `Not Measured`. It may not edit this file, the collector, permissions or policy. Changes are proposed by pull request and need independent approval.
+
+### Checks added in v1.1
+- **Hero CTA fold status:** for each viewport report whether a non-header, non-fixed CTA or tel link is fully visible, partially visible (with pixels) or below the fold.
+- **Label versus destination:** flag labels such as "Verify Insurance" that only place a phone call, and count generic labels ("Learn More", "Get Started").
+- **Phone targets:** list distinct tel targets versus numbers shown as text. Do not infer whether they are tracking numbers.
+- **Journey position:** report where "Step 1" and "How It Works" sit (pixels, percent of page, viewports down), whether a Step 3 exists, and whether a "How It Works" label exists.
