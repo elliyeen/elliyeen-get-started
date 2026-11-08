@@ -42,7 +42,7 @@ done
 # 5. Revert path: merge the PR onto base, revert the merge, tree must equal base exactly
 git worktree add -q --detach "$WT" "$BASE_SHA"
 ( cd "$WT" && git checkout -q -b "$B1" && git -c user.name=verify -c user.email=verify@invalid merge -q --no-ff -m "simulated merge" "$HEAD_SHA" >/dev/null \
-  && git -c user.name=verify -c user.email=verify@invalid revert -q -m 1 --no-edit HEAD >/dev/null )
+  && git -c user.name=verify -c user.email=verify@invalid revert -m 1 --no-edit HEAD >/dev/null )
 if [ "$(git rev-parse "$B1^{tree}")" = "$(git rev-parse "$BASE_SHA^{tree}")" ]; then ok "git revert -m 1 of the merge restores the exact base tree ($(git rev-parse --short "$B1^{tree}"))"; else bad "revert did not restore the base tree"; fi
 
 # 6. Manual path from the PR text: restore pilot files + AUDIT.md from base, remove new paths, compare to base

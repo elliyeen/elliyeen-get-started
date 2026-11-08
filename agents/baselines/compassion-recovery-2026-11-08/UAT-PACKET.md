@@ -80,6 +80,8 @@ Each agent has independently testable acceptance criteria (detectors `D07-*`, `D
 
 ## 6. Rollback verification (exact pre-merge commit)
 
+The output below was produced against head `4aa42a5`. A packet cannot contain the SHA of the commit that holds it, so the reviewer must re-run `verify-rollback.sh` on the final PR head (the PR comment records the result and SHA at the time of writing).
+
 ```
 base (pre-merge) : d5ebcd80630539aff3ba3be7b933584c08497cf5
 head (PR)        : 4aa42a50927586177ff80e1c55be19ba6cc09c14
