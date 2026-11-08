@@ -1,7 +1,7 @@
 # UAT packet: independent security and quality review of PR #10
 
-**Status:** Prepared by Claude Code for an independent reviewer. **Not approved.** No agent self-approval. Do not merge or deploy until a named independent reviewer signs off and a human approves.
-**PR:** https://github.com/elliyeen/elliyeen-get-started/pull/10 (open, unmerged)
+**Status:** Prepared by Claude Code for an independent reviewer. **Not approved** (the merge happened anyway; see POST-MERGE-UAT.md). No agent self-approval. Release status stays not approved until a named independent reviewer signs off and a human approves.
+**PR:** https://github.com/elliyeen/elliyeen-get-started/pull/10 (**merged 2026-11-08T01:00:04Z as `5e3dc27` with no submitted review; see POST-MERGE-UAT.md. This line was "open, unmerged" when written.**)
 **Pre-merge commit (rollback target):** `d5ebcd80630539aff3ba3be7b933584c08497cf5`
 **Scope:** agents 07, 09, 24 (kept together in one PR; independently testable, see section 5), the read-only collector in `agents/tools/audit-evidence/`, the gold-standard rubric, baselines. The other 21 agents are unchanged and must stay unchanged.
 **Reviewer must not rely on this packet alone.** Re-run the commands in section 2 on your own machine.
