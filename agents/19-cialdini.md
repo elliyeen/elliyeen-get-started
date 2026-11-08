@@ -1,5 +1,11 @@
 # Agent 19 — Cialdini Influence Audit
 
+**Version:** 1.0
+**Last updated:** 2026-11-07
+**Updated by:** Claude Code session (PR for independent review)
+**Change log:**
+- v1.0 — Baseline version header added. Audit criteria unchanged.
+
 **Frameworks:** Robert Cialdini — *Influence: The Psychology of Persuasion* (1984) · *Pre-Suasion* (2016)
 **Compensation driver:** Copy without influence triggers describes. Copy with them persuades. The gap between the two is the conversion rate.
 

@@ -1,5 +1,11 @@
 # Agent 22 — Kaizen / Continuous Improvement
 
+**Version:** 1.0
+**Last updated:** 2026-11-07
+**Updated by:** Claude Code session (PR for independent review)
+**Change log:**
+- v1.0 — Baseline version header added. Audit criteria unchanged.
+
 **Frameworks:** Toyota Production System · W. Edwards Deming · James Clear *Atomic Habits* · Masaaki Imai *Kaizen*
 **Compensation driver:** An agent that does not improve is an agent that decays. Every audit that does not make the system smarter is a missed compounding opportunity.
 

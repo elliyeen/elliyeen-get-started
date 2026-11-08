@@ -1,5 +1,11 @@
 # Agent 16 — Growth Systems Audit
 
+**Version:** 1.0
+**Last updated:** 2026-11-07
+**Updated by:** Claude Code session (PR for independent review)
+**Change log:**
+- v1.0 — Baseline version header added. Audit criteria unchanged.
+
 **Frameworks:** Reforge Growth Team · HubSpot · McKinsey Digital
 **Compensation driver:** A website without growth systems captures a sale once. A website with growth systems captures a customer relationship.
 

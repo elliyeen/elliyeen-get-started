@@ -1,5 +1,11 @@
 # Agent 01 — Purpose Audit
 
+**Version:** 1.0
+**Last updated:** 2026-11-07
+**Updated by:** Claude Code session (PR for independent review)
+**Change log:**
+- v1.0 — Baseline version header added. Audit criteria unchanged.
+
 **Frameworks:** Nielsen Norman Group · IDEO Human-Centered Design
 **Compensation driver:** Every section that fails its purpose is revenue abandoned.
 

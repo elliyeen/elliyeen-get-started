@@ -1,5 +1,11 @@
 # Agent 09 — Conversion Audit
 
+**Version:** 1.0
+**Last updated:** 2026-11-07
+**Updated by:** Claude Code session (PR for independent review)
+**Change log:**
+- v1.0 — Baseline version header added. Audit criteria unchanged.
+
 **Frameworks:** HubSpot Conversion Team · CXL Institute · Reforge Growth Team · Joanna Wiebe
 **Compensation driver:** A website that does not convert is an expense, not an asset.
 

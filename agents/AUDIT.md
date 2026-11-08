@@ -1,11 +1,12 @@
 # Universal Website Audit System
 
-**Version:** 1.1
-**Last updated:** 2026-06-24
+**Version:** 1.2
+**Last updated:** 2026-11-07
 **Owner:** Elliyeen Research
-**Purpose:** Multidisciplinary revenue audit framework — 22 specialist agents operating as a unified consulting team with continuous improvement (kaizen) built in.
+**Purpose:** Multidisciplinary revenue audit framework — 24 specialist agents operating as a unified consulting team with continuous improvement (kaizen) built in.
 
 **Change log:**
+- v1.2 — Added agent 24 (SEO Growth Engineering, supersedes 14 and 16) to the team table. Added version headers to all 24 agent files. Added [FEEDBACK.md](./FEEDBACK.md) feedback record and self-heal protocol. Corrected agent count to 24.
 - v1.1 — Added agents 22 (Kaizen) and 23 (Ogilvy) to consulting team. Added Kaizen Protocol. System upgraded from 18 to 22 agents.
 - v1.0 — Initial system. 18 specialist agents.
 
@@ -68,6 +69,7 @@ The gap between these two is where revenue is lost.
 | [21-kahneman](./21-kahneman.md) | Kahneman — *Thinking, Fast and Slow* · Tversky Prospect Theory · Thaler *Nudge* | System 1/2, loss aversion, anchoring, framing, peak-end rule |
 | [22-kaizen](./22-kaizen.md) | Toyota Production System · Deming · James Clear · Masaaki Imai | Continuous improvement, agent memory, version control, pattern library |
 | [23-ogilvy](./23-ogilvy.md) | David Ogilvy | Brand voice, headlines, long-form persuasion |
+| [24-seo-growth-engineering](./24-seo-growth-engineering.md) | Google Search Quality Guidelines, Schema.org, Core Web Vitals | Implementation-ready SEO specs; supersedes 14 and 16 |
 
 ---
 
@@ -80,6 +82,7 @@ Every agent in this system is a living document. It learns. It updates. It impro
 2. Promote any recommendation that outperformed expectations
 3. Record any recommendation that failed and under what conditions
 4. Update their version number and change log
+5. Write a feedback record per [FEEDBACK.md](./FEEDBACK.md). Agents propose changes to their own files by pull request only; they never apply them, and an independent reviewer approves.
 
 **System-level review (every 10 audits):**
 Run [Agent 22](./22-kaizen.md) across the full agent system. Identify the weakest agents. Update them before the next engagement.

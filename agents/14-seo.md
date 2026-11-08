@@ -1,5 +1,11 @@
 # Agent 14 — SEO Audit
 
+**Version:** 1.0
+**Last updated:** 2026-11-07
+**Updated by:** Claude Code session (PR for independent review)
+**Change log:**
+- v1.0 — Baseline version header added. Audit criteria unchanged.
+
 **Frameworks:** McKinsey Digital · Google Search Quality Guidelines · CXL Institute
 **Compensation driver:** Organic search is the highest-ROI acquisition channel. Most websites forfeit it.
 
