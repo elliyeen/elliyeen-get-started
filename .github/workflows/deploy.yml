@@ -4,13 +4,17 @@ on:
   push:
     branches: [master]
 
+# Least privilege: the job only needs to read the repository. Deployment uses the Cloudflare API token secret.
+permissions:
+  contents: read
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: 20
           cache: npm
@@ -20,7 +24,7 @@ jobs:
       - run: npm run build
 
       # Mount the Station Readiness demo (elliyeen/kai-dart) under /dart.
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
           repository: elliyeen/kai-dart
           ref: main
@@ -45,7 +49,7 @@ jobs:
           test -f out/dart/demo.html
           ! grep -rq "kai-dart" out/dart
 
-      - uses: cloudflare/wrangler-action@v3
+      - uses: cloudflare/wrangler-action@9acf94ace14e7dc412b076f2c5c20b8ce93c79cd # v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: 2042b1a264c1f211916daf921cd51c95
