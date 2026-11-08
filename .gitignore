@@ -10,3 +10,6 @@ tsconfig.tsbuildinfo
 test-results/
 playwright-report/
 Rplots.pdf
+
+# collector output (never committed)
+agents/artifacts/

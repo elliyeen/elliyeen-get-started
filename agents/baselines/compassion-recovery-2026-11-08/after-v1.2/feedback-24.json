@@ -1,0 +1,52 @@
+{
+  "agent": "24-seo-growth-engineering",
+  "version": "1.2",
+  "run_id": "v12-run-1",
+  "inputs": "https://compassionrecoverycenters.com/ desktop 1440x900, mobile 390x844",
+  "evidence_links": [
+    "evidence.json",
+    "evidence/desktop-fold.png",
+    "evidence/mobile-fold.png"
+  ],
+  "runs_agreeing": 2,
+  "findings": [
+    {
+      "id": "D24-jsonld-duplicate@desktop",
+      "disposition": "pending_human_review",
+      "confidence": "low",
+      "uncertainty": "observation; requires schema validation"
+    },
+    {
+      "id": "D24-url-pattern@desktop",
+      "disposition": "pending_human_review",
+      "confidence": "high",
+      "uncertainty": "Not Measured"
+    },
+    {
+      "id": "D24-phone-linkonly@desktop",
+      "disposition": "pending_human_review",
+      "confidence": "low",
+      "uncertainty": "Not Measured"
+    },
+    {
+      "id": "D24-jsonld-duplicate@mobile",
+      "disposition": "pending_human_review",
+      "confidence": "low",
+      "uncertainty": "observation; requires schema validation"
+    },
+    {
+      "id": "D24-url-pattern@mobile",
+      "disposition": "pending_human_review",
+      "confidence": "high",
+      "uncertainty": "Not Measured"
+    },
+    {
+      "id": "D24-phone-linkonly@mobile",
+      "disposition": "pending_human_review",
+      "confidence": "low",
+      "uncertainty": "Not Measured"
+    }
+  ],
+  "outcome": "Not Measured",
+  "pattern": "see evidence.json detectors"
+}

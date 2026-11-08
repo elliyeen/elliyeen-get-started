@@ -1,0 +1,77 @@
+{
+ "total": 282,
+ "passed": 282,
+ "failed": 0,
+ "files": [
+  {
+   "file": "app/MobileNav.test.tsx",
+   "passed": 5,
+   "other": 0
+  },
+  {
+   "file": "app/SiteNav.test.tsx",
+   "passed": 8,
+   "other": 0
+  },
+  {
+   "file": "agents/agent-structure.test.ts",
+   "passed": 41,
+   "other": 0
+  },
+  {
+   "file": "agents/tools/audit-evidence/analyze.test.ts",
+   "passed": 27,
+   "other": 0
+  },
+  {
+   "file": "agents/tools/audit-evidence/cli.test.ts",
+   "passed": 15,
+   "other": 0
+  },
+  {
+   "file": "agents/tools/audit-evidence/guard.test.ts",
+   "passed": 102,
+   "other": 0
+  },
+  {
+   "file": "agents/tools/audit-evidence/proxy.test.ts",
+   "passed": 24,
+   "other": 0
+  },
+  {
+   "file": "agents/tools/audit-evidence/rubric.test.ts",
+   "passed": 9,
+   "other": 0
+  },
+  {
+   "file": "agents/tools/audit-evidence/score.test.ts",
+   "passed": 15,
+   "other": 0
+  },
+  {
+   "file": "lib/sports/esa/possessions.test.ts",
+   "passed": 7,
+   "other": 0
+  },
+  {
+   "file": "components/sports/SportsHeader.test.tsx",
+   "passed": 5,
+   "other": 0
+  },
+  {
+   "file": "components/sports/GameCard/EsaGameCard.reusability.test.tsx",
+   "passed": 7,
+   "other": 0
+  },
+  {
+   "file": "components/sports/GameCard/EsaGameCard.test.tsx",
+   "passed": 13,
+   "other": 0
+  },
+  {
+   "file": "components/sports/GameCard/PossessionMap.test.tsx",
+   "passed": 4,
+   "other": 0
+  }
+ ]
+}

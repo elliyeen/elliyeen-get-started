@@ -1,0 +1,4 @@
+{
+  "_comment": "Approved public HTTPS hosts for collect.mjs. Adding a host is a reviewed change to this file (PR + independent approval). Subdomains of an entry are allowed.",
+  "hosts": ["compassionrecoverycenters.com"]
+}

@@ -1,0 +1,671 @@
+{
+  "desktop": {
+    "hero": [
+      {
+        "text": "Accessibility Screen-Reader Guide, Feedback, ",
+        "href": "https://accessibe.com/blog/knowledgebase/screen-reader-guide",
+        "top": -1,
+        "w": 200,
+        "h": 1
+      },
+      {
+        "text": "VERIFY BENEFITS",
+        "href": "#elementor-action:action=popup:open&settings=eyJpZCI6Ijg5MzQiLCJ0b2dnb",
+        "top": 360,
+        "w": 60,
+        "h": 180
+      },
+      {
+        "text": "Skip to content",
+        "href": "#content",
+        "top": -180001,
+        "w": 1,
+        "h": 1
+      },
+      {
+        "text": "23141 Moulton Pkwy Suite 207, Laguna Hills, C",
+        "href": "https://www.google.com/maps?um=1&ie=UTF-8&fb=1&gl=us&sa=X&geocode=KR9I",
+        "top": 47,
+        "w": 368,
+        "h": 21
+      },
+      {
+        "text": "Check Benefits",
+        "href": "#elementor-action%3Aaction%3Dpopup%3Aopen%26settings%3DeyJpZCI6Ijg5MzQ",
+        "top": 50,
+        "w": 95,
+        "h": 17
+      },
+      {
+        "text": "What We Treat",
+        "href": "https://compassionrecoverycenters.com/what-we-treat/",
+        "top": 101,
+        "w": 152,
+        "h": 46
+      },
+      {
+        "text": "Our Programs",
+        "href": "https://compassionrecoverycenters.com/treatment-services/",
+        "top": 101,
+        "w": 145,
+        "h": 46
+      },
+      {
+        "text": "Who We Serve",
+        "href": "https://compassionrecoverycenters.com/who-we-help/",
+        "top": 101,
+        "w": 133,
+        "h": 46
+      },
+      {
+        "text": "Admissions",
+        "href": "https://compassionrecoverycenters.com/admissions/",
+        "top": 101,
+        "w": 130,
+        "h": 46
+      },
+      {
+        "text": "About Us",
+        "href": "https://compassionrecoverycenters.com/about/",
+        "top": 101,
+        "w": 118,
+        "h": 46
+      },
+      {
+        "text": "(949) 649-4314",
+        "href": "tel:+19496494314",
+        "top": 102,
+        "w": 141,
+        "h": 44
+      },
+      {
+        "text": "(949) 649-4314",
+        "href": "tel:+19496494314",
+        "top": 920,
+        "w": 151,
+        "h": 54
+      }
+    ],
+    "forms": [
+      {
+        "fields": 2,
+        "vis": true,
+        "action": "https://compassionrecoverycenters.com"
+      }
+    ],
+    "secs": [
+      {
+        "top": 13511,
+        "h": 646,
+        "pt": 40,
+        "pb": 40
+      },
+      {
+        "top": 13556,
+        "h": 556,
+        "pt": 0,
+        "pb": 0
+      },
+      {
+        "top": 13584,
+        "h": 288,
+        "pt": 0,
+        "pb": 0
+      },
+      {
+        "top": 14157,
+        "h": 454,
+        "pt": 20,
+        "pb": 20
+      },
+      {
+        "top": 14187,
+        "h": 229,
+        "pt": 0,
+        "pb": 0
+      }
+    ],
+    "h2": [
+      {
+        "t": "If You Have Insurance We Most Likely Take It.",
+        "top": 1287
+      },
+      {
+        "t": "In Person",
+        "top": 1713
+      },
+      {
+        "t": "Virtual",
+        "top": 1713
+      },
+      {
+        "t": "Flexible Treatment Options To Ensure Your Needs Ar",
+        "top": 1641
+      },
+      {
+        "t": "What We Treat - Conditions & More",
+        "top": 2452
+      },
+      {
+        "t": "Immersive Behavioral Health Programs In California",
+        "top": 3638
+      },
+      {
+        "t": "Evidence-Based Treatment That Works",
+        "top": 4482
+      },
+      {
+        "t": "Start Feeling Better Today With Compassion Recover",
+        "top": 5610
+      },
+      {
+        "t": "Holistic Treatment Methods",
+        "top": 6101
+      },
+      {
+        "t": "Compassion Is In Our Nature",
+        "top": 7040
+      },
+      {
+        "t": "The Heart Of Our Expert Care Team",
+        "top": 7606
+      },
+      {
+        "t": "Our Laguna Hills Location",
+        "top": 8602
+      },
+      {
+        "t": "",
+        "top": 10966
+      },
+      {
+        "t": "Begin Your Recovery Today—Reach Out Now.",
+        "top": 12801
+      }
+    ],
+    "bodyFont": "Figtree, sans-serif",
+    "pSizes": [
+      14,
+      20,
+      18,
+      16
+    ],
+    "internalLinks": 265,
+    "externalLinks": 11,
+    "navLinks": [
+      {
+        "t": "23141 Moulton Pkwy Suite 207, ",
+        "h": "https://www.google.com/maps?um=1&ie=UTF-8&fb=1&gl=us&sa=X&geocode=KR9IAXLi6dyAMdL6B5I-9925&daddr=23141+Moulton+Pkwy+Suite+207,+Laguna+Hills,+CA+92653"
+      },
+      {
+        "t": "What We Treat",
+        "h": "https://compassionrecoverycenters.com/what-we-treat/"
+      },
+      {
+        "t": "Mental Health",
+        "h": "https://compassionrecoverycenters.com/mental-health/"
+      },
+      {
+        "t": "Depression Treatment",
+        "h": "https://compassionrecoverycenters.com/depression-treatment/"
+      },
+      {
+        "t": "Bipolar Disorder Treatment",
+        "h": "https://compassionrecoverycenters.com/mental-health/bipolar-disorder-treatment/"
+      },
+      {
+        "t": "ADHD Treatment",
+        "h": "https://compassionrecoverycenters.com/mental-health/adhd-treatment/"
+      },
+      {
+        "t": "Schizoaffective Disorder Treat",
+        "h": "https://compassionrecoverycenters.com/mental-health/schizoaffective-disorder-treatment/"
+      },
+      {
+        "t": "Obsessive-Compulsive Disorder ",
+        "h": "https://compassionrecoverycenters.com/mental-health/ocd-treatment/"
+      },
+      {
+        "t": "PTSD Treatment",
+        "h": "https://compassionrecoverycenters.com/mental-health/ptsd/"
+      },
+      {
+        "t": "Anxiety Treatment",
+        "h": "https://compassionrecoverycenters.com/mental-health/anxiety-treatment/"
+      },
+      {
+        "t": "Substance Abuse",
+        "h": "https://compassionrecoverycenters.com/substance-abuse/"
+      },
+      {
+        "t": "Dual Diagnosis",
+        "h": "https://compassionrecoverycenters.com/treatment-services/dual-diagnosis/"
+      },
+      {
+        "t": "Our Programs",
+        "h": "https://compassionrecoverycenters.com/treatment-services/"
+      },
+      {
+        "t": "Virtual IOP",
+        "h": "https://compassionrecoverycenters.com/treatment-services/virtual-iop/"
+      },
+      {
+        "t": "Partial Hospitalization",
+        "h": "https://compassionrecoverycenters.com/treatment-services/partial-hospitalization/"
+      },
+      {
+        "t": "Outpatient",
+        "h": "https://compassionrecoverycenters.com/treatment-services/outpatient/"
+      },
+      {
+        "t": "Intensive Outpatient",
+        "h": "https://compassionrecoverycenters.com/treatment-services/intensive-outpatient-program/"
+      },
+      {
+        "t": "IOP for Work Burnout",
+        "h": "https://compassionrecoverycenters.com/iop-for-work-burnout/"
+      },
+      {
+        "t": "Who We Serve",
+        "h": "https://compassionrecoverycenters.com/who-we-help/"
+      },
+      {
+        "t": "Admissions",
+        "h": "https://compassionrecoverycenters.com/admissions/"
+      },
+      {
+        "t": "Contact US",
+        "h": "https://compassionrecoverycenters.com/contact/"
+      },
+      {
+        "t": "Aetna",
+        "h": "https://compassionrecoverycenters.com/aetna-addiction-treatment-laguna-hills/"
+      },
+      {
+        "t": "Anthem",
+        "h": "https://compassionrecoverycenters.com/anthem-insurance-mental-health-and-substance-abuse-rehab/"
+      },
+      {
+        "t": "BCBS of California",
+        "h": "https://compassionrecoverycenters.com/blue-shield-mental-health-and-substance-abuse-rehab/"
+      },
+      {
+        "t": "Cigna",
+        "h": "https://compassionrecoverycenters.com/cigna-insurance-mental-health-and-substance-abuse-rehab/"
+      },
+      {
+        "t": "United Healthcare",
+        "h": "https://compassionrecoverycenters.com/united-healthcare-mental-health-and-substance-abuse-rehab/"
+      },
+      {
+        "t": "Tricare",
+        "h": "https://compassionrecoverycenters.com/tricare-rehab-for-drug-and-mental-health-treatment/"
+      },
+      {
+        "t": "Medicare",
+        "h": "https://compassionrecoverycenters.com/medicare-insurance-mental-health-and-substance-abuse-rehab/"
+      },
+      {
+        "t": "About Us",
+        "h": "https://compassionrecoverycenters.com/about/"
+      },
+      {
+        "t": "Our Team",
+        "h": "https://compassionrecoverycenters.com/about/#team"
+      },
+      {
+        "t": "Tour Our Facility",
+        "h": "https://compassionrecoverycenters.com/tour/"
+      },
+      {
+        "t": "Press & Awards",
+        "h": "https://compassionrecoverycenters.com/press-and-awards/"
+      },
+      {
+        "t": "Resources",
+        "h": "https://compassionrecoverycenters.com/#"
+      },
+      {
+        "t": "Taking Leave From Work",
+        "h": "https://compassionrecoverycenters.com/what-to-expect-when-taking-leave-from-work-for-rehab/"
+      },
+      {
+        "t": "Court Mandated Treatment",
+        "h": "https://compassionrecoverycenters.com/court-mandated-iop-rehab/"
+      },
+      {
+        "t": "Articles",
+        "h": "https://compassionrecoverycenters.com/blog/"
+      },
+      {
+        "t": "What We Treat",
+        "h": "https://compassionrecoverycenters.com/what-we-treat/"
+      },
+      {
+        "t": "Mental Health",
+        "h": "https://compassionrecoverycenters.com/mental-health/"
+      },
+      {
+        "t": "Depression Treatment",
+        "h": "https://compassionrecoverycenters.com/depression-treatment/"
+      },
+      {
+        "t": "Bipolar Disorder Treatment",
+        "h": "https://compassionrecoverycenters.com/mental-health/bipolar-disorder-treatment/"
+      }
+    ]
+  },
+  "mobile": {
+    "hero": [
+      {
+        "text": "Accessibility Screen-Reader Guide, Feedback, ",
+        "href": "https://accessibe.com/blog/knowledgebase/screen-reader-guide",
+        "top": -1,
+        "w": 200,
+        "h": 1
+      },
+      {
+        "text": "VERIFY BENEFITS",
+        "href": "#elementor-action:action=popup:open&settings=eyJpZCI6Ijg5MzQiLCJ0b2dnb",
+        "top": 338,
+        "w": 60,
+        "h": 180
+      },
+      {
+        "text": "Skip to content",
+        "href": "#content",
+        "top": -180001,
+        "w": 1,
+        "h": 1
+      },
+      {
+        "text": "Call Now",
+        "href": "tel:(877)%20375-4344",
+        "top": 817,
+        "w": 350,
+        "h": 54
+      },
+      {
+        "text": "Verify Insurance",
+        "href": "tel:(877)%20375-4344",
+        "top": 896,
+        "w": 350,
+        "h": 54
+      },
+      {
+        "text": "(949) 649-4314",
+        "href": "tel:+19496494314",
+        "top": 1389,
+        "w": 151,
+        "h": 54
+      }
+    ],
+    "forms": [
+      {
+        "fields": 2,
+        "vis": true,
+        "action": "https://compassionrecoverycenters.com"
+      }
+    ],
+    "secs": [
+      {
+        "top": 24273,
+        "h": 1401,
+        "pt": 0,
+        "pb": 20
+      },
+      {
+        "top": 24273,
+        "h": 559,
+        "pt": 0,
+        "pb": 0
+      },
+      {
+        "top": 24832,
+        "h": 518,
+        "pt": 20,
+        "pb": 0
+      },
+      {
+        "top": 25675,
+        "h": 588,
+        "pt": 20,
+        "pb": 20
+      },
+      {
+        "top": 25695,
+        "h": 341,
+        "pt": 0,
+        "pb": 0
+      }
+    ],
+    "h2": [
+      {
+        "t": "If You Have Insurance We Most Likely Take It.",
+        "top": 1152
+      },
+      {
+        "t": "In Person",
+        "top": 1621
+      },
+      {
+        "t": "Virtual",
+        "top": 2038
+      },
+      {
+        "t": "Flexible Treatment Options To Ensure Your Needs Ar",
+        "top": 2373
+      },
+      {
+        "t": "What We Treat - Conditions & More",
+        "top": 3243
+      },
+      {
+        "t": "Immersive Behavioral Health Programs In California",
+        "top": 6452
+      },
+      {
+        "t": "Evidence-Based Treatment That Works",
+        "top": 7996
+      },
+      {
+        "t": "Start Feeling Better Today With Compassion Recover",
+        "top": 9534
+      },
+      {
+        "t": "Holistic Treatment Methods",
+        "top": 9897
+      },
+      {
+        "t": "Compassion Is In Our Nature",
+        "top": 13135
+      },
+      {
+        "t": "The Heart Of Our Expert Care Team",
+        "top": 13725
+      },
+      {
+        "t": "Our Laguna Hills Location",
+        "top": 14859
+      },
+      {
+        "t": "",
+        "top": 18818
+      },
+      {
+        "t": "Begin Your Recovery Today—Reach Out Now.",
+        "top": 22628
+      }
+    ],
+    "bodyFont": "Figtree, sans-serif",
+    "pSizes": [
+      14,
+      19.1015,
+      16
+    ],
+    "internalLinks": 265,
+    "externalLinks": 11,
+    "navLinks": [
+      {
+        "t": "23141 Moulton Pkwy Suite 207, ",
+        "h": "https://www.google.com/maps?um=1&ie=UTF-8&fb=1&gl=us&sa=X&geocode=KR9IAXLi6dyAMdL6B5I-9925&daddr=23141+Moulton+Pkwy+Suite+207,+Laguna+Hills,+CA+92653"
+      },
+      {
+        "t": "What We Treat",
+        "h": "https://compassionrecoverycenters.com/what-we-treat/"
+      },
+      {
+        "t": "Mental Health",
+        "h": "https://compassionrecoverycenters.com/mental-health/"
+      },
+      {
+        "t": "Depression Treatment",
+        "h": "https://compassionrecoverycenters.com/depression-treatment/"
+      },
+      {
+        "t": "Bipolar Disorder Treatment",
+        "h": "https://compassionrecoverycenters.com/mental-health/bipolar-disorder-treatment/"
+      },
+      {
+        "t": "ADHD Treatment",
+        "h": "https://compassionrecoverycenters.com/mental-health/adhd-treatment/"
+      },
+      {
+        "t": "Schizoaffective Disorder Treat",
+        "h": "https://compassionrecoverycenters.com/mental-health/schizoaffective-disorder-treatment/"
+      },
+      {
+        "t": "Obsessive-Compulsive Disorder ",
+        "h": "https://compassionrecoverycenters.com/mental-health/ocd-treatment/"
+      },
+      {
+        "t": "PTSD Treatment",
+        "h": "https://compassionrecoverycenters.com/mental-health/ptsd/"
+      },
+      {
+        "t": "Anxiety Treatment",
+        "h": "https://compassionrecoverycenters.com/mental-health/anxiety-treatment/"
+      },
+      {
+        "t": "Substance Abuse",
+        "h": "https://compassionrecoverycenters.com/substance-abuse/"
+      },
+      {
+        "t": "Dual Diagnosis",
+        "h": "https://compassionrecoverycenters.com/treatment-services/dual-diagnosis/"
+      },
+      {
+        "t": "Our Programs",
+        "h": "https://compassionrecoverycenters.com/treatment-services/"
+      },
+      {
+        "t": "Virtual IOP",
+        "h": "https://compassionrecoverycenters.com/treatment-services/virtual-iop/"
+      },
+      {
+        "t": "Partial Hospitalization",
+        "h": "https://compassionrecoverycenters.com/treatment-services/partial-hospitalization/"
+      },
+      {
+        "t": "Outpatient",
+        "h": "https://compassionrecoverycenters.com/treatment-services/outpatient/"
+      },
+      {
+        "t": "Intensive Outpatient",
+        "h": "https://compassionrecoverycenters.com/treatment-services/intensive-outpatient-program/"
+      },
+      {
+        "t": "IOP for Work Burnout",
+        "h": "https://compassionrecoverycenters.com/iop-for-work-burnout/"
+      },
+      {
+        "t": "Who We Serve",
+        "h": "https://compassionrecoverycenters.com/who-we-help/"
+      },
+      {
+        "t": "Admissions",
+        "h": "https://compassionrecoverycenters.com/admissions/"
+      },
+      {
+        "t": "Contact US",
+        "h": "https://compassionrecoverycenters.com/contact/"
+      },
+      {
+        "t": "Aetna",
+        "h": "https://compassionrecoverycenters.com/aetna-addiction-treatment-laguna-hills/"
+      },
+      {
+        "t": "Anthem",
+        "h": "https://compassionrecoverycenters.com/anthem-insurance-mental-health-and-substance-abuse-rehab/"
+      },
+      {
+        "t": "BCBS of California",
+        "h": "https://compassionrecoverycenters.com/blue-shield-mental-health-and-substance-abuse-rehab/"
+      },
+      {
+        "t": "Cigna",
+        "h": "https://compassionrecoverycenters.com/cigna-insurance-mental-health-and-substance-abuse-rehab/"
+      },
+      {
+        "t": "United Healthcare",
+        "h": "https://compassionrecoverycenters.com/united-healthcare-mental-health-and-substance-abuse-rehab/"
+      },
+      {
+        "t": "Tricare",
+        "h": "https://compassionrecoverycenters.com/tricare-rehab-for-drug-and-mental-health-treatment/"
+      },
+      {
+        "t": "Medicare",
+        "h": "https://compassionrecoverycenters.com/medicare-insurance-mental-health-and-substance-abuse-rehab/"
+      },
+      {
+        "t": "About Us",
+        "h": "https://compassionrecoverycenters.com/about/"
+      },
+      {
+        "t": "Our Team",
+        "h": "https://compassionrecoverycenters.com/about/#team"
+      },
+      {
+        "t": "Tour Our Facility",
+        "h": "https://compassionrecoverycenters.com/tour/"
+      },
+      {
+        "t": "Press & Awards",
+        "h": "https://compassionrecoverycenters.com/press-and-awards/"
+      },
+      {
+        "t": "Resources",
+        "h": "https://compassionrecoverycenters.com/#"
+      },
+      {
+        "t": "Taking Leave From Work",
+        "h": "https://compassionrecoverycenters.com/what-to-expect-when-taking-leave-from-work-for-rehab/"
+      },
+      {
+        "t": "Court Mandated Treatment",
+        "h": "https://compassionrecoverycenters.com/court-mandated-iop-rehab/"
+      },
+      {
+        "t": "Articles",
+        "h": "https://compassionrecoverycenters.com/blog/"
+      },
+      {
+        "t": "What We Treat",
+        "h": "https://compassionrecoverycenters.com/what-we-treat/"
+      },
+      {
+        "t": "Mental Health",
+        "h": "https://compassionrecoverycenters.com/mental-health/"
+      },
+      {
+        "t": "Depression Treatment",
+        "h": "https://compassionrecoverycenters.com/depression-treatment/"
+      },
+      {
+        "t": "Bipolar Disorder Treatment",
+        "h": "https://compassionrecoverycenters.com/mental-health/bipolar-disorder-treatment/"
+      }
+    ]
+  }
+}

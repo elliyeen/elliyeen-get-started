@@ -1,0 +1,1801 @@
+{
+  "tool": "audit-evidence/collect.mjs v1.2",
+  "runId": "v12-run-1",
+  "url": "https://compassionrecoverycenters.com/",
+  "startedAt": "2026-11-08T00:44:52.825Z",
+  "browser": "153.0.8010.12",
+  "attemptsMax": 3,
+  "passes": 2,
+  "viewports": {
+    "desktop": {
+      "status": 200,
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "pageH": 14611,
+      "h1": [
+        "Compassionate Care For Mental Health & Addiction"
+      ],
+      "head": {
+        "title": "Compassion Recovery Centers | Mental Health & Addiction Treatment",
+        "metaDescription": "Compassion Recovery Centers provides in-person and virtual mental health & addiction treatment, accepting most insurance plans.",
+        "canonical": "https://compassionrecoverycenters.com/",
+        "lang": "en-US"
+      },
+      "fontFamilies": [
+        "Figtree",
+        "Poppins",
+        "Trustindex Poppins",
+        "Inter"
+      ],
+      "heroCta": {
+        "rows": [
+          {
+            "text": "VERIFY BENEFITS",
+            "href": "#elementor-action:action=popup:open&settings=eyJpZCI6Ijg5MzQiLCJ0b2dnbGUiOmZhbHNlfQ==",
+            "top": 360,
+            "height": 180,
+            "inHeader": false,
+            "fixed": true,
+            "visiblePx": 180,
+            "status": "fully-visible"
+          },
+          {
+            "text": "Admissions",
+            "href": "https://compassionrecoverycenters.com/admissions/",
+            "top": 101,
+            "height": 46,
+            "inHeader": true,
+            "fixed": false,
+            "visiblePx": 46,
+            "status": "fully-visible"
+          },
+          {
+            "text": "(949) 649-4314",
+            "href": "tel:+19496494314",
+            "top": 102,
+            "height": 44,
+            "inHeader": true,
+            "fixed": false,
+            "visiblePx": 44,
+            "status": "fully-visible"
+          },
+          {
+            "text": "(949) 649-4314",
+            "href": "tel:+19496494314",
+            "top": 920,
+            "height": 54,
+            "inHeader": false,
+            "fixed": false,
+            "visiblePx": 0,
+            "status": "below-fold"
+          },
+          {
+            "text": "(949) 649-4314",
+            "href": "tel:+19496494314",
+            "top": 1482,
+            "height": 54,
+            "inHeader": false,
+            "fixed": false,
+            "visiblePx": 0,
+            "status": "below-fold"
+          },
+          {
+            "text": "Get Started",
+            "href": "https://compassionrecoverycenters.com/treatment-services/intensive-outpatient-program/",
+            "top": 2006,
+            "height": 24,
+            "inHeader": false,
+            "fixed": false,
+            "visiblePx": 0,
+            "status": "below-fold"
+          },
+          {
+            "text": "Get Started",
+            "href": "https://compassionrecoverycenters.com/treatment-services/virtual-iop/",
+            "top": 1965,
+            "height": 24,
+            "inHeader": false,
+            "fixed": false,
+            "visiblePx": 0,
+            "status": "below-fold"
+          },
+          {
+            "text": "(949) 649-4314",
+            "href": "tel:+19496494314",
+            "top": 2039,
+            "height": 54,
+            "inHeader": false,
+            "fixed": false,
+            "visiblePx": 0,
+            "status": "below-fold"
+          },
+          {
+            "text": "(949) 649-4314",
+            "href": "tel:+19496494314",
+            "top": 4784,
+            "height": 54,
+            "inHeader": false,
+            "fixed": false,
+            "visiblePx": 0,
+            "status": "below-fold"
+          },
+          {
+            "text": "(949) 649-4314",
+            "href": "tel:+19496494314",
+            "top": 5796,
+            "height": 54,
+            "inHeader": false,
+            "fixed": false,
+            "visiblePx": 0,
+            "status": "below-fold"
+          },
+          {
+            "text": "(949) 649-4314",
+            "href": "tel:+19496494314",
+            "top": 6256,
+            "height": 54,
+            "inHeader": false,
+            "fixed": false,
+            "visiblePx": 0,
+            "status": "below-fold"
+          },
+          {
+            "text": "Schedule Your Free Assessment",
+            "href": "https://compassionrecoverycenters.com/free-assessment/",
+            "top": 9104,
+            "height": 55,
+            "inHeader": false,
+            "fixed": false,
+            "visiblePx": 0,
+            "status": "below-fold"
+          },
+          {
+            "text": "Call Now | (949) 849-4362",
+            "href": "tel:(949)%20849-4362",
+            "top": 9104,
+            "height": 54,
+            "inHeader": false,
+            "fixed": false,
+            "visiblePx": 0,
+            "status": "below-fold"
+          },
+          {
+            "text": "Start treatment now",
+            "href": "https://compassionrecoverycenters.com/admissions/",
+            "top": 12327,
+            "height": 54,
+            "inHeader": false,
+            "fixed": false,
+            "visiblePx": 0,
+            "status": "below-fold"
+          },
+          {
+            "text": "(949) 649-4314",
+            "href": "tel:+19496494314",
+            "top": 12878,
+            "height": 22,
+            "inHeader": false,
+            "fixed": false,
+            "visiblePx": 0,
+            "status": "below-fold"
+          },
+          {
+            "text": "Get in touch",
+            "href": "https://compassionrecoverycenters.com/contact/",
+            "top": 12923,
+            "height": 54,
+            "inHeader": false,
+            "fixed": false,
+            "visiblePx": 0,
+            "status": "below-fold"
+          },
+          {
+            "text": "Instantly Verify Insurance",
+            "href": "https://compassionrecoverycenters.com/admissions/",
+            "top": 13355,
+            "height": 56,
+            "inHeader": false,
+            "fixed": false,
+            "visiblePx": 0,
+            "status": "below-fold"
+          },
+          {
+            "text": "Facebook",
+            "href": "https://www.facebook.com/CompassionRecoveryCenter",
+            "top": 13756,
+            "height": 40,
+            "inHeader": false,
+            "fixed": false,
+            "visiblePx": 0,
+            "status": "below-fold"
+          },
+          {
+            "text": "ADMISSIONS",
+            "href": "https://compassionrecoverycenters.com/admissions/",
+            "top": 13699,
+            "height": 33,
+            "inHeader": false,
+            "fixed": false,
+            "visiblePx": 0,
+            "status": "below-fold"
+          }
+        ],
+        "heroStatus": "below-fold",
+        "headerCtaVisible": true
+      },
+      "labels": {
+        "issues": [
+          {
+            "kind": "generic-label",
+            "text": "Get Started",
+            "href": "https://compassionrecoverycenters.com/treatment-services/intensive-outpatient-program/"
+          },
+          {
+            "kind": "generic-label",
+            "text": "Get Started",
+            "href": "https://compassionrecoverycenters.com/treatment-services/virtual-iop/"
+          },
+          {
+            "kind": "generic-label",
+            "text": "Learn More",
+            "href": "/mental-health/anxiety-treatment/"
+          },
+          {
+            "kind": "generic-label",
+            "text": "Learn More",
+            "href": "/depression-treatment/"
+          },
+          {
+            "kind": "generic-label",
+            "text": "Learn More",
+            "href": "/mental-health/ptsd/"
+          },
+          {
+            "kind": "generic-label",
+            "text": "Learn More",
+            "href": "/mental-health/bipolar-disorder-treatment/"
+          },
+          {
+            "kind": "generic-label",
+            "text": "Learn More",
+            "href": "/substance-abuse/"
+          },
+          {
+            "kind": "generic-label",
+            "text": "Learn More",
+            "href": "/substance-abuse/"
+          },
+          {
+            "kind": "generic-label",
+            "text": "Learn More",
+            "href": "/substance-abuse/"
+          },
+          {
+            "kind": "generic-label",
+            "text": "Learn More",
+            "href": "/substance-abuse/"
+          },
+          {
+            "kind": "generic-label",
+            "text": "Learn More",
+            "href": "https://compassionrecoverycenters.com/admissions/"
+          },
+          {
+            "kind": "generic-label",
+            "text": "Learn More",
+            "href": "https://compassionrecoverycenters.com/contact/"
+          }
+        ],
+        "genericCounts": {
+          "get started": 2,
+          "learn more": 10
+        }
+      },
+      "phones": {
+        "linkTargets": [
+          "9496494314",
+          "8773754344",
+          "9498494362",
+          "8774143007"
+        ],
+        "visibleNumbers": [
+          "9496494314",
+          "9498494362"
+        ],
+        "linkOnly": [
+          "8773754344",
+          "8774143007"
+        ],
+        "intent": "Not Measured"
+      },
+      "overlays": {
+        "count": 5,
+        "rows": [
+          {
+            "name": "skip-link",
+            "rect": {
+              "name": "skip-link",
+              "x": 20,
+              "y": 50,
+              "w": 257,
+              "h": 57
+            },
+            "coversText": [
+              "23141 Moulton Pkwy Suite 207, Laguna Hil"
+            ]
+          },
+          {
+            "name": "popup-dialog  popup-dialog--left popup-d",
+            "rect": {
+              "name": "popup-dialog  popup-dialog--left popup-d",
+              "x": 0,
+              "y": 0,
+              "w": 123,
+              "h": 32
+            },
+            "coversText": []
+          },
+          {
+            "name": "trigger-button trigger-button--visible  ",
+            "rect": {
+              "name": "trigger-button trigger-button--visible  ",
+              "x": 20,
+              "y": 850,
+              "w": 30,
+              "h": 30
+            },
+            "coversText": []
+          },
+          {
+            "name": "verify-benefits-tab",
+            "rect": {
+              "name": "verify-benefits-tab",
+              "x": 1380,
+              "y": 360,
+              "w": 60,
+              "h": 180
+            },
+            "coversText": []
+          },
+          {
+            "name": "chat-widget-container",
+            "rect": {
+              "name": "chat-widget-container",
+              "x": 1356,
+              "y": 816,
+              "w": 84,
+              "h": 84
+            },
+            "coversText": []
+          }
+        ],
+        "covering": [
+          {
+            "name": "skip-link",
+            "rect": {
+              "name": "skip-link",
+              "x": 20,
+              "y": 50,
+              "w": 257,
+              "h": 57
+            },
+            "coversText": [
+              "23141 Moulton Pkwy Suite 207, Laguna Hil"
+            ]
+          }
+        ]
+      },
+      "contrast": {
+        "candidates": 15,
+        "sampled": 15,
+        "coverage": 1,
+        "measured": 7,
+        "failing": [
+          {
+            "text": "VERIFY BENEFITS",
+            "ratio": 4.38,
+            "pass": false,
+            "fg": [
+              255,
+              255,
+              255
+            ],
+            "bg": [
+              29,
+              124,
+              203
+            ],
+            "size": 18,
+            "bold": false,
+            "required": 4.5
+          },
+          {
+            "text": "23141 Moulton Pkwy Suite 207, Laguna Hills, CA 926",
+            "ratio": 4.38,
+            "pass": false,
+            "fg": [
+              255,
+              255,
+              255
+            ],
+            "bg": [
+              29,
+              124,
+              203
+            ],
+            "size": 14,
+            "bold": false,
+            "required": 4.5
+          },
+          {
+            "text": "100 Percent In Network Provider |",
+            "ratio": 4.38,
+            "pass": false,
+            "fg": [
+              255,
+              255,
+              255
+            ],
+            "bg": [
+              29,
+              124,
+              203
+            ],
+            "size": 14,
+            "bold": false,
+            "required": 4.5
+          },
+          {
+            "text": "Check Benefits",
+            "ratio": 4.38,
+            "pass": false,
+            "fg": [
+              255,
+              255,
+              255
+            ],
+            "bg": [
+              29,
+              124,
+              203
+            ],
+            "size": 14,
+            "bold": false,
+            "required": 4.5
+          },
+          {
+            "text": "DUAL DIAGNOSIS CARE",
+            "ratio": 3.03,
+            "pass": false,
+            "fg": [
+              29,
+              124,
+              203
+            ],
+            "bg": [
+              255,
+              210,
+              56
+            ],
+            "size": 14,
+            "bold": true,
+            "required": 4.5
+          }
+        ],
+        "notMeasured": [
+          {
+            "text": "What We Treat",
+            "reason": "pseudo-element background"
+          },
+          {
+            "text": "Our Programs",
+            "reason": "pseudo-element background"
+          },
+          {
+            "text": "Who We Serve",
+            "reason": "pseudo-element background"
+          },
+          {
+            "text": "Admissions",
+            "reason": "pseudo-element background"
+          },
+          {
+            "text": "About Us",
+            "reason": "pseudo-element background"
+          },
+          {
+            "text": "Compassionate Care For Mental Health & Addiction",
+            "reason": "background image or gradient"
+          },
+          {
+            "text": "Compassion Recovery Centers provides mental health",
+            "reason": "background image or gradient"
+          },
+          {
+            "text": "Verify My Insurance  Free | Speak With Our Team:",
+            "reason": "background image or gradient"
+          }
+        ],
+        "method": "computed colors; alpha layers composited over opaque ancestor or white canvas; image/gradient/opacity/filter/blend/pseudo-element/text-shadow/covered => Not Measured"
+      },
+      "step1": {
+        "top": 9657,
+        "pctDown": 66,
+        "viewportsDown": 10.7
+      },
+      "step2": {
+        "top": 10008,
+        "pctDown": 68,
+        "viewportsDown": 11.1
+      },
+      "step3Present": false,
+      "howItWorksText": 0,
+      "jsonLd": {
+        "counts": {
+          "Place": 1,
+          "Organization": 1,
+          "WebSite": 3,
+          "ImageObject": 1,
+          "WebPage": 1,
+          "MedicalOrganization": 1,
+          "MedicalClinic": 2,
+          "MedicalBusiness": 1
+        },
+        "duplicates": [
+          {
+            "type": "WebSite",
+            "n": 3
+          },
+          {
+            "type": "MedicalClinic",
+            "n": 2
+          }
+        ]
+      },
+      "urlPatterns": {
+        "pages": 23,
+        "depths": [
+          1,
+          2
+        ],
+        "mixedDepth": true,
+        "withTreatmentSuffix": 7,
+        "withoutTreatmentSuffix": 16,
+        "suffixInconsistent": true
+      },
+      "referrals": [],
+      "lab": {
+        "lcpMs": 500,
+        "cls": 0.001,
+        "note": "Lab values: single run, unthrottled, not field data. INP Not Measured."
+      },
+      "inp": "Not Measured",
+      "runsAgreeing": 2,
+      "wallMs": 8240,
+      "detectors": [
+        {
+          "detector": "D09-hero-fold",
+          "flagged": true,
+          "notMeasured": false,
+          "evidence": {
+            "heroStatus": "below-fold",
+            "rows": [
+              {
+                "text": "(949) 649-4314",
+                "href": "tel:+19496494314",
+                "top": 920,
+                "height": 54,
+                "inHeader": false,
+                "fixed": false,
+                "visiblePx": 0,
+                "status": "below-fold"
+              },
+              {
+                "text": "(949) 649-4314",
+                "href": "tel:+19496494314",
+                "top": 1482,
+                "height": 54,
+                "inHeader": false,
+                "fixed": false,
+                "visiblePx": 0,
+                "status": "below-fold"
+              },
+              {
+                "text": "Get Started",
+                "href": "https://compassionrecoverycenters.com/treatment-services/intensive-outpatient-program/",
+                "top": 2006,
+                "height": 24,
+                "inHeader": false,
+                "fixed": false,
+                "visiblePx": 0,
+                "status": "below-fold"
+              },
+              {
+                "text": "Get Started",
+                "href": "https://compassionrecoverycenters.com/treatment-services/virtual-iop/",
+                "top": 1965,
+                "height": 24,
+                "inHeader": false,
+                "fixed": false,
+                "visiblePx": 0,
+                "status": "below-fold"
+              },
+              {
+                "text": "(949) 649-4314",
+                "href": "tel:+19496494314",
+                "top": 2039,
+                "height": 54,
+                "inHeader": false,
+                "fixed": false,
+                "visiblePx": 0,
+                "status": "below-fold"
+              }
+            ]
+          },
+          "confidence": "high"
+        },
+        {
+          "detector": "D09-verify-calls",
+          "flagged": false,
+          "notMeasured": false,
+          "evidence": [],
+          "confidence": "high"
+        },
+        {
+          "detector": "D09-generic-labels",
+          "flagged": true,
+          "notMeasured": false,
+          "evidence": {
+            "get started": 2,
+            "learn more": 10
+          },
+          "confidence": "high"
+        },
+        {
+          "detector": "D09-process-buried",
+          "flagged": true,
+          "notMeasured": false,
+          "evidence": {
+            "top": 9657,
+            "pctDown": 66,
+            "viewportsDown": 10.7
+          },
+          "confidence": "high"
+        },
+        {
+          "detector": "D09-no-process",
+          "flagged": false,
+          "notMeasured": false,
+          "evidence": {
+            "step1": {
+              "top": 9657,
+              "pctDown": 66,
+              "viewportsDown": 10.7
+            },
+            "howItWorksText": 0
+          },
+          "confidence": "high"
+        },
+        {
+          "detector": "D09-referral",
+          "flagged": false,
+          "notMeasured": false,
+          "evidence": [],
+          "confidence": "high"
+        },
+        {
+          "detector": "D07-overlay-count",
+          "flagged": true,
+          "notMeasured": false,
+          "evidence": {
+            "count": 5,
+            "names": [
+              "skip-link",
+              "popup-dialog  popup-dialog--left popup-d",
+              "trigger-button trigger-button--visible  ",
+              "verify-benefits-tab",
+              "chat-widget-container"
+            ]
+          },
+          "confidence": "high"
+        },
+        {
+          "detector": "D07-overlay-cover",
+          "flagged": true,
+          "notMeasured": false,
+          "evidence": [
+            {
+              "name": "skip-link",
+              "covers": [
+                "23141 Moulton Pkwy Suite 207, Laguna Hil"
+              ]
+            }
+          ],
+          "confidence": "high"
+        },
+        {
+          "detector": "D07-contrast-fail",
+          "flagged": true,
+          "notMeasured": false,
+          "evidence": {
+            "sampled": 15,
+            "candidates": 15,
+            "failing": [
+              {
+                "text": "VERIFY BENEFITS",
+                "ratio": 4.38,
+                "pass": false,
+                "fg": [
+                  255,
+                  255,
+                  255
+                ],
+                "bg": [
+                  29,
+                  124,
+                  203
+                ],
+                "size": 18,
+                "bold": false,
+                "required": 4.5
+              },
+              {
+                "text": "23141 Moulton Pkwy Suite 207, Laguna Hills, CA 926",
+                "ratio": 4.38,
+                "pass": false,
+                "fg": [
+                  255,
+                  255,
+                  255
+                ],
+                "bg": [
+                  29,
+                  124,
+                  203
+                ],
+                "size": 14,
+                "bold": false,
+                "required": 4.5
+              },
+              {
+                "text": "100 Percent In Network Provider |",
+                "ratio": 4.38,
+                "pass": false,
+                "fg": [
+                  255,
+                  255,
+                  255
+                ],
+                "bg": [
+                  29,
+                  124,
+                  203
+                ],
+                "size": 14,
+                "bold": false,
+                "required": 4.5
+              },
+              {
+                "text": "Check Benefits",
+                "ratio": 4.38,
+                "pass": false,
+                "fg": [
+                  255,
+                  255,
+                  255
+                ],
+                "bg": [
+                  29,
+                  124,
+                  203
+                ],
+                "size": 14,
+                "bold": false,
+                "required": 4.5
+              },
+              {
+                "text": "DUAL DIAGNOSIS CARE",
+                "ratio": 3.03,
+                "pass": false,
+                "fg": [
+                  29,
+                  124,
+                  203
+                ],
+                "bg": [
+                  255,
+                  210,
+                  56
+                ],
+                "size": 14,
+                "bold": true,
+                "required": 4.5
+              }
+            ],
+            "notMeasuredCount": 8,
+            "label": "candidate failure, not a site-wide verdict"
+          },
+          "confidence": "low"
+        },
+        {
+          "detector": "D07-typefaces",
+          "flagged": true,
+          "notMeasured": false,
+          "evidence": [
+            "Figtree",
+            "Poppins",
+            "Trustindex Poppins",
+            "Inter"
+          ],
+          "confidence": "high"
+        },
+        {
+          "detector": "D24-jsonld-duplicate",
+          "flagged": true,
+          "notMeasured": false,
+          "observation": true,
+          "evidence": {
+            "duplicates": [
+              {
+                "type": "WebSite",
+                "n": 3
+              },
+              {
+                "type": "MedicalClinic",
+                "n": 2
+              }
+            ],
+            "schemaValidation": "Not Measured"
+          },
+          "confidence": "low"
+        },
+        {
+          "detector": "D24-url-pattern",
+          "flagged": true,
+          "notMeasured": false,
+          "evidence": {
+            "pages": 23,
+            "depths": [
+              1,
+              2
+            ],
+            "mixedDepth": true,
+            "withTreatmentSuffix": 7,
+            "withoutTreatmentSuffix": 16,
+            "suffixInconsistent": true
+          },
+          "confidence": "high"
+        },
+        {
+          "detector": "D24-phone-linkonly",
+          "flagged": true,
+          "notMeasured": false,
+          "evidence": {
+            "linkTargets": [
+              "9496494314",
+              "8773754344",
+              "9498494362",
+              "8774143007"
+            ],
+            "visibleNumbers": [
+              "9496494314",
+              "9498494362"
+            ],
+            "linkOnly": [
+              "8773754344",
+              "8774143007"
+            ],
+            "intent": "Not Measured"
+          },
+          "confidence": "low"
+        },
+        {
+          "detector": "D24-head-missing",
+          "flagged": false,
+          "notMeasured": false,
+          "evidence": {
+            "title": "Compassion Recovery Centers | Mental Health & Addiction Treatment",
+            "metaDescription": "Compassion Recovery Centers provides in-person and virtual mental health & addiction treatment, accepting most insurance plans.",
+            "canonical": "https://compassionrecoverycenters.com/",
+            "lang": "en-US"
+          },
+          "confidence": "high"
+        },
+        {
+          "detector": "D24-h1-count",
+          "flagged": false,
+          "notMeasured": false,
+          "evidence": {
+            "h1": 1
+          },
+          "confidence": "high"
+        },
+        {
+          "detector": "D24-lang-missing",
+          "flagged": false,
+          "notMeasured": false,
+          "evidence": {
+            "lang": "en-US"
+          },
+          "confidence": "high"
+        }
+      ]
+    },
+    "mobile": {
+      "status": 200,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "pageH": 26262,
+      "h1": [
+        "Compassionate Care For Mental Health & Addiction"
+      ],
+      "head": {
+        "title": "Compassion Recovery Centers | Mental Health & Addiction Treatment",
+        "metaDescription": "Compassion Recovery Centers provides in-person and virtual mental health & addiction treatment, accepting most insurance plans.",
+        "canonical": "https://compassionrecoverycenters.com/",
+        "lang": "en-US"
+      },
+      "fontFamilies": [
+        "Figtree",
+        "Poppins",
+        "Trustindex Poppins",
+        "Inter"
+      ],
+      "heroCta": {
+        "rows": [
+          {
+            "text": "VERIFY BENEFITS",
+            "href": "#elementor-action:action=popup:open&settings=eyJpZCI6Ijg5MzQiLCJ0b2dnbGUiOmZhbHNlfQ==",
+            "top": 338,
+            "height": 180,
+            "inHeader": false,
+            "fixed": true,
+            "visiblePx": 180,
+            "status": "fully-visible"
+          },
+          {
+            "text": "Call Now",
+            "href": "tel:(877)%20375-4344",
+            "top": 817,
+            "height": 54,
+            "inHeader": false,
+            "fixed": false,
+            "visiblePx": 27,
+            "status": "partially-visible"
+          },
+          {
+            "text": "Verify Insurance",
+            "href": "tel:(877)%20375-4344",
+            "top": 896,
+            "height": 54,
+            "inHeader": false,
+            "fixed": false,
+            "visiblePx": 0,
+            "status": "below-fold"
+          },
+          {
+            "text": "(949) 649-4314",
+            "href": "tel:+19496494314",
+            "top": 1389,
+            "height": 54,
+            "inHeader": false,
+            "fixed": false,
+            "visiblePx": 0,
+            "status": "below-fold"
+          },
+          {
+            "text": "Get Started",
+            "href": "https://compassionrecoverycenters.com/treatment-services/intensive-outpatient-program/",
+            "top": 1873,
+            "height": 24,
+            "inHeader": false,
+            "fixed": false,
+            "visiblePx": 0,
+            "status": "below-fold"
+          },
+          {
+            "text": "Get Started",
+            "href": "https://compassionrecoverycenters.com/treatment-services/virtual-iop/",
+            "top": 2247,
+            "height": 24,
+            "inHeader": false,
+            "fixed": false,
+            "visiblePx": 0,
+            "status": "below-fold"
+          },
+          {
+            "text": "(949) 649-4314",
+            "href": "tel:+19496494314",
+            "top": 2855,
+            "height": 54,
+            "inHeader": false,
+            "fixed": false,
+            "visiblePx": 0,
+            "status": "below-fold"
+          },
+          {
+            "text": "(949) 649-4314",
+            "href": "tel:+19496494314",
+            "top": 8285,
+            "height": 54,
+            "inHeader": false,
+            "fixed": false,
+            "visiblePx": 0,
+            "status": "below-fold"
+          },
+          {
+            "text": "(949) 649-4314",
+            "href": "tel:+19496494314",
+            "top": 9668,
+            "height": 54,
+            "inHeader": false,
+            "fixed": false,
+            "visiblePx": 0,
+            "status": "below-fold"
+          },
+          {
+            "text": "(949) 649-4314",
+            "href": "tel:+19496494314",
+            "top": 10238,
+            "height": 54,
+            "inHeader": false,
+            "fixed": false,
+            "visiblePx": 0,
+            "status": "below-fold"
+          },
+          {
+            "text": "Schedule Your Free Assessment",
+            "href": "https://compassionrecoverycenters.com/free-assessment/",
+            "top": 15557,
+            "height": 55,
+            "inHeader": false,
+            "fixed": false,
+            "visiblePx": 0,
+            "status": "below-fold"
+          },
+          {
+            "text": "Call Now | (949) 849-4362",
+            "href": "tel:(949)%20849-4362",
+            "top": 15637,
+            "height": 54,
+            "inHeader": false,
+            "fixed": false,
+            "visiblePx": 0,
+            "status": "below-fold"
+          },
+          {
+            "text": "Start treatment now",
+            "href": "https://compassionrecoverycenters.com/admissions/",
+            "top": 21709,
+            "height": 54,
+            "inHeader": false,
+            "fixed": false,
+            "visiblePx": 0,
+            "status": "below-fold"
+          },
+          {
+            "text": "(949) 649-4314",
+            "href": "tel:+19496494314",
+            "top": 22819,
+            "height": 22,
+            "inHeader": false,
+            "fixed": false,
+            "visiblePx": 0,
+            "status": "below-fold"
+          },
+          {
+            "text": "Get in touch",
+            "href": "https://compassionrecoverycenters.com/contact/",
+            "top": 22921,
+            "height": 54,
+            "inHeader": false,
+            "fixed": false,
+            "visiblePx": 0,
+            "status": "below-fold"
+          },
+          {
+            "text": "Instantly Verify Insurance",
+            "href": "https://compassionrecoverycenters.com/admissions/",
+            "top": 24117,
+            "height": 56,
+            "inHeader": false,
+            "fixed": false,
+            "visiblePx": 0,
+            "status": "below-fold"
+          },
+          {
+            "text": "Facebook",
+            "href": "https://www.facebook.com/CompassionRecoveryCenter",
+            "top": 25004,
+            "height": 40,
+            "inHeader": false,
+            "fixed": false,
+            "visiblePx": 0,
+            "status": "below-fold"
+          },
+          {
+            "text": "ADMISSIONS",
+            "href": "https://compassionrecoverycenters.com/admissions/",
+            "top": 25176,
+            "height": 35,
+            "inHeader": false,
+            "fixed": false,
+            "visiblePx": 0,
+            "status": "below-fold"
+          }
+        ],
+        "heroStatus": "partially-visible",
+        "headerCtaVisible": false
+      },
+      "labels": {
+        "issues": [
+          {
+            "kind": "verify-label-calls",
+            "text": "Verify Insurance",
+            "href": "tel:(877)%20375-4344"
+          },
+          {
+            "kind": "generic-label",
+            "text": "Get Started",
+            "href": "https://compassionrecoverycenters.com/treatment-services/intensive-outpatient-program/"
+          },
+          {
+            "kind": "generic-label",
+            "text": "Get Started",
+            "href": "https://compassionrecoverycenters.com/treatment-services/virtual-iop/"
+          },
+          {
+            "kind": "generic-label",
+            "text": "Learn More",
+            "href": "/mental-health/anxiety-treatment/"
+          },
+          {
+            "kind": "generic-label",
+            "text": "Learn More",
+            "href": "/depression-treatment/"
+          },
+          {
+            "kind": "generic-label",
+            "text": "Learn More",
+            "href": "/mental-health/ptsd/"
+          },
+          {
+            "kind": "generic-label",
+            "text": "Learn More",
+            "href": "/mental-health/bipolar-disorder-treatment/"
+          },
+          {
+            "kind": "generic-label",
+            "text": "Learn More",
+            "href": "/substance-abuse/"
+          },
+          {
+            "kind": "generic-label",
+            "text": "Learn More",
+            "href": "/substance-abuse/"
+          },
+          {
+            "kind": "generic-label",
+            "text": "Learn More",
+            "href": "/substance-abuse/"
+          },
+          {
+            "kind": "generic-label",
+            "text": "Learn More",
+            "href": "/substance-abuse/"
+          },
+          {
+            "kind": "generic-label",
+            "text": "Learn More",
+            "href": "https://compassionrecoverycenters.com/admissions/"
+          },
+          {
+            "kind": "generic-label",
+            "text": "Learn More",
+            "href": "https://compassionrecoverycenters.com/contact/"
+          }
+        ],
+        "genericCounts": {
+          "get started": 2,
+          "learn more": 10
+        }
+      },
+      "phones": {
+        "linkTargets": [
+          "9496494314",
+          "8773754344",
+          "9498494362",
+          "8774143007"
+        ],
+        "visibleNumbers": [
+          "9496494314",
+          "9498494362"
+        ],
+        "linkOnly": [
+          "8773754344",
+          "8774143007"
+        ],
+        "intent": "Not Measured"
+      },
+      "overlays": {
+        "count": 5,
+        "rows": [
+          {
+            "name": "skip-link",
+            "rect": {
+              "name": "skip-link",
+              "x": 20,
+              "y": 50,
+              "w": 200,
+              "h": 46
+            },
+            "coversText": []
+          },
+          {
+            "name": "popup-dialog  popup-dialog--left popup-d",
+            "rect": {
+              "name": "popup-dialog  popup-dialog--left popup-d",
+              "x": 0,
+              "y": 0,
+              "w": 123,
+              "h": 32
+            },
+            "coversText": []
+          },
+          {
+            "name": "trigger-button trigger-button--visible  ",
+            "rect": {
+              "name": "trigger-button trigger-button--visible  ",
+              "x": 20,
+              "y": 764,
+              "w": 45,
+              "h": 45
+            },
+            "coversText": [
+              "Flexible Scheduling"
+            ]
+          },
+          {
+            "name": "verify-benefits-tab",
+            "rect": {
+              "name": "verify-benefits-tab",
+              "x": 330,
+              "y": 338,
+              "w": 60,
+              "h": 180
+            },
+            "coversText": []
+          },
+          {
+            "name": "chat-widget-container",
+            "rect": {
+              "name": "chat-widget-container",
+              "x": 306,
+              "y": 760,
+              "w": 84,
+              "h": 84
+            },
+            "coversText": []
+          }
+        ],
+        "covering": [
+          {
+            "name": "trigger-button trigger-button--visible  ",
+            "rect": {
+              "name": "trigger-button trigger-button--visible  ",
+              "x": 20,
+              "y": 764,
+              "w": 45,
+              "h": 45
+            },
+            "coversText": [
+              "Flexible Scheduling"
+            ]
+          }
+        ]
+      },
+      "contrast": {
+        "candidates": 9,
+        "sampled": 9,
+        "coverage": 1,
+        "measured": 4,
+        "failing": [
+          {
+            "text": "VERIFY BENEFITS",
+            "ratio": 4.38,
+            "pass": false,
+            "fg": [
+              255,
+              255,
+              255
+            ],
+            "bg": [
+              29,
+              124,
+              203
+            ],
+            "size": 18,
+            "bold": false,
+            "required": 4.5
+          },
+          {
+            "text": "DUAL DIAGNOSIS CARE",
+            "ratio": 3.03,
+            "pass": false,
+            "fg": [
+              29,
+              124,
+              203
+            ],
+            "bg": [
+              255,
+              210,
+              56
+            ],
+            "size": 14,
+            "bold": true,
+            "required": 4.5
+          },
+          {
+            "text": "Call Now",
+            "ratio": 4.38,
+            "pass": false,
+            "fg": [
+              255,
+              255,
+              255
+            ],
+            "bg": [
+              29,
+              124,
+              203
+            ],
+            "size": 14,
+            "bold": true,
+            "required": 4.5
+          }
+        ],
+        "notMeasured": [
+          {
+            "text": "Compassionate Care For Mental Health & Addiction",
+            "reason": "background image or gradient"
+          },
+          {
+            "text": "In Person & Virtual Options",
+            "reason": "background image or gradient"
+          },
+          {
+            "text": "100% In Network Provider",
+            "reason": "background image or gradient"
+          },
+          {
+            "text": "PHP & IOP Programs",
+            "reason": "background image or gradient"
+          },
+          {
+            "text": "Flexible Scheduling",
+            "reason": "background image or gradient"
+          }
+        ],
+        "method": "computed colors; alpha layers composited over opaque ancestor or white canvas; image/gradient/opacity/filter/blend/pseudo-element/text-shadow/covered => Not Measured"
+      },
+      "step1": {
+        "top": 17255,
+        "pctDown": 66,
+        "viewportsDown": 20.4
+      },
+      "step2": {
+        "top": 17729,
+        "pctDown": 68,
+        "viewportsDown": 21
+      },
+      "step3Present": false,
+      "howItWorksText": 0,
+      "jsonLd": {
+        "counts": {
+          "Place": 1,
+          "Organization": 1,
+          "WebSite": 3,
+          "ImageObject": 1,
+          "WebPage": 1,
+          "MedicalOrganization": 1,
+          "MedicalClinic": 2,
+          "MedicalBusiness": 1
+        },
+        "duplicates": [
+          {
+            "type": "WebSite",
+            "n": 3
+          },
+          {
+            "type": "MedicalClinic",
+            "n": 2
+          }
+        ]
+      },
+      "urlPatterns": {
+        "pages": 23,
+        "depths": [
+          1,
+          2
+        ],
+        "mixedDepth": true,
+        "withTreatmentSuffix": 7,
+        "withoutTreatmentSuffix": 16,
+        "suffixInconsistent": true
+      },
+      "referrals": [],
+      "lab": {
+        "lcpMs": 292,
+        "cls": 0,
+        "note": "Lab values: single run, unthrottled, not field data. INP Not Measured."
+      },
+      "inp": "Not Measured",
+      "runsAgreeing": 2,
+      "wallMs": 8082,
+      "detectors": [
+        {
+          "detector": "D09-hero-fold",
+          "flagged": true,
+          "notMeasured": false,
+          "evidence": {
+            "heroStatus": "partially-visible",
+            "rows": [
+              {
+                "text": "Call Now",
+                "href": "tel:(877)%20375-4344",
+                "top": 817,
+                "height": 54,
+                "inHeader": false,
+                "fixed": false,
+                "visiblePx": 27,
+                "status": "partially-visible"
+              },
+              {
+                "text": "Verify Insurance",
+                "href": "tel:(877)%20375-4344",
+                "top": 896,
+                "height": 54,
+                "inHeader": false,
+                "fixed": false,
+                "visiblePx": 0,
+                "status": "below-fold"
+              },
+              {
+                "text": "(949) 649-4314",
+                "href": "tel:+19496494314",
+                "top": 1389,
+                "height": 54,
+                "inHeader": false,
+                "fixed": false,
+                "visiblePx": 0,
+                "status": "below-fold"
+              },
+              {
+                "text": "Get Started",
+                "href": "https://compassionrecoverycenters.com/treatment-services/intensive-outpatient-program/",
+                "top": 1873,
+                "height": 24,
+                "inHeader": false,
+                "fixed": false,
+                "visiblePx": 0,
+                "status": "below-fold"
+              },
+              {
+                "text": "Get Started",
+                "href": "https://compassionrecoverycenters.com/treatment-services/virtual-iop/",
+                "top": 2247,
+                "height": 24,
+                "inHeader": false,
+                "fixed": false,
+                "visiblePx": 0,
+                "status": "below-fold"
+              }
+            ]
+          },
+          "confidence": "high"
+        },
+        {
+          "detector": "D09-verify-calls",
+          "flagged": true,
+          "notMeasured": false,
+          "evidence": [
+            {
+              "kind": "verify-label-calls",
+              "text": "Verify Insurance",
+              "href": "tel:(877)%20375-4344"
+            }
+          ],
+          "confidence": "high"
+        },
+        {
+          "detector": "D09-generic-labels",
+          "flagged": true,
+          "notMeasured": false,
+          "evidence": {
+            "get started": 2,
+            "learn more": 10
+          },
+          "confidence": "high"
+        },
+        {
+          "detector": "D09-process-buried",
+          "flagged": true,
+          "notMeasured": false,
+          "evidence": {
+            "top": 17255,
+            "pctDown": 66,
+            "viewportsDown": 20.4
+          },
+          "confidence": "high"
+        },
+        {
+          "detector": "D09-no-process",
+          "flagged": false,
+          "notMeasured": false,
+          "evidence": {
+            "step1": {
+              "top": 17255,
+              "pctDown": 66,
+              "viewportsDown": 20.4
+            },
+            "howItWorksText": 0
+          },
+          "confidence": "high"
+        },
+        {
+          "detector": "D09-referral",
+          "flagged": false,
+          "notMeasured": false,
+          "evidence": [],
+          "confidence": "high"
+        },
+        {
+          "detector": "D07-overlay-count",
+          "flagged": true,
+          "notMeasured": false,
+          "evidence": {
+            "count": 5,
+            "names": [
+              "skip-link",
+              "popup-dialog  popup-dialog--left popup-d",
+              "trigger-button trigger-button--visible  ",
+              "verify-benefits-tab",
+              "chat-widget-container"
+            ]
+          },
+          "confidence": "high"
+        },
+        {
+          "detector": "D07-overlay-cover",
+          "flagged": true,
+          "notMeasured": false,
+          "evidence": [
+            {
+              "name": "trigger-button trigger-button--visible  ",
+              "covers": [
+                "Flexible Scheduling"
+              ]
+            }
+          ],
+          "confidence": "high"
+        },
+        {
+          "detector": "D07-contrast-fail",
+          "flagged": true,
+          "notMeasured": false,
+          "evidence": {
+            "sampled": 9,
+            "candidates": 9,
+            "failing": [
+              {
+                "text": "VERIFY BENEFITS",
+                "ratio": 4.38,
+                "pass": false,
+                "fg": [
+                  255,
+                  255,
+                  255
+                ],
+                "bg": [
+                  29,
+                  124,
+                  203
+                ],
+                "size": 18,
+                "bold": false,
+                "required": 4.5
+              },
+              {
+                "text": "DUAL DIAGNOSIS CARE",
+                "ratio": 3.03,
+                "pass": false,
+                "fg": [
+                  29,
+                  124,
+                  203
+                ],
+                "bg": [
+                  255,
+                  210,
+                  56
+                ],
+                "size": 14,
+                "bold": true,
+                "required": 4.5
+              },
+              {
+                "text": "Call Now",
+                "ratio": 4.38,
+                "pass": false,
+                "fg": [
+                  255,
+                  255,
+                  255
+                ],
+                "bg": [
+                  29,
+                  124,
+                  203
+                ],
+                "size": 14,
+                "bold": true,
+                "required": 4.5
+              }
+            ],
+            "notMeasuredCount": 5,
+            "label": "candidate failure, not a site-wide verdict"
+          },
+          "confidence": "low"
+        },
+        {
+          "detector": "D07-typefaces",
+          "flagged": true,
+          "notMeasured": false,
+          "evidence": [
+            "Figtree",
+            "Poppins",
+            "Trustindex Poppins",
+            "Inter"
+          ],
+          "confidence": "high"
+        },
+        {
+          "detector": "D24-jsonld-duplicate",
+          "flagged": true,
+          "notMeasured": false,
+          "observation": true,
+          "evidence": {
+            "duplicates": [
+              {
+                "type": "WebSite",
+                "n": 3
+              },
+              {
+                "type": "MedicalClinic",
+                "n": 2
+              }
+            ],
+            "schemaValidation": "Not Measured"
+          },
+          "confidence": "low"
+        },
+        {
+          "detector": "D24-url-pattern",
+          "flagged": true,
+          "notMeasured": false,
+          "evidence": {
+            "pages": 23,
+            "depths": [
+              1,
+              2
+            ],
+            "mixedDepth": true,
+            "withTreatmentSuffix": 7,
+            "withoutTreatmentSuffix": 16,
+            "suffixInconsistent": true
+          },
+          "confidence": "high"
+        },
+        {
+          "detector": "D24-phone-linkonly",
+          "flagged": true,
+          "notMeasured": false,
+          "evidence": {
+            "linkTargets": [
+              "9496494314",
+              "8773754344",
+              "9498494362",
+              "8774143007"
+            ],
+            "visibleNumbers": [
+              "9496494314",
+              "9498494362"
+            ],
+            "linkOnly": [
+              "8773754344",
+              "8774143007"
+            ],
+            "intent": "Not Measured"
+          },
+          "confidence": "low"
+        },
+        {
+          "detector": "D24-head-missing",
+          "flagged": false,
+          "notMeasured": false,
+          "evidence": {
+            "title": "Compassion Recovery Centers | Mental Health & Addiction Treatment",
+            "metaDescription": "Compassion Recovery Centers provides in-person and virtual mental health & addiction treatment, accepting most insurance plans.",
+            "canonical": "https://compassionrecoverycenters.com/",
+            "lang": "en-US"
+          },
+          "confidence": "high"
+        },
+        {
+          "detector": "D24-h1-count",
+          "flagged": false,
+          "notMeasured": false,
+          "evidence": {
+            "h1": 1
+          },
+          "confidence": "high"
+        },
+        {
+          "detector": "D24-lang-missing",
+          "flagged": false,
+          "notMeasured": false,
+          "evidence": {
+            "lang": "en-US"
+          },
+          "confidence": "high"
+        }
+      ]
+    }
+  },
+  "network": {
+    "allowedRequests": 150,
+    "thirdPartyConnections": 146,
+    "thirdPartyHosts": {
+      "fonts.googleapis.com": 8,
+      "www.googletagmanager.com": 16,
+      "elfsightcdn.com": 4,
+      "324959.tctm.co": 8,
+      "cdn.trustindex.io": 9,
+      "acsbapp.com": 4,
+      "www.clarity.ms": 4,
+      "lh3.googleusercontent.com": 18,
+      "cdn.livechatinc.com": 8,
+      "cdn.acsbapp.com": 4,
+      "scripts.clarity.ms": 4,
+      "stats.g.doubleclick.net": 6,
+      "analytics.google.com": 4,
+      "api.livechatinc.com": 8,
+      "googleads.g.doubleclick.net": 4,
+      "www.google.com": 8,
+      "ad.doubleclick.net": 4,
+      "e.clarity.ms": 2,
+      "secure.livechatinc.com": 4,
+      "c.clarity.ms": 4,
+      "accounts.livechatinc.com": 4,
+      "c.bing.com": 4,
+      "r.clarity.ms": 1,
+      "core.service.elfsight.com": 2,
+      "o.clarity.ms": 2,
+      "j.clarity.ms": 2
+    },
+    "blocked": [],
+    "blockedCount": 0,
+    "proxy": {
+      "connects": 150,
+      "refused": 0
+    },
+    "note": "All browser connections pass a local filtering proxy: https/443 only, DNS resolved by the proxy, public addresses only."
+  },
+  "totalMs": 16604,
+  "feedbackValidation": "valid"
+}

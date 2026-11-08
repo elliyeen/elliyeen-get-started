@@ -1,0 +1,47 @@
+{
+ "agent": "24-seo-growth-engineering",
+ "version": "1.0",
+ "run_id": "baseline-2026-11-08-24",
+ "inputs": "same plus sitemap index",
+ "evidence_links": [
+  "E5",
+  "E6",
+  "E7",
+  "E8"
+ ],
+ "findings": [
+  {
+   "id": "24-1",
+   "disposition": "pending_human_review",
+   "confidence": "high"
+  },
+  {
+   "id": "24-2",
+   "disposition": "pending_human_review",
+   "confidence": "high"
+  },
+  {
+   "id": "24-3",
+   "disposition": "pending_human_review",
+   "confidence": "high"
+  },
+  {
+   "id": "24-4",
+   "disposition": "pending_human_review",
+   "confidence": "high"
+  },
+  {
+   "id": "24-5",
+   "disposition": "pending_human_review",
+   "confidence": "high"
+  },
+  {
+   "id": "24-6",
+   "disposition": "pending_human_review",
+   "confidence": "medium"
+  }
+ ],
+ "outcome": "Not Measured",
+ "pattern": "Entity and NAP inconsistency; overlapping JSON-LD; inconsistent URL patterns",
+ "confidence_note": "CWV and full crawl not measured; 1 self-caught false positive (empty H2)"
+}

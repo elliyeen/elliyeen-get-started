@@ -1,0 +1,16 @@
+base (pre-merge) : d5ebcd80630539aff3ba3be7b933584c08497cf5
+head (PR)        : 4aa42a50927586177ff80e1c55be19ba6cc09c14
+PASS  PR touches only the pilot agents, AUDIT.md, tests, tooling, baselines, .gitignore
+PASS  found exactly 21 non-pilot numbered agent files
+PASS  all 21 non-pilot agent files are byte-identical (git blob ids)
+PASS  all 21 non-pilot agents still declare Version 1.0 at head
+PASS  base agents/07-apple-design.md is v1.0
+PASS  head agents/07-apple-design.md is upgraded
+PASS  base agents/09-conversion.md is v1.0
+PASS  head agents/09-conversion.md is upgraded
+PASS  base agents/24-seo-growth-engineering.md is v1.0
+PASS  head agents/24-seo-growth-engineering.md is upgraded
+PASS  git revert -m 1 of the merge restores the exact base tree (54d2d39)
+PASS  manual rollback (restore files from base, git rm the new directories) matches base
+PASS  collector writes only through safeWrite (no direct fs writes)
+RESULT: 13 passed, 0 failed
